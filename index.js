@@ -3,23 +3,23 @@ import { render } from 'react-dom'
 import { Provider } from 'react-redux';
 import { Router, Route, hashHistory } from 'react-router'
 
-import Layout from './containers/Layout'
-import LayoutSignup from './containers/LayoutSignup'
-import LayoutLogin from './containers/LayoutLogin'
-import LayoutFindMyOrg from './containers/LayoutFindMyOrg'
+import Layout from './src/containers/Layout'
+import LayoutSignup from './src/containers/LayoutSignup'
+import LayoutLogin from './src/containers/LayoutLogin'
+import LayoutFindMyOrg from './src/containers/LayoutFindMyOrg'
 
-import Dashboard from './containers/Dashboard'
-import OrganizationList from './containers/OrganizationListContainer'
-import CompanyList from './containers/CompanyListContainer'
+import Dashboard from './src/containers/Dashboard'
+import OrganizationList from './src/containers/OrganizationListContainer'
+import CompanyList from './src/containers/CompanyListContainer'
 
-import configureStore from './store/configureStore.dev.js';
+import configureStore from './src/store/configureStore.dev.js';
 
 const store = configureStore();
 window.store = store;
 
-import {ROOT_HOST} from './config.js'
+import {ROOT_HOST} from './src/config.js'
 
-import Auth from './helpers/auth.js'
+import Auth from './src/helpers/auth.js'
 
 // window.Auth = Auth;
 // console.log(Auth.login());

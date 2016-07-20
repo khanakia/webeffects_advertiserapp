@@ -23,7 +23,7 @@ var webpack = require('webpack-stream');
 // var files = ['./**/*.js', '!node_modules', '!bower_components'];
 
 gulp.task('styles', function() {
-    gulp.src('sass/**/*.scss')
+    gulp.src('src/sass/**/*.scss')
         .pipe(sass().on('error', sass.logError))
         .pipe(gulp.dest('./public/css_sass/'))
 });
@@ -37,6 +37,6 @@ gulp.task('webpack', function() {
 
 //Watch task
 gulp.task('default',function() {
-    // gulp.watch('sass/**/*.scss',['styles']);
-    gulp.watch(files,['webpack']);
+    gulp.watch('src/sass/**/*.scss',['styles']);
+    gulp.watch('src/**/*.js',['webpack']);
 });

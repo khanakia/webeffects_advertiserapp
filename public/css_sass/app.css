@@ -1,6 +1,6 @@
 #content {
   box-sizing: border-box;
-  clear: both;
+  clear: left;
   position: relative; }
 
 .sidebar {
@@ -24,5 +24,3 @@
   .page-panel.has-sidebar {
     padding-left: 250px;
     padding-right: 15px; }
-
-/*# sourceMappingURL=app.css.map */

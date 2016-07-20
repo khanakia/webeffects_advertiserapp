@@ -5,10 +5,7 @@ Homestead.yaml
 Homestead.json
 .env
 
-
-
 public/tmp/*
-
 
 # ignore all files starting with . or ~
 ##.*
@@ -20,6 +17,7 @@ bower_components/
 compiled/
 .sass-cache
 #/public/css_sass
+public/bundle.js
 
 # ignore OS generated files
 .DS_Store

@@ -1,2 +1,2 @@
-sass --watch sass:public/css_sass
+sass --watch src/sass:public/css_sass
 pause
