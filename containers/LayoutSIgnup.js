@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router'
 import ReactDOM from 'react-dom'
 
-import {ROOT_URL, API_URL_ORG_FINDBYDOMAIN, API_URL_SIGNIN} from '../config.js'
+import {ROOT_URL, API_URL_ORG_FINDBYDOMAIN, API_URL_SIGNUP} from '../config.js'
 
 
 export default class LayoutSignup extends Component {
@@ -19,7 +19,7 @@ export default class LayoutSignup extends Component {
     handleSubmit = (e) => {
       e.preventDefault();
       // console.log(this.refs.email.value);
-      axios.post('http://local.pma/api/auth/signin', {
+      axios.post('http://local.pma/api/auth/signup', {
         email: 'kamal@gmail.com',
         password: 'admin',
         org_id: window.org_id
@@ -34,34 +34,40 @@ export default class LayoutSignup extends Component {
     }
 
     render() {
-      if(!this.state.org_id) return false;
+      // if(!this.state.org_id) return false;
         return (
-          <div>
-            <div className="container">
-              <div className="row">
-                <div className="col-md-6 col-md-offset-3">
-                  <form onSubmit={this.handleSubmit}>
-                    <div className="form-group">
-                      <label>Email address</label>
-                      <input type="email" className="form-control" id="exampleInputEmail1" placeholder="Email" ref='email'  />
-                    </div>
-                    <div className="form-group">
-                      <label>Password</label>
-                      <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" ref='password' />
-                    </div>
-                    
-                    <div className="checkbox">
-                      <label>
-                        <input type="checkbox" /> Check me out
-                      </label>
-                    </div>
-                    <button type="submit" className="btn btn-default">Submit</button>
-                  </form>
+          <div className="signupCt">
+            <div className="signupCt-inner">
+              <div className="signupform">
+              <form onSubmit={this.handleSubmit}>
+                <div className="form-group">
+                  <label>First Name</label>
+                  <input type="text" className="form-control" id="firstname" placeholder="First name" />
                 </div>
+                <div className="form-group">
+                  <label>Last Name</label>
+                  <input type="text" className="form-control" id="lastname" placeholder="Last name" />
+                </div>
+                <div className="form-group">
+                  <label>Email Address</label>
+                  <input type="email" className="form-control" id="email" placeholder="Email address" />
+                </div>
+                <div className="form-group">
+                  <label>Password</label>
+                  <input type="password" className="form-control" id="password" placeholder="Password" />
+                </div>
+                
+                <div className="checkbox">
+                  <label>
+                    <input type="checkbox" /> I accept terms and condition.
+                  </label>
+                </div>
+                <button type="submit" className="btn btn-success pull-right">Create an account</button>
+              </form>
               </div>
-            </div> 
+              <div className="signinoption">Already have an account <a href="#">Sign In</a> here.</div>
+            </div>
           </div>
         )
     }
-
 }

@@ -26868,7 +26868,7 @@
 	    _this.handleSubmit = function (e) {
 	      e.preventDefault();
 	      // console.log(this.refs.email.value);
-	      axios.post('http://local.pma/api/auth/signin', {
+	      axios.post('http://local.pma/api/auth/signup', {
 	        email: 'kamal@gmail.com',
 	        password: 'admin',
 	        org_id: window.org_id
@@ -26892,59 +26892,86 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      if (!this.state.org_id) return false;
+	      // if(!this.state.org_id) return false;
 	      return _react2.default.createElement(
 	        'div',
-	        null,
+	        { className: 'signupCt' },
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'container' },
+	          { className: 'signupCt-inner' },
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'row' },
+	            { className: 'signupform' },
 	            _react2.default.createElement(
-	              'div',
-	              { className: 'col-md-6 col-md-offset-3' },
+	              'form',
+	              { onSubmit: this.handleSubmit },
 	              _react2.default.createElement(
-	                'form',
-	                { onSubmit: this.handleSubmit },
+	                'div',
+	                { className: 'form-group' },
 	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'form-group' },
-	                  _react2.default.createElement(
-	                    'label',
-	                    null,
-	                    'Email address'
-	                  ),
-	                  _react2.default.createElement('input', { type: 'email', className: 'form-control', id: 'exampleInputEmail1', placeholder: 'Email', ref: 'email' })
+	                  'label',
+	                  null,
+	                  'First Name'
 	                ),
+	                _react2.default.createElement('input', { type: 'text', className: 'form-control', id: 'firstname', placeholder: 'First name' })
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'form-group' },
 	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'form-group' },
-	                  _react2.default.createElement(
-	                    'label',
-	                    null,
-	                    'Password'
-	                  ),
-	                  _react2.default.createElement('input', { type: 'password', className: 'form-control', id: 'exampleInputPassword1', placeholder: 'Password', ref: 'password' })
+	                  'label',
+	                  null,
+	                  'Last Name'
 	                ),
+	                _react2.default.createElement('input', { type: 'text', className: 'form-control', id: 'lastname', placeholder: 'Last name' })
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'form-group' },
 	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'checkbox' },
-	                  _react2.default.createElement(
-	                    'label',
-	                    null,
-	                    _react2.default.createElement('input', { type: 'checkbox' }),
-	                    ' Check me out'
-	                  )
+	                  'label',
+	                  null,
+	                  'Email Address'
 	                ),
+	                _react2.default.createElement('input', { type: 'email', className: 'form-control', id: 'email', placeholder: 'Email address' })
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'form-group' },
 	                _react2.default.createElement(
-	                  'button',
-	                  { type: 'submit', className: 'btn btn-default' },
-	                  'Submit'
+	                  'label',
+	                  null,
+	                  'Password'
+	                ),
+	                _react2.default.createElement('input', { type: 'password', className: 'form-control', id: 'password', placeholder: 'Password' })
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'checkbox' },
+	                _react2.default.createElement(
+	                  'label',
+	                  null,
+	                  _react2.default.createElement('input', { type: 'checkbox' }),
+	                  ' I accept terms and condition.'
 	                )
+	              ),
+	              _react2.default.createElement(
+	                'button',
+	                { type: 'submit', className: 'btn btn-success pull-right' },
+	                'Create an account'
 	              )
 	            )
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'signinoption' },
+	            'Already have an account ',
+	            _react2.default.createElement(
+	              'a',
+	              { href: '#' },
+	              'Sign In'
+	            ),
+	            ' here.'
 	          )
 	        )
 	      );
@@ -26970,6 +26997,8 @@
 	var API_URL = exports.API_URL = 'http://local.pma/api';
 
 	var API_URL_SIGNIN = exports.API_URL_SIGNIN = API_URL + '/auth/signin';
+	var API_URL_SIGNUP = exports.API_URL_SIGNUP = API_URL + '/auth/signup';
+
 	var API_URL_ORG_FINDBYDOMAIN = exports.API_URL_ORG_FINDBYDOMAIN = API_URL + '/org/findbydomain';
 	var API_URL_COMPANY_LIST = exports.API_URL_COMPANY_LIST = API_URL + '/company';
 
@@ -27076,44 +27105,63 @@
 	            { className: 'row' },
 	            _react2.default.createElement(
 	              'div',
-	              { className: 'col-md-6 col-md-offset-3' },
+	              { className: 'col-md-4 col-md-offset-4' },
 	              _react2.default.createElement(
-	                'form',
-	                { onSubmit: this.handleSubmit },
+	                'div',
+	                { className: 'loginFormCt' },
 	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'form-group' },
-	                  _react2.default.createElement(
-	                    'label',
-	                    null,
-	                    'Email address'
-	                  ),
-	                  _react2.default.createElement('input', { type: 'email', className: 'form-control', id: 'exampleInputEmail1', placeholder: 'Email', ref: 'email' })
+	                  'a',
+	                  { href: '#', className: 'loginForm-logo' },
+	                  _react2.default.createElement('img', { src: '/public/images/button-lg-demo.png' })
 	                ),
 	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'form-group' },
-	                  _react2.default.createElement(
-	                    'label',
-	                    null,
-	                    'Password'
-	                  ),
-	                  _react2.default.createElement('input', { type: 'password', className: 'form-control', id: 'exampleInputPassword1', placeholder: 'Password', ref: 'password' })
+	                  'h1',
+	                  null,
+	                  'Sign in to PMA'
 	                ),
 	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'checkbox' },
+	                  'form',
+	                  { onSubmit: this.handleSubmit, className: 'loginForm' },
 	                  _react2.default.createElement(
-	                    'label',
-	                    null,
-	                    _react2.default.createElement('input', { type: 'checkbox' }),
-	                    ' Check me out'
+	                    'div',
+	                    { className: 'form-group' },
+	                    _react2.default.createElement(
+	                      'label',
+	                      null,
+	                      'Email address'
+	                    ),
+	                    _react2.default.createElement('input', { type: 'email', className: 'form-control', id: 'exampleInputEmail1', placeholder: 'Email', ref: 'email' })
+	                  ),
+	                  _react2.default.createElement(
+	                    'div',
+	                    { className: 'form-group' },
+	                    _react2.default.createElement(
+	                      'label',
+	                      { className: 'passLabel' },
+	                      'Password',
+	                      _react2.default.createElement(
+	                        'a',
+	                        { href: '#', className: 'pull-right' },
+	                        'Forgot password?'
+	                      )
+	                    ),
+	                    _react2.default.createElement('input', { type: 'password', className: 'form-control', id: 'exampleInputPassword1', placeholder: 'Password', ref: 'password' })
+	                  ),
+	                  _react2.default.createElement(
+	                    'button',
+	                    { type: 'submit', className: 'btn btn-success loginSubmitBtn' },
+	                    'Sign in'
 	                  )
 	                ),
 	                _react2.default.createElement(
-	                  'button',
-	                  { type: 'submit', className: 'btn btn-default' },
-	                  'Submit'
+	                  'div',
+	                  { className: 'loginForm-newaccount' },
+	                  'New in PMA? ',
+	                  _react2.default.createElement(
+	                    'a',
+	                    { href: '#' },
+	                    'Create an account'
+	                  )
 	                )
 	              )
 	            )
