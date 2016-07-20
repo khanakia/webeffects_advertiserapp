@@ -6,13 +6,15 @@ export const FETCH_POSTS_SUCCESS = 'FETCH_POSTS_SUCCESS';
 export const FETCH_POSTS_FAILURE = 'FETCH_POSTS_FAILURE';
 export const RESET_POSTS = 'RESET_POSTS';
 
-
+import Auth from '../helpers/auth.js'
 const ROOT_URL = 'http://local.pma/api';
+
 export function fetchPosts() {
   const request = axios({
     method: 'get',
     url: `${ROOT_URL}/org`,
-    headers: []
+    headers: Auth.header()
+    
   });
 
   return {

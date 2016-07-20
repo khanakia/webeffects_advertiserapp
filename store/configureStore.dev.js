@@ -5,13 +5,18 @@ import api from '../middleware/api'
 import rootReducer from '../reducers'
 import DevTools from '../containers/DevTools'
 
+import promise from 'redux-promise';
+export let isMonitorAction;
+
 export default function configureStore(preloadedState) {
   const store = createStore(
     rootReducer,
     preloadedState,
     compose(
-      applyMiddleware(thunk, api, createLogger()),
-      DevTools.instrument()
+      applyMiddleware(promise, thunk, api, createLogger()),
+      window.devToolsExtension ? window.devToolsExtension({
+        getMonitor: (monitor) => { isMonitorAction = monitor.isMonitorAction; }
+      }) : f => f
     )
   )
 

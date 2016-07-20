@@ -4,7 +4,8 @@ import ReactDOM from 'react-dom'
 
 import { hashHistory } from 'react-router'
 
-import Header from '../components/Header'
+// import Header from '../components/Header'
+import Header from '../containers/HeaderContainer'
 
 
 

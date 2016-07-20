@@ -4,27 +4,20 @@ import { Link } from 'react-router';
 import Sidebar from './Sidebar'
 import PagePanel from './PagePanel'
 
-class PostsList extends Component {
+class CompanyList extends Component {
   componentWillMount() {
-    this.props.fetchPosts();
+    this.props.fetchCompanies();
     
   }
 
-  renderCategories(categories) {
-     return categories.map((c) => {
-        c = c.trim();
-        return (
-          <Link to={"filter/" + c} key={c} className="list-group-item-text">{" " + c + " "}</Link>
-        );
-     });
-  }
+ 
 
-  renderPosts(posts) {
-    return posts.map((post) => {
+  renderPosts(companies) {
+    return companies.map((post) => {
       return (
         <li className="list-group-item" key={post.id}>
           <Link style={{color:'black'}} to={"posts/" + post.id}>
-            <h3 className="list-group-item-heading">{post.org_title}</h3>
+            <h3 className="list-group-item-heading">{post.company_title}</h3>
           </Link>
             
         </li>
@@ -33,8 +26,8 @@ class PostsList extends Component {
   }
 
   render() {
-    const { posts, loading, error } = this.props.postsList;
-
+    const { companies, loading, error } = this.props.companiesList;
+    
     if(loading) {
       return <div className="container"><h1>Posts</h1><h3>Loading...</h3></div>      
     } else if(error) {
@@ -46,11 +39,11 @@ class PostsList extends Component {
         <Sidebar>
           ABC
         </Sidebar>
-        <PagePanel hasSidebar="true">
-          <div className="container11">
+        <PagePanel>
+          <div className="container">
             <h1>Posts</h1>
             <ul className="list-group">
-              {this.renderPosts(posts)}
+              {this.renderPosts(companies)}
             </ul>
           </div>
         </PagePanel>
@@ -60,4 +53,4 @@ class PostsList extends Component {
 }
 
 
-export default PostsList;
+export default CompanyList;

@@ -3,12 +3,14 @@ import { Link } from 'react-router'
 
 export default class Sidebar extends Component {
   componentWillMount() {
-    
+    console.log(this.props);
+
+    this.sidebarClass = this.props.hasSidebar ? ' has-sidebar' : '';
   }
   render() {
     return (
-		<div className="container-fluid page-panel" id="{this.props.id}">
-				{this.props.children}
+		<div className={'container-fluid1 page-panel' + this.sidebarClass} id={this.props.id}>
+			{this.props.children}
 		</div>
     )
   }

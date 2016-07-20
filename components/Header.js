@@ -17,12 +17,13 @@ export default class Header extends Component {
 	              <span className="icon-bar"></span>
 	              <span className="icon-bar"></span>
 	            </button>
-	            <a className="navbar-brand" href="#">Project name</a>
+	            <a className="navbar-brand" href="#">{this.props.header_title}</a>
 	          </div>
 	          <div id="navbar" className="navbar-collapse collapse">
 	            <ul className="nav navbar-nav">
 	              <li><Link to="dashboard">Dashboard</Link></li>
 	              <li><Link to="organization">Organization</Link></li>
+	              <li><Link to="company">Company</Link></li>
 	              <li><Link to="project">Everything</Link></li>
 	              
 
