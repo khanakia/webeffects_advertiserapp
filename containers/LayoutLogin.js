@@ -62,24 +62,28 @@ export default class LayoutLogin extends Component {
           <div>
             <div className="container">
               <div className="row">
-                <div className="col-md-6 col-md-offset-3">
-                  <form onSubmit={this.handleSubmit}>
-                    <div className="form-group">
-                      <label>Email address</label>
-                      <input type="email" className="form-control" id="exampleInputEmail1" placeholder="Email" ref='email'  />
+                <div className="col-md-4 col-md-offset-4">
+                  <div className="loginFormCt">
+                    <a href="#" className="loginForm-logo"><img src="/public/images/button-lg-demo.png" /></a>
+                    <h1>Sign in to PMA</h1>
+                    <form onSubmit={this.handleSubmit} className="loginForm">
+                      <div className="form-group">
+                        <label>Email address</label>
+                        <input type="email" className="form-control" id="exampleInputEmail1" placeholder="Email" ref='email'  />
+                      </div>
+                      <div className="form-group">
+                        <label className="passLabel">Password
+                          <a href="#" className="pull-right">Forgot password?</a>
+                        </label>
+                        <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" ref='password' />
+                      </div>
+
+                      <button type="submit" className="btn btn-success loginSubmitBtn">Sign in</button>
+                    </form>
+                    <div className="loginForm-newaccount">
+                      New in PMA? <a href="#">Create an account</a>
                     </div>
-                    <div className="form-group">
-                      <label>Password</label>
-                      <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" ref='password' />
-                    </div>
-                    
-                    <div className="checkbox">
-                      <label>
-                        <input type="checkbox" /> Check me out
-                      </label>
-                    </div>
-                    <button type="submit" className="btn btn-default">Submit</button>
-                  </form>
+                  </div>
                 </div>
               </div>
             </div> 

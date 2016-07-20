@@ -32,8 +32,7 @@
 	/*margin-top: 75px;*/
 }
 
-/* Signup form CSS */
-
+/* Signup form CSS -------------------- */
 .signupCt {
 	padding: 0 20px;
 }
@@ -59,4 +58,55 @@
 	margin: 30px 0 0 0;
 	text-align: center;
 	border: 1px solid #d8dee2;
+}
+
+/* Login Form ---------------------*/
+
+.loginFormCt {
+	margin-top: 50px;
+}
+
+.loginFormCt label {
+	font-weight: 300;
+}
+
+.loginForm-logo {
+	display: block;
+	text-align: center;
+}
+
+.loginForm-logo img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 30px;
+}
+
+.loginFormCt h1 {
+	font-size: 24px;
+    font-weight: 300;
+    color: #333;
+    text-align: center;
+}
+
+.loginForm {
+	margin-top: 30px;
+	padding: 20px 20px 25px;
+	border: 1px solid #d8dee2;
+    border-radius: 5px;
+}
+
+.passLabel {
+	display: block;
+}
+
+.loginForm-newaccount {
+	margin-top: 30px;
+	padding: 15px 0;
+	border: 1px solid #d8dee2;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.loginSubmitBtn {
+	width: 100%;
 }
