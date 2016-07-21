@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router'
 import ReactDOM from 'react-dom'
 
-import {ROOT_URL, API_URL_ORG_FINDBYDOMAIN, API_URL_SIGNIN} from '../config.js'
+import {ROOT_URL, API_URL_ORG_FINDBYDOMAIN, API_URL_SIGNIN, API_URL} from '../config.js'
 
 
 export default class LayoutLogin extends Component {
@@ -33,13 +33,20 @@ export default class LayoutLogin extends Component {
 
     handleSubmit = (e) => {
       e.preventDefault();
+      var valid = jQuery(".loginForm").valid();
+      if (!valid) {return false};
       // console.log(this.refs.email.value);
       jQuery.ajax({
                 type: "POST",
                 url: 'http://local.pma/api/auth/signin',
                 dataType : "JSON",
+                data: {'email': this.refs.email.value, 'password': this.refs.password.value},
                 success: function(data){
-                  
+                  if (data.token!=null) {
+                    window.location.href = API_URL;
+                  } else {
+                    window.location.href = '/#/login';
+                  }
                 }
             });
       // axios.post('http://local.pma/api/auth/signin', {
@@ -69,16 +76,16 @@ export default class LayoutLogin extends Component {
                     <form onSubmit={this.handleSubmit} className="loginForm">
                       <div className="form-group">
                         <label>Email address</label>
-                        <input type="email" className="form-control" id="exampleInputEmail1" placeholder="Email" ref='email'  />
+                        <input type="email" className="form-control required" id="exampleInputEmail1" placeholder="Email" ref='email'  />
                       </div>
                       <div className="form-group">
                         <label className="passLabel">Password
                           <a href="#" className="pull-right">Forgot password?</a>
                         </label>
-                        <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" ref='password' />
+                        <input type="password" className="form-control password" id="exampleInputPassword1" placeholder="Password" ref='password' />
                       </div>
 
-                      <button type="submit" className="btn btn-success loginSubmitBtn">Sign in</button>
+                      <button type="submit" onClick={this.submitSigninForm} className="btn btn-success loginSubmitBtn">Sign in</button>
                     </form>
                     <div className="loginForm-newaccount">
                       New in PMA? <a href="#">Create an account</a>
