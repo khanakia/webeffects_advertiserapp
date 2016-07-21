@@ -34,3 +34,39 @@
 	}
 }
 
+
+// Signup Form CSS
+
+.signupCt {
+	max-width: 450px;
+	margin: 50px auto;
+	padding: 0 20px;
+
+	.signupCt-inner {
+		width: 100%;
+	}
+
+	.signup-form {
+		padding: 20px;
+		overflow: auto;
+		border: 1px solid #d8dee2;
+
+		label {
+			font-weight: 300;
+
+			&.error {
+				color: #911;
+				padding: 5px 12px;
+				margin: 0;
+				background-color: #fcdede;
+			}
+		}
+	}
+
+	.signin-option {
+		padding: 20px;
+		margin: 30px 0 0 0;
+		text-align: center;
+		border: 1px solid #d8dee2;
+	}
+}
