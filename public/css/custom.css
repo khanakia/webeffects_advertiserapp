@@ -2,35 +2,6 @@
 	margin-bottom: 0;
 }
 
-
-/* Signup form CSS -------------------- */
-.signupCt {
-	padding: 0 20px;
-}
-
-.signupCt-inner {
-	width: 100%;
-	max-width: 400px;
-	margin: 50px auto 0;
-}
-
-.signupCt label {
-	font-weight: 300;
-}
-
-.signupform {
-	padding: 20px;
-	overflow: auto;
-	border: 1px solid #d8dee2;
-}
-
-.signinoption {
-	padding: 20px;
-	margin: 30px 0 0 0;
-	text-align: center;
-	border: 1px solid #d8dee2;
-}
-
 /* Login Form ---------------------*/
 
 .loginFormCt {
