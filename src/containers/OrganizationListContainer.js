@@ -8,12 +8,14 @@ const mapStateToProps = (state) => {
 	// console.log(state.posts.postsList);
 
   return { 
-    postsList: state.posts.postsList
+    postsList: state.posts.postsList,
+
   };
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    dispatch,
     fetchPosts: () => {
       dispatch(fetchPosts()).then((response) => {
             !response.error ? dispatch(fetchPostsSuccess(response.payload)) : dispatch(fetchPostsFailure(response.payload));

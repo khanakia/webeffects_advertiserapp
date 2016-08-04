@@ -5,8 +5,20 @@ import Sidebar from './Sidebar'
 import PagePanel from './PagePanel'
 
 class PostsList extends Component {
+  constructor(props, context) {
+    super(props, context);
+    
+
+}
+
   componentWillMount() {
     this.props.fetchPosts();
+
+    // let { dispatch } = this.props
+    // dispatch({type: 'RESET_POSTS'});
+    // this.props.dispatch({type: 'REMOVE'});
+    // console.log(this.context.store.dispatch({type: 'REMOVE'}));
+    
     
   }
 
