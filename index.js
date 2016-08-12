@@ -56,9 +56,10 @@ if(ROOT_HOST==window.location.host) {
 		    <Route path="/" component={Layout}>
 		       <Route path="dashboard" component={Dashboard} />
 		       <Route path="organization" component={OrganizationList} />
-		       <Route path="company" component={CompanyList} />
+		       <Route path="organization/companies" component={CompanyList} />
+		       <Route path="organization/peoples" component={CompanyList} />
                <Route path="/tasklist/:tasklistId" component={TaskList}/>
-               <Route path="tags" component={TagList} />
+               <Route path="settings/tags" component={TagList} />
                <Route path="task" component={PageTask} />
                
 		    </Route>

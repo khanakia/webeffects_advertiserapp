@@ -22,28 +22,31 @@ export default class Header extends Component {
 	          <div id="navbar" className="navbar-collapse collapse">
 	            <ul className="nav navbar-nav">
 	              <li><Link to="dashboard">Dashboard</Link></li>
-	              <li><Link to="organization">Organization</Link></li>
-	              <li><Link to="company">Company</Link></li>
 	              <li><Link to="project">Everything</Link></li>
-	              
-
 	            </ul>
 	            <ul className="nav navbar-nav navbar-right">
 	              <li className="dropdown">
 	                <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span className="glyphicon glyphicon-cog" aria-hidden="true"></span> <span className="caret"></span></a>
 	                <ul className="dropdown-menu">
-					  <li className="dropdown-header">Organization Administrator</li>
-					  <li><a href="#">Organizations</a></li>
-	                  <li><a href="#">General</a></li>
-	                  <li><a href="#">Template</a></li>
-	                  <li><a href="#">Logo</a></li>
-	                  <li><a href="#">Color</a></li>
-	                  <li><a href="#">Tags</a></li>
+					  <li className="dropdown-header">Organization</li>
+					  <li><Link to="organization">Organizations</Link></li>
+					  <li><Link to="organization/companies">Company</Link></li>
+					  <li><Link to="organization/peoples">Peoples</Link></li>
+
+					  <li role="separator" className="divider"></li>
+					  <li className="dropdown-header">Settings</li>
+					  <li><Link to="settings/general">General</Link></li>
+					  <li><Link to="settings/template">Template</Link></li>
+					  <li><Link to="settings/logo">Logo</Link></li>
+					  <li><Link to="settings/colortheme">Color Theme</Link></li>
+	                  <li><Link to="settings/tags">Tags</Link></li>
+	                  <li><Link to="settings/integration">Integration</Link></li>
+
 	                  <li role="separator" className="divider"></li>
-	                  <li className="dropdown-header">Site Administration</li>
-	                  <li><a href="#">Integration</a></li>
-	                  <li><a href="#">Billing</a></li>
-	                  <li><a href="#">Subscription</a></li>
+	                  <li className="dropdown-header">Billing / Subscription</li>
+	                  <li><Link to="billing">Billing</Link></li>
+	                  <li><Link to="subscription">Subscription</Link></li>
+	                  
 	                </ul>
 	              </li>
 	              <li className="dropdown">
@@ -59,13 +62,13 @@ export default class Header extends Component {
 		                  <div className="user_title">Aman Bansal</div>
 		                </li>
 		                <li role="separator" className="divider"></li>
-		                <li><Link to="/app/dashboard"><i className="fa fa-bullhorn"></i>Update Status</Link></li>
-		                <li><Link to="/app/organization"><i className="fa fa-check-square-o"></i>My Tasks</Link></li>
+		                <li><Link to="dashboard"><i className="fa fa-bullhorn"></i>Update Status</Link></li>
+		                <li><Link to="organization"><i className="fa fa-check-square-o"></i>My Tasks</Link></li>
 		                <li role="separator" className="divider"></li>
-		                <li><Link to="/app/dashboard"><i className="fa fa-user"></i>Profile & Account</Link></li>
+		                <li><Link to="dashboard"><i className="fa fa-user"></i>Profile & Account</Link></li>
 		                <li><a href="#" className="a_edit_my_detail" ><i className="fa fa-pencil"></i>Edit My Details</a></li>
 		                <li role="separator" className="divider"></li>
-		                <li><a href="/logout"><i className="fa fa-sign-out"></i>Logout</a></li>
+		                <li><a href="logout"><i className="fa fa-sign-out"></i>Logout</a></li>
 		            </ul>
 
 	              </li>
