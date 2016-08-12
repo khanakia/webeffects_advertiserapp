@@ -11,6 +11,7 @@ export default class Auth {
 					password: password,
 				}).then(function (response) {
 					this.login(response.data.token)
+					
 				}.bind(this)).catch(function (error) {
 					console.log(error);
 				});
@@ -31,6 +32,20 @@ export default class Auth {
 
 	static getToken() {
 		return localStorage.getItem('token');
+	}
+
+	static getTokenDecoded() {
+		return jwt_decode(Auth.getToken());
+	}
+
+	static getOrgID() {
+		const data = Auth.getTokenDecoded();
+		return data.org_id;
+	}
+
+	static getUserID() {
+		const data = Auth.getTokenDecoded();
+		return data.sub;
 	}
 
 	// Header which i will add to ajax request

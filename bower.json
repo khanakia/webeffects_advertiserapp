@@ -44,6 +44,14 @@
     "list.js": "~1.2.0",
     "js-cookie": "~2.1.2",
     "jquery-popup-overlay": "https://github.com/vast-engineering/jquery-popup-overlay.git#~1.7.13",
-    "lodash": "~4.13.1"
+    "lodash": "~4.13.1",
+    "colorpicker": "~1.2.3",
+    "urijs": "~1.18.1",
+    "bootstrap-colorselector": "https://github.com/flaute/bootstrap-colorselector.git",
+    "qtip2": "~2.2.1",
+    "trumbowyg": "~2.1.2",
+    "eonasdan-bootstrap-datetimepicker": "~4.17.37",
+    "bootstrap-select": "~1.10.0",
+    "jwt-decode": "~2.1.0"
   }
 }

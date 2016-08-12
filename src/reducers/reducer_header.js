@@ -1,6 +1,6 @@
 import {
 	FETCH_POSTS_SUCCESS
-} from '../actions/organizations';
+} from '../actions/action_organization';
 
 export default function (state = "Header1", action) {
   switch(action.type) {

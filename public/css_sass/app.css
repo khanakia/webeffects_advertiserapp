@@ -1,3 +1,100 @@
+.border-left {
+  border-left: 1px #e5e5e5 solid; }
+
+.border-bottom {
+  border-bottom: 1px #e5e5e5 solid; }
+
+.border-right {
+  border-right: 1px #e5e5e5 solid; }
+
+.d-table {
+  display: table; }
+
+.d-table-cell {
+  display: table-cell; }
+
+.d-block {
+  display: block; }
+
+.d-inline {
+  display: inline; }
+
+.d-inline-block {
+  display: inline-block; }
+
+.d-table-cell {
+  display: table-cell; }
+
+.width-fit {
+  max-width: 100%; }
+
+.width-full {
+  width: 100%; }
+
+.height-full {
+  height: 100%; }
+
+.control-inputdate .input_date {
+  padding: 5px;
+  width: 110px;
+  background: url("../images/icon-calendar.svg") no-repeat right 5px center/16px 16px;
+  border: 1px solid #aaa; }
+
+input, .form-control {
+  outline: none;
+  border: 1px solid #aaa;
+  border-radius: 0;
+  background: none;
+  box-shadow: none; }
+  input:focus, .form-control:focus {
+    outline: none; }
+
+input.error {
+  border: 1px solid red; }
+
+textarea {
+  width: 100%;
+  height: 300px; }
+
+a, a:hover, a:focus, a:link {
+  text-decoration: none;
+  color: #333; }
+
+a:hover {
+  color: #3aa3e3; }
+
+.btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus {
+  outline: none; }
+
+.btn-link,
+.btn-link:link,
+.btn-link:hover,
+.btn-link:focus,
+.btn-link:active {
+  background-color: none;
+  text-decoration: none;
+  outline: none; }
+
+.select-menu {
+  position: relative;
+  display: inline-block; }
+
+.table-list-header {
+  position: relative;
+  margin-top: 20px;
+  background-color: #f8f8f8;
+  border: 1px solid #e5e5e5;
+  border-radius: 3px 3px 0 0; }
+
+.table-list-header::before {
+  display: table;
+  content: ""; }
+
+.table-list-header::after {
+  display: table;
+  clear: both;
+  content: ""; }
+
 #content {
   box-sizing: border-box;
   clear: left;
@@ -20,10 +117,14 @@
 .page-panel {
   width: 100%;
   margin: 0 auto;
-  overflow: auto; }
+  padding-top: 20px; }
   .page-panel.has-sidebar {
     padding-left: 250px;
     padding-right: 15px; }
+
+.heading-bar {
+  padding: 20px 0;
+  overflow: auto; }
 
 .signupCt {
   max-width: 450px;
@@ -47,5 +148,177 @@
     margin: 30px 0 0 0;
     text-align: center;
     border: 1px solid #d8dee2; }
+
+.popup_block {
+  display: none; }
+
+.popup_block.hasform {
+  width: 600px; }
+
+.popup_content.w500 {
+  width: 500px; }
+
+.popup_content {
+  background-color: #fff;
+  padding: 25px;
+  max-width: 90%;
+  width: 700px; }
+
+.popup_content .close-icon {
+  /*display: none;*/
+  position: absolute;
+  right: -20px;
+  top: -20px;
+  width: 40px;
+  height: 40px;
+  vertical-align: middle;
+  line-height: 40px;
+  text-align: center;
+  color: #fff;
+  /* border: 2px solid #000; */
+  background-color: #ff4632;
+  outline: none;
+  -webkit-transition: background 0.5s ease-in-out;
+  -moz-transition: background 0.5s ease-in-out;
+  -o-transition: background 0.5s ease-in-out;
+  transition: background 0.5s ease-in-out;
+  font-size: 23px;
+  border-radius: 50%; }
+  .popup_content .close-icon i {
+    margin-top: 6px; }
+
+@media screen and (max-width: 767px) {
+  .popup_block.hasform {
+    width: 90%; } }
+.singletask-group .singletask-group {
+  margin-left: 30px; }
+
+.singletask .inner {
+  position: relative;
+  padding: 10px 30px 10px 10px;
+  line-height: 22px;
+  vertical-align: top;
+  background-color: #fbf6f6;
+  margin-bottom: 10px; }
+.singletask .controls a {
+  margin-right: 10px; }
+.singletask .controls.left {
+  float: left; }
+.singletask .controls.right {
+  position: absolute;
+  right: 0;
+  top: 10px; }
+.singletask i {
+  color: #000; }
+.singletask .tags {
+  margin-left: 15px; }
+  .singletask .tags .label {
+    margin: 0 5px; }
+  .singletask .tags .remove {
+    color: #fff; }
+.singletask .persons-assigned a {
+  background-color: #e2dddd;
+  padding: 2px 5px;
+  margin: 0px 5px;
+  color: #000;
+  font-size: 12px; }
+
+.tags-wrapper .tag {
+  display: inline-block;
+  padding: 2px 10px;
+  margin-right: 10px;
+  font-size: 12px;
+  border: 1px solid #000;
+  border-radius: 15px;
+  color: #fff; }
+
+.comp-tag-selector {
+  margin: 50px;
+  width: 225px;
+  box-shadow: 0px 0px 5px 1px rgba(33, 26, 26, 0.14); }
+  .comp-tag-selector input {
+    width: 100%;
+    border: none;
+    padding: 10px;
+    border-bottom: 1px solid #cecbcb;
+    margin-bottom: 5px; }
+  .comp-tag-selector .tags-list {
+    padding-left: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: 300px; }
+    .comp-tag-selector .tags-list li {
+      list-style: none; }
+      .comp-tag-selector .tags-list li a {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding: 7px 0 7px 10px;
+        display: block;
+        color: #464646;
+        text-decoration: none; }
+        .comp-tag-selector .tags-list li a:hover {
+          background-color: #eeeff3;
+          color: #6F6F6F; }
+      .comp-tag-selector .tags-list li i {
+        margin-right: 10px;
+        font-size: 20px;
+        display: inline-block;
+        vertical-align: middle; }
+
+.TagSingle > span {
+  display: inline-block;
+  padding: 2px 10px;
+  margin-right: 10px;
+  font-size: 12px;
+  border-radius: 6px;
+  color: #fff; }
+.TagSingle a {
+  color: #fff; }
+.TagSingle a.remove {
+  margin-left: 10px; }
+
+.control-toolbar1 {
+  display: table;
+  width: 100%;
+  border-bottom: 1px solid #e8e8e8;
+  padding: 10px; }
+  .control-toolbar1 .left,
+  .control-toolbar1 .middle,
+  .control-toolbar1 .right {
+    display: table-cell;
+    width: 33.33%;
+    vertical-align: middle; }
+  .control-toolbar1 .title {
+    font-size: 22px;
+    font-family: 'montserratregular'; }
+  .control-toolbar1 .icons-group a {
+    color: #666;
+    margin-right: 10px; }
+    .control-toolbar1 .icons-group a i {
+      font-size: 20px; }
+    .control-toolbar1 .icons-group a:hover {
+      color: #3aa3e3; }
+  .control-toolbar1 .col {
+    display: inline-block;
+    vertical-align: middle; }
+
+.list-group.style1 .list-group-item-heading {
+  font-size: 16px; }
+.list-group.style1 .list-group-item {
+  border: none;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 0; }
+.list-group.style1 .controls {
+  position: absolute;
+  right: 10px;
+  top: 10px; }
+.list-group.style1 .icons-group a {
+  color: #666;
+  margin-right: 10px; }
+  .list-group.style1 .icons-group a i {
+    font-size: 16px; }
+  .list-group.style1 .icons-group a:hover {
+    color: #3aa3e3; }
 
 /*# sourceMappingURL=app.css.map */

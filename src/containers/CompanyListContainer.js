@@ -14,6 +14,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    dispatch,
     fetchCompanies: () => {
       dispatch(fetchCompanies()).then((response) => {
             !response.error ? dispatch(fetchCompaniesSuccess(response.payload)) : dispatch(fetchCompaniesFailure(response.payload));
