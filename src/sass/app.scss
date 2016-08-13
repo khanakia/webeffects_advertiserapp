@@ -503,11 +503,6 @@ a:hover {
     }
 }
 
-
-
-
-
-
 // Upload form CSS
 
 .uploadform {
@@ -542,5 +537,37 @@ a:hover {
 
     .btnUploadSubmit {
         padding: 20px 0 10px;
+    }
+}
+
+
+
+.userDetailsBox {
+    li {
+        a {
+            padding: 3px 0 3px 10px;
+            i {
+                margin-right: 5px;
+            }
+        }
+    }
+    .li_img {
+        .imagecircle {
+            margin: 10px auto;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #000;
+        }
+    }
+}
+
+.editDetailForm {
+    min-height: 280px;
+    .form-control {
+        height: 27px;
+        padding: 3px 12px;
+        font-size: 12px;
+        border-radius: 5px;
     }
 }
