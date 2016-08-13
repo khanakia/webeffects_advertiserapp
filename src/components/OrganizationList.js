@@ -7,6 +7,7 @@ import OrganizationAdd from './OrganizationAdd'
 
 import OrgForm from './org/OrgForm'
 
+import DomainForm from './org/DomainSubdomainForm'
 
 import Auth from '../helpers/auth.js'
 
@@ -34,7 +35,7 @@ class PostsList extends Component {
 
                     <span className="controls icons-group">
                         <button className="btn btn-link" title="Edit" onClick={(e)=> this.editOrg(org,e)} ><i className="fa fa-pencil"></i></button>
-                        <a href="#" title="Edit Domain"><i className="fa fa-link"></i></a>
+                        <a href="javascript:void(0);" title="Edit Domain" onClick={(e)=> this.addDomainInfo(org, e)}><i className="fa fa-link"></i></a>
                         <a href="#" title="Add/Edit Users"><i className="fa fa-users"></i></a>
                     </span>
                 </li>
@@ -48,6 +49,10 @@ class PostsList extends Component {
 
     editOrg(data, e) {
         OrgForm.showInPoup({data})
+    }
+
+    addDomainInfo(data, e) {
+        DomainForm.showInPoup({data})
     }
 
     render() {

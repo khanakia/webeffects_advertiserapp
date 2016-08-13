@@ -573,6 +573,7 @@ a:hover {
     }
 }
 
+
 .userInfoBlock {
     .image {
         display: inline-block;
@@ -605,3 +606,73 @@ a:hover {
         color: #666;
     }
 }
+
+// Upload form CSS
+
+.uploadform {
+    .heading {
+        padding: 10px 0 30px;
+    }
+
+    .title {
+        margin: 0;
+        text-transform: uppercase;
+    }
+
+    .defaultimage {
+        width: 130px;
+        height: 130px;
+        margin: 0 auto;
+        background-color: #d3d3d3;
+        border-radius: 50%;
+    }
+
+    .uploadinstruction {
+        font-size: 16px;
+        padding: 10px 0 0;
+        margin: 0 0 20px;
+    }
+
+    .uploadimagefile {
+        border: 0;
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    .btnUploadSubmit {
+        padding: 20px 0 10px;
+    }
+}
+
+
+
+.userDetailsBox {
+    li {
+        a {
+            padding: 3px 0 3px 10px;
+            i {
+                margin-right: 5px;
+            }
+        }
+    }
+    .li_img {
+        .imagecircle {
+            margin: 10px auto;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #000;
+        }
+    }
+}
+
+.editDetailForm {
+    min-height: 280px;
+    .form-control {
+        height: 27px;
+        padding: 3px 12px;
+        font-size: 12px;
+        border-radius: 5px;
+    }
+}
+

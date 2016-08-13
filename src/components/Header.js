@@ -1,8 +1,12 @@
 import React, { Component, PropTypes } from 'react'
+
 import { Link, hashHistory } from 'react-router'
 
 
 import Auth from '../helpers/auth.js'
+
+import UserprofileForm from './UserprofileForm'
+
 
 export default class Header extends Component {
 	logout = (e) => {
@@ -13,7 +17,7 @@ export default class Header extends Component {
   
   render() {
     return (
-      <header>
+      	<header>
 			
 	      <nav className="navbar navbar-default">
 	        <div className="container-fluid">
@@ -57,27 +61,26 @@ export default class Header extends Component {
 	                </ul>
 	              </li>
 	              <li className="dropdown">
-	              
 		            <a className="dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-		                <span className="user_title">Aman</span>
+		                <span className="user_title">Aman </span>
 		                <i className="fa fa-chevron-down"></i>
 		            </a>
-		            <ul className="dropdown-menu" aria-labelledby="dropdownMenu1">
+		            <ul className="dropdown-menu userDetailsBox" aria-labelledby="dropdownMenu1">
 		                <li className="li_img">
 		                  <div className="imagecircle">
+		                  	
 		                  </div>
-		                  <div className="user_title">Aman Bansal</div>
+		                  <div className="user_title text-center">Aman Bansal</div>
 		                </li>
 		                <li role="separator" className="divider"></li>
-		                <li><Link to="dashboard"><i className="fa fa-bullhorn"></i>Update Status</Link></li>
-		                <li><Link to="organization"><i className="fa fa-check-square-o"></i>My Tasks</Link></li>
+		                <li><Link to="dashboard"><i className="fa fa-bullhorn"></i> Update Status</Link></li>
+		                <li><Link to="organization"><i className="fa fa-check-square-o"></i> My Tasks</Link></li>
 		                <li role="separator" className="divider"></li>
-		                <li><Link to="dashboard"><i className="fa fa-user"></i>Profile & Account</Link></li>
-		                <li><a href="#" className="a_edit_my_detail" ><i className="fa fa-pencil"></i>Edit My Details</a></li>
+		                <li><Link to="dashboard"><i className="fa fa-user"></i> Profile & Account</Link></li>
+		                <li><Link to="#" className="a_edit_my_detail" onClick={()=> UserprofileForm.showInPoup()} ><i className="fa fa-pencil"></i> Edit My Details</Link></li>
 		                <li role="separator" className="divider"></li>
 		                <li><a href="#" onClick={(e) => {this.logout(e)}}><i className="fa fa-sign-out"></i>Logout</a></li>
 		            </ul>
-
 	              </li>
 	            </ul>
 	          </div>

@@ -3,8 +3,12 @@ import {
         API_URL_ORG_USER_INDEX, 
         API_URL_ORG_INVITE_USER,
         API_URL_GETALLORGSBYEMAIL,
-        API_URL_GETORG_BYDOMAIN
+        API_URL_GETORG_BYDOMAIN,
+        API_URL_DOMAIN
     } from '../config.js'
+
+
+
 import Auth from './auth.js'
 
 export default class OrgHelper {
@@ -77,4 +81,13 @@ export default class OrgHelper {
         });
     }
 
+    static updatedomain(data) {
+        return  axios({
+            method: 'post',
+            url: API_URL_DOMAIN,
+            headers: Auth.header(),
+            data : data
+        });
+    }
 }
+
