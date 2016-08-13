@@ -10,6 +10,8 @@ import LayoutFindMyOrg from './src/containers/LayoutFindMyOrg'
 
 import Dashboard from './src/containers/Dashboard'
 import OrganizationList from './src/containers/OrganizationListContainer'
+import OrganizationUsers from './src/containers/OrganizationUsersContainer'
+
 import CompanyList from './src/containers/CompanyListContainer'
 import TaskList from './src/containers/TaskListContainer'
 import TagList from './src/containers/TagListContainer'
@@ -25,18 +27,8 @@ import {store} from './src/store/index.js';
 
 import {ROOT_HOST} from './src/config.js'
 
-
 import Auth from './src/helpers/auth.js'
-
-
-
-// window.Auth = Auth;
-// console.log(Auth.login());
-// console.log(Auth.attempt({email:'khanakia@gmail.com', password: 'admin'}).then(function(response){
-// 	console.log('loggedin');
-// }));
-// console.log(Auth.check());
-// localStorage.setItem('token', "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJvcmdfaWQiOiJkZCIsInN1YiI6MSwiaXNzIjoiaHR0cDpcL1wvbG9jYWwucG1hXC9hcGlcL2F1dGhcL3NpZ25pbiIsImlhdCI6MTQ2ODkyMjE2MSwiZXhwIjoxNDcyNTIyMTYxLCJuYmYiOjE0Njg5MjIxNjEsImp0aSI6ImNjYzU1YTU4Y2YxYzg2NmU5ZmY1MjI2OTk0NGU1ZDIzIn0.UtbGlSk45WQMZ8C7iRY6Nwfy4xJ2Z7kAtQTJ4E911Yc");
+import RequireAuth from './src/containers/RequireAuth';
 
 // If user is on Root URL then render Find My Organization page
 if(ROOT_HOST==window.location.host) {
@@ -53,11 +45,11 @@ if(ROOT_HOST==window.location.host) {
 	render((
 		<Provider store={store}>
 		  <Router history={hashHistory}>
-		    <Route path="/" component={Layout}>
+		    <Route path="/" component={RequireAuth(Layout)}>
 		       <Route path="dashboard" component={Dashboard} />
 		       <Route path="organization" component={OrganizationList} />
 		       <Route path="organization/companies" component={CompanyList} />
-		       <Route path="organization/peoples" component={CompanyList} />
+		       <Route path="organization/peoples" component={OrganizationUsers} />
                <Route path="/tasklist/:tasklistId" component={TaskList}/>
                <Route path="settings/tags" component={TagList} />
                <Route path="task" component={PageTask} />

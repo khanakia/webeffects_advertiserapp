@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { fetchCompanies, fetchCompaniesSuccess, fetchCompaniesFailure } from '../actions/company';
+import { fetchCompanies, fetchCompaniesSuccess, fetchCompaniesFailure } from '../actions/action_company';
 
 import CompanyList from '../components/CompanyList';
 

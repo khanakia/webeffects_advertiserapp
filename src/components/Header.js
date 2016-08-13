@@ -1,10 +1,17 @@
 import React, { Component, PropTypes } from 'react'
-import { Link } from 'react-router'
+import { Link, hashHistory } from 'react-router'
+
+
+import Auth from '../helpers/auth.js'
 
 export default class Header extends Component {
+	logout = (e) => {
+		e.preventDefault();
+		Auth.logout()
+		hashHistory.push('login')
+	}
+  
   render() {
-    
-
     return (
       <header>
 			
@@ -68,7 +75,7 @@ export default class Header extends Component {
 		                <li><Link to="dashboard"><i className="fa fa-user"></i>Profile & Account</Link></li>
 		                <li><a href="#" className="a_edit_my_detail" ><i className="fa fa-pencil"></i>Edit My Details</a></li>
 		                <li role="separator" className="divider"></li>
-		                <li><a href="logout"><i className="fa fa-sign-out"></i>Logout</a></li>
+		                <li><a href="#" onClick={(e) => {this.logout(e)}}><i className="fa fa-sign-out"></i>Logout</a></li>
 		            </ul>
 
 	              </li>

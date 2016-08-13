@@ -33,6 +33,15 @@
     display: table-cell;
 }
 
+.v-align-top {
+    vertical-align: top;
+}
+.v-align-middle {
+    vertical-align: middle;
+}
+.v-align-bottom {
+    vertical-align: bottom;
+}
 
 .width-fit {
   max-width: 100%;
@@ -46,7 +55,67 @@
   height: 100%;
 }
 
+.w10 {
+    width: 10%;
+}
+.w20 {
+    width: 20%;
+}
+.w30 {
+    width: 30%;
+}
+.w40 {
+    width: 40%;
+}
+.w50 {
+    width: 40%;
+}
+.w60 {
+    width: 60%;
+}
+.w70 {
+    width: 70%;
+}
+.w80 {
+    width: 80%;
+}
+.w90 {
+    width: 90%;
+}
 
+.w10p {
+    width: 10px ;
+}
+.w15p {
+    width: 15px ;
+}
+.w20p {
+    width: 20px ;
+}
+
+
+.pos-r {
+    position: relative;
+}
+.pos-s {
+    position: static;
+}
+.pos-a {
+    position: absolute;
+}
+
+.lh-15p {
+    line-height: 15px;
+}
+.lh-20p {
+    line-height: 20px;
+}
+.lh-25p {
+    line-height: 25px;
+}
+.lh-30p {
+    line-height: 30px;
+}
 
 .control-inputdate {
     .input_date {
@@ -87,6 +156,7 @@ a, a:hover, a:focus, a:link {
 a:hover {
     color: #3aa3e3;
 }
+
 
 .btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus {
 	outline: none;
@@ -489,7 +559,7 @@ a:hover {
         top: 10px;
     }
     .icons-group {
-        a {
+        button {
             color: #666;
             margin-right: 10px;
             i {
@@ -500,5 +570,38 @@ a:hover {
                 color: #3aa3e3;
             }
         }
+    }
+}
+
+.userInfoBlock {
+    .image {
+        display: inline-block;
+        margin-right: 20px;
+
+        .avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            background-size: contain;
+        }
+    }
+    .summary {
+        display: inline-block;
+
+        span {
+            display: block;
+        }
+
+        .title {
+            font-weight: bold;
+        }
+    }
+}
+
+.contact_info{
+    i {
+        margin-right: 10px;
+        color: #666;
     }
 }

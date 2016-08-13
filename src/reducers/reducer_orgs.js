@@ -1,6 +1,7 @@
 import {
     FETCH_ORGS,
     FETCH_ORG_CURRENT,
+    FETCH_ORG_USERS,
     RESET_ORGS,
     ADD_ORG
 } from '../actions/action_organization';
@@ -13,6 +14,7 @@ import {
 const INITIAL_STATE = {
     list: { data: []},
     current: { data: []},
+    userlist : { data: []},
 };
 
 
@@ -28,6 +30,10 @@ export default function(state = INITIAL_STATE, action) {
         case FETCH_ORG_CURRENT: // start fetching orgs and set loading = true
             // return {...state, orgsList: { orgs: [], error: null, loading: true } };
             return {...state, current: { data: action.payload } };
+
+        case FETCH_ORG_USERS: // start fetching orgs and set loading = true
+            // return {...state, orgsList: { orgs: [], error: null, loading: true } };
+            return {...state, userlist: { data: action.payload.data } };
 
         case ADD_ORG: // return list of orgs and make loading = false
             return {...state, orgsList: { orgs: action.payload.data, error: null, loading: false } };

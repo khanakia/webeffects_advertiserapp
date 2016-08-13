@@ -28,7 +28,7 @@ const mapDispatchToProps = (dispatch) => {
             // dispatch(fetchOrgs())
 
             dispatch(fetchOrgs()).then((response) => {
-                dispatch(fetchOrgCurrent(response))
+                // dispatch(fetchOrgCurrent(response))
             });
 
             // dispatch(fetchOrgs()).then((response) => {

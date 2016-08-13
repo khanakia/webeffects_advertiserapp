@@ -6,15 +6,18 @@ export default class Auth {
 	}
 	
 	static attempt({email=null, password=null}) {
-		return  axios.post(API_URL_SIGNIN, {
+		var ajaxObj =  axios.post(API_URL_SIGNIN, {
 					email: email,
 					password: password,
-				}).then(function (response) {
-					this.login(response.data.token)
-					
-				}.bind(this)).catch(function (error) {
-					console.log(error);
-				});
+				})
+
+		ajaxObj.then(function (response) {
+			Auth.login(response.data.token)
+		}).catch(function (error) {
+			console.log(error);
+		});
+
+		return ajaxObj;
 	}
 
 	static login(token=null) {

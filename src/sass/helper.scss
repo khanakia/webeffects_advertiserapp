@@ -153,14 +153,14 @@
 /* FONT SIZE HELPERS */
 @for $i from 0 through 150 {
     .fs#{$i} {
-      font-size: $i+"px";
+      font-size: #{$i}px;
     } 
 }
 
 @media screen and (min-width: 992px) and (max-width: 1199px) {
  @for $i from 0 through 150 {
     .md-fs#{$i} {
-      font-size: $i+"px";
+      font-size: #{$i}px;
     }
   }     
 }
@@ -168,7 +168,7 @@
 @media screen and (min-width: 768px) and (max-width: 991px) {
  @for $i from 0 through 150 {
     .sm-fs#{$i} {
-      font-size: $i+"px";
+      font-size: #{$i}px;
     }
   }     
 }
@@ -176,7 +176,7 @@
 @media screen and (max-width: 767px) {
    @for $i from 0 through 150 {
     .xs-fs#{$i} {
-      font-size: $i+"px";
+      font-size: #{$i}px;
     }
   }     
 }

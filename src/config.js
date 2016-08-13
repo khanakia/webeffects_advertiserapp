@@ -1,16 +1,31 @@
 export const ROOT_HOST = 'react.pma';
 export const ROOT_URL = 'http://react.pma';
+
+export const SIGN_UP_URL = ROOT_URL + '/#/signup';
+
 export const API_URL = 'http://local.pma/api';
 
 export const API_URL_SIGNIN = API_URL+'/auth/signin';
 export const API_URL_SIGNUP = API_URL+'/auth/signup';
 
+export const API_URL_PUBLIC = API_URL+'/public';
+export const API_URL_GETALLORGSBYEMAIL = API_URL_PUBLIC+'/findorgs_byemail';
+export const API_URL_GETORG_BYDOMAIN = API_URL_PUBLIC+'/findorgs_bydomain';
+
 export const API_URL_ORG = API_URL+'/org';
-export const API_URL_ORG_UPDATE = API_URL+'/org/update';
-export const API_URL_ORG_FINDBYDOMAIN = API_URL+'/org/findbydomain';
+
+
+
+// export const API_URL_ORG_USER_INDEX = API_URL_ORG+'/user_index';
+export const API_URL_ORG_INVITE_USER = API_URL_ORG+'/user_invite';
+// export const API_URL_ORG_UPDATE = API_URL+'/org/update';
+
+
+
+export const API_URL_ORGUSER = API_URL+'/org_user';
 
 export const API_URL_COMPANY = API_URL+'/company';
-export const API_URL_COMPANY_LIST = API_URL+'/company';
+// export const API_URL_COMPANY_LIST = API_URL+'/company';
 // export const API_URL_COMPANY_STORE = API_URL+'/company';
 // export const API_URL_COMPANY_UPDATE = API_URL+'/company/update';
 

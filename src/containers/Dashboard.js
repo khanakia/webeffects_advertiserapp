@@ -8,7 +8,7 @@ import TagForm from '../components/tag/TagForm'
 
 import DemoComp from '../components/DemoComp'
 
-import InputDate from '../components/controls/InputDate'
+import DropdownCompanies from '../components/controls/DropdownCompanies'
 
 import {store} from '../store/index.js';
 
@@ -44,8 +44,8 @@ export default class Layout extends Component {
           <div>
             Dashboard
              
-            <InputDate />
-            <InputDate />
+            <DropdownCompanies defaultValue="3" />
+            
             <DemoComp />
             <div className="tags" ref="tags_wrapper">
 

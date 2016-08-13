@@ -52,6 +52,7 @@
     "trumbowyg": "~2.1.2",
     "eonasdan-bootstrap-datetimepicker": "~4.17.37",
     "bootstrap-select": "~1.10.0",
-    "jwt-decode": "~2.1.0"
+    "jwt-decode": "~2.1.0",
+    "bootstrap-tagsinput": "~0.8.0"
   }
 }
