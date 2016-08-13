@@ -6,6 +6,7 @@ import { Link, hashHistory } from 'react-router'
 import Auth from '../helpers/auth.js'
 
 import UserprofileForm from './UserprofileForm'
+import Localstore from '../helpers/localstore.js'
 
 
 export default class Header extends Component {
@@ -16,6 +17,7 @@ export default class Header extends Component {
 	}
   
   render() {
+  	console.log(Localstore.getItem('org'))
     return (
       	<header>
 			
@@ -28,7 +30,7 @@ export default class Header extends Component {
 	              <span className="icon-bar"></span>
 	              <span className="icon-bar"></span>
 	            </button>
-	            <a className="navbar-brand" href="#">{this.props.header_title}</a>
+	            <a className="navbar-brand" href="#">{Localstore.getItem('org').org_title}</a>
 	          </div>
 	          <div id="navbar" className="navbar-collapse collapse">
 	            <ul className="nav navbar-nav">

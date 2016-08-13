@@ -1,4 +1,6 @@
 import {API_URL_SIGNIN} from '../config.js'
+import Localstore from './localstore.js'
+
 
 export default class Auth {
 	constructor() {
@@ -27,6 +29,7 @@ export default class Auth {
 
 	static logout() {
 		localStorage.removeItem('token');
+		Localstore.clear()
 	}
 
 	static check() {

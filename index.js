@@ -33,6 +33,9 @@ import {ROOT_HOST} from './src/config.js'
 import Auth from './src/helpers/auth.js'
 import RequireAuth from './src/containers/RequireAuth';
 
+import Localstore from './src/helpers/localstore.js'
+
+
 // If user is on Root URL then render Find My Organization page
 if(ROOT_HOST==window.location.host) {
    	render((

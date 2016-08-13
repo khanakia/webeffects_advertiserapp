@@ -45,13 +45,13 @@ class CompanyList extends Component {
     }
 
     render() {
-        const { companies, loading, error } = this.props.companiesList;
+        const { companies } = this.props.companiesList;
         
-        if(loading) {
-            return <div className="container"><h1>Posts</h1><h3>Loading...</h3></div>      
-        } else if(error) {
-            return <div className="alert alert-danger">Error: {error.message}</div>
-        }
+        // if(loading) {
+        //     return <div className="container"><h1>Posts</h1><h3>Loading...</h3></div>      
+        // } else if(error) {
+        //     return <div className="alert alert-danger">Error: {error.message}</div>
+        // }
 
         return (
             <div>

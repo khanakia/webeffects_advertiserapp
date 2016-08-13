@@ -11,7 +11,7 @@ export default function(state = INITIAL_STATE, action) {
   switch(action.type) {
 
   case FETCH_COMPANIES:// start fetching posts and set loading = true
-    return { ...state, companiesList: {companies:[], error: null, loading: true} }; 
+    return { ...state, companiesList: {companies:action.payload.data, error: null, loading: true} }; 
   // case FETCH_COMPANIES_SUCCESS:// return list of posts and make loading = false
   //   return { ...state, companiesList: {companies: action.payload.data, error:null, loading: false} };
   // case FETCH_COMPANIES_FAILURE:// return error and make loading = false

@@ -8,7 +8,7 @@ export const FETCH_COMPANIES = 'FETCH_COMPANIES';
 import CompanyHelper from '../helpers/helper_company'
 
 
-export function fetchOrgs() {
+export function fetchCompanies() {
     const request = CompanyHelper.index();
     return {
         type: FETCH_COMPANIES,

@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom'
 import {ROOT_URL, SIGN_UP_URL} from '../config.js'
 import OrgHelper from '../helpers/helper_org.js'
 import Auth from '../helpers/auth.js'
+import Localstore from '../helpers/localstore.js'
 
 
 export default class LayoutLogin extends Component {
@@ -57,6 +58,8 @@ export default class LayoutLogin extends Component {
         Auth.attempt({email: this.refs.email.value, password: this.refs.password.value}).then((response) => {
             console.log(response);
             if (response.data.token != null) {
+                Localstore.setOrg(response.data.org)
+                Localstore.setUser(response.data.user)
                 hashHistory.push('/')
             }
         });
