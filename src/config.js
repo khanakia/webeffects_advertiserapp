@@ -9,6 +9,10 @@ export const API_URL_ORG = API_URL+'/org';
 export const API_URL_ORG_UPDATE = API_URL+'/org/update';
 export const API_URL_ORG_FINDBYDOMAIN = API_URL+'/org/findbydomain';
 
+export const API_URL_DOMAIN = API_URL+'/domainupdate';
+
+export const API_URL_ORG_LOGO = API_URL+'/uploadlogo';
+
 export const API_URL_COMPANY = API_URL+'/company';
 export const API_URL_COMPANY_LIST = API_URL+'/company';
 // export const API_URL_COMPANY_STORE = API_URL+'/company';

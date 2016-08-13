@@ -14,7 +14,10 @@ import CompanyList from './src/containers/CompanyListContainer'
 import TaskList from './src/containers/TaskListContainer'
 import TagList from './src/containers/TagListContainer'
 
+import PageDemo from './src/containers/LayoutDemo'
+
 import PageTask from './src/containers/PageTask'
+
 
 import configureStore from './src/store/configureStore.dev.js';
 
@@ -61,6 +64,7 @@ if(ROOT_HOST==window.location.host) {
                <Route path="/tasklist/:tasklistId" component={TaskList}/>
                <Route path="settings/tags" component={TagList} />
                <Route path="task" component={PageTask} />
+               <Route path="demo" component={PageDemo} />
                
 		    </Route>
 

@@ -1,4 +1,4 @@
-import {API_URL_ORG, API_URL_ORG_UPDATE} from '../config.js'
+import {API_URL_ORG, API_URL_DOMAIN, API_URL_ORG_UPDATE} from '../config.js'
 import Auth from './auth.js'
 
 export default class OrgHelper {
@@ -35,6 +35,15 @@ export default class OrgHelper {
         return  axios({
                     method: 'put',
                     url: API_URL_ORG + '/' + data.id,
+                    headers: Auth.header(),
+                    data : data
+                  });
+    }
+
+    static updatedomain(data) {
+        return  axios({
+                    method: 'post',
+                    url: API_URL_DOMAIN,
                     headers: Auth.header(),
                     data : data
                   });

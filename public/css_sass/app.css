@@ -321,4 +321,26 @@ a:hover {
   .list-group.style1 .icons-group a:hover {
     color: #3aa3e3; }
 
+.uploadform .heading {
+  padding: 10px 0 30px; }
+.uploadform .title {
+  margin: 0;
+  text-transform: uppercase; }
+.uploadform .defaultimage {
+  width: 130px;
+  height: 130px;
+  margin: 0 auto;
+  background-color: #d3d3d3;
+  border-radius: 50%; }
+.uploadform .uploadinstruction {
+  font-size: 16px;
+  padding: 10px 0 0;
+  margin: 0 0 20px; }
+.uploadform .uploadimagefile {
+  border: 0;
+  font-size: 16px;
+  font-weight: bold; }
+.uploadform .btnUploadSubmit {
+  padding: 20px 0 10px; }
+
 /*# sourceMappingURL=app.css.map */
