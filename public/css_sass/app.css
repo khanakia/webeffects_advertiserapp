@@ -321,4 +321,23 @@ a:hover {
   .list-group.style1 .icons-group a:hover {
     color: #3aa3e3; }
 
+.userDetailsBox li a {
+  padding: 3px 0 3px 10px; }
+  .userDetailsBox li a i {
+    margin-right: 5px; }
+.userDetailsBox .li_img .imagecircle {
+  margin: 10px auto;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #000; }
+
+.editDetailForm {
+  min-height: 280px; }
+  .editDetailForm .form-control {
+    height: 27px;
+    padding: 3px 12px;
+    font-size: 12px;
+    border-radius: 5px; }
+
 /*# sourceMappingURL=app.css.map */

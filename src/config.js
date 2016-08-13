@@ -14,6 +14,7 @@ export const API_URL_COMPANY_LIST = API_URL+'/company';
 // export const API_URL_COMPANY_STORE = API_URL+'/company';
 // export const API_URL_COMPANY_UPDATE = API_URL+'/company/update';
 
+export const API_URL_GET_USER = API_URL+'/user/view';
 
 export const API_URL_TASKLIST = API_URL+'/tasklist';
 export const API_URL_TASKLIST_TASKS_FN = function(id=null) {
