@@ -638,12 +638,17 @@ a:hover {
         text-transform: uppercase;
     }
 
-    .defaultimage {
+    .imageview {
         width: 130px;
         height: 130px;
         margin: 0 auto;
-        background-color: #d3d3d3;
         border-radius: 50%;
+        background-size: cover;
+        background-repeat: no-repeat;
+
+        &.defaultimage {
+            background-color: #d3d3d3;
+        }
     }
 
     .uploadinstruction {

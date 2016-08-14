@@ -7,18 +7,21 @@ import PagePanel from '../components/PagePanel'
 
 import LogoForm from '../components/UploadPopupForm'
 
-import {ROOT_URL} from '../config.js'
+import {ROOT_URL, API_URL_ORG_LOGO} from '../config.js'
 
 export default class LayoutUpload extends Component {
 
-    openPopuplogo() {
-        LogoForm.showInPoup()
-        return false;
+    static defaultProps = {
+        onDataUpdate: function(org) {},
+
+        data : {
+            id: '',
+            url: '',
+        }
     }
 
-    handleSubmit = (e) => {
-        e.preventDefault();
-        console.log("pankaj");
+    openPopuplogo() {
+        LogoForm.showInPoup();
         return false;
     }
 
