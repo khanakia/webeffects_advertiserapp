@@ -7,6 +7,7 @@ import Layout from './src/containers/Layout'
 import LayoutSignup from './src/containers/LayoutSignup'
 import LayoutLogin from './src/containers/LayoutLogin'
 import LayoutFindMyOrg from './src/containers/LayoutFindMyOrg'
+import LayoutProject from './src/containers/LayoutProject'
 
 import Dashboard from './src/containers/Dashboard'
 import OrganizationList from './src/containers/OrganizationListContainer'
@@ -19,6 +20,15 @@ import TagList from './src/containers/TagListContainer'
 import PageDemo from './src/containers/LayoutDemo'
 
 import PageTask from './src/containers/PageTask'
+
+import ProjectsContainer from './src/containers/ProjectsContainer'
+import ProjectOverviewContainer from './src/containers/ProjectOverviewContainer'
+import ProjectMessagesContainer from './src/containers/ProjectMessagesContainer'
+import ProjectFilesContainer from './src/containers/ProjectFilesContainer'
+import ProjectPeopleContainer from './src/containers/ProjectPeopleContainer'
+import ProjectTaskListsContainer from './src/containers/ProjectTaskListsContainer'
+import ProjectTaskContainer from './src/containers/ProjectTaskContainer'
+import ProjectTaskListContainer from './src/containers/ProjectTaskListContainer'
 
 
 import configureStore from './src/store/configureStore.dev.js';
@@ -60,6 +70,18 @@ if(ROOT_HOST==window.location.host) {
                <Route path="settings/tags" component={TagList} />
                <Route path="task" component={PageTask} />
                <Route path="demo" component={PageDemo} />
+
+               <Route path="projects" component={ProjectsContainer} />
+
+               <Route path="projects/:projectId" component={LayoutProject}>
+               		<Route path="overview" component={ProjectOverviewContainer} />
+					<Route path="tasklists" component={ProjectTaskListsContainer} />
+					<Route path="task/:taskId" component={ProjectTaskContainer} />
+					<Route path="tasklist/:tasklistId" component={ProjectTaskListContainer} />
+					<Route path="messages" component={ProjectMessagesContainer} />
+					<Route path="files" component={ProjectFilesContainer} />
+					<Route path="people" component={ProjectPeopleContainer} />
+               </Route>
                
 		    </Route>
 

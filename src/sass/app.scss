@@ -172,6 +172,18 @@ a:hover {
     outline: none;
 }
 
+.btn-plain,
+.btn-plain:link,
+.btn-plain:hover,
+.btn-plain:focus,
+.btn-plain:active {
+    background: none;
+    text-decoration: none;
+    outline: none;
+    padding: 0;
+    box-shadow: none;
+}
+
 .select-menu {
 	position: relative;
 	display: inline-block;
@@ -333,9 +345,16 @@ a:hover {
 
 
 
-.singletask-group {
-    .singletask-group {
+.task-wrapper {
+    .task-wrapper {
         margin-left: 30px;
+    }
+    .tasks-list {
+        &.active {
+            min-height: 50px;
+            background: #f9f9f9;
+            padding-botom: 100px;
+        }
     }
 }
 
