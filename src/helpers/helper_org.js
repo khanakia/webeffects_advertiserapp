@@ -54,9 +54,9 @@ export default class OrgHelper {
     static save(data) {
         const dataJson = URI.parseQuery(data);
         if (dataJson.id) {
-            var ajaxObj = CompanyHelper.update(data);
+            var ajaxObj = OrgHelper.update(data);
         } else {
-            var ajaxObj = CompanyHelper.store(data);
+            var ajaxObj = OrgHelper.store(data);
         }
         return ajaxObj;
     }

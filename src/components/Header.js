@@ -3,10 +3,11 @@ import React, { Component, PropTypes } from 'react'
 import { Link, hashHistory } from 'react-router'
 
 
-import Auth from '../helpers/auth.js'
+import Auth from '../helpers/auth'
+
 
 import UserprofileForm from './UserprofileForm'
-import Localstore from '../helpers/localstore.js'
+import Localstore from '../helpers/localstore'
 
 
 export default class Header extends Component {
@@ -14,7 +15,8 @@ export default class Header extends Component {
 	constructor(props) {
 		super(props)
 		this.currentOrg = Localstore.getItem('org');
-		Auth.updateCurrentOrg()
+		// Auth.updateCurrentOrg()
+		this.user = Localstore.getItem('user');
 	}
 
 	logout = (e) => {
@@ -37,7 +39,7 @@ export default class Header extends Component {
 	              <span className="icon-bar"></span>
 	              <span className="icon-bar"></span>
 	            </button>
-	            <a className="navbar-brand" href="#">{Localstore.getItem('org').org_title}</a>
+	            <a className="navbar-brand" href="#">{this.currentOrg.org_title}</a>
 	          </div>
 	          <div id="navbar" className="navbar-collapse collapse">
 	            <ul className="nav navbar-nav">
@@ -72,15 +74,16 @@ export default class Header extends Component {
 	              </li>
 	              <li className="dropdown">
 		            <a className="dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-		                <span className="user_title">Aman </span>
+		                <span className="user_title">{this.user.first_name + ' ' + this.user.last_name} </span>
 		                <i className="fa fa-chevron-down"></i>
 		            </a>
 		            <ul className="dropdown-menu userDetailsBox" aria-labelledby="dropdownMenu1">
 		                <li className="li_img">
-		                  <div className="imagecircle">
+		                    <div className="imagecircle">
 		                  	
-		                  </div>
-		                  <div className="user_title text-center">Aman Bansal</div>
+		                    </div>
+		                  	<div className="user_title text-center">{this.user.first_name + ' ' + this.user.last_name}</div>
+		                	<div className="text-center fs12">{this.user.email}</div>
 		                </li>
 		                <li role="separator" className="divider"></li>
 		                <li><Link to="organization"><i className="fa fa-check-square-o"></i> My Tasks</Link></li>

@@ -62,8 +62,9 @@ export default class Auth {
 
 	static updateCurrentOrg() {
 		var org = localstore.getItem('org');
-		OrgHelper.show(org.id).then(function(response){
+		return OrgHelper.show(org.id).then(function(response){
 			localstore.setOrg(response.data);
+			// window.location.href = "/";
 		})
 	}
 

@@ -40,7 +40,8 @@ export function fetchOrgCurrent(response) {
 
 
 export function fetchOrgUsers() {
-    const request = OrgUserHelper.index();
+    var request = OrgUserHelper.index();
+    
     return {
         type: FETCH_ORG_USERS,
         payload: request

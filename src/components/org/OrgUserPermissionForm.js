@@ -21,7 +21,7 @@ class OrgUserPermissionForm extends Component {
         data : {
             org_id : '',
             user_id: '',
-            permission_json : {
+            permissions : {
                 is_admin : 0,
                 can_add_projects : 0,
                 can_manage_people_companies : 0,
@@ -108,26 +108,29 @@ class OrgUserPermissionForm extends Component {
                             <div className="form-group">
                                 <label className="control-label">Is this User an Administrator?</label>
                                 <div className="">
-                                    <input type="text" name="permission[is_admin]" id="is_admin" defaultValue={0}  />
-                                    <input type="checkbox" className="js-switch"  name="permission[is_admin]" id="is_admin" defaultChecked={this.props.data.permission_json.is_admin} defaultValue={1}  />
+                                    <input type="hidden" name="is_admin" id="is_admin" defaultValue={0}  />
+                                    <input type="checkbox" className="js-switch"  name="is_admin" id="is_admin" defaultChecked={this.props.data.permissions.is_admin} defaultValue={1}  />
                                 </div>
                             </div>
                             <div className="form-group">
                                 <label className="control-label">Can Add Projects?</label>
                                 <div className="">
-                                    <input type="checkbox" className="js-switch"  name="permission[can_add_projects]" id="can_add_projects" defaultChecked={this.props.data.permission_json.can_add_projects}  defaultValue={1} />
+                                    <input type="hidden" name="can_add_projects" id="can_add_projects" defaultValue={0}  />
+                                    <input type="checkbox" className="js-switch"  name="can_add_projects" id="can_add_projects" defaultChecked={this.props.data.permissions.can_add_projects}  defaultValue={1} />
                                 </div>
                             </div>
                             <div className="form-group">
                                 <label className="control-label">Can Manage People and Companies?</label>
                                 <div className="">
-                                    <input type="checkbox" className="js-switch"  name="permission[can_manage_people_companies]" id="can_manage_people_companies" defaultChecked={this.props.data.permission_json.can_manage_people_companies} defaultValue={1} />
+                                    <input type="hidden" name="can_manage_people_companies" id="can_manage_people_companies" defaultValue={0}  />
+                                    <input type="checkbox" className="js-switch"  name="can_manage_people_companies" id="can_manage_people_companies" defaultChecked={this.props.data.permissions.can_manage_people_companies} defaultValue={1} />
                                 </div>
                             </div>
                             <div className="form-group">
                                 <label className="control-label">Give Automatic Access to all Future Projects?</label>
                                 <div className="">
-                                    <input type="checkbox" className="js-switch"  name="permission[automatic_access_to_all_future_projects]" id="automatic_access_to_all_future_projects" defaultChecked={this.props.data.permission_json.automatic_access_to_all_future_projects} defaultValue={1} />
+                                    <input type="hidden" name="automatic_access_to_all_future_projects" id="automatic_access_to_all_future_projects" defaultValue={0}  />
+                                    <input type="checkbox" className="js-switch"  name="automatic_access_to_all_future_projects" id="automatic_access_to_all_future_projects" defaultChecked={this.props.data.permissions.automatic_access_to_all_future_projects} defaultValue={1} />
                                 </div>
                             </div>
                     </div>

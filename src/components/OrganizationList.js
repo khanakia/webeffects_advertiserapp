@@ -11,6 +11,7 @@ import DomainForm from './org/DomainSubdomainForm'
 
 import Auth from '../helpers/auth.js'
 import OrgHelper from '../helpers/helper_org'
+import Util from '../helpers/util'
 
 
 class PostsList extends Component {
@@ -24,12 +25,14 @@ class PostsList extends Component {
         // let { dispatch } = this.props
         // dispatch({type: 'RESET_POSTS'});
         // this.props.dispatch({type: 'REMOVE'});
+        Auth.updateCurrentOrg()
     }
 
 
     editButton(org) {
         // console.log(org.permissions.is_admin || org.created_by_user_id==Auth.getUserID());
-        if(org.permissions.is_admin || org.created_by_user_id==Auth.getUserID()) {
+        // if(org.permissions.is_admin || org.created_by_user_id==Auth.getUserID()) {
+        if(org.permissions.org_can_update) {
             return (
                 <span>
                     <button className="btn btn-plain" title="Edit" onClick={(e)=> this.editOrg(org,e)} ><i className="fa fa-pencil"></i></button>
@@ -39,26 +42,45 @@ class PostsList extends Component {
         }
     }
 
-    defautlBadge(org) {
-        if(org.is_default && org.created_by_user_id==Auth.getUserID()) {
-            return (
-                <span className="label label-success ml10">Default</span>
-            )
-        }
-    }
+    // defautlBadge(org) {
+    //     if(org.is_default && org.created_by_user_id==Auth.getUserID()) {
+    //         return (
+    //             <span className="label label-success ml10">Default</span>
+    //         )
+    //     }
+    // }
+
+    // ownerBadge(org) {
+    //     if(org.created_by_user_id==Auth.getUserID()) {
+    //         return (
+    //             <span className="label label-success ml10">Owner</span>
+    //         )
+    //     }
+    // }
+
+    // adminBadge(org) {
+    //     if(org.permissions.is_admin) {
+    //         return (
+    //             <span className="label label-success ml10">Admin</span>
+    //         )
+    //     }
+    // }
 
     renderPosts(orgs) {
         return orgs.map((org) => {
             return (
                 <li className="list-group-item" key={org.id}>
                     <div className="d-table w100">
-                        <div className="d-table-cell xs-d-block w30 xs-w100">
+                        <div className="d-table-cell xs-d-block w80 xs-w100">
                             <h4 className="list-group-item-heading">
                                 {org.org_title}
-                                {this.defautlBadge(org)}
                             </h4>
                         </div>
-                        
+                        <div className="d-table-cell xs-d-block w10 xs-w100">
+                                {Util.badgetOwner((org.created_by_user_id==Auth.getUserID()))}
+                                {Util.badgeIsAdmin(org.permissions.is_admin)}
+                                {Util.badgetDefault(org)}
+                        </div>
                         <div className="d-table-cell xs-d-block valign-middle text-right">
                             <span className="icons-group light">
                                 {this.editButton(org)}
