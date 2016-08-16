@@ -1,4 +1,5 @@
 import {
+        ROOT_HOST,
         API_URL_ORG, 
         API_URL_ORG_USER_INDEX, 
         API_URL_ORG_INVITE_USER,
@@ -6,7 +7,6 @@ import {
         API_URL_GETORG_BYDOMAIN,
         API_URL_DOMAIN
     } from '../config.js'
-
 
 
 import Auth from './auth.js'
@@ -42,12 +42,23 @@ export default class OrgHelper {
     }
 
     static update(data) {
+        const dataJson = URI.parseQuery(data);
         return axios({
             method: 'put',
-            url: API_URL_ORG + '/' + data.id,
+            url: API_URL_ORG + '/' + dataJson.id,
             headers: Auth.header(),
             data: data
         });
+    }
+
+    static save(data) {
+        const dataJson = URI.parseQuery(data);
+        if (dataJson.id) {
+            var ajaxObj = CompanyHelper.update(data);
+        } else {
+            var ajaxObj = CompanyHelper.store(data);
+        }
+        return ajaxObj;
     }
 
 
@@ -81,13 +92,35 @@ export default class OrgHelper {
         });
     }
 
-    static updatedomain(data) {
+    static updateDomain(data) {
         return  axios({
             method: 'post',
-            url: API_URL_DOMAIN,
+            url: API_URL_ORG + '/' + data.id + '/update_domain',
             headers: Auth.header(),
             data : data
         });
+    }
+
+    static updateSubdomain(data) {
+        return  axios({
+            method: 'post',
+            url: API_URL_ORG + '/' + data.id + '/update_subdomain',
+            headers: Auth.header(),
+            data : data
+        });
+    }
+
+
+    // UTILITY FUNCTIONS STARTS HERE
+    
+    // GET ORG LOGIN URL Based on SLUG AND CUSTOM DOMAIN
+    static getLoginURL(org) {
+        let url = org.org_slug+'.'+ROOT_HOST;
+        if (org.org_domain)  {
+            url = org.org_domain;
+        }
+
+        return 'http://'+url;
     }
 }
 

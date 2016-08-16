@@ -1,5 +1,6 @@
 import {API_URL_SIGNIN} from '../config.js'
-import Localstore from './localstore.js'
+import localstore from './localstore.js'
+import OrgHelper from './helper_org'
 
 
 export default class Auth {
@@ -29,7 +30,7 @@ export default class Auth {
 
 	static logout() {
 		localStorage.removeItem('token');
-		Localstore.clear()
+		localstore.clear()
 	}
 
 	static check() {
@@ -57,6 +58,13 @@ export default class Auth {
 	// Header which i will add to ajax request
 	static header() {
 		return {'Authorization' : 'Bearer ' + Auth.getToken()}
+	}
+
+	static updateCurrentOrg() {
+		var org = localstore.getItem('org');
+		OrgHelper.show(org.id).then(function(response){
+			localstore.setOrg(response.data);
+		})
 	}
 
 }

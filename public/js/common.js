@@ -151,7 +151,7 @@ var Controls = {
 		var template = Common.multilinestring(function() {/*!
 								<div id="{{popupid}}" class="popup_block {{container_class}}">
 									{{{inject_html}}}
-							        <a href="#" class="close-icon {{popupid}}_close"><i class="fa fa-times" aria-hidden="true"></i></a>
+							        <a href="#" class="close-icon {{popupid}}_close">&times;</a>
 							        <div class="content">{{{message}}}</div>
 							    </div>
 							*/});

@@ -22,7 +22,6 @@ class OrgUserSettingForm extends Component {
             id: '',
             job_title: '',
             company_id : '',
-            is_admin : ''
         }    
     }
 
@@ -31,6 +30,10 @@ class OrgUserSettingForm extends Component {
     }
 
     componentDidMount() {
+        var elems = document.querySelectorAll('.js-switch');
+        for (var i = 0; i < elems.length; i++) {
+          var switchery = new Switchery(elems[i], { size: 'small' });
+        }
         
     }
 
@@ -63,13 +66,11 @@ class OrgUserSettingForm extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
 
-        let data = jQuery(this.refs.form).serialize();
-        data = URI.parseQuery(data);
-
         var valid = jQuery(this.refs.form).valid();
         if (!valid) {return false};
 
-
+        let data = jQuery(this.refs.form).serialize();
+        data = URI.parseQuery(data);
         
         var ajaxObj = OrgUserHelper.update(data);
 
@@ -83,41 +84,34 @@ class OrgUserSettingForm extends Component {
         }.bind(this));
 
         return false;
-
     }
-
 
 
     render() {
         return (
             <div>
+                <div className="modal-header">
+                    <h4 className="modal-title">Edit User Setting on this Organization</h4>
+                </div>
                 <form className="form" ref='form' onSubmit={this.handleSubmit}>
                     <input type="hidden" className="form-control" ref="id" name="id" id="id" defaultValue={this.props.data.id} />
-                    <div className="row">
-                        <div className="col-md-8">
-                            <h4>User Setting</h4>
+                    <div className="content-area">
+                            
                             <div className="form-group">
-                                <label className="col-sm-12 control-label">Job Title</label>
-                                <div className="col-sm-10">
+                                <label className="control-label">Job Title</label>
+                                <div className="">
                                     <input type="text" className="form-control required" name="job_title" id="job_title" defaultValue={this.props.data.job_title} />
                                 </div>
                             </div>
                             <div className="form-group">
-                                <label className="col-sm-12 control-label">Company</label>
-                                <div className="col-sm-10">
-                                    <DropdownCompanies defaultValue={this.props.data.company_id} />
+                                <label className="control-label">Company</label>
+                                <div className="">
+                                    <DropdownCompanies name="company_id" defaultValue={this.props.data.company_id} />
                                 </div>
                             </div>
-                            <div className="form-group">
-                                <label className="col-sm-12 control-label">Is this User an Administrator?</label>
-                                <div className="col-sm-10">
-                                    <input type="text" className="form-control required" name="is_admin" id="is_admin" defaultValue={this.props.data.is_admin} />
-                                </div>
-                            </div>
-                        </div>
                     </div>
 
-                    <div className="text-right">
+                    <div className="modal-footer text-right">
                         <button type="submit" className="btn btn-success">Save</button>
                     </div>
                 </form>

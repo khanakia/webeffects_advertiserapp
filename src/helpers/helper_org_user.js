@@ -39,4 +39,22 @@ export default class OrgUserHelper {
             data: data
         });
     }
+
+    static updatePermission(data) {
+        return axios({
+            method: 'post',
+            url: API_URL_ORGUSER + '/update_permission',
+            headers: Auth.header(),
+            data: data
+        });
+    }
+
+    static removeUser(data) {
+        return axios({
+            method: 'post',
+            url: API_URL_ORGUSER + '/remove_user',
+            headers: Auth.header(),
+            data: data
+        });
+    }
 }

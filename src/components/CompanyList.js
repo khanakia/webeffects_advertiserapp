@@ -5,36 +5,126 @@ import { Link } from 'react-router';
 import Sidebar from './Sidebar'
 import PagePanel from './PagePanel'
 
-import CompanyForm from './CompanyForm'
+import CompanyForm from './org/CompanyForm'
+
+import Auth from '../helpers/auth.js'
+import CompanyHelper from '../helpers/helper_company.js'
 
 class CompanyList extends Component {
-    constructor(props, context) {
-        super(props, context);
+    constructor(props) {
+        super(props);
     }
 
     componentWillMount() {
         this.props.fetchCompanies();
         // let { dispatch } = this.props
         // console.log(dispatch);
-        // this.data = {
-        //   company_title:'ddd' 
+    }
+
+    editButton(item) {
+        // console.log(item.permissions.is_admin || item.created_by_user_id==Auth.getUserID());
+        // if(item.permissions.is_admin || item.created_by_user_id==Auth.getUserID()) {
+            return (
+                <span>
+                    <button className="btn btn-plain" title="Edit" onClick={(e)=> this.editCompany(item,e)} ><i className="fa fa-pencil"></i></button>
+                </span>
+            )
         // }
     }
 
-    edit(id) {
-        console.log(id);
-
-    }
-    renderPosts(companies) {
-        return companies.map((post) => {
+    deleteButton(item) {
+        if(!item.is_default) {
             return (
-                <li className="list-group-item" key={post.id}>
-                    <div className="d-table">
-                        <div className="d-table-cell width-full">
-                            <h4 className="list-group-item-heading">{post.company_title}</h4>
+                <span>
+                    <button className="btn btn-plain" title="Remove Company" onClick={(e)=> this.deleteCompany(item.id,e)} ><i className="fa fa-trash"></i></button>
+                </span>
+            )
+        }
+    }
+
+    defautlBadge(item) {
+        if(item.is_default && item.created_by_user_id==Auth.getUserID()) {
+            return (
+                <span className="label label-success">Default</span>
+            )
+        }
+    }
+
+    editCompany(data, e) {
+        CompanyForm.showInPoup({data})
+    }
+
+
+    deleteCompany(company_id, e) {
+        $.confirm({
+            title: '',
+            content: 'Are you sure you want to remove ?',
+            confirmButton: 'Yes',
+            cancelButton: 'No',
+            confirm: function(){
+                CompanyHelper.delete(company_id).then((response) => {
+                    this.props.fetchCompanies();
+                });
+            }.bind(this)
+        });
+    }
+
+    renderItems(items) {
+        return items.map((item) => {
+            return (
+                <li className="list-group-item" key={item.id}>
+                    <div className="d-table w100">
+                        <div className="d-table-cell xs-d-block w30 xs-w100">
+                            <div className="userInfoBlock">
+                                <div className="image d-inline-block valign-middle mr20">
+                                    <div className="avatar" style={{backgroundImage: 'url(http://localhost/aman.png)'}}>
+                                    </div>
+                                </div>
+                                <div className="summary d-inline-block valign-middle">
+                                    <div className="company fw-b">{item.company_title}</div>
+                                    {this.defautlBadge(item)}
+                                </div>
+                            </div>
                         </div>
-                        <div className="d-table-cell">
-                            <button data-toggle="tooltip" data-placement="top" title="Edit Company" className="btn btn-link" onClick={()=> this.edit(post.id)}><i className="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                        <div className="d-table-cell xs-d-block xs-mt20 w30 xs-w100 valign-middle contact_info">
+                            <h4 className="list-group-item-heading">
+                                { item.company_website ?
+                                    <span className="d-block fs12 mb5"><i className="fa fa-envelope w10p"></i><a href={"mailto:"+item.company_website}>{item.company_website}</a></span>
+                                    : ''
+                                }
+
+                                { item.company_email ?
+                                    <span className="d-block fs12 mb5"><i className="fa fa-envelope w10p"></i><a href={"mailto:"+item.company_email}>{item.company_email}</a></span>
+                                    : ''
+                                }    
+                                
+                                { item.company_phone ?
+                                    <span className="d-block fs12 mb5"><i className="fa fa-phone w10p fs14"></i>{item.company_phone}</span>
+                                    : ''
+                                }    
+                                
+                                { item.company_fax ?
+                                    <span className="d-block fs12 mb5"><i className="fa fa-fax w10p"></i>{item.company_fax}</span>
+                                    : ''
+                                }
+                                
+                            </h4>
+                        </div>
+                        <div className="d-table-cell xs-d-block xs-mt20 w30 xs-w100 valign-middle">
+                            <h4 className="list-group-item-heading">
+                                <span className="d-block fs12 mb5 lh-15p">
+                                {item.company_address_line1 ? <span>{item.company_address_line1}<br/></span> : ''}
+                                {item.company_address_line2 ? <span>{item.company_address_line2}<br/></span> : ''}
+                                {item.company_city ? <span>{item.company_city} {item.company_zipcode} {item.company_state} <br/></span> : ''}
+                                {item.company_country}
+                                </span>
+                            </h4>
+                        </div>
+                        <div className="d-table-cell xs-d-block valign-middle text-right">
+                            <span className="icons-group light">
+                                {this.editButton(item)}
+                                {this.deleteButton(item)}
+                            </span>
                         </div>
 
                     </div>
@@ -45,60 +135,33 @@ class CompanyList extends Component {
     }
 
     render() {
-        const { companies } = this.props.companiesList;
+        const { data } = this.props.companiesList;
         
-        // if(loading) {
-        //     return <div className="container"><h1>Posts</h1><h3>Loading...</h3></div>      
-        // } else if(error) {
-        //     return <div className="alert alert-danger">Error: {error.message}</div>
-        // }
-
         return (
             <div>
-                <Sidebar>
-                    ABC1
-                </Sidebar>
                 <PagePanel>
-                    <div className="container">
-                        <div className="heading-bar">
-                            <h2 className="pull-left">Organizations</h2>
-                            <div className="pull-right">
-                                <button className="btn btn-success" onClick={()=> CompanyForm.showInPoup({},this.props)}>Add New Company</button>
-                                <button className="btn btn-success" onClick={()=> this.currentData()}>Add 11New Company</button>
-                            </div>
+                    <div className="control-toolbar1">
+                        <div className="left">
+                            <span className="title">Companies</span>
                         </div>
-
-                        <div className="table-list-header">
-                            <div className="left pull-left">
-
-                            </div>
-                            <div className="right pull-right">
-                                <div className="select-menu">
-                                     <button className="btn btn-link dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                        Sort <span className="caret"></span>
-                                      </button>
-                                      <div className="dropdown-menu dropdown-menu-right">
-                                        <div className="p10">
-                                            <input type="text" />
-                                        </div>
-                                      </div>
-                                </div>
-                                <div className="select-menu">
-                                     <button className="btn btn-link dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                        Sort <span className="caret"></span>
-                                      </button>
-                                      <div className="dropdown-menu dropdown-menu-right">
-                                        <div className="p10">
-                                            <input type="text" />
-                                        </div>
-                                      </div>
-                                </div>
-                            </div>
+                        <div className="middle">
                         </div>
-
+                        <div className="right">
+                            <span className="pull-right">
+                                <span className="col mr10">
+                                    
+                                </span>
+                                <span className="col icons-group">
+                                    <button className="btn btn-success" onClick={()=> CompanyForm.showInPoup({}, {},this.props)}><i className="fa fa-plus"></i></button>
+                                </span>
+                            </span>    
+                        </div>
+                    </div>
+                    <div className="mt20">
                         
-                        <ul className="list-group">
-                            {this.renderPosts(companies)}
+
+                        <ul className="list-group style1">
+                            {this.renderItems(data)}
                         </ul>
                     </div>
                 </PagePanel>

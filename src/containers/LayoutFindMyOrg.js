@@ -41,20 +41,20 @@ export default class LayoutFindMyOrg extends Component {
                     <h4 className="list-group-item-heading">
                         {org.org_title}
                     </h4>
-                    <a href={this.getLoginURL(org)}>Click here to Login</a>
+                    <a href={OrgHelper.getLoginURL(org)}>Click here to Login</a>
                 </li>
             );
         });
     }
 
-    getLoginURL(org) {
-        let url = org.org_slug+'.'+ROOT_HOST;
-        if (org.org_domain)  {
-            url = org.org_domain;
-        }
+    // getLoginURL(org) {
+    //     let url = org.org_slug+'.'+ROOT_HOST;
+    //     if (org.org_domain)  {
+    //         url = org.org_domain;
+    //     }
 
-        return 'http://'+url;
-    }
+    //     return 'http://'+url;
+    // }
 
     render() {
         console.log(this.state.orgs);

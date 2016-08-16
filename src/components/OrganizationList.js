@@ -10,6 +10,7 @@ import OrgForm from './org/OrgForm'
 import DomainForm from './org/DomainSubdomainForm'
 
 import Auth from '../helpers/auth.js'
+import OrgHelper from '../helpers/helper_org'
 
 
 class PostsList extends Component {
@@ -25,19 +26,46 @@ class PostsList extends Component {
         // this.props.dispatch({type: 'REMOVE'});
     }
 
+
+    editButton(org) {
+        // console.log(org.permissions.is_admin || org.created_by_user_id==Auth.getUserID());
+        if(org.permissions.is_admin || org.created_by_user_id==Auth.getUserID()) {
+            return (
+                <span>
+                    <button className="btn btn-plain" title="Edit" onClick={(e)=> this.editOrg(org,e)} ><i className="fa fa-pencil"></i></button>
+                    <button className="btn btn-plain" title="Edit Domain" onClick={(e)=> this.addDomainInfo(org, e)}><i className="fa fa-link"></i></button>
+                </span>
+            )
+        }
+    }
+
+    defautlBadge(org) {
+        if(org.is_default && org.created_by_user_id==Auth.getUserID()) {
+            return (
+                <span className="label label-success ml10">Default</span>
+            )
+        }
+    }
+
     renderPosts(orgs) {
         return orgs.map((org) => {
             return (
                 <li className="list-group-item" key={org.id}>
-                    <h4 className="list-group-item-heading">
-                            {org.org_title}
-                    </h4>
-
-                    <span className="controls icons-group">
-                        <button className="btn btn-link" title="Edit" onClick={(e)=> this.editOrg(org,e)} ><i className="fa fa-pencil"></i></button>
-                        <a href="javascript:void(0);" title="Edit Domain" onClick={(e)=> this.addDomainInfo(org, e)}><i className="fa fa-link"></i></a>
-                        <a href="#" title="Add/Edit Users"><i className="fa fa-users"></i></a>
-                    </span>
+                    <div className="d-table w100">
+                        <div className="d-table-cell xs-d-block w30 xs-w100">
+                            <h4 className="list-group-item-heading">
+                                {org.org_title}
+                                {this.defautlBadge(org)}
+                            </h4>
+                        </div>
+                        
+                        <div className="d-table-cell xs-d-block valign-middle text-right">
+                            <span className="icons-group light">
+                                {this.editButton(org)}
+                                <a href={OrgHelper.getLoginURL(org)} className="btn btn-plain" title="Login in to this Organization"><i className="fa fa-sign-in"></i></a>
+                            </span>
+                        </div>
+                    </div>
                 </li>
             );
         });
@@ -83,7 +111,7 @@ class PostsList extends Component {
                                     
                                 </span>
                                 <span className="col icons-group">
-                                    <button className="btn btn-plain" onClick={()=> OrgForm.showInPoup({}, {},this.props)}><i className="fa fa-plus"></i></button>
+                                    <button className="btn btn-success" onClick={()=> OrgForm.showInPoup({}, {},this.props)}><i className="fa fa-plus"></i></button>
                                 </span>
                             </span>    
                         </div>

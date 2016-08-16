@@ -10,6 +10,13 @@ import Localstore from '../helpers/localstore.js'
 
 
 export default class Header extends Component {
+
+	constructor(props) {
+		super(props)
+		this.currentOrg = Localstore.getItem('org');
+		Auth.updateCurrentOrg()
+	}
+
 	logout = (e) => {
 		e.preventDefault();
 		Auth.logout()
@@ -17,7 +24,7 @@ export default class Header extends Component {
 	}
   
   render() {
-  	console.log(Localstore.getItem('org'))
+  	
     return (
       	<header>
 			
@@ -43,8 +50,9 @@ export default class Header extends Component {
 	                <ul className="dropdown-menu">
 					  <li className="dropdown-header">Organization</li>
 					  <li><Link to="organization">Organizations</Link></li>
-					  <li><Link to="organization/companies">Company</Link></li>
-					  <li><Link to="organization/peoples">Peoples</Link></li>
+
+					  {this.currentOrg.permissions.can_manage_people_companies ? <li><Link to="organization/companies">Company</Link></li> : ''}
+					  {this.currentOrg.permissions.can_manage_people_companies ? <li><Link to="organization/peoples">Peoples</Link></li> : ''}
 
 					  <li role="separator" className="divider"></li>
 					  <li className="dropdown-header">Settings</li>
@@ -75,9 +83,7 @@ export default class Header extends Component {
 		                  <div className="user_title text-center">Aman Bansal</div>
 		                </li>
 		                <li role="separator" className="divider"></li>
-		                <li><Link to="dashboard"><i className="fa fa-bullhorn"></i> Update Status</Link></li>
 		                <li><Link to="organization"><i className="fa fa-check-square-o"></i> My Tasks</Link></li>
-		                <li role="separator" className="divider"></li>
 		                <li><Link to="dashboard"><i className="fa fa-user"></i> Profile & Account</Link></li>
 		                <li><Link to="#" className="a_edit_my_detail" onClick={()=> UserprofileForm.showInPoup()} ><i className="fa fa-pencil"></i> Edit My Details</Link></li>
 		                <li role="separator" className="divider"></li>

@@ -38,6 +38,7 @@ class OrgForm extends Component {
         Controls.showpopup({
             detach : true,
             message : '<div id="' + uniq + '"></div>',
+            container_class : "w500",
             opacity: 0.5,
             blur: false,
             onopen : function(e){
@@ -61,20 +62,20 @@ class OrgForm extends Component {
         e.preventDefault();
 
         let data = jQuery(this.refs.form).serialize();
-        data = URI.parseQuery(data);
+        // const dataJson = URI.parseQuery(data);
 
         var valid = jQuery(this.refs.form).valid();
         if (!valid) {return false};
 
 
-        if (data.id) {
-            var ajaxObj = OrgHelper.update(data);
-            console.log("Update");
-        } else {
-            var ajaxObj = OrgHelper.store(data);
-        }
+        // if (dataJson.id) {
+        //     var ajaxObj = OrgHelper.update(data);
+        //     console.log("Update");
+        // } else {
+        //     var ajaxObj = OrgHelper.store(data);
+        // }
 
-        ajaxObj.then(function(response) {
+        OrgHelper.save(data).then(function(response) {
             console.log(response);
             // this.props.fetchTags();
             store.dispatch(fetchOrgs()).then((response1) => {
@@ -94,21 +95,20 @@ class OrgForm extends Component {
     render() {
         return (
             <div>
+                <div className="modal-header">
+                    <h4 className="modal-title">Organization</h4>
+                </div>
+
                 <form className="form" ref='form' onSubmit={this.handleSubmit}>
                     <input type="hidden" className="form-control" ref="id" name="id" id="id" defaultValue={this.props.data.id} />
-                    <div className="row">
-                        <div className="col-md-8">
-                            <h4>Organization</h4>
-                            <div className="form-group">
-                                <label className="col-sm-12 control-label">Organization Name</label>
-                                <div className="col-sm-10">
-                                    <input type="text" className="form-control required" name="org_title" id="org_title" defaultValue={this.props.data.org_title} />
-                                </div>
-                            </div>
+                    <div className="content-area">
+                        <div className="form-group">
+                            <label className="control-label">Organization Name</label>
+                            <input type="text" className="form-control required" name="org_title" id="org_title" defaultValue={this.props.data.org_title} />
                         </div>
-                    </div>
 
-                    <div className="text-right">
+                    </div>
+                    <div className="modal-footer text-right">
                         <button type="submit" className="btn btn-success">Save</button>
                     </div>
                 </form>

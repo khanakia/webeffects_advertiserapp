@@ -24,7 +24,7 @@ export const API_URL_ORG_INVITE_USER = API_URL_ORG+'/user_invite';
 
 export const API_URL_ORGUSER = API_URL+'/org_user';
 
-export const API_URL_DOMAIN = API_URL+'/domainupdate';
+// export const API_URL_ORG_UPDATE_DOMAIN = API_URL_ORG+'/domainupdate';
 
 export const API_URL_ORG_LOGO = API_URL+'/uploadlogo';
 

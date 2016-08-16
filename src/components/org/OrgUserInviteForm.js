@@ -38,6 +38,7 @@ class OrgUserInviteForm extends Component {
         Controls.showpopup({
             detach : true,
             message : '<div id="' + uniq + '"></div>',
+            container_class : "w500",
             opacity: 0.5,
             blur: false,
             onopen : function(e){
@@ -64,6 +65,11 @@ class OrgUserInviteForm extends Component {
             'input_emails' : jQuery(this.refs.input_emails).tagsinput('items')
         };
 
+        if(data.input_emails.length==0) {
+            toastr.error("Please add some emails first.")
+            return false;
+        }
+        
         var ajaxObj = OrgHelper.inviteUsers(data);
 
         ajaxObj.then(function(response) {
@@ -86,25 +92,25 @@ class OrgUserInviteForm extends Component {
     render() {
         return (
             <div>
+                <div className="modal-header">
+                    <h4 className="modal-title">Invite Users</h4>
+                </div>
+
                 <form className="form" ref='form' onSubmit={this.handleSubmit}>
                     <input type="hidden" className="form-control" ref="id" name="id" id="id" defaultValue={this.props.data.id} />
-                    <div className="row">
-                        <div className="col-md-8">
-                            <h4>Invite Users</h4>
-                            <div className="form-group">
-                                <label className="col-sm-12 control-label">Enter Emails</label>
-                                <div className="col-sm-10">
-                                    <input type="text" className="form-control required width-full" ref="input_emails" name="input_emails" id="input_emails" defaultValue={this.props.data.input_emails} />
-                                </div>
+                    <div className="content-area">
+                        <div className="form-group">
+                            <label className="control-label">Enter Emails</label>
+                            <div className="bootstrap-tagsinput-widthfull">
+                                <input type="text" className="form-control required width-full" ref="input_emails" name="input_emails" id="input_emails" defaultValue={this.props.data.input_emails} />
                             </div>
                         </div>
                     </div>
 
-                    <div className="text-right">
+                    <div className="modal-footer text-right">
                         <button type="submit" className="btn btn-success">Save</button>
                     </div>
                 </form>
-
             </div>
         );
     }
