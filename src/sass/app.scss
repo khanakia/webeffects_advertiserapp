@@ -5,6 +5,11 @@
 .border-bottom {
     border-bottom: 1px #e5e5e5 solid;
 }
+
+.border-bottom-dotted {
+    border-bottom: 1px #e5e5e5 dotted;
+}
+
 .border-right {
     border-right: 1px #e5e5e5 solid;
 }
@@ -804,5 +809,17 @@ a:hover {
         max-width: 150px;
         padding: 10px 0;
         text-align: center;
+    }
+}
+
+.general-setting {
+    .content {
+        padding: 20px 0;
+        .subtitle {
+            font-size: 12px;
+        }
+        a {
+            color: #3aa3e3;
+        }
     }
 }

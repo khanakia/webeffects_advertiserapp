@@ -99,224 +99,184 @@ class UserProfileEditForm extends Component {
                         <div className="tab-content">
                             <div role="tabpanel" className="tab-pane active" id="essentials">
                                 <div className="row">
-                                    <br/>
-                                    <div className="col-md-3">
-                                        <label>Email*</label>
-                                    </div>
                                     <div className="col-md-8">
                                         <div className="form-group">
-                                            <input type="text" className="email form-control" defaultValue={data.email} />
+                                            <label className="col-sm-3 control-label">First Name</label>
+                                            <div className="col-sm-9">
+                                                <input type="text" className="form-control required" name="fname" id="fname" defaultValue={data.fname} />
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div className="row">
-                                    <div className="col-md-3">
-                                        <label>Name*</label>
-                                    </div>
-                                    <div className="col-md-4">
                                         <div className="form-group">
-                                            <input type="text" className="fname form-control" />
+                                            <label className="col-sm-3 control-label">Last Name</label>
+                                            <div className="col-sm-9">
+                                                <input type="text" className="form-control required" name="lname" id="lname" defaultValue={data.lname} />
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div className="col-md-4">
                                         <div className="form-group">
-                                            <input type="text" className="lname form-control" />
+                                            <label className="col-sm-3 control-label">Email</label>
+                                            <div className="col-sm-9">
+                                                <input type="text" className="form-control required" name="email" id="email" defaultValue={data.email} />
+                                            </div>
+                                        </div>
+                                        <div className="form-group">
+                                            <label className="col-sm-3 control-label">Phone</label>
+                                            <div className="col-sm-9">
+                                                <input type="text" className="form-control required" name="phone" id="phone" defaultValue={data.phone} />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div role="tabpanel" className="tab-pane" id="details">
                                 <div className="row">
-                                    <br/>
-                                    <div className="col-md-3">
-                                        <label>Job Title</label>
-                                    </div>
                                     <div className="col-md-8">
                                         <div className="form-group">
-                                            <input type="text" className="job_title form-control" />
+                                            <label className="col-sm-3 control-label">Job Title</label>
+                                            <div className="col-sm-9">
+                                                <input type="text" className="form-control required" name="job_title" id="job_title" defaultValue={data.job_title} />
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div className="row">
-                                    <div className="col-md-3">
-                                        <label>Office Phone</label>
-                                    </div>
-                                    <div className="col-md-5">
                                         <div className="form-group">
-                                            <input type="text" className="office_phone form-control" />
+                                            <label className="col-sm-3 control-label">Office Phone</label>
+                                            <div className="col-sm-9">
+                                                <input type="text" className="form-control required" name="office_phone" id="office_phone" defaultValue={data.office_phone} />
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div className="col-md-3">
                                         <div className="form-group">
-                                            <input type="text" className="office_phone_ext form-control" />
+                                            <label className="col-sm-3 control-label">Cell Phone</label>
+                                            <div className="col-sm-9">
+                                                <input type="text" className="form-control required" name="cell_phone" id="cell_phone" defaultValue={data.cell_phone} />
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div className="row">
-                                    <div className="col-md-3">
-                                        <label>Cell Phone</label>
-                                    </div>
-                                    <div className="col-md-3">
                                         <div className="form-group">
-                                            <select name="country" className="select_country form-control">
-                                                <option value="">Select Country</option>
-                                                <option value="AF">Afghanistan</option>
-                                                <option value="AL">Albania</option>
-                                                <option value="DZ">Algeria</option>
-                                                <option value="AS">American Samoa</option>
-                                                <option value="AD">Andorra</option>
-                                                <option value="AG">Angola</option>
-                                                <option value="AI">Anguilla</option>
-                                                <option value="AG">Antigua &amp; Barbuda</option>
-                                                <option value="AR">Argentina</option>
-                                                <option value="AA">Armenia</option>
-                                            </select>
+                                            <label className="col-sm-3 control-label">Home Phone</label>
+                                            <div className="col-sm-9">
+                                                <input type="text" className="form-control required" name="home_phone" id="home_phone" defaultValue={data.home_phone} />
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div className="col-md-2">
                                         <div className="form-group">
-                                            <input type="text" className="prefix form-control" />
-                                        </div>
-                                    </div>
-                                    <div className="col-md-3">
-                                        <div className="form-group">
-                                            <input type="text" className="number form-control" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="row">
-                                    <div className="col-md-3">
-                                        <label>Home Phone</label>
-                                    </div>
-                                    <div className="col-md-8">
-                                        <div className="form-group">
-                                            <input type="text" className="home_phone form-control" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="row">
-                                    <div className="col-md-3">
-                                        <label>Fax</label>
-                                    </div>
-                                    <div className="col-md-8">
-                                        <div className="form-group">
-                                            <input type="text" className="fax form-control" />
+                                            <label className="col-sm-3 control-label">Fax</label>
+                                            <div className="col-sm-9">
+                                                <input type="text" className="form-control required" name="fax" id="fax" defaultValue={data.fax} />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div role="tabpanel" className="tab-pane" id="address">
                                 <div className="row">
-                                    <br/>
-                                    <div className="col-md-5">
+                                    <div className="col-md-8">
                                         <div className="form-group">
-                                            <input type="text" className="fax form-control" placeholder="Line1" />
+                                            <label className="col-sm-3 control-label">Line1</label>
+                                            <div className="col-sm-9">
+                                                <input type="text" className="form-control required" name="line1" id="line1" defaultValue={data.line1} />
+                                            </div>
                                         </div>
                                         <div className="form-group">
-                                            <input type="text" className="fax form-control" placeholder="Line2" />
+                                            <label className="col-sm-3 control-label">Line2</label>
+                                            <div className="col-sm-9">
+                                                <input type="text" className="form-control required" name="line2" id="line2" defaultValue={data.line2} />
+                                            </div>
                                         </div>
                                         <div className="form-group">
-                                            <input type="text" className="fax form-control" placeholder="City" />
-                                        </div>
-                                    </div>
-                                    <div className="col-md-5">
-                                        <div className="form-group">
-                                            <input type="text" className="fax form-control" placeholder="State/Country" />
+                                            <label className="col-sm-3 control-label">City</label>
+                                            <div className="col-sm-9">
+                                                <input type="text" className="form-control required" name="city" id="city" defaultValue={data.city} />
+                                            </div>
                                         </div>
                                         <div className="form-group">
-                                            <input type="text" className="fax form-control" placeholder="Zip/Post Code" />
+                                            <label className="col-sm-3 control-label">State</label>
+                                            <div className="col-sm-9">
+                                                <input type="text" className="form-control required" name="state" id="state" defaultValue={data.state} />
+                                            </div>
                                         </div>
                                         <div className="form-group">
-                                            <select name="country" className="select_country form-control">
-                                                <option value="">Select Country</option>
-                                                <option value="AF">Afghanistan</option>
-                                                <option value="AL">Albania</option>
-                                                <option value="DZ">Algeria</option>
-                                                <option value="AS">American Samoa</option>
-                                                <option value="AD">Andorra</option>
-                                                <option value="AG">Angola</option>
-                                                <option value="AI">Anguilla</option>
-                                                <option value="AG">Antigua &amp; Barbuda</option>
-                                                <option value="AR">Argentina</option>
-                                                <option value="AA">Armenia</option>
-                                            </select>
+                                            <label className="col-sm-3 control-label">Zip Code</label>
+                                            <div className="col-sm-9">
+                                                <input type="text" className="form-control required" name="zip_code" id="zip_code" defaultValue={data.zip_code} />
+                                            </div>
+                                        </div>
+                                        <div className="form-group">
+                                            <label className="col-sm-3 control-label">Country</label>
+                                            <div className="col-sm-9">
+                                                <select name="country" className="form-control required" name="country" id="country" defaultValue={data.country}>
+                                                    <option value="">Select Country</option>
+                                                    <option value="AF">Afghanistan</option>
+                                                    <option value="AL">Albania</option>
+                                                    <option value="DZ">Algeria</option>
+                                                    <option value="AS">American Samoa</option>
+                                                    <option value="AD">Andorra</option>
+                                                    <option value="AG">Angola</option>
+                                                    <option value="AI">Anguilla</option>
+                                                    <option value="AG">Antigua &amp; Barbuda</option>
+                                                    <option value="AR">Argentina</option>
+                                                    <option value="AA">Armenia</option>
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div role="tabpanel" className="tab-pane" id="localization">
                                 <div className="row">
-                                    <br/>
-                                    <div className="col-md-3">
-                                        <label>Language</label>
-                                    </div>
-                                    <div className="col-md-6">
+                                    <div className="col-md-8">
                                         <div className="form-group">
-                                            <select name="country" className="select_country form-control">
-                                                <option value="">Select Language</option>
-                                                <option value="AF">Afghanistan</option>
-                                            </select>
+                                            <label className="col-sm-3 control-label">Language</label>
+                                            <div className="col-sm-9">
+                                                <select className="form-control required" name="language" id="language" defaultValue={data.language}>
+                                                    <option value="">Select Language</option>
+                                                    <option value="AF">Afghanistan</option>
+                                                </select>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div className="row">
-                                    <div className="col-md-3">
-                                        <label>Date Format</label>
-                                    </div>
-                                    <div className="col-md-6">
                                         <div className="form-group">
-                                            <select name="country" className="select_date_format form-control">
-                                                <option value="1" selected="">dd/mm/yyyy</option>
-                                                <option value="2">mm/dd/yyyy</option>
-                                                <option value="3">dd.mm.yyyy</option>
-                                                <option value="4">yyyy-mm-dd</option>
-                                                <option value="5">yyyy.mm.dd</option>
-                                                <option value="6">mm.dd.yyyy</option>
-                                            </select>
+                                            <label className="col-sm-3 control-label">Date Format</label>
+                                            <div className="col-sm-9">
+                                                <select className="form-control required" name="dateFormat" id="dateFormat" defaultValue={data.dateFormat}>
+                                                    <option value="1" selected="">dd/mm/yyyy</option>
+                                                    <option value="2">mm/dd/yyyy</option>
+                                                    <option value="3">dd.mm.yyyy</option>
+                                                    <option value="4">yyyy-mm-dd</option>
+                                                    <option value="5">yyyy.mm.dd</option>
+                                                    <option value="6">mm.dd.yyyy</option>
+                                                </select>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div className="row">
-                                    <div className="col-md-3">
-                                        <label>Time Format</label>
-                                    </div>
-                                    <div className="col-md-6">
                                         <div className="form-group">
-                                            <select name="country" className="select_hour_format form-control">
-                                                <option value="1" example="eg. 11:17AM">12 Hour Format (h:mmtt)</option>
-                                                <option value="2" example="eg. 11:17" selected="">24 Hour Format (HH:MM)</option>
-                                            </select>
+                                            <label className="col-sm-3 control-label">Time Format</label>
+                                            <div className="col-sm-9">
+                                                <select className="form-control required" name="timeFormat" id="timeFormat" defaultValue={data.timeFormat}>
+                                                    <option value="1" selected="">dd/mm/yyyy</option>
+                                                    <option value="2">mm/dd/yyyy</option>
+                                                    <option value="3">dd.mm.yyyy</option>
+                                                    <option value="4">yyyy-mm-dd</option>
+                                                    <option value="5">yyyy.mm.dd</option>
+                                                    <option value="6">mm.dd.yyyy</option>
+                                                </select>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div className="row">
-                                    <div className="col-md-3">
-                                        <label>Calendar Start</label>
-                                    </div>
-                                    <div className="col-md-6">
                                         <div className="form-group">
-                                            <select name="country" className="select_calender form-control">
-                                                <option value="no">Calendars start on a Monday</option>
-                                                <option value="yes" selected="">Calendars start on a Sunday</option>
-                                            </select>
+                                            <label className="col-sm-3 control-label">Calendar Start</label>
+                                            <div className="col-sm-9">
+                                                <select className="form-control required" name="calender" id="calender" defaultValue={data.calender}>
+                                                    <option value="no">Calendars start on a Monday</option>
+                                                    <option value="yes" selected="">Calendars start on a Sunday</option>
+                                                </select>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div className="row">
-                                    <div className="col-md-3">
-                                        <label>Time Zone</label>
-                                    </div>
-                                    <div className="col-md-6">
                                         <div className="form-group">
-                                            <select name="country" className="select_time_zone form-control">
-                                                <optgroup label="GMT -11">
-                                                    <option example="Current time: 11/08/2016 22:17" value="10">Midway Island</option>
-                                                    <option example="Current time: 11/08/2016 22:17" value="11">Samoa</option>
-                                                </optgroup>
-                                                <optgroup label="GMT -10">
-                                                    <option example="Current time: 11/08/2016 23:17" value="1">Hawaii</option>
-                                                </optgroup>
-                                            </select>
+                                            <label className="col-sm-3 control-label">Time Zone</label>
+                                            <div className="col-sm-9">
+                                                <select className="form-control required" name="time_zone" id="time_zone" defaultValue={data.time_zone}>
+                                                    <optgroup label="GMT -11">
+                                                        <option example="Current time: 11/08/2016 22:17" value="10">Midway Island</option>
+                                                        <option example="Current time: 11/08/2016 22:17" value="11">Samoa</option>
+                                                    </optgroup>
+                                                    <optgroup label="GMT -10">
+                                                        <option example="Current time: 11/08/2016 23:17" value="1">Hawaii</option>
+                                                    </optgroup>
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
