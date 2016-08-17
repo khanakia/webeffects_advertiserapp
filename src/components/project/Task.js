@@ -2,6 +2,13 @@ import React, { Component } from 'react';
 import ReactDom from 'react-dom';
 
 import TaskHelper from '../../helpers/helper_task.js'
+import * as Helper from '../../helpers'
+
+import TagSelector from '../tag/TagSelectorContainer';
+import TagColorInput from '../tag/TagColorInput';
+import { Provider } from 'react-redux';
+import {store} from '../../store/index.js';
+import { fetchTasklist, fetchTasklist_Tasks } from '../../actions/action_tasklist';
 
 
 class Task extends Component {
@@ -37,6 +44,69 @@ class Task extends Component {
         });
 
         $('.tasks-list').disableSelection();
+
+        
+        $('.a-addtags').qtip({ // Grab some elements to apply the tooltip to
+            content: {
+                text: function(event, api) {
+                    // var tooltip = api.elements.tooltip
+                    // var id = api.elements.target.data('id');
+                    // console.log(tooltip);
+                    // api.elements.content.html('Loading...');
+                    // Task.renderTagSelector(tooltip.attr('id'))
+                    return '';
+                }
+            },
+            position: {
+                my: 'top right',
+                at: 'top right',
+                // container: $('div#main_layout')
+            },
+
+            show: {
+                 solo: true
+            },
+            hide: 'unfocus',
+            style: 'qtip-light',
+            overwrite: true,
+            events: {
+                show: function(event, api) {
+                    console.log("shows");
+                    var tooltip = api.elements.tooltip
+                    var task_id = api.elements.target.data('id');
+
+                    this.renderTagSelector(tooltip.attr('id'), task_id)
+                }.bind(this),
+                hide: function(event, api) {
+                    // api.destroy(true);
+                }
+            }
+        })
+    }
+
+
+    onTagSelect = (tag,props) => {
+        // console.log(this.props)
+        // console.log(props.tags_reducer.selectedTags.tags);
+        var data = {
+            tag_id : tag.id,
+            object_id : props.object_id,
+            object_type : 'task',
+        }
+        console.log(data)
+        Helper.TagItem.store(data).then((response) => {
+            console.log('tag added');
+            store.dispatch(fetchTasklist())
+        })
+    }
+
+    renderTagSelector(id,object_id) {
+        // document.getElementById(id).innerHTML = '';
+        ReactDom.render(
+                <Provider store={store} key="provider">
+                    <TagSelector onTagSelect={this.onTagSelect} object_id={object_id}/>
+                </Provider>,
+                document.getElementById(id));
     }
 
     addSubTask = (e) => {
@@ -44,6 +114,12 @@ class Task extends Component {
         console.log(this);
         jQuery('#t_'+this.props.data.id).children('.tasks-list').toggleClass('active');
 
+    }
+
+    addTag = (e) => {
+        e.preventDefault();
+        console.log(this.props.data);
+        
     }
 
     renderTasks(tasks) {
@@ -84,11 +160,12 @@ class Task extends Component {
                         <div className="controls right">
                             <a href="#" title="Add Subtasks" onClick={(e) => this.addSubTask(e)}><i className="fa fa-indent"></i></a>
                             <a href="#"><i className="fa fa-exclamation-circle"></i></a>
-                            <a href="#"><i className="fa fa-tags"></i></a>
+                            <a href="#" onClick={(e) => this.addTag(e)} data-id={this.props.data.id} className="a-addtags"><i className="fa fa-tags "></i></a>
                         </div>
+                        <div id={"selector_"+this.props.data.id}></div>
                     </div>
                 </div>
-
+                
                 <div className="tasks-list" data-id={this.props.data.id}>
                     {this.renderTasks(this.props.data.children)}
                 </div>

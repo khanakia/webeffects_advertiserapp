@@ -13,10 +13,6 @@ import DropdownCompanies from '../components/controls/DropdownCompanies'
 import {store} from '../store/index.js';
 
 
-
-
-
-
 export default class Layout extends Component {
     constructor(props) {
         super(props);
@@ -31,7 +27,7 @@ export default class Layout extends Component {
     }
 
     onTagSelect = (tag) => {
-        
+        console.log(tag)
         // console.log(e.target);
         // console.log(props.tags_reducer.selectedTags.tags);
         // ReactDOM.render(<TagSingle data={tag} />, this.refs.tags_wrapper);

@@ -107,16 +107,8 @@ class OrganizationList extends Component {
         
         return (
             <div>
-                <Sidebar>
-                    <h3>Current Organization</h3>
-                    <h4>Name</h4>
-                    {this.props.state.org.current.data.org_title}
-                    <h4>Subdomain</h4>
-                    {this.props.state.org.current.data.org_slug}
-                    <h4>Domain</h4>
-                    {this.props.state.org.current.data.org_domain ? this.props.state.org.current.data.org_domain : 'N/A'}
-                </Sidebar>
-                <PagePanel hasSidebar="true">
+                
+                <PagePanel>
                     <div className="control-toolbar1">
                         <div className="left">
                             <span className="title">Organizations</span>

@@ -5,8 +5,9 @@ import ProjectPeople from '../components/ProjectPeople';
 
 const mapStateToProps = (state) => {
     return {
-        projectUsers: state.project.users.data,
-        state : state
+        state : state,
+        projectUsers: state.project.users,
+        current_org: state.appdata.current_org
     };
 }
 

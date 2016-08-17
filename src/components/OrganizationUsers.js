@@ -105,9 +105,7 @@ class OrganizationUsers extends Component {
                                 }
                             </span>
                         </div>
-
                     </div>
-
                 </li>
             );
         });

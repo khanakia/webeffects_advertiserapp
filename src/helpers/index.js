@@ -1,14 +1,15 @@
-import Auth from './auth'
-import Util from './util'
-import Localstore from './localstore'
-import Org from './helper_org'
-import Company from './helper_company'
-import OrgUser from './helper_org_user'
-import Project from './helper_project'
-import ProjectUser from './helper_project_user'
-import Tag from './helper_tag'
-import Task from './helper_task'
-import Tasklist from './helper_tasklist'
+import Auth from '../helpers/auth'
+import Util from '../helpers/util'
+import Localstore from '../helpers/localstore'
+import Org from '../helpers/helper_org'
+import Company from '../helpers/helper_company'
+import OrgUser from '../helpers/helper_org_user'
+import Project from '../helpers/helper_project'
+import ProjectUserHelper from '../helpers/helper_project_user'
+import Tag from '../helpers/helper_tag'
+import TagItem from '../helpers/helper_tag_item'
+import Task from '../helpers/helper_task'
+import Tasklist from '../helpers/helper_tasklist'
 
 
 export {
@@ -19,8 +20,9 @@ export {
     Company,
     OrgUser,
     Project,
-    ProjectUser,
+    ProjectUserHelper,
     Tag,
+    TagItem,
     Task,
     Tasklist
 }

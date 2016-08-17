@@ -53,7 +53,8 @@ class DropdownCompanies extends Component {
         // console.log(this.props.defaultValue)
         return (
             <div className="control-dropdowncompanies">
-                <select className={ 'dropdowncompanies' + this.props.className} ref="dropdowncompanies" name={this.props.name} >
+                <select className={ 'dropdowncompanies' + this.props.className} ref="dropdowncompanies" name={this.props.name} onChange={(e) => this.props.onChange(e)} >
+                    <option value="">Select Company</option>
                     {this.renderList(this.state.data)}
                 </select>
             </div>

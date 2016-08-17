@@ -93,44 +93,58 @@ class ProjectForm extends Component {
     render() {
         return (
             <div>
-                <form className="form" ref='form' onSubmit={this.handleSubmit}>
-                    <input type="hidden" className="form-control" ref="id" name="id" id="id" defaultValue={this.props.data.id} />
-                    <div className="row">
-                        <div className="col-md-8">
-                            <h4>Organization</h4>
-                            <div className="form-group">
-                                <label className="col-sm-12 control-label">Name of the Project</label>
-                                <div className="col-sm-10">
-                                    <input type="text" className="form-control required" name="project_title" id="project_title" defaultValue={this.props.data.project_title} />
-                                </div>
-                            </div>
-                            <div className="form-group">
-                                <label className="col-sm-12 control-label">Start Date</label>
-                                <div className="col-sm-10">
-                                    
-                                    <InputDate name="start_date" defaultValue={this.props.data.start_date} />
-                                </div>
-                            </div>
-                            <div className="form-group">
-                                <label className="col-sm-12 control-label">End Date</label>
-                                <div className="col-sm-10">
-                                    <InputDate name="end_date" defaultValue={this.props.data.end_date} />
-                                </div>
-                            </div>
-                            
-                            <div className="form-group">
-                                <label className="col-sm-12 control-label">Description</label>
-                                <div className="col-sm-10">
-                                    <textarea name="project_description"></textarea>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div className="modal-header">
+                    <h4 className="modal-title">Add People to Project</h4>
+                </div>
 
-                    <div className="text-right">
+                <ul className="nav nav-tabs" role="tablist">
+                    <li role="presentation" className="active"><a href="#general" aria-controls="general" role="tab" data-toggle="tab">General</a></li>
+                    <li role="presentation"><a href="#description" aria-controls="description" role="tab" data-toggle="tab">Description</a></li>
+                </ul>
+
+                <form className="form-horizontal11" ref='form' onSubmit={this.handleSubmit}>
+                    <div className="content-area">
+                        <input type="hidden" className="form-control" ref="id" name="id" id="id" defaultValue={this.props.data.id} />
+
+                        <div className="tab-content">
+                            <div role="tabpanel" className="tab-pane active" id="general">
+                                <div className="form-group">
+                                    <label className="control-label">Name of the Project</label>
+                                    <div className="">
+                                        <input type="text" className="form-control required" name="project_title" id="project_title" defaultValue={this.props.data.project_title} />
+                                    </div>
+                                </div>
+                                <div className="form-group">
+                                    <label className=" control-label">Start Date</label>
+                                    <div className="">
+                                        
+                                        <InputDate name="start_date" defaultValue={this.props.data.start_date} />
+                                    </div>
+                                </div>
+                                <div className="form-group">
+                                    <label className=" control-label">End Date</label>
+                                    <div className="">
+                                        <InputDate name="end_date" defaultValue={this.props.data.end_date} />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div role="tabpanel" className="tab-pane" id="description">
+                                <div className="form-group">
+                                    <label className=" control-label">Description</label>
+                                    <div className="">
+                                        <textarea name="project_description"></textarea>
+                                    </div>
+                                </div>
+                            </div>            
+                        </div>    
+                    </div>
+                    <div className="modal-footer text-right">
                         <button type="submit" className="btn btn-success">Save</button>
                     </div>
                 </form>
+
+            
 
             </div>
         );

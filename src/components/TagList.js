@@ -6,7 +6,7 @@ import { Link } from 'react-router';
 import PagePanel from './PagePanel'
 import TagForm from './tag/TagForm'
 
-import * as Helpers from '../Helpers'
+import * as Helpers from '../helpers'
 
 class TagList extends Component {
     constructor(props, context) {

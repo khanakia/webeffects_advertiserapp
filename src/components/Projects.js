@@ -22,22 +22,36 @@ class ProjectsList extends Component {
         return projects.map((project) => {
             return (
                 <li className="list-group-item" key={project.id}>
-                    <h4 className="list-group-item-heading">
-                            <Link to={'projects/'+project.id+'/overview'}>{project.project_title}</Link><br/>
+                    <div className="d-table w100">
+                        <div className="d-table-cell xs-d-block w20 xs-w100 valign-middle">
+                            <h4 className="list-group-item-heading">
+                                <Link to={'projects/'+project.id+'/overview'}>{project.project_title}</Link><br/>
+                            </h4>
+                        </div>
+                        <div className="d-table-cell xs-d-block w10 xs-w100 valign-middle">
+                            {project.start_date ?
+                                    <span>Start Date: {project.start_date}<br/></span>
+                                    : ''
+                            }
 
-                            <span>Start Date: {project.start_date}</span><br/>
-                            <span>End Date: {project.start_date}</span>
-                    </h4>
+                            {project.end_date ?
+                                <span>End Date: {project.end_date}</span>
+                                    : ''
+                            }    
+                        </div>
+                        <div className="d-table-cell xs-d-block valign-middle text-right">
+                            <span className="icons-group light">
+                                <button className="btn btn-plain" title="Edit" onClick={(e)=> this.editProject(project,e)} ><i className="fa fa-pencil"></i></button>
+                                <button className="dropdown-toggle btn btn-plain" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span className="glyphicon glyphicon-cog" aria-hidden="true"></span> <span className="caret"></span></button>
+                                <ul className="dropdown-menu dropdown-menu-right">
+                                  <li><Link to="organization">Project Setting</Link></li>
+                                  <li><Link to="organization/companies">Archive Project</Link></li>
+                                  <li><Link to="organization/peoples">Delete Project</Link></li>
+                                </ul>
+                            </span>
+                        </div>
+                    </div>
 
-                    <span className="controls icons-group">
-                        <button className="btn btn-plain" title="Edit" onClick={(e)=> this.editProject(project,e)} ><i className="fa fa-pencil"></i></button>
-                        <button className="dropdown-toggle btn btn-plain" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span className="glyphicon glyphicon-cog" aria-hidden="true"></span> <span className="caret"></span></button>
-                        <ul className="dropdown-menu dropdown-menu-right">
-                          <li><Link to="organization">Project Setting</Link></li>
-                          <li><Link to="organization/companies">Archive Project</Link></li>
-                          <li><Link to="organization/peoples">Delete Project</Link></li>
-                        </ul>
-                    </span>
                 </li>
             );
         });
@@ -46,16 +60,41 @@ class ProjectsList extends Component {
     editProject(data, e) {
         ProjectForm.showInPoup({data})
     }
+
+    deleteProject(data, e) {
+        $.confirm({
+            title: '',
+            content: 'Are you sure you want to remove ?',
+            confirmButton: 'Yes',
+            cancelButton: 'No',
+            confirm: function(){
+                OrgUserHelper.removeUser(jQuery.param(data)).then((response) => {
+                    this.props.fetchOrgUsers();
+                });
+            }.bind(this)
+        });
+    }
+
+    archiveProject(data, e) {
+        $.confirm({
+            title: '',
+            content: 'Are you sure you want to remove ?',
+            confirmButton: 'Yes',
+            cancelButton: 'No',
+            confirm: function(){
+                OrgUserHelper.removeUser(jQuery.param(data)).then((response) => {
+                    this.props.fetchOrgUsers();
+                });
+            }.bind(this)
+        });
+    }
    
     render() {
-        const { data } = this.props.projectsList;
+        const data = this.props.projectsList;
 
         return (
             <div>
-                <Sidebar>
-                  
-                </Sidebar>
-                <PagePanel hasSidebar="true">
+                <PagePanel>
                     <div className="control-toolbar1">
                         <div className="left">
                             <span className="title">Projects</span>
@@ -68,7 +107,7 @@ class ProjectsList extends Component {
                                     
                                 </span>
                                 <span className="col icons-group">
-                                    <button className="btn" onClick={()=> ProjectForm.showInPoup({}, {},this.props)}><i className="fa fa-plus"></i></button>
+                                    <button className="btn btn-success" onClick={()=> ProjectForm.showInPoup({}, {},this.props)}><i className="fa fa-plus"></i></button>
                                 </span>
                             </span>    
                         </div>

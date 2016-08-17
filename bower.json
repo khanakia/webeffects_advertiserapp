@@ -56,5 +56,6 @@
     "bootstrap-tagsinput": "~0.8.0",
     "switchery": "~0.8.1",
     "jquery-confirm2": "~2.5.1",
+    "jstree": "~3.3.2"
   }
 }

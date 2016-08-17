@@ -238,7 +238,6 @@ a:hover {
       color: #fff; }
 
 .comp-tag-selector {
-  margin: 50px;
   width: 225px;
   box-shadow: 0px 0px 5px 1px rgba(33, 26, 26, 0.14); }
   .comp-tag-selector input {

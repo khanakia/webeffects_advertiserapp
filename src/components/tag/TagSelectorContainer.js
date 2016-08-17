@@ -25,7 +25,8 @@ const getVisibleTodos = (todos, filter) => {
 const mapStateToProps = (state) => {
     return {
         // list: state.tag.list.data,
-        tags: getVisibleTodos(state.tag.list.data, state.tag.filterTags)
+        tags: getVisibleTodos(state.tag.list.data, state.tag.filterTags),
+        current_org: state.appdata.current_org
 
     };
 }
@@ -34,9 +35,11 @@ const mapDispatchToProps = (dispatch) => {
     return {
         dispatch,
         fetchTags: () => {
-            TagHelper.index().then((response) => {
-                dispatch(fetchTags(response))
-            });
+            dispatch(fetchTags())
+            
+            // TagHelper.index().then((response) => {
+            //     dispatch(fetchTags(response))
+            // });
         },
 
         filterTags: (data) => {

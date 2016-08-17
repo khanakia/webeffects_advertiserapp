@@ -23,7 +23,12 @@ class TagSelector extends Component {
     static defaultProps = {
 
         // Will give tag as json data on new tag create or tag select by click tag link
-        onTagSelect: function(tag) { return '';  },
+        onTagSelect: function(tag, props) { return '';  },
+        object_id : '',
+        // data : {
+        //     tag_id : '',
+        //     object_type : '',
+        // }
     }
 
 
@@ -45,7 +50,7 @@ class TagSelector extends Component {
         // console.log(tag_title);
     }
 
-     handleSubmit = (e) => {
+    handleSubmit = (e) => {
         e.preventDefault();
         let tag_title = (this.refs.input_add_tag.value);
         let tag_color = this.tag_color;
@@ -59,7 +64,8 @@ class TagSelector extends Component {
         var ajaxObj = TagHelper.store(data);
         ajaxObj.then(function(response){
             // console.log(response.data.tag);
-            this.tagSelected(response.data.tag)
+            // this.tagSelected(response.data.tag)
+            this.props.onTagSelect(response.data.tag)
             this.props.fetchTags();
         }.bind(this));
 
@@ -68,14 +74,15 @@ class TagSelector extends Component {
 
     tagClick = (tag, e) => {
         e.preventDefault();
-        this.tagSelected(tag)
+        // this.tagSelected(tag)
+        this.props.onTagSelect(tag, this.props)
     }
 
-    tagSelected = (tag) => {
-        // this.props.selectTag(tag)
-        this.props.onTagSelect(tag)   
-        // setTimeout(() => {this.props.onTagSelect(tag, this.props)   }, 1000)
-    }
+    // tagSelected = (tag) => {
+    //     // this.props.selectTag(tag)
+    //     this.props.onTagSelect(tag)
+    //     // setTimeout(() => {this.props.onTagSelect(tag, this.props)   }, 1000)
+    // }
 
     renderTags(tags) {
         return tags.map((tag) => {
@@ -95,14 +102,21 @@ class TagSelector extends Component {
 
     renderCreateTag() {
         if(this.props.tags.length==0) {
-            return (
-                <div className="creatTag p20">
-                        <label>Select Color</label>
-                        <TagColorInput onValueChange={(color) => {this.tagColorInputValueChange(color)}}/>
-                        <br/>
-                        <button className="btn btn-success" onClick={(e)=> this.handleSubmit(e)}>Create Tag</button>
-                </div>
-            )
+
+            if(this.props.current_org.tags_lock_to_admin && !this.props.current_org.permissions.org_can_update) {
+                return (
+                    <h5 className="ml10">No Tags Found. </h5>
+                )
+            } else {
+                return (
+                    <div className="creatTag p20">
+                            <label>Select Color</label>
+                            <TagColorInput onValueChange={(color) => {this.tagColorInputValueChange(color)}}/>
+                            <br/>
+                            <button className="btn btn-success" onClick={(e)=> this.handleSubmit(e)}>Create Tag</button>
+                    </div>
+                )
+            }
         }
     }
 
@@ -115,15 +129,12 @@ class TagSelector extends Component {
         
         return (
             <div className="comp-tag-selector">
-               <input type="text" placeholder="Add Tag" ref="input_add_tag" onChange={(e) => this.inputChange(e)} />
+                <input type="text" placeholder="Add Tag" ref="input_add_tag" onChange={(e) => this.inputChange(e)} />
+                {this.renderCreateTag()}
+
                 <ul className="tags-list">
                    {this.renderTags(tags)}
                 </ul>
-
-                {this.renderCreateTag()}
-              
-
-
             </div>
         );
     }

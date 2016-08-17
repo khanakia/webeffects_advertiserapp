@@ -18,7 +18,7 @@ export default class Layout extends Component {
         if (jQuery.isEmptyObject(this.props.current_org) || jQuery.isEmptyObject(this.props.current_user)) return false;
 
         return (
-          <div>
+          <div id="main_layout">
             <Header {...this.props}/>
             <section id="content">
                 {this.props.children}
