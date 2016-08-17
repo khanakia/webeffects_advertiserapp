@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import { If, Then, Else } from 'react-if';
+// import { If, Then, Else } from 'react-if';
 
 import Sidebar from './Sidebar'
 import PagePanel from './PagePanel'
@@ -13,11 +13,14 @@ import OrgUserInviteForm from './org/OrgUserInviteForm'
 
 import Auth from '../helpers/auth.js'
 import OrgUserHelper from '../helpers/helper_org_user.js'
+import Util from '../helpers/util'
+import Localstore from '../helpers/localstore'
 
 
 class OrganizationUsers extends Component {
     constructor(props, context) {
         super(props, context);
+        // this.currentOrg = Localstore.getItem('org');
     }
 
     componentWillMount() {
@@ -25,8 +28,14 @@ class OrganizationUsers extends Component {
     }
 
     renderList(orgusers) {
+        if(orgusers.error) {
+            Auth.updateCurrentOrg().then(function(response){
+                // window.location.href = "/";
+            })
+            return false;
+        }
         return orgusers.map((orguser) => {
-            console.log(orguser.office_phone)
+            
             return (
                 <li className="list-group-item" key={orguser.id}>
                     <div className="d-table w100">
@@ -63,7 +72,7 @@ class OrganizationUsers extends Component {
                                 
                             </h4>
                         </div>
-                        <div className="d-table-cell xs-d-block xs-mt20 w30 xs-w100 valign-middle">
+                        <div className="d-table-cell xs-d-block xs-mt20 w20 xs-w100 valign-middle">
                             <h4 className="list-group-item-heading">
                                 <span className="d-block fs12 mb5 lh-15p">
                                 {orguser.address_line_1 ? <span>{orguser.address_line_1}<br/></span> : ''}
@@ -73,11 +82,27 @@ class OrganizationUsers extends Component {
                                 </span>
                             </h4>
                         </div>
+
+                        <div className="d-table-cell xs-d-block valign-middle">
+                                
+                                {Util.badgetOwner((this.props.current_org.created_by_user_id==orguser.user_id))}
+                                {Util.badgeIsAdmin(orguser.permissions.is_admin)}
+                                
+                                
+                        </div>
                         <div className="d-table-cell xs-d-block valign-middle text-right">
                             <span className="icons-group light">
-                                <button className="btn btn-plain" title="Remove User" onClick={(e)=> this.removeUser(orguser,e)} ><i className="fa fa-trash"></i></button>
-                                <button className="btn btn-plain" title="Edit User Settings" onClick={(e)=> this.editUserSetting(orguser,e)} ><i className="fa fa-gear"></i></button>
-                                <button className="btn btn-plain" title="Edit User Permissions" onClick={(e)=> this.editUserPermission(orguser,e)} ><i className="fa fa-cogs"></i></button>
+                                {(this.props.current_org.permissions.org_can_update && !orguser.permissions.is_org_owner) ?
+                                    <span>
+                                        <button className="btn btn-plain" title="Remove User" onClick={(e)=> this.removeUser(orguser,e)} ><i className="fa fa-trash"></i></button>
+                                        <button className="btn btn-plain" title="Edit User Permissions" onClick={(e)=> this.editUserPermission(orguser,e)} ><i className="fa fa-cogs"></i></button>
+                                    </span>    
+                                    : ''
+                                }
+                                {this.props.current_org.permissions.org_can_update ?
+                                    <button className="btn btn-plain" title="Edit User Settings" onClick={(e)=> this.editUserSetting(orguser,e)} ><i className="fa fa-gear"></i></button>
+                                    : ''
+                                }
                             </span>
                         </div>
 
@@ -134,7 +159,10 @@ class OrganizationUsers extends Component {
                                     
                                 </span>
                                 <span className="col icons-group">
-                                    <button className="btn btn-success" onClick={()=> OrgUserInviteForm.showInPoup({})}><i className="fa fa-plus mr10"></i>Invite Users</button>
+                                    {this.props.current_org.permissions.org_can_update ?
+                                        <button className="btn btn-success" onClick={()=> OrgUserInviteForm.showInPoup({})}><i className="fa fa-plus mr10"></i>Invite Users</button>
+                                        : ''
+                                    }
                                 </span>
                             </span>    
                         </div>

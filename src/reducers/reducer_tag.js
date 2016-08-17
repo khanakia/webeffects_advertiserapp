@@ -3,7 +3,7 @@ import {
 } from '../actions/action_tag';
 
 
-  const INITIAL_STATE = { taglist: {tags: [], error:null, loading: false},  
+  const INITIAL_STATE = { list: {data: []},
               newTag:{tag:null, error: null, loading: false}, 
               activeTag:{tag: [], tasks:[], error:null, loading: false}, 
               deletedTag: {tag: null, error:null, loading: false},
@@ -15,7 +15,7 @@ export default function(state = INITIAL_STATE, action) {
   switch(action.type) {
 
   case FETCH_TAGS:
-    return { ...state, taglist: {tags:action.payload.data} };
+    return { ...state, list: {data:action.payload.data} };
 
   case FILTER_TAGS:
     return { ...state, filterTags: action.payload }; 

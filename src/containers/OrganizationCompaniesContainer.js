@@ -1,13 +1,14 @@
 import { connect } from 'react-redux'
 import { fetchCompanies} from '../actions/action_company';
 
-import CompanyList from '../components/CompanyList';
+import OrganizationCompanies from '../components/OrganizationCompanies';
 
 
 const mapStateToProps = (state) => {
 
     return {
-        companiesList: state.companies.list
+        companiesList: state.companies.list,
+        current_org: state.appdata.current_org
     };
 }
 
@@ -21,6 +22,6 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 
-const CompanyListContainer = connect(mapStateToProps, mapDispatchToProps)(CompanyList)
+const OrganizationCompaniesContainer = connect(mapStateToProps, mapDispatchToProps)(OrganizationCompanies)
 
-export default CompanyListContainer
+export default OrganizationCompaniesContainer

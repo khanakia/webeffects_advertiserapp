@@ -7,6 +7,8 @@ import TagsReducer from './reducer_tag';
 
 import HeaderReducer from './reducer_header';
 
+import AppdataReducer from './reducer_appdata';
+
 
 
 const rootReducer = combineReducers({
@@ -14,7 +16,8 @@ const rootReducer = combineReducers({
   project: ProjectReducer,
   companies: CompaniesReducer,
   tasklist: TasklistReducer,
-  tags_reducer: TagsReducer,
+  tag: TagsReducer,
+  appdata: AppdataReducer,
   header: HeaderReducer
 
 });

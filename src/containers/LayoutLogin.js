@@ -40,26 +40,12 @@ export default class LayoutLogin extends Component {
         if (!valid) {
             return false 
         };
-        // console.log(this.refs.email.value);
-        // jQuery.ajax({
-        //     type: "POST",
-        //     url: 'http://local.pma/api/auth/signin',
-        //     dataType: "JSON",
-        //     data: { 'email': this.refs.email.value, 'password': this.refs.password.value },
-        //     success: function(data) {
-        //         if (data.token != null) {
-        //             window.location.href = API_URL;
-        //         } else {
-        //             window.location.href = '/#/login';
-        //         }
-        //     }
-        // });
-
+       
         Auth.attempt({email: this.refs.email.value, password: this.refs.password.value}).then((response) => {
             console.log(response);
             if (response.data.token != null) {
-                Localstore.setOrg(response.data.org)
-                Localstore.setUser(response.data.user)
+                // Localstore.setOrg(response.data.org)
+                // Localstore.setUser(response.data.user)
                 hashHistory.push('/')
             }
         });

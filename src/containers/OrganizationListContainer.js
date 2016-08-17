@@ -11,8 +11,9 @@ const mapStateToProps = (state) => {
     // console.log(state.posts.orgsList);
 
     return {
+        state : state,
         orgsList: state.org.list,
-        state : state
+        current_org: state.appdata.current_org
 
     };
 }

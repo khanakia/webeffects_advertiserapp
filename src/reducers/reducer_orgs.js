@@ -1,10 +1,12 @@
-import {
+import {action_organization} from '../actions';
+
+const {
     FETCH_ORGS,
     FETCH_ORG_CURRENT,
     FETCH_ORG_USERS,
     RESET_ORGS,
     ADD_ORG
-} from '../actions/action_organization';
+} = action_organization;
 
 
 // const INITIAL_STATE = {

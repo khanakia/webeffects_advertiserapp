@@ -9,8 +9,10 @@ import CompanyForm from './org/CompanyForm'
 
 import Auth from '../helpers/auth.js'
 import CompanyHelper from '../helpers/helper_company.js'
+import Util from '../helpers/util'
+import Localstore from '../helpers/localstore'
 
-class CompanyList extends Component {
+class OrganizationCompanies extends Component {
     constructor(props) {
         super(props);
     }
@@ -19,21 +21,22 @@ class CompanyList extends Component {
         this.props.fetchCompanies();
         // let { dispatch } = this.props
         // console.log(dispatch);
+        // this.currentOrg = Localstore.getItem('org');
     }
 
     editButton(item) {
         // console.log(item.permissions.is_admin || item.created_by_user_id==Auth.getUserID());
-        // if(item.permissions.is_admin || item.created_by_user_id==Auth.getUserID()) {
+        if(this.props.current_org.permissions.org_can_update) {
             return (
                 <span>
                     <button className="btn btn-plain" title="Edit" onClick={(e)=> this.editCompany(item,e)} ><i className="fa fa-pencil"></i></button>
                 </span>
             )
-        // }
+        }
     }
 
     deleteButton(item) {
-        if(!item.is_default) {
+        if(!item.is_default && this.props.current_org.permissions.org_can_update) {
             return (
                 <span>
                     <button className="btn btn-plain" title="Remove Company" onClick={(e)=> this.deleteCompany(item.id,e)} ><i className="fa fa-trash"></i></button>
@@ -110,7 +113,7 @@ class CompanyList extends Component {
                                 
                             </h4>
                         </div>
-                        <div className="d-table-cell xs-d-block xs-mt20 w30 xs-w100 valign-middle">
+                        <div className="d-table-cell xs-d-block xs-mt20 w20 xs-w100 valign-middle">
                             <h4 className="list-group-item-heading">
                                 <span className="d-block fs12 mb5 lh-15p">
                                 {item.company_address_line1 ? <span>{item.company_address_line1}<br/></span> : ''}
@@ -119,6 +122,10 @@ class CompanyList extends Component {
                                 {item.company_country}
                                 </span>
                             </h4>
+                        </div>
+
+                        <div className="d-table-cell xs-d-block w10 xs-w100">
+                                {Util.badgetDefault(item)}
                         </div>
                         <div className="d-table-cell xs-d-block valign-middle text-right">
                             <span className="icons-group light">
@@ -152,7 +159,10 @@ class CompanyList extends Component {
                                     
                                 </span>
                                 <span className="col icons-group">
+                                { this.props.current_org.permissions.org_can_update ?
                                     <button className="btn btn-success" onClick={()=> CompanyForm.showInPoup({}, {},this.props)}><i className="fa fa-plus"></i></button>
+                                    : ''
+                                }
                                 </span>
                             </span>    
                         </div>
@@ -171,4 +181,4 @@ class CompanyList extends Component {
 }
 
 
-export default CompanyList;
+export default OrganizationCompanies;

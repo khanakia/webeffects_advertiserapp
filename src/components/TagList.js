@@ -6,6 +6,8 @@ import { Link } from 'react-router';
 import PagePanel from './PagePanel'
 import TagForm from './tag/TagForm'
 
+import * as Helpers from '../Helpers'
+
 class TagList extends Component {
     constructor(props, context) {
         super(props, context);
@@ -27,14 +29,32 @@ class TagList extends Component {
 
     editTag(data, e) {
         e.preventDefault()
-        TagForm.showInPoup({is_new : false}, data ,this.props)
+        TagForm.showInPoup({data})
         
+    }
+
+    deleteTag(data, e) {
+        e.preventDefault();
+        $.confirm({
+            title: '',
+            content: 'Are you sure you want to remove ?',
+            confirmButton: 'Yes',
+            cancelButton: 'No',
+            confirm: function(){
+                Helpers.Tag.delete(data.id).then((response) => {
+                    this.props.fetchTags();
+                });
+            }.bind(this)
+        });
     }
 
     renderTags(tags) {
         return tags.map((tag) => {
             return (
-                <a key={tag.id} href="#" className="tag" style={{backgroundColor: tag.tag_color}} onClick={(e)=> this.editTag(tag,e)} >{tag.tag_title}</a>
+                <span key={tag.id} className="tag" style={{backgroundColor: tag.tag_color}}>
+                    <a href="#" onClick={(e)=> this.editTag(tag,e)} >{tag.tag_title}</a>
+                    <a href="#" className="ml10" onClick={(e)=> this.deleteTag(tag,e)} ><i className="fa fa-trash"></i></a>
+                </span>
             );
         });
     }
@@ -42,19 +62,33 @@ class TagList extends Component {
 
     render() {
         
-        const { tags } = this.props.tags_reducer.taglist;
-        // console.log(tags);
+        
+        const { data } = this.props.tagsList;
+        
         return (
             <div>
                 <PagePanel>
-                    <div className="heading-bar">
-                        <h2 className="pull-left">Tags</h2>
-                        <div className="pull-right">
-                            <button className="btn btn-success" onClick={()=> TagForm.showInPoup({}, {},this.props)}>Add New Tag</button>
+                    <div className="control-toolbar1">
+                        <div className="left">
+                            <span className="title">Tags</span>
+                        </div>
+                        <div className="middle">
+                        </div>
+                        <div className="right">
+                            <span className="pull-right">
+                                <span className="col mr10">
+                                    
+                                </span>
+                                <span className="col icons-group">
+                                    <button className="btn btn-success" onClick={()=> TagForm.showInPoup({}, {},this.props)}>Add New Tag</button>
+                                </span>
+                            </span>    
                         </div>
                     </div>
-                    <div className="tags-wrapper">
-                       {this.renderTags(tags)}
+                    <div className="mt20">
+                        <div className="tags-wrapper">
+                            {this.renderTags(data)}
+                        </div>
                     </div>
                 </PagePanel>
             </div>

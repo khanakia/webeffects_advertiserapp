@@ -12,6 +12,8 @@ export const API_URL_PUBLIC = API_URL+'/public';
 export const API_URL_GETALLORGSBYEMAIL = API_URL_PUBLIC+'/findorgs_byemail';
 export const API_URL_GETORG_BYDOMAIN = API_URL_PUBLIC+'/findorgs_bydomain';
 
+export const API_URL_USER = API_URL+'/user';
+
 export const API_URL_ORG = API_URL+'/org';
 
 

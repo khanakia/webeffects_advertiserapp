@@ -3,18 +3,20 @@ import React, { Component, PropTypes } from 'react'
 import { Link, hashHistory } from 'react-router'
 
 
-import Auth from '../helpers/auth.js'
+import Auth from '../helpers/auth'
 
-import UserprofileForm from './UserprofileForm'
-import Localstore from '../helpers/localstore.js'
+
+import UserProfileEditForm from './UserProfileEditForm'
+// import Localstore from '../helpers/localstore'
 
 
 export default class Header extends Component {
 
 	constructor(props) {
 		super(props)
-		this.currentOrg = Localstore.getItem('org');
-		Auth.updateCurrentOrg()
+		// this.currentOrg = Localstore.getItem('org');
+		// Auth.updateCurrentOrg()
+		// this.user = Localstore.getItem('user');
 	}
 
 	logout = (e) => {
@@ -37,7 +39,7 @@ export default class Header extends Component {
 	              <span className="icon-bar"></span>
 	              <span className="icon-bar"></span>
 	            </button>
-	            <a className="navbar-brand" href="#">{Localstore.getItem('org').org_title}</a>
+	            <a className="navbar-brand" href="#">{this.props.current_org.org_title}</a>
 	          </div>
 	          <div id="navbar" className="navbar-collapse collapse">
 	            <ul className="nav navbar-nav">
@@ -51,8 +53,8 @@ export default class Header extends Component {
 					  <li className="dropdown-header">Organization</li>
 					  <li><Link to="organization">Organizations</Link></li>
 
-					  {this.currentOrg.permissions.can_manage_people_companies ? <li><Link to="organization/companies">Company</Link></li> : ''}
-					  {this.currentOrg.permissions.can_manage_people_companies ? <li><Link to="organization/peoples">Peoples</Link></li> : ''}
+					  {this.props.current_org.permissions.can_manage_people_companies ? <li><Link to="organization/companies">Company</Link></li> : ''}
+					  {this.props.current_org.permissions.can_manage_people_companies ? <li><Link to="organization/peoples">Peoples</Link></li> : ''}
 
 					  <li role="separator" className="divider"></li>
 					  <li className="dropdown-header">Settings</li>
@@ -72,20 +74,21 @@ export default class Header extends Component {
 	              </li>
 	              <li className="dropdown">
 		            <a className="dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-		                <span className="user_title">Aman </span>
+		                <span className="user_title">{this.props.current_user.first_name + ' ' + this.props.current_user.last_name} </span>
 		                <i className="fa fa-chevron-down"></i>
 		            </a>
 		            <ul className="dropdown-menu userDetailsBox" aria-labelledby="dropdownMenu1">
 		                <li className="li_img">
-		                  <div className="imagecircle">
+		                    <div className="imagecircle">
 		                  	
-		                  </div>
-		                  <div className="user_title text-center">Aman Bansal</div>
+		                    </div>
+		                  	<div className="user_title text-center">{this.props.current_user.first_name + ' ' + this.props.current_user.last_name}</div>
+		                	<div className="text-center fs12">{this.props.current_user.email}</div>
 		                </li>
 		                <li role="separator" className="divider"></li>
 		                <li><Link to="organization"><i className="fa fa-check-square-o"></i> My Tasks</Link></li>
 		                <li><Link to="dashboard"><i className="fa fa-user"></i> Profile & Account</Link></li>
-		                <li><Link to="#" className="a_edit_my_detail" onClick={()=> UserprofileForm.showInPoup()} ><i className="fa fa-pencil"></i> Edit My Details</Link></li>
+		                <li><Link to="#" className="a_edit_my_detail" onClick={()=> UserProfileEditForm.showInPoup({data : this.props.current_user})} ><i className="fa fa-pencil"></i> Edit My Details</Link></li>
 		                <li role="separator" className="divider"></li>
 		                <li><a href="#" onClick={(e) => {this.logout(e)}}><i className="fa fa-sign-out"></i>Logout</a></li>
 		            </ul>

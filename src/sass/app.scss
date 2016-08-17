@@ -196,6 +196,7 @@ textarea {
 a, a:hover, a:focus, a:link {
     text-decoration: none;
     color: #333;
+    outline: none;
 }
 
 a:hover {
@@ -502,14 +503,21 @@ a:hover {
 // }
 
 .tags-wrapper{
+    max-width: 1200px;
+
     .tag {
         display: inline-block;
         padding: 2px 10px;
         margin-right: 10px;
+        margin-bottom: 20px;
         font-size: 12px;
-        border: 1px solid #000;
-        border-radius: 15px;
+        border: 1px solid #F5f5f5;
+        border-radius: 5px;
         color: #fff;
+
+        a {
+            color: #fff;
+        }
     }
 }
 
@@ -522,7 +530,7 @@ a:hover {
     input {
         width: 100%;
         border: none;
-        padding: 10px;
+        padding: 0 10px;
         border-bottom: 1px solid #cecbcb;
         margin-bottom: 5px;
     }
