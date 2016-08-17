@@ -3,11 +3,14 @@ export const FILTER_TAGS = 'FILTER_TAGS';
 
 export const SELECT_TAG = 'SELECT_TAG';
 
+import * as Helpers from '../helpers'
+
 
 export function fetchTags(data) {
+  var request = Helpers.Tag.index();
   return {
     type: FETCH_TAGS,
-    payload: data
+    payload: request
   };
 }
 

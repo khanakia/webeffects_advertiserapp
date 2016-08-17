@@ -27,14 +27,14 @@ export default class Layout extends Component {
     }
     componentDidMount() {
         // TagForm.showInPoup({})
-        console.log(store.getState().tags_reducer.taglist.tags);
+        // console.log(store.getState().tags_reducer.taglist.tags);
     }
 
     onTagSelect = (tag) => {
         
         // console.log(e.target);
         // console.log(props.tags_reducer.selectedTags.tags);
-        ReactDOM.render(<TagSingle data={tag} />, this.refs.tags_wrapper);
+        // ReactDOM.render(<TagSingle data={tag} />, this.refs.tags_wrapper);
 
         // jQuery(this.refs.tags_wrapper).append("sdfas");
     }
@@ -44,13 +44,6 @@ export default class Layout extends Component {
           <div>
             Dashboard
              
-            <DropdownCompanies defaultValue="3" />
-            
-            <DemoComp />
-            <div className="tags" ref="tags_wrapper">
-
-            </div>
-            <button>Add Tag</button>
             <TagSelector onTagSelect={this.onTagSelect}/>
             
           </div>

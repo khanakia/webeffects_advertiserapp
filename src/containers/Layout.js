@@ -7,7 +7,7 @@ import Header from '../containers/HeaderContainer'
 export default class Layout extends Component {
 
     componentWillMount() {
-      
+        this.props.fetchData()
     }
 
     componentDidMount() {
@@ -15,9 +15,11 @@ export default class Layout extends Component {
     }
 
     render() {
+        if (jQuery.isEmptyObject(this.props.current_org) || jQuery.isEmptyObject(this.props.current_user)) return false;
+
         return (
           <div>
-            <Header />
+            <Header {...this.props}/>
             <section id="content">
                 {this.props.children}
             </section>

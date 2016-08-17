@@ -10,7 +10,8 @@ const mapStateToProps = (state) => {
     // console.log(state.posts.postsList);
 
     return {
-        tags_reducer: state.tags_reducer
+        state : state,
+        tagsList: state.tag.list,
     };
 }
 
@@ -18,9 +19,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         dispatch,
         fetchTags: () => {
-            TagHelper.index().then((response) => {
-                dispatch(fetchTags(response))
-            });
+            dispatch(fetchTags())
         }
     }
 }

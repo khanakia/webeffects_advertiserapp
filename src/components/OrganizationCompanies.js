@@ -12,7 +12,7 @@ import CompanyHelper from '../helpers/helper_company.js'
 import Util from '../helpers/util'
 import Localstore from '../helpers/localstore'
 
-class CompanyList extends Component {
+class OrganizationCompanies extends Component {
     constructor(props) {
         super(props);
     }
@@ -21,12 +21,12 @@ class CompanyList extends Component {
         this.props.fetchCompanies();
         // let { dispatch } = this.props
         // console.log(dispatch);
-        this.currentOrg = Localstore.getItem('org');
+        // this.currentOrg = Localstore.getItem('org');
     }
 
     editButton(item) {
         // console.log(item.permissions.is_admin || item.created_by_user_id==Auth.getUserID());
-        if(this.currentOrg.permissions.org_can_update) {
+        if(this.props.current_org.permissions.org_can_update) {
             return (
                 <span>
                     <button className="btn btn-plain" title="Edit" onClick={(e)=> this.editCompany(item,e)} ><i className="fa fa-pencil"></i></button>
@@ -36,7 +36,7 @@ class CompanyList extends Component {
     }
 
     deleteButton(item) {
-        if(!item.is_default && this.currentOrg.permissions.org_can_update) {
+        if(!item.is_default && this.props.current_org.permissions.org_can_update) {
             return (
                 <span>
                     <button className="btn btn-plain" title="Remove Company" onClick={(e)=> this.deleteCompany(item.id,e)} ><i className="fa fa-trash"></i></button>
@@ -159,7 +159,7 @@ class CompanyList extends Component {
                                     
                                 </span>
                                 <span className="col icons-group">
-                                { this.currentOrg.permissions.org_can_update ?
+                                { this.props.current_org.permissions.org_can_update ?
                                     <button className="btn btn-success" onClick={()=> CompanyForm.showInPoup({}, {},this.props)}><i className="fa fa-plus"></i></button>
                                     : ''
                                 }
@@ -181,4 +181,4 @@ class CompanyList extends Component {
 }
 
 
-export default CompanyList;
+export default OrganizationCompanies;

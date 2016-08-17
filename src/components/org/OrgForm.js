@@ -44,7 +44,7 @@ class OrgForm extends Component {
             onopen : function(e){
               var pid = (jQuery(e).attr('id'));
               ReactDom.render(<OrgForm popup_id={pid} settings={settings} data={data} onDataUpdate={onDataUpdate} />, document.getElementById(uniq));
-              console.log(pid);
+              // console.log(pid);
               // setTimeout(() => jQuery('#'+pid).popup('hide'), 3000); 
             }
         });
@@ -61,12 +61,11 @@ class OrgForm extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
 
-        let data = jQuery(this.refs.form).serialize();
-        // const dataJson = URI.parseQuery(data);
-
         var valid = jQuery(this.refs.form).valid();
         if (!valid) {return false};
-
+        
+        let data = jQuery(this.refs.form).serialize();
+        // const dataJson = URI.parseQuery(data);
 
         // if (dataJson.id) {
         //     var ajaxObj = OrgHelper.update(data);

@@ -55,6 +55,6 @@
     "jwt-decode": "~2.1.0",
     "bootstrap-tagsinput": "~0.8.0",
     "switchery": "~0.8.1",
-    "jquery-confirm2": "~2.5.1"
+    "jquery-confirm2": "~2.5.1",
   }
 }

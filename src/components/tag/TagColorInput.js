@@ -39,7 +39,7 @@ class TagColorInput extends Component {
                     <option value="#008B8B" data-color="#008B8B">darkcyan</option>
                     <option value="#B8860B" data-color="#B8860B">darkgoldenrod</option>
                     <option value="#32CD32" data-color="#32CD32">limegreen</option>
-                    <option value="#FFD700" data-color="#FFD700">gold</option>
+                    <option value="#DCBE1F" data-color="#DCBE1F">gold</option>
                     <option value="#48D1CC" data-color="#48D1CC">mediumturquoise</option>
                     <option value="#87CEEB" data-color="#87CEEB">skyblue</option>
                     <option value="#FF69B4" data-color="#FF69B4">hotpink</option>

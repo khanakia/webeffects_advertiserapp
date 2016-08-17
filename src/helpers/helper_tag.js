@@ -40,11 +40,31 @@ export default class TagHelper {
 	}
 
 	static update(data) {
+        const dataJson = URI.parseQuery(data);
 		return  axios({
                     method: 'put',
-                    url: API_URL_TAG + '/' + data.id,
+                    url: API_URL_TAG + '/' + dataJson.id,
                     headers: Auth.header(),
                     data : data
                   });
 	}
+
+    static save(data) {
+        const dataJson = URI.parseQuery(data);
+        if (dataJson.id) {
+            var ajaxObj = TagHelper.update(data);
+        } else {
+            var ajaxObj = TagHelper.store(data);
+        }
+        return ajaxObj;
+    }
+
+
+    static delete(id) {
+        return axios({
+            method: 'delete',
+            url: API_URL_TAG + '/' + id,
+            headers: Auth.header(),
+        });
+    }
 }

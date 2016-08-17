@@ -24,8 +24,8 @@ const getVisibleTodos = (todos, filter) => {
 
 const mapStateToProps = (state) => {
     return {
-        tags_reducer: state.tags_reducer,
-        tags: getVisibleTodos(state.tags_reducer.taglist.tags, state.tags_reducer.filterTags)
+        // list: state.tag.list.data,
+        tags: getVisibleTodos(state.tag.list.data, state.tag.filterTags)
 
     };
 }

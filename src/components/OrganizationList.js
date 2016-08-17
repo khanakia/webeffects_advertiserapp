@@ -3,18 +3,14 @@ import { Link } from 'react-router';
 
 import Sidebar from './Sidebar'
 import PagePanel from './PagePanel'
-import OrganizationAdd from './OrganizationAdd'
+// import OrganizationAdd from './OrganizationAdd'
 
 import OrgForm from './org/OrgForm'
-
 import DomainForm from './org/DomainSubdomainForm'
 
-import Auth from '../helpers/auth.js'
-import OrgHelper from '../helpers/helper_org'
-import Util from '../helpers/util'
+import * as Helper from '../helpers'
 
-
-class PostsList extends Component {
+class OrganizationList extends Component {
     constructor(props, context) {
         super(props, context);
     }
@@ -25,7 +21,7 @@ class PostsList extends Component {
         // let { dispatch } = this.props
         // dispatch({type: 'RESET_POSTS'});
         // this.props.dispatch({type: 'REMOVE'});
-        Auth.updateCurrentOrg()
+        // Helper.Auth.updateCurrentOrg()
     }
 
 
@@ -77,14 +73,14 @@ class PostsList extends Component {
                             </h4>
                         </div>
                         <div className="d-table-cell xs-d-block w10 xs-w100">
-                                {Util.badgetOwner((org.created_by_user_id==Auth.getUserID()))}
-                                {Util.badgeIsAdmin(org.permissions.is_admin)}
-                                {Util.badgetDefault(org)}
+                                {Helper.Util.badgetOwner((org.created_by_user_id==Helper.Auth.getUserID()))}
+                                {Helper.Util.badgeIsAdmin(org.permissions.is_admin)}
+                                {Helper.Util.badgetDefault(org)}
                         </div>
                         <div className="d-table-cell xs-d-block valign-middle text-right">
                             <span className="icons-group light">
                                 {this.editButton(org)}
-                                <a href={OrgHelper.getLoginURL(org)} className="btn btn-plain" title="Login in to this Organization"><i className="fa fa-sign-in"></i></a>
+                                <a href={Helper.Org.getLoginURL(org)} className="btn btn-plain" title="Login in to this Organization"><i className="fa fa-sign-in"></i></a>
                             </span>
                         </div>
                     </div>
@@ -155,4 +151,4 @@ class PostsList extends Component {
 }
 
 
-export default PostsList;
+export default OrganizationList;

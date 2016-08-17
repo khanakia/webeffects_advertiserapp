@@ -62,6 +62,14 @@ export default class OrgHelper {
     }
 
 
+    static showCurrent() {
+        return axios({
+            method: 'get',
+            url: API_URL_ORG + '/show_current',
+            headers: Auth.header(),
+        });
+    }
+
     static inviteUsers(data) {
         return axios({
             method: 'post',

@@ -2,6 +2,8 @@ import {API_URL_SIGNIN} from '../config.js'
 import localstore from './localstore.js'
 import OrgHelper from './helper_org'
 
+import UserHelper from './helper_user'
+
 
 export default class Auth {
 	constructor() {
@@ -58,6 +60,16 @@ export default class Auth {
 	// Header which i will add to ajax request
 	static header() {
 		return {'Authorization' : 'Bearer ' + Auth.getToken()}
+	}
+
+
+
+	static getCurrentOrg() {
+		return OrgHelper.showCurrent()
+	}
+
+	static getCurrentUser() {
+		return UserHelper.showCurrent()
 	}
 
 	static updateCurrentOrg() {
