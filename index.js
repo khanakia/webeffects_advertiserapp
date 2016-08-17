@@ -16,10 +16,13 @@ import OrganizationUsers from './src/containers/OrganizationUsersContainer'
 import OrganizationCompanies from './src/containers/OrganizationCompaniesContainer'
 import TaskList from './src/containers/TaskListContainer'
 import TagList from './src/containers/TagListContainer'
+import OrganizationGeneral from './src/containers/OrganizationGeneralContainer'
 
 import PageDemo from './src/containers/LayoutDemo'
 
 import PageTask from './src/containers/PageTask'
+
+import CompaniesLogos from './src/containers/OrganizationLogosContainer'
 
 import ProjectsContainer from './src/containers/ProjectsContainer'
 import ProjectOverviewContainer from './src/containers/ProjectOverviewContainer'
@@ -68,6 +71,8 @@ if(ROOT_HOST==window.location.host) {
 		       <Route path="organization/peoples" component={OrganizationUsers} />
                <Route path="/tasklist/:tasklistId" component={TaskList}/>
                <Route path="settings/tags" component={TagList} />
+               <Route path="settings/logo" component={CompaniesLogos} />
+		       <Route path="settings/general" component={OrganizationGeneral} />
                <Route path="task" component={PageTask} />
                <Route path="demo" component={PageDemo} />
 

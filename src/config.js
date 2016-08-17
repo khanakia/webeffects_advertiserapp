@@ -3,7 +3,11 @@ export const ROOT_URL = 'http://react.pma';
 
 export const SIGN_UP_URL = ROOT_URL + '/#/signup';
 
+export const API_HOST = 'http://local.pma';
 export const API_URL = 'http://local.pma/api';
+
+export const API_HOST_ORGS_IMAGES = 'http://local.pma/uploads/orgs/';
+export const API_HOST_USERS_IMAGES = 'http://local.pma/uploads/users/';
 
 export const API_URL_SIGNIN = API_URL+'/auth/signin';
 export const API_URL_SIGNUP = API_URL+'/auth/signup';
@@ -28,6 +32,8 @@ export const API_URL_ORGUSER = API_URL+'/org_user';
 // export const API_URL_ORG_UPDATE_DOMAIN = API_URL_ORG+'/domainupdate';
 
 export const API_URL_ORG_LOGO = API_URL+'/uploadlogo';
+export const API_URL_ORG_FAVICON = API_URL+'/uploadfavicon';
+export const API_URL_USER_LOGO = API_URL+'/profileimage';
 
 export const API_URL_PROJECT = API_URL+'/project';
 export const API_URL_PROJECT_USER = API_URL+'/project_user';
