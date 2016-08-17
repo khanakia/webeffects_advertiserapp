@@ -164,7 +164,7 @@ a:hover {
   height: 40px;
   vertical-align: middle;
   text-align: center;
-  color: #999;
+  color: #333;
   /* border: 2px solid #000; */
   outline: none;
   -webkit-transition: background 0.5s ease-in-out;
@@ -172,7 +172,8 @@ a:hover {
   -o-transition: background 0.5s ease-in-out;
   transition: background 0.5s ease-in-out;
   font-size: 26px;
-  border-radius: 50%; }
+  border-radius: 50%;
+  z-index: 999; }
   .popup_content .close-icon i {
     margin-top: 6px; }
 
@@ -315,10 +316,15 @@ a:hover {
   color: #666; }
 
 .uploadform .heading {
-  padding: 10px 0 30px; }
+  padding: 20px 25px 20px;
+  margin: 0 0 20px;
+  background: #4cae4c; }
 .uploadform .title {
   margin: 0;
+  color: #fff;
   text-transform: uppercase; }
+.uploadform .uploadform-inner {
+  padding: 25px; }
 .uploadform .imageview {
   width: 130px;
   height: 130px;

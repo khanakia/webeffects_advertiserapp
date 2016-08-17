@@ -376,7 +376,7 @@ a:hover {
     vertical-align: middle;
     // line-height: 40px;
     text-align: center;
-    color: #999;
+    color: #333;
     /* border: 2px solid #000; */
     // background-color: #ff4632;
     outline: none;
@@ -386,6 +386,7 @@ a:hover {
     transition: background 0.5s ease-in-out;
     font-size: 26px;
     border-radius: 50%;
+    z-index: 999;
 
     i {
     	margin-top: 6px;
@@ -685,12 +686,19 @@ a:hover {
 
 .uploadform {
     .heading {
-        padding: 10px 0 30px;
+        padding: 20px 25px 20px;
+        margin: 0 0 20px;
+        background: #4cae4c;
     }
 
     .title {
         margin: 0;
+        color: #fff;
         text-transform: uppercase;
+    }
+
+    .uploadform-inner {
+        padding: 25px;
     }
 
     .imageview {

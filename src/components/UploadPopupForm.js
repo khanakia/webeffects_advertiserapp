@@ -10,7 +10,6 @@ import {store} from '../store/index.js'
 class UploadPopupForm extends Component {
     constructor(props) {
         super(props);
-        this.state = {file: '', imagePreviewUrl: ''};
     }
 
     static defaultProps = {
@@ -94,27 +93,24 @@ class UploadPopupForm extends Component {
             <div>
                 <form className="uploadform" encType="multipart/form-data" ref='form' onSubmit={this.handleSubmit}>
                     <input type="hidden" className="form-control" ref="id" name="id" id="id" />
-                    <div className="row">
-                        <div className="col-md-12">
-                            <div className="heading">
-                                <h3 className="title">Organization Logo</h3>
+                    <div className="heading">
+                        <h3 className="title">Organization Logo</h3>
+                    </div>
+                    <div className="uploadform-inner">
+                        <div className="row">
+                            <div className="col-md-4">
+                                <div id="imageview" className="imageview defaultimage"></div>
+                            </div>
+                            <div className="col-md-8">
+                                <div className="uploadinstruction">
+                                    Upload your profile picture here. The picture may have the following formats: .jpg, .gif or .png.
+                                </div>
+                                <input type="file" accept="image/x-png, image/gif, image/jpeg" onChange={(e)=>this.handleImage(e)} className="uploadimagefile" id="uploadimagefile" name="uploadimagefile" />
                             </div>
                         </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-md-4">
-                            <div id="imageview" className="imageview defaultimage"></div>
+                        <div className="text-right btnUploadSubmit">
+                            <button type="submit" className="btn btn-success">Save</button>
                         </div>
-                        <div className="col-md-8">
-                            <div className="uploadinstruction">
-                                Upload your profile picture here. The picture may have the following formats: .jpg, .gif or .png.
-                            </div>
-                            <input type="file" accept="image/x-png, image/gif, image/jpeg" onChange={(e)=>this.handleImage(e)} className="uploadimagefile" id="uploadimagefile" name="uploadimagefile" />
-                        </div>
-                    </div>
-
-                    <div className="text-right btnUploadSubmit">
-                        <button type="submit" className="btn btn-success">Save</button>
                     </div>
                 </form>
             </div>
