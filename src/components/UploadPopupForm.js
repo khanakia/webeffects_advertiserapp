@@ -5,6 +5,9 @@ import {API_URL_ORG_LOGO} from '../config.js'
 import Auth from '../helpers/auth.js'
 
 import {store} from '../store/index.js'
+import {action_appdata} from '../actions';
+const {fetchCurrentUser, fetchCurrentOrg} = action_appdata
+
 
 
 class UploadPopupForm extends Component {
@@ -32,7 +35,7 @@ class UploadPopupForm extends Component {
     }
 
 
-    static showInPoup() {
+    static showInPoup(data,uploadurl,userdata) {
         var uniq = 'id' + (new Date()).getTime();
 
         Controls.showpopup({
@@ -42,7 +45,7 @@ class UploadPopupForm extends Component {
             blur: false,
             onopen : function(e){
               var pid = (jQuery(e).attr('id'));
-              ReactDom.render(<UploadPopupForm popup_id={pid} />, document.getElementById(uniq));
+              ReactDom.render(<UploadPopupForm has_user={userdata} upload_url={uploadurl} target_id={data.id} popup_id={pid} />, document.getElementById(uniq));
               console.log(pid);
             }
         });
@@ -67,19 +70,24 @@ class UploadPopupForm extends Component {
         }
     }
 
-    handleSubmit = (e) => {
+    handleSubmit(e,targetUrl,hasuser) {
         e.preventDefault();
         var uploadFormEl = jQuery(".uploadform");
         var form = uploadFormEl[0];
         var formdata = new FormData(form);
         axios({
             method: 'post',
-            url: API_URL_ORG_LOGO,
+            url: targetUrl,
             headers: Auth.header(),
             data : formdata,
         }).then(function(response){
             if (response.data.status) {
                 toastr.success(response.data.message);
+                if (hasuser) {
+                    store.dispatch(fetchCurrentUser());
+                } else {
+                    store.dispatch(fetchCurrentOrg());
+                }
                 this.hidePopup();
             } else {
                 toastr.error(response.data.message);
@@ -91,8 +99,8 @@ class UploadPopupForm extends Component {
     render() {
         return (
             <div>
-                <form className="uploadform" encType="multipart/form-data" ref='form' onSubmit={this.handleSubmit}>
-                    <input type="hidden" className="form-control" ref="id" name="id" id="id" />
+                <form className="uploadform" encType="multipart/form-data" ref='form' onSubmit={(e)=>this.handleSubmit(e,this.props.upload_url,this.props.has_user)}>
+                    <input type="hidden" className="form-control" ref="id" name="id" id="id" defaultValue={this.props.target_id} />
                     <div className="heading">
                         <h3 className="title">Organization Logo</h3>
                     </div>

@@ -355,12 +355,20 @@ a:hover {
   padding: 3px 0 3px 10px; }
   .userDetailsBox li a i {
     margin-right: 5px; }
-.userDetailsBox .li_img .imagecircle {
-  margin: 10px auto;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: #000; }
+.userDetailsBox .li_img .useravtarCt {
+  margin: 10px 0; }
+  .userDetailsBox .li_img .useravtarCt .user-avtar-link {
+    display: block;
+    width: 50px;
+    height: 50px;
+    margin: 0 auto;
+    padding: 0; }
+  .userDetailsBox .li_img .useravtarCt .user-avtar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-size: contain;
+    background-repeat: no-repeat; }
 
 .editDetailForm {
   min-height: 280px; }
@@ -369,5 +377,20 @@ a:hover {
     padding: 3px 12px;
     font-size: 12px;
     border-radius: 5px; }
+
+.orgimagedata .orgimage {
+  display: inline-block;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center; }
+.orgimagedata .orgfavicon {
+  margin: 25px 0; }
+.orgimagedata .changebutton {
+  max-width: 150px;
+  padding: 10px 0;
+  text-align: center; }
 
 /*# sourceMappingURL=app.css.map */
