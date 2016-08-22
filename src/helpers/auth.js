@@ -62,6 +62,10 @@ export default class Auth {
 		return {'Authorization' : 'Bearer ' + Auth.getToken()}
 	}
 
+	static getTokenBearer() {
+		return 'Bearer ' + Auth.getToken();	
+	}
+
 
 
 	static getCurrentOrg() {

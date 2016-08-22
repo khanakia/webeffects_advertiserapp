@@ -113,8 +113,6 @@ class ProjectsList extends Component {
                         </div>
                     </div>
                     <div className="mt20">
-                        
-
                         <ul className="list-group style1">
                             {this.renderList(data)}
                         </ul>

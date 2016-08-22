@@ -12,6 +12,11 @@ import DropdownCompanies from '../components/controls/DropdownCompanies'
 
 import {store} from '../store/index.js';
 
+import * as Helpers from '../helpers';
+
+import Categories from '../components/category/CategoriesContainer';
+
+import CategoryForm from '../components/category/CategoryForm';
 
 export default class Layout extends Component {
     constructor(props) {
@@ -24,6 +29,7 @@ export default class Layout extends Component {
     componentDidMount() {
         // TagForm.showInPoup({})
         // console.log(store.getState().tags_reducer.taglist.tags);
+        // Helpers.CategoryHelper.index()
     }
 
     onTagSelect = (tag) => {
@@ -40,7 +46,11 @@ export default class Layout extends Component {
           <div>
             Dashboard
              
-            <TagSelector onTagSelect={this.onTagSelect}/>
+
+             <div className="ml50 w30">
+                <CategoryForm data={{'object_type' : 'message', 'object_id' : 1 }} />
+             </div>
+            
             
           </div>
         )

@@ -1,22 +1,25 @@
 import { connect } from 'react-redux'
-import { fetchProjects} from '../actions/action_project';
+import { fetchProjectFiles} from '../actions/action_project';
+import { fetchCategoriesTypeFile} from '../actions/action_category';
 
 import ProjectFiles from '../components/ProjectFiles';
 
 const mapStateToProps = (state) => {
     return {
-        projectsList: state.project.list,
-        state : state
+        state : state,
+        current_org: state.appdata.current_org,
+        projectFiles: state.project.files,
+        categoryList: state.category.type_message_list,
     };
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
         dispatch,
-        fetchProjects: () => {
-            
-            // dispatch(fetchProjects()).then((response) => {
-            // });
+        fetchProjectFiles: (project_id) => {
+            dispatch(fetchProjectFiles(project_id)).then((response) => {
+                // dispatch(fetchCategoriesTypeFile(project_id))
+            });
         }
     }
 }

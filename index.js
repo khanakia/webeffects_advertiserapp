@@ -27,7 +27,10 @@ import CompaniesLogos from './src/containers/OrganizationLogosContainer'
 import ProjectsContainer from './src/containers/ProjectsContainer'
 import ProjectOverviewContainer from './src/containers/ProjectOverviewContainer'
 import ProjectMessagesContainer from './src/containers/ProjectMessagesContainer'
+import ProjectMessageContainer from './src/containers/ProjectMessageContainer'
+import ProjectMessageCreateContainer from './src/containers/ProjectMessageCreateContainer'
 import ProjectFilesContainer from './src/containers/ProjectFilesContainer'
+import ProjectFileContainer from './src/containers/ProjectFileContainer'
 import ProjectPeopleContainer from './src/containers/ProjectPeopleContainer'
 import ProjectTaskListsContainer from './src/containers/ProjectTaskListsContainer'
 import ProjectTaskContainer from './src/containers/ProjectTaskContainer'
@@ -84,7 +87,10 @@ if(ROOT_HOST==window.location.host) {
 					<Route path="task/:taskId" component={ProjectTaskContainer} />
 					<Route path="tasklist/:tasklistId" component={ProjectTaskListContainer} />
 					<Route path="messages" component={ProjectMessagesContainer} />
+					<Route path="messages/create" component={ProjectMessageCreateContainer} />
+					<Route path="messages/:messageId" component={ProjectMessageContainer} />
 					<Route path="files" component={ProjectFilesContainer} />
+					<Route path="files/:fileId" component={ProjectFileContainer} />
 					<Route path="people" component={ProjectPeopleContainer} />
                </Route>
                

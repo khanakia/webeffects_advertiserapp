@@ -1,6 +1,11 @@
 export const ROOT_HOST = 'react.pma';
 export const ROOT_URL = 'http://react.pma';
 
+export const OBJECT_TYPE_PROJECT = 'project';
+export const OBJECT_TYPE_FILE = 'file';
+export const OBJECT_TYPE_MESSAGE = 'message';
+export const OBJECT_TYPE_TASK = 'task';
+
 export const SIGN_UP_URL = ROOT_URL + '/#/signup';
 
 export const API_HOST = 'http://local.pma';
@@ -19,6 +24,7 @@ export const API_URL_GETORG_BYDOMAIN = API_URL_PUBLIC+'/findorgs_bydomain';
 export const API_URL_USER = API_URL+'/user';
 
 export const API_URL_ORG = API_URL+'/org';
+export const API_URL_CATEGORY = API_URL+'/category';
 
 
 
@@ -38,6 +44,10 @@ export const API_URL_USER_LOGO = API_URL+'/profileimage';
 export const API_URL_PROJECT = API_URL+'/project';
 export const API_URL_PROJECT_USER = API_URL+'/project_user';
 export const API_URL_PROJECT_USER_NOT_ASSIGNED = API_URL_PROJECT_USER+'/index_not_assigned';
+export const API_URL_PROJECT_MESSAGE = API_URL+'/project_message';
+export const API_URL_PROJECT_FILE = API_URL+'/project_file';
+export const API_URL_PROJECT_FILE_VERSION = API_URL+'/project_file_version';
+
 
 export const API_URL_COMPANY = API_URL+'/company';
 // export const API_URL_COMPANY_LIST = API_URL+'/company';

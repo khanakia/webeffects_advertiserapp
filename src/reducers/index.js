@@ -9,6 +9,8 @@ import HeaderReducer from './reducer_header';
 
 import AppdataReducer from './reducer_appdata';
 
+import CategoryReducer from './reducer_category';
+
 
 
 const rootReducer = combineReducers({
@@ -18,6 +20,7 @@ const rootReducer = combineReducers({
   tasklist: TasklistReducer,
   tag: TagsReducer,
   appdata: AppdataReducer,
+  category: CategoryReducer,
   header: HeaderReducer
 
 });

@@ -1,22 +1,25 @@
 import { connect } from 'react-redux'
-import { fetchProjects} from '../actions/action_project';
+import { fetchProjectMessages} from '../actions/action_project';
+import { fetchCategoriesTypeMessage} from '../actions/action_category';
 
 import ProjectMessages from '../components/ProjectMessages';
 
 const mapStateToProps = (state) => {
     return {
-        projectsList: state.project.list,
-        state : state
+        state : state,
+        projectMessages: state.project.messages,
+        categoryList: state.category.type_message_list,
+        current_org: state.appdata.current_org
     };
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
         dispatch,
-        fetchProjects: () => {
-            
-            // dispatch(fetchProjects()).then((response) => {
-            // });
+        fetchProjectMessages: (project_id) => {
+            dispatch(fetchProjectMessages(project_id)).then((response) => {
+                dispatch(fetchCategoriesTypeMessage(project_id))
+            });
         }
     }
 }

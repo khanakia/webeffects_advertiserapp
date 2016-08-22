@@ -1,26 +1,16 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux';
-
-import { Link } from 'react-router'
 import ReactDOM from 'react-dom'
-
-import { hashHistory } from 'react-router'
-
-import Sidebar from '../components/Sidebar'
-import PagePanel from '../components/PagePanel'
+import { connect } from 'react-redux';
+import { Link, hashHistory } from 'react-router'
 
 import {store} from '../store/index.js';
 import { fetchProject} from '../actions/action_project';
 
+import Sidebar from '../components/Sidebar'
+import PagePanel from '../components/PagePanel'
 
 class LayoutProjectComponent extends Component {
     
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {
-    //         data : []
-    //     }
-    // }
     componentWillMount() {
         this.props.fetchProject(this.props.params.projectId);
     }
@@ -29,18 +19,24 @@ class LayoutProjectComponent extends Component {
         // console.log("RENDERED", jQuery.isEmptyObject(this.props.projectCurrent.data));
         if (jQuery.isEmptyObject(this.props.projectCurrent)) return false;
         const data = this.props.projectCurrent;
+        const project_url_suffix = "projects/"+data.id;
+
         return (
             <div>
                 <Sidebar>
                   {data.project_title}
+
+                  <div id="childrenSidebar">
+
+                  </div>
                 </Sidebar>
                 <PagePanel hasSidebar="true">
                     <ul className="nav nav-pills">
-                        <li><Link to={"projects/"+this.props.params.projectId+"/overview"}><i className="fa fa-bullhorn"></i> Overview</Link></li>
-                        <li><Link to={"projects/"+this.props.params.projectId+"/tasklists"}><i className="fa fa-bullhorn"></i> Tasks</Link></li>
-                        <li><Link to={"projects/"+this.props.params.projectId+"/files"}><i className="fa fa-check-square-o"></i> Files</Link></li>
-                        <li><Link to={"projects/"+this.props.params.projectId+"/messages"}><i className="fa fa-envelope"></i> Messages</Link></li>
-                        <li><Link to={"projects/"+this.props.params.projectId+"/people"}><i className="fa fa-envelope"></i> Peoples</Link></li>
+                        <li><Link to={project_url_suffix + "/overview"}><i className="fa fa-bullhorn"></i> Overview</Link></li>
+                        <li><Link to={project_url_suffix + "/tasklists"}><i className="fa fa-bullhorn"></i> Tasks</Link></li>
+                        <li><Link to={project_url_suffix + "/files"}><i className="fa fa-check-square-o"></i> Files</Link></li>
+                        <li><Link to={project_url_suffix + "/messages"}><i className="fa fa-envelope"></i> Messages</Link></li>
+                        <li><Link to={project_url_suffix + "/people"}><i className="fa fa-envelope"></i> Peoples</Link></li>
                     </ul>
 
                     <div className="project_children pt30">
@@ -53,10 +49,9 @@ class LayoutProjectComponent extends Component {
 
 }
 
-
 const mapStateToProps = (state) => {
     return {
-        projectCurrent: state.project.current.data,
+        projectCurrent: state.project.current,
         state : state
     };
 }
@@ -69,8 +64,6 @@ const mapDispatchToProps = (dispatch) => {
         }
     }
 }
-
-    
 
 const LayoutProjectContainer = connect(mapStateToProps, mapDispatchToProps)(LayoutProjectComponent)
 

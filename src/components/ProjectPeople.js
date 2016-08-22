@@ -59,7 +59,7 @@ class ProjectPeople extends Component {
                     <div className="d-table w100">
                         <div className="d-table-cell xs-d-block w30 xs-w100">
                             <div className="userInfoBlock">
-                                <div className="image d-inline-block mr20">
+                                <div className="image d-inline-block valign-middle mr20">
                                     <div className="avatar" style={{backgroundImage: 'url(http://localhost/aman.png)'}}>
                                     </div>
                                 </div>
@@ -128,7 +128,8 @@ class ProjectPeople extends Component {
 
    
     render() {
-        const data = this.props.projectUsers['id_'+this.projectId];
+        // const data = this.props.projectUsers['id_'+this.projectId];
+        const data = this.props.projectUsers;
         
         return (
             <div>

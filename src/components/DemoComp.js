@@ -20,16 +20,17 @@ class DemoComp extends Component {
     }
 
     componentDidMount() {
-        console.log(this.context.redux);
+        
     }
 
 
     render() {
-        
+        console.log('RENDEREDDD NEEE', this.props.data)
         
         return (
             <div className="DemoComp">
                 DEMO COMP
+                 <input type="text" className="message_title w50 required" name="message_title" value={this.props.data.message_title} />
             </div>
         );
     }
