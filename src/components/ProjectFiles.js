@@ -12,6 +12,8 @@ import ProjectFileUploadForm from './project_file/ProjectFileUploadForm'
 import ProjectFileBrowseForm from './project_file/ProjectFileBrowseForm'
 import ProjectFileDetailsEditForm from './project_file/ProjectFileDetailsEditForm'
 
+import ProjectFileItem from './project_file/ProjectFileItem'
+
 import {store} from '../store/index.js';
 
 class ProjectFiles extends Component {
@@ -49,35 +51,47 @@ class ProjectFiles extends Component {
     }
 
 
+    // renderList(items) {
+    //     return items.map((item) => {
+    //         if(this.checkCategoryExists(item.categories)==false) return;
+    //         return (
+    //             <li className="list-group-item" key={item.id}>
+
+    //                <div className="d-table w100">
+    //                     <div className="d-table-cell xs-d-block w40 xs-w100 valign-middle">
+    //                         <h4 className="list-group-item-heading">
+    //                             {item.id} 
+    //                             {   item.project_file_version_latest ?
+    //                                 <Link to={'projects/'+this.projectId+'/files/'+item.id}>{item.project_file_version_latest.file_displayname}</Link>
+    //                                 : ''
+    //                             }
+                                
+    //                         </h4>
+    //                     </div>
+                        
+    //                     <div className="d-table-cell xs-d-block w10 xs-w100 valign-middle">
+    //                         {this.renderCategoryBadges(item.categories)}
+    //                     </div>
+    //                     <div className="d-table-cell xs-d-block valign-middle text-right">
+    //                         <span className="icons-group light">
+    //                             <button className="btn btn-plain" title="Edit" onClick={(e)=> this.showFile(e, item)} ><i className="fa fa-eye"></i></button>
+    //                             <button className="btn btn-plain" title="Edit" onClick={(e)=> this.editFile(e, item)} ><i className="fa fa-pencil"></i></button>
+    //                             <button className="btn btn-plain" title="Edit" onClick={(e)=> this.deleteFile(e, item)} ><i className="fa fa-trash"></i></button>
+    //                         </span>
+    //                     </div>
+    //                 </div>
+    //             </li>
+    //         );
+    //     });
+    // }
+
     renderList(items) {
         return items.map((item) => {
             if(this.checkCategoryExists(item.categories)==false) return;
             return (
                 <li className="list-group-item" key={item.id}>
 
-                   <div className="d-table w100">
-                        <div className="d-table-cell xs-d-block w40 xs-w100 valign-middle">
-                            <h4 className="list-group-item-heading">
-                                {item.id} 
-                                {   item.project_file_version_latest ?
-                                    <Link to={'projects/'+this.projectId+'/files/'+item.id}>{item.project_file_version_latest.file_displayname}</Link>
-                                    : ''
-                                }
-                                
-                            </h4>
-                        </div>
-                        
-                        <div className="d-table-cell xs-d-block w10 xs-w100 valign-middle">
-                            {this.renderCategoryBadges(item.categories)}
-                        </div>
-                        <div className="d-table-cell xs-d-block valign-middle text-right">
-                            <span className="icons-group light">
-                                <button className="btn btn-plain" title="Edit" onClick={(e)=> this.showFile(e, item)} ><i className="fa fa-eye"></i></button>
-                                <button className="btn btn-plain" title="Edit" onClick={(e)=> this.editFile(e, item)} ><i className="fa fa-pencil"></i></button>
-                                <button className="btn btn-plain" title="Edit" onClick={(e)=> this.deleteFile(e, item)} ><i className="fa fa-trash"></i></button>
-                            </span>
-                        </div>
-                    </div>
+                   <ProjectFileItem file={item}  />
                 </li>
             );
         });

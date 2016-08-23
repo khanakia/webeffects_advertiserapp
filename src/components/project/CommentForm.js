@@ -3,10 +3,12 @@ import ReactDom from 'react-dom';
 
 import {connectWithStore} from '../../store/index.js';
 
-import CategorySelectControl from '../category/CategorySelectControl'
+// import CategorySelectControl from '../category/CategorySelectControl'
 import ControlNotifyPeople from '../controls/ControlNotifyPeople'
 import ProjectFileAttachForm from '../project_file/ProjectFileAttachForm'
 
+import {CommentHelper} from '../../helpers'
+import { fetchComments } from '../../actions/action_project'
 
 class CommentForm extends Component {
     constructor(props) {
@@ -22,6 +24,10 @@ class CommentForm extends Component {
         popup_id: '',
         settings : {},
         
+        data : {
+            id : '',
+            body : '',
+        },
 
         project_id : '',
         object_type : '',
@@ -33,11 +39,28 @@ class CommentForm extends Component {
     }
 
     componentDidMount() {
-        
+        $(this.refs.body).trumbowyg();
+        $(this.refs.body).trumbowyg('html', this.props.data.body);
     }
 
+    shouldComponentUpdate = (nextProps, nextState, nextContext) => {
+        // console.log('nextProps == this.props', nextProps , this.props)
+        // return !(nextProps == this.props) ||
+        //   !(nextState == this.state) ||
+        //   !(nextContext == this.context);
+        return false;
+    }
 
+    componentDidUpdate() {
 
+    }
+
+    hidePopup = () => {
+        if (this.props.popup_id) {
+            jQuery('#' + this.props.popup_id).popup('hide');
+        }
+    }
+   
     handleSubmit = (e) => {
         e.preventDefault();
 
@@ -46,28 +69,18 @@ class CommentForm extends Component {
 
         let data = jQuery(this.refs.form).serialize();
         data = URI.parseQuery(data);
-        // data.message_body = $(this.refs.message_body).trumbowyg('html');
+        // data.body = $(this.refs.body).trumbowyg('html');
 
-        // data = jQuery.param(data)
-        console.log(data)
+        data = jQuery.param(data)
+        // console.log(data)
 
-        ProjectMessageHelper.save(data)
-
-        // if (data.id) {
-        //     var ajaxObj = ProjectHelper.update(data);
-        //     console.log("Update");
-        // } else {
-        //     var ajaxObj = ProjectHelper.store(data);
-        // }
-
-        // ajaxObj.then(function(response) {
-        //     console.log(response);
-            
-        //     store.dispatch(fetchProjects()).then((response) => {
-        //     });
-        //     this.props.onDataUpdate(response.data.project)
-        //     this.hidePopup();
-        // }.bind(this));
+    
+        CommentHelper.save(data).then(function(response) {
+            // console.log(response);
+            this.props.fetchComments(this.props.project_id, this.props.object_type, this.props.object_id)
+            this.props.onDataUpdate(response.data.project)
+            // this.hidePopup();
+        }.bind(this));
 
         return false;
 
@@ -79,37 +92,49 @@ class CommentForm extends Component {
   
     render() {
         
-        const data = this.props.projectFiles;
+        // const data = this.props.projectFiles;
 
         return (
             <div className="comp-commentform">
-                <form className="form-horizontal11" ref='form' onSubmit={this.handleSubmit}>
-                    <input type="text" name="object_type" defaultValue={this.props.object_type} />
-                    <input type="text" name="object_id" defaultValue={this.props.object_id} />
-                    
-                    
-                    <div className="">
-                        {/*<textarea id="message_body" name="message_body" ref="message_body"></textarea>*/}
+                {
+                    this.props.popup_id ?
+                    <div className="modal-header">
+                        <h4 className="modal-title">Edit Comment</h4>
                     </div>
+                    : ''
+                }
 
-                    <div className="d-table mt30 w100">
-                        <div className="d-inline-block mr20 xs-d-block xs-w100">
-                            <label>Notify by Email</label>
-                            <ControlNotifyPeople />
+                <form className="form-horizontal11" ref='form' onSubmit={this.handleSubmit}>
+                    <div className="content-area">
+                        <input type="text" name="id" defaultValue={this.props.data.id} placeholder={'id'} />
+                        <input type="text" name="project_id" defaultValue={this.props.project_id} placeholder={'project_id'} />
+                        <input type="text" name="object_type" defaultValue={this.props.object_type} placeholder={'object_type'} />
+                        <input type="text" name="object_id" defaultValue={this.props.object_id} placeholder={'object_id'} />
+                        
+                        
+                        <div className="">
+                            {<textarea id="body" name="body" ref="body" ></textarea>}
                         </div>
-                        <div className="d-inline-block mr20 xs-d-block xs-w100">
-                            <label>Category</label>
-                            <CategorySelectControl object_type={this.props.object_type}  />
+
+                        <div className="d-table mt30 w100">
+                            <div className="d-inline-block mr20 xs-d-block xs-w100">
+                                <label>Notify by Email</label>
+                                <ControlNotifyPeople selectedUsers={this.props.data.notify_users} />
+                            </div>
+                            {/*<div className="d-inline-block mr20 xs-d-block xs-w100">
+                                                        <label>Category</label>
+                                                        <CategorySelectControl object_type={this.props.object_type}  />
+                                                    </div>*/}
+                            <div className="d-inline-block mr20 xs-d-block xs-w100">
+                                <label>Files</label><br/>
+                                <button type="button" className="btn" onClick={this.attachFile.bind(this)}>Attach a File</button>
+                            </div>
                         </div>
-                        <div className="d-inline-block mr20 xs-d-block xs-w100">
-                            <label>Files</label><br/>
-                            <button type="button" className="btn" onClick={this.attachFile.bind(this)}>Attach a File</button>
+                        <div className="mt30 mb30 w100" ref="attach_form">
+                            <ProjectFileAttachForm />
                         </div>
                     </div>
-                    <div className="mt30 mb30 w100" ref="attach_form">
-                        <ProjectFileAttachForm />
-                    </div>
-                    <div className="text-right">
+                    <div className="modal-footer text-right">
                         <button type="submit" className="btn btn-success">Save</button>
                     </div>
                 </form>
@@ -127,6 +152,8 @@ const mapStateToProps = (state) => {
     return {
         state : state,
         current_org: state.appdata.current_org,
+        projectCurrent : state.project.current,  // FETCH_PROJECT_CURRENT 
+        project_id : state.project.current.id,
         
     };
 }
@@ -135,6 +162,9 @@ const mapDispatchToProps = (dispatch) => {
     
     return {
         dispatch,
+        fetchComments: (project_id, object_type, object_id) => {
+            dispatch(fetchComments(project_id, object_type, object_id))
+        }
         // fetchProjectFiles: (project_id, extraParams={}) => {
 
         //     dispatch(fetchProjectFilesBrowserFormList(project_id, extraParams)).then((response) => {

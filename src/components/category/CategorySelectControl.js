@@ -13,7 +13,7 @@ class CategorySelectControl extends Component {
     }
 
     static defaultProps = {
-        selectedValues : '',
+        selectedValues : [],
         className : '',
         name : 'category_select',
         categoryList : [],

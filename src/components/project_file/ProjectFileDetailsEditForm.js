@@ -3,6 +3,11 @@ import ReactDom from 'react-dom';
 
 import { Auth,  ProjectFileHelper } from '../../helpers'
 
+import { OBJECT_TYPE_FILE } from '../../config.js'
+
+import ControlNotifyPeople from '../controls/ControlNotifyPeople'
+import ProjectFileAttachForm from '../project_file/ProjectFileAttachForm'
+import CategorySelectControl  from '../category/CategorySelectControl'
 
 class ProjectFileDetailsEditForm extends Component {
     constructor(props) {
@@ -18,6 +23,7 @@ class ProjectFileDetailsEditForm extends Component {
             id: '',
             file_description: '',
             file_displayname: '',
+            notify_users : []
         }
     }
 
@@ -63,10 +69,10 @@ class ProjectFileDetailsEditForm extends Component {
                 </div>
                 
                 <form className="form" ref='form' onSubmit={this.handleSubmit}>
-                    <input type="text" name="id" defaultValue={this.props.data.id} />
+                    <input type="hidden" name="id" defaultValue={this.props.data.id} placeholder={'id'} />
                     <div className="content-area">
                         <div className="mb20">
-                            <label>File Name</label>
+                            <label>Display Name</label>
                             <input type="text" className="w100 required" name="file_displayname" ref="file_displayname" defaultValue={this.props.data.project_file_version_latest.file_displayname} />
                         </div>
                         <ul className="nav nav-tabs" role="tablist">
@@ -75,10 +81,19 @@ class ProjectFileDetailsEditForm extends Component {
                         </ul>
                         <div className="tab-content">
                             <div role="tabpanel" className="tab-pane active" id="option">
-                               
+                                 <div className="d-table mt30 w100">
+                                    <div className="d-inline-block mr20 xs-d-block xs-w100">
+                                        <label>Notify by Email</label>
+                                        <ControlNotifyPeople selectedUsers={this.props.data.notify_users} />
+                                    </div>
+                                    <div className="d-inline-block mr20 xs-d-block xs-w100">
+                                        <label>Category</label>
+                                        <CategorySelectControl selectedValues={this.props.data.categories} object_type={OBJECT_TYPE_FILE}  />
+                                    </div>
+                                </div>
                             </div>
                             <div role="tabpanel" className="tab-pane" id="description">
-                               <textarea name="file_description" defaultValue={this.props.data.file_description}></textarea>
+                               <textarea className="hp100" name="file_description" defaultValue={this.props.data.file_description}></textarea>
                             </div>
                         </div>
                     </div>

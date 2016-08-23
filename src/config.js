@@ -5,6 +5,7 @@ export const OBJECT_TYPE_PROJECT = 'project';
 export const OBJECT_TYPE_FILE = 'file';
 export const OBJECT_TYPE_MESSAGE = 'message';
 export const OBJECT_TYPE_TASK = 'task';
+export const OBJECT_TYPE_COMMENT = 'comment';
 
 export const SIGN_UP_URL = ROOT_URL + '/#/signup';
 
@@ -50,6 +51,8 @@ export const API_URL_PROJECT_FILE_VERSION = API_URL+'/project_file_version';
 
 
 export const API_URL_COMPANY = API_URL+'/company';
+
+export const API_URL_COMMENT = API_URL+'/comment';
 // export const API_URL_COMPANY_LIST = API_URL+'/company';
 // export const API_URL_COMPANY_STORE = API_URL+'/company';
 // export const API_URL_COMPANY_UPDATE = API_URL+'/company/update';

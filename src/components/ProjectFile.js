@@ -5,6 +5,7 @@ import { Link, hashHistory } from 'react-router'
 import { OBJECT_TYPE_FILE } from '../config.js'
 import { Auth } from '../helpers'
 import CommentForm from './project/CommentForm'
+import CommentList from './project/CommentList'
 
 
 class ProjectFile extends Component {
@@ -20,7 +21,8 @@ class ProjectFile extends Component {
     }
 
     componentDidUpdate() {
-       
+        console.log('ProjectFile componentDidUpdate')
+
     }
 
     
@@ -98,8 +100,8 @@ class ProjectFile extends Component {
 
                     <h3>Attached To</h3>
 
-
-                    <CommentForm project_id={this.projectId} object_type={OBJECT_TYPE_FILE} object_id={data.id} />
+                    <CommentList object_type={OBJECT_TYPE_FILE} object_id={data.id} />
+                    <CommentForm object_type={OBJECT_TYPE_FILE} object_id={data.id} />
                 </div>
             </div>
         );

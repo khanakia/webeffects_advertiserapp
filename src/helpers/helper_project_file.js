@@ -68,12 +68,23 @@ export default class ProjectFileHelper {
     //     return ajaxObj;
     // }
 
-    // static delete(id) {
-    //     return axios({
-    //         method: 'delete',
-    //         url: API_URL_PROJECT_FILE + '/' + id,
-    //         headers: Auth.header(),
-    //     });
-    // }
+    static delete(id) {
+        return axios({
+            method: 'delete',
+            url: API_URL_PROJECT_FILE + '/' + id,
+            headers: Auth.header(),
+        });
+    }
+
+    static preview(id) {
+        return axios({
+            method: 'get',
+            url: API_URL_PROJECT_FILE + '/preview',
+            params : {
+                id : id
+            },
+            headers: Auth.header(),
+        });
+    }
 }
 

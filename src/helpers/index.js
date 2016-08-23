@@ -15,6 +15,7 @@ import Tag from '../helpers/helper_tag'
 import TagItem from '../helpers/helper_tag_item'
 import Task from '../helpers/helper_task'
 import TasklistHelper from '../helpers/helper_tasklist'
+import CommentHelper from '../helpers/helper_comment'
 
 
 export {
@@ -34,5 +35,6 @@ export {
     Tag,
     TagItem,
     Task,
-    TasklistHelper
+    TasklistHelper,
+    CommentHelper
 }

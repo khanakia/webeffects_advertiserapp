@@ -13,9 +13,10 @@ class ControlNotifyPeople extends Component {
     static defaultProps = {
         onChange : function() {},
 
-        selectedValues : '',
         className : '',
         name : 'notifypeoples[]',
+
+        selectedUsers : [],
 
         project_id : '',
         projectUsers : []
@@ -26,23 +27,33 @@ class ControlNotifyPeople extends Component {
     }
     
     componentDidMount() {
+        // this.selectpickerInit();
+    }
 
+    shouldComponentUpdate = (nextProps, nextState, nextContext) => {
+        return !(nextProps.projectUsers == this.props.projectUsers);
     }
 
     componentDidUpdate() {
+        this.selectpickerInit();
+    }
+
+    selectpickerInit() {
+        jQuery(this.refs.controlnotifypeople).selectpicker('destroy'); // Destroy already initiated instance so we can reinit it with new data
+        
         jQuery(this.refs.controlnotifypeople).selectpicker({
             actionsBox : true
         });
 
         // Set Selected Values
-        jQuery(this.refs.controlnotifypeople).selectpicker('val', _.map(this.props.selectedValues, 'user_id'));
+        jQuery(this.refs.controlnotifypeople).selectpicker('val', _.map(this.props.selectedUsers, 'id'));
+        
     }
-
 
     renderList(items) {
         return items.map((item) => {
             return (
-                <option key={item.id} value={item.id} >{item.first_name} {item.last_name}</option>
+                <option key={item.id} value={item.user_id} >{item.first_name} {item.last_name}</option>
             );
         });
     }

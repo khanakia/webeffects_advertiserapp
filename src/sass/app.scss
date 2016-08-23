@@ -359,6 +359,7 @@ a:hover {
 
 
 
+
 .popup_block {
 	display: none;
 }
@@ -413,6 +414,26 @@ a:hover {
     i {
     	margin-top: 6px;
     }
+}
+
+
+
+.popup_background {
+  transition: all 0.3s 0.3s;
+}
+
+.popup_block,
+.popup_wrapper  {
+  transition: all 0.3s ease-out;
+  -webkit-transition-delay: 5s; /* Safari */
+    transition-delay: 5s;
+}
+
+.popup_block {
+   transform: scale(0.8);
+}
+.popup_visible .popup_block {
+   transform: scale(1);
 }
 
 @media screen and (max-width: 767px) {

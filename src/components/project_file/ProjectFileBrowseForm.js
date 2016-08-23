@@ -93,7 +93,7 @@ class ProjectFileBrowseForm extends Component {
 
     renderList(items) {
         return items.map((item) => {
-            console.log(item.project_file_version_latest)
+            // console.log(item.project_file_version_latest)
             return (
                 <li className="list-group-item" key={item.id}>
 

@@ -51,6 +51,34 @@
     }
 }
 
+.o-auto {
+  overflow: auto;
+}
+.o-scroll {
+  overflow: scroll;
+}
+.o-hidden {
+  overflow: hidden;
+}
+.oy-auto {
+  overflow-y: auto;
+}
+.ox-auto {
+  overflow: auto;
+}
+.oy-scroll {
+  overflow-y: scroll;
+}
+.ox-scroll {
+  overflow: scroll;
+}
+.oy-hidden {
+  overflow-y: hidden;
+}
+.ox-hidden {
+  overflow: hidden;
+}
+
 .d-block {
     display: block;
 }
@@ -110,6 +138,34 @@
 }
 
 @media screen and (min-width: 992px) and (max-width: 1199px) {
+    .md-o-auto {
+      overflow: auto;
+    }
+    .md-o-scroll {
+      overflow: scroll;
+    }
+    .md-o-hidden {
+      overflow: hidden;
+    }
+    .md-oy-auto {
+      overflow-y: auto;
+    }
+    .md-ox-auto {
+      overflow: auto;
+    }
+    .md-oy-scroll {
+      overflow-y: scroll;
+    }
+    .md-ox-scroll {
+      overflow: scroll;
+    }
+    .md-oy-hidden {
+      overflow-y: hidden;
+    }
+    .md-ox-hidden {
+      overflow: hidden;
+    }
+
     .md-d-block {
         display: block;
     }
@@ -159,6 +215,34 @@
 }
 
 @media screen and (min-width: 768px) and (max-width: 991px) {
+    .sm-o-auto {
+        overflow: auto;
+    }
+    .sm-o-scroll {
+        overflow: scroll;
+    }
+    .sm-o-hidden {
+        overflow: hidden;
+    }
+    .sm-oy-auto {
+        overflow-y: auto;
+    }
+    .sm-ox-auto {
+        overflow: auto;
+    }
+    .sm-oy-scroll {
+        overflow-y: scroll;
+    }
+    .sm-ox-scroll {
+        overflow: scroll;
+    }
+    .sm-oy-hidden {
+        overflow-y: hidden;
+    }
+    .sm-ox-hidden {
+        overflow: hidden;
+    }
+
     .sm-d-block {
         display: block;
     }
@@ -209,6 +293,34 @@
 }
 
 @media screen and (max-width: 767px) {
+    .xs-o-auto {
+      overflow: auto;
+    }
+    .xs-o-scroll {
+      overflow: scroll;
+    }
+    .xs-o-hidden {
+      overflow: hidden;
+    }
+    .xs-oy-auto {
+      overflow-y: auto;
+    }
+    .xs-ox-auto {
+      overflow: auto;
+    }
+    .xs-oy-scroll {
+      overflow-y: scroll;
+    }
+    .xs-ox-scroll {
+      overflow: scroll;
+    }
+    .xs-oy-hidden {
+      overflow-y: hidden;
+    }
+    .xs-ox-hidden {
+      overflow: hidden;
+    }
+
     .xs-d-block {
         display: block;
     }
@@ -378,6 +490,120 @@
         }
         .xs-wp#{$i} {
             width: #{$i}#{"px"};
+        }
+    }
+}
+
+
+/* HEIHGT HELPERS */
+.h-auto {
+    height: auto;
+}
+
+@for $i from 0 through 1000 {
+    .h#{$i} {
+        height: #{$i}#{"%"};
+    }
+    .hp#{$i} {
+        height: #{$i}#{"px"};
+    }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+    .md-h-auto {
+        height: auto;
+    }
+    @for $i from 0 through 1000 {
+        .md-h#{$i} {
+            height: #{$i}#{"%"};
+        }
+        .md-hp#{$i} {
+            height: #{$i}#{"px"};
+        }
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    .sm-h-auto {
+        height: auto;
+    }
+    @for $i from 0 through 1000 {
+        .sm-h#{$i} {
+            height: #{$i}#{"%"};
+        }
+        .sm-hp#{$i} {
+            height: #{$i}#{"px"};
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .xs-h-auto {
+        height: auto;
+    }
+    @for $i from 0 through 1000 {
+        .xs-h#{$i} {
+            height: #{$i}#{"%"};
+        }
+        .xs-hp#{$i} {
+            height: #{$i}#{"px"};
+        }
+    }
+}
+
+
+/* MIN HEIHGT HELPERS */
+.hmin-auto {
+    min-height: auto;
+}
+
+@for $i from 0 through 1000 {
+    .hmin#{$i} {
+        min-height: #{$i}#{"%"};
+    }
+    .hmin-p#{$i} {
+        min-height: #{$i}#{"px"};
+    }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+    .md-hmin-auto {
+        min-height: auto;
+    }
+    @for $i from 0 through 1000 {
+        .md-hmin#{$i} {
+            min-height: #{$i}#{"%"};
+        }
+        .md-hmin-p#{$i} {
+            min-height: #{$i}#{"px"};
+        }
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    .sm-hmin-auto {
+        min-height: auto;
+    }
+    @for $i from 0 through 1000 {
+        .sm-hmin#{$i} {
+            min-height: #{$i}#{"%"};
+        }
+        .sm-hmin-p#{$i} {
+            min-height: #{$i}#{"px"};
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .xs-hmin-auto {
+        min-height: auto;
+    }
+    @for $i from 0 through 1000 {
+        .xs-hmin#{$i} {
+            min-height: #{$i}#{"%"};
+        }
+        .xs-hmin-p#{$i} {
+            min-height: #{$i}#{"px"};
         }
     }
 }
