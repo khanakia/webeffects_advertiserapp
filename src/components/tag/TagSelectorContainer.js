@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import { fetchTags, filterTags, selectTag } from '../../actions/action_tag';
 
-import TagHelper from '../../helpers/helper_tag'
+// import TagHelper from '../../helpers/helper_tag'
 import TagSelector from './TagSelector';
 
 
@@ -10,9 +10,10 @@ const getVisibleTodos = (todos, filter) => {
     var rows  = [];
     if(filter.tag_title) {
         _.map(todos, function(item) {
-            if(item.tag_title.indexOf(filter.tag_title) === -1) {
+            if(item.tag_title && item.tag_title.indexOf(filter.tag_title) === -1) {
                 return;
             }
+            // console.log(item.tag_title)
             rows.push(item)
         })
         return rows;
@@ -24,8 +25,8 @@ const getVisibleTodos = (todos, filter) => {
 
 const mapStateToProps = (state) => {
     return {
-        // list: state.tag.list.data,
-        tags: getVisibleTodos(state.tag.list.data, state.tag.filterTags),
+        // tagList: state.tag.list,
+        tagList: getVisibleTodos(state.tag.list, state.tag.filterTags),
         current_org: state.appdata.current_org
 
     };
@@ -36,20 +37,15 @@ const mapDispatchToProps = (dispatch) => {
         dispatch,
         fetchTags: () => {
             dispatch(fetchTags())
-            
-            // TagHelper.index().then((response) => {
-            //     dispatch(fetchTags(response))
-            // });
         },
 
         filterTags: (data) => {
-
             dispatch(filterTags(data))
         },
 
-        selectTag: (data => {
-            dispatch(selectTag(data))
-        })
+        // selectTag: (data => {
+        //     dispatch(selectTag(data))
+        // })
     }
 }
 

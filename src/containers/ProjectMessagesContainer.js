@@ -7,9 +7,9 @@ import ProjectMessages from '../components/ProjectMessages';
 const mapStateToProps = (state) => {
     return {
         state : state,
+        current_org: state.appdata.current_org,
         projectMessages: state.project.messages,
         categoryList: state.category.type_message_list,
-        current_org: state.appdata.current_org
     };
 }
 
@@ -18,7 +18,7 @@ const mapDispatchToProps = (dispatch) => {
         dispatch,
         fetchProjectMessages: (project_id) => {
             dispatch(fetchProjectMessages(project_id)).then((response) => {
-                dispatch(fetchCategoriesTypeMessage(project_id))
+                // dispatch(fetchCategoriesTypeMessage(project_id))
             });
         }
     }

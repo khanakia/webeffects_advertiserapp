@@ -6,7 +6,9 @@ export const FETCH_PROJECT_CURRENT = 'FETCH_PROJECT_CURRENT';
 export const FETCH_PROJECT_USERS = 'FETCH_PROJECT_USERS';
 
 export const FETCH_TASKLISTS = 'FETCH_TASKLISTS';
+export const FETCH_PROJECT_TASKLIST = 'FETCH_PROJECT_TASKLIST';
 export const FETCH_TASKLIST_TASKS = 'FETCH_TASKLIST_TASKS';
+export const FETCH_PROJECT_TASK = 'FETCH_PROJECT_TASK';
 
 export const FETCH_PROJECT_MESSAGES = 'FETCH_PROJECT_MESSAGES';
 export const FETCH_PROJECT_MESSAGE = 'FETCH_PROJECT_MESSAGE';
@@ -22,7 +24,7 @@ export const FETCH_COMMENTS = 'FETCH_COMMENTS'
 // import ProjectUserHelper from '../helpers/helper_project_user.js'
 // import TasklistHelper from '../helpers/helper_tasklist.js'
 
-import {Auth, ProjectHelper, ProjectMessageHelper, ProjectFileHelper, ProjectUserHelper, TasklistHelper, CommentHelper} from '../helpers'
+import {Auth, ProjectHelper, ProjectMessageHelper, ProjectFileHelper, ProjectUserHelper, TasklistHelper, TaskHelper, CommentHelper} from '../helpers'
 
 export function fetchProjects() {
     const request = ProjectHelper.index();
@@ -56,6 +58,22 @@ export function fetchTasklists(project_id) {
     const request = TasklistHelper.index(project_id);
     return {
         type: FETCH_TASKLISTS,
+        payload: request
+    };
+}
+
+export function fetchProjectTasklist(id) {
+    const request = TasklistHelper.show(id);
+    return {
+        type: FETCH_PROJECT_TASKLIST,
+        payload: request
+    };
+}
+
+export function fetchProjectTask(id) {
+    const request = TaskHelper.show(id);
+    return {
+        type: FETCH_PROJECT_TASK,
         payload: request
     };
 }
@@ -111,8 +129,8 @@ export function fetchProjectFilesBrowserFormList(project_id, extraParams={}) {
 }
 
 
-export function fetchComments(project_id, object_type, object_id) {
-    const request = CommentHelper.index(project_id, object_type, object_id);
+export function fetchComments(object_type, object_id) {
+    const request = CommentHelper.index(object_type, object_id);
     return {
         type: FETCH_COMMENTS,
         payload: request

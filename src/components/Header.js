@@ -35,7 +35,7 @@ export default class Header extends Component {
   
 	render() {
 		var avtarStyle = {
-            backgroundImage: 'url('+API_HOST_USERS_IMAGES+this.props.current_user.user_avtar+')',
+            backgroundImage: 'url('+API_HOST_USERS_IMAGES+this.props.current_user.image_base64+')',
         }
 
 		return (
@@ -73,7 +73,6 @@ export default class Header extends Component {
 										<li><Link to="settings/logo">Logo</Link></li>
 										<li><Link to="settings/colortheme">Color Theme</Link></li>
 										<li><Link to="settings/tags">Tags</Link></li>
-										<li><Link to="settings/integration">Integration</Link></li>
 
 										<li role="separator" className="divider"></li>
 										<li className="dropdown-header">Billing / Subscription</li>

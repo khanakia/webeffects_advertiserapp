@@ -1,58 +1,70 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 
-import Auth from '../helpers/auth.js'
+import {Auth} from '../helpers'
 
-import Sidebar from './Sidebar'
-import PagePanel from './PagePanel'
-
-import ProjectForm from './project/ProjectForm'
+import TaskItem from './project_todo/TaskItem'
+import TaskForm from './project_todo/TaskForm'
 
 
 class ProjectTask extends Component {
     constructor(props, context) {
         super(props, context);
+        // this.taskId = this.props.params.taskId
     }
 
     componentWillMount() {
-       // this.props.fetchProjects();
+       this.props.fetchProjectTask(this.props.params.taskId);
+       // console.info("Mounted")
     }
 
-    renderList(projects) {
-        return projects.map((project) => {
-            return (
-                <li className="list-group-item" key={project.id}>
-                    <h4 className="list-group-item-heading">
-                            {project.project_title}<br/>
-
-                            <span>Start Date: {project.start_date}</span><br/>
-                            <span>End Date: {project.start_date}</span>
-                    </h4>
-
-                    <span className="controls icons-group">
-                        <button className="btn btn-plain" title="Edit" onClick={(e)=> this.editProject(project,e)} ><i className="fa fa-pencil"></i></button>
-                        <button className="dropdown-toggle btn btn-plain" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span className="glyphicon glyphicon-cog" aria-hidden="true"></span> <span className="caret"></span></button>
-                        <ul className="dropdown-menu dropdown-menu-right">
-                          <li><Link to="organization">Project Setting</Link></li>
-                          <li><Link to="organization/companies">Archive Project</Link></li>
-                          <li><Link to="organization/peoples">Delete Project</Link></li>
-                        </ul>
-                    </span>
-                </li>
-            );
-        });
+    componentDidMount() {
+       console.log("TaskForm",TaskForm.abc())
     }
 
-    editProject(data, e) {
-        ProjectForm.showInPoup({data})
+    // shouldComponentUpdate = (nextProps, nextState, nextContext) => {
+    //     console.info(nextProps,this.props)
+    // }
+
+    componentWillUpdate = (nextProps, nextState) => {        
+        // console.info(nextProps.params.taskId == this.props.params.taskId)
+        if(nextProps.params.taskId !== this.props.params.taskId) {
+            this.props.fetchProjectTask(nextProps.params.taskId);
+            console.info('Execute AJAX')
+        }
     }
-   
+
+    componentDidUpdate() {
+
+    }
+
+ 
+
+
     render() {
-        // const { data } = this.props.projectsList;
+        const data = this.props.projectTask;
+        
 
         return (
             <div>
-               Project Task
+               <div className="control-toolbar1 mb20">
+                    <div className="left">
+                        <span className="title">Task Details</span>
+                    </div>
+                    <div className="middle">
+                    </div>
+                    <div className="right">
+                        <span className="pull-right">
+                            <span className="col mr10">
+                                
+                            </span>
+                            <span className="col icons-group">
+                                
+                            </span>
+                        </span>    
+                    </div>
+                </div>
+               <TaskItem data={data} />
             </div>
 
         );

@@ -34,29 +34,41 @@ export default class TasklistHelper {
         });
     }
 
- //    static show(id) {
- //        return  axios({
- //                    method: 'get',
- //                    url: API_URL_TASKLIST + '/' + id,
- //                    headers: Auth.header(),
- //                  });
- //    }
+    static show(id) {
+        return  axios({
+                method: 'get',
+                url: API_URL_TASKLIST + '/' + id,
+                headers: Auth.header(),
+            });
+    }
 	
-	// static store({org_title=null}) {
-	// 	return  axios({
- //                    method: 'post',
- //                    url: API_URL_TASKLIST,
- //                    headers: Auth.header(),
- //                    data : data
- //                  });
-	// }
+    static store(data) {
+        return axios({
+            method: 'post',
+            url: API_URL_TASKLIST,
+            headers: Auth.header(),
+            data: data
+        });
+    }
 
-	// static update(data) {
-	// 	return  axios({
- //                    method: 'put',
- //                    url: API_URL_TASKLIST,
- //                    headers: Auth.header(),
- //                    data : data
- //                  });
-	// }
+    static update(data) {
+        const dataJson = URI.parseQuery(data);
+        return axios({
+            method: 'put',
+            url: API_URL_TASKLIST + '/' + dataJson.id,
+            headers: Auth.header(),
+            data: data
+        });
+    }
+
+    static save(data) {
+        const dataJson = URI.parseQuery(data);
+        if (dataJson.id) {
+            var ajaxObj = TasklistHelper.update(data);
+        } else {
+            var ajaxObj = TasklistHelper.store(data);
+        }
+        return ajaxObj;
+    }
+
 }

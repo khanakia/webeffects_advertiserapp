@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactDom from 'react-dom';
 import { Link, hashHistory } from 'react-router'
 
-import { Auth,  ProjectFileHelper } from '../helpers'
+import { Auth,  ProjectFileHelper, ProjectFileVersionHelper } from '../helpers'
 import PopupHelper from '../helpers/helper_popup'
 
 
@@ -15,6 +15,8 @@ import ProjectFileDetailsEditForm from './project_file/ProjectFileDetailsEditFor
 import ProjectFileItem from './project_file/ProjectFileItem'
 
 import {store} from '../store/index.js';
+
+import { ROOT_URL, API_URL, OBJECT_TYPE_FILE } from '../config'
 
 class ProjectFiles extends Component {
     constructor(props, context) {
@@ -34,8 +36,10 @@ class ProjectFiles extends Component {
 
     componentDidMount() {
         // console.log("this.projectId", this.projectId)
-        // PopupHelper.showProjectFileBrowseForm({project_id:this.projectId, onFileItemsSelect:this.onFileItemsSelect})
+        // PopupHelper.showProjectFileUploadForm({onDataUpdate:this.onFileNewUpload.bind(this)})
     }
+
+ 
 
     onFileItemsSelect(items) {
         console.log("EEEEE", items)
@@ -44,7 +48,7 @@ class ProjectFiles extends Component {
     componentDidUpdate() {
         ReactDom.render(
                 <div>
-                    <CategoryTree2 onUpdated={this.onTreeItemUpdated.bind(this)} onDeleted={this.onTreeItemDeleted.bind(this)} onItemClick={this.onTreeItemClick.bind(this)} selectedValue={this.props.location.query.catid} project_id={this.projectId} object_type={'file'}/>
+                    <CategoryTree2 onUpdated={this.onTreeItemUpdated.bind(this)} onDeleted={this.onTreeItemDeleted.bind(this)} onItemClick={this.onTreeItemClick.bind(this)} selectedValue={this.props.location.query.catid} project_id={this.projectId} object_type={OBJECT_TYPE_FILE}/>
                 </div>,
                 document.getElementById('childrenSidebar')
             );
@@ -120,7 +124,11 @@ class ProjectFiles extends Component {
 
 
     uploadFiles(e) {
-        ProjectFileUploadForm.showInPoup({})
+        PopupHelper.showProjectFileUploadForm({onDataUpdate:this.onFileNewUpload.bind(this)})
+    }
+
+    onFileNewUpload() {
+        // this.props.fetchProjectFiles(this.projectId);   
     }
 
     editFile(e, data) {
@@ -182,6 +190,48 @@ class ProjectFiles extends Component {
         console.log("updateddata", data)
         this.props.fetchProjectFiles(this.projectId);
     }
+
+    selectAll(e) {
+        jQuery(".selectfiles_checkbox").prop('checked', true)
+    }
+
+    selectNone(e) {
+        jQuery(".selectfiles_checkbox").prop('checked', false)
+    }
+
+    downloadSelectedFiles(e) {
+        var selectedFiles = [];
+        $(".selectfiles_checkbox:checked").each(function(){
+            const id = jQuery(this).data('file_version_id');
+            selectedFiles.push(id)
+        });
+
+        
+        var data = 'file_version_ids='+selectedFiles.join(',');
+        ProjectFileHelper.downloadMultiple(data).then((response)=>{
+            
+            var url = API_URL+'/project_file/download_zip?id='+response.data.file_id+'&hash=' + response.data.file_hash;
+            window.location.href = url;
+        })
+        // console.log(data)
+    }
+
+    deleteSelectedFiles(e) {
+        var selectedFiles = [];
+        $(".selectfiles_checkbox:checked").each(function(){
+            const id = jQuery(this).data('file_version_id');
+            selectedFiles.push(id)
+        });
+
+        
+        var data = 'file_version_ids='+selectedFiles.join(',');
+        ProjectFileVersionHelper.deleteMultiple(data).then((response)=>{
+            console.log(data);
+            this.props.fetchProjectFiles(this.projectId);
+            
+        })
+        // console.log(data)
+    }
    
     render() {
         // const { data } = this.props.projectsList;
@@ -205,10 +255,21 @@ class ProjectFiles extends Component {
                             </span>
                             <span className="col icons-group">
                                 <button className="btn btn-success" onClick={(e)=> this.uploadFiles(e)}><i className="fa fa-plus"></i></button>
+                                <button className="btn btn-success" onClick={(e)=> this.uploadFiles(e)}>Google Drive</button>
                                 
                             </span>
                         </span>    
                     </div>
+                </div>
+
+                <div className="my20">
+                    <span className="col icons-group">
+                        <button className="btn btn-default" onClick={(e)=> this.selectAll(e)}>Select All</button>
+                        <button className="btn btn-default" onClick={(e)=> this.selectNone(e)}>Select None</button>
+                        <button className="btn btn-danger" onClick={(e)=> this.deleteSelectedFiles(e)}>Delete</button>
+                        <button className="btn btn-primary" onClick={(e)=> this.downloadSelectedFiles(e)}>Download</button>
+                        {/*<button className="btn btn-primary" onClick={(e)=> this.uploadFiles(e)}>Move or Copy</button>*/}
+                    </span>
                 </div>
                 <div className="mt20">
                     <ul className="list-group style1">

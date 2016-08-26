@@ -24,6 +24,8 @@ class TagSelector extends Component {
 
         // Will give tag as json data on new tag create or tag select by click tag link
         onTagSelect: function(tag, props) { return '';  },
+
+        // This is to determine which object id was clicked so we can pass that back in callback
         object_id : '',
         // data : {
         //     tag_id : '',
@@ -63,19 +65,22 @@ class TagSelector extends Component {
         
         var ajaxObj = TagHelper.store(data);
         ajaxObj.then(function(response){
-            // console.log(response.data.tag);
+            console.log(response.data);
             // this.tagSelected(response.data.tag)
-            this.props.onTagSelect(response.data.tag)
+            var tag = response.data.tag;
+            tag.object_id = this.props.object_id;
+            this.props.onTagSelect(tag)
             this.props.fetchTags();
         }.bind(this));
 
         // return false;
     }
 
-    tagClick = (tag, e) => {
+    tagClick = (e, tag) => {
         e.preventDefault();
         // this.tagSelected(tag)
-        this.props.onTagSelect(tag, this.props)
+        tag.object_id = this.props.object_id;
+        this.props.onTagSelect(tag)
     }
 
     // tagSelected = (tag) => {
@@ -84,11 +89,17 @@ class TagSelector extends Component {
     //     // setTimeout(() => {this.props.onTagSelect(tag, this.props)   }, 1000)
     // }
 
+    tagColorInputValueChange(color) {
+        this.tag_color = color;
+    }
+
+
+
     renderTags(tags) {
         return tags.map((tag) => {
             return (
                 <li key={tag.id}>
-                    <a href="#" className="tag"  onClick={(e)=> this.tagClick(tag, e)}>
+                    <a href="#" className="tag"  onClick={(e)=> this.tagClick(e, tag)}>
                         <i className="fa fa-dot-circle-o" style={{color: tag.tag_color}}></i>{tag.tag_title}
                     </a>
                 </li>
@@ -96,12 +107,9 @@ class TagSelector extends Component {
         });
     }
 
-    tagColorInputValueChange(color) {
-        this.tag_color = color;
-    }
-
+   
     renderCreateTag() {
-        if(this.props.tags.length==0) {
+        if(this.props.tagList.length==0) {
 
             if(this.props.current_org.tags_lock_to_admin && !this.props.current_org.permissions.org_can_update) {
                 return (
@@ -124,7 +132,7 @@ class TagSelector extends Component {
 
     render() {
         // const { tags } = this.props.tags_reducer.taglist;
-        const { tags } = this.props;
+        const data = this.props.tagList;
         // console.log('tags', tags);
         
         return (
@@ -133,7 +141,7 @@ class TagSelector extends Component {
                 {this.renderCreateTag()}
 
                 <ul className="tags-list">
-                   {this.renderTags(tags)}
+                   {this.renderTags(data)}
                 </ul>
             </div>
         );

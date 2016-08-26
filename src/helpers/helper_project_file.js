@@ -86,5 +86,16 @@ export default class ProjectFileHelper {
             headers: Auth.header(),
         });
     }
+
+    static downloadMultiple(data) {
+        return axios({
+            method: 'post',
+            url: API_URL_PROJECT_FILE + '/download_multiple',
+            data: data,
+            headers: Auth.header(),
+        });
+    }
+
+    
 }
 

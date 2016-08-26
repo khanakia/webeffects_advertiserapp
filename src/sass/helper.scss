@@ -443,7 +443,7 @@
     width: auto;
 }
 
-@for $i from 0 through 100 {
+@for $i from 0 through 1000 {
     .w#{$i} {
         width: #{$i}#{"%"};
     }
@@ -456,7 +456,7 @@
     .md-w-auto {
         width: auto;
     }
-    @for $i from 0 through 100 {
+    @for $i from 0 through 1000 {
         .md-w#{$i} {
             width: #{$i}#{"%"};
         }
@@ -470,7 +470,7 @@
     .sm-w-auto {
         width: auto;
     }
-    @for $i from 0 through 100 {
+    @for $i from 0 through 1000 {
         .sm-w#{$i} {
             width: #{$i}#{"%"};
         }
@@ -484,12 +484,127 @@
     .xs-w-auto {
         width: auto;
     }
-    @for $i from 0 through 100 {
+    @for $i from 0 through 1000 {
         .xs-w#{$i} {
             width: #{$i}#{"%"};
         }
         .xs-wp#{$i} {
             width: #{$i}#{"px"};
+        }
+    }
+}
+
+
+
+
+.wmin-auto {
+    max-width: auto;
+}
+
+@for $i from 0 through 100 {
+    .wmin#{$i} {
+        min-width: #{$i}#{"%"};
+    }
+    .wmin-p#{$i} {
+        min-width: #{$i}#{"px"};
+    }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+    .md-wmin-auto {
+        min-width: auto;
+    }
+    @for $i from 0 through 100 {
+        .md-wmin#{$i} {
+            min-width: #{$i}#{"%"};
+        }
+        .md-wmin-p#{$i} {
+            min-width: #{$i}#{"px"};
+        }
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    .sm-wmin-auto {
+        min-width: auto;
+    }
+    @for $i from 0 through 100 {
+        .sm-wmin#{$i} {
+            min-width: #{$i}#{"%"};
+        }
+        .sm-wmin-p#{$i} {
+            min-width: #{$i}#{"px"};
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .xs-wmin-auto {
+        min-width: auto;
+    }
+    @for $i from 0 through 100 {
+        .xs-wmin#{$i} {
+            min-width: #{$i}#{"%"};
+        }
+        .xs-wmin-p#{$i} {
+            min-width: #{$i}#{"px"};
+        }
+    }
+}
+
+/* WIDHT PERCENTAGE HELPERS */
+
+.wmax-auto {
+    max-width: auto;
+}
+
+@for $i from 0 through 100 {
+    .wmax#{$i} {
+        max-width: #{$i}#{"%"};
+    }
+    .wmax-p#{$i} {
+        max-width: #{$i}#{"px"};
+    }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+    .md-wmax-auto {
+        max-width: auto;
+    }
+    @for $i from 0 through 100 {
+        .md-wmax#{$i} {
+            max-width: #{$i}#{"%"};
+        }
+        .md-wmax-p#{$i} {
+            max-width: #{$i}#{"px"};
+        }
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    .sm-wmax-auto {
+        max-width: auto;
+    }
+    @for $i from 0 through 100 {
+        .sm-wmax#{$i} {
+            max-width: #{$i}#{"%"};
+        }
+        .sm-wmax-p#{$i} {
+            max-width: #{$i}#{"px"};
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .xs-wmax-auto {
+        max-width: auto;
+    }
+    @for $i from 0 through 100 {
+        .xs-wmax#{$i} {
+            max-width: #{$i}#{"%"};
+        }
+        .xs-wmax-p#{$i} {
+            max-width: #{$i}#{"px"};
         }
     }
 }
@@ -604,6 +719,62 @@
         }
         .xs-hmin-p#{$i} {
             min-height: #{$i}#{"px"};
+        }
+    }
+}
+
+/* MAX HEIHGT HELPERS */
+.hmax-auto {
+    max-height: auto;
+}
+
+@for $i from 0 through 1000 {
+    .hmax#{$i} {
+        max-height: #{$i}#{"%"};
+    }
+    .hmax-p#{$i} {
+        max-height: #{$i}#{"px"};
+    }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+    .md-hmax-auto {
+        max-height: auto;
+    }
+    @for $i from 0 through 1000 {
+        .md-hmax#{$i} {
+            max-height: #{$i}#{"%"};
+        }
+        .md-hmax-p#{$i} {
+            max-height: #{$i}#{"px"};
+        }
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    .sm-hmax-auto {
+        max-height: auto;
+    }
+    @for $i from 0 through 1000 {
+        .sm-hmax#{$i} {
+            max-height: #{$i}#{"%"};
+        }
+        .sm-hmax-p#{$i} {
+            max-height: #{$i}#{"px"};
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .xs-hmax-auto {
+        max-height: auto;
+    }
+    @for $i from 0 through 1000 {
+        .xs-hmax#{$i} {
+            max-height: #{$i}#{"%"};
+        }
+        .xs-hmax-p#{$i} {
+            max-height: #{$i}#{"px"};
         }
     }
 }

@@ -6,7 +6,7 @@ import Sidebar from './Sidebar'
 import PagePanel from './PagePanel'
 
 import TaskSingle from './TaskSingle'
-import TaskForm from './TaskForm'
+// import TaskForm from './TaskForm'
 
 
 class TaskList extends Component {
@@ -43,7 +43,7 @@ class TaskList extends Component {
                             {this.renderTasks(activeTasklist.tasks)}
                         </div>
 
-                        <TaskForm />
+                        
 
                     </div>
                 </PagePanel>

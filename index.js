@@ -3,6 +3,11 @@ import { render } from 'react-dom'
 import { Provider } from 'react-redux';
 import { Router, Route, hashHistory } from 'react-router'
 
+import ReactDom from 'react-dom';
+
+window.ReactDom = ReactDom;
+window.React = React;
+
 import Layout from './src/containers/LayoutContainer'
 import LayoutSignup from './src/containers/LayoutSignup'
 import LayoutLogin from './src/containers/LayoutLogin'
@@ -72,11 +77,10 @@ if(ROOT_HOST==window.location.host) {
 		       <Route path="organization" component={OrganizationList} />
 		       <Route path="organization/companies" component={OrganizationCompanies} />
 		       <Route path="organization/peoples" component={OrganizationUsers} />
-               <Route path="/tasklist/:tasklistId" component={TaskList}/>
                <Route path="settings/tags" component={TagList} />
                <Route path="settings/logo" component={CompaniesLogos} />
 		       <Route path="settings/general" component={OrganizationGeneral} />
-               <Route path="task" component={PageTask} />
+
                <Route path="demo" component={PageDemo} />
 
                <Route path="projects" component={ProjectsContainer} />
@@ -84,8 +88,8 @@ if(ROOT_HOST==window.location.host) {
                <Route path="projects/:projectId" component={LayoutProject}>
                		<Route path="overview" component={ProjectOverviewContainer} />
 					<Route path="tasklists" component={ProjectTaskListsContainer} />
-					<Route path="task/:taskId" component={ProjectTaskContainer} />
-					<Route path="tasklist/:tasklistId" component={ProjectTaskListContainer} />
+					<Route path="tasklists/:tasklistId" component={ProjectTaskListContainer} />
+					<Route path="tasks/:taskId" component={ProjectTaskContainer} />
 					<Route path="messages" component={ProjectMessagesContainer} />
 					<Route path="messages/create" component={ProjectMessageCreateContainer} />
 					<Route path="messages/:messageId" component={ProjectMessageContainer} />

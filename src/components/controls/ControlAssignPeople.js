@@ -5,7 +5,7 @@ import {connectWithStore} from '../../store/index.js';
 // import CompanyHelper from '../../helpers/helper_company'
 import { fetchProjectUsers } from '../../actions/action_project';
 
-class ControlNotifyPeople extends Component {
+class ControlAssignPeople extends Component {
     constructor(props) {
         super(props);
     }
@@ -14,7 +14,7 @@ class ControlNotifyPeople extends Component {
         onChange : function() {},
 
         className : '',
-        name : 'notifypeoples[]',
+        name : 'assignpeoples[]',
 
         selectedUsers : [],
 
@@ -36,18 +36,20 @@ class ControlNotifyPeople extends Component {
 
     componentDidUpdate() {
         this.selectpickerInit();
-        // console.info("ControlNotifyPeople componentDidUpdate")
+        // console.info("Controlassignpeople componentDidUpdate")
     }
 
     selectpickerInit() {
-        jQuery(this.refs.controlnotifypeople).selectpicker('destroy'); // Destroy already initiated instance so we can reinit it with new data
+        jQuery(this.refs.controlassignpeople).selectpicker('destroy'); // Destroy already initiated instance so we can reinit it with new data
         
-        jQuery(this.refs.controlnotifypeople).selectpicker({
-            actionsBox : true
+        jQuery(this.refs.controlassignpeople).selectpicker({
+            actionsBox : true,
+            liveSearch : true,
+            size: 6
         });
 
         // Set Selected Values
-        jQuery(this.refs.controlnotifypeople).selectpicker('val', _.map(this.props.selectedUsers, 'id'));
+        jQuery(this.refs.controlassignpeople).selectpicker('val', _.map(this.props.selectedUsers, 'id'));
         
     }
 
@@ -63,8 +65,8 @@ class ControlNotifyPeople extends Component {
         
         const data = this.props.projectUsers
         return (
-            <div className="control-controlnotifypeople">
-                <select className={ 'controlnotifypeople' + this.props.className} ref="controlnotifypeople" name={this.props.name} onChange={(e) => this.props.onChange(e)} multiple={true} >
+            <div className="control-controlassignpeople">
+                <select className={ 'controlassignpeople' + this.props.className} ref="controlassignpeople" name={this.props.name} onChange={(e) => this.props.onChange(e)} multiple={true} >
                     {this.renderList(data)}
                 </select>
             </div>
@@ -73,7 +75,7 @@ class ControlNotifyPeople extends Component {
 }
 
 
-// export default ControlNotifyPeople;
+// export default ControlAssignPeople;
 
 
 const mapStateToProps = (state) => {
@@ -99,6 +101,6 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-const ControlNotifyPeopleContainer = connectWithStore(ControlNotifyPeople, mapStateToProps, mapDispatchToProps)
+const ControlAssignPeopleContainer = connectWithStore(ControlAssignPeople, mapStateToProps, mapDispatchToProps)
 
-export default ControlNotifyPeopleContainer
+export default ControlAssignPeopleContainer

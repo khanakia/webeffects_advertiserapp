@@ -34,22 +34,22 @@ class TagForm extends Component {
 
     }
 
-    static showInPoup({settings={}, data={}, onDataUpdate=this.defaultProps.onDataUpdate()}) {
-        var uniq = 'id' + (new Date()).getTime();
+    // static showInPoup({settings={}, data={}, onDataUpdate=this.defaultProps.onDataUpdate()}) {
+    //     var uniq = 'id' + (new Date()).getTime();
 
-        Controls.showpopup({
-            detach : true,
-            message : '<div id="' + uniq + '"></div>',
-            container_class : "w500",
-            blur: false,
-            onopen : function(e){
-              var pid = (jQuery(e).attr('id'));
-              ReactDom.render(<TagForm popup_id={pid} settings={settings} data={data} onDataUpdate={onDataUpdate} />, document.getElementById(uniq));
-              // console.log(pid);
-              // setTimeout(() => jQuery('#'+pid).popup('hide'), 3000); 
-            }
-        });
-    }
+    //     Controls.showpopup({
+    //         detach : true,
+    //         message : '<div id="' + uniq + '"></div>',
+    //         container_class : "w500",
+    //         blur: false,
+    //         onopen : function(e){
+    //           var pid = (jQuery(e).attr('id'));
+    //           ReactDom.render(<TagForm popup_id={pid} settings={settings} data={data} onDataUpdate={onDataUpdate} />, document.getElementById(uniq));
+    //           // console.log(pid);
+    //           // setTimeout(() => jQuery('#'+pid).popup('hide'), 3000); 
+    //         }
+    //     });
+    // }
 
     hidePopup = () => {
         if(this.props.popup_id) {

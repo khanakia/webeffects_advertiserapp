@@ -7,8 +7,8 @@ import ProjectFile from '../components/ProjectFile';
 const mapStateToProps = (state) => {
     return {
         state : state,
+        current_org: state.appdata.current_org,
         projectFilesCurrent: state.project.files_current,
-        current_org: state.appdata.current_org
     };
 }
 

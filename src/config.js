@@ -1,5 +1,7 @@
 export const ROOT_HOST = 'react.pma';
 export const ROOT_URL = 'http://react.pma';
+export const API_HOST = 'http://local.pma';
+export const API_URL = 'http://local.pma/api';
 
 export const OBJECT_TYPE_PROJECT = 'project';
 export const OBJECT_TYPE_FILE = 'file';
@@ -8,9 +10,6 @@ export const OBJECT_TYPE_TASK = 'task';
 export const OBJECT_TYPE_COMMENT = 'comment';
 
 export const SIGN_UP_URL = ROOT_URL + '/#/signup';
-
-export const API_HOST = 'http://local.pma';
-export const API_URL = 'http://local.pma/api';
 
 export const API_HOST_ORGS_IMAGES = 'http://local.pma/uploads/orgs/';
 export const API_HOST_USERS_IMAGES = 'http://local.pma/uploads/users/';

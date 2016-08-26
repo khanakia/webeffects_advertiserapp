@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
 import ReactDom from 'react-dom';
+import { Provider } from 'react-redux';
+
+
+import {store} from '../../store/index.js';
+import { fetchTasklist, fetchTasklist_Tasks } from '../../actions/action_tasklist';
 
 import TaskHelper from '../../helpers/helper_task.js'
 import * as Helper from '../../helpers'
 
 import TagSelector from '../tag/TagSelectorContainer';
 import TagColorInput from '../tag/TagColorInput';
-import { Provider } from 'react-redux';
-import {store} from '../../store/index.js';
-import { fetchTasklist, fetchTasklist_Tasks } from '../../actions/action_tasklist';
+
+import TaskTitle from './TaskTitle';
 
 
 class Task extends Component {
@@ -22,7 +26,12 @@ class Task extends Component {
             tolerance:'intersect',
             handle: ".fa-arrows",
             // placeholder: "ph"
+            placeholder: "ui-state-highlight",
+
             // revert: true,
+            // start: function(e, ui ){
+            //      ui.placeholder.height(ui.helper.outerHeight());
+            // },
             stop: function(ev, ui) {
                 console.log(ui);
                 var parent = ui.item.parent(".tasks-list");
@@ -137,6 +146,7 @@ class Task extends Component {
         
         return (
             <div className="hasItems task-wrapper sortable" id={'t_'+this.props.data.id} data-id={this.props.data.id} data-parentid={this.props.data.parent_id}>
+                <TaskTitle data={this.props.data} />
                 <div className="singletask">
                     <div className="inner">
                         <div className="controls left">

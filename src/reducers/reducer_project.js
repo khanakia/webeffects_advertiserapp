@@ -8,6 +8,9 @@ import {
     FETCH_PROJECT_FILE,
     FETCH_PROJECT_FILES_BROWSER_FORM_LIST,
     FETCH_TASKLISTS,
+    FETCH_TASKLIST_TASKS,
+    FETCH_PROJECT_TASKLIST, 
+    FETCH_PROJECT_TASK, 
     FETCH_COMMENTS
 } from '../actions/action_project';
 
@@ -18,6 +21,8 @@ const INITIAL_STATE = {
     current: [],  // Current Project User is Viewing
     users : [],  // User Under Each Project it will be like that id_1 : {USERS}, id_2 : {USERS}
     tasklists : [],
+    tasklist : [],
+    task : [],
     messages : [],
     messages_current : [],
     files : [],
@@ -44,6 +49,10 @@ export default function(state = INITIAL_STATE, action) {
             return {...state, users: action.payload.data};
         case FETCH_TASKLISTS:
             return {...state, tasklists: action.payload.data };
+        case FETCH_PROJECT_TASKLIST:
+            return {...state, tasklist: action.payload.data };
+        case FETCH_PROJECT_TASK:
+            return {...state, task: action.payload.data };    
         case FETCH_PROJECT_MESSAGES:
             return {...state, messages: action.payload.data };    
         case FETCH_PROJECT_MESSAGE:

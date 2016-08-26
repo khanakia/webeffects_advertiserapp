@@ -57,10 +57,15 @@ class CategorySelectControl extends Component {
                
         }.bind(this));
 
-        _.forEach(this.props.selectedValues, function(item){
-            var index = _.findIndex(this.props.categoryList, {'id':item.id})
-            $('#tree').treeview('checkNode', [ index ]);
-        }.bind(this))
+        // _.forEach(this.props.selectedValues, function(item){
+        //     var index = _.findIndex(this.props.categoryList, {'id':item.id})
+        //     $('#tree').treeview('checkNode', [ index ]);
+        // }.bind(this))
+    
+        this.paintDisplayText()
+        this.paintInputArray()
+
+        // console.info("this.props.selectedValues", this.props.selectedValues)
 
     }
 
@@ -85,8 +90,15 @@ class CategorySelectControl extends Component {
 
     getNestedChildren(arr, parent_id) {
         var out = []
+        
         for(var i in arr) {
             arr[i].text = arr[i].category_name
+            var index = _.findIndex(this.props.selectedValues, {'id':arr[i].id})
+            if(index>=0) {
+                arr[i].state = {
+                    checked: true
+                }
+            }
             if(arr[i].parent_id == parent_id) {
                 var children = this.getNestedChildren(arr, arr[i].id)
 

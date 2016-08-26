@@ -60,7 +60,7 @@ input.error {
 label.error {
   display: none !important; }
 
-textarea {
+textarea.form-control {
   width: 100%;
   height: 300px; }
 
@@ -219,20 +219,62 @@ a:hover {
   box-shadow: none;
   border-radius: 0; }
 
-.task-wrapper .task-wrapper {
+.ui-state-highlight {
+  height: 30px !important;
+  margin: 5px; }
+
+.comp_task_item {
+  position: relative;
+  line-height: 22px;
+  vertical-align: top; }
+
+.comp_task_item_children, .takslist_tasks {
   margin-left: 30px; }
-.task-wrapper .tasks-list.active {
-  min-height: 50px;
-  background: #f9f9f9;
-  padding-botom: 100px; }
+  .comp_task_item_children.active, .takslist_tasks.active {
+    border: 1px dashed #dad8d8;
+    padding: 10px 10px;
+    min-height: 30px; }
+
+.takslist_tasks.level-0 {
+  min-height: 30px; }
+
+.comp_task_title {
+  background-color: #fbf6f6;
+  padding: 10px;
+  margin: 10px 0; }
+
+.comp-tasklisttitle {
+  background-color: #f5f5f5;
+  padding: 10px; }
+
+.tasklist-item {
+  padding-bottom: 20px; }
+
+.tasks-list.level-0 {
+  padding-left: 30px;
+  min-height: 10px; }
+
+.tasks-list .tasks-list {
+  margin-left: 30px; }
+
+.ui-sortable-placeholder {
+  min-height: 30px;
+  border: 1px dashed #dad8d8;
+  margin: 10px; }
+
+.task-wrapper {
+  padding-top: 10px; }
+  .task-wrapper .tasks-list.active {
+    min-height: 50px;
+    background: #f9f9f9;
+    padding-botom: 100px; }
 
 .singletask .inner {
   position: relative;
   padding: 10px 30px 10px 10px;
   line-height: 22px;
   vertical-align: top;
-  background-color: #fbf6f6;
-  margin-bottom: 10px; }
+  background-color: #fbf6f6; }
 .singletask .controls a {
   margin-right: 10px; }
 .singletask .controls.left {
@@ -303,17 +345,19 @@ a:hover {
         display: inline-block;
         vertical-align: middle; }
 
-.TagSingle > span {
-  display: inline-block;
-  padding: 2px 10px;
-  margin-right: 10px;
-  font-size: 12px;
-  border-radius: 6px;
-  color: #fff; }
-.TagSingle a {
-  color: #fff; }
-.TagSingle a.remove {
-  margin-left: 10px; }
+.TagSingle, .comp_tag_title {
+  display: inline-block; }
+  .TagSingle > span, .comp_tag_title > span {
+    display: inline-block;
+    padding: 2px 10px;
+    margin-right: 10px;
+    font-size: 12px;
+    border-radius: 6px;
+    color: #fff; }
+  .TagSingle a, .comp_tag_title a {
+    color: #fff; }
+  .TagSingle a.remove, .comp_tag_title a.remove {
+    margin-left: 10px; }
 
 .control-toolbar1 {
   display: table;
@@ -459,5 +503,12 @@ a:hover {
 .comp-projectfileAttachform {
   border: 1px solid #e0dada;
   padding: 20px; }
+
+.textreaa-editor {
+  height: 150px; }
+
+.trumbowyg-editor, .trumbowyg-textarea,
+.trumbowyg-box, .trumbowyg-editor {
+  min-height: 150px; }
 
 /*# sourceMappingURL=app.css.map */

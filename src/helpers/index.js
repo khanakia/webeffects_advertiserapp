@@ -11,9 +11,9 @@ import ProjectUserHelper from '../helpers/helper_project_user'
 import ProjectMessageHelper from '../helpers/helper_project_message'
 import ProjectFileHelper from '../helpers/helper_project_file'
 import ProjectFileVersionHelper from '../helpers/helper_project_file_version'
-import Tag from '../helpers/helper_tag'
-import TagItem from '../helpers/helper_tag_item'
-import Task from '../helpers/helper_task'
+import TagHelper from '../helpers/helper_tag'
+import TagItemHelper from '../helpers/helper_tag_item'
+import TaskHelper from '../helpers/helper_task'
 import TasklistHelper from '../helpers/helper_tasklist'
 import CommentHelper from '../helpers/helper_comment'
 
@@ -32,9 +32,9 @@ export {
     ProjectMessageHelper,
     ProjectFileHelper,
     ProjectFileVersionHelper,
-    Tag,
-    TagItem,
-    Task,
+    TagHelper,
+    TagItemHelper,
+    TaskHelper,
     TasklistHelper,
     CommentHelper
 }

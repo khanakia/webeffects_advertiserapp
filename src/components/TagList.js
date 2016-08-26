@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import ReactDom from 'react-dom';
 import { Link } from 'react-router';
 
-
 import PagePanel from './PagePanel'
 import TagForm from './tag/TagForm'
 
-import * as Helpers from '../helpers'
+import { TagHelper } from '../helpers'
+import PopupHelper from '../helpers/helper_popup'
+
 
 class TagList extends Component {
     constructor(props, context) {
@@ -27,9 +28,10 @@ class TagList extends Component {
     }
 
 
-    editTag(data, e) {
+    editTag(e, data) {
         e.preventDefault()
-        TagForm.showInPoup({data})
+        // TagForm.showInPoup({data})
+        PopupHelper.showTagForm({data})
         
     }
 
@@ -41,7 +43,7 @@ class TagList extends Component {
             confirmButton: 'Yes',
             cancelButton: 'No',
             confirm: function(){
-                Helpers.Tag.delete(data.id).then((response) => {
+                TagHelper.delete(data.id).then((response) => {
                     this.props.fetchTags();
                 });
             }.bind(this)
@@ -52,7 +54,7 @@ class TagList extends Component {
         return tags.map((tag) => {
             return (
                 <span key={tag.id} className="tag" style={{backgroundColor: tag.tag_color}}>
-                    <a href="#" onClick={(e)=> this.editTag(tag,e)} >{tag.tag_title}</a>
+                    <a href="#" onClick={(e)=> this.editTag(e, tag)} >{tag.tag_title}</a>
                     <a href="#" className="ml10" onClick={(e)=> this.deleteTag(tag,e)} ><i className="fa fa-trash"></i></a>
                 </span>
             );
@@ -63,7 +65,7 @@ class TagList extends Component {
     render() {
         
         
-        const { data } = this.props.tagsList;
+        const data = this.props.tagsList;
         
         return (
             <div>
@@ -80,7 +82,7 @@ class TagList extends Component {
                                     
                                 </span>
                                 <span className="col icons-group">
-                                    <button className="btn btn-success" onClick={()=> TagForm.showInPoup({}, {},this.props)}>Add New Tag</button>
+                                    <button className="btn btn-success" onClick={()=>PopupHelper.showTagForm({})}>Add New Tag</button>
                                 </span>
                             </span>    
                         </div>
