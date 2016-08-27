@@ -68,3 +68,6 @@ export const API_URL_TASK = API_URL+'/task';
 export const API_URL_TAG = API_URL+'/tag';
 export const API_URL_TAG_ITEM = API_URL+'/tag_item';
 
+
+export const API_URL_PLAN = API_URL+'/plan';
+
