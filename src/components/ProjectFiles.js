@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import ReactDom from 'react-dom';
 import { Link, hashHistory } from 'react-router'
 
+import {store} from '../store/index.js';
+import { ROOT_URL, API_URL, OBJECT_TYPE_FILE } from '../config'
+
 import { Auth,  ProjectFileHelper, ProjectFileVersionHelper } from '../helpers'
 import PopupHelper from '../helpers/helper_popup'
 
@@ -13,10 +16,7 @@ import ProjectFileBrowseForm from './project_file/ProjectFileBrowseForm'
 import ProjectFileDetailsEditForm from './project_file/ProjectFileDetailsEditForm'
 
 import ProjectFileItem from './project_file/ProjectFileItem'
-
-import {store} from '../store/index.js';
-
-import { ROOT_URL, API_URL, OBJECT_TYPE_FILE } from '../config'
+import ControlFilter from './controls/ControlFilter'
 
 class ProjectFiles extends Component {
     constructor(props, context) {
@@ -90,6 +90,7 @@ class ProjectFiles extends Component {
     // }
 
     renderList(items) {
+        if(!items) return false;
         return items.map((item) => {
             if(this.checkCategoryExists(item.categories)==false) return;
             return (
@@ -232,12 +233,19 @@ class ProjectFiles extends Component {
         })
         // console.log(data)
     }
+
+    onChangeInputFilter(data) {
+        
+        console.log(jQuery.param(data))
+
+        this.props.fetchProjectFiles(this.props.params.projectId, data);
+    }
    
     render() {
         // const { data } = this.props.projectsList;
-        if (jQuery.isEmptyObject(this.props.projectFiles)) return false;
+        // if (jQuery.isEmptyObject(this.props.projectFiles)) return false;
         const data = this.props.projectFiles;
-        console.log("data", data)
+        // console.log("data", data)
         return (
             <div>
                {/*<ProjectFileUploadForm project_id={this.projectId} />*/}
@@ -261,7 +269,9 @@ class ProjectFiles extends Component {
                         </span>    
                     </div>
                 </div>
-
+                <div className="my20">
+                    <ControlFilter onChangeInput={this.onChangeInputFilter.bind(this)} />
+                </div>
                 <div className="my20">
                     <span className="col icons-group">
                         <button className="btn btn-default" onClick={(e)=> this.selectAll(e)}>Select All</button>

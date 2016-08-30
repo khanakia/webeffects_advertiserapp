@@ -69,7 +69,7 @@ class OrganizationList extends Component {
                     <div className="d-table w100">
                         <div className="d-table-cell xs-d-block w80 xs-w100">
                             <h4 className="list-group-item-heading">
-                                {org.org_title}
+                                {org.name}
                             </h4>
                         </div>
                         <div className="d-table-cell xs-d-block w10 xs-w100">

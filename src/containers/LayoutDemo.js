@@ -5,9 +5,9 @@ import ReactDOM from 'react-dom'
 import Sidebar from '../components/Sidebar'
 import PagePanel from '../components/PagePanel'
 
-import LogoForm from '../components/UploadPopupForm'
+// import LogoForm from '../components/UploadPopupForm'
 
-import {ROOT_URL, API_URL_ORG_LOGO} from '../config.js'
+import {ROOT_URL} from '../config.js'
 
 export default class LayoutUpload extends Component {
 
@@ -21,7 +21,7 @@ export default class LayoutUpload extends Component {
     }
 
     openPopuplogo() {
-        LogoForm.showInPoup();
+        // LogoForm.showInPoup();
         return false;
     }
 

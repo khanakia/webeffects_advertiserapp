@@ -5,6 +5,8 @@ import CompanyHelper from '../../helpers/helper_company.js'
 import { fetchCompanies } from '../../actions/action_company';
 import {store} from '../../store/index.js';
 
+import DropdownCountries from '../controls/DropdownCountries'
+
 class CompanyForm extends Component {
     constructor(props) {
         super(props);
@@ -35,22 +37,22 @@ class CompanyForm extends Component {
         // this.props.fetchCompanies();
     }
 
-    static showInPoup({settings={}, data={}, onDataUpdate=this.defaultProps.onDataUpdate()}) {
-        var uniq = 'id' + (new Date()).getTime();
+    // static showInPoup({settings={}, data={}, onDataUpdate=this.defaultProps.onDataUpdate()}) {
+    //     var uniq = 'id' + (new Date()).getTime();
 
-        Controls.showpopup({
-            detach : true,
-            message : '<div id="' + uniq + '"></div>',
-            container_class : "",
-            opacity: 0.5,
-            onopen : function(e){
-              var pid = (jQuery(e).attr('id'));
-              ReactDom.render(<CompanyForm popup_id={pid} settings={settings} data={data} onDataUpdate={onDataUpdate} />, document.getElementById(uniq));
-              // console.log(pid);
-              // setTimeout(() => jQuery('#'+pid).popup('hide'), 3000); 
-            }
-        });
-    }
+    //     Controls.showpopup({
+    //         detach : true,
+    //         message : '<div id="' + uniq + '"></div>',
+    //         container_class : "",
+    //         opacity: 0.5,
+    //         onopen : function(e){
+    //           var pid = (jQuery(e).attr('id'));
+    //           ReactDom.render(<CompanyForm popup_id={pid} settings={settings} data={data} onDataUpdate={onDataUpdate} />, document.getElementById(uniq));
+    //           // console.log(pid);
+    //           // setTimeout(() => jQuery('#'+pid).popup('hide'), 3000); 
+    //         }
+    //     });
+    // }
 
     hidePopup = () => {
         if(this.props.popup_id) {
@@ -114,7 +116,7 @@ class CompanyForm extends Component {
                                         <div className="form-group">
                                             <label className="col-sm-2 control-label">Email</label>
                                             <div className="col-sm-10">
-                                                <input type="text" className="form-control" name="company_email" id="company_email" defaultValue={this.props.data.company_email} />
+                                                <input type="text" className="form-control required" name="company_email" id="company_email" defaultValue={this.props.data.company_email} />
                                             </div>
                                         </div>
                                         <div className="form-group">
@@ -181,7 +183,8 @@ class CompanyForm extends Component {
                                         <div className="form-group">
                                             <label className="col-sm-3 control-label">Country</label>
                                             <div className="col-sm-9">
-                                                <input type="text" className="form-control" name="company_country" id="company_country" defaultValue={this.props.data.company_country} />
+                                                {/*<input type="text" className="form-control" name="company_country" id="company_country" defaultValue={this.props.data.company_country} />*/}
+                                                <DropdownCountries name="company_country" defaultValue={this.props.data.company_country} />
                                             </div>
                                         </div>
                                         

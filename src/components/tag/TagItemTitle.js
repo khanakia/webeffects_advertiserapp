@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import ReactDom from 'react-dom';
-import { Link, hashHistory } from 'react-router'
-import { connect } from 'react-redux'
+/* 
+ * This component is to render Single TagItem like rounded border single tag
+*/
 
-import {connectWithStore} from '../../store/index.js';
+import React, { Component } from 'react';
+import { connect } from 'react-redux'
 
 import { Auth,  TagItemHelper } from '../../helpers'
 import PopupHelper from '../../helpers/helper_popup'
@@ -53,6 +53,8 @@ class TagItemTitle extends Component {
 
     render() {
         const data = this.props.data
+        if(!data || !data.tag) return false;
+
         return (
             <div className="comp_tag_title">
                 <span style={{backgroundColor: data.tag.tag_color}}>

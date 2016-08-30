@@ -19,7 +19,6 @@ class DomainSubdomainForm extends Component {
         settings : {},
         data : {
             id: '',
-            org_title: '',
         }    
     }
 
@@ -74,17 +73,17 @@ class DomainSubdomainForm extends Component {
         }
 
         ajaxObj.then(function(response) {
-            if (response.data.status) {
                 store.dispatch(fetchOrgs()).then((returndata) => {
                     store.dispatch(fetchOrgCurrent(returndata))
                 });
-                toastr.success(response.data.message);
+                toastr.success(response.data.success);
                 this.props.onDataUpdate(response.data.org)
                 this.hidePopup();
-            } else {
-                toastr.error(response.data.message);
-            }
-        }.bind(this));
+        }.bind(this))
+        .catch(function (error) {
+            // console.log(error);
+            toastr.error(error.data.error_message.subdomain_slug[0]);
+        });
 
         return false;
     }
@@ -106,17 +105,18 @@ class DomainSubdomainForm extends Component {
         }
 
         ajaxObj.then(function(response) {
-            if (response.data.status) {
                 store.dispatch(fetchOrgs()).then((returndata) => {
                     store.dispatch(fetchOrgCurrent(returndata))
                 });
-                toastr.success(response.data.message);
+                toastr.success(response.data.success);
                 this.props.onDataUpdate(response.data.org)
                 this.hidePopup();
-            } else {
-                toastr.error(response.data.message);
-            }
-        }.bind(this));
+            
+        }.bind(this))
+        .catch(function (error) {
+            console.log(error);
+            toastr.error(error.data.error_message.custom_domain[0]);
+        });
 
         return false;
     }
@@ -129,10 +129,10 @@ class DomainSubdomainForm extends Component {
         jQuery(this.refs.input_subdomain_preview).text(value);
     }
 
-    getInputSubdomainPreview(org_slug) {
+    getInputSubdomainPreview(subdomain_slug) {
         var value = '';
-        if(org_slug) {
-            value = org_slug+'.' + ROOT_HOST;
+        if(subdomain_slug) {
+            value = subdomain_slug+'.' + ROOT_HOST;
         }
 
         return value;
@@ -158,8 +158,8 @@ class DomainSubdomainForm extends Component {
                                     <div className="form-group">
                                         <label className="control-label">Organization Subdomain</label>
                                             
-                                        <input type="text" className="form-control required" ref="input_subdomain" name="org_subdomain" id="org_subdomain" defaultValue={this.props.data.org_slug} onChange={this.inputSubdomainChange}/>
-                                        <p className="help-block" ref="input_subdomain_preview">{this.getInputSubdomainPreview(this.props.data.org_slug)}</p>
+                                        <input type="text" className="form-control required" ref="input_subdomain" name="subdomain_slug" id="subdomain_slug" defaultValue={this.props.data.subdomain_slug} onChange={this.inputSubdomainChange}/>
+                                        <p className="help-block" ref="input_subdomain_preview">{this.getInputSubdomainPreview(this.props.data.subdomain_slug)}</p>
                                     
                                     </div>
                                 <div className="modal-footer text-right">
@@ -172,7 +172,7 @@ class DomainSubdomainForm extends Component {
                                     <input type="hidden" className="form-control" ref="id" name="id" id="id" defaultValue={this.props.data.id} />
                                     <div className="form-group">
                                         <label className="control-label">Organization Domain</label>
-                                        <input type="text" className="form-control required" name="org_domain" id="org_domain" defaultValue={this.props.data.org_domain} />
+                                        <input type="text" className="form-control required" name="custom_domain" id="custom_domain" defaultValue={this.props.data.custom_domain} />
                                     </div>
                                 <div className="modal-footer text-right">
                                     <button type="submit" className="btn btn-success">Save</button>

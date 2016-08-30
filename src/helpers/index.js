@@ -4,8 +4,8 @@ import Util from '../helpers/util'
 import Localstore from '../helpers/localstore'
 import CategoryHelper from '../helpers/helper_category'
 import Org from '../helpers/helper_org'
-import Company from '../helpers/helper_company'
-import OrgUser from '../helpers/helper_org_user'
+import CompanyHelper from '../helpers/helper_company'
+import OrgUserHelper from '../helpers/helper_org_user'
 import ProjectHelper from '../helpers/helper_project'
 import ProjectUserHelper from '../helpers/helper_project_user'
 import ProjectMessageHelper from '../helpers/helper_project_message'
@@ -25,8 +25,8 @@ export {
     Localstore,
     CategoryHelper,
     Org,
-    Company,
-    OrgUser,
+    CompanyHelper,
+    OrgUserHelper,
     ProjectHelper,
     ProjectUserHelper,
     ProjectMessageHelper,

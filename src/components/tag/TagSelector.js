@@ -43,6 +43,10 @@ class TagSelector extends Component {
         
     }
 
+    componentDidUpdate() {
+        // console.log("Comp TagSelector componentDidUpdate" )
+    }
+
 
     inputChange = (e) => {
         let tag_title = e.target.value;
@@ -78,7 +82,12 @@ class TagSelector extends Component {
 
     tagClick = (e, tag) => {
         e.preventDefault();
-        // this.tagSelected(tag)
+
+        /* Hide Item on click we cannot re-render it on parent update because it loads in qtip onDemand Loading which will be outside of parent so it can 
+         * never be re-render on Parent State Change it will re-render only on reclicking the TagSelector Button which reloads the Qtip2
+        */
+        jQuery(e.target).hide()
+        
         tag.object_id = this.props.object_id;
         this.props.onTagSelect(tag)
     }

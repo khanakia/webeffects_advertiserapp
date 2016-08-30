@@ -32,9 +32,10 @@ export default class OrgUserHelper {
     }
 
     static update(data) {
+        const dataJson = URI.parseQuery(data);
         return axios({
             method: 'put',
-            url: API_URL_ORGUSER + '/' + data.id,
+            url: API_URL_ORGUSER + '/' + dataJson.id,
             headers: Auth.header(),
             data: data
         });

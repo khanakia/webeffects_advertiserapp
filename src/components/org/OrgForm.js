@@ -19,7 +19,7 @@ class OrgForm extends Component {
         settings : {},
         data : {
             id: '',
-            org_title: '',
+            name: '',
         }    
     }
 
@@ -103,7 +103,7 @@ class OrgForm extends Component {
                     <div className="content-area">
                         <div className="form-group">
                             <label className="control-label">Organization Name</label>
-                            <input type="text" className="form-control required" name="org_title" id="org_title" defaultValue={this.props.data.org_title} />
+                            <input type="text" className="form-control required" name="name" id="name" defaultValue={this.props.data.name} />
                         </div>
 
                     </div>

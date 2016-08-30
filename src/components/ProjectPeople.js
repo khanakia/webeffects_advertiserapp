@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 
-import {Auth, Util} from '../helpers'
-import ProjectUserHelper from '../helpers/helper_project_user.js'
+import {Auth, Util, ProjectUserHelper} from '../helpers'
+import PopupHelper from '../helpers/helper_popup'
 
 
 import Sidebar from './Sidebar'
@@ -60,11 +60,11 @@ class ProjectPeople extends Component {
                         <div className="d-table-cell xs-d-block w30 xs-w100">
                             <div className="userInfoBlock">
                                 <div className="image d-inline-block valign-middle mr20">
-                                    <div className="avatar" style={{backgroundImage: 'url(http://localhost/aman.png)'}}>
+                                    <div className="avatar" style={{backgroundImage: "url('" + projectuser.user.profile_image_url +"')"}}>
                                     </div>
                                 </div>
                                 <div className="summary d-inline-block">
-                                    <div className="title fw-b">{projectuser.user_id} {projectuser.first_name +' '+ projectuser.last_name}</div>
+                                    <div className="title fw-b"> {projectuser.user.fullname}</div>
                                     <div className="position fs12">{projectuser.job_title}</div>
                                     <div className="company fs12">{projectuser.company_title}</div>
                                 </div>
@@ -145,7 +145,7 @@ class ProjectPeople extends Component {
                                 
                             </span>
                             <span className="col icons-group">
-                                <button className="btn btn-success" onClick={()=> ProjectUsersEditForm.showInPoup({data : {project_id : this.projectId}})}><i className="fa fa-plus mr5"></i>Add Users</button>
+                                <button className="btn btn-success" onClick={()=> PopupHelper.showProjectUsersEditForm({data : {project_id : this.projectId}})}><i className="fa fa-plus mr5"></i>Add Users</button>
                             </span>
                         </span>    
                     </div>

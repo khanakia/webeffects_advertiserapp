@@ -8,7 +8,7 @@ import {connectWithStore} from '../../store/index.js';
 import { Auth,  TasklistHelper } from '../../helpers'
 import PopupHelper from '../../helpers/helper_popup'
 
-import { fetchTasklists} from '../../actions/action_project';
+import { fetchProjectTasklists } from '../../actions/action_project';
 
 import { ROOT_URL, API_URL } from '../../config'
 

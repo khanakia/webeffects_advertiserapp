@@ -27,7 +27,7 @@ class TagForm extends Component {
     }
 
     componentWillMount() {
-        
+        console.info('THISPROPS', this.props)
     }
 
     componentDidMount() {

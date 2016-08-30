@@ -7,7 +7,7 @@ import OrganizationLogos from '../components/OrganizationLogos';
 const mapStateToProps = (state) => {
 
     return {
-        companiesList: state.companies.list,
+        // companiesList: state.companies.list,
         current_org: state.appdata.current_org
     };
 }

@@ -158,7 +158,7 @@ class CategorySelectControl extends Component {
 }
 
 
-export default CategorySelectControl;
+// export default CategorySelectControl;
 
 
 const mapStateToProps = (state) => {

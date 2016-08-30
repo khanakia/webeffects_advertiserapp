@@ -1,6 +1,9 @@
 import {
         ROOT_HOST,
         API_URL_ORG, 
+        API_URL_ORG_SHOWCURRENT,
+        API_URL_ORG_UPDATE_CUSTOMDOMAIN_FN,
+        API_URL_ORG_UPDATE_SUBDOMAIN_FN,
         API_URL_ORG_USER_INDEX, 
         API_URL_ORG_INVITE_USER,
         API_URL_GETALLORGSBYEMAIL,
@@ -10,6 +13,7 @@ import {
 
 
 import Auth from './auth.js'
+import Util from './util.js'
 
 export default class OrgHelper {
     constructor() {
@@ -65,7 +69,7 @@ export default class OrgHelper {
     static showCurrent() {
         return axios({
             method: 'get',
-            url: API_URL_ORG + '/show_current',
+            url: API_URL_ORG_SHOWCURRENT,
             headers: Auth.header(),
         });
     }
@@ -103,7 +107,7 @@ export default class OrgHelper {
     static updateDomain(data) {
         return  axios({
             method: 'post',
-            url: API_URL_ORG + '/' + data.id + '/update_domain',
+            url: API_URL_ORG_UPDATE_CUSTOMDOMAIN_FN(data.id),
             headers: Auth.header(),
             data : data
         });
@@ -112,7 +116,7 @@ export default class OrgHelper {
     static updateSubdomain(data) {
         return  axios({
             method: 'post',
-            url: API_URL_ORG + '/' + data.id + '/update_subdomain',
+            url: API_URL_ORG_UPDATE_SUBDOMAIN_FN(data.id),
             headers: Auth.header(),
             data : data
         });
@@ -123,9 +127,9 @@ export default class OrgHelper {
     
     // GET ORG LOGIN URL Based on SLUG AND CUSTOM DOMAIN
     static getLoginURL(org) {
-        let url = org.org_slug+'.'+ROOT_HOST;
-        if (org.org_domain)  {
-            url = org.org_domain;
+        let url = org.subdomain_slug+'.'+ROOT_HOST;
+        if (!Util.isEmpty(org.custom_domain))  {
+            url = org.custom_domain;
         }
 
         return 'http://'+url;

@@ -54,7 +54,7 @@ class ControlNotifyPeople extends Component {
     renderList(items) {
         return items.map((item) => {
             return (
-                <option key={item.id} value={item.user_id} >{item.first_name} {item.last_name}</option>
+                <option key={item.id} value={item.user_id} >{item.user.fullname}</option>
             );
         });
     }
@@ -63,11 +63,11 @@ class ControlNotifyPeople extends Component {
         
         const data = this.props.projectUsers
         return (
-            <div className="control-controlnotifypeople">
+            <span className="control-controlnotifypeople">
                 <select className={ 'controlnotifypeople' + this.props.className} ref="controlnotifypeople" name={this.props.name} onChange={(e) => this.props.onChange(e)} multiple={true} >
                     {this.renderList(data)}
                 </select>
-            </div>
+            </span>
         );
     }
 }

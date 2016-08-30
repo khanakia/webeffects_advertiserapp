@@ -1,6 +1,15 @@
 import React, { Component } from 'react';
-
 import ReactDom from 'react-dom';
+import { Provider } from 'react-redux';
+import {store} from '../store/index.js';
+
+import UploadImageControl from '../components/controls/UploadImageControl'
+
+import ProjectForm from '../components/project/ProjectForm'
+import ProjectUsersEditForm from '../components/project/ProjectUsersEditForm'
+
+
+import CompanyForm from '../components/org/CompanyForm'
 
 import ProjectFileBrowseForm from '../components/project_file/ProjectFileBrowseForm'
 import ProjectFileDetailsEditForm from '../components/project_file/ProjectFileDetailsEditForm'
@@ -20,6 +29,99 @@ import TagForm from '../components/tag/TagForm'
 export default class PopupHelper {
     constructor() {
 
+    }
+
+
+    static showProjectForm(args = {}) {
+        var uniq = 'id' + (new Date()).getTime();
+
+        Controls.showpopup({
+            detach: true,
+            message: '<div id="' + uniq + '"></div>',
+            container_class: "w800",
+            opacity: 0.5,
+            blur: false,
+            // zindex : 5000,
+
+            onopen: function(e) {
+                var pid = (jQuery(e).attr('id'));
+                jQuery('#'+pid + "_background").css('z-index', 5000);
+                jQuery('#'+pid + "_wrapper").css('z-index', 5001);
+                ReactDom.render(<ProjectForm popup_id={pid} {...args} />, document.getElementById(uniq));
+            },
+            onclose: function(e) {
+                ReactDom.unmountComponentAtNode(document.getElementById(uniq))
+            }
+        });
+    }
+
+    static showProjectUsersEditForm(args = {}) {
+        var uniq = 'id' + (new Date()).getTime();
+
+        Controls.showpopup({
+            detach: true,
+            message: '<div id="' + uniq + '"></div>',
+            container_class: "w800",
+            opacity: 0.5,
+            blur: false,
+            // zindex : 5000,
+
+            onopen: function(e) {
+                var pid = (jQuery(e).attr('id'));
+                jQuery('#'+pid + "_background").css('z-index', 5000);
+                jQuery('#'+pid + "_wrapper").css('z-index', 5001);
+                ReactDom.render(<ProjectUsersEditForm popup_id={pid} {...args} />, document.getElementById(uniq));
+            },
+            onclose: function(e) {
+                ReactDom.unmountComponentAtNode(document.getElementById(uniq))
+            }
+        });
+    }
+
+    static showUploadImageControl(args = {}) {
+        var uniq = 'id' + (new Date()).getTime();
+
+        Controls.showpopup({
+            detach: true,
+            message: '<div id="' + uniq + '"></div>',
+            container_class: "w800",
+            opacity: 0.5,
+            blur: false,
+            // zindex : 5000,
+
+            onopen: function(e) {
+                var pid = (jQuery(e).attr('id'));
+                jQuery('#'+pid + "_background").css('z-index', 5000);
+                jQuery('#'+pid + "_wrapper").css('z-index', 5001);
+                ReactDom.render(<UploadImageControl popup_id={pid} {...args} />, document.getElementById(uniq));
+            },
+            onclose: function(e) {
+                ReactDom.unmountComponentAtNode(document.getElementById(uniq))
+            }
+        });
+    }
+
+    static showCompanyForm(args = {}) {
+        var uniq = 'id' + (new Date()).getTime();
+
+        Controls.showpopup({
+            detach: true,
+            message: '<div id="' + uniq + '"></div>',
+            container_class: "w800",
+            opacity: 0.5,
+            blur: false,
+            // zindex : 5000,
+
+            onopen: function(e) {
+                var pid = (jQuery(e).attr('id'));
+                jQuery('#'+pid + "_background").css('z-index', 5000);
+                jQuery('#'+pid + "_wrapper").css('z-index', 5001);
+                ReactDom.render(<CompanyForm popup_id={pid} {...args} />, document.getElementById(uniq));
+            },
+            onclose: function(e) {
+                ReactDom.unmountComponentAtNode(document.getElementById(uniq))
+            }
+        });
     }
 
     static showProjectFileBrowseForm(args = ProjectFileBrowseForm.defaultProps) {
@@ -80,10 +182,12 @@ export default class PopupHelper {
             autozindex : true,
             onopen: function(e) {
                 var pid = (jQuery(e).attr('id'));
-                ReactDom.render(<CommentForm popup_id={pid} {...args} />, document.getElementById(uniq));
-            },
-            onclose: function(e) {
-                ReactDom.unmountComponentAtNode(document.getElementById(uniq))
+                // ReactDom.render(<CommentForm popup_id={pid} {...args} />, document.getElementById(uniq));
+                ReactDom.render(
+                <Provider store={store} key="provider">
+                    <CommentForm popup_id={pid} {...args} />
+                </Provider>,
+                document.getElementById(uniq));
             },
             onclose: function(e) {
                 ReactDom.unmountComponentAtNode(document.getElementById(uniq))
@@ -187,7 +291,12 @@ export default class PopupHelper {
             onopen: function(e) {
                 var pid = (jQuery(e).attr('id'));
                 // console.log(pid)
-                ReactDom.render(<TaskForm popup_id={pid} renderDomId={uniq} {...args} />, document.getElementById(uniq));
+                // ReactDom.render(<TaskForm popup_id={pid} {...args} />, document.getElementById(uniq));
+                ReactDom.render(
+                <Provider store={store} key="provider">
+                    <TaskForm popup_id={pid} {...args} />
+                </Provider>,
+                document.getElementById(uniq));
             },
             onclose: function(e) {
                 ReactDom.unmountComponentAtNode(document.getElementById(uniq))

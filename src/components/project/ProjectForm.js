@@ -20,11 +20,11 @@ class ProjectForm extends Component {
         settings : {},
         data : {
             id: '',
-            project_title: '',
-            project_description: '',
+            project_name: '',
+            project_note: '',
             project_status_id: '',
-            start_date: '',
-            end_date: '',
+            project_start_date: '',
+            project_end_date: '',
         }    
     }
 
@@ -37,20 +37,20 @@ class ProjectForm extends Component {
     }
 
 
-    static showInPoup({settings={}, data={}, onDataUpdate=this.defaultProps.onDataUpdate()}) {
-        var uniq = 'id' + (new Date()).getTime();
+    // static showInPoup({settings={}, data={}, onDataUpdate=this.defaultProps.onDataUpdate()}) {
+    //     var uniq = 'id' + (new Date()).getTime();
 
-        Controls.showpopup({
-            detach : true,
-            message : '<div id="' + uniq + '"></div>',
-            opacity: 0.5,
-            blur: false,
-            onopen : function(e){
-              var pid = (jQuery(e).attr('id'));
-              ReactDom.render(<ProjectForm popup_id={pid} settings={settings} data={data} onDataUpdate={onDataUpdate} />, document.getElementById(uniq));
-            }
-        });
-    }
+    //     Controls.showpopup({
+    //         detach : true,
+    //         message : '<div id="' + uniq + '"></div>',
+    //         opacity: 0.5,
+    //         blur: false,
+    //         onopen : function(e){
+    //           var pid = (jQuery(e).attr('id'));
+    //           ReactDom.render(<ProjectForm popup_id={pid} settings={settings} data={data} onDataUpdate={onDataUpdate} />, document.getElementById(uniq));
+    //         }
+    //     });
+    // }
 
 
     hidePopup = () => {
@@ -111,20 +111,30 @@ class ProjectForm extends Component {
                                 <div className="form-group">
                                     <label className="control-label">Name of the Project</label>
                                     <div className="">
-                                        <input type="text" className="form-control required" name="project_title" id="project_title" defaultValue={this.props.data.project_title} />
+                                        <input type="text" className="form-control required" name="project_name" id="project_name" defaultValue={this.props.data.project_name} />
                                     </div>
                                 </div>
                                 <div className="form-group">
                                     <label className=" control-label">Start Date</label>
                                     <div className="">
                                         
-                                        <InputDate name="start_date" defaultValue={this.props.data.start_date} />
+                                        <InputDate name="project_start_date" defaultValue={this.props.data.project_start_date} />
                                     </div>
                                 </div>
                                 <div className="form-group">
                                     <label className=" control-label">End Date</label>
                                     <div className="">
-                                        <InputDate name="end_date" defaultValue={this.props.data.end_date} />
+                                        <InputDate name="project_end_date" defaultValue={this.props.data.project_end_date} />
+                                    </div>
+                                </div>
+
+                                <div className="form-group">
+                                    <label className=" control-label">End Date</label>
+                                    <div className="">
+                                        <select name="project_status_id" defaultValue={this.props.data.project_status_id}>
+                                            <option value="1">Active</option>
+                                            <option value="2">Archived</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -133,7 +143,7 @@ class ProjectForm extends Component {
                                 <div className="form-group">
                                     <label className=" control-label">Description</label>
                                     <div className="">
-                                        <textarea name="project_description"></textarea>
+                                        <textarea className="form-control" name="project_note" defaultValue={this.props.data.project_note}></textarea>
                                     </div>
                                 </div>
                             </div>            

@@ -5,12 +5,12 @@ import { Link } from 'react-router';
 import Sidebar from './Sidebar'
 import PagePanel from './PagePanel'
 
-import LogoForm from '../components/UploadPopupForm'
-import Auth from '../helpers/auth.js'
+// import LogoForm from '../components/UploadPopupForm'
+import {Auth} from '../helpers/auth.js'
+import PopupHelper from '../helpers/helper_popup'
 
-import Util from '../helpers/util'
-import Localstore from '../helpers/localstore'
-import {API_HOST_ORGS_IMAGES, API_URL_ORG_LOGO, API_URL_ORG_FAVICON} from '../config.js'
+
+import {API_URL_UPLOAD_ORG_LOGO, API_URL_UPLOAD_ORG_FAVICON} from '../config.js'
 
 class OrganizationLogos extends Component {
     constructor(props) {
@@ -21,34 +21,39 @@ class OrganizationLogos extends Component {
         // this.props.fetchCompanies();
     }
 
-    openPopuplogo(data, uploadurl, e) {
-        LogoForm.showInPoup(data,uploadurl,0);
-        return false;
+
+    uploadLogo(e) {
+        e.preventDefault();
+        PopupHelper.showUploadImageControl({uploadUrl:API_URL_UPLOAD_ORG_LOGO, object_type: 'org', object_id: this.props.current_org.id, image: this.props.current_org.logo_url})
+    }
+
+    uploadFavicon(e) {
+        e.preventDefault();
+        PopupHelper.showUploadImageControl({uploadUrl:API_URL_UPLOAD_ORG_FAVICON, object_type: 'org', object_id: this.props.current_org.id, image: this.props.current_org.favicon_url})
     }
 
     render() {
         const { data } = this.props.current_org;
         var logoStyle = {
-            backgroundImage: 'url('+API_HOST_ORGS_IMAGES+this.props.current_org.org_logo+')',
+            backgroundImage: "url('" + this.props.current_org.logo_url + "')",
         }
         var faviconStyle = {
-            backgroundImage: 'url('+API_HOST_ORGS_IMAGES+this.props.current_org.org_favicon+')',
+            backgroundImage: "url('" + this.props.current_org.favicon_url + "')",
         }
         return (
             <div>
-                <Sidebar>Sidebar</Sidebar>
-                <PagePanel hasSidebar="true">
+                <PagePanel hasSidebar="false">
                     <div className="orgimagedata">
                         <div className="orglogo">
                             <div className="orgimage" style={logoStyle}></div>
                             <div className="changebutton">
-                                <button className="btn btn-success" title="Change Logo" onClick={(e)=> this.openPopuplogo(this.props.current_org, API_URL_ORG_LOGO, e)}>Change Logo</button>
+                                <button className="btn btn-success" title="Change Logo" onClick={(e)=> this.uploadLogo(e)}>Change Logo</button>
                             </div>
                         </div>
                         <div className="orgfavicon">
                             <div className="orgimage" style={faviconStyle}></div>
                             <div className="changebutton">
-                                <button className="btn btn-success" title="Change Logo" onClick={(e)=> this.openPopuplogo(this.props.current_org, API_URL_ORG_FAVICON, e)}>Change Favicon</button>
+                                <button className="btn btn-success" title="Change Logo" onClick={(e)=> this.uploadFavicon(e)}>Change Favicon</button>
                             </div>
                         </div>
                     </div>

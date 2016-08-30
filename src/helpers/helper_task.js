@@ -20,6 +20,18 @@ export default class TaskHelper {
         });
     }
 
+    static updateTasklistId(taskId, tasklistId) {
+        if(!tasklistId) return '';
+        return  axios({
+            method: 'post',
+            url: API_URL_TASK + '/' + taskId + '/update_tasklistid',
+            headers: Auth.header(),
+            data : {
+                tasklist_id : tasklistId
+            }
+        });
+    }
+
     static updateSortOrder(data) {
         return  axios({
             method: 'post',

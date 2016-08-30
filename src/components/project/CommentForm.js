@@ -39,10 +39,11 @@ class CommentForm extends Component {
     }
 
     componentDidMount() {
-        $(this.refs.body).trumbowyg({
-            autogrow: true
-        });
-        $(this.refs.body).trumbowyg('html', this.props.data.body);
+       
+    }
+
+    componentDidUpdate() {
+        this.editorInit();
     }
 
     shouldComponentUpdate = (nextProps, nextState, nextContext) => {
@@ -50,11 +51,15 @@ class CommentForm extends Component {
         // return !(nextProps == this.props) ||
         //   !(nextState == this.state) ||
         //   !(nextContext == this.context);
-        return false;
+        // return false;
+        return !(nextProps == this.props)
     }
 
-    componentDidUpdate() {
-
+    editorInit() {
+        $(this.refs.body).trumbowyg({
+            autogrow: true
+        });
+        $(this.refs.body).trumbowyg('html', this.props.data.body);
     }
 
     hidePopup = () => {
@@ -93,9 +98,9 @@ class CommentForm extends Component {
     }
   
     render() {
-        
-        // const data = this.props.projectFiles;
+        if (!this.props.object_id) return false;
         const current_user = this.props.current_user
+
         return (
             <div className="comp-commentform">
                 {
@@ -161,6 +166,7 @@ class CommentForm extends Component {
 
 // export default CommentForm;
 
+import { connect } from 'react-redux'
 
 const mapStateToProps = (state) => {
     
@@ -190,6 +196,6 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-const CommentFormContainer = connectWithStore(CommentForm, mapStateToProps, mapDispatchToProps)
+const CommentFormContainer = connect(mapStateToProps, mapDispatchToProps)(CommentForm)
 
 export default CommentFormContainer

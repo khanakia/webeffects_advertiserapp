@@ -102,9 +102,9 @@ class TasklistItem extends Component {
     render() {
         const data = this.props.data;
         return (
-            <div className="comp_tasklist_item" id={'tl_'+data.id}>
+            <div className="comp_tasklist_item" id={'tl_'+data.id} data-id={data.id}>
                 <TasklistTitle data={data} />
-                <div className="takslist_tasks level-0">
+                <div className="takslist_tasks level-0" data-id="null">
                     { /*(this.state.tasks.length>0) ? '' : 'No Tasks Found'*/ }
 
                     {/*this.renderItems(this.state.tasks)*/}

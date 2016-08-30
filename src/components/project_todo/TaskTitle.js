@@ -8,9 +8,16 @@ import {connectWithStore} from '../../store/index.js';
 import { Auth,  TasklistHelper } from '../../helpers'
 import PopupHelper from '../../helpers/helper_popup'
 
-import { fetchTasklists} from '../../actions/action_project';
 
-import { ROOT_URL, API_URL } from '../../config'
+
+import {store} from '../../store/index.js';
+import { fetchProjectTasklists, fetchProjectTasklist, fetchProjectTask } from '../../actions/action_project';
+
+import { ROOT_URL, API_URL, OBJECT_TYPE_TASK } from '../../config'
+
+import TagAddButton from '../tag/TagAddButton';
+import TagItemTitleMultiple from '../tag/TagItemTitleMultiple';
+
 
 class TaskTitle extends Component {
     constructor(props) {
@@ -33,7 +40,7 @@ class TaskTitle extends Component {
     }
 
     editTask(e, data) {
-        PopupHelper.showTaskForm({tasklist_id:this.props.data.id})
+        PopupHelper.showTaskForm({data, tasklist_id:this.props.data.id})
     }
 
     deleteTask(e, data) {
@@ -50,6 +57,30 @@ class TaskTitle extends Component {
         hashHistory.push(url)
     }
 
+    addComment(e, data) {
+        PopupHelper.showCommentForm({object_type:OBJECT_TYPE_TASK, object_id:data.id})
+    }
+
+
+    fetchDataTag() {
+        this.props.fetchProjectTasklists(this.props.project_id);
+        this.props.fetchProjectTasklist(this.props.data.tasklist_id)
+        this.props.fetchProjectTask(this.props.data.id);
+    }
+
+
+
+    renderAssignedUsers(users) {
+        if(undefined==users) return false;
+        return users.map((item) => {
+            return (
+                <span key={item.id} className="ml5 label label-default">
+                    {item.fullname}
+                </span>
+            )
+        });
+    }
+
     render() {
         const item = this.props.data
         return (
@@ -61,22 +92,29 @@ class TaskTitle extends Component {
                             <input type="checkbox" />
                         </div>
                     </div>
-                    <div className="d-table-cell xs-d-block w40 xs-w100 valign-middle">
+                    <div className="d-table-cell xs-d-block xs-w100 valign-middle">
                             {item.id}
                             <div className="d-inline-block">
                                 <Link data-id={item.id} to={'projects/'+this.props.project_id+'/tasks/'+item.id}>{item.task_title}</Link>
                             </div>
+                            <span className={'mx10 priority_'+item.priority} title={item.priority}><i className="fa fa-exclamation-circle"></i></span>
+                            <span>{item.progress}%</span>
+                            {this.renderAssignedUsers(item.task_users)}
+                            <span className="ml20">
+                                <TagItemTitleMultiple data={item.tag_items} fetchData={this.fetchDataTag.bind(this)} />
+                            </span>
                     </div>
                     
                     <div className="d-table-cell xs-d-block valign-middle text-right">
                         <span className="icons-group light">
-                            <button className="btn btn-plain" title="Edit File Details" onClick={(e)=> this.editFile(e, item)} ><i className="fa fa-pencil"></i></button>
+                            <button className="btn btn-plain" title="Edit File Details" onClick={(e)=> this.editTask(e, item)} ><i className="fa fa-pencil"></i></button>
                             <button className="btn btn-plain" title="View Single Page" onClick={(e)=> this.showTask(e, item)} ><i className="fa fa-external-link"></i></button>
                             <button className="btn btn-plain" title="Add SubTask" onClick={(e)=> this.addSubTask(e, item)} ><i className="fa fa-indent"></i></button>
-                            <button className="btn btn-plain" title="Priority" onClick={(e)=> this.templates(e, item)} ><i className="fa fa-exclamation-circle"></i></button>
-                            <button className="btn btn-plain" title="Progress" onClick={(e)=> this.editTasklist(e, item)} ><i className="fa fa-spinner"></i></button>
-                            <button className="btn btn-plain" title="Add Tag" onClick={(e)=> this.deleteTasklist(e, item)} ><i className="fa fa-tag"></i></button>
-                            <button className="btn btn-plain" title="Add Comment" onClick={(e)=> this.showFile(e, item)} ><i className="fa fa-comment"></i></button>
+                            {/*<button className="btn btn-plain" title="Priority" onClick={(e)=> this.templates(e, item)} ><i className="fa fa-exclamation-circle"></i></button>*/}
+                            {/*<button className="btn btn-plain" title="Progress" onClick={(e)=> this.editTasklist(e, item)} ><i className="fa fa-spinner"></i></button>*/}
+                            {/*<button className="btn btn-plain" title="Add Tag" onClick={(e)=> this.deleteTasklist(e, item)} ><i className="fa fa-tag"></i></button>*/}
+                            <TagAddButton object_type={OBJECT_TYPE_TASK} object_id={item.id} fetchData={this.fetchDataTag.bind(this)} strip_tags={item.tags} />
+                            <button className="btn btn-plain" title="Add Comment" onClick={(e)=> this.addComment(e, item)} ><i className="fa fa-comment"></i></button>
                             {/*<button className="btn btn-plain" title="Move or Copy File" onClick={(e)=> this.showFile(e, item)} ><i className="fa fa-arrows"></i></button>*/}
                             <button className="btn btn-plain" title="Delete File" onClick={(e)=> this.deleteFile(e, item)} ><i className="fa fa-trash"></i></button>
                         </span>
@@ -108,10 +146,16 @@ const mapDispatchToProps = (dispatch) => {
     
     return {
         dispatch,
-        fetchProjectFiles: (project_id) => {
-            dispatch(fetchProjectFiles(project_id)).then((response) => {
-                // dispatch(fetchCategoriesTypeFile(project_id))
-            });
+        fetchProjectTasklists: (project_id) => {
+            dispatch(fetchProjectTasklists(project_id))
+        },
+
+        fetchProjectTasklist: (tasklist_id) => {
+            dispatch(fetchProjectTasklist(tasklist_id))
+        },
+
+        fetchProjectTask: (id) => {
+            dispatch(fetchProjectTask(id))
         }
     }
 }

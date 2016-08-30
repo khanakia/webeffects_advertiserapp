@@ -1,7 +1,7 @@
 export const ROOT_HOST = 'react.pma';
 export const ROOT_URL = 'http://react.pma';
-export const API_HOST = 'http://local.pma';
-export const API_URL = 'http://local.pma/api';
+export const API_HOST = 'http://localhost:9001';
+export const API_URL = 'http://localhost:9001/api/v1';
 
 export const OBJECT_TYPE_PROJECT = 'project';
 export const OBJECT_TYPE_FILE = 'file';
@@ -11,37 +11,46 @@ export const OBJECT_TYPE_COMMENT = 'comment';
 
 export const SIGN_UP_URL = ROOT_URL + '/#/signup';
 
-export const API_HOST_ORGS_IMAGES = 'http://local.pma/uploads/orgs/';
-export const API_HOST_USERS_IMAGES = 'http://local.pma/uploads/users/';
+// export const API_HOST_ORGS_IMAGES = API_URL + '/uploads/orgs/';
+// export const API_HOST_USERS_IMAGES = API_URL + '/uploads/users/';
+
+export const API_URL_PUBLIC = API_URL+'/public';
 
 export const API_URL_SIGNIN = API_URL+'/auth/signin';
 export const API_URL_SIGNUP = API_URL+'/auth/signup';
-
-export const API_URL_PUBLIC = API_URL+'/public';
 export const API_URL_GETALLORGSBYEMAIL = API_URL_PUBLIC+'/findorgs_byemail';
 export const API_URL_GETORG_BYDOMAIN = API_URL_PUBLIC+'/findorgs_bydomain';
 
 export const API_URL_USER = API_URL+'/user';
 
 export const API_URL_ORG = API_URL+'/org';
-export const API_URL_CATEGORY = API_URL+'/category';
-
-
-
-// export const API_URL_ORG_USER_INDEX = API_URL_ORG+'/user_index';
+export const API_URL_ORG_SHOWCURRENT =  API_URL_ORG + '/show_current';
+export const API_URL_ORG_UPDATE_CUSTOMDOMAIN_FN =  (org_id) => {return API_URL_ORG + '/' + org_id + '/update_custom_domain'};
+export const API_URL_ORG_UPDATE_SUBDOMAIN_FN =  (org_id) => {return API_URL_ORG + '/' + org_id + '/update_subdomain_slug'};
 export const API_URL_ORG_INVITE_USER = API_URL_ORG+'/user_invite';
-// export const API_URL_ORG_UPDATE = API_URL+'/org/update';
 
+
+// export const API_URL_ORG_LOGO = API_URL+'/uploadlogo';
+// export const API_URL_ORG_FAVICON = API_URL+'/uploadfavicon';
 
 export const API_URL_ORGUSER = API_URL+'/org_user';
 
+
+export const API_URL_CATEGORY = API_URL+'/category';
+
 // export const API_URL_ORG_UPDATE_DOMAIN = API_URL_ORG+'/domainupdate';
 
-export const API_URL_ORG_LOGO = API_URL+'/uploadlogo';
-export const API_URL_ORG_FAVICON = API_URL+'/uploadfavicon';
-export const API_URL_USER_LOGO = API_URL+'/profileimage';
+// export const API_URL_USER_LOGO = API_URL+'/profileimage';
+
+export const API_URL_UPLOAD_USER_PROFILE_IMAGE = API_URL+'/upload/user_profile_image';
+export const API_URL_UPLOAD_ORG_LOGO = API_URL+'/upload/org_logo';
+export const API_URL_UPLOAD_ORG_FAVICON = API_URL+'/upload/org_favicon';
+export const API_URL_UPLOAD_PROJECT_LOGO = API_URL+'/upload/project_logo';
+export const API_URL_UPLOAD_COMPANY_LOGO = API_URL+'/upload/company_logo';
+
 
 export const API_URL_PROJECT = API_URL+'/project';
+export const API_URL_PROJECT_TRASH = API_URL_PROJECT+'/trash';
 export const API_URL_PROJECT_USER = API_URL+'/project_user';
 export const API_URL_PROJECT_USER_NOT_ASSIGNED = API_URL_PROJECT_USER+'/index_not_assigned';
 export const API_URL_PROJECT_MESSAGE = API_URL+'/project_message';

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import ReactDom from 'react-dom';
-import OrgHelper from '../helpers/helper_org.js'
-import { API_URL_GET_USER } from '../config.js'
-import Auth from '../helpers/auth.js'
+import {Auth} from '../../helpers'
+import { API_URL_GET_USER } from '../../config.js'
+
 
 class UserProfileEditForm extends Component {
     constructor(props) {
@@ -15,13 +15,13 @@ class UserProfileEditForm extends Component {
 
     static defaultProps = {
         onDataUpdate: function(org) { },
-        
+
         popup_id: '',
         settings : {},
         // data : {
         //     id: '',
         //     org_title: '',
-        // }    
+        // }
     }
 
     componentWillMount() {
@@ -39,18 +39,18 @@ class UserProfileEditForm extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        var valid = jQuery("#editDetailForm").valid();
+        var valid = jQuery(this.refs.form).valid();
         if (!valid) {
             return false };
         // this.props.dispatch({type: 'REMOVE'});
         // this.props.fetchOrgs();
 
-        OrgHelper.store({
-            name: this.refs.name.value
-        }).then(function(response) {
-            $('#editDetailFormModal').modal('hide');
-            this.props.fetchOrgs();
-        }.bind(this));
+        // OrgHelper.store({
+        //     name: this.refs.name.value
+        // }).then(function(response) {
+        //     $('#editDetailFormModal').modal('hide');
+        //     this.props.fetchOrgs();
+        // }.bind(this));
     }
 
     static showInPoup({settings={}, data={}, onDataUpdate=this.defaultProps.onDataUpdate()}) {
@@ -66,7 +66,7 @@ class UserProfileEditForm extends Component {
                 var pid = (jQuery(e).attr('id'));
                 ReactDom.render(<UserProfileEditForm popup_id={pid} settings={settings} data={data} onDataUpdate={onDataUpdate} />, document.getElementById(uniq));
                 // console.log(pid);
-                // setTimeout(() => jQuery('#'+pid).popup('hide'), 3000); 
+                // setTimeout(() => jQuery('#'+pid).popup('hide'), 3000);
             }
         });
     }
@@ -86,7 +86,7 @@ class UserProfileEditForm extends Component {
                 <div className="modal-header">
                     <h4 className="modal-title">Edit User Details</h4>
                 </div>
-                
+
                 <ul className="nav nav-tabs" role="tablist">
                     <li role="presentation" className="active"><a href="#essentials" aria-controls="essentials" role="tab" data-toggle="tab">Essentials</a></li>
                     <li role="presentation"><a href="#details" aria-controls="details" role="tab" data-toggle="tab">Details</a></li>
@@ -221,24 +221,14 @@ class UserProfileEditForm extends Component {
                                 <div className="row">
                                     <div className="col-md-8">
                                         <div className="form-group">
-                                            <label className="col-sm-3 control-label">Language</label>
-                                            <div className="col-sm-9">
-                                                <select className="form-control required" name="language" id="language" defaultValue={data.language}>
-                                                    <option value="">Select Language</option>
-                                                    <option value="AF">Afghanistan</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div className="form-group">
                                             <label className="col-sm-3 control-label">Date Format</label>
                                             <div className="col-sm-9">
                                                 <select className="form-control required" name="dateFormat" id="dateFormat" defaultValue={data.dateFormat}>
-                                                    <option value="1" selected="">dd/mm/yyyy</option>
-                                                    <option value="2">mm/dd/yyyy</option>
-                                                    <option value="3">dd.mm.yyyy</option>
-                                                    <option value="4">yyyy-mm-dd</option>
-                                                    <option value="5">yyyy.mm.dd</option>
-                                                    <option value="6">mm.dd.yyyy</option>
+                                                    <option value="1">mm/dd/yyyy</option>
+                                                    <option value="2">dd.mm.yyyy</option>
+                                                    <option value="3">dd-mm-yyyy</option>
+                                                    <option value="4">yyyy/mm/dd</option>
+                                                    <option value="5">yyyy-mm-dd</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -246,25 +236,13 @@ class UserProfileEditForm extends Component {
                                             <label className="col-sm-3 control-label">Time Format</label>
                                             <div className="col-sm-9">
                                                 <select className="form-control required" name="timeFormat" id="timeFormat" defaultValue={data.timeFormat}>
-                                                    <option value="1" selected="">dd/mm/yyyy</option>
-                                                    <option value="2">mm/dd/yyyy</option>
-                                                    <option value="3">dd.mm.yyyy</option>
-                                                    <option value="4">yyyy-mm-dd</option>
-                                                    <option value="5">yyyy.mm.dd</option>
-                                                    <option value="6">mm.dd.yyyy</option>
+                                                    <option value="1">12 hour clock</option>
+                                                    <option value="2">24 hour clock</option>
                                                 </select>
                                             </div>
                                         </div>
-                                        <div className="form-group">
-                                            <label className="col-sm-3 control-label">Calendar Start</label>
-                                            <div className="col-sm-9">
-                                                <select className="form-control required" name="calender" id="calender" defaultValue={data.calender}>
-                                                    <option value="no">Calendars start on a Monday</option>
-                                                    <option value="yes" selected="">Calendars start on a Sunday</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div className="form-group">
+                                        
+                                        {/*<div className="form-group">
                                             <label className="col-sm-3 control-label">Time Zone</label>
                                             <div className="col-sm-9">
                                                 <select className="form-control required" name="time_zone" id="time_zone" defaultValue={data.time_zone}>
@@ -277,10 +255,14 @@ class UserProfileEditForm extends Component {
                                                     </optgroup>
                                                 </select>
                                             </div>
-                                        </div>
+                                        </div>*/}
                                     </div>
                                 </div>
                             </div>
+                        </div>
+
+                        <div className="modal-footer text-right">
+                            <button type="submit" className="btn btn-success" ref="btn_save" >Save</button>
                         </div>
                     </form>
                 </div>

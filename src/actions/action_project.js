@@ -7,7 +7,7 @@ export const FETCH_PROJECT_USERS = 'FETCH_PROJECT_USERS';
 
 export const FETCH_TASKLISTS = 'FETCH_TASKLISTS';
 export const FETCH_PROJECT_TASKLIST = 'FETCH_PROJECT_TASKLIST';
-export const FETCH_TASKLIST_TASKS = 'FETCH_TASKLIST_TASKS';
+export const FETCH_PROJECT_TASKS = 'FETCH_PROJECT_TASKS';
 export const FETCH_PROJECT_TASK = 'FETCH_PROJECT_TASK';
 
 export const FETCH_PROJECT_MESSAGES = 'FETCH_PROJECT_MESSAGES';
@@ -54,7 +54,7 @@ export function fetchProjectUsers(project_id) {
 
 
 
-export function fetchTasklists(project_id) {
+export function fetchProjectTasklists(project_id) {
     const request = TasklistHelper.index(project_id);
     return {
         type: FETCH_TASKLISTS,
@@ -70,6 +70,15 @@ export function fetchProjectTasklist(id) {
     };
 }
 
+
+// export function fetchProjectTasks(project_id) {
+//     const request = TaskHelper.index(project_id);
+//     return {
+//         type: FETCH_PROJECT_TASKS,
+//         payload: request
+//     };
+// }
+
 export function fetchProjectTask(id) {
     const request = TaskHelper.show(id);
     return {
@@ -79,12 +88,12 @@ export function fetchProjectTask(id) {
 }
 
 
-export function fetchTasklist_Tasks(data) {
-    return {
-        type: FETCH_TASKLIST_TASKS,
-        payload: data
-    };
-}
+// export function fetchTasklist_Tasks(data) {
+//     return {
+//         type: FETCH_PROJECT_TASKS,
+//         payload: data
+//     };
+// }
 
 export function fetchProjectMessages(project_id) {
     const request = ProjectMessageHelper.index(project_id);
@@ -104,8 +113,8 @@ export function fetchProjectMessage(id) {
 
 
 
-export function fetchProjectFiles(project_id) {
-    const request = ProjectFileHelper.index(project_id);
+export function fetchProjectFiles(project_id, extraParams={}) {
+    const request = ProjectFileHelper.index(project_id, extraParams);
     return {
         type: FETCH_PROJECT_FILES,
         payload: request

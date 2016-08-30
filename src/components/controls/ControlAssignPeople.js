@@ -56,7 +56,7 @@ class ControlAssignPeople extends Component {
     renderList(items) {
         return items.map((item) => {
             return (
-                <option key={item.id} value={item.user_id} >{item.first_name} {item.last_name}</option>
+                <option key={item.id} value={item.user_id} >{item.user.fullname}</option>
             );
         });
     }

@@ -3,9 +3,12 @@ import { Link } from 'react-router';
 
 import {Auth} from '../helpers'
 
+import { OBJECT_TYPE_TASK } from '../config.js'
+
 import TaskItem from './project_todo/TaskItem'
 import TaskForm from './project_todo/TaskForm'
-
+import CommentList from './project/CommentList'
+import CommentForm from './project/CommentForm'
 
 class ProjectTask extends Component {
     constructor(props, context) {
@@ -19,7 +22,7 @@ class ProjectTask extends Component {
     }
 
     componentDidMount() {
-       console.log("TaskForm",TaskForm.abc())
+       // console.log("TaskForm",TaskForm.abc())
     }
 
     // shouldComponentUpdate = (nextProps, nextState, nextContext) => {
@@ -30,7 +33,8 @@ class ProjectTask extends Component {
         // console.info(nextProps.params.taskId == this.props.params.taskId)
         if(nextProps.params.taskId !== this.props.params.taskId) {
             this.props.fetchProjectTask(nextProps.params.taskId);
-            console.info('Execute AJAX')
+            // console.info('Execute AJAX')
+            // this.forceUpdate()
         }
     }
 
@@ -43,7 +47,9 @@ class ProjectTask extends Component {
 
     render() {
         const data = this.props.projectTask;
-        
+        const taskId = this.props.params.taskId;
+        console.info(this.props.params.taskId)
+        if (jQuery.isEmptyObject(data)) return false;
 
         return (
             <div>
@@ -65,6 +71,11 @@ class ProjectTask extends Component {
                     </div>
                 </div>
                <TaskItem data={data} />
+
+               <div className="section_comments">
+                    <CommentList object_type={OBJECT_TYPE_TASK} object_id={taskId} />
+                    <CommentForm object_type={OBJECT_TYPE_TASK} object_id={taskId} />
+                </div>
             </div>
 
         );

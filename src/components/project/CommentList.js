@@ -36,9 +36,21 @@ class CommentList extends Component {
         this.fetchComments()
     }
 
-    componentDidMount() {
-        
+    
+    componentWillUpdate = (nextProps, nextState) => {        
+     
     }
+
+    componentDidMount() {
+
+    }
+
+    componentDidUpdate(prevProps) {
+        if(prevProps.object_id !== this.props.object_id) {
+            this.fetchComments();
+        }
+    }
+
 
     fetchComments() {
         this.props.fetchComments(this.props.object_type, this.props.object_id)
@@ -97,7 +109,7 @@ class CommentList extends Component {
     render() {
         
         const data = this.props.projectComments;
-
+        if (jQuery.isEmptyObject(data)) return false;
         return (
             <div className="comp-commentlist">
                 <h3>Comments</h3>

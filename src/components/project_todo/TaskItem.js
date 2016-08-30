@@ -31,20 +31,27 @@ class TaskItem extends Component {
             //      ui.placeholder.height(ui.helper.outerHeight());
             // },
             stop: function(ev, ui) {
-                console.log(ui.item);
+                
                 var parent = ui.item.parent(".takslist_tasks");
+                var taskId = ui.item.data('id');
+                
+                const parent_tasklist = ui.item.parents(".comp_tasklist_item");
+                const tasklist_id = parent_tasklist.data('id')
+                if(tasklist_id) {
+                    TaskHelper.updateTasklistId(taskId, tasklist_id)
+                }
+
                 // var sortOrder = parent.sortable( "toArray" );
                 var sortOrderData = parent.sortable( "serialize", { key: "t[]" } );
-                console.log(sortOrderData)
                 TaskHelper.updateSortOrder(sortOrderData);
 
-                // // Update Task Parent
-                var taskId = ui.item.data('id');
-                var currentParenttaskId = ui.item.data('parentid');
+                // Update Task Parent
+                // var currentParenttaskId = ui.item.data('parentid');
                 var parentTaskId = parent.data('id');
-                console.log(taskId, currentParenttaskId, parentTaskId)
-                if(currentParenttaskId!==parentTaskId) {
-                    
+                // console.log(taskId, currentParenttaskId, parentTaskId)
+                // if(currentParenttaskId!==parentTaskId) {
+                if(undefined!==parentTaskId) {
+                    // console.log("HASPARENT")
                     TaskHelper.updateParent(taskId, parentTaskId);
                 }
                 
@@ -71,7 +78,7 @@ class TaskItem extends Component {
         const data = this.props.data;
         
         return (
-            <div className="comp_task_item" id={'tl_'+data.id} data-id={data.id} data-parentid={data.parent_id}>
+            <div className="comp_task_item" id={'tl_'+data.id} data-id={data.id}>
                 <TaskTitle data={data} />
                 <div className="takslist_tasks comp_task_item_children" data-id={data.id}>
                     {this.renderItems(data.childrens)}

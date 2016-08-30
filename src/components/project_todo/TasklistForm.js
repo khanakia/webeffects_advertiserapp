@@ -8,7 +8,7 @@ import {connectWithStore} from '../../store/index.js';
 // import ProjectFileAttachForm from '../project_file/ProjectFileAttachForm'
 
 import {TasklistHelper} from '../../helpers'
-import { fetchTasklists } from '../../actions/action_project'
+import { fetchProjectTasklists } from '../../actions/action_project'
 
 class TasklistForm extends Component {
     constructor(props) {
@@ -70,7 +70,7 @@ class TasklistForm extends Component {
 
         TasklistHelper.save(data).then(function(response) {
             // console.log(response);
-            this.props.fetchTasklists(this.props.project_id)
+            this.props.fetchProjectTasklists(this.props.project_id)
             this.props.onDataUpdate(response.data.project)
             this.hidePopup();
         }.bind(this));
@@ -134,8 +134,8 @@ const mapDispatchToProps = (dispatch) => {
 
     return {
         dispatch,
-        fetchTasklists: (project_id) => {
-            dispatch(fetchTasklists(project_id)).then((response) => {
+        fetchProjectTasklists: (project_id) => {
+            dispatch(fetchProjectTasklists(project_id)).then((response) => {
             });
         }
     }

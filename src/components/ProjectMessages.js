@@ -22,7 +22,10 @@ import { Provider } from 'react-redux';
 import { ROOT_URL, API_URL, OBJECT_TYPE_MESSAGE } from '../config'
 
 import TagSelector from './tag/TagSelectorContainer';
-import TagItemTitle from './tag/TagItemTitle';
+// import TagItemTitle from './tag/TagItemTitle';
+import TagAddButton from './tag/TagAddButton';
+import TagItemTitleMultiple from './tag/TagItemTitleMultiple';
+
 
 
 class ProjectMessages extends Component {
@@ -42,9 +45,8 @@ class ProjectMessages extends Component {
     }
 
     componentDidMount() {
-        this.addTagButtonClick()
+        // this.addTagButtonClick()
     }
-
 
 
     componentDidUpdate() {
@@ -208,105 +210,110 @@ class ProjectMessages extends Component {
     // }
     
 
-    addTagButtonClick() {
-        var _this = this;
-        $(document).on('click', '.a-addtags', function (event) {
-            $(this).qtip({
-                overwrite: false, // Don't overwrite tooltips already bound
+
+    //## ADD TAGS FUNCTIONS =========================
+    // addTagButtonClick() {
+    //     var _this = this;
+    //     $(document).on('click', '.a-addtags', function (event) {
+    //         $(this).qtip({
+    //             overwrite: false, // Don't overwrite tooltips already bound
               
 
-                content: {
-                    text: function(event, api) {
-                        // var tooltip = api.elements.tooltip
-                        // var id = api.elements.target.data('id');
-                        // console.log(tooltip);
-                        // api.elements.content.html('Loading...');
-                        // Task.renderTagSelector(tooltip.attr('id'))
-                        return '';
-                    }
-                },
-                position: {
-                    my: 'top right',
-                    at: 'top right',
-                    // container: $('div#main_layout')
-                },
+    //             content: {
+    //                 text: function(event, api) {
+    //                     // var tooltip = api.elements.tooltip
+    //                     // var id = api.elements.target.data('id');
+    //                     // console.log(tooltip);
+    //                     // api.elements.content.html('Loading...');
+    //                     // Task.renderTagSelector(tooltip.attr('id'))
+    //                     return '';
+    //                 }
+    //             },
+    //             position: {
+    //                 my: 'top right',
+    //                 at: 'top right',
+    //                 // container: $('div#main_layout')
+    //             },
 
-                show: {
-                     event: event.type, // Use the same event type as above
-                    ready: true, // Show immediately - important!
-                     solo: true
-                },
-                hide: 'unfocus',
-                style: 'qtip-light',
-                events: {
-                    show: function(event, api) {
-                        console.log("shows");
-                        var tooltip = api.elements.tooltip
-                        var tooltip_id = tooltip.attr('id');
-                        var object_id = api.elements.target.data('id');
+    //             show: {
+    //                  event: event.type, // Use the same event type as above
+    //                 ready: true, // Show immediately - important!
+    //                  solo: true
+    //             },
+    //             hide: 'unfocus',
+    //             style: 'qtip-light',
+    //             events: {
+    //                 show: function(event, api) {
+    //                     console.log("shows");
+    //                     var tooltip = api.elements.tooltip
+    //                     var tooltip_id = tooltip.attr('id');
+    //                     var object_id = api.elements.target.data('id');
 
-                        _this.renderTagSelector(tooltip_id, object_id)
+    //                     _this.renderTagSelector(tooltip_id, object_id)
 
-                    }.bind(this),
-                    hide: function(event, api) {
-                        var tooltip = api.elements.tooltip
-                        var tooltip_id = tooltip.attr('id');
-                        ReactDom.unmountComponentAtNode(document.getElementById(tooltip_id))
-                        api.destroy(true);
-                    }
-                }
-
-
-
-            });
-        });
-    }
-
-    renderTagSelector(id,object_id) {
-        // document.getElementById(id).innerHTML = '';
-        ReactDom.render(
-                <Provider store={store} key="provider">
-                    <TagSelector onTagSelect={this.onTagSelect} object_id={object_id}/>
-                </Provider>,
-                document.getElementById(id));
-    }
+    //                 }.bind(this),
+    //                 hide: function(event, api) {
+    //                     var tooltip = api.elements.tooltip
+    //                     var tooltip_id = tooltip.attr('id');
+    //                     ReactDom.unmountComponentAtNode(document.getElementById(tooltip_id))
+    //                     api.destroy(true);
+    //                 }
+    //             }
 
 
-    onTagSelect = (tag) => {
-        // console.log(this.props)
-        // console.log(props.tags_reducer.selectedTags.tags);
-        var data = {
-            tag_id : tag.id,
-            object_id : tag.object_id,
-            object_type : OBJECT_TYPE_MESSAGE,
-        }
-        console.log(data)
-        TagItemHelper.store(data).then((response) => {
-            console.log('tag added');
-            this.props.fetchProjectMessages(this.projectId);
-        })
-    }
+
+    //         });
+    //     });
+    // }
+
+    // renderTagSelector(id,object_id) {
+    //     // document.getElementById(id).innerHTML = '';
+    //     ReactDom.render(
+    //             <Provider store={store} key="provider">
+    //                 <TagSelector onTagSelect={this.onTagSelect} object_id={object_id}/>
+    //             </Provider>,
+    //             document.getElementById(id));
+    // }
 
 
-    renderTags(tag_items) {
-        if(undefined==tag_items) return false;
-        return tag_items.map((item) => {
-            return (
-                <TagItemTitle data={item} key={item.id} onTagFormUpdated={this.onTagFormUpdated.bind(this)} onTagItemRemove={this.onTagItemRemove.bind(this)} />
-            )
-        });
-    }
+    // onTagSelect = (tag) => {
+    //     // console.log(this.props)
+    //     // console.log(props.tags_reducer.selectedTags.tags);
+    //     var data = {
+    //         tag_id : tag.id,
+    //         object_id : tag.object_id,
+    //         object_type : OBJECT_TYPE_MESSAGE,
+    //     }
+    //     console.log(data)
+    //     TagItemHelper.store(data).then((response) => {
+    //         console.log('tag added');
+    //         this.props.fetchProjectMessages(this.projectId);
+    //     })
+    // }
 
-    onTagFormUpdated(data) {
+
+    // renderTags(tag_items) {
+    //     if(undefined==tag_items) return false;
+    //     return tag_items.map((item) => {
+    //         return (
+    //             <TagItemTitle data={item} key={item.id} onTagFormUpdated={this.onTagFormUpdated.bind(this)} onTagItemRemove={this.onTagItemRemove.bind(this)} />
+    //         )
+    //     });
+    // }
+
+    // onTagFormUpdated(data) {
+    //     this.props.fetchProjectMessages(this.projectId);
+    // }
+
+    // onTagItemRemove() {
+    //     this.props.fetchProjectMessages(this.projectId);
+    // }
+
+
+
+    fetchDataTag() {
         this.props.fetchProjectMessages(this.projectId);
     }
-
-    onTagItemRemove() {
-        this.props.fetchProjectMessages(this.projectId);
-    }
-
-
-
 
 
     renderCategoryBadges(categories) {
@@ -325,12 +332,12 @@ class ProjectMessages extends Component {
             const {created_by_user} = item;
             return (
                 <li className="list-group-item" key={item.id}>
-
-                   <div className="d-table w100">
+                    
+                    <div className="d-table w100">
                         <div className="d-table-cell xs-d-block w15 xs-w100">
                             <div className="userInfoBlock">
                                 <div className="image d-inline-block valign-middle mr20">
-                                    <div className="avatar" style={{backgroundImage: "url('"+created_by_user.image_base64+"')"}}>
+                                    <div className="avatar" style={{backgroundImage: "url('"+created_by_user.profile_image_url+"')"}}>
                                     </div>
                                 </div>
                                 <div className="summary d-inline-block">
@@ -349,7 +356,10 @@ class ProjectMessages extends Component {
                             <div className="fs12">
                                 <div dangerouslySetInnerHTML={{__html: item.excerpt}} />
 
-                                <div className="mt10">{this.renderTags(item.tag_items)}</div>
+                                <div className="mt10">
+                                    {/*{this.renderTags(item.tag_items)}*/}
+                                    <TagItemTitleMultiple data={item.tag_items} fetchData={this.fetchDataTag.bind(this)} />
+                                </div>
                             </div>
                         </div>
                         
@@ -366,7 +376,8 @@ class ProjectMessages extends Component {
                                 <button className="btn btn-plain" title="Edit" onClick={(e)=> this.editMessae(e, item)} ><i className="fa fa-pencil"></i></button>
                                 <button className="btn btn-plain" title="Edit" onClick={(e)=> this.deleteMessage(e, item)} ><i className="fa fa-trash"></i></button>
                                 <button className="btn btn-plain" title="Add Comment" onClick={(e)=> this.addComment(e, item)} ><i className="fa fa-comment"></i></button>
-                                <button className="btn btn-plain a-addtags" title="Tags" data-id={item.id} ><i className="fa fa-tags"></i></button>
+                                {/*<button className="btn btn-plain a-addtags" title="Tags" data-id={item.id} ><i className="fa fa-tags"></i></button>*/}
+                                <TagAddButton object_type={OBJECT_TYPE_MESSAGE} object_id={item.id} fetchData={this.fetchDataTag.bind(this)} strip_tags={item.tags} />
                             </span>
                         </div>
                     </div>

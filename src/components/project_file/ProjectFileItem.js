@@ -8,9 +8,13 @@ import {connectWithStore} from '../../store/index.js';
 import { Auth,  ProjectFileHelper } from '../../helpers'
 import PopupHelper from '../../helpers/helper_popup'
 
-import { fetchProjectFiles} from '../../actions/action_project';
+import { fetchProjectFiles, fetchProjectFile } from '../../actions/action_project';
 
-import { ROOT_URL, API_URL } from '../../config'
+
+import { ROOT_URL, API_URL, OBJECT_TYPE_FILE } from '../../config'
+
+import TagAddButton from '../tag/TagAddButton';
+import TagItemTitleMultiple from '../tag/TagItemTitleMultiple';
 
 class ProjectFileItem extends Component {
     constructor(props) {
@@ -103,7 +107,7 @@ class ProjectFileItem extends Component {
     getFileThumb(item) {
         const urlPreview = this.getImageURL(item.project_file_version_latest);
         return (
-            <div className="wp50 hp50 d-inline-block mr20">
+            <div className="wp50 hp50 d-inline-block valign-middle mr20">
                 <a href={urlPreview}>
                     <img src={urlPreview} className="wmax100 hmax-p50" />
                 </a>
@@ -134,6 +138,11 @@ class ProjectFileItem extends Component {
         });
     }
 
+    fetchDataTag() {
+        this.props.fetchProjectFiles(this.props.project_id);
+        this.props.fetchProjectFile(this.props.file.id);
+    }
+
 
     render() {
         const item = this.props.file
@@ -147,8 +156,8 @@ class ProjectFileItem extends Component {
                     </div>
                     <div className="d-table-cell xs-d-block w40 xs-w100 valign-middle">
                             {this.getFileThumb(item)}
-                            {item.id}
-                            <div className="d-inline-block">
+                            
+                            <div className="d-inline-block valign-middle">
                                 {   item.project_file_version_latest ?
                                     <Link data-id={item.id} to={'projects/'+this.props.project_id+'/files/'+item.id}>{item.project_file_version_latest.file_displayname}</Link>
                                     : ''
@@ -156,6 +165,10 @@ class ProjectFileItem extends Component {
                                 <div>
                                     <span className="fs12">by {item.created_by_user.fullname}</span>
                                 </div>
+
+                                <span className="">
+                                    <TagItemTitleMultiple data={item.tag_items} fetchData={this.fetchDataTag.bind(this)} />
+                                </span>    
                             </div>
                             
                         
@@ -172,7 +185,8 @@ class ProjectFileItem extends Component {
                             <button className="btn btn-plain" title="Download" onClick={(e)=> this.downloadFile(e, item)} ><i className="fa fa-download"></i></button>
                             <button className="btn btn-plain" title="View Other Versions" onClick={(e)=> this.viewFileVersions(e, item)} ><i className="fa fa-code-fork"></i></button>
                             <button className="btn btn-plain" title="Upload New Version" onClick={(e)=> this.updateNewVersion(e, item)} ><i className="fa fa-upload"></i></button>
-                            <button className="btn btn-plain" title="Tags" onClick={(e)=> this.showFile(e, item)} ><i className="fa fa-tags"></i></button>
+                            {/*<button className="btn btn-plain" title="Tags" onClick={(e)=> this.showFile(e, item)} ><i className="fa fa-tags"></i></button>*/}
+                            <TagAddButton object_type={OBJECT_TYPE_FILE} object_id={item.id} fetchData={this.fetchDataTag.bind(this)} strip_tags={item.tags} />
                             <button className="btn btn-plain" title="Items Attached To This File" onClick={(e)=> this.showFile(e, item)} ><i className="fa fa-file"></i></button>
                             {/*<button className="btn btn-plain" title="Follow" onClick={(e)=> this.showFile(e, item)} ><i className="fa fa-bell"></i></button>*/}
                             <button className="btn btn-plain" title="Add Comment" onClick={(e)=> this.showFile(e, item)} ><i className="fa fa-comment"></i></button>
@@ -212,7 +226,12 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(fetchProjectFiles(project_id)).then((response) => {
                 // dispatch(fetchCategoriesTypeFile(project_id))
             });
-        }
+        },
+        fetchProjectFile: (id) => {
+            dispatch(fetchProjectFile(id)).then((response) => {
+                // dispatch(fetchCategoriesTypeFile(project_id))
+            });
+        },
     }
 }
 

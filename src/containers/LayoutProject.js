@@ -5,6 +5,8 @@ import { Link, hashHistory } from 'react-router'
 
 import {store} from '../store/index.js';
 import { fetchProject} from '../actions/action_project';
+import { fetchTags} from '../actions/action_tag';
+
 
 import Sidebar from '../components/Sidebar'
 import PagePanel from '../components/PagePanel'
@@ -13,6 +15,7 @@ class LayoutProjectComponent extends Component {
     
     componentWillMount() {
         this.props.fetchProject(this.props.params.projectId);
+        this.props.fetchTags()  // Required to fetch the reason we are using it everywhere so we need to load tags data first
     }
 
     render() {
@@ -61,6 +64,9 @@ const mapDispatchToProps = (dispatch) => {
         dispatch,
         fetchProject: (project_id) => {
             dispatch(fetchProject(project_id)); 
+        },
+        fetchTags: () => {
+            dispatch(fetchTags())
         }
     }
 }

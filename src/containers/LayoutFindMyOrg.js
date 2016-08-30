@@ -39,7 +39,7 @@ export default class LayoutFindMyOrg extends Component {
             return (
                 <li className="list-group-item" key={org.id}>
                     <h4 className="list-group-item-heading">
-                        {org.org_title}
+                        {org.name}
                     </h4>
                     <a href={OrgHelper.getLoginURL(org)}>Click here to Login</a>
                 </li>
@@ -60,18 +60,23 @@ export default class LayoutFindMyOrg extends Component {
         console.log(this.state.orgs);
         return (
             <div>
-                <div className="container">
+                <div className="container mt100">
                     <div className="row">
                         <div className="col-md-6 col-md-offset-3">
-                            <h3>FIND YOUR ORGANIZATION</h3>
-                            <form onSubmit={this.handleSubmit} ref="form">
-                                <div className="form-group">
-                                    <label>Enter Your Email address</label>
-                                    <input type="email" className="form-control required email" id="email" placeholder="Email" ref='email' defaultValue="khanakia@live.com" />
+                            <div className="panel panel-default">
+                                <div className="panel-heading"><h4>FIND YOUR ORGANIZATION</h4></div>
+                                <div className="panel-body">
+                                    <form onSubmit={this.handleSubmit} ref="form">
+                                        <div className="form-group">
+                                            <label>Enter Your Email address</label>
+                                            <input type="email" className="form-control required email" id="email" placeholder="Email" ref='email' defaultValue="khanakia@live.com" />
+                                        </div>
+                                        <button type="submit" className="btn btn-default">Submit</button>
+                                    </form>
                                 </div>
-                                <button type="submit" className="btn btn-default">Submit</button>
-                            </form>
-                            <ul className="list-group style1">
+                            </div>
+
+                            <ul className="list-group style11">
                                 {this.renderList()}
                             </ul>
                         </div>

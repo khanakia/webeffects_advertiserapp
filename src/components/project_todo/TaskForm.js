@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 import ReactDom from 'react-dom';
+import { connect } from 'react-redux'
 
 import {connectWithStore} from '../../store/index.js';
 
 import {TaskHelper} from '../../helpers'
-import { fetchTasklists } from '../../actions/action_project'
+import { fetchProjectTasklists } from '../../actions/action_project'
 
 import InputDate from '../../components/controls/InputDate'
 import ControlAssignPeople from '../../components/controls/ControlAssignPeople'
 
 import ProjectFileAttachForm from '../project_file/ProjectFileAttachForm'
+
+import TagSelectorInput from '../tag/TagSelectorInput'
 
 
 class TaskForm extends Component {
@@ -36,7 +39,7 @@ class TaskForm extends Component {
     }
 
     componentDidMount() {
-        jQuery(this.refs.priority_id).selectpicker({
+        jQuery(this.refs.priority).selectpicker({
             size: 4
         });
 
@@ -72,7 +75,7 @@ class TaskForm extends Component {
         // if (!valid) {return false};
 
         TaskHelper.save(data).then(function(response){
-            this.props.fetchTasklists(this.props.project_id)
+            this.props.fetchProjectTasklists(this.props.project_id)
             this.props.onDataUpdate(response.data.project)
             // this.hidePopup();
         }.bind(this));
@@ -83,6 +86,7 @@ class TaskForm extends Component {
 
 
     render() {
+        console.info("this.props.data", this.props.data)
         return (
             <div>
                 <div className="modal-header">
@@ -91,6 +95,8 @@ class TaskForm extends Component {
 
                 <form className="form-horizontal control-label-left" ref='form' onSubmit={this.handleSubmit}>
                     <input type="text" name="tasklist_id" defaultValue={this.props.tasklist_id} />
+                    <input type="text" name="id" defaultValue={this.props.data.id} />
+                    <input type="text" name="parent_id" defaultValue={this.props.data.parent_id} />
                     <div className="content-area">
                         <div className="mb20">
 
@@ -112,7 +118,9 @@ class TaskForm extends Component {
                                         <div className="form-group">
                                             <label className="col-sm-3 control-label">Assign</label>
                                             <div className="col-sm-7">
-                                                <ControlAssignPeople />
+                                                
+
+                                                <ControlAssignPeople selectedUsers={this.props.data.task_users} />
 
                                                 <div className="fs12 mt10">
                                                     <label htmlFor="notify_by_email">
@@ -125,13 +133,13 @@ class TaskForm extends Component {
                                         <div className="form-group">
                                             <label className="col-sm-3 control-label">Start Date</label>
                                             <div className="col-sm-7">
-                                                <InputDate name="start_date" defaultValue='' />
+                                                <InputDate name="start_date" defaultValue={this.props.data.start_date} />
                                             </div>
                                         </div>
                                         <div className="form-group">
                                             <label className="col-sm-3 control-label">Due Date</label>
                                             <div className="col-sm-7">
-                                                <InputDate name="end_date" defaultValue='' />
+                                                <InputDate name="end_date" defaultValue={this.props.data.end_date} />
                                                 {/*<input type="text" className="form-control" name="end_date" id="end_date" defaultValue={this.data.end_date} />*/}
                                             </div>
                                         </div>
@@ -139,11 +147,11 @@ class TaskForm extends Component {
                                         <div className="form-group">
                                             <label className="col-sm-3 control-label">Priority</label>
                                             <div className="col-sm-7">
-                                                <select className="select-priority" name="priority_id" ref="priority_id">
-                                                    <option data-content='<span style="color: #000;"><i class="fa fa-exclamation-circle mr5"></i>None</span>' value="1">None</option>
-                                                    <option data-content='<span style="color: #10bd10;"><i class="fa fa-exclamation-circle mr5"></i>Low</span>' value="2">Low</option>
-                                                    <option data-content='<span style="color: #caa312;"><i class="fa fa-exclamation-circle mr5"></i>Medium</span>' value="3">Medium</option>
-                                                    <option data-content='<span style="color: #dc1414;"><i class="fa fa-exclamation-circle mr5"></i>High</span>' value="4">High</option>
+                                                <select className="select-priority" name="priority" ref="priority" defaultValue={this.props.data.priority}>
+                                                    <option data-content='<span style="color: #000;"><i class="fa fa-exclamation-circle mr5"></i>None</span>' value="none">None</option>
+                                                    <option data-content='<span style="color: #10bd10;"><i class="fa fa-exclamation-circle mr5"></i>Low</span>' value="low">Low</option>
+                                                    <option data-content='<span style="color: #caa312;"><i class="fa fa-exclamation-circle mr5"></i>Medium</span>' value="medium">Medium</option>
+                                                    <option data-content='<span style="color: #dc1414;"><i class="fa fa-exclamation-circle mr5"></i>High</span>' value="high">High</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -154,7 +162,7 @@ class TaskForm extends Component {
                             </div>
                      
                             <div role="tabpanel" className="tab-pane" id="description">
-                                <textarea name="task_note"></textarea>
+                                <textarea name="task_note" className="form-control" defaultValue={this.props.data.task_note}></textarea>
                             </div>
 
                             <div role="tabpanel" className="tab-pane" id="file">
@@ -168,7 +176,7 @@ class TaskForm extends Component {
                                         <div>
                                             <label>Progress</label>
                                             <div id="slider" ref="slider"></div>
-                                            <input type="hidden" className="progress" name="progress" ref="progress" defaultValue="50" />
+                                            <input type="hidden" className="progress" name="progress" ref="progress" defaultValue={this.props.data.progress} />
                                         </div>
 
                                         <div className="mt20">
@@ -176,9 +184,9 @@ class TaskForm extends Component {
 
                                             <div>
                                                 <label className="mr10">Hours</label>
-                                                <input type="number" className="mr10 wp50 number" name="estimate_time_hour" defaultValue="0" />
+                                                <input type="number" className="mr10 wp50 number" name="estimate_time_hour" defaultValue={this.props.data.estimate_time_hour} />
                                                 <label className="mr10">Minutes</label>
-                                                <input type="number" className="wp50 number" name="estimate_time_minute" defaultValue="0" />
+                                                <input type="number" className="wp50 number" name="estimate_time_minute" defaultValue={this.props.data.estimate_time_minute} />
                                             </div>
                                         </div>
                                     </div>
@@ -188,7 +196,7 @@ class TaskForm extends Component {
                             <div role="tabpanel" className="tab-pane" id="tag">
                                 <div className="row">
                                     <div className="col-md-8">
-                                        
+                                        <TagSelectorInput tags_selected={this.props.data.tags} />   
                                     </div>
                                 </div>
                             </div>
@@ -226,13 +234,13 @@ const mapDispatchToProps = (dispatch) => {
 
     return {
         dispatch,
-        fetchTasklists: (project_id) => {
-            dispatch(fetchTasklists(project_id)).then((response) => {
+        fetchProjectTasklists: (project_id) => {
+            dispatch(fetchProjectTasklists(project_id)).then((response) => {
             });
         }
     }
 }
 
-const TaskFormContainer = connectWithStore(TaskForm, mapStateToProps, mapDispatchToProps)
+const TaskFormContainer = connect(mapStateToProps, mapDispatchToProps)(TaskForm)
 
 export default TaskFormContainer

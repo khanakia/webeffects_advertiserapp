@@ -10,12 +10,8 @@ import OrgUserSettingForm from './org/OrgUserSettingForm'
 import OrgUserPermissionForm from './org/OrgUserPermissionForm'
 import OrgUserInviteForm from './org/OrgUserInviteForm'
 
-
-import Auth from '../helpers/auth.js'
-import OrgUserHelper from '../helpers/helper_org_user.js'
-import Util from '../helpers/util'
-import Localstore from '../helpers/localstore'
-
+import {Auth, Util, OrgUserHelper} from '../helpers'
+import PopupHelper from '../helpers/helper_popup'
 
 class OrganizationUsers extends Component {
     constructor(props, context) {
@@ -41,32 +37,32 @@ class OrganizationUsers extends Component {
                     <div className="d-table w100">
                         <div className="d-table-cell xs-d-block w30 xs-w100">
                             <div className="userInfoBlock">
-                                <div className="image d-inline-block mr20">
-                                    <div className="avatar" style={{backgroundImage: 'url(http://localhost/aman.png)'}}>
+                                <div className="image d-inline-block mr20 valign-middle">
+                                    <div className="avatar" style={{backgroundImage: "url('" + orguser.user.profile_image_url + "')" }}>
                                     </div>
                                 </div>
-                                <div className="summary d-inline-block">
-                                    <div className="title fw-b">{orguser.first_name +' '+ orguser.last_name}</div>
+                                <div className="summary d-inline-block valign-middle">
+                                    <div className="title fw-b">{orguser.user.fullname}</div>
                                     <div className="position fs12">{orguser.job_title}</div>
-                                    <div className="company fs12">{orguser.company_title}</div>
+                                    <div className="company fs12">{orguser.company ? orguser.company.company_title : ''}</div>
                                 </div>
                             </div>
                         </div>
                         <div className="d-table-cell xs-d-block xs-mt20 w30 xs-w100 valign-middle contact_info">
                             <h4 className="list-group-item-heading">
                                 
-                                { orguser.email ?
-                                    <span className="d-block fs12 mb5"><i className="fa fa-envelope w10p"></i><a href={"mailto:"+orguser.email}>{orguser.email}</a></span>
+                                { orguser.user.email ?
+                                    <span className="d-block fs12 mb5"><i className="fa fa-envelope w10p"></i><a href={"mailto:"+orguser.user.email}>{orguser.user.email}</a></span>
                                     : ''
                                 }    
                                 
-                                { orguser.mobile ?
-                                    <span className="d-block fs12 mb5"><i className="fa fa-mobile w10p fs14"></i>{orguser.mobile}</span>
+                                { orguser.user.mobile ?
+                                    <span className="d-block fs12 mb5"><i className="fa fa-mobile w10p fs14"></i>{orguser.user.mobile}</span>
                                     : ''
                                 }    
                                 
-                                { orguser.office_phone ?
-                                    <span className="d-block fs12 mb5"><i className="fa fa-phone w10p"></i>{orguser.office_phone}</span>
+                                { orguser.user.office_phone ?
+                                    <span className="d-block fs12 mb5"><i className="fa fa-phone w10p"></i>{orguser.user.office_phone}</span>
                                     : ''
                                 }
                                 
@@ -75,20 +71,17 @@ class OrganizationUsers extends Component {
                         <div className="d-table-cell xs-d-block xs-mt20 w20 xs-w100 valign-middle">
                             <h4 className="list-group-item-heading">
                                 <span className="d-block fs12 mb5 lh-15p">
-                                {orguser.address_line_1 ? <span>{orguser.address_line_1}<br/></span> : ''}
-                                {orguser.address_line_2 ? <span>{orguser.address_line_2}<br/></span> : ''}
-                                {orguser.city ? <span>{orguser.city} {orguser.zipcode} {orguser.state} <br/></span> : ''}
-                                {orguser.country}
+                                {orguser.user.address_line_1 ? <span>{orguser.user.address_line_1}<br/></span> : ''}
+                                {orguser.user.address_line_2 ? <span>{orguser.user.address_line_2}<br/></span> : ''}
+                                {orguser.user.city ? <span>{orguser.user.city} {orguser.user.zipcode} {orguser.user.state} <br/></span> : ''}
+                                {orguser.user.country}
                                 </span>
                             </h4>
                         </div>
 
                         <div className="d-table-cell xs-d-block valign-middle">
-                                
                                 {Util.badgetOwner((this.props.current_org.created_by_user_id==orguser.user_id))}
                                 {Util.badgeIsAdmin(orguser.permissions.is_admin)}
-                                
-                                
                         </div>
                         <div className="d-table-cell xs-d-block valign-middle text-right">
                             <span className="icons-group light">

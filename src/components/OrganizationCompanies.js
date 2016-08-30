@@ -7,10 +7,10 @@ import PagePanel from './PagePanel'
 
 import CompanyForm from './org/CompanyForm'
 
-import Auth from '../helpers/auth.js'
-import CompanyHelper from '../helpers/helper_company.js'
-import Util from '../helpers/util'
-import Localstore from '../helpers/localstore'
+import {Auth, Util, CompanyHelper} from '../helpers'
+import PopupHelper from '../helpers/helper_popup'
+import {API_URL_UPLOAD_COMPANY_LOGO} from '../config.js'
+
 
 class OrganizationCompanies extends Component {
     constructor(props) {
@@ -21,7 +21,7 @@ class OrganizationCompanies extends Component {
         this.props.fetchCompanies();
         // let { dispatch } = this.props
         // console.log(dispatch);
-        // this.currentOrg = Localstore.getItem('org');
+
     }
 
     editButton(item) {
@@ -54,7 +54,7 @@ class OrganizationCompanies extends Component {
     }
 
     editCompany(data, e) {
-        CompanyForm.showInPoup({data})
+        PopupHelper.showCompanyForm({data})
     }
 
 
@@ -72,6 +72,11 @@ class OrganizationCompanies extends Component {
         });
     }
 
+    uploadLogo(e, item) {
+        e.preventDefault();
+        PopupHelper.showUploadImageControl({uploadUrl:API_URL_UPLOAD_COMPANY_LOGO, object_type: 'company', object_id: item.id, image: item.company_logo_url})
+    }
+
     renderItems(items) {
         return items.map((item) => {
             return (
@@ -80,12 +85,11 @@ class OrganizationCompanies extends Component {
                         <div className="d-table-cell xs-d-block w30 xs-w100">
                             <div className="userInfoBlock">
                                 <div className="image d-inline-block valign-middle mr20">
-                                    <div className="avatar" style={{backgroundImage: 'url(http://localhost/aman.png)'}}>
+                                    <div className="avatar" style={{backgroundImage: "url('" + item.company_logo_url + "')"}}>
                                     </div>
                                 </div>
                                 <div className="summary d-inline-block valign-middle">
                                     <div className="company fw-b">{item.company_title}</div>
-                                    {this.defautlBadge(item)}
                                 </div>
                             </div>
                         </div>
@@ -129,6 +133,7 @@ class OrganizationCompanies extends Component {
                         </div>
                         <div className="d-table-cell xs-d-block valign-middle text-right">
                             <span className="icons-group light">
+                                <button className="btn btn-plain" title="Upload Logo" onClick={(e)=> this.uploadLogo(e, item)} ><i className="fa fa-picture-o"></i></button>
                                 {this.editButton(item)}
                                 {this.deleteButton(item)}
                             </span>
@@ -160,7 +165,7 @@ class OrganizationCompanies extends Component {
                                 </span>
                                 <span className="col icons-group">
                                 { this.props.current_org.permissions.org_can_update ?
-                                    <button className="btn btn-success" onClick={()=> CompanyForm.showInPoup({}, {},this.props)}><i className="fa fa-plus"></i></button>
+                                    <button className="btn btn-success" onClick={()=> PopupHelper.showCompanyForm({})}><i className="fa fa-plus"></i></button>
                                     : ''
                                 }
                                 </span>

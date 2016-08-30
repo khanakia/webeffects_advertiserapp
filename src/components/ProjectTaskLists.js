@@ -6,7 +6,7 @@ import TasklistHelper from '../helpers/helper_tasklist.js'
 
 import PopupHelper from '../helpers/helper_popup'
 
-
+import TagSelectorInput from './tag/TagSelectorInput'
 class ProjectTasks extends Component {
     constructor(props) {
         super(props);
@@ -14,7 +14,7 @@ class ProjectTasks extends Component {
     }
 
     componentWillMount() {
-       this.props.fetchTasklists(this.projectId);
+       this.props.fetchProjectTasklists(this.projectId);
     }
 
     componentDidMount() {
@@ -55,6 +55,8 @@ class ProjectTasks extends Component {
 
         return (
             <div>
+
+        {/*<TagSelectorInput />*/}
                 <div className="control-toolbar1 mb20">
                     <div className="left">
                         <span className="title">Tasks</span>

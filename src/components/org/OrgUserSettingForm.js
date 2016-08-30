@@ -70,7 +70,7 @@ class OrgUserSettingForm extends Component {
         if (!valid) {return false};
 
         let data = jQuery(this.refs.form).serialize();
-        data = URI.parseQuery(data);
+        // data = URI.parseQuery(data);
         
         var ajaxObj = OrgUserHelper.update(data);
 

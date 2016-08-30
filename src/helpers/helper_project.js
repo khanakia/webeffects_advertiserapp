@@ -49,6 +49,16 @@ export default class ProjectHelper {
     }
 
 
+
+    static delete(id) {
+        return axios({
+            method: 'delete',
+            url: API_URL_PROJECT + '/' + id,
+            headers: Auth.header(),
+        });
+    }
+
+
     // static getPeoplesOnProject(project_id) {
     //     return axios({
     //         method: 'get',

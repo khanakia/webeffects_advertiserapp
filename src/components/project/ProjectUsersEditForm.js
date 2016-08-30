@@ -52,20 +52,20 @@ class ProjectUsersEditForm extends Component {
     }
 
 
-    static showInPoup({settings={}, data={}, onDataUpdate=this.defaultProps.onDataUpdate()}) {
-        var uniq = 'id' + (new Date()).getTime();
+    // static showInPoup({settings={}, data={}, onDataUpdate=this.defaultProps.onDataUpdate()}) {
+    //     var uniq = 'id' + (new Date()).getTime();
 
-        Controls.showpopup({
-            detach : true,
-            message : '<div id="' + uniq + '"></div>',
-            opacity: 0.5,
-            blur: false,
-            onopen : function(e){
-              var pid = (jQuery(e).attr('id'));
-              ReactDom.render(<ProjectUsersEditForm popup_id={pid} settings={settings} data={data} onDataUpdate={onDataUpdate} />, document.getElementById(uniq));
-            }
-        });
-    }
+    //     Controls.showpopup({
+    //         detach : true,
+    //         message : '<div id="' + uniq + '"></div>',
+    //         opacity: 0.5,
+    //         blur: false,
+    //         onopen : function(e){
+    //           var pid = (jQuery(e).attr('id'));
+    //           ReactDom.render(<ProjectUsersEditForm popup_id={pid} settings={settings} data={data} onDataUpdate={onDataUpdate} />, document.getElementById(uniq));
+    //         }
+    //     });
+    // }
 
 
     hidePopup = () => {
@@ -104,7 +104,7 @@ class ProjectUsersEditForm extends Component {
 
         var resultsCount = 0;
         var output = items.map((item) => {
-            if(item.first_name.toLowerCase().indexOf(this.state.search_val) === -1) {
+            if(item.user.first_name.toLowerCase().indexOf(this.state.search_val) === -1) {
                 return false;
             }
 
@@ -126,12 +126,12 @@ class ProjectUsersEditForm extends Component {
                         </div>
                         <div className="d-table-cell">
                             <div className="userInfoBlock">
-                                <div className="image d-inline-block mr20">
-                                    <div className="avatar" style={{backgroundImage: 'url(http://localhost/aman.png)'}}>
+                                <div className="image d-inline-block valign-middle mr20">
+                                    <div className="avatar" style={{backgroundImage: "url('"+item.user.profile_image_url+"')"}}>
                                     </div>
                                 </div>
-                                <div className="summary d-inline-block">
-                                    <div className="title fw-b">{item.user_id} {item.first_name +' '+ item.last_name}</div>
+                                <div className="summary d-inline-block valign-middle">
+                                    <div className="title fw-b">{item.user.fullname}</div>
                                     <div className="position fs12">{item.job_title}</div>
                                     <div className="company fs12">{item.company_title}</div>
                                 </div>

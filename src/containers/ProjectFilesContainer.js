@@ -16,8 +16,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         dispatch,
-        fetchProjectFiles: (project_id) => {
-            dispatch(fetchProjectFiles(project_id)).then((response) => {
+        fetchProjectFiles: (project_id, extraParams={}) => {
+            dispatch(fetchProjectFiles(project_id, extraParams)).then((response) => {
                 // dispatch(fetchCategoriesTypeFile(project_id))
             });
         }

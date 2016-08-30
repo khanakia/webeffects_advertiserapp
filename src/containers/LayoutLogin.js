@@ -26,8 +26,8 @@ export default class LayoutLogin extends Component {
         
         OrgHelper.getOrgsByDomain(window.location.host).then((response) => {
             console.log(response);
-            if(response.data.status) {
-                this.setState({ 'org': response.data.org });
+            if(response.data) {
+                this.setState({ 'org': response.data });
             } else {
                 window.location.href = ROOT_URL;
             }
@@ -62,7 +62,7 @@ export default class LayoutLogin extends Component {
                     <div className="row">
                         <div className="col-md-4 col-md-offset-4">
                             <div className="loginFormCt">
-                                <a href="#" className="loginForm-logo"><img src="/public/images/button-lg-demo.png" /></a>
+                                <a href="#" className="loginForm-logo"><img src={org.logo_url} /></a>
                                 <h1>Sign in to {org.org_title}</h1>
                                 <form onSubmit={this.handleSubmit} className="loginForm">
                                     <div className="form-group">
