@@ -80,3 +80,5 @@ export const API_URL_TAG_ITEM = API_URL+'/tag_item';
 
 export const API_URL_PLAN = API_URL+'/plan';
 
+export const API_URL_CHANGE_PWD = API_URL+'/user/changepwd';
+

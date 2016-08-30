@@ -3,6 +3,8 @@ import ReactDom from 'react-dom';
 import {Auth} from '../../helpers'
 import { API_URL_GET_USER } from '../../config.js'
 
+import DropdownCountries from '../controls/DropdownCountries'
+
 
 class UserProfileEditForm extends Component {
     constructor(props) {
@@ -199,19 +201,7 @@ class UserProfileEditForm extends Component {
                                         <div className="form-group">
                                             <label className="col-sm-3 control-label">Country</label>
                                             <div className="col-sm-9">
-                                                <select name="country" className="form-control required" name="country" id="country" defaultValue={data.country}>
-                                                    <option value="">Select Country</option>
-                                                    <option value="AF">Afghanistan</option>
-                                                    <option value="AL">Albania</option>
-                                                    <option value="DZ">Algeria</option>
-                                                    <option value="AS">American Samoa</option>
-                                                    <option value="AD">Andorra</option>
-                                                    <option value="AG">Angola</option>
-                                                    <option value="AI">Anguilla</option>
-                                                    <option value="AG">Antigua &amp; Barbuda</option>
-                                                    <option value="AR">Argentina</option>
-                                                    <option value="AA">Armenia</option>
-                                                </select>
+                                                <DropdownCountries name="company_country" defaultValue={this.props.data.company_country} />
                                             </div>
                                         </div>
                                     </div>
