@@ -23,6 +23,8 @@ import TaskList from './src/containers/TaskListContainer'
 import TagList from './src/containers/TagListContainer'
 import OrganizationGeneral from './src/containers/OrganizationGeneralContainer'
 
+import Subscription from './src/containers/SubscriptionContainer'
+
 import PageDemo from './src/containers/LayoutDemo'
 
 import PageTask from './src/containers/PageTask'
@@ -47,6 +49,7 @@ import configureStore from './src/store/configureStore.dev.js';
 import {store} from './src/store/index.js';
 // const store = configureStore();
 // window.store = store;
+console.log("dsf")
 
 
 import {ROOT_HOST} from './src/config.js'
@@ -80,6 +83,8 @@ if(ROOT_HOST==window.location.host) {
                <Route path="settings/tags" component={TagList} />
                <Route path="settings/logo" component={CompaniesLogos} />
 		       <Route path="settings/general" component={OrganizationGeneral} />
+
+		       <Route path="subscription" component={Subscription} />
 
                <Route path="demo" component={PageDemo} />
 
