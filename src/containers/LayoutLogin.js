@@ -58,31 +58,31 @@ export default class LayoutLogin extends Component {
         console.log(org);
         return (
             <div>
-                <div className="container">
-                    <div className="row">
-                        <div className="col-md-4 col-md-offset-4">
-                            <div className="loginFormCt">
-                                <a href="#" className="loginForm-logo"><img src={org.logo_url} /></a>
-                                <h1>Sign in to {org.org_title}</h1>
-                                <form onSubmit={this.handleSubmit} className="loginForm">
-                                    <div className="form-group">
-                                        <label>Email address</label>
-                                        <input type="email" className="form-control required" id="exampleInputEmail1" placeholder="Email" ref='email' />
+                <div className="main">
+                    <div className="main_inner">
+                        <div className="container">
+                            <div className="row">
+                                <div className="col-md-4 col-md-offset-4">
+                                    <div className="formstyle1Ct">
+                                        <h1>Sign In </h1>
+                                        <form autocomplete="off" onSubmit={this.handleSubmit} className="formstyle1 loginForm">
+                                            <div className="form-group">
+                                                <input type="email" className="form-control required" id="exampleInputEmail1" placeholder="Email Address" ref='email' />
+                                            </div>
+                                            <div className="form-group">
+                                                <input type="password" className="form-control password" id="exampleInputPassword1" placeholder="Password" ref='password' />
+                                            </div>
+                                            <button type="submit" onClick={this.submitSigninForm} className="btn btn-success formstyle1SubmitBtn">Sign in</button>
+                                            <div className="formstyle1-newaccount">
+                                                <a href={FORGET_PWD_URL} className="pull-right">Forgot password?</a>
+                                                <a href={SIGN_UP_URL}>Create an account</a>
+                                            </div>
+                                        </form>
                                     </div>
-                                    <div className="form-group">
-                                        <label className="passLabel">Password
-                                            <a href={FORGET_PWD_URL} className="pull-right">Forgot password?</a>
-                                        </label>
-                                        <input type="password" className="form-control password" id="exampleInputPassword1" placeholder="Password" ref='password' />
-                                    </div>
-                                    <button type="submit" onClick={this.submitSigninForm} className="btn btn-success loginSubmitBtn">Sign in</button>
-                                </form>
-                                <div className="loginForm-newaccount">
-                                    New user? <a href={SIGN_UP_URL}>Create an account</a>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> 
                 </div>
             </div>
         )

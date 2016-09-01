@@ -12,7 +12,7 @@ export default class LayoutResetpwd extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        var resetpwdFormEl = jQuery(".resetpwdFormCt .resetpwdForm");
+        var resetpwdFormEl = jQuery(".resetpwdForm");
         var valid = jQuery(".resetpwdForm").valid();
         if (!valid) {
             return false 
@@ -36,26 +36,30 @@ export default class LayoutResetpwd extends Component {
     render() {
         return (
             <div>
-                <div className="container">
-                    <div className="row">
-                        <div className="col-md-4 col-md-offset-4">
-                            <div className="resetpwdFormCt">
-                                <h1>New Password</h1>
-                                <form onSubmit={this.handleSubmit} className="resetpwdForm" role="form" method="POST">
-                                    <div className="form-group">
-                                        <label>Password</label>
-                                        <input type="password" className="form-control required" name="password" id="password" placeholder="Password" />
+                <div className="main">
+                    <div className="main_inner">
+                        <div className="container">
+                            <div className="row">
+                                <div className="col-md-4 col-md-offset-4">
+                                    <div className="formstyle1Ct">
+                                        <h1>New Password</h1>
+                                        <form onSubmit={this.handleSubmit} className="formstyle1 resetpwdForm" role="form" method="POST">
+                                            <div className="form-group">
+                                                <label>Password</label>
+                                                <input type="password" className="form-control required" name="password" id="password" placeholder="Password" />
+                                            </div>
+                                            <div className="form-group">
+                                                <label>Password Confirmation</label>
+                                                <input type="password" className="form-control required" name="password_confirmation" id="password_confirmation" placeholder="Confirm Password" equalTo="#password"/>
+                                            </div>
+                                            <button type="submit" className="btn btn-success formstyle1SubmitBtn">Submit Here</button>
+                                        </form>
                                     </div>
-                                    <div className="form-group">
-                                        <label>Password Confirmation</label>
-                                        <input type="password" className="form-control required" name="password_confirmation" id="password_confirmation" placeholder="Confirm Password" equalTo="#password"/>
-                                    </div>
-                                    <button type="submit" className="btn btn-success resetpwdSubmitBtn">Submit Here</button>
-                                </form>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>    
             </div>
         )
     }
