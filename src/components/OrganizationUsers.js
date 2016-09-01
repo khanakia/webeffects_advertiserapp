@@ -33,57 +33,32 @@ class OrganizationUsers extends Component {
         return orgusers.map((orguser) => {
             
             return (
-                <li className="list-group-item" key={orguser.id}>
+                <li className="" key={orguser.id}>
                     <div className="d-table w100">
-                        <div className="d-table-cell xs-d-block w30 xs-w100">
-                            <div className="userInfoBlock">
-                                <div className="image d-inline-block mr20 valign-middle">
-                                    <div className="avatar" style={{backgroundImage: "url('" + orguser.user.profile_image_url + "')" }}>
+                        <div className="">
+                            
+                                <div className="image text-center mb10">
+                                    <div className="avatar d-inline-block" style={{backgroundImage: "url('" + orguser.user.profile_image_url + "')" }}>
                                     </div>
                                 </div>
-                                <div className="summary d-inline-block valign-middle">
+                                <div className="mb10">
                                     <div className="title fw-b">{orguser.user.fullname}</div>
-                                    <div className="position fs12">{orguser.job_title}</div>
-                                    <div className="company fs12">{orguser.company ? orguser.company.company_title : ''}</div>
+                                    <div className="position ">{orguser.job_title}</div>
+                                    <div className="company ">{orguser.company ? orguser.company.company_title : ''}</div>
                                 </div>
-                            </div>
-                        </div>
-                        <div className="d-table-cell xs-d-block xs-mt20 w30 xs-w100 valign-middle contact_info">
-                            <h4 className="list-group-item-heading">
-                                
+                            
                                 { orguser.user.email ?
-                                    <span className="d-block fs12 mb5"><i className="fa fa-envelope w10p"></i><a href={"mailto:"+orguser.user.email}>{orguser.user.email}</a></span>
+                                    <span className="d-block mb5"><a href={"mailto:"+orguser.user.email}>{orguser.user.email}</a></span>
                                     : ''
                                 }    
-                                
-                                { orguser.user.mobile ?
-                                    <span className="d-block fs12 mb5"><i className="fa fa-mobile w10p fs14"></i>{orguser.user.mobile}</span>
-                                    : ''
-                                }    
-                                
-                                { orguser.user.office_phone ?
-                                    <span className="d-block fs12 mb5"><i className="fa fa-phone w10p"></i>{orguser.user.office_phone}</span>
-                                    : ''
-                                }
-                                
-                            </h4>
                         </div>
-                        <div className="d-table-cell xs-d-block xs-mt20 w20 xs-w100 valign-middle">
-                            <h4 className="list-group-item-heading">
-                                <span className="d-block fs12 mb5 lh-15p">
-                                {orguser.user.address_line_1 ? <span>{orguser.user.address_line_1}<br/></span> : ''}
-                                {orguser.user.address_line_2 ? <span>{orguser.user.address_line_2}<br/></span> : ''}
-                                {orguser.user.city ? <span>{orguser.user.city} {orguser.user.zipcode} {orguser.user.state} <br/></span> : ''}
-                                {orguser.user.country}
-                                </span>
-                            </h4>
-                        </div>
+                    
 
-                        <div className="d-table-cell xs-d-block valign-middle">
+                        <div className="badges">
                                 {Util.badgetOwner((this.props.current_org.created_by_user_id==orguser.user_id))}
                                 {Util.badgeIsAdmin(orguser.permissions.is_admin)}
                         </div>
-                        <div className="d-table-cell xs-d-block valign-middle text-right">
+                        <div className="controls">
                             <span className="icons-group light">
                                 {(this.props.current_org.permissions.org_can_update && !orguser.permissions.is_org_owner) ?
                                     <span>
@@ -140,7 +115,9 @@ class OrganizationUsers extends Component {
                 <PagePanel>
                     <div className="control-toolbar1">
                         <div className="left">
-                            <span className="title">Organization Users</span>
+                            <div className="filter-header-input-wrap">
+                                <input placeholder="Find member" className="filter-header-input" defaultValue=""/>
+                            </div>
                         </div>
                         <div className="middle">
                         </div>
@@ -151,7 +128,7 @@ class OrganizationUsers extends Component {
                                 </span>
                                 <span className="col icons-group">
                                     {this.props.current_org.permissions.org_can_update ?
-                                        <button className="btn btn-success" onClick={()=> OrgUserInviteForm.showInPoup({})}><i className="fa fa-plus mr10"></i>Invite Users</button>
+                                        <button className="btn btn-green-bordered" onClick={()=> OrgUserInviteForm.showInPoup({})}><i className="fa fa-plus"></i>Invite new members</button>
                                         : ''
                                     }
                                 </span>
@@ -161,7 +138,7 @@ class OrganizationUsers extends Component {
                     <div className="mt20">
                         
 
-                        <ul className="list-group style1">
+                        <ul className="list-group-grid">
                             {this.renderList(data)}
                         </ul>
                     </div>

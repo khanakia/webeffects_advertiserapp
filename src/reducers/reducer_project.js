@@ -11,7 +11,8 @@ import {
     FETCH_PROJECT_TASKS,
     FETCH_PROJECT_TASKLIST, 
     FETCH_PROJECT_TASK, 
-    FETCH_COMMENTS
+    FETCH_COMMENTS,
+    FETCH_PROJECT_ACTIVITIES
 } from '../actions/action_project';
 
 
@@ -28,7 +29,9 @@ const INITIAL_STATE = {
     files : [],
     files_current : [],
     files_browser_form_list : [],
-    comments : []
+    comments : [],
+    activities : [],
+
 };
 
 
@@ -65,7 +68,9 @@ export default function(state = INITIAL_STATE, action) {
         case FETCH_PROJECT_FILES_BROWSER_FORM_LIST:
             return {...state, files_browser_form_list: action.payload.data };
         case FETCH_COMMENTS:
-            return {...state, comments: action.payload.data };                   
+            return {...state, comments: action.payload.data };
+        case FETCH_PROJECT_ACTIVITIES:
+            return {...state, activities: action.payload.data };                 
         default:
             return state;
     }

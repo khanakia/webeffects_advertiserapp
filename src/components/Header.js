@@ -45,7 +45,8 @@ export default class Header extends Component {
 
 		return (
 			<header>
-				<nav className="navbar navbar-default">
+
+				<nav className="navbar navbar-inverse">
 					<div className="container-fluid">
 						<div className="navbar-header">
 							<button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -77,8 +78,6 @@ export default class Header extends Component {
 										<li className="dropdown-header">Settings</li>
 										{/*<li><Link to="settings/general">General</Link></li>*/}
 										<li><Link to="settings/template">Template</Link></li>
-										<li><Link to="settings/logo">Logo</Link></li>
-										<li><Link to="settings/colortheme">Color Theme</Link></li>
 										<li><Link to="settings/tags">Tags</Link></li>
 
 										<li role="separator" className="divider"></li>

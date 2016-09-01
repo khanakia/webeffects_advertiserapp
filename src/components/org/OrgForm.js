@@ -10,6 +10,9 @@ import {store} from '../../store/index.js';
 class OrgForm extends Component {
     constructor(props) {
         super(props);
+
+        this.msg_btn_save_text = 'Create Organization'
+        this.msg_heading = 'Create Organization'
     }
 
     static defaultProps = {
@@ -20,11 +23,16 @@ class OrgForm extends Component {
         data : {
             id: '',
             name: '',
-        }    
+        },
+
+        is_new : true,
     }
 
     componentWillMount() {
-
+        if(!this.props.is_new) {
+            this.msg_btn_save_text = "Edit Organization"
+            this.msg_heading = 'Edit Organization'
+        }
     }
 
     componentDidMount() {
@@ -95,20 +103,19 @@ class OrgForm extends Component {
         return (
             <div>
                 <div className="modal-header">
-                    <h4 className="modal-title">Organization</h4>
+                    <h4 className="modal-title">{this.msg_heading}</h4>
                 </div>
 
                 <form className="form" ref='form' onSubmit={this.handleSubmit}>
                     <input type="hidden" className="form-control" ref="id" name="id" id="id" defaultValue={this.props.data.id} />
-                    <div className="content-area">
+                    <div className="content-area mt10">
                         <div className="form-group">
-                            <label className="control-label">Organization Name</label>
-                            <input type="text" className="form-control required" name="name" id="name" defaultValue={this.props.data.name} />
+                            <input type="text" className="form-control required" name="name" id="name" defaultValue={this.props.data.name} placeholder="Name your organization" />
                         </div>
 
                     </div>
                     <div className="modal-footer text-right">
-                        <button type="submit" className="btn btn-success">Save</button>
+                        <button type="submit" className="btn btn-blue-link">{this.msg_btn_save_text}</button>
                     </div>
                 </form>
 

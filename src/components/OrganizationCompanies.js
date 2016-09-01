@@ -80,9 +80,9 @@ class OrganizationCompanies extends Component {
     renderItems(items) {
         return items.map((item) => {
             return (
-                <li className="list-group-item" key={item.id}>
-                    <div className="d-table w100">
-                        <div className="d-table-cell xs-d-block w30 xs-w100">
+                <li className="" key={item.id}>
+                    <div className="d-table w100 inner">
+                        <div className="d-table-cell xs-d-block w30 xs-w100 valign-middle">
                             <div className="userInfoBlock">
                                 <div className="image d-inline-block valign-middle mr20">
                                     <div className="avatar" style={{backgroundImage: "url('" + item.company_logo_url + "')"}}>
@@ -90,6 +90,7 @@ class OrganizationCompanies extends Component {
                                 </div>
                                 <div className="summary d-inline-block valign-middle">
                                     <div className="company fw-b">{item.company_title}</div>
+                                    {Util.badgetDefault(item)}
                                 </div>
                             </div>
                         </div>
@@ -129,13 +130,22 @@ class OrganizationCompanies extends Component {
                         </div>
 
                         <div className="d-table-cell xs-d-block w10 xs-w100">
-                                {Util.badgetDefault(item)}
+                                
                         </div>
                         <div className="d-table-cell xs-d-block valign-middle text-right">
                             <span className="icons-group light">
-                                <button className="btn btn-plain" title="Upload Logo" onClick={(e)=> this.uploadLogo(e, item)} ><i className="fa fa-picture-o"></i></button>
-                                {this.editButton(item)}
-                                {this.deleteButton(item)}
+                                {/*<button className="btn btn-plain" title="Upload Logo" onClick={(e)=> this.uploadLogo(e, item)} ><i className="fa fa-picture-o"></i></button>
+                                                                {this.editButton(item)}
+                                                                {this.deleteButton(item)}*/}
+                                <div className="dropdown d-inline-block">
+                                    <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button"><i className="fa fa-ellipsis-h"></i></a>
+                                    <ul className="dropdown-menu dropdown-menu-right">
+                                        <li><a href="#">Edit Company</a></li>
+                                        <li><a href="#">Delete Company</a></li>
+                                        <li><a href="#" onClick={(e)=> this.uploadLogo(e, item)}>Upload Logo</a></li>
+
+                                    </ul>
+                                </div>
                             </span>
                         </div>
 
@@ -154,7 +164,9 @@ class OrganizationCompanies extends Component {
                 <PagePanel>
                     <div className="control-toolbar1">
                         <div className="left">
-                            <span className="title">Companies</span>
+                            <div className="filter-header-input-wrap">
+                                <input placeholder="Find company" className="filter-header-input" defaultValue=""/>
+                            </div>
                         </div>
                         <div className="middle">
                         </div>
@@ -165,7 +177,7 @@ class OrganizationCompanies extends Component {
                                 </span>
                                 <span className="col icons-group">
                                 { this.props.current_org.permissions.org_can_update ?
-                                    <button className="btn btn-success" onClick={()=> PopupHelper.showCompanyForm({})}><i className="fa fa-plus"></i></button>
+                                    <button className="btn btn-green-bordered" onClick={()=> PopupHelper.showCompanyForm({})}><i className="fa fa-plus"></i>Add new company</button>
                                     : ''
                                 }
                                 </span>
@@ -175,7 +187,7 @@ class OrganizationCompanies extends Component {
                     <div className="mt20">
                         
 
-                        <ul className="list-group style1">
+                        <ul className="list-group-company">
                             {this.renderItems(data)}
                         </ul>
                     </div>

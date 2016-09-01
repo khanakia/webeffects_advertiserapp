@@ -56,6 +56,7 @@ export const API_URL_PROJECT_USER_NOT_ASSIGNED = API_URL_PROJECT_USER+'/index_no
 export const API_URL_PROJECT_MESSAGE = API_URL+'/project_message';
 export const API_URL_PROJECT_FILE = API_URL+'/project_file';
 export const API_URL_PROJECT_FILE_VERSION = API_URL+'/project_file_version';
+export const API_URL_PROJECT_ACTIVITY = API_URL+'/project_activity';
 
 
 export const API_URL_COMPANY = API_URL+'/company';

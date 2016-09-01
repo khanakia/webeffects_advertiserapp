@@ -12,47 +12,60 @@ import ProjectForm from './project/ProjectForm'
 class ProjectOverview extends Component {
     constructor(props, context) {
         super(props, context);
+        this.projectId = this.props.params.projectId
     }
 
     componentWillMount() {
        // this.props.fetchProjects();
+       this.props.fetchProjectActivities(this.projectId);
     }
 
-    renderList(projects) {
-        return projects.map((project) => {
+    renderList(items) {
+        if(undefined==items) return;
+        return items.map((item) => {
             return (
-                <li className="list-group-item" key={project.id}>
-                    <h4 className="list-group-item-heading">
-                            {project.project_title}<br/>
+                <li className="list-group-item" key={item.id}>
+                    <div className="d-table w100">
+                        <div className="d-table-cell xs-d-block w30 xs-w100">
+                            <div className="userInfoBlock">
+                                <div className="image d-inline-block valign-middle mr20">
+                                    <div className="avatar" style={{backgroundImage: "url('" + item.user.profile_image_url +"')"}}>
+                                    </div>
+                                </div>
+                                <div className="summary d-inline-block">
+                                    <div className="title fw-b"> {item.user.fullname}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="d-table-cell xs-d-block xs-mt20 w30 xs-w100 valign-middle ">
+                            {item.activity_type} a {item.object_type}
+                        </div>
+                        <div className="d-table-cell xs-d-block xs-mt20 w30 xs-w100 valign-middle ">
+                               {item.object_type=='comment' 
+                                    ? item.data.body 
+                                    : ''
+                               }
+                        </div>
 
-                            <span>Start Date: {project.start_date}</span><br/>
-                            <span>End Date: {project.start_date}</span>
-                    </h4>
-
-                    <span className="controls icons-group">
-                        <button className="btn btn-plain" title="Edit" onClick={(e)=> this.editProject(project,e)} ><i className="fa fa-pencil"></i></button>
-                        <button className="dropdown-toggle btn btn-plain" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span className="glyphicon glyphicon-cog" aria-hidden="true"></span> <span className="caret"></span></button>
-                        <ul className="dropdown-menu dropdown-menu-right">
-                          <li><Link to="organization">Project Setting</Link></li>
-                          <li><Link to="organization/companies">Archive Project</Link></li>
-                          <li><Link to="organization/peoples">Delete Project</Link></li>
-                        </ul>
-                    </span>
+                        <div className="d-table-cell xs-d-block xs-mt20 w30 xs-w100 valign-middle ">
+                            {item.created_at}
+                        </div>
+                        
+                    </div>
                 </li>
             );
         });
     }
 
-    editProject(data, e) {
-        ProjectForm.showInPoup({data})
-    }
    
     render() {
-        // const { data } = this.props.projectsList;
-
+        const data = this.props.projectActivities;
+        console.info("datadatadata", data)
         return (
             <div>
-               Project Overview
+               <ul className="list-group">
+                {this.renderList(data)}
+               </ul>
             </div>
 
         );

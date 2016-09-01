@@ -54,6 +54,7 @@ class ProjectFileUploadForm extends Component {
         popup_id: '',
         settings : {},
         data : {
+            id : ''
         },
 
         project_id : ''
@@ -167,7 +168,7 @@ class ProjectFileUploadForm extends Component {
                     
                     var extraParams = {
                         unique_id : unique_id,
-                        project_id: project_id,
+                        project_id: project_id ? project_id : '',
                         project_file_id: project_file_id,
                     }
 
@@ -261,9 +262,9 @@ class ProjectFileUploadForm extends Component {
                 </div>
                 
                 <form className="form" ref='form' onSubmit={this.handleSubmit}>
-                    {/*<input type="text" name="project_file_id" defaultValue={this.props.data.id} placeholder={'project_file_id'} />*/}
-                    <input type="hidden" name="project_id" defaultValue={this.props.project_id} placeholder={'project_id'} />
-                    <input type="hidden" name="unique_id" defaultValue={this.unique_id} placeholder={'unique_id'} />
+                    <input type="text" name="project_file_id" defaultValue={this.props.data.id} placeholder={'project_file_id'} />
+                    <input type="text" name="project_id" defaultValue={this.props.project_id} placeholder={'project_id'} />
+                    <input type="text" name="unique_id" defaultValue={this.unique_id} placeholder={'unique_id'} />
                     <div className="content-area">
                         <div className="mb20">
                             <div id="fine-uploader-dropzone" className="d-table w100">
