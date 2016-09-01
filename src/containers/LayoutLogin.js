@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link, hashHistory } from 'react-router'
 import ReactDOM from 'react-dom'
 
-import {ROOT_URL, SIGN_UP_URL} from '../config.js'
+import {ROOT_URL, SIGN_UP_URL, FORGET_PWD_URL} from '../config.js'
 import OrgHelper from '../helpers/helper_org.js'
 import Auth from '../helpers/auth.js'
 import Localstore from '../helpers/localstore.js'
@@ -71,7 +71,7 @@ export default class LayoutLogin extends Component {
                                     </div>
                                     <div className="form-group">
                                         <label className="passLabel">Password
-                                            <a href="#" className="pull-right">Forgot password?</a>
+                                            <a href={FORGET_PWD_URL} className="pull-right">Forgot password?</a>
                                         </label>
                                         <input type="password" className="form-control password" id="exampleInputPassword1" placeholder="Password" ref='password' />
                                     </div>

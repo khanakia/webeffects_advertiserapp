@@ -52,3 +52,110 @@
 .loginSubmitBtn {
 	width: 100%;
 }
+
+.navbar {
+	margin-bottom: 0;
+}
+
+/* forgetpwd Form ---------------------*/
+
+.forgetpwdFormCt {
+	margin-top: 50px;
+}
+
+.forgetpwdFormCt label {
+	font-weight: 300;
+}
+
+.forgetpwdForm-logo {
+	display: block;
+	text-align: center;
+}
+
+.forgetpwdForm-logo img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 30px;
+}
+
+.forgetpwdFormCt h1 {
+	font-size: 24px;
+    font-weight: 300;
+    color: #333;
+    text-align: center;
+}
+
+.forgetpwdForm {
+	margin-top: 30px;
+	padding: 20px 20px 25px;
+	border: 1px solid #d8dee2;
+    border-radius: 5px;
+}
+
+.passLabel {
+	display: block;
+}
+
+.forgetpwdForm-newaccount {
+	margin-top: 30px;
+	padding: 15px 0;
+	border: 1px solid #d8dee2;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.forgetpwdSubmitBtn {
+	width: 100%;
+}
+
+/* resetpwd Form ---------------------*/
+
+.resetpwdFormCt {
+	margin-top: 50px;
+}
+
+.resetpwdFormCt label {
+	font-weight: 300;
+}
+
+.resetpwdForm-logo {
+	display: block;
+	text-align: center;
+}
+
+.resetpwdForm-logo img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 30px;
+}
+
+.resetpwdFormCt h1 {
+	font-size: 24px;
+    font-weight: 300;
+    color: #333;
+    text-align: center;
+}
+
+.resetpwdForm {
+	margin-top: 30px;
+	padding: 20px 20px 25px;
+	border: 1px solid #d8dee2;
+    border-radius: 5px;
+}
+
+.passLabel {
+	display: block;
+}
+
+.resetpwdForm-newaccount {
+	margin-top: 30px;
+	padding: 15px 0;
+	border: 1px solid #d8dee2;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.resetpwdSubmitBtn {
+	width: 100%;
+}
+
