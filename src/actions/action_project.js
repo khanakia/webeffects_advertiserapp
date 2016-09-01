@@ -19,12 +19,14 @@ export const FETCH_PROJECT_FILES_BROWSER_FORM_LIST = 'FETCH_PROJECT_FILES_BROWSE
 
 export const FETCH_COMMENTS = 'FETCH_COMMENTS'
 
+export const FETCH_PROJECT_ACTIVITIES = 'FETCH_PROJECT_ACTIVITIES'
+
 // import Auth from '../helpers/auth.js'
 // import ProjectHelper from '../helpers/helper_project.js'
 // import ProjectUserHelper from '../helpers/helper_project_user.js'
 // import TasklistHelper from '../helpers/helper_tasklist.js'
 
-import {Auth, ProjectHelper, ProjectMessageHelper, ProjectFileHelper, ProjectUserHelper, TasklistHelper, TaskHelper, CommentHelper} from '../helpers'
+import {Auth, ProjectHelper, ProjectMessageHelper, ProjectFileHelper, ProjectUserHelper, TasklistHelper, TaskHelper, CommentHelper, ProjectActivityHelper} from '../helpers'
 
 export function fetchProjects() {
     const request = ProjectHelper.index();
@@ -142,6 +144,14 @@ export function fetchComments(object_type, object_id) {
     const request = CommentHelper.index(object_type, object_id);
     return {
         type: FETCH_COMMENTS,
+        payload: request
+    };
+}
+
+export function fetchProjectActivities(project_id) {
+    const request = ProjectActivityHelper.index(project_id);
+    return {
+        type: FETCH_PROJECT_ACTIVITIES,
         payload: request
     };
 }

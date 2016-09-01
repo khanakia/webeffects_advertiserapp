@@ -11,7 +11,7 @@ export default class Util {
 	static badgetDefault(item) {
         if(item.is_default) {
             return (
-                <span className="label label-success ml10">Default</span>
+                <span className="label label-success">Default</span>
             )
         }
     }
@@ -20,7 +20,7 @@ export default class Util {
         // if(item.created_by_user_id==Auth.getUserID()) {
        	if(bool) {
             return (
-                <span className="label label-success ml10">Owner</span>
+                <span className="label label-success">Owner</span>
             )
         }
     }
@@ -28,7 +28,7 @@ export default class Util {
     static badgeIsAdmin(bool) {
         if(bool) {
             return (
-                <span className="label label-success ml10">Admin</span>
+                <span className="label label-success">Admin</span>
             )
         }
     }

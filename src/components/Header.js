@@ -7,6 +7,7 @@ import Auth from '../helpers/auth'
 import PopupHelper from '../helpers/helper_popup'
 
 import UserProfileEditForm from './other/UserProfileEditForm'
+import ChangePassword from './other/ChangePassword'
 // import Localstore from '../helpers/localstore'
 
 // import LogoForm from './UploadPopupForm'
@@ -45,7 +46,8 @@ export default class Header extends Component {
 
 		return (
 			<header>
-				<nav className="navbar navbar-default">
+
+				<nav className="navbar navbar-inverse">
 					<div className="container-fluid">
 						<div className="navbar-header">
 							<button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -77,8 +79,6 @@ export default class Header extends Component {
 										<li className="dropdown-header">Settings</li>
 										{/*<li><Link to="settings/general">General</Link></li>*/}
 										<li><Link to="settings/template">Template</Link></li>
-										<li><Link to="settings/logo">Logo</Link></li>
-										<li><Link to="settings/colortheme">Color Theme</Link></li>
 										<li><Link to="settings/tags">Tags</Link></li>
 
 										<li role="separator" className="divider"></li>
@@ -106,6 +106,7 @@ export default class Header extends Component {
 										<li><Link to="organization"><i className="fa fa-check-square-o"></i> My Tasks</Link></li>
 										{/*<li><Link to="dashboard"><i className="fa fa-user"></i> Profile & Account</Link></li>*/}
 										<li><Link to="#" className="a_edit_my_detail" onClick={()=> UserProfileEditForm.showInPoup({data : this.props.current_user})} ><i className="fa fa-pencil"></i> Edit My Details</Link></li>
+										<li><Link to="#" className="change_password" onClick={() => ChangePassword.showInPoup()} ><i className="fa fa-pencil"></i> Change Password</Link></li>
 										<li role="separator" className="divider"></li>
 										<li><a href="#" onClick={(e) => {this.logout(e)}}><i className="fa fa-sign-out"></i>Logout</a></li>
 									</ul>
