@@ -51,8 +51,6 @@ import configureStore from './src/store/configureStore.dev.js';
 import {store} from './src/store/index.js';
 // const store = configureStore();
 // window.store = store;
-console.log("dsf")
-
 
 import {ROOT_HOST} from './src/config.js'
 
@@ -63,22 +61,15 @@ import RequireAuth from './src/containers/RequireAuth';
 
 
 // If user is on Root URL then render Find My Organization page
-if(ROOT_HOST==window.location.host) {
-   	render((
-		<Provider store={store}>
-		  <Router history={hashHistory}>
-    		<Route path="/" component={LayoutFindMyOrg} />
-    		<Route path="/signup" component={LayoutSignup} />
-    		<Route path="/forgetpwd" component={LayoutForgetpwd} />
-    		<Route path="/resetpwd" component={LayoutResetpwd} />
-		  </Router>
-		</Provider>  
-	), document.getElementById('root'))
-} else {
 
 	render((
 		<Provider store={store}>
 		  <Router history={hashHistory}>
+    		<Route path="/" component={LayoutLogin} />
+    		<Route path="/signup" component={LayoutSignup} />
+    		<Route path="/forgetpwd" component={LayoutForgetpwd} />
+    		<Route path="/resetpwd" component={LayoutResetpwd} />
+
 		    <Route path="/" component={RequireAuth(Layout)}>
 		       <Route path="dashboard" component={Dashboard} />
 		       <Route path="organization" component={OrganizationList} />
@@ -109,13 +100,8 @@ if(ROOT_HOST==window.location.host) {
                
 		    </Route>
 
-		    <Route path="/login" component={LayoutLogin}>
-		      
-		    </Route>
+		  
 		  </Router>
 		</Provider>  
 	), document.getElementById('root'))
-}
-
-
 

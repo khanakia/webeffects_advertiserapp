@@ -53,12 +53,14 @@ class OrganizationCompanies extends Component {
         }
     }
 
-    editCompany(data, e) {
+    editCompany(e, data) {
+        e.preventDefault()
         PopupHelper.showCompanyForm({data})
     }
 
 
-    deleteCompany(company_id, e) {
+    deleteCompany(e, company_id) {
+        e.preventDefault()
         $.confirm({
             title: '',
             content: 'Are you sure you want to remove ?',
@@ -140,8 +142,8 @@ class OrganizationCompanies extends Component {
                                 <div className="dropdown d-inline-block">
                                     <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button"><i className="fa fa-ellipsis-h"></i></a>
                                     <ul className="dropdown-menu dropdown-menu-right">
-                                        <li><a href="#">Edit Company</a></li>
-                                        <li><a href="#">Delete Company</a></li>
+                                        <li><a href="#" onClick={(e) => this.editCompany(e, item)}>Edit Company</a></li>
+                                        <li><a href="#" onClick={(e) => this.deleteCompany(e, item.id)}>Delete Company</a></li>
                                         <li><a href="#" onClick={(e)=> this.uploadLogo(e, item)}>Upload Logo</a></li>
 
                                     </ul>

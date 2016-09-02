@@ -141,7 +141,7 @@ class OrganizationList extends Component {
                                     
                                 </span>
                                 <span className="col icons-group">
-                                    <button className="btn btn-green-bordered" onClick={()=> OrgForm.showInPoup({}, {},this.props)}><i className="fa fa-plus"></i> Create new organization</button>
+                                    <button className="btn btn-green-bordered" onClick={()=> PopupHelper.showOrgForm({})}><i className="fa fa-plus"></i> Create new organization</button>
                                 </span>
                             </span>    
                         </div>

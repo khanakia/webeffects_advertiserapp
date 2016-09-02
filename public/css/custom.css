@@ -3,6 +3,17 @@
 }
 
 /* formstyle1 Form ---------------------*/
+.main {
+	background-image: linear-gradient(to left, rgb(0, 210, 255), rgb(58, 123, 213));
+    background-color: rgb(58, 123, 213);
+	height: 100vh;
+	display: table;
+	width: 100%;
+}
+.main_inner {
+	display: table-cell;
+	vertical-align: middle;
+}
 
 .formstyle1Ct {
     background-color: #fff;
@@ -38,16 +49,7 @@
     max-width: 350px;
     margin: 25px auto;
 }
-.main {
-	background-color: #fbfbfb;
-	height: 100vh;
-	display: table;
-	width: 100%;
-}
-.main_inner {
-	display: table-cell;
-	vertical-align: middle;
-}
+
 .formstyle1Ct a {
 	color: #2386c8 !important;
 }

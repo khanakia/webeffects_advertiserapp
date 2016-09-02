@@ -20,18 +20,18 @@ export default class LayoutLogin extends Component {
     }
     componentDidMount() {
         if(Auth.check()) {
-            hashHistory.push('/')
+            hashHistory.push('/dashboard')
             return false;
         }
         
-        OrgHelper.getOrgsByDomain(window.location.host).then((response) => {
-            console.log(response);
-            if(response.data) {
-                this.setState({ 'org': response.data });
-            } else {
-                window.location.href = ROOT_URL;
-            }
-        });
+        // OrgHelper.getOrgsByDomain(window.location.host).then((response) => {
+        //     console.log(response);
+        //     if(response.data) {
+        //         this.setState({ 'org': response.data });
+        //     } else {
+        //         window.location.href = ROOT_URL;
+        //     }
+        // });
     }
 
     handleSubmit = (e) => {
@@ -46,16 +46,16 @@ export default class LayoutLogin extends Component {
             if (response.data.token != null) {
                 // Localstore.setOrg(response.data.org)
                 // Localstore.setUser(response.data.user)
-                hashHistory.push('/')
+                hashHistory.push('/dashboard')
             }
         });
       
     }
 
     render() {
-        if (!this.state.org) return false;
-        const { org } = this.state;
-        console.log(org);
+        // if (!this.state.org) return false;
+        // const { org } = this.state;
+        // console.log(org);
         return (
             <div>
                 <div className="main">
@@ -65,7 +65,7 @@ export default class LayoutLogin extends Component {
                                 <div className="col-md-4 col-md-offset-4">
                                     <div className="formstyle1Ct">
                                         <h1>Sign In </h1>
-                                        <form autocomplete="off" onSubmit={this.handleSubmit} className="formstyle1 loginForm">
+                                        <form autoComplete="off" onSubmit={this.handleSubmit} className="formstyle1 loginForm">
                                             <div className="form-group">
                                                 <input type="email" className="form-control required" id="exampleInputEmail1" placeholder="Email Address" ref='email' />
                                             </div>

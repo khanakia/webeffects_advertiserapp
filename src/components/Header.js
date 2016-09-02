@@ -26,7 +26,7 @@ export default class Header extends Component {
 	logout = (e) => {
 		e.preventDefault();
 		Auth.logout()
-		hashHistory.push('login')
+		hashHistory.push('/')
 	}
 
     // openPopuplogo(data, uploadurl, e) {
