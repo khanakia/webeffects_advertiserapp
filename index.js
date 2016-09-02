@@ -11,6 +11,8 @@ window.React = React;
 import Layout from './src/containers/LayoutContainer'
 import LayoutSignup from './src/containers/LayoutSignup'
 import LayoutLogin from './src/containers/LayoutLogin'
+import LayoutForgetpwd from './src/containers/LayoutForgetpwd'
+import LayoutResetpwd from './src/containers/LayoutResetpwd'
 import LayoutFindMyOrg from './src/containers/LayoutFindMyOrg'
 import LayoutProject from './src/containers/LayoutProject'
 
@@ -67,6 +69,8 @@ if(ROOT_HOST==window.location.host) {
 		  <Router history={hashHistory}>
     		<Route path="/" component={LayoutFindMyOrg} />
     		<Route path="/signup" component={LayoutSignup} />
+    		<Route path="/forgetpwd" component={LayoutForgetpwd} />
+    		<Route path="/resetpwd" component={LayoutResetpwd} />
 		  </Router>
 		</Provider>  
 	), document.getElementById('root'))

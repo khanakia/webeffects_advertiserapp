@@ -2,53 +2,101 @@
 	margin-bottom: 0;
 }
 
-/* Login Form ---------------------*/
+/* formstyle1 Form ---------------------*/
 
-.loginFormCt {
-	margin-top: 50px;
+.formstyle1Ct {
+    background-color: #fff;
+    padding: 30px 30px 1px 30px;
+    box-shadow: 0px 3px 11px -4px #000;
 }
 
-.loginFormCt label {
+.formstyle1Ct label {
 	font-weight: 300;
 }
 
-.loginForm-logo {
+.formstyle1-logo {
 	display: block;
 	text-align: center;
 }
 
-.loginForm-logo img {
+.formstyle1-logo img {
     width: 60px;
     height: 60px;
     margin-bottom: 30px;
 }
 
-.loginFormCt h1 {
+.formstyle1Ct h1 {
 	font-size: 24px;
     font-weight: 300;
     color: #333;
     text-align: center;
 }
 
-.loginForm {
-	margin-top: 30px;
-	padding: 20px 20px 25px;
-	border: 1px solid #d8dee2;
-    border-radius: 5px;
+.formstyle1 {
+    margin-top: 30px;
+    padding: 20px 20px 25px;
+    max-width: 350px;
+    margin: 25px auto;
+}
+.main {
+	background-color: #fbfbfb;
+	height: 100vh;
+	display: table;
+	width: 100%;
+}
+.main_inner {
+	display: table-cell;
+	vertical-align: middle;
+}
+.formstyle1Ct a {
+	color: #2386c8 !important;
+}
+.formstyle1 input:focus{
+    background-color: transparent;
+} 
+.formstyle1 input[type=text], 
+.formstyle1 input[type=email], 
+.formstyle1 input[type=password] {
+    border: none;
+    border-bottom: 1px solid #d8d9da;
+    padding-left: 20px;
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 15px;
+}
+.formstyle1 input[type=email] {
+	background-image: url("../images/avatar.svg");
+}
+.formstyle1 input[type=password] {
+	background-image: url("../images/padlock.svg");
 }
 
+.formstyle1 button {
+	border: 1px solid #2386c8;
+	background-color: #2386c8;
+	border-radius: 30px;
+} 
+.formstyle1 button:hover ,
+.formstyle1 button:active ,
+.formstyle1 button:focus {
+	border: 1px solid #2386c8;
+	background-color: #31a5f3;
+}
+}
 .passLabel {
 	display: block;
 }
 
-.loginForm-newaccount {
+.formstyle1-newaccount {
 	margin-top: 30px;
 	padding: 15px 0;
-	border: 1px solid #d8dee2;
-    border-radius: 5px;
-    text-align: center;
+    /*text-align: center;*/
 }
 
-.loginSubmitBtn {
+.formstyle1SubmitBtn {
 	width: 100%;
+}
+
+.navbar {
+	margin-bottom: 0;
 }

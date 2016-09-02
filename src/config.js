@@ -10,6 +10,10 @@ export const OBJECT_TYPE_TASK = 'task';
 export const OBJECT_TYPE_COMMENT = 'comment';
 
 export const SIGN_UP_URL = ROOT_URL + '/#/signup';
+export const FORGET_PWD_URL = ROOT_URL + '/#/forgetpwd';
+export const RESET_PWD_URL = ROOT_URL + '/#/resetpwd';
+export const RESET_PWD_AJAX = API_URL + '/postReset';
+export const FORGET_PWD_AJAX = API_URL + '/postEmail';
 
 // export const API_HOST_ORGS_IMAGES = API_URL + '/uploads/orgs/';
 // export const API_HOST_USERS_IMAGES = API_URL + '/uploads/users/';
