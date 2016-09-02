@@ -9,6 +9,7 @@ import OrgForm from './org/OrgForm'
 import DomainForm from './org/DomainSubdomainForm'
 
 import * as Helper from '../helpers'
+import PopupHelper from '../helpers/helper_popup'
 
 class OrganizationList extends Component {
     constructor(props, context) {
@@ -77,14 +78,14 @@ class OrganizationList extends Component {
                                 <div className="dropdown d-inline-block">
                                     <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button"><i className="fa fa-chevron-down"></i></a>
                                     <ul className="dropdown-menu dropdown-menu-right">
-                                        <li><a href="#">Edit Organization</a></li>
-                                        <li><a href="#">Leave Organization</a></li>
+                                        <li><a href="#" onClick={(e)=> this.editOrg(org,e)}>Edit Organization</a></li>
+                                        <li><a href="#" onClick={(e)=> this.leaveOrg(org, e)}>Leave Organization</a></li>
 
                                     </ul>
                                 </div>
                             </h4>
                         
-                        <div className="my20 badges">
+                        <div className="badges">
                                 {Helper.Util.badgetOwner((org.created_by_user_id==Helper.Auth.getUserID()))}
                                 {Helper.Util.badgeIsAdmin(org.permissions.is_admin)}
                                 {Helper.Util.badgetDefault(org)}
@@ -110,7 +111,8 @@ class OrganizationList extends Component {
     }
 
     editOrg(data, e) {
-        OrgForm.showInPoup({data})
+        e.preventDefault();
+        PopupHelper.showOrgForm({data, is_new: false})
     }
 
     addDomainInfo(data, e) {

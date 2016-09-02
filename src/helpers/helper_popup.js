@@ -9,6 +9,7 @@ import ProjectForm from '../components/project/ProjectForm'
 import ProjectUsersEditForm from '../components/project/ProjectUsersEditForm'
 
 
+import OrgForm from '../components/org/OrgForm'
 import CompanyForm from '../components/org/CompanyForm'
 
 import ProjectFileBrowseForm from '../components/project_file/ProjectFileBrowseForm'
@@ -29,6 +30,29 @@ import TagForm from '../components/tag/TagForm'
 export default class PopupHelper {
     constructor() {
 
+    }
+
+    static showOrgForm(args = {}) {
+        var uniq = 'id' + (new Date()).getTime();
+
+        Controls.showpopup({
+            detach: true,
+            message: '<div id="' + uniq + '"></div>',
+            container_class: "w500",
+            opacity: 0.5,
+            blur: false,
+            // zindex : 5000,
+
+            onopen: function(e) {
+                var pid = (jQuery(e).attr('id'));
+                jQuery('#'+pid + "_background").css('z-index', 5000);
+                jQuery('#'+pid + "_wrapper").css('z-index', 5001);
+                ReactDom.render(<OrgForm popup_id={pid} {...args} />, document.getElementById(uniq));
+            },
+            onclose: function(e) {
+                ReactDom.unmountComponentAtNode(document.getElementById(uniq))
+            }
+        });
     }
 
 

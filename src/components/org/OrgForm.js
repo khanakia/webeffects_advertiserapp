@@ -30,9 +30,11 @@ class OrgForm extends Component {
 
     componentWillMount() {
         if(!this.props.is_new) {
-            this.msg_btn_save_text = "Edit Organization"
+            this.msg_btn_save_text = "Update Organization"
             this.msg_heading = 'Edit Organization'
         }
+
+        console.info(this.msg_btn_save_text)
     }
 
     componentDidMount() {
@@ -40,23 +42,23 @@ class OrgForm extends Component {
     }
 
 
-    static showInPoup({settings={}, data={}, onDataUpdate=this.defaultProps.onDataUpdate()}) {
-        var uniq = 'id' + (new Date()).getTime();
+    // static showInPoup({settings={}, data={}, onDataUpdate=this.defaultProps.onDataUpdate()}) {
+    //     var uniq = 'id' + (new Date()).getTime();
 
-        Controls.showpopup({
-            detach : true,
-            message : '<div id="' + uniq + '"></div>',
-            container_class : "w500",
-            opacity: 0.5,
-            blur: false,
-            onopen : function(e){
-              var pid = (jQuery(e).attr('id'));
-              ReactDom.render(<OrgForm popup_id={pid} settings={settings} data={data} onDataUpdate={onDataUpdate} />, document.getElementById(uniq));
-              // console.log(pid);
-              // setTimeout(() => jQuery('#'+pid).popup('hide'), 3000); 
-            }
-        });
-    }
+    //     Controls.showpopup({
+    //         detach : true,
+    //         message : '<div id="' + uniq + '"></div>',
+    //         container_class : "w500",
+    //         opacity: 0.5,
+    //         blur: false,
+    //         onopen : function(e){
+    //           var pid = (jQuery(e).attr('id'));
+    //           ReactDom.render(<OrgForm popup_id={pid} settings={settings} data={data} onDataUpdate={onDataUpdate} />, document.getElementById(uniq));
+    //           // console.log(pid);
+    //           // setTimeout(() => jQuery('#'+pid).popup('hide'), 3000); 
+    //         }
+    //     });
+    // }
 
 
     hidePopup = () => {

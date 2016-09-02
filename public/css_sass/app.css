@@ -5826,7 +5826,7 @@ button.close {
 .icons-group i {
   font-size: 16px; }
 .icons-group.light i {
-  color: #666; }
+  color: #8c98a0; }
   .icons-group.light i:hover {
     color: #3aa3e3; }
 
@@ -6201,6 +6201,9 @@ a:hover {
   .priority_high {
     color: #dc1414; }
 
+body {
+  font-family: 'Lato', sans-serif; }
+
 .btn-green,
 .btn-green:link,
 .btn-green:hover,
@@ -6420,8 +6423,32 @@ a:hover {
     .list-group-company > li:hover {
       background: #f5f5f5; }
 
-body {
-  font-family: 'Lato', sans-serif; }
+.list-group-grid > li {
+  width: 400px;
+  height: 190px;
+  padding: 20px 5px;
+  display: inline-block;
+  text-align: center;
+  position: relative;
+  vertical-align: top;
+  background: #f7f9fb;
+  margin: 0 7px 14px 7px;
+  border-radius: 5px; }
+  .list-group-grid > li .list-group-item-heading {
+    margin-top: 20px; }
+    .list-group-grid > li .list-group-item-heading i {
+      font-size: 12px;
+      padding: 0 5px; }
+  .list-group-grid > li .badges {
+    position: absolute;
+    right: 5px;
+    top: 5px; }
+    .list-group-grid > li .badges .label {
+      font-size: 11px;
+      margin-left: 10px; }
+  .list-group-grid > li .controls {
+    position: absolute;
+    top: 0; }
 
 header {
   -webkit-box-shadow: 0px 5px 15px 0px #c5c5c5;
@@ -6460,31 +6487,5 @@ header {
   .page-panel.has-sidebar {
     padding-left: 300px;
     padding-right: 15px; }
-
-.list-group-grid > li {
-  width: 400px;
-  height: 190px;
-  padding: 20px 5px;
-  display: inline-block;
-  text-align: center;
-  position: relative;
-  vertical-align: top;
-  background: #f7f9fb;
-  margin: 0 7px 14px 7px;
-  border-radius: 5px; }
-  .list-group-grid > li .list-group-item-heading {
-    margin-top: 20px; }
-    .list-group-grid > li .list-group-item-heading i {
-      font-size: 12px;
-      padding: 0 5px; }
-  .list-group-grid > li .badges {
-    position: absolute;
-    right: 10px;
-    top: 0; }
-    .list-group-grid > li .badges .label {
-      font-size: 11px; }
-  .list-group-grid > li .controls {
-    position: absolute;
-    top: 0; }
 
 /*# sourceMappingURL=app.css.map */
