@@ -45,11 +45,9 @@ export default class LayoutResetpwd extends Component {
                                         <h1>New Password</h1>
                                         <form onSubmit={this.handleSubmit} className="formstyle1 resetpwdForm" role="form" method="POST">
                                             <div className="form-group">
-                                                <label>Password</label>
                                                 <input type="password" className="form-control required" name="password" id="password" placeholder="Password" />
                                             </div>
                                             <div className="form-group">
-                                                <label>Password Confirmation</label>
                                                 <input type="password" className="form-control required" name="password_confirmation" id="password_confirmation" placeholder="Confirm Password" equalTo="#password"/>
                                             </div>
                                             <button type="submit" className="btn btn-success formstyle1SubmitBtn">Submit Here</button>
