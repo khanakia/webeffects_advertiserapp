@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import { fetchOrgs, fetchOrgCurrent, filterOrgList } from '../actions/action_organization';
 import {action_appdata} from '../actions';
-const {fetchCurrentOrg} = action_appdata
+const {fetchCurrentOrg, fetchCurrentUser} = action_appdata
 
 
 import OrganizationList from '../components/OrganizationList';
@@ -26,6 +26,7 @@ const mapStateToProps = (state) => {
     return {
         state : state,
         current_org: state.appdata.current_org,
+        current_user: state.appdata.current_user,
         // orgsList: state.org.list,
         orgsList: filterList(state.org.list.data, state.org.filter_orglist_params),
 
@@ -58,6 +59,13 @@ const mapDispatchToProps = (dispatch) => {
                 // dispatch(fetchCurrentUser())
             })
         },
+
+        fetchCurrentUser: () => {
+            dispatch(fetchCurrentUser()).then((response) => {
+                // dispatch(fetchCurrentUser())
+            })
+        },
+
 
         filterOrgList: (data) => {
             dispatch(filterOrgList(data))

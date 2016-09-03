@@ -30,8 +30,7 @@ class TagList extends Component {
 
     editTag(e, data) {
         e.preventDefault()
-        // TagForm.showInPoup({data})
-        PopupHelper.showTagForm({data})
+        PopupHelper.showTagForm({data, is_new: false})
         
     }
 
@@ -53,9 +52,9 @@ class TagList extends Component {
     renderTags(tags) {
         return tags.map((tag) => {
             return (
-                <span key={tag.id} className="tag" style={{backgroundColor: tag.tag_color}}>
+                <span key={tag.id} className="tag" style={{borderColor: tag.tag_color}}>
                     <a href="#" onClick={(e)=> this.editTag(e, tag)} >{tag.tag_title}</a>
-                    <a href="#" className="ml10" onClick={(e)=> this.deleteTag(tag,e)} ><i className="fa fa-trash"></i></a>
+                    <a href="#" className="ml10" onClick={(e)=> this.deleteTag(tag,e)} ><i className="fa fa-times"></i></a>
                 </span>
             );
         });
@@ -82,7 +81,7 @@ class TagList extends Component {
                                     
                                 </span>
                                 <span className="col icons-group">
-                                    <button className="btn btn-success" onClick={()=>PopupHelper.showTagForm({})}>Add New Tag</button>
+                                    <button className="btn btn-green-bordered" onClick={()=> PopupHelper.showTagForm({})}><i className="fa fa-plus"></i> Create new tag</button>
                                 </span>
                             </span>    
                         </div>

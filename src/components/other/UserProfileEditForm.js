@@ -55,23 +55,6 @@ class UserProfileEditForm extends Component {
         // }.bind(this));
     }
 
-    static showInPoup({settings={}, data={}, onDataUpdate=this.defaultProps.onDataUpdate()}) {
-        var uniq = 'id' + (new Date()).getTime();
-
-        Controls.showpopup({
-            detach: true,
-            message : '<div id="' + uniq + '"></div>',
-            container_class : "",
-            opacity: 0.5,
-            blur: false,
-            onopen: function(e) {
-                var pid = (jQuery(e).attr('id'));
-                ReactDom.render(<UserProfileEditForm popup_id={pid} settings={settings} data={data} onDataUpdate={onDataUpdate} />, document.getElementById(uniq));
-                // console.log(pid);
-                // setTimeout(() => jQuery('#'+pid).popup('hide'), 3000);
-            }
-        });
-    }
 
     hidePopup = () => {
         if (this.props.popup_id) {
@@ -86,19 +69,19 @@ class UserProfileEditForm extends Component {
         return (
             <div>
                 <div className="modal-header">
-                    <h4 className="modal-title">Edit User Details</h4>
+                    <h4 className="modal-title">Edit your details</h4>
                 </div>
 
-                <ul className="nav nav-tabs" role="tablist">
-                    <li role="presentation" className="active"><a href="#essentials" aria-controls="essentials" role="tab" data-toggle="tab">Essentials</a></li>
-                    <li role="presentation"><a href="#details" aria-controls="details" role="tab" data-toggle="tab">Details</a></li>
-                    <li role="presentation"><a href="#address" aria-controls="address" role="tab" data-toggle="tab">Address</a></li>
-                    <li role="presentation"><a href="#localization" aria-controls="localization" role="tab" data-toggle="tab">Localization</a></li>
-                </ul>
 
-                <div className="content-area">
-                    <form className="form-horizontal control-label-left" ref='form' onSubmit={this.handleSubmit}>
-                        <div className="tab-content">
+                <form className="form-horizontal control-label-left" ref='form' onSubmit={this.handleSubmit}>
+                    <div className="content-area">
+                        <ul className="nav nav-tabs" role="tablist">
+                            <li role="presentation" className="active"><a href="#essentials" aria-controls="essentials" role="tab" data-toggle="tab">Essentials</a></li>
+                            <li role="presentation"><a href="#details" aria-controls="details" role="tab" data-toggle="tab">Details</a></li>
+                            <li role="presentation"><a href="#address" aria-controls="address" role="tab" data-toggle="tab">Address</a></li>
+                            <li role="presentation"><a href="#localization" aria-controls="localization" role="tab" data-toggle="tab">Localization</a></li>
+                        </ul>
+                        <div className="tab-content mt10">
                             <div role="tabpanel" className="tab-pane active" id="essentials">
                                 <div className="row">
                                     <div className="col-md-8">
@@ -123,7 +106,7 @@ class UserProfileEditForm extends Component {
                                         <div className="form-group">
                                             <label className="col-sm-3 control-label">Phone</label>
                                             <div className="col-sm-9">
-                                                <input type="text" className="form-control required" name="phone" id="phone" defaultValue={data.phone} />
+                                                <input type="text" className="form-control" name="phone" id="phone" defaultValue={data.phone} />
                                             </div>
                                         </div>
                                     </div>
@@ -133,33 +116,27 @@ class UserProfileEditForm extends Component {
                                 <div className="row">
                                     <div className="col-md-8">
                                         <div className="form-group">
-                                            <label className="col-sm-3 control-label">Job Title</label>
-                                            <div className="col-sm-9">
-                                                <input type="text" className="form-control required" name="job_title" id="job_title" defaultValue={data.job_title} />
-                                            </div>
-                                        </div>
-                                        <div className="form-group">
                                             <label className="col-sm-3 control-label">Office Phone</label>
                                             <div className="col-sm-9">
-                                                <input type="text" className="form-control required" name="office_phone" id="office_phone" defaultValue={data.office_phone} />
+                                                <input type="text" className="form-control" name="office_phone" id="office_phone" defaultValue={data.office_phone} />
                                             </div>
                                         </div>
                                         <div className="form-group">
                                             <label className="col-sm-3 control-label">Cell Phone</label>
                                             <div className="col-sm-9">
-                                                <input type="text" className="form-control required" name="cell_phone" id="cell_phone" defaultValue={data.cell_phone} />
+                                                <input type="text" className="form-control" name="cell_phone" id="cell_phone" defaultValue={data.cell_phone} />
                                             </div>
                                         </div>
                                         <div className="form-group">
                                             <label className="col-sm-3 control-label">Home Phone</label>
                                             <div className="col-sm-9">
-                                                <input type="text" className="form-control required" name="home_phone" id="home_phone" defaultValue={data.home_phone} />
+                                                <input type="text" className="form-control" name="home_phone" id="home_phone" defaultValue={data.home_phone} />
                                             </div>
                                         </div>
                                         <div className="form-group">
                                             <label className="col-sm-3 control-label">Fax</label>
                                             <div className="col-sm-9">
-                                                <input type="text" className="form-control required" name="fax" id="fax" defaultValue={data.fax} />
+                                                <input type="text" className="form-control" name="fax" id="fax" defaultValue={data.fax} />
                                             </div>
                                         </div>
                                     </div>
@@ -171,31 +148,31 @@ class UserProfileEditForm extends Component {
                                         <div className="form-group">
                                             <label className="col-sm-3 control-label">Line1</label>
                                             <div className="col-sm-9">
-                                                <input type="text" className="form-control required" name="line1" id="line1" defaultValue={data.line1} />
+                                                <input type="text" className="form-control" name="line1" id="line1" defaultValue={data.line1} />
                                             </div>
                                         </div>
                                         <div className="form-group">
                                             <label className="col-sm-3 control-label">Line2</label>
                                             <div className="col-sm-9">
-                                                <input type="text" className="form-control required" name="line2" id="line2" defaultValue={data.line2} />
+                                                <input type="text" className="form-control" name="line2" id="line2" defaultValue={data.line2} />
                                             </div>
                                         </div>
                                         <div className="form-group">
                                             <label className="col-sm-3 control-label">City</label>
                                             <div className="col-sm-9">
-                                                <input type="text" className="form-control required" name="city" id="city" defaultValue={data.city} />
+                                                <input type="text" className="form-control" name="city" id="city" defaultValue={data.city} />
                                             </div>
                                         </div>
                                         <div className="form-group">
                                             <label className="col-sm-3 control-label">State</label>
                                             <div className="col-sm-9">
-                                                <input type="text" className="form-control required" name="state" id="state" defaultValue={data.state} />
+                                                <input type="text" className="form-control" name="state" id="state" defaultValue={data.state} />
                                             </div>
                                         </div>
                                         <div className="form-group">
                                             <label className="col-sm-3 control-label">Zip Code</label>
                                             <div className="col-sm-9">
-                                                <input type="text" className="form-control required" name="zip_code" id="zip_code" defaultValue={data.zip_code} />
+                                                <input type="text" className="form-control" name="zip_code" id="zip_code" defaultValue={data.zip_code} />
                                             </div>
                                         </div>
                                         <div className="form-group">
@@ -251,11 +228,11 @@ class UserProfileEditForm extends Component {
                             </div>
                         </div>
 
-                        <div className="modal-footer text-right">
-                            <button type="submit" className="btn btn-success" ref="btn_save" >Save</button>
-                        </div>
-                    </form>
-                </div>
+                    </div>
+                    <div className="modal-footer text-right">
+                        <button type="submit" className="btn btn-blue-link">Update Profile</button>
+                    </div>
+                </form>
             </div>
         );
     }

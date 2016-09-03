@@ -9,7 +9,8 @@ import {
         API_URL_GETALLORGSBYEMAIL,
         API_URL_GETORG_BYDOMAIN,
         API_URL_DOMAIN,
-        API_URL_ORG_SWITCH
+        API_URL_ORG_SWITCH,
+        API_URL_ORG_SETDEFAULT
     } from '../config.js'
 
 
@@ -131,6 +132,17 @@ export default class OrgHelper {
             headers: Auth.header(),
             data : {
                 switch_org_id : org_id
+            }
+        });
+    }
+
+    static setDefault(org_id) {
+        return  axios({
+            method: 'post',
+            url: API_URL_ORG_SETDEFAULT + '/' + org_id,
+            headers: Auth.header(),
+            data : {
+                new_org_id : org_id
             }
         });
     }

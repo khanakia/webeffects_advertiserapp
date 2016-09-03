@@ -8,10 +8,19 @@ export default class Util {
 		
 	}
 
-	static badgetDefault(item) {
-        if(item.is_default) {
+	static badgetDefault(item, user) {
+        console.info(user);
+        if(item.id==user.org_default_id) {
             return (
                 <span className="label label-success">Default</span>
+            )
+        }
+    }
+
+    static badgetPersonal(item) {
+        if(item.created_by_user_id==Auth.getUserID() && item.is_personal) {
+            return (
+                <span className="label label-success">Personal</span>
             )
         }
     }

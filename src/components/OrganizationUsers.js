@@ -23,6 +23,36 @@ class OrganizationUsers extends Component {
         this.props.fetchOrgUsers();
     }
 
+    onDataUpdate(data) {
+        console.log('onDataUpdate', data);
+    }
+
+    editUserSetting(data, e) {
+        e.preventDefault()
+        OrgUserSettingForm.showInPoup({data})
+    }
+
+    editUserPermission(data, e) {
+        e.preventDefault()
+        OrgUserPermissionForm.showInPoup({data})
+    }
+
+    removeUser(data, e) {
+        e.preventDefault()
+        $.confirm({
+            title: '',
+            content: 'Are you sure you want to remove ?',
+            confirmButton: 'Yes',
+            cancelButton: 'No',
+            confirm: function(){
+                OrgUserHelper.removeUser(jQuery.param(data)).then((response) => {
+                    this.props.fetchOrgUsers();
+                });
+            }.bind(this)
+        });
+    }
+
+
     renderList(orgusers) {
         if(orgusers.error) {
             Auth.updateCurrentOrg().then(function(response){
@@ -90,31 +120,6 @@ class OrganizationUsers extends Component {
         });
     }
 
-    onDataUpdate(data) {
-        console.log('onDataUpdate', data);
-    }
-
-    editUserSetting(data, e) {
-        OrgUserSettingForm.showInPoup({data})
-    }
-
-    editUserPermission(data, e) {
-        OrgUserPermissionForm.showInPoup({data})
-    }
-
-    removeUser(data, e) {
-        $.confirm({
-            title: '',
-            content: 'Are you sure you want to remove ?',
-            confirmButton: 'Yes',
-            cancelButton: 'No',
-            confirm: function(){
-                OrgUserHelper.removeUser(jQuery.param(data)).then((response) => {
-                    this.props.fetchOrgUsers();
-                });
-            }.bind(this)
-        });
-    }
 
     render() {
         const { data } = this.props.userlist;
@@ -149,7 +154,7 @@ class OrganizationUsers extends Component {
                     <div className="mt20">
                         
 
-                        <ul className="list-group-grid">
+                        <ul className="list-group-grid org_people">
                             {this.renderList(data)}
                         </ul>
                     </div>

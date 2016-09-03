@@ -7,7 +7,7 @@ import Auth from '../helpers/auth'
 import PopupHelper from '../helpers/helper_popup'
 
 import UserProfileEditForm from './other/UserProfileEditForm'
-import ChangePassword from './other/ChangePassword'
+// import ChangePassword from './other/ChangePassword'
 // import Localstore from '../helpers/localstore'
 
 // import LogoForm from './UploadPopupForm'
@@ -37,6 +37,16 @@ export default class Header extends Component {
     uploadUserProfileImage(e) {
     	e.preventDefault();
     	PopupHelper.showUploadImageControl({uploadUrl:API_URL_UPLOAD_USER_PROFILE_IMAGE, object_type: 'user', object_id: this.props.current_user.id, image: this.props.current_user.profile_image_url})
+    }
+
+    updateProfile(e) {
+    	e.preventDefault()
+		PopupHelper.showUserProfileEditForm({data : this.props.current_user})
+    }
+
+    changePassword(e) {
+    	e.preventDefault()
+		PopupHelper.showChangePasswordForm({})
     }
 
 	render() {
@@ -89,8 +99,8 @@ export default class Header extends Component {
 								</li>
 								<li className="dropdown">
 									<a className="dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-										<span className="user_title">{this.props.current_user.first_name + ' ' + this.props.current_user.last_name} </span>
-										<i className="fa fa-chevron-down"></i>
+										<span className="user_title ">{this.props.current_user.fullname} </span>
+										<i className="fa fa-chevron-down pl5"></i>
 									</a>
 									<ul className="dropdown-menu userDetailsBox" aria-labelledby="dropdownMenu1">
 										<li className="li_img">
@@ -105,8 +115,8 @@ export default class Header extends Component {
 										<li role="separator" className="divider"></li>
 										<li><Link to="organization"><i className="fa fa-check-square-o"></i> My Tasks</Link></li>
 										{/*<li><Link to="dashboard"><i className="fa fa-user"></i> Profile & Account</Link></li>*/}
-										<li><Link to="#" className="a_edit_my_detail" onClick={()=> UserProfileEditForm.showInPoup({data : this.props.current_user})} ><i className="fa fa-pencil"></i> Edit My Details</Link></li>
-										<li><Link to="#" className="change_password" onClick={() => ChangePassword.showInPoup()} ><i className="fa fa-pencil"></i> Change Password</Link></li>
+										<li><Link to="#" className="a_edit_my_detail" onClick={(e)=> this.updateProfile(e)} ><i className="fa fa-pencil"></i> Edit My Details</Link></li>
+										<li><Link to="#" className="change_password" onClick={(e) => this.changePassword(e)} ><i className="fa fa-pencil"></i> Change Password</Link></li>
 										<li role="separator" className="divider"></li>
 										<li><a href="#" onClick={(e) => {this.logout(e)}}><i className="fa fa-sign-out"></i>Logout</a></li>
 									</ul>

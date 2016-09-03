@@ -131,7 +131,7 @@ class UploadImageControl extends Component {
                             </div>
                         </div>
                         <div className="text-right btnUploadSubmit">
-                            <button type="submit" className="btn btn-success">Save</button>
+                            <button type="submit" className="btn btn-blue">Update</button>
                         </div>
                     </div>
                 </form>

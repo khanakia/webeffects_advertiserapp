@@ -34,7 +34,7 @@ class OrgForm extends Component {
             this.msg_heading = 'Edit Organization'
         }
 
-        console.info(this.msg_btn_save_text)
+        // console.info(this.msg_btn_save_text)
     }
 
     componentDidMount() {

@@ -387,98 +387,6 @@ a:hover {
 //     width:120px;
 // }
 
-.tags-wrapper{
-    max-width: 1200px;
-
-    .tag {
-        display: inline-block;
-        padding: 2px 10px;
-        margin-right: 10px;
-        margin-bottom: 20px;
-        font-size: 12px;
-        border: 1px solid #F5f5f5;
-        border-radius: 5px;
-        color: #fff;
-
-        a {
-            color: #fff;
-        }
-    }
-}
-
-
-.comp-tag-selector {
-    // margin: 50px;
-    width: 225px;
-    box-shadow: 0px 0px 5px 1px rgba(33, 26, 26, 0.14);
-
-    input {
-        width: 100%;
-        border: none;
-        padding: 0 10px;
-        border-bottom: 1px solid #cecbcb;
-        margin-bottom: 5px;
-    }
-
-    .tags-list {
-        padding-left: 0;
-        overflow-x: hidden;
-        overflow-y: auto;
-        max-height: 300px;
-
-        li {
-            list-style: none;
-            
-            a {
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                padding: 7px 0 7px 10px;
-                display: block;
-                color: #464646;
-                text-decoration: none;
-                
-                &:hover {
-                    background-color: #eeeff3;
-                    color: #6F6F6F;
-                }
-            }
-
-
-            i {
-                margin-right: 10px;
-                font-size: 20px;
-                display: inline-block;
-                vertical-align: middle;
-            }
-        }
-    }
-}
-
-
-    .TagSingle, .comp_tag_title {
-        display: inline-block;
-        > span {
-            display: inline-block;
-            padding: 3px 10px;
-            margin-right: 10px;
-            font-size: 12px;
-            border-radius: 10px;
-            color: #fff;
-            line-height: 100%;
-        }
-
-        a {
-            color: #fff;
-        }
-
-        a.remove {
-            margin-left: 10px;
-        }
-    }
-
-
-
 
 
 
@@ -517,55 +425,6 @@ a:hover {
     }
 }
 
-// Upload form CSS
-
-.uploadform {
-    .heading {
-        padding: 20px 25px 20px;
-        margin: 0 0 20px;
-        background: #4cae4c;
-    }
-
-    .title {
-        margin: 0;
-        color: #fff;
-        text-transform: uppercase;
-    }
-
-    .uploadform-inner {
-        padding: 25px;
-    }
-
-    .imageview {
-        width: 130px;
-        height: 130px;
-        margin: 0 auto;
-        border-radius: 50%;
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
-
-        &.defaultimage {
-            background-color: #d3d3d3;
-        }
-    }
-
-    .uploadinstruction {
-        font-size: 16px;
-        padding: 10px 0 0;
-        margin: 0 0 20px;
-    }
-
-    .uploadimagefile {
-        border: 0;
-        font-size: 16px;
-        font-weight: bold;
-    }
-
-    .btnUploadSubmit {
-        padding: 20px 0 10px;
-    }
-}
 
 
 
@@ -863,9 +722,17 @@ body {
 }
 
 .popup_content.w500 {
+    width: 300px;
+}
+.popup_content.w500 {
     width: 500px;
 }
-
+.popup_content.w600 {
+    width: 600px;
+}
+.popup_content.w700 {
+    width: 700px;
+}
 .popup_content.w800 {
     width: 800px;
 }
@@ -916,7 +783,6 @@ body {
 }
 
 
-
 .popup_background {
   transition: all 0.3s 0.3s;
   opacity: 0.2;
@@ -941,6 +807,57 @@ body {
     width: 90%;
   }
 
+}
+
+
+// Upload form CSS
+.uploadform {
+    .heading {
+        padding: 15px 25px 15px;
+        margin: 0 0 20px;
+        background: #2386c8;
+    }
+
+    .title {
+        margin: 0;
+        color: #fff;
+        text-transform: uppercase;
+        font-size: 18px;
+    }
+
+    .uploadform-inner {
+        padding: 25px;
+    }
+
+    .imageview {
+        width: 130px;
+        height: 130px;
+        margin: 0 auto;
+        border-radius: 50%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+
+        &.defaultimage {
+            background-color: #d3d3d3;
+        }
+    }
+
+    .uploadinstruction {
+        font-size: 16px;
+        padding: 10px 0 0;
+        margin: 0 0 20px;
+    }
+
+    .uploadimagefile {
+        border: 0;
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    .btnUploadSubmit {
+        padding: 20px 0 10px;
+    }
 }
 
 
@@ -981,6 +898,103 @@ body {
         vertical-align: middle;
     }
 }
+
+
+
+// TAGS LIST PAGE OR TAGS
+.tags-wrapper{
+    max-width: 1200px;
+
+    .tag {
+        display: inline-block;
+        padding: 2px 10px;
+        margin-right: 10px;
+        margin-bottom: 20px;
+        font-size: 13px;
+        border-left: 4px solid #F5f5f5;
+        border-radius: 0;
+        color: #000;
+        background: #f3f3f3;
+
+        a {
+            color: #000;
+        }
+    }
+}
+
+
+.comp-tag-selector {
+    // margin: 50px;
+    width: 225px;
+    box-shadow: 0px 0px 5px 1px rgba(33, 26, 26, 0.14);
+
+    input {
+        width: 100%;
+        border: none;
+        padding: 0 10px;
+        border-bottom: 1px solid #cecbcb;
+        margin-bottom: 5px;
+    }
+
+    .tags-list {
+        padding-left: 0;
+        overflow-x: hidden;
+        overflow-y: auto;
+        max-height: 300px;
+
+        li {
+            list-style: none;
+            
+            a {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                padding: 7px 0 7px 10px;
+                display: block;
+                color: #464646;
+                text-decoration: none;
+                
+                &:hover {
+                    background-color: #eeeff3;
+                    color: #6F6F6F;
+                }
+            }
+
+
+            i {
+                margin-right: 10px;
+                font-size: 20px;
+                display: inline-block;
+                vertical-align: middle;
+            }
+        }
+    }
+}
+
+
+.TagSingle, .comp_tag_title {
+    display: inline-block;
+    > span {
+        display: inline-block;
+        padding: 3px 10px;
+        margin-right: 10px;
+        font-size: 12px;
+        border-radius: 10px;
+        color: #fff;
+        line-height: 100%;
+    }
+
+    a {
+        color: #fff;
+    }
+
+    a.remove {
+        margin-left: 10px;
+    }
+}
+
+
+
 
 
 .filter-header-input-wrap {
@@ -1088,6 +1102,12 @@ body {
         .controls {
             position: absolute;
             top : 0;
+        }
+    }
+
+    &.org_people {
+        >li {
+            height: 250px;
         }
     }
 }

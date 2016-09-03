@@ -12,6 +12,9 @@ import TagColorInput from './TagColorInput'
 class TagForm extends Component {
     constructor(props) {
         super(props);
+
+        this.msg_btn_save_text = 'Create Tag'
+        this.msg_heading = 'Create Tag'
     }
 
     static defaultProps = {
@@ -23,11 +26,17 @@ class TagForm extends Component {
             id: '',
             tag_title: '',
             tag_color: ''
-        }    
+        },
+
+        is_new : true,
     }
 
     componentWillMount() {
-        console.info('THISPROPS', this.props)
+        // console.info('THISPROPS', this.props)
+        if(!this.props.is_new) {
+            this.msg_btn_save_text = "Update Tag"
+            this.msg_heading = 'Edit Tag'
+        }
     }
 
     componentDidMount() {
@@ -83,7 +92,7 @@ class TagForm extends Component {
         return (
             <div>
                 <div className="modal-header">
-                    <h4 className="modal-title">Tag Information</h4>
+                    <h4 className="modal-title">{this.msg_heading}</h4>
                 </div>
 
                 <form className="form" ref='form' onSubmit={this.handleSubmit}>
@@ -101,7 +110,7 @@ class TagForm extends Component {
                         </div>
                     </div>
                     <div className="modal-footer text-right">
-                        <button type="submit" className="btn btn-success">Save</button>
+                        <button type="submit" className="btn btn-blue-link">{this.msg_btn_save_text}</button>
                     </div>
                 </form>
             </div>

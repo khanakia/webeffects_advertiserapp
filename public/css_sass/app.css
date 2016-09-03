@@ -6010,102 +6010,9 @@ a:hover {
   color: #000;
   font-size: 12px; }
 
-.tags-wrapper {
-  max-width: 1200px; }
-  .tags-wrapper .tag {
-    display: inline-block;
-    padding: 2px 10px;
-    margin-right: 10px;
-    margin-bottom: 20px;
-    font-size: 12px;
-    border: 1px solid #F5f5f5;
-    border-radius: 5px;
-    color: #fff; }
-    .tags-wrapper .tag a {
-      color: #fff; }
-
-.comp-tag-selector {
-  width: 225px;
-  box-shadow: 0px 0px 5px 1px rgba(33, 26, 26, 0.14); }
-  .comp-tag-selector input {
-    width: 100%;
-    border: none;
-    padding: 0 10px;
-    border-bottom: 1px solid #cecbcb;
-    margin-bottom: 5px; }
-  .comp-tag-selector .tags-list {
-    padding-left: 0;
-    overflow-x: hidden;
-    overflow-y: auto;
-    max-height: 300px; }
-    .comp-tag-selector .tags-list li {
-      list-style: none; }
-      .comp-tag-selector .tags-list li a {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        padding: 7px 0 7px 10px;
-        display: block;
-        color: #464646;
-        text-decoration: none; }
-        .comp-tag-selector .tags-list li a:hover {
-          background-color: #eeeff3;
-          color: #6F6F6F; }
-      .comp-tag-selector .tags-list li i {
-        margin-right: 10px;
-        font-size: 20px;
-        display: inline-block;
-        vertical-align: middle; }
-
-.TagSingle, .comp_tag_title {
-  display: inline-block; }
-  .TagSingle > span, .comp_tag_title > span {
-    display: inline-block;
-    padding: 3px 10px;
-    margin-right: 10px;
-    font-size: 12px;
-    border-radius: 10px;
-    color: #fff;
-    line-height: 100%; }
-  .TagSingle a, .comp_tag_title a {
-    color: #fff; }
-  .TagSingle a.remove, .comp_tag_title a.remove {
-    margin-left: 10px; }
-
 .contact_info i {
   margin-right: 10px;
   color: #666; }
-
-.uploadform .heading {
-  padding: 20px 25px 20px;
-  margin: 0 0 20px;
-  background: #4cae4c; }
-.uploadform .title {
-  margin: 0;
-  color: #fff;
-  text-transform: uppercase; }
-.uploadform .uploadform-inner {
-  padding: 25px; }
-.uploadform .imageview {
-  width: 130px;
-  height: 130px;
-  margin: 0 auto;
-  border-radius: 50%;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center; }
-  .uploadform .imageview.defaultimage {
-    background-color: #d3d3d3; }
-.uploadform .uploadinstruction {
-  font-size: 16px;
-  padding: 10px 0 0;
-  margin: 0 0 20px; }
-.uploadform .uploadimagefile {
-  border: 0;
-  font-size: 16px;
-  font-weight: bold; }
-.uploadform .btnUploadSubmit {
-  padding: 20px 0 10px; }
 
 .userDetailsBox li a {
   padding: 3px 0 3px 10px; }
@@ -6297,7 +6204,16 @@ body {
   width: 600px; }
 
 .popup_content.w500 {
+  width: 300px; }
+
+.popup_content.w500 {
   width: 500px; }
+
+.popup_content.w600 {
+  width: 600px; }
+
+.popup_content.w700 {
+  width: 700px; }
 
 .popup_content.w800 {
   width: 800px; }
@@ -6355,6 +6271,38 @@ body {
 @media screen and (max-width: 767px) {
   .popup_block.hasform {
     width: 90%; } }
+.uploadform .heading {
+  padding: 15px 25px 15px;
+  margin: 0 0 20px;
+  background: #2386c8; }
+.uploadform .title {
+  margin: 0;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 18px; }
+.uploadform .uploadform-inner {
+  padding: 25px; }
+.uploadform .imageview {
+  width: 130px;
+  height: 130px;
+  margin: 0 auto;
+  border-radius: 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center; }
+  .uploadform .imageview.defaultimage {
+    background-color: #d3d3d3; }
+.uploadform .uploadinstruction {
+  font-size: 16px;
+  padding: 10px 0 0;
+  margin: 0 0 20px; }
+.uploadform .uploadimagefile {
+  border: 0;
+  font-size: 16px;
+  font-weight: bold; }
+.uploadform .btnUploadSubmit {
+  padding: 20px 0 10px; }
+
 .control-toolbar1 {
   display: table;
   width: 100%;
@@ -6378,6 +6326,69 @@ body {
   .control-toolbar1 .col {
     display: inline-block;
     vertical-align: middle; }
+
+.tags-wrapper {
+  max-width: 1200px; }
+  .tags-wrapper .tag {
+    display: inline-block;
+    padding: 2px 10px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    font-size: 13px;
+    border-left: 4px solid #F5f5f5;
+    border-radius: 0;
+    color: #000;
+    background: #f3f3f3; }
+    .tags-wrapper .tag a {
+      color: #000; }
+
+.comp-tag-selector {
+  width: 225px;
+  box-shadow: 0px 0px 5px 1px rgba(33, 26, 26, 0.14); }
+  .comp-tag-selector input {
+    width: 100%;
+    border: none;
+    padding: 0 10px;
+    border-bottom: 1px solid #cecbcb;
+    margin-bottom: 5px; }
+  .comp-tag-selector .tags-list {
+    padding-left: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: 300px; }
+    .comp-tag-selector .tags-list li {
+      list-style: none; }
+      .comp-tag-selector .tags-list li a {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding: 7px 0 7px 10px;
+        display: block;
+        color: #464646;
+        text-decoration: none; }
+        .comp-tag-selector .tags-list li a:hover {
+          background-color: #eeeff3;
+          color: #6F6F6F; }
+      .comp-tag-selector .tags-list li i {
+        margin-right: 10px;
+        font-size: 20px;
+        display: inline-block;
+        vertical-align: middle; }
+
+.TagSingle, .comp_tag_title {
+  display: inline-block; }
+  .TagSingle > span, .comp_tag_title > span {
+    display: inline-block;
+    padding: 3px 10px;
+    margin-right: 10px;
+    font-size: 12px;
+    border-radius: 10px;
+    color: #fff;
+    line-height: 100%; }
+  .TagSingle a, .comp_tag_title a {
+    color: #fff; }
+  .TagSingle a.remove, .comp_tag_title a.remove {
+    margin-left: 10px; }
 
 .filter-header-input-wrap input {
   background: url("../../public/images/icons/icon-search.svg") no-repeat;
@@ -6449,6 +6460,8 @@ body {
   .list-group-grid > li .controls {
     position: absolute;
     top: 0; }
+.list-group-grid.org_people > li {
+  height: 250px; }
 
 header {
   -webkit-box-shadow: 0px 5px 15px 0px #c5c5c5;
