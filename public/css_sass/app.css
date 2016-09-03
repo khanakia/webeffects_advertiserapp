@@ -6021,11 +6021,30 @@ a:hover {
 .userDetailsBox .li_img .useravtarCt {
   margin: 10px 0; }
   .userDetailsBox .li_img .useravtarCt .user-avtar-link {
+    position: relative;
     display: block;
     width: 50px;
     height: 50px;
     margin: 0 auto;
     padding: 0; }
+    .userDetailsBox .li_img .useravtarCt .user-avtar-link i {
+      position: absolute;
+      top: 18px;
+      left: 17px;
+      opacity: 0;
+      color: #000; }
+    .userDetailsBox .li_img .useravtarCt .user-avtar-link:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      opacity: 0;
+      background-color: rgba(0, 0, 0, 0.2);
+      transition: all 0.2s; }
+    .userDetailsBox .li_img .useravtarCt .user-avtar-link:hover:before, .userDetailsBox .li_img .useravtarCt .user-avtar-link:hover i {
+      opacity: 1; }
   .userDetailsBox .li_img .useravtarCt .user-avtar {
     width: 100%;
     height: 100%;
@@ -6180,6 +6199,10 @@ body {
 
 .btn-blue-link:hover {
   color: #0964aa; }
+
+.bootstrap-tagsinput input {
+  width: 100%;
+  border: none; }
 
 .avatar {
   width: 50px;

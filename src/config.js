@@ -31,9 +31,10 @@ export const API_URL_ORG = API_URL+'/org';
 export const API_URL_ORG_SHOWCURRENT =  API_URL_ORG + '/show_current';
 export const API_URL_ORG_UPDATE_CUSTOMDOMAIN_FN =  (org_id) => {return API_URL_ORG + '/' + org_id + '/update_custom_domain'};
 export const API_URL_ORG_UPDATE_SUBDOMAIN_FN =  (org_id) => {return API_URL_ORG + '/' + org_id + '/update_subdomain_slug'};
-export const API_URL_ORG_INVITE_USER = API_URL_ORG+'/user_invite';
-export const API_URL_ORG_SWITCH = API_URL_ORG+'/switch';
-export const API_URL_ORG_SETDEFAULT = API_URL_ORG+'/setdefault';
+export const API_URL_ORG_INVITE_USER = API_URL_ORG + '/user_invite';
+export const API_URL_ORG_SWITCH = API_URL_ORG + '/switch';
+export const API_URL_ORG_SETDEFAULT = API_URL_ORG + '/setdefault';
+export const API_URL_ORG_LEAVE = API_URL_ORG + '/leave';
 
 
 // export const API_URL_ORG_LOGO = API_URL+'/uploadlogo';
@@ -88,4 +89,5 @@ export const API_URL_TAG_ITEM = API_URL+'/tag_item';
 export const API_URL_PLAN = API_URL+'/plan';
 
 export const API_URL_CHANGE_PWD = API_URL+'/user/changepwd';
+export const API_URL_UPDATE_USER = API_URL+'/user/update';
 

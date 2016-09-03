@@ -55,13 +55,19 @@ const mapDispatchToProps = (dispatch) => {
         },
 
         fetchCurrentOrg: () => {
-            dispatch(fetchCurrentOrg()).then((response) => {
-                // dispatch(fetchCurrentUser())
-            })
+            dispatch(fetchCurrentOrg())
         },
 
         fetchCurrentUser: () => {
             dispatch(fetchCurrentUser()).then((response) => {
+                // dispatch(fetchCurrentUser())
+            })
+        },
+
+        fetchAfterLeave: () => {
+            dispatch(fetchCurrentOrg()).then((response) => {
+                dispatch(fetchCurrentUser())
+                dispatch(fetchOrgs())
                 // dispatch(fetchCurrentUser())
             })
         },

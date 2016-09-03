@@ -72,6 +72,19 @@ class OrganizationList extends Component {
         
     }
 
+    leaveOrg(e, org_id) {
+        e.preventDefault()
+        OrgHelper.leaveOrg(org_id).then((response) => {
+
+        Auth.login(response.data.token)
+        this.props.fetchAfterLeave()
+        // if(org_id==this.props.current_user.org_default_id)
+            // this.props.fetchCurrentOrg().then((response)=>{
+            //     this.props.fetchOrgs()
+            // })
+        });
+    }
+
     filterChange(e) {
         var value = e.target.value;
         console.log(value);
@@ -97,7 +110,7 @@ class OrganizationList extends Component {
                                             : ''
                                         }
                                         { org.created_by_user_id!==this.props.current_user.id
-                                            ? <li><a href="#" onClick={(e)=> this.leaveOrg(org, e)}>Leave Organization</a></li>
+                                            ? <li><a href="#" onClick={(e)=> this.leaveOrg(e, org.id)}>Leave Organization</a></li>
                                             : ''
                                         }
                                         <li><a href="#" onClick={(e)=> this.setDefault(e, org.id)}>Make Default</a></li>

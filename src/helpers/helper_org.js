@@ -10,7 +10,8 @@ import {
         API_URL_GETORG_BYDOMAIN,
         API_URL_DOMAIN,
         API_URL_ORG_SWITCH,
-        API_URL_ORG_SETDEFAULT
+        API_URL_ORG_SETDEFAULT,
+        API_URL_ORG_LEAVE
     } from '../config.js'
 
 
@@ -140,6 +141,17 @@ export default class OrgHelper {
         return  axios({
             method: 'post',
             url: API_URL_ORG_SETDEFAULT + '/' + org_id,
+            headers: Auth.header(),
+            data : {
+                new_org_id : org_id
+            }
+        });
+    }
+
+    static leaveOrg(org_id) {
+        return  axios({
+            method: 'post',
+            url: API_URL_ORG_LEAVE + '/' + org_id,
             headers: Auth.header(),
             data : {
                 new_org_id : org_id
