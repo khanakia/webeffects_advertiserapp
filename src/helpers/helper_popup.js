@@ -13,6 +13,8 @@ import ChangePasswordForm from '../components/other/ChangePasswordForm'
 
 import OrgForm from '../components/org/OrgForm'
 import CompanyForm from '../components/org/CompanyForm'
+import OrgUserPermissionForm from '../components/org/OrgUserPermissionForm'
+import OrgUserSettingForm from '../components/org/OrgUserSettingForm'
 
 import ProjectFileBrowseForm from '../components/project_file/ProjectFileBrowseForm'
 import ProjectFileDetailsEditForm from '../components/project_file/ProjectFileDetailsEditForm'
@@ -102,6 +104,56 @@ export default class PopupHelper {
             }
         });
     }
+
+
+    static showOrgUserPermissionForm(args = {}) {
+        var uniq = 'id' + (new Date()).getTime();
+
+        Controls.showpopup({
+            detach: true,
+            message: '<div id="' + uniq + '"></div>',
+            container_class: "w500",
+            opacity: 0.5,
+            blur: false,
+            // zindex : 5000,
+
+            onopen: function(e) {
+                var pid = (jQuery(e).attr('id'));
+                jQuery('#'+pid + "_background").css('z-index', 5000);
+                jQuery('#'+pid + "_wrapper").css('z-index', 5001);
+                ReactDom.render(<OrgUserPermissionForm popup_id={pid} {...args} />, document.getElementById(uniq));
+            },
+            onclose: function(e) {
+                ReactDom.unmountComponentAtNode(document.getElementById(uniq))
+            }
+        });
+    }
+
+
+    static showOrgUserSettingForm(args = {}) {
+        var uniq = 'id' + (new Date()).getTime();
+
+        Controls.showpopup({
+            detach: true,
+            message: '<div id="' + uniq + '"></div>',
+            container_class: "w500",
+            opacity: 0.5,
+            blur: false,
+            // zindex : 5000,
+
+            onopen: function(e) {
+                var pid = (jQuery(e).attr('id'));
+                jQuery('#'+pid + "_background").css('z-index', 5000);
+                jQuery('#'+pid + "_wrapper").css('z-index', 5001);
+                ReactDom.render(<OrgUserSettingForm popup_id={pid} {...args} />, document.getElementById(uniq));
+            },
+            onclose: function(e) {
+                ReactDom.unmountComponentAtNode(document.getElementById(uniq))
+            }
+        });
+    }
+
+
 
 
     static showProjectForm(args = {}) {

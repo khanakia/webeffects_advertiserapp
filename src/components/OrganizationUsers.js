@@ -29,12 +29,12 @@ class OrganizationUsers extends Component {
 
     editUserSetting(data, e) {
         e.preventDefault()
-        OrgUserSettingForm.showInPoup({data})
+        PopupHelper.showOrgUserSettingForm({data})
     }
 
     editUserPermission(data, e) {
         e.preventDefault()
-        OrgUserPermissionForm.showInPoup({data})
+        PopupHelper.showOrgUserPermissionForm({data})
     }
 
     removeUser(data, e) {
@@ -52,6 +52,13 @@ class OrganizationUsers extends Component {
         });
     }
 
+    filterChange(e) {
+        var value = e.target.value;
+        console.log(value);
+        this.props.filterOrgUserList({
+            user_title : value
+        })
+    }
 
     renderList(orgusers) {
         if(orgusers.error) {
@@ -61,7 +68,7 @@ class OrganizationUsers extends Component {
             return false;
         }
         return orgusers.map((orguser) => {
-            
+            if(undefined===orguser) return false;
             return (
                 <li className="" key={orguser.id}>
                     <div className="d-table w100">
@@ -122,7 +129,7 @@ class OrganizationUsers extends Component {
 
 
     render() {
-        const { data } = this.props.userlist;
+        const data = this.props.userlist;
 
         
         return (
@@ -132,7 +139,7 @@ class OrganizationUsers extends Component {
                     <div className="control-toolbar1">
                         <div className="left">
                             <div className="filter-header-input-wrap">
-                                <input placeholder="Find member" className="filter-header-input" defaultValue=""/>
+                                <input placeholder="Find a member" className="filter-header-input" defaultValue="" onChange={(e)=>this.filterChange(e)}/>
                             </div>
                         </div>
                         <div className="middle">

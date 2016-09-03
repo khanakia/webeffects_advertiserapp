@@ -38,22 +38,22 @@ class OrgUserSettingForm extends Component {
     }
 
 
-    static showInPoup({settings={}, data={}, onDataUpdate=this.defaultProps.onDataUpdate()}) {
-        var uniq = 'id' + (new Date()).getTime();
+    // static showInPoup({settings={}, data={}, onDataUpdate=this.defaultProps.onDataUpdate()}) {
+    //     var uniq = 'id' + (new Date()).getTime();
 
-        Controls.showpopup({
-            detach : true,
-            message : '<div id="' + uniq + '"></div>',
-            opacity: 0.5,
-            blur: false,
-            onopen : function(e){
-              var pid = (jQuery(e).attr('id'));
-              ReactDom.render(<OrgUserSettingForm popup_id={pid} settings={settings} data={data} onDataUpdate={onDataUpdate} />, document.getElementById(uniq));
-              console.log(pid);
-              // setTimeout(() => jQuery('#'+pid).popup('hide'), 3000); 
-            }
-        });
-    }
+    //     Controls.showpopup({
+    //         detach : true,
+    //         message : '<div id="' + uniq + '"></div>',
+    //         opacity: 0.5,
+    //         blur: false,
+    //         onopen : function(e){
+    //           var pid = (jQuery(e).attr('id'));
+    //           ReactDom.render(<OrgUserSettingForm popup_id={pid} settings={settings} data={data} onDataUpdate={onDataUpdate} />, document.getElementById(uniq));
+    //           console.log(pid);
+    //           // setTimeout(() => jQuery('#'+pid).popup('hide'), 3000); 
+    //         }
+    //     });
+    // }
 
 
     hidePopup = () => {
@@ -112,7 +112,7 @@ class OrgUserSettingForm extends Component {
                     </div>
 
                     <div className="modal-footer text-right">
-                        <button type="submit" className="btn btn-success">Save</button>
+                        <button type="submit" className="btn btn-blue-link">Update</button>
                     </div>
                 </form>
 

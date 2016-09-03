@@ -79,7 +79,16 @@ class OrganizationCompanies extends Component {
         PopupHelper.showUploadImageControl({uploadUrl:API_URL_UPLOAD_COMPANY_LOGO, object_type: 'company', object_id: item.id, image: item.company_logo_url})
     }
 
+    filterChange(e) {
+        var value = e.target.value;
+        // console.log(value);
+        this.props.filterCompanyList({
+            company_title : value
+        })
+    }
+
     renderItems(items) {
+        if(undefined===items) return false;
         return items.map((item) => {
             return (
                 <li className="" key={item.id}>
@@ -92,7 +101,7 @@ class OrganizationCompanies extends Component {
                                 </div>
                                 <div className="summary d-inline-block valign-middle">
                                     <div className="company fw-b">{item.company_title}</div>
-                                    {Util.badgetDefault(item)}
+                                    {Util.badgetCompanyDefault(item)}
                                 </div>
                             </div>
                         </div>
@@ -159,7 +168,7 @@ class OrganizationCompanies extends Component {
     }
 
     render() {
-        const { data } = this.props.companiesList;
+        const data = this.props.companiesList;
         
         return (
             <div>
@@ -167,7 +176,7 @@ class OrganizationCompanies extends Component {
                     <div className="control-toolbar1">
                         <div className="left">
                             <div className="filter-header-input-wrap">
-                                <input placeholder="Find company" className="filter-header-input" defaultValue=""/>
+                                <input placeholder="Find a company" className="filter-header-input" defaultValue="" onChange={(e)=>this.filterChange(e)}/>
                             </div>
                         </div>
                         <div className="middle">

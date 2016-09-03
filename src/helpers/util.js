@@ -8,8 +8,9 @@ export default class Util {
 		
 	}
 
+    // Org badgeDefault
 	static badgetDefault(item, user) {
-        console.info(user);
+        // console.info(user);
         if(item.id==user.org_default_id) {
             return (
                 <span className="label label-success">Default</span>
@@ -17,6 +18,7 @@ export default class Util {
         }
     }
 
+    // Org badgePersonal
     static badgetPersonal(item) {
         if(item.created_by_user_id==Auth.getUserID() && item.is_personal) {
             return (
@@ -24,7 +26,8 @@ export default class Util {
             )
         }
     }
-
+    
+    // Org badgeOwner
     static badgetOwner(bool) {
         // if(item.created_by_user_id==Auth.getUserID()) {
        	if(bool) {
@@ -34,6 +37,7 @@ export default class Util {
         }
     }
 
+    // Org badgeIsAdmin
     static badgeIsAdmin(bool) {
         if(bool) {
             return (
@@ -42,6 +46,15 @@ export default class Util {
         }
     }
 
+
+    // Org badgeDefault
+    static badgetCompanyDefault(item) {
+        if(item.is_default) {
+            return (
+                <span className="label label-success">Default</span>
+            )
+        }
+    }
 
     static isEmpty(value) {
         if((!value || value == undefined) || (value == null) || (value == '')) {
