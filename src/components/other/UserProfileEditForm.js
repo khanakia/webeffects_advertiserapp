@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactDom from 'react-dom';
 import {Auth} from '../../helpers'
 import { API_URL_GET_USER } from '../../config.js'
+import UserHelper from '../../helpers/helper_user.js'
 
 import DropdownCountries from '../controls/DropdownCountries'
 
@@ -42,8 +43,19 @@ class UserProfileEditForm extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         var valid = jQuery(this.refs.form).valid();
-        if (!valid) {
-            return false };
+        if (!valid) { return false };
+
+        let param = jQuery(this.refs.form).serialize();
+
+        UserHelper.update(param).then(function(response){
+            if (response.data.STATUS=="FAILED") {
+                toastr.error(response.data.error_message.email);
+            } else {
+                toastr.success('User Information Updated.')
+                this.hidePopup()
+            }
+            
+        }.bind(this));
         // this.props.dispatch({type: 'REMOVE'});
         // this.props.fetchOrgs();
 
@@ -65,6 +77,7 @@ class UserProfileEditForm extends Component {
 
     render() {
         const data = this.props.data
+        console.log(data)
 
         return (
             <div>
@@ -77,7 +90,6 @@ class UserProfileEditForm extends Component {
                     <div className="content-area">
                         <ul className="nav nav-tabs" role="tablist">
                             <li role="presentation" className="active"><a href="#essentials" aria-controls="essentials" role="tab" data-toggle="tab">Essentials</a></li>
-                            <li role="presentation"><a href="#details" aria-controls="details" role="tab" data-toggle="tab">Details</a></li>
                             <li role="presentation"><a href="#address" aria-controls="address" role="tab" data-toggle="tab">Address</a></li>
                             <li role="presentation"><a href="#localization" aria-controls="localization" role="tab" data-toggle="tab">Localization</a></li>
                         </ul>
@@ -88,13 +100,13 @@ class UserProfileEditForm extends Component {
                                         <div className="form-group">
                                             <label className="col-sm-3 control-label">First Name</label>
                                             <div className="col-sm-9">
-                                                <input type="text" className="form-control required" name="fname" id="fname" defaultValue={data.fname} />
+                                                <input type="text" className="form-control required" name="first_name" id="first_name" defaultValue={data.first_name} />
                                             </div>
                                         </div>
                                         <div className="form-group">
                                             <label className="col-sm-3 control-label">Last Name</label>
                                             <div className="col-sm-9">
-                                                <input type="text" className="form-control required" name="lname" id="lname" defaultValue={data.lname} />
+                                                <input type="text" className="form-control required" name="last_name" id="last_name" defaultValue={data.last_name} />
                                             </div>
                                         </div>
                                         <div className="form-group">
@@ -106,37 +118,13 @@ class UserProfileEditForm extends Component {
                                         <div className="form-group">
                                             <label className="col-sm-3 control-label">Phone</label>
                                             <div className="col-sm-9">
-                                                <input type="text" className="form-control" name="phone" id="phone" defaultValue={data.phone} />
+                                                <input type="text" className="form-control" name="mobile" id="mobile" defaultValue={data.mobile} />
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div role="tabpanel" className="tab-pane" id="details">
-                                <div className="row">
-                                    <div className="col-md-8">
                                         <div className="form-group">
                                             <label className="col-sm-3 control-label">Office Phone</label>
                                             <div className="col-sm-9">
                                                 <input type="text" className="form-control" name="office_phone" id="office_phone" defaultValue={data.office_phone} />
-                                            </div>
-                                        </div>
-                                        <div className="form-group">
-                                            <label className="col-sm-3 control-label">Cell Phone</label>
-                                            <div className="col-sm-9">
-                                                <input type="text" className="form-control" name="cell_phone" id="cell_phone" defaultValue={data.cell_phone} />
-                                            </div>
-                                        </div>
-                                        <div className="form-group">
-                                            <label className="col-sm-3 control-label">Home Phone</label>
-                                            <div className="col-sm-9">
-                                                <input type="text" className="form-control" name="home_phone" id="home_phone" defaultValue={data.home_phone} />
-                                            </div>
-                                        </div>
-                                        <div className="form-group">
-                                            <label className="col-sm-3 control-label">Fax</label>
-                                            <div className="col-sm-9">
-                                                <input type="text" className="form-control" name="fax" id="fax" defaultValue={data.fax} />
                                             </div>
                                         </div>
                                     </div>
@@ -148,13 +136,13 @@ class UserProfileEditForm extends Component {
                                         <div className="form-group">
                                             <label className="col-sm-3 control-label">Line1</label>
                                             <div className="col-sm-9">
-                                                <input type="text" className="form-control" name="line1" id="line1" defaultValue={data.line1} />
+                                                <input type="text" className="form-control" name="address_line_1" id="address_line_1" defaultValue={data.address_line_1} />
                                             </div>
                                         </div>
                                         <div className="form-group">
                                             <label className="col-sm-3 control-label">Line2</label>
                                             <div className="col-sm-9">
-                                                <input type="text" className="form-control" name="line2" id="line2" defaultValue={data.line2} />
+                                                <input type="text" className="form-control" name="address_line_2" id="address_line_2" defaultValue={data.address_line_2} />
                                             </div>
                                         </div>
                                         <div className="form-group">
@@ -172,13 +160,13 @@ class UserProfileEditForm extends Component {
                                         <div className="form-group">
                                             <label className="col-sm-3 control-label">Zip Code</label>
                                             <div className="col-sm-9">
-                                                <input type="text" className="form-control" name="zip_code" id="zip_code" defaultValue={data.zip_code} />
+                                                <input type="text" className="form-control" name="zipcode" id="zipcode" defaultValue={data.zipcode} />
                                             </div>
                                         </div>
                                         <div className="form-group">
                                             <label className="col-sm-3 control-label">Country</label>
                                             <div className="col-sm-9">
-                                                <DropdownCountries name="company_country" defaultValue={this.props.data.company_country} />
+                                                <DropdownCountries name="country" defaultValue={this.props.data.country} />
                                             </div>
                                         </div>
                                     </div>
@@ -190,7 +178,7 @@ class UserProfileEditForm extends Component {
                                         <div className="form-group">
                                             <label className="col-sm-3 control-label">Date Format</label>
                                             <div className="col-sm-9">
-                                                <select className="form-control required" name="dateFormat" id="dateFormat" defaultValue={data.dateFormat}>
+                                                <select className="form-control required" name="localization_dateformat" id="localization_dateformat" defaultValue={data.localization_dateformat}>
                                                     <option value="1">mm/dd/yyyy</option>
                                                     <option value="2">dd.mm.yyyy</option>
                                                     <option value="3">dd-mm-yyyy</option>
@@ -202,7 +190,7 @@ class UserProfileEditForm extends Component {
                                         <div className="form-group">
                                             <label className="col-sm-3 control-label">Time Format</label>
                                             <div className="col-sm-9">
-                                                <select className="form-control required" name="timeFormat" id="timeFormat" defaultValue={data.timeFormat}>
+                                                <select className="form-control required" name="localization_timeformat" id="localization_timeformat" defaultValue={data.localization_timeformat}>
                                                     <option value="1">12 hour clock</option>
                                                     <option value="2">24 hour clock</option>
                                                 </select>

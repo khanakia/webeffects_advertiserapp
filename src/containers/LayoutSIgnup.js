@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router'
+import { Link, hashHistory } from 'react-router'
 import ReactDOM from 'react-dom'
 
 import {ROOT_URL, API_URL_ORG_FINDBYDOMAIN, API_URL_SIGNUP} from '../config.js'
@@ -21,10 +21,14 @@ export default class LayoutSignup extends Component {
             signupdata : formdata,
         })
         .then(function (response) {
-            console.log(response);
+            toastr.success(response.data.message);       
+            hashHistory.push('/')
         })
         .catch(function (error) {
-            console.log(error);
+        var array = jQuery.map(error.data, function(value, index) {
+            return value;
+        });
+        toastr.error(array[0]);
         });
     }
 
@@ -38,7 +42,7 @@ export default class LayoutSignup extends Component {
                     <div className="col-md-4 col-md-offset-4">
                       <div className="formstyle1Ct">
                         <h1>Sign up</h1>
-                        <form className="formstyle1" onSubmit={this.handleSubmit}>
+                        <form className="formstyle1 signupform" onSubmit={this.handleSubmit}>
                           <div className="form-group">
                             <label>First Name</label>
                             <input type="text" className="form-control required" name="firstname" id="firstname" placeholder="First name" />
