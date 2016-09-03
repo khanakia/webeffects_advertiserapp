@@ -87,8 +87,6 @@ class OrgUserInviteForm extends Component {
 
     }
 
-
-
     render() {
         return (
             <div>
@@ -108,7 +106,7 @@ class OrgUserInviteForm extends Component {
                     </div>
 
                     <div className="modal-footer text-right">
-                        <button type="submit" className="btn btn-success">Save</button>
+                        <button type="submit" className="btn btn-blue-link">Send Invite</button>
                     </div>
                 </form>
             </div>

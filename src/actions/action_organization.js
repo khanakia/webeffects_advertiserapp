@@ -6,6 +6,7 @@ export const FETCH_ORG_CURRENT = 'FETCH_ORG_CURRENT';
 export const FETCH_ORG_USERS = 'FETCH_ORG_USERS';
 
 export const FILTER_ORG_LIST = 'FILTER_ORG_LIST';
+export const FILTER_ORG_USER_LIST = 'FILTER_ORG_USER_LIST';
 
 // export const FETCH_ORGS_SUCCESS = 'FETCH_ORGS_SUCCESS';
 // export const FETCH_ORGS_FAILURE = 'FETCH_ORGS_FAILURE';
@@ -53,6 +54,14 @@ export function fetchOrgUsers() {
 export function filterOrgList(data) {
   return {
     type: FILTER_ORG_LIST,
+    payload: data
+  };
+}
+
+
+export function filterOrgUserList(data) {
+  return {
+    type: FILTER_ORG_USER_LIST,
     payload: data
   };
 }
