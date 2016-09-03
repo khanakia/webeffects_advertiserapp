@@ -24,7 +24,7 @@ export default class LayoutForgetpwd extends Component {
             email: email,
         })
         .then(function (response) {
-            console.log(response);
+            toastr.success(response.data.message);       
         })
         .catch(function (error) {
             console.log(error);
