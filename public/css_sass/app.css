@@ -6488,4 +6488,7 @@ header {
     padding-left: 300px;
     padding-right: 15px; }
 
+.dropdown-menu {
+  min-width: 170px; }
+
 /*# sourceMappingURL=app.css.map */

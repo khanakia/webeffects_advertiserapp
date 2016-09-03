@@ -67,11 +67,15 @@
     background-size: 15px;
 }
 .formstyle1 input[type=email] {
-	background-image: url("../images/avatar.svg");
+	background-image: url("../images/email.svg");
 }
 .formstyle1 input[type=password] {
 	background-image: url("../images/padlock.svg");
 }
+.formstyle1 input[type=text] {
+	background-image: url("../images/userinfo.svg");
+}
+
 
 .formstyle1 button {
 	border: 1px solid #2386c8;

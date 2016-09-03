@@ -45,8 +45,7 @@ export default class LayoutForgetpwd extends Component {
                                         <h1>Reset Password</h1>
                                         <form onSubmit={this.handleSubmit} className="formstyle1 forgetpwdForm" role="form" method="POST">
                                             <div className="form-group">
-                                                <label>Email address</label>
-                                                <input type="email" className="form-control required" id="email" placeholder="Email" ref='email' name='email' />
+                                                <input type="email" className="form-control required" id="email" placeholder="Email Address" ref='email' name='email' />
                                             </div>
                                             <button type="submit" className="btn btn-success formstyle1SubmitBtn">Submit Here</button>
                                         </form>

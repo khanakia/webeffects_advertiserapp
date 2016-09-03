@@ -42,7 +42,32 @@ class OrganizationUsers extends Component {
                                     </div>
                                 </div>
                                 <div className="mb10">
-                                    <div className="title fw-b">{orguser.user.fullname}</div>
+                                    <h4 className="list-group-item-heading">
+                                        {orguser.user.fullname}
+                                        <div className="dropdown d-inline-block">
+                                            <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button"><i className="fa fa-chevron-down"></i></a>
+                                            <ul className="dropdown-menu dropdown-menu-right">
+                            <li>
+                                {(this.props.current_org.permissions.org_can_update && !orguser.permissions.is_org_owner) ?
+                                        <a href="#" title="Remove User" onClick={(e)=> this.removeUser(orguser,e)} ><i className="fa fa-trash"></i>Remove User</a>
+                                    : ''
+                                }
+                            </li>
+                            <li>
+                                {(this.props.current_org.permissions.org_can_update && !orguser.permissions.is_org_owner) ?
+                                        <a href="#" title="Edit User Permissions" onClick={(e)=> this.editUserPermission(orguser,e)} ><i className="fa fa-cogs"></i>Edit User Permissions</a>
+                                    : ''
+                                }
+                            </li>                            
+                            <li>
+                                {this.props.current_org.permissions.org_can_update ?
+                                    <a href="#" title="Edit User Settings" onClick={(e)=> this.editUserSetting(orguser,e)} ><i className="fa fa-gear"></i>Edit User Settings</a>
+                                    : ''
+                                }
+                            </li>
+                                            </ul>
+                                        </div>
+                                    </h4>
                                     <div className="position ">{orguser.job_title}</div>
                                     <div className="company ">{orguser.company ? orguser.company.company_title : ''}</div>
                                 </div>
@@ -58,21 +83,7 @@ class OrganizationUsers extends Component {
                                 {Util.badgetOwner((this.props.current_org.created_by_user_id==orguser.user_id))}
                                 {Util.badgeIsAdmin(orguser.permissions.is_admin)}
                         </div>
-                        <div className="controls">
-                            <span className="icons-group light">
-                                {(this.props.current_org.permissions.org_can_update && !orguser.permissions.is_org_owner) ?
-                                    <span>
-                                        <button className="btn btn-plain" title="Remove User" onClick={(e)=> this.removeUser(orguser,e)} ><i className="fa fa-trash"></i></button>
-                                        <button className="btn btn-plain" title="Edit User Permissions" onClick={(e)=> this.editUserPermission(orguser,e)} ><i className="fa fa-cogs"></i></button>
-                                    </span>    
-                                    : ''
-                                }
-                                {this.props.current_org.permissions.org_can_update ?
-                                    <button className="btn btn-plain" title="Edit User Settings" onClick={(e)=> this.editUserSetting(orguser,e)} ><i className="fa fa-gear"></i></button>
-                                    : ''
-                                }
-                            </span>
-                        </div>
+
                     </div>
                 </li>
             );
