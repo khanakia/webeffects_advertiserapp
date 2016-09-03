@@ -55,7 +55,7 @@ class OrganizationCompanies extends Component {
 
     editCompany(e, data) {
         e.preventDefault()
-        PopupHelper.showCompanyForm({data})
+        PopupHelper.showCompanyForm({data, is_new : false})
     }
 
 

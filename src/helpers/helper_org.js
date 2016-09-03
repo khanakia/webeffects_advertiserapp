@@ -8,7 +8,8 @@ import {
         API_URL_ORG_INVITE_USER,
         API_URL_GETALLORGSBYEMAIL,
         API_URL_GETORG_BYDOMAIN,
-        API_URL_DOMAIN
+        API_URL_DOMAIN,
+        API_URL_ORG_SWITCH
     } from '../config.js'
 
 
@@ -119,6 +120,18 @@ export default class OrgHelper {
             url: API_URL_ORG_UPDATE_SUBDOMAIN_FN(data.id),
             headers: Auth.header(),
             data : data
+        });
+    }
+
+
+    static switchOrg(org_id) {
+        return  axios({
+            method: 'post',
+            url: API_URL_ORG_SWITCH + '/' + org_id,
+            headers: Auth.header(),
+            data : {
+                switch_org_id : org_id
+            }
         });
     }
 

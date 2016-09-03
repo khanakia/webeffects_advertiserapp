@@ -56,7 +56,7 @@ export default class Header extends Component {
 								<span className="icon-bar"></span>
 								<span className="icon-bar"></span>
 							</button>
-							<a className="navbar-brand" href="#">{this.props.current_org.org_title}</a>
+							<a className="navbar-brand" href="#">{this.props.current_org.name}</a>
 						</div>
 						<div id="navbar" className="navbar-collapse collapse">
 							<ul className="nav navbar-nav">

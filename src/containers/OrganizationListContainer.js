@@ -1,5 +1,8 @@
 import { connect } from 'react-redux'
-import { fetchOrgs, fetchOrgCurrent } from '../actions/action_organization';
+import { fetchOrgs, fetchOrgCurrent, filterOrgList } from '../actions/action_organization';
+import {action_appdata} from '../actions';
+const {fetchCurrentOrg} = action_appdata
+
 
 import OrganizationList from '../components/OrganizationList';
 
@@ -7,13 +10,24 @@ import OrgHelper from '../helpers/helper_org'
 
 
 
+const filterList = (items, filterParams) => {
+    return _.filter(items, function(item) {
+        if(filterParams.name && item.name && item.name.indexOf(filterParams.name) === -1) {
+            return false;
+        }
+        return true;
+    })
+}
+
+
 const mapStateToProps = (state) => {
     // console.log(state.posts.orgsList);
 
     return {
         state : state,
-        orgsList: state.org.list,
-        current_org: state.appdata.current_org
+        current_org: state.appdata.current_org,
+        // orgsList: state.org.list,
+        orgsList: filterList(state.org.list.data, state.org.filter_orglist_params),
 
     };
 }
@@ -37,7 +51,17 @@ const mapDispatchToProps = (dispatch) => {
 
             //     // setTimeout(() => dispatch({type: 'RESET_POSTS'}), 3000); 
             // });
-        }
+        },
+
+        fetchCurrentOrg: () => {
+            dispatch(fetchCurrentOrg()).then((response) => {
+                // dispatch(fetchCurrentUser())
+            })
+        },
+
+        filterOrgList: (data) => {
+            dispatch(filterOrgList(data))
+        },
     }
 }
 

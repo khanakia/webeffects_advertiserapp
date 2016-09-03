@@ -5,6 +5,8 @@ export const FETCH_ORGS = 'FETCH_ORGS';
 export const FETCH_ORG_CURRENT = 'FETCH_ORG_CURRENT';
 export const FETCH_ORG_USERS = 'FETCH_ORG_USERS';
 
+export const FILTER_ORG_LIST = 'FILTER_ORG_LIST';
+
 // export const FETCH_ORGS_SUCCESS = 'FETCH_ORGS_SUCCESS';
 // export const FETCH_ORGS_FAILURE = 'FETCH_ORGS_FAILURE';
 // export const RESET_ORGS = 'RESET_ORGS';
@@ -47,6 +49,14 @@ export function fetchOrgUsers() {
         payload: request
     };
 }
+
+export function filterOrgList(data) {
+  return {
+    type: FILTER_ORG_LIST,
+    payload: data
+  };
+}
+
 
 // export function fetchOrgs() {
 //   const request = axios({

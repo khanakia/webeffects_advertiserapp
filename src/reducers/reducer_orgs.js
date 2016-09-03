@@ -5,7 +5,8 @@ const {
     FETCH_ORG_CURRENT,
     FETCH_ORG_USERS,
     RESET_ORGS,
-    ADD_ORG
+    ADD_ORG,
+    FILTER_ORG_LIST
 } = action_organization;
 
 
@@ -17,6 +18,7 @@ const INITIAL_STATE = {
     list: { data: []},
     current: { data: []},
     userlist : { data: []},
+    filter_orglist_params : []
 };
 
 
@@ -39,7 +41,8 @@ export default function(state = INITIAL_STATE, action) {
 
         case ADD_ORG: // return list of orgs and make loading = false
             return {...state, orgsList: { orgs: action.payload.data, error: null, loading: false } };
-
+        case FILTER_ORG_LIST:
+            return {...state, filter_orglist_params: action.payload };
         // case FETCH_ORGS_FAILURE: // return error and make loading = false
         //     error = action.payload.data || { message: action.payload.message }; //2nd one is network or server down errors
         //     return {...state, orgsList: { orgs: [], error: error, loading: false } };

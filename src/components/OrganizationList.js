@@ -11,6 +11,8 @@ import DomainForm from './org/DomainSubdomainForm'
 import * as Helper from '../helpers'
 import PopupHelper from '../helpers/helper_popup'
 
+import { Auth, Util, OrgHelper } from '../helpers'
+
 class OrganizationList extends Component {
     constructor(props, context) {
         super(props, context);
@@ -69,11 +71,12 @@ class OrganizationList extends Component {
     // }
 
     renderPosts(orgs) {
+        if(undefined===orgs) return false;
         return orgs.map((org) => {
             return (
                 <li className="" key={org.id}>
                     <div className="inner">
-                            <h4 className="list-group-item-heading">
+                            <h4 className="list-group-item-heading mt30">
                                 {org.name}
                                 <div className="dropdown d-inline-block">
                                     <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button"><i className="fa fa-chevron-down"></i></a>
@@ -86,9 +89,9 @@ class OrganizationList extends Component {
                             </h4>
                         
                         <div className="badges">
-                                {Helper.Util.badgetOwner((org.created_by_user_id==Helper.Auth.getUserID()))}
-                                {Helper.Util.badgeIsAdmin(org.permissions.is_admin)}
-                                {Helper.Util.badgetDefault(org)}
+                                {Util.badgetOwner((org.created_by_user_id==Auth.getUserID()))}
+                                {Util.badgeIsAdmin(org.permissions.is_admin)}
+                                {Util.badgetDefault(org)}
                         </div>
                         {/*<div className="my20">
                                                     <span className="icons-group light">
@@ -97,8 +100,8 @@ class OrganizationList extends Component {
                                                     </span>
                                                 </div>*/}
 
-                        <div className="mt20">
-                            <button type="button" className="btn btn-blue">Switch Organization</button>
+                        <div className="mt30">
+                            <button type="button" className="btn btn-blue" onClick={(e) => this.switchOrg(e, org.id)}>Switch Organization</button>
                         </div>
                     </div>
                 </li>
@@ -119,18 +122,32 @@ class OrganizationList extends Component {
         DomainForm.showInPoup({data})
     }
 
+    switchOrg(e, org_id) {
+        OrgHelper.switchOrg(org_id).then((response) => {
+            Auth.login(response.data.token)
+            this.props.fetchCurrentOrg()
+        });
+    }
+
+    filterChange(e) {
+        var value = e.target.value;
+        console.log(value);
+        this.props.filterOrgList({
+            name : value
+        })
+    }
+
     render() {
-        const { data } = this.props.orgsList;
+        const data = this.props.orgsList;
 
         
         return (
             <div>
-                
                 <PagePanel>
                     <div className="control-toolbar1">
                         <div className="left">
                             <div className="filter-header-input-wrap">
-                                <input placeholder="Find a organization" className="filter-header-input" defaultValue=""/>
+                                <input placeholder="Find a organization" className="filter-header-input" defaultValue="" onChange={(e)=>this.filterChange(e)}/>
                             </div>
                         </div>
                         <div className="middle">

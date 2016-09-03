@@ -6425,7 +6425,7 @@ body {
 
 .list-group-grid > li {
   width: 400px;
-  height: 190px;
+  height: 175px;
   padding: 20px 5px;
   display: inline-block;
   text-align: center;
@@ -6435,7 +6435,7 @@ body {
   margin: 0 7px 14px 7px;
   border-radius: 5px; }
   .list-group-grid > li .list-group-item-heading {
-    margin-top: 20px; }
+    margin-top: 30px; }
     .list-group-grid > li .list-group-item-heading i {
       font-size: 12px;
       padding: 0 5px; }

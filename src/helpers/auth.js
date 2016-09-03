@@ -84,4 +84,7 @@ export default class Auth {
 		})
 	}
 
+
+	switch
+
 }

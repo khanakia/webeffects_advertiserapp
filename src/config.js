@@ -32,6 +32,7 @@ export const API_URL_ORG_SHOWCURRENT =  API_URL_ORG + '/show_current';
 export const API_URL_ORG_UPDATE_CUSTOMDOMAIN_FN =  (org_id) => {return API_URL_ORG + '/' + org_id + '/update_custom_domain'};
 export const API_URL_ORG_UPDATE_SUBDOMAIN_FN =  (org_id) => {return API_URL_ORG + '/' + org_id + '/update_subdomain_slug'};
 export const API_URL_ORG_INVITE_USER = API_URL_ORG+'/user_invite';
+export const API_URL_ORG_SWITCH = API_URL_ORG+'/switch';
 
 
 // export const API_URL_ORG_LOGO = API_URL+'/uploadlogo';

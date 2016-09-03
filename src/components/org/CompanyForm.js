@@ -10,6 +10,9 @@ import DropdownCountries from '../controls/DropdownCountries'
 class CompanyForm extends Component {
     constructor(props) {
         super(props);
+
+        this.msg_btn_save_text = 'Create Company'
+        this.msg_heading = 'Create Company'
     }
 
     static defaultProps = {
@@ -30,10 +33,16 @@ class CompanyForm extends Component {
             company_city : '',
             company_zipcode : '',
             company_country : '',
-        }    
+        },
+
+        is_new : true,
     }
 
     componentWillMount() {
+        if(!this.props.is_new) {
+            this.msg_btn_save_text = "Update Company"
+            this.msg_heading = 'Edit Company'
+        }
         // this.props.fetchCompanies();
     }
 
@@ -92,113 +101,111 @@ class CompanyForm extends Component {
         return (
             <div>
                 <div className="modal-header">
-                    <h4 className="modal-title">Company Information</h4>
+                    <h4 className="modal-title">{this.msg_heading}</h4>
                 </div>
-
-                <ul className="nav nav-tabs" role="tablist">
-                    <li role="presentation" className="active"><a href="#general" aria-controls="general" role="tab" data-toggle="tab">General</a></li>
-                    <li role="presentation"><a href="#address" aria-controls="address" role="tab" data-toggle="tab">Address</a></li>
-                </ul>
-
-                <div className="content-area">
-                    <form className="form-horizontal control-label-left" ref='form' onSubmit={this.handleSubmit}>
-                        <input type="hidden" className="form-control" ref="id" name="id" id="id" defaultValue={this.props.data.id} />
-                        <div className="tab-content">
-                            <div role="tabpanel" className="tab-pane active" id="general">
-                                <div className="row">
-                                    <div className="col-md-8">
-                                        <div className="form-group">
-                                            <label className="col-sm-2 control-label">Title</label>
-                                            <div className="col-sm-10">
-                                                <input type="text" className="form-control required" name="company_title" id="company_title" defaultValue={this.props.data.company_title} />
+                <form className="form-horizontal control-label-left " ref='form' onSubmit={this.handleSubmit}>
+                    <input type="hidden" className="form-control" ref="id" name="id" id="id" defaultValue={this.props.data.id} />
+                    <div className="content-area">
+                        <ul className="nav nav-tabs" role="tablist">
+                            <li role="presentation" className="active"><a href="#general" aria-controls="general" role="tab" data-toggle="tab">General</a></li>
+                            <li role="presentation"><a href="#address" aria-controls="address" role="tab" data-toggle="tab">Address</a></li>
+                        </ul>
+                            <div className="tab-content mt10">
+                                <div role="tabpanel" className="tab-pane active" id="general">
+                                    <div className="row">
+                                        <div className="col-md-8">
+                                            <div className="form-group">
+                                                <label className="col-sm-2 control-label">Title</label>
+                                                <div className="col-sm-10">
+                                                    <input type="text" className="form-control required" name="company_title" id="company_title" defaultValue={this.props.data.company_title} />
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div className="form-group">
-                                            <label className="col-sm-2 control-label">Email</label>
-                                            <div className="col-sm-10">
-                                                <input type="text" className="form-control required" name="company_email" id="company_email" defaultValue={this.props.data.company_email} />
+                                            <div className="form-group">
+                                                <label className="col-sm-2 control-label">Email</label>
+                                                <div className="col-sm-10">
+                                                    <input type="text" className="form-control required" name="company_email" id="company_email" defaultValue={this.props.data.company_email} />
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div className="form-group">
-                                            <label className="col-sm-2 control-label">Website</label>
-                                            <div className="col-sm-10">
-                                                <input type="text" className="form-control" name="company_website" id="company_website" defaultValue={this.props.data.company_website} />
+                                            <div className="form-group">
+                                                <label className="col-sm-2 control-label">Website</label>
+                                                <div className="col-sm-10">
+                                                    <input type="text" className="form-control" name="company_website" id="company_website" defaultValue={this.props.data.company_website} />
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div className="form-group">
-                                            <label className="col-sm-2 control-label">Industry</label>
-                                            <div className="col-sm-10">
-                                                <input type="text" className="form-control" name="company_industry" id="company_industry" defaultValue={this.props.data.company_industry} />
+                                            <div className="form-group">
+                                                <label className="col-sm-2 control-label">Industry</label>
+                                                <div className="col-sm-10">
+                                                    <input type="text" className="form-control" name="company_industry" id="company_industry" defaultValue={this.props.data.company_industry} />
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div className="form-group">
-                                            <label className="col-sm-2 control-label">Phone</label>
-                                            <div className="col-sm-10">
-                                                <input type="text" className="form-control" name="company_phone" id="company_phone" defaultValue={this.props.data.company_phone} />
+                                            <div className="form-group">
+                                                <label className="col-sm-2 control-label">Phone</label>
+                                                <div className="col-sm-10">
+                                                    <input type="text" className="form-control" name="company_phone" id="company_phone" defaultValue={this.props.data.company_phone} />
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div className="form-group">
-                                            <label className="col-sm-2 control-label">Fax</label>
-                                            <div className="col-sm-10">
-                                                <input type="text" className="form-control" name="company_fax" id="company_fax" defaultValue={this.props.data.company_fax} />
+                                            <div className="form-group">
+                                                <label className="col-sm-2 control-label">Fax</label>
+                                                <div className="col-sm-10">
+                                                    <input type="text" className="form-control" name="company_fax" id="company_fax" defaultValue={this.props.data.company_fax} />
+                                                </div>
                                             </div>
+                                            
                                         </div>
-                                        
                                     </div>
                                 </div>
-                            </div>
-                            <div role="tabpanel" className="tab-pane" id="address">
-                                <div className="row">
-                                    <div className="col-md-8">
-                                        <div className="form-group">
-                                            <label className="col-sm-3 control-label">Line1</label>
-                                            <div className="col-sm-9">
-                                                <input type="text" className="form-control" name="company_address_line1" id="company_address_line1" defaultValue={this.props.data.company_address_line1} />
+                                <div role="tabpanel" className="tab-pane" id="address">
+                                    <div className="row">
+                                        <div className="col-md-8">
+                                            <div className="form-group">
+                                                <label className="col-sm-3 control-label">Line1</label>
+                                                <div className="col-sm-9">
+                                                    <input type="text" className="form-control" name="company_address_line1" id="company_address_line1" defaultValue={this.props.data.company_address_line1} />
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div className="form-group">
-                                            <label className="col-sm-3 control-label">Line2</label>
-                                            <div className="col-sm-9">
-                                                <input type="text" className="form-control" name="company_address_line2" id="company_address_line2" defaultValue={this.props.data.company_address_line2} />
+                                            <div className="form-group">
+                                                <label className="col-sm-3 control-label">Line2</label>
+                                                <div className="col-sm-9">
+                                                    <input type="text" className="form-control" name="company_address_line2" id="company_address_line2" defaultValue={this.props.data.company_address_line2} />
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div className="form-group">
-                                            <label className="col-sm-3 control-label">State</label>
-                                            <div className="col-sm-9">
-                                                <input type="text" className="form-control" name="company_state" id="company_state" defaultValue={this.props.data.company_state} />
+                                            <div className="form-group">
+                                                <label className="col-sm-3 control-label">State</label>
+                                                <div className="col-sm-9">
+                                                    <input type="text" className="form-control" name="company_state" id="company_state" defaultValue={this.props.data.company_state} />
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div className="form-group">
-                                            <label className="col-sm-3 control-label">City</label>
-                                            <div className="col-sm-9">
-                                                <input type="text" className="form-control" name="company_city" id="company_city" defaultValue={this.props.data.company_city} />
+                                            <div className="form-group">
+                                                <label className="col-sm-3 control-label">City</label>
+                                                <div className="col-sm-9">
+                                                    <input type="text" className="form-control" name="company_city" id="company_city" defaultValue={this.props.data.company_city} />
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div className="form-group">
-                                            <label className="col-sm-3 control-label">Zip Code</label>
-                                            <div className="col-sm-9">
-                                                <input type="text" className="form-control" name="company_zipcode" id="company_zipcode" defaultValue={this.props.data.company_zipcode} />
+                                            <div className="form-group">
+                                                <label className="col-sm-3 control-label">Zip Code</label>
+                                                <div className="col-sm-9">
+                                                    <input type="text" className="form-control" name="company_zipcode" id="company_zipcode" defaultValue={this.props.data.company_zipcode} />
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div className="form-group">
-                                            <label className="col-sm-3 control-label">Country</label>
-                                            <div className="col-sm-9">
-                                                {/*<input type="text" className="form-control" name="company_country" id="company_country" defaultValue={this.props.data.company_country} />*/}
-                                                <DropdownCountries name="company_country" defaultValue={this.props.data.company_country} />
+                                            <div className="form-group">
+                                                <label className="col-sm-3 control-label">Country</label>
+                                                <div className="col-sm-9">
+                                                    {/*<input type="text" className="form-control" name="company_country" id="company_country" defaultValue={this.props.data.company_country} />*/}
+                                                    <DropdownCountries name="company_country" defaultValue={this.props.data.company_country} />
+                                                </div>
                                             </div>
+                                            
                                         </div>
-                                        
                                     </div>
-                                </div>
 
+                                </div>
                             </div>
-                        </div>
-                        
-                        <div className="modal-footer text-right">
-                            <button type="submit" className="btn btn-success">Save</button>
-                        </div>
-                    </form>
-                </div>
+                            
+                    </div>
+                    <div className="modal-footer text-right">
+                        <button type="submit" className="btn btn-blue-link">{this.msg_btn_save_text}</button>
+                    </div>
+                </form>
             </div>
         );
     }
