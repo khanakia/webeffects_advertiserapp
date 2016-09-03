@@ -65,38 +65,46 @@ class ProjectsList extends Component {
         return projects.map((project) => {
             return (
                 <li className="list-group-item" key={project.id}>
-                    <div className="d-table w100">
-                        <div className="d-table-cell xs-d-block wp150 xs-w100">
-                            <div className="avatar" style={{backgroundImage: "url('" + project.project_logo_url + "')"}}>
+                    <div className="w100 item-inner">
+                        <div className="image text-center">
+                            <div className="avatar d-inline-block" style={{backgroundImage: "url('" + project.project_logo_url + "')"}}>
                             </div>
                         </div>
-                        <div className="d-table-cell xs-d-block w20 xs-w100 valign-middle">
+                        <div className="text-center">
                             <h4 className="list-group-item-heading">
-                                <Link to={'projects/'+project.id+'/overview'}>{project.project_name}</Link><br/>
+                                <Link to={'projects/'+project.id+'/overview'}>{project.project_name}</Link>
+                                <div className="dropdown d-inline-block">
+                                    <a href="javascript:void(0)" className="dropdown-toggle" data-toggle="dropdown" role="button"><i className="fa fa-chevron-down"></i></a>
+                                    <ul className="text-left dropdown-menu dropdown-menu-right">
+                                        <li>
+                                            <a href="javascript:void(0)" title="Edit" onClick={(e)=> this.editProject(e, project)} ><i className="fa fa-pencil"></i>Edit</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0)" title="Upload Logo" onClick={(e)=> this.uploadLogo(e, project)} ><i className="fa fa-picture-o"></i>Upload Logo</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0)" title="Move to Trash" onClick={(e)=> this.deleteProject(e, project)} ><i className="fa fa-trash"></i>Move to Trash</a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </h4>
                         </div>
-                        <div className="d-table-cell xs-d-block w10 xs-w100 valign-middle">
-                            {project.start_date ?
-                                    <span>Start Date: {project.project_start_date}<br/></span>
-                                    : ''
-                            }
+                        <div className="text-center date-view fs12">
+                            {project.start_date ? <span className="mx5">Start Date: {project.project_start_date}</span> : null}
 
-                            {project.end_date ?
-                                <span>End Date: {project.project_end_date}</span>
-                                    : ''
-                            }    
-                        </div>
-                        <div className="d-table-cell xs-d-block valign-middle text-right">
-                            <span className="icons-group light">
-                                <button className="btn btn-plain" title="Edit" onClick={(e)=> this.editProject(e, project)} ><i className="fa fa-pencil"></i></button>
-                                <button className="btn btn-plain" title="Upload Logo" onClick={(e)=> this.uploadLogo(e, project)} ><i className="fa fa-picture-o"></i></button>
-                                <button className="btn btn-plain" title="Move to Trash" onClick={(e)=> this.deleteProject(e, project)} ><i className="fa fa-trash"></i></button>
-                            </span>
+                            {project.end_date ? <span className="mx5">End Date: {project.project_end_date}</span> : null}
                         </div>
                     </div>
 
                 </li>
             );
+        });
+    }
+
+    filterChange(e) {
+        var value = e.target.value;
+        this.props.filterProjectList({
+            project_name : value
         });
     }
 
@@ -108,7 +116,9 @@ class ProjectsList extends Component {
                 <PagePanel>
                     <div className="control-toolbar1">
                         <div className="left">
-                            <span className="title">Projects</span>
+                            <div className="filter-header-input-wrap">
+                                <input placeholder="Find a project" className="filter-header-input" defaultValue="" onChange={(e)=>this.filterChange(e)}/>
+                            </div>
                         </div>
                         <div className="middle">
                         </div>
@@ -118,13 +128,13 @@ class ProjectsList extends Component {
                                     
                                 </span>
                                 <span className="col icons-group">
-                                    <button className="btn btn-success" onClick={()=> PopupHelper.showProjectForm({})}><i className="fa fa-plus"></i></button>
+                                    <button className="btn btn-green-bordered" onClick={()=> PopupHelper.showProjectForm({})}><i className="fa fa-plus"></i>Create new project</button>
                                 </span>
                             </span>    
                         </div>
                     </div>
                     <div className="mt20">
-                        <ul className="list-group style1">
+                        <ul className="list-group-grid project-list">
                             {this.renderList(data)}
                         </ul>
                     </div>

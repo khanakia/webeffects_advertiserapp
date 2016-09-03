@@ -55,71 +55,32 @@ class ProjectPeople extends Component {
         return projectusers.map((projectuser) => {
             return (
                 <li className="list-group-item" key={projectuser.id}>
-       
-                    <div className="d-table w100">
-                        <div className="d-table-cell xs-d-block w30 xs-w100">
-                            <div className="userInfoBlock">
-                                <div className="image d-inline-block valign-middle mr20">
-                                    <div className="avatar" style={{backgroundImage: "url('" + projectuser.user.profile_image_url +"')"}}>
-                                    </div>
-                                </div>
-                                <div className="summary d-inline-block">
-                                    <div className="title fw-b"> {projectuser.user.fullname}</div>
-                                    <div className="position fs12">{projectuser.job_title}</div>
-                                    <div className="company fs12">{projectuser.company_title}</div>
-                                </div>
+                    <div className="w100">
+                        <div className="image text-center">
+                            <div className="avatar d-inline-block" style={{backgroundImage: "url('" + projectuser.user.profile_image_url +"')"}}>
                             </div>
                         </div>
-                        <div className="d-table-cell xs-d-block xs-mt20 w30 xs-w100 valign-middle contact_info">
+                        <div className="text-center">
                             <h4 className="list-group-item-heading">
-                                
-                                { projectuser.email ?
-                                    <span className="d-block fs12 mb5"><i className="fa fa-envelope w10p"></i><a href={"mailto:"+projectuser.email}>{projectuser.email}</a></span>
-                                    : ''
-                                }    
-                                
-                                { projectuser.mobile ?
-                                    <span className="d-block fs12 mb5"><i className="fa fa-mobile w10p fs14"></i>{projectuser.mobile}</span>
-                                    : ''
-                                }    
-                                
-                                { projectuser.office_phone ?
-                                    <span className="d-block fs12 mb5"><i className="fa fa-phone w10p"></i>{projectuser.office_phone}</span>
-                                    : ''
-                                }
-                                
-                            </h4>
-                        </div>
-                        <div className="d-table-cell xs-d-block xs-mt20 w20 xs-w100 valign-middle">
-                            <h4 className="list-group-item-heading">
-                                <span className="d-block fs12 mb5 lh-15p">
-                                {projectuser.address_line_1 ? <span>{projectuser.address_line_1}<br/></span> : ''}
-                                {projectuser.address_line_2 ? <span>{projectuser.address_line_2}<br/></span> : ''}
-                                {projectuser.city ? <span>{projectuser.city} {projectuser.zipcode} {projectuser.state} <br/></span> : ''}
-                                {projectuser.country}
-                                </span>
-                            </h4>
-                        </div>
-
-                        <div className="d-table-cell xs-d-block valign-middle">
-                                
-                                
-                                
-                                
-                        </div>
-                        <div className="d-table-cell xs-d-block valign-middle text-right">
-                            <span className="icons-group light">
+                                {projectuser.user.fullname}
                                 {(this.props.current_org.permissions.org_can_update) ?
-                                    <span>
-                                        <button className="btn btn-plain" title="Remove User" onClick={(e)=> this.removeUser(projectuser,e)} ><i className="fa fa-trash"></i></button>
-                                        <button className="btn btn-plain" title="Edit User Permissions" onClick={(e)=> this.editUserPermission(projectuser,e)} ><i className="fa fa-cogs"></i></button>
-                                    </span>    
-                                    : ''
-                                }
-                            </span>
+                                    <div className="dropdown d-inline-block">
+                                        <a href="javascript:void(0)" className="dropdown-toggle" data-toggle="dropdown" role="button"><i className="fa fa-chevron-down"></i></a>
+                                        <ul className="text-left dropdown-menu dropdown-menu-right">
+                                            <li>
+                                                <a href="javascript:void(0)" title="Remove User" onClick={(e)=> this.removeUser(projectuser,e)} ><i className="fa fa-trash"></i>Remove User</a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:void(0)" title="Edit User Permissions" onClick={(e)=> this.editUserPermission(projectuser,e)} ><i className="fa fa-cogs"></i>Edit User Permissions</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                : null}
+                            </h4>
                         </div>
+                        <div className="position fs12">{projectuser.job_title}</div>
+                        <div className="company fs12">{projectuser.company_title}</div>
                     </div>
-
                 </li>
             );
         });
@@ -147,12 +108,12 @@ class ProjectPeople extends Component {
                             <span className="col icons-group">
                                 <button className="btn btn-success" onClick={()=> PopupHelper.showProjectUsersEditForm({data : {project_id : this.projectId}})}><i className="fa fa-plus mr5"></i>Add Users</button>
                             </span>
-                        </span>    
+                        </span>
                     </div>
                 </div>
                 <div className="mt20">
                     
-                    <ul className="list-group style1">
+                    <ul className="list-group-grid project-peoples">
                         {this.renderList(data)}
                     </ul>
                 </div>

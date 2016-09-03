@@ -6466,6 +6466,20 @@ body {
     top: 0; }
 .list-group-grid.org_people > li {
   height: 250px; }
+.list-group-grid.project-list > li {
+  padding: 20px 10px; }
+  .list-group-grid.project-list > li .list-group-item-heading {
+    margin-top: 20px; }
+  .list-group-grid.project-list > li .item-inner {
+    position: relative;
+    height: 100%; }
+  .list-group-grid.project-list > li .date-view {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%; }
+.list-group-grid.project-peoples > li .list-group-item-heading {
+  margin-top: 15px; }
 
 header {
   -webkit-box-shadow: 0px 5px 15px 0px #c5c5c5;
