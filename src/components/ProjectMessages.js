@@ -76,12 +76,14 @@ class ProjectMessages extends Component {
 
 
     createMessae(e) {
+        e.preventDefault()
         // const href = 'projects/'+this.projectId+'/messages/create'
         // hashHistory.push(href)
         PopupHelper.showProjectMessageForm({onDataUpdate:this.onDataUpdate.bind(this)})
     }
 
     editMessae(e, data) {
+        e.preventDefault()
         // const href = 'projects/'+this.projectId+'/messages/create'
         // hashHistory.push(href)
         console.log("datadata", data)
@@ -96,6 +98,7 @@ class ProjectMessages extends Component {
 
 
     showMessae(e, item) {
+        e.preventDefault()
         // ProjectMessageForm.showInPoup({data})
 
         var location = {
@@ -105,6 +108,7 @@ class ProjectMessages extends Component {
     }
 
     deleteMessage(e, item) {
+        e.preventDefault()
         $.confirm({
             title: '',
             content: 'Are you sure you want to remove ?',
@@ -119,6 +123,7 @@ class ProjectMessages extends Component {
     }
 
     addComment(e, data) {
+        e.preventDefault()
         PopupHelper.showCommentForm({onDataUpdate:this.onDataUpdateComment.bind(this), object_type:OBJECT_TYPE_MESSAGE, object_id:data.id})
     }
 
@@ -326,66 +331,103 @@ class ProjectMessages extends Component {
     }
 
 
+    // renderList11(items) {
+    //     return items.map((item) => {
+    //         if(this.checkCategoryExists(item.categories)==false) return;
+    //         const {created_by_user} = item;
+    //         return (
+    //             <li className="list-group-item" key={item.id}>
+                    
+    //                 <div className="d-table w100">
+    //                     <div className="d-table-cell xs-d-block w15 xs-w100">
+    //                         <div className="userInfoBlock">
+    //                             <div className="image d-inline-block valign-middle mr20">
+    //                                 <div className="avatar" style={{backgroundImage: "url('"+created_by_user.profile_image_url+"')"}}>
+    //                                 </div>
+    //                             </div>
+    //                             <div className="summary d-inline-block">
+    //                                 <div className="title fw-b">{created_by_user.user_id} {created_by_user.fullname}</div>
+    //                             </div>
+    //                         </div>
+    //                     </div>
+
+    //                     <div className="d-table-cell xs-d-block w50 xs-w100 pr20 valign-middle">
+    //                         <h4 className="list-group-item-heading">
+    //                             {item.id} 
+    //                             <Link to={'projects/'+this.projectId+'/messages/'+item.id}>{item.message_title}</Link><br/>
+                                
+                                
+    //                         </h4>
+    //                         <div className="fs12">
+    //                             <div dangerouslySetInnerHTML={{__html: item.excerpt}} />
+
+    //                             <div className="mt10">
+    //                                 {/*{this.renderTags(item.tag_items)}*/}
+    //                                 <TagItemTitleMultiple data={item.tag_items} fetchData={this.fetchDataTag.bind(this)} />
+    //                             </div>
+    //                         </div>
+    //                     </div>
+                        
+    //                     <div className="d-table-cell xs-d-block w15 xs-w100 valign-middle">
+    //                         {this.renderCategoryBadges(item.categories)}
+    //                     </div>
+
+    //                     <div className="d-table-cell xs-d-block w10 xs-w100 valign-middle">
+    //                         {item.created_at}
+    //                     </div>
+    //                     <div className="d-table-cell xs-d-block valign-middle text-right">
+    //                         <span className="icons-group light">
+    //                             <button className="btn btn-plain" title="View" onClick={(e)=> this.showMessae(e, item)} ><i className="fa fa-eye"></i></button>
+    //                             <button className="btn btn-plain" title="Edit" onClick={(e)=> this.editMessae(e, item)} ><i className="fa fa-pencil"></i></button>
+    //                             <button className="btn btn-plain" title="Edit" onClick={(e)=> this.deleteMessage(e, item)} ><i className="fa fa-trash"></i></button>
+    //                             <button className="btn btn-plain" title="Add Comment" onClick={(e)=> this.addComment(e, item)} ><i className="fa fa-comment"></i></button>
+    //                             {/*<button className="btn btn-plain a-addtags" title="Tags" data-id={item.id} ><i className="fa fa-tags"></i></button>*/}
+    //                             <TagAddButton object_type={OBJECT_TYPE_MESSAGE} object_id={item.id} fetchData={this.fetchDataTag.bind(this)} strip_tags={item.tags} />
+    //                         </span>
+    //                     </div>
+    //                 </div>
+    //             </li>
+    //         );
+    //     });
+    // }
+
     renderList(items) {
         return items.map((item) => {
             if(this.checkCategoryExists(item.categories)==false) return;
             const {created_by_user} = item;
             return (
                 <li className="list-group-item" key={item.id}>
-                    
-                    <div className="d-table w100">
-                        <div className="d-table-cell xs-d-block w15 xs-w100">
-                            <div className="userInfoBlock">
-                                <div className="image d-inline-block valign-middle mr20">
-                                    <div className="avatar" style={{backgroundImage: "url('"+created_by_user.profile_image_url+"')"}}>
-                                    </div>
-                                </div>
-                                <div className="summary d-inline-block">
-                                    <div className="title fw-b">{created_by_user.user_id} {created_by_user.fullname}</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="d-table-cell xs-d-block w50 xs-w100 pr20 valign-middle">
-                            <h4 className="list-group-item-heading">
-                                {item.id} 
-                                <Link to={'projects/'+this.projectId+'/messages/'+item.id}>{item.message_title}</Link><br/>
-                                
-                                
-                            </h4>
-                            <div className="fs12">
-                                <div dangerouslySetInnerHTML={{__html: item.excerpt}} />
-
-                                <div className="mt10">
-                                    {/*{this.renderTags(item.tag_items)}*/}
-                                    <TagItemTitleMultiple data={item.tag_items} fetchData={this.fetchDataTag.bind(this)} />
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div className="d-table-cell xs-d-block w15 xs-w100 valign-middle">
+                    <div className="content">
+                 
+                        <h3 className="list-group-item-heading">
+                            <Link to={'projects/'+this.projectId+'/messages/'+item.id}>{item.message_title}</Link>
+                        </h3>
+                        <div className="category_badges">
                             {this.renderCategoryBadges(item.categories)}
                         </div>
-
-                        <div className="d-table-cell xs-d-block w10 xs-w100 valign-middle">
-                            {item.created_at}
+                        <div dangerouslySetInnerHTML={{__html: item.excerpt}} />
+                        <div className="summary mt10">
+                            <div className="title">Create by: {created_by_user.fullname} on {item.created_at}</div>
                         </div>
-                        <div className="d-table-cell xs-d-block valign-middle text-right">
-                            <span className="icons-group light">
-                                <button className="btn btn-plain" title="View" onClick={(e)=> this.showMessae(e, item)} ><i className="fa fa-eye"></i></button>
-                                <button className="btn btn-plain" title="Edit" onClick={(e)=> this.editMessae(e, item)} ><i className="fa fa-pencil"></i></button>
-                                <button className="btn btn-plain" title="Edit" onClick={(e)=> this.deleteMessage(e, item)} ><i className="fa fa-trash"></i></button>
-                                <button className="btn btn-plain" title="Add Comment" onClick={(e)=> this.addComment(e, item)} ><i className="fa fa-comment"></i></button>
-                                {/*<button className="btn btn-plain a-addtags" title="Tags" data-id={item.id} ><i className="fa fa-tags"></i></button>*/}
-                                <TagAddButton object_type={OBJECT_TYPE_MESSAGE} object_id={item.id} fetchData={this.fetchDataTag.bind(this)} strip_tags={item.tags} />
-                            </span>
+                        <div className="mt10">
+                            <TagItemTitleMultiple data={item.tag_items} fetchData={this.fetchDataTag.bind(this)} />
+                        </div>
+
+                        <div className="controls">
+                            <TagAddButton object_type={OBJECT_TYPE_MESSAGE} object_id={item.id} fetchData={this.fetchDataTag.bind(this)} strip_tags={item.tags} />
+                            <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button"><i className="fa fa-chevron-down"></i></a>
+                            <ul className="dropdown-menu dropdown-menu-right">
+                                <li><a href="#" className="" title="View" onClick={(e)=> this.showMessae(e, item)} ><i className="fa fa-eye"></i>View discussion</a></li>
+                                <li><a href="#" className="" title="Edit" onClick={(e)=> this.editMessae(e, item)} ><i className="fa fa-pencil"></i>Edit discussion</a></li>
+                                <li><a href="#" className="" title="Edit" onClick={(e)=> this.deleteMessage(e, item)} ><i className="fa fa-trash"></i>Delete discussion</a></li>
+                                <li><a href="#" className="" title="Add Comment" onClick={(e)=> this.addComment(e, item)} ><i className="fa fa-comment"></i>Add comment</a></li>
+                            </ul>
                         </div>
                     </div>
                 </li>
             );
         });
-    }
-    
+    }    
    
     render() {
         if (jQuery.isEmptyObject(this.props.projectMessages)) return false;
@@ -396,7 +438,9 @@ class ProjectMessages extends Component {
                 
                 <div className="control-toolbar1">
                     <div className="left">
-                        <span className="title">Messages</span>
+                        <div className="filter-header-input-wrap">
+                            <input placeholder="Search discussion" className="filter-header-input" defaultValue="" onChange={(e)=>this.filterChange(e)}/>
+                        </div>
                     </div>
                     <div className="middle">
                     </div>
@@ -406,14 +450,14 @@ class ProjectMessages extends Component {
                                 
                             </span>
                             <span className="col icons-group">
-                                <button className="btn btn-success" onClick={(e)=> this.createMessae(e)}><i className="fa fa-plus"></i></button>
+                                <button className="btn btn-green-bordered" onClick={(e)=> this.createMessae(e)}><i className="fa fa-plus"></i> Post new message</button>
                                 
                             </span>
                         </span>    
                     </div>
                 </div>
                 <div className="mt20">
-                    <ul className="list-group style1">
+                    <ul className="list-group-messages">
                         {this.renderList(data)}
                     </ul>
                 </div>

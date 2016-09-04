@@ -93,9 +93,9 @@ class CommentForm extends Component {
 
     }
 
-    attachFile() {
-        jQuery(this.refs.attach_form).show('fast')
-    }
+    // attachFile() {
+    //     jQuery(this.refs.attach_form).show('fast')
+    // }
   
     render() {
         if (!this.props.object_id) return false;
@@ -122,7 +122,7 @@ class CommentForm extends Component {
                             <div className="d-table-cell xs-d-block wp100 xs-w100">
                                 <div className="userInfoBlock mt20">
                                     <div className="image d-inline-block valign-middle mr20">
-                                        <div className="avatar" style={{backgroundImage: "url('"+current_user.image_base64+"')"}}>
+                                        <div className="avatar" style={{backgroundImage: "url('"+current_user.profile_image_url+"')"}}>
                                         </div>
                                     </div>
                                 </div>
@@ -132,30 +132,23 @@ class CommentForm extends Component {
                                 <div className="">
                                     {<textarea id="body" name="body" ref="body" className="textreaa-editor"></textarea>}
                                 </div>
+                                <div className="mb30 w100" ref="attach_form">
+                                    <ProjectFileAttachForm selectedFiles={this.props.data.project_files} />
+                                </div>
 
                                 <div className="d-table mt30 w100">
                                     <div className="d-inline-block mr20 xs-d-block xs-w100">
-                                        <label>Notify by Email</label>
+                                        <label className="mr10">Notify by Email</label>
                                         <ControlNotifyPeople selectedUsers={this.props.data.notify_users} />
                                     </div>
-                                    {/*<div className="d-inline-block mr20 xs-d-block xs-w100">
-                                                                <label>Category</label>
-                                                                <CategorySelectControl object_type={this.props.object_type}  />
-                                                            </div>*/}
-                                    <div className="d-inline-block mr20 xs-d-block xs-w100">
-                                        <label>Files</label><br/>
-                                        <button type="button" className="btn" onClick={this.attachFile.bind(this)}>Attach a File</button>
-                                    </div>
-                                </div>
-                                <div className="mt30 mb30 w100" ref="attach_form">
-                                    <ProjectFileAttachForm />
+                                    
                                 </div>
                             
                             </div>
                         </div>
                     </div>
-                    <div className="modal-footer text-right">
-                        <button type="submit" className="btn btn-success">Save</button>
+                    <div className="p20 text-right">
+                        <button type="submit" className="btn btn-blue">Post Comment</button>
                     </div>
                 </form>
             </div>

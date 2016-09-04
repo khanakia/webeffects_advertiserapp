@@ -136,7 +136,7 @@ class ProjectFileBrowseForm extends Component {
                                 <input type="text" className="w100 pl5" ref="input_search" placeholder="Search" onChange={()=>this.searchInputChange()} />
                             </div>
                             <br/>
-                            <ul className="list-group oy-scroll pr10 hp500">
+                            <ul className="list-group oy-scroll pr10 hp300">
                                 {this.renderList(data)}
                             </ul>
                         </div>

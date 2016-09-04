@@ -28,20 +28,19 @@ class LayoutProjectComponent extends Component {
             <div>
                 <Sidebar>
                   {data.project_title}
+                   <ul className="nav_project">
+                        <li><Link activeClassName="active" to={project_url_suffix + "/overview"}><i className="fa fa-line-chart"></i> Overview</Link></li>
+                        <li><Link activeClassName="active" to={project_url_suffix + "/tasklists"}><i className="fa fa-tasks"></i> Tasks</Link></li>
+                        <li><Link activeClassName="active" to={project_url_suffix + "/files"}><i className="fa fa-file"></i> Files</Link></li>
+                        <li><Link activeClassName="active" to={project_url_suffix + "/messages"}><i className="fa fa-comments"></i> Discussions</Link></li>
+                        <li><Link activeClassName="active" to={project_url_suffix + "/people"}><i className="fa fa-users"></i> Peoples</Link></li>
+                    </ul>
 
                   <div id="childrenSidebar">
 
                   </div>
                 </Sidebar>
                 <PagePanel hasSidebar="true">
-                    <ul className="nav nav-pills">
-                        <li><Link to={project_url_suffix + "/overview"}><i className="fa fa-bullhorn"></i> Overview</Link></li>
-                        <li><Link to={project_url_suffix + "/tasklists"}><i className="fa fa-bullhorn"></i> Tasks</Link></li>
-                        <li><Link to={project_url_suffix + "/files"}><i className="fa fa-check-square-o"></i> Files</Link></li>
-                        <li><Link to={project_url_suffix + "/messages"}><i className="fa fa-envelope"></i> Messages</Link></li>
-                        <li><Link to={project_url_suffix + "/people"}><i className="fa fa-envelope"></i> Peoples</Link></li>
-                    </ul>
-
                     <div className="project_children pt30">
                         {this.props.children}
                     </div>

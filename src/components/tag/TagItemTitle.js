@@ -57,7 +57,7 @@ class TagItemTitle extends Component {
 
         return (
             <div className="comp_tag_title">
-                <span style={{backgroundColor: data.tag.tag_color}}>
+                <span style={{borderColor: data.tag.tag_color}}>
                     <a key={data.id} href="#" className="tag" onClick={(e)=> this.editTag(e)}>{data.tag.tag_title}</a>
                     <a href="#" className="remove" onClick={(e)=> this.removeTagItem(e)}>x</a>
                 </span>
