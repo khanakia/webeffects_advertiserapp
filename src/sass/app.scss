@@ -422,11 +422,34 @@ a:hover {
             margin: 10px 0;
 
             .user-avtar-link {
+                position: relative;
                 display: block;
                 width: 50px;
                 height: 50px;
                 margin: 0 auto;
                 padding: 0;
+                i {
+                    position: absolute;
+                    top: 18px;
+                    left: 17px;
+                    opacity: 0;
+                    color: #000;
+                }
+                &:before {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    height: 100%;
+                    width: 100%;
+                    opacity: 0;
+                    background-color: rgba(0,0,0,0.2);
+                    transition: all 0.2s;
+                }
+                &:hover:before,
+                &:hover i {
+                    opacity: 1;
+                }
             }
 
             .user-avtar {
@@ -1152,6 +1175,37 @@ body {
     &.org_people {
         >li {
             height: 250px;
+        }
+    }
+
+    &.project-list {
+        > li {
+            padding: 20px 10px;
+
+            .list-group-item-heading {
+                margin-top: 20px;
+            }
+
+            .item-inner {
+                position: relative;
+                height: 100%;
+            }
+
+            .date-view {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+            }
+        }
+    }
+
+    &.project-peoples {
+        > li {
+
+            .list-group-item-heading {
+                margin-top: 15px;
+            }
         }
     }
 }

@@ -1,6 +1,8 @@
 import {
         ROOT_HOST,
-        API_URL_USER, 
+        API_URL_USER,
+        API_URL_CHANGE_PWD,
+        API_URL_UPDATE_USER,
     } from '../config.js'
 
 
@@ -20,6 +22,23 @@ export default class UserHelper {
         });
     }
 
+    static changePassword(param) {
+        return axios({
+            method: 'post',
+            url: API_URL_CHANGE_PWD ,
+            headers: Auth.header(),
+            data : param,
+        });
+    }
+
+    static update(param) {
+        return axios({
+            method: 'post',
+            url: API_URL_UPDATE_USER ,
+            headers: Auth.header(),
+            data : param,
+        });
+    }
    
 }
 

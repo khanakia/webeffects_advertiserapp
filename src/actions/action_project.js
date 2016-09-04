@@ -10,6 +10,8 @@ export const FETCH_PROJECT_TASKLIST = 'FETCH_PROJECT_TASKLIST';
 export const FETCH_PROJECT_TASKS = 'FETCH_PROJECT_TASKS';
 export const FETCH_PROJECT_TASK = 'FETCH_PROJECT_TASK';
 
+export const FILTER_PROJECT_LIST = 'FILTER_PROJECT_LIST';
+
 export const FETCH_PROJECT_MESSAGES = 'FETCH_PROJECT_MESSAGES';
 export const FETCH_PROJECT_MESSAGE = 'FETCH_PROJECT_MESSAGE';
 
@@ -153,5 +155,12 @@ export function fetchProjectActivities(project_id) {
     return {
         type: FETCH_PROJECT_ACTIVITIES,
         payload: request
+    };
+}
+
+export function filterProjectList(data) {
+    return {
+        type: FILTER_PROJECT_LIST,
+        payload: data
     };
 }
