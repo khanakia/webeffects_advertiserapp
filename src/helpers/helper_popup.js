@@ -280,7 +280,7 @@ export default class PopupHelper {
         Controls.showpopup({
             detach: true,
             message: '<div id="' + uniq + '"></div>',
-            container_class: "w500",
+            container_class: "w700",
             opacity: 0.5,
             blur: false,
             onopen: function(e) {

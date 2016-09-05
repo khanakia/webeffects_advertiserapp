@@ -3,6 +3,12 @@ export const ROOT_URL = 'http://react.pma';
 export const API_HOST = 'http://localhost:9001';
 export const API_URL = 'http://localhost:9001/api/v1';
 
+// The Browser API key obtained from the Google Developers Console.
+export const google_developerKey = 'AIzaSyCC08zovo1bG7VqIcazb1cNT7zEYfxv8vY';
+// The Client ID obtained from the Google Developers Console. Replace with your own Client ID.
+export const google_clientId = "780520116910-pkgipfh4phfao8jpc357at7n32gf6riv.apps.googleusercontent.com"
+export const google_appId = "780520116910";
+
 export const OBJECT_TYPE_PROJECT = 'project';
 export const OBJECT_TYPE_FILE = 'file';
 export const OBJECT_TYPE_MESSAGE = 'message';
@@ -63,6 +69,8 @@ export const API_URL_PROJECT_USER_NOT_ASSIGNED = API_URL_PROJECT_USER+'/index_no
 export const API_URL_PROJECT_MESSAGE = API_URL+'/project_message';
 export const API_URL_PROJECT_FILE = API_URL+'/project_file';
 export const API_URL_PROJECT_FILE_VERSION = API_URL+'/project_file_version';
+export const API_URL_PROJECT_FILE_GOOGLE_DRIVE_STORE = API_URL_PROJECT_FILE + '/google_drive_store';
+
 export const API_URL_PROJECT_ACTIVITY = API_URL+'/project_activity';
 
 

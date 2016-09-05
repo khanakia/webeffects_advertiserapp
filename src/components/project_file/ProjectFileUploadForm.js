@@ -11,28 +11,51 @@ import ControlNotifyPeople from '../controls/ControlNotifyPeople'
 import CategorySelectControl  from '../category/CategorySelectControl'
 
 
+// var FileListRender = React.createClass({
+//     render: function() {
+//       return (
+//         <ul className="list-group">
+//           {this.props.list.map(function(item){
+//             return (
+//                 <li className="list-group-item" key={item.id}>
+//                     <input type="hidden" name="files[]" defaultValue={item.id} />
+//                     <div className="d-table w100">
+//                         <div className="d-table-cell xs-d-block  xs-w100 valign-middle">
+//                                 {   item.project_file_version_latest ?
+//                                     item.project_file_version_latest.file_displayname
+//                                     : ''
+//                                 }
+
+//                         </div>
+//                         <div className="d-table-cell xs-d-block w20 valign-middle">
+//                             <button type="button" className="btn btn-plain pull-right"><i className="fa fa-trash"></i></button>
+//                         </div>
+
+                        
+//                     </div>
+//                 </li>
+//             )
+//           })}
+//         </ul>
+//       )
+//     }
+// });
+
 var FileListRender = React.createClass({
     render: function() {
       return (
-        <ul className="list-group">
+        <ul className="list-group-uploadedfiles">
           {this.props.list.map(function(item){
             return (
-                <li className="list-group-item" key={item.id}>
-                    <input type="hidden" name="files[]" defaultValue={item.id} />
-                    <div className="d-table w100">
-                        <div className="d-table-cell xs-d-block  xs-w100 valign-middle">
-                                {   item.project_file_version_latest ?
-                                    item.project_file_version_latest.file_displayname
-                                    : ''
-                                }
-
-                        </div>
-                        <div className="d-table-cell xs-d-block w20 valign-middle">
-                            <button type="button" className="btn btn-plain pull-right"><i className="fa fa-trash"></i></button>
-                        </div>
-
-                        
-                    </div>
+                <li className="" key={item.id}>
+                    {/*<input type="hidden" name="files[]" defaultValue={item.id} />*/}
+                    <label className="title">
+                        {   item.project_file_version_latest ?
+                            item.project_file_version_latest.file_displayname
+                            : ''
+                        }
+                    </label>
+                    
                 </li>
             )
           })}
@@ -291,22 +314,22 @@ class ProjectFileUploadForm extends Component {
                             <div role="tabpanel" className="tab-pane active" id="option">
                                  <div className="d-table mt30 w100">
                                     <div className="d-inline-block mr20 xs-d-block xs-w100">
-                                        <label>Notify by Email</label>
+                                        <label className="mr10">Notify by Email</label>
                                         <ControlNotifyPeople selectedUsers={this.props.data.notify_users} />
                                     </div>
                                     <div className="d-inline-block mr20 xs-d-block xs-w100">
-                                        <label>Category</label>
-                                        <CategorySelectControl selectedValues={this.props.data.categories} object_type={OBJECT_TYPE_FILE}  />
+                                        <label className="mr10">Category</label>
+                                        <span className="d-inline-block"><CategorySelectControl selectedValues={this.props.data.categories} object_type={OBJECT_TYPE_FILE}  /></span>
                                     </div>
                                 </div>
                             </div>
                             <div role="tabpanel" className="tab-pane" id="description">
-                               <textarea className="hp100" name="file_description" defaultValue={this.props.data.file_description}></textarea>
+                               <textarea className="hp70 w100" name="file_description" defaultValue={this.props.data.file_description}></textarea>
                             </div>
                         </div>
                     </div>
                     <div className="modal-footer text-right">
-                        <button type="submit" className="btn btn-success" ref="btn_save" >Save</button>
+                        <button type="submit" className="btn btn-blue-link" ref="btn_save" >Save</button>
                     </div>
                 </form>
 

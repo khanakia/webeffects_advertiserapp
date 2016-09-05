@@ -72,8 +72,7 @@ class ProjectFileDetailsEditForm extends Component {
                     <input type="hidden" name="id" defaultValue={this.props.data.id} placeholder={'id'} />
                     <div className="content-area">
                         <div className="mb20">
-                            <label>Display Name</label>
-                            <input type="text" className="w100 required" name="file_displayname" ref="file_displayname" defaultValue={this.props.data.project_file_version_latest.file_displayname} />
+                            <input type="text" className="w100 required form-control" name="file_displayname" ref="file_displayname" defaultValue={this.props.data.project_file_version_latest.file_displayname} placeholder="File Display Name"/>
                         </div>
                         <ul className="nav nav-tabs" role="tablist">
                             <li role="presentation" className="active"><a href="#option" aria-controls="option" role="tab" data-toggle="tab">Options</a></li>
@@ -83,22 +82,24 @@ class ProjectFileDetailsEditForm extends Component {
                             <div role="tabpanel" className="tab-pane active" id="option">
                                  <div className="d-table mt30 w100">
                                     <div className="d-inline-block mr20 xs-d-block xs-w100">
-                                        <label>Notify by Email</label>
+                                        <label className="mr10">Notify by Email</label>
                                         <ControlNotifyPeople selectedUsers={this.props.data.notify_users} />
                                     </div>
                                     <div className="d-inline-block mr20 xs-d-block xs-w100">
-                                        <label>Category</label>
-                                        <CategorySelectControl selectedValues={this.props.data.categories} object_type={OBJECT_TYPE_FILE}  />
+                                        <label className="mr10">Category</label>
+                                        <span className="d-inline-block">
+                                            <CategorySelectControl selectedValues={this.props.data.categories} object_type={OBJECT_TYPE_FILE}  />
+                                        </span>
                                     </div>
                                 </div>
                             </div>
                             <div role="tabpanel" className="tab-pane" id="description">
-                               <textarea className="hp100" name="file_description" defaultValue={this.props.data.file_description}></textarea>
+                               <textarea className="hp100 form-control" name="file_description" defaultValue={this.props.data.file_description}></textarea>
                             </div>
                         </div>
                     </div>
                     <div className="modal-footer text-right">
-                        <button type="submit" className="btn btn-success" ref="btn_save" >Save</button>
+                        <button type="submit" className="btn btn-blue-link">Update File Detail</button>
                     </div>
                 </form>
             </div>

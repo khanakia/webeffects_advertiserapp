@@ -3,7 +3,7 @@ import ReactDom from 'react-dom';
 import { Link, hashHistory } from 'react-router'
 
 import {store} from '../store/index.js';
-import { ROOT_URL, API_URL, OBJECT_TYPE_FILE } from '../config'
+import { ROOT_URL, API_URL, OBJECT_TYPE_FILE, API_URL_PROJECT_FILE_GOOGLE_DRIVE_STORE } from '../config'
 
 import { Auth,  ProjectFileHelper, ProjectFileVersionHelper } from '../helpers'
 import PopupHelper from '../helpers/helper_popup'
@@ -14,6 +14,8 @@ import CategoryTree2 from './category/CategoryTree2'
 import ProjectFileUploadForm from './project_file/ProjectFileUploadForm'
 import ProjectFileBrowseForm from './project_file/ProjectFileBrowseForm'
 import ProjectFileDetailsEditForm from './project_file/ProjectFileDetailsEditForm'
+
+import GooglePicker from './project_file/GooglePicker'
 
 import ProjectFileItem from './project_file/ProjectFileItem'
 import ControlFilter from './controls/ControlFilter'
@@ -240,6 +242,17 @@ class ProjectFiles extends Component {
 
         this.props.fetchProjectFiles(this.props.params.projectId, data);
     }
+
+    onFilesSelected(data) {
+        // console.info("onFilesSelected", data)
+        data.project_id = this.projectId;
+        axios({
+            method: 'post',
+            url: API_URL_PROJECT_FILE_GOOGLE_DRIVE_STORE,
+            headers: Auth.header(),
+            data: data
+        });
+    }
    
     render() {
         // const { data } = this.props.projectsList;
@@ -249,7 +262,7 @@ class ProjectFiles extends Component {
         return (
             <div>
                {/*<ProjectFileUploadForm project_id={this.projectId} />*/}
-
+               
                <div className="control-toolbar1">
                     <div className="left">
                         <span className="title">Files</span>
@@ -261,10 +274,9 @@ class ProjectFiles extends Component {
                             <span className="col mr10">
                                 
                             </span>
-                            <span className="col icons-group">
-                                <button className="btn btn-success" onClick={(e)=> this.uploadFiles(e)}><i className="fa fa-plus"></i></button>
-                                <button className="btn btn-success" onClick={(e)=> this.uploadFiles(e)}>Google Drive</button>
-                                
+                            <span className="col">
+                                <button className="btn btn-green-bordered mr15" onClick={(e)=> this.uploadFiles(e)}><i className="fa fa-plus"></i>Add new files</button>
+                                <GooglePicker onFilesSelected={this.onFilesSelected.bind(this)} />
                             </span>
                         </span>    
                     </div>
