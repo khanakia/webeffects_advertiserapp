@@ -77,13 +77,13 @@ export default class ProjectFileVersionHelper {
         });
     }
 
-    static deleteMultiple(data) {
-        return axios({
-            method: 'post',
-            url: API_URL_PROJECT_FILE_VERSION + '/delete_multiple',
-            data: data,
-            headers: Auth.header(),
-        });
-    }
+    // static deleteMultiple(data) {
+    //     return axios({
+    //         method: 'post',
+    //         url: API_URL_PROJECT_FILE_VERSION + '/delete_multiple',
+    //         data: data,
+    //         headers: Auth.header(),
+    //     });
+    // }
 }
 

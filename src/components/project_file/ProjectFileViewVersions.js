@@ -3,9 +3,10 @@ import ReactDom from 'react-dom';
 import {connectWithStore} from '../../store/index.js';
 
 import { Auth, ProjectFileHelper, ProjectFileVersionHelper } from '../../helpers'
+import PopupHelper from '../../helpers/helper_popup'
 
 
-import { API_URL_PROJECT_FILE, OBJECT_TYPE_FILE } from '../../config.js'
+import { API_URL, API_URL_PROJECT_FILE, OBJECT_TYPE_FILE } from '../../config.js'
 
 import ControlNotifyPeople from '../controls/ControlNotifyPeople'
 import CategorySelectControl  from '../category/CategorySelectControl'
@@ -38,11 +39,20 @@ class ProjectFileViewVersions extends Component {
         }
     }
 
-    previewFileVersion(e, item) {
-
+  
+    previewFile(e, data) {
+        e.preventDefault()
+        PopupHelper.showProjectFilePrviewModal({data : data})
     }
 
-    downloadFileVersion(e, item) {
+
+    downloadFile(e, item) {
+        e.preventDefault()
+        window.location.href = this.getFileDownloadURL(item)
+    }
+
+    getFileDownloadURL(item_file_verion) {
+        return API_URL+'/project_file/download?id='+item_file_verion.id+'&token=' + Auth.getToken();   
     }
 
     deleteFileVersion(e, item) {
@@ -67,8 +77,18 @@ class ProjectFileViewVersions extends Component {
 
                         <div className="d-table-cell xs-d-block w20 valign-middle text-right">
                             <span className="icons-group light">
-                                <button className="btn btn-plain" title="Preview" onClick={(e)=> this.showFile(e, item)} ><i className="fa fa-eye"></i></button>
-                                <button className="btn btn-plain" title="Download" onClick={(e)=> this.editFile(e, item)} ><i className="fa fa-download"></i></button>
+                                {/*<button className="btn btn-plain" title="Preview" onClick={(e)=> this.previewFile(e, item)} ><i className="fa fa-eye"></i></button>*/}
+                                
+                                { item.is_external==true
+                                    ? <a target="_blank" href={item.external_url} className="px10" title="Go to Url" ><i className="fa fa-link"></i></a>
+                                    : ''
+                                }
+
+                                { item.can_download==true
+                                    ? <button className="btn btn-plain" title="Download" onClick={(e)=> this.downloadFile(e, item)} ><i className="fa fa-download"></i></button>
+                                    : ''
+                                }
+
                                 <button className="btn btn-plain" title="Delete This Version" onClick={(e)=> this.deleteFileVersion(e, item)} ><i className="fa fa-trash"></i></button>
                             </span>
                         </div>

@@ -213,152 +213,6 @@ a:hover {
       
 }
 
-
-.comp_task_item {
-    position: relative;
-    // padding: 10px 30px 10px 10px;
-    line-height: 22px;
-    vertical-align: top;
-    >.inner {
-
-    }
-}
-.comp_task_item_children, .takslist_tasks {
-    margin-left: 30px;
-
-    &.active {
-        border: 1px dashed #dad8d8;
-        padding: 10px 10px;
-        min-height: 30px;
-    }
-}
-
-.takslist_tasks.level-0 {
-    min-height: 30px;
-    // padding-left: 30px;
-}
-
-
-.comp_task_title {
-    background-color: #fbf6f6;    
-    padding: 10px;
-    margin: 10px 0;
-}
-
-.comp-tasklisttitle {
-    background-color: #f5f5f5;
-    padding: 10px;
-    // margin-bottom: 10px;
-}
-
-.tasklist-item {
-    padding-bottom: 20px;
-}
-
-.tasks-list {
-    // border: 1px dashed #dad8d8;
-    // margin: 10px;
-    // padding-top: 10px;
-    // margin-left: 30px;
-    &.level-0 {
-            padding-left: 30px;
-            min-height: 10px;
-        }
-}
-.tasks-list .tasks-list {
-    margin-left: 30px;
-}
-.ui-sortable-placeholder {
-    min-height: 30px;
-    border: 1px dashed #dad8d8;
-    margin: 10px;   
-}
-
-.task-wrapper {
-    padding-top: 10px;
-    .task-wrapper {
-        // margin-left: 30px;
-    }
-    .tasks-list {
-        &.active {
-            min-height: 50px;
-            background: #f9f9f9;
-            padding-botom: 100px;
-        }
-
-
-    }
-
-    
-}
-
-.singletask {
-    // border-bottom: 1px solid #F6F6F6;
-    // background-color: #fff;
-
-    .inner {
-        position: relative;
-        padding: 10px 30px 10px 10px;
-        line-height: 22px;
-        vertical-align: top;
-        background-color: #fbf6f6;
-        // margin-bottom: 10px;
-    }
-
-    .controls {
-        a {
-            margin-right: 10px;
-        }
-
-        &.left {
-            float: left;
-        }
-
-        &.right {
-            position: absolute;
-            right: 0;
-            top: 10px;
-            // display: none;
-        }
-    }
-
-
-    i {
-        color: #000;
-    }
-
-    .tags {
-        margin-left: 15px;
-
-        .label {
-            margin: 0 5px;
-        }
-
-        .remove {
-            color: #fff;
-        }
-    }
-
-    .persons-assigned {
-        a {
-            background-color: #e2dddd;
-            padding: 2px 5px;
-            margin: 0px 5px;
-            color: #000;
-            font-size: 12px;
-        }
-    }
-
-
-    &:hover {
-        .controls {
-            &.right {
-                // display: block;
-            }
-        }
-    }
-}
-
 // .space {
 //     min-height: 50px;
 //     background: red;
@@ -713,6 +567,13 @@ body {
 
 
 // CONTROLS
+.box-info {
+    h3 {
+        font-family: proxima_nova_ltsemibold;
+        font-size: 20px;
+    }
+}
+
 .icons-group {
     button {
         margin-right: 10px;
@@ -773,6 +634,9 @@ body {
     width: 600px;
 }
 
+.popup_content.wauto {
+    width: auto;
+}
 .popup_content.w500 {
     width: 300px;
 }
@@ -859,6 +723,21 @@ body {
     width: 90%;
   }
 
+}
+
+
+.comp-projectfileprviewmodal {
+    iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        height: 800px;
+        width: 800px;
+    }
+
+    img {
+        max-width: 100%;
+    }
 }
 
 
@@ -1062,6 +941,180 @@ body {
 
     a.remove {
         margin-left: 10px;
+    }
+}
+
+
+
+
+
+.comp_task_item {
+    position: relative;
+    // padding: 10px 30px 10px 10px;
+    line-height: 22px;
+    vertical-align: top;
+    >.inner {
+
+    }
+}
+.comp_task_item_children, .takslist_tasks {
+    margin-left: 30px;
+
+    &.active {
+        border: 1px dashed #dad8d8;
+        padding: 10px 10px;
+        min-height: 30px;
+    }
+}
+
+.takslist_tasks.level-0 {
+    min-height: 30px;
+    // padding-left: 30px;
+}
+
+
+.comp_task_title {
+    padding-left: 20px;
+    margin: 10px 0;
+    position: relative;
+    
+    >.inner {
+        background-color: #fbf6f6;
+        padding: 10px;
+    }
+    .dragHandle {
+        display: none;
+        position: absolute;
+        left: 0;
+        top: 50%;
+        margin-top: -12px;
+    }
+
+    &:hover {
+
+        .dragHandle {
+            display: inline-block;
+        }
+    }
+
+    &.root {
+        .dragHandle {
+            display: none;
+        }
+    }
+}
+
+.comp-tasklisttitle {
+    background-color: #f5f5f5;
+    padding: 10px;
+    // margin-bottom: 10px;
+}
+
+.tasklist-item {
+    padding-bottom: 20px;
+}
+
+.tasks-list {
+    // border: 1px dashed #dad8d8;
+    // margin: 10px;
+    // padding-top: 10px;
+    // margin-left: 30px;
+    &.level-0 {
+            padding-left: 30px;
+            min-height: 10px;
+        }
+}
+.tasks-list .tasks-list {
+    margin-left: 30px;
+}
+.ui-sortable-placeholder {
+    min-height: 30px;
+    border: 1px dashed #dad8d8;
+    margin: 10px;   
+}
+
+.task-wrapper {
+    padding-top: 10px;
+    .task-wrapper {
+        // margin-left: 30px;
+    }
+    .tasks-list {
+        &.active {
+            min-height: 50px;
+            background: #f9f9f9;
+            padding-botom: 100px;
+        }
+
+
+    }
+
+    
+}
+
+.singletask {
+    // border-bottom: 1px solid #F6F6F6;
+    // background-color: #fff;
+
+    .inner {
+        position: relative;
+        padding: 10px 30px 10px 10px;
+        line-height: 22px;
+        vertical-align: top;
+        background-color: #fbf6f6;
+        // margin-bottom: 10px;
+    }
+
+    .controls {
+        a {
+            margin-right: 10px;
+        }
+
+        &.left {
+            float: left;
+        }
+
+        &.right {
+            position: absolute;
+            right: 0;
+            top: 10px;
+            // display: none;
+        }
+    }
+
+
+    i {
+        color: #000;
+    }
+
+    .tags {
+        margin-left: 15px;
+
+        .label {
+            margin: 0 5px;
+        }
+
+        .remove {
+            color: #fff;
+        }
+    }
+
+    .persons-assigned {
+        a {
+            background-color: #e2dddd;
+            padding: 2px 5px;
+            margin: 0px 5px;
+            color: #000;
+            font-size: 12px;
+        }
+    }
+
+
+    &:hover {
+        .controls {
+            &.right {
+                // display: block;
+            }
+        }
     }
 }
 

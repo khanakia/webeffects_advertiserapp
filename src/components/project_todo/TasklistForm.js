@@ -13,6 +13,9 @@ import { fetchProjectTasklists } from '../../actions/action_project'
 class TasklistForm extends Component {
     constructor(props) {
         super(props);
+
+        this.msg_btn_save_text = 'Create Tasklist'
+        this.msg_heading = 'Create Tasklist'
     }
 
     static defaultProps = {
@@ -25,11 +28,16 @@ class TasklistForm extends Component {
         },
 
         project_id : '',
+
+        is_new : true,
         
     }
 
     componentWillMount() {
-
+        if(!this.props.is_new) {
+            this.msg_btn_save_text = "Update Tasklist"
+            this.msg_heading = 'Edit Tasklist'
+        }
     }
 
     componentDidMount() {
@@ -57,8 +65,8 @@ class TasklistForm extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
 
-        // var valid = jQuery(this.refs.form).valid();
-        // if (!valid) {return false};
+        var valid = jQuery(this.refs.form).valid();
+        if (!valid) {return false};
 
         let data = jQuery(this.refs.form).serialize();
         // data = URI.parseQuery(data);
@@ -88,26 +96,26 @@ class TasklistForm extends Component {
         return (
             <div className="comp-commentform">
                 <div className="modal-header">
-                    <h4 className="modal-title">Tasklist Detail</h4>
+                    <h4 className="modal-title">{this.msg_heading}</h4>
                 </div>
                 <form className="form" ref='form' onSubmit={this.handleSubmit}>
                     <input type="hidden" name="project_id" defaultValue={this.props.project_id} placeholder={'project_id'} />
                     <input type="hidden" name="id" defaultValue={this.props.data.id} placeholder="id" />
                     <div className="content-area">
                         <div className="mb20">  
-                            <input type="text" className="w100" name="tasklist_title" defaultValue={this.props.data.tasklist_title} placeholder="Title" />
+                            <input type="text" className="form-control required" name="tasklist_title" defaultValue={this.props.data.tasklist_title} placeholder="Title" />
                         </div>
                         <ul className="nav nav-tabs" role="tablist">
                             <li role="presentation" className="active"><a href="#description" aria-controls="description" role="tab" data-toggle="tab">Description</a></li>
                         </ul>
                         <div className="tab-content">
                             <div role="tabpanel" className="tab-pane active" id="description">
-                               <textarea className="hp100" name="tasklist_note" defaultValue={this.props.data.tasklist_note}></textarea>
+                               <textarea className="w100 hp70" name="tasklist_note" defaultValue={this.props.data.tasklist_note}></textarea>
                             </div>
                         </div>
                     </div>
                     <div className="modal-footer text-right">
-                        <button type="submit" className="btn btn-success" ref="btn_save" >Save</button>
+                        <button type="submit" className="btn btn-blue-link">{this.msg_btn_save_text}</button>
                     </div>
                 </form>
             </div>

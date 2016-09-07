@@ -20,6 +20,7 @@ import ProjectFileBrowseForm from '../components/project_file/ProjectFileBrowseF
 import ProjectFileDetailsEditForm from '../components/project_file/ProjectFileDetailsEditForm'
 import ProjectFileUploadForm from '../components/project_file/ProjectFileUploadForm'
 import ProjectFileViewVersions from '../components/project_file/ProjectFileViewVersions'
+import ProjectFilePrviewModal from '../components/project_file/ProjectFilePrviewModal'
 
 
 import CommentForm from '../components/project/CommentForm'
@@ -358,6 +359,29 @@ export default class PopupHelper {
             }
         });
     }
+
+
+    static showProjectFilePrviewModal(args = {}) {
+        var uniq = 'id' + (new Date()).getTime();
+
+        Controls.showpopup({
+            detach: true,
+            message: '<div id="' + uniq + '"></div>',
+            container_class: "wauto",
+            opacity: 0.5,
+            blur: false,
+            autozindex : true,
+            onopen: function(e) {
+                var pid = (jQuery(e).attr('id'));
+                ReactDom.render(<ProjectFilePrviewModal popup_id={pid} {...args} />, document.getElementById(uniq));
+            },
+            onclose: function(e) {
+                ReactDom.unmountComponentAtNode(document.getElementById(uniq))
+            }
+        });
+    }
+
+    
 
     static showProjectMessageForm(args = {}) {
         var uniq = 'id' + (new Date()).getTime();

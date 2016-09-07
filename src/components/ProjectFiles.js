@@ -228,7 +228,7 @@ class ProjectFiles extends Component {
 
         
         var data = 'file_version_ids='+selectedFiles.join(',');
-        ProjectFileVersionHelper.deleteMultiple(data).then((response)=>{
+        ProjectFileHelper.deleteMultiple(data).then((response)=>{
             console.log(data);
             this.props.fetchProjectFiles(this.projectId);
             

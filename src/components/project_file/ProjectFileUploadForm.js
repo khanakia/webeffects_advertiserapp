@@ -11,44 +11,14 @@ import ControlNotifyPeople from '../controls/ControlNotifyPeople'
 import CategorySelectControl  from '../category/CategorySelectControl'
 
 
-// var FileListRender = React.createClass({
-//     render: function() {
-//       return (
-//         <ul className="list-group">
-//           {this.props.list.map(function(item){
-//             return (
-//                 <li className="list-group-item" key={item.id}>
-//                     <input type="hidden" name="files[]" defaultValue={item.id} />
-//                     <div className="d-table w100">
-//                         <div className="d-table-cell xs-d-block  xs-w100 valign-middle">
-//                                 {   item.project_file_version_latest ?
-//                                     item.project_file_version_latest.file_displayname
-//                                     : ''
-//                                 }
-
-//                         </div>
-//                         <div className="d-table-cell xs-d-block w20 valign-middle">
-//                             <button type="button" className="btn btn-plain pull-right"><i className="fa fa-trash"></i></button>
-//                         </div>
-
-                        
-//                     </div>
-//                 </li>
-//             )
-//           })}
-//         </ul>
-//       )
-//     }
-// });
-
 var FileListRender = React.createClass({
     render: function() {
       return (
         <ul className="list-group-uploadedfiles">
           {this.props.list.map(function(item){
             return (
-                <li className="" key={item.id}>
-                    {/*<input type="hidden" name="files[]" defaultValue={item.id} />*/}
+                <li className="" key={item.project_file_version_latest.id}>
+                    <input type="hidden" name="files[]" defaultValue={item.id} />
                     <label className="title">
                         {   item.project_file_version_latest ?
                             item.project_file_version_latest.file_displayname
@@ -80,7 +50,8 @@ class ProjectFileUploadForm extends Component {
             id : ''
         },
 
-        project_id : ''
+        project_id : '',
+        is_new : true,
     }
 
     componentWillMount() {
@@ -158,7 +129,6 @@ class ProjectFileUploadForm extends Component {
     }
 
     componentDidUpdate() {
-        // this.fineUploader()
     }
 
     fineUploader() {
@@ -168,8 +138,9 @@ class ProjectFileUploadForm extends Component {
 
         var $fub = $(this.refs.btn_add_files);
         var fineUploaderBasicInstance = new qq.FineUploaderBasic({
-            debug: true,
-             button: $fub[0],
+            debug: false,
+            button: $fub[0],
+            multiple : true,
             request: {
                 endpoint: API_URL_PROJECT_FILE + '/upload',
                 customHeaders: {
@@ -199,18 +170,41 @@ class ProjectFileUploadForm extends Component {
                 },
                 onComplete: function(id, fileName, responseJSON) {
                     if (responseJSON.success) {
-                        this.uploadedFiles.push(responseJSON.file)
-                        this.renderUploadedFiles()
 
-                        this.props.fetchProjectFiles(this.props.project_id)
+                        if(this.props.is_new) {
+                            this.uploadedFiles.push(responseJSON.file)
+                            this.renderUploadedFiles()
+                            this.props.fetchProjectFiles(this.props.project_id)
+                        } else {
+                            this.hidePopup()
+                        }
                     }
                 }.bind(this)
             }
         });
+
+        // var $dropdzone = $('#fine-uploader-dropzone');
+        var dragAndDropModule = new qq.DragAndDrop({
+            hideDropZonesBeforeEnter : true,
+            dropZoneElements: [document.getElementById('fine-uploader-dropzone')],
+            classes: {
+              dropActive: "cssClassToAddToDropZoneOnEnter"
+            },
+            callbacks: {
+              processingDroppedFiles: function() {
+                //TODO: display some sort of a "processing" or spinner graphic
+              },
+              processingDroppedFilesComplete: function(files, dropTarget) {
+                //TODO: hide spinner/processing graphic
+                fineUploaderBasicInstance.addFiles(files); //this submits the dropped files to Fine Uploader
+              }
+            }
+        })
     }
 
     renderUploadedFiles() {
         var uploaded_files_list = jQuery(this.refs.uploaded_files_list)
+        console.info("uploaded_files_list", this. uploadedFiles)
         ReactDom.render(
             <div>
                 <FileListRender list={this.uploadedFiles}/>
@@ -219,23 +213,6 @@ class ProjectFileUploadForm extends Component {
         );
     }
 
-    // static showInPoup({settings={}, data={}, onDataUpdate=this.defaultProps.onDataUpdate()}) {
-    //     var uniq = 'id' + (new Date()).getTime();
-
-    //     Controls.showpopup({
-    //         detach : true,
-    //         message : '<div id="' + uniq + '"></div>',
-    //         container_class : "w500",
-    //         opacity: 0.5,
-    //         blur: false,
-    //         onopen : function(e){
-    //           var pid = (jQuery(e).attr('id'));
-    //           ReactDom.render(<ProjectFileUploadForm popup_id={pid} settings={settings} data={data} onDataUpdate={onDataUpdate} />, document.getElementById(uniq));
-    //           console.log(pid);
-    //           // setTimeout(() => jQuery('#'+pid).popup('hide'), 3000); 
-    //         }
-    //     });
-    // }
 
 
     hidePopup = () => {
@@ -244,25 +221,12 @@ class ProjectFileUploadForm extends Component {
         }
     }
 
-    // save() {
-    //     var data = {
-    //         project_id : this.props.project_id,
-    //         unique_id : this.unique_id,
-    //     }
-
-    //     data = jQuery.param(data)
-    //     ProjectFileHelper.store(data)
-    // }
 
 
     handleSubmit = (e) => {
         e.preventDefault();
 
-        // var data = {
-        //     project_id : this.props.project_id,
-        //     unique_id : this.unique_id,
-        // }
-
+    
         let data = jQuery(this.refs.form).serialize();
 
         // data = jQuery.param(data)
@@ -276,8 +240,8 @@ class ProjectFileUploadForm extends Component {
 
     }
   
-    render() {
-        console.log("this.props.data", this.props.data)
+    renderNew() {
+        // console.log("this.props.data", this.props.data)
         return (
             <div className="comp-projectfileuploadform">
                 <div className="modal-header">
@@ -333,6 +297,54 @@ class ProjectFileUploadForm extends Component {
                     </div>
                 </form>
 
+            </div>
+        );
+    }
+
+    renderEdit() {
+        return (
+            <div className="comp-projectfileuploadform">
+                <div className="modal-header">
+                    <h4 className="modal-title">Upload File</h4>
+                </div>
+                
+                <form className="form" ref='form' onSubmit={this.handleSubmit}>
+                    <input type="text" name="project_file_id" defaultValue={this.props.data.id} placeholder={'project_file_id'} />
+                    <input type="text" name="project_id" defaultValue={this.props.project_id} placeholder={'project_id'} />
+                    <input type="text" name="unique_id" defaultValue={this.unique_id} placeholder={'unique_id'} />
+                    <div className="content-area">
+                        <div className="mb20">
+                            <div id="fine-uploader-dropzone" className="d-table w100">
+                                <div className="d-table-cell valign-middle text-center">
+                                    <div id="fine-uploader-basic" className="btn btn-success btn-sm" ref="btn_add_files">
+                                        <i className="icon-upload icon-white"></i> Click to upload
+                                    </div>
+                                    <div className="fs12 my5"> OR </div>
+                                    DROP FILES HERE
+                                </div>
+                            </div>
+                            
+                            <div className="my20 hmax-p100 oy-scroll" ref="uploaded_files_list">
+                            </div>
+
+                            <div id="fine-uploader">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        );
+    }
+
+
+    render() {
+        // console.log("this.props.data", this.props.data)
+        return (
+            <div className="comp-projectfileuploadform">
+               { this.props.is_new==true 
+                 ? this.renderNew()
+                 : this.renderEdit()
+               }
             </div>
         );
     }

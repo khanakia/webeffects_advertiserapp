@@ -136,7 +136,7 @@ class GooglePicker extends Component {
     }
   
     render() {
-        console.log("this.props.data", this.props.data)
+        // console.log("this.props.data", this.props.data)
         return (
             <span className="comp-googlepicker">
                <a ref="picker_btn" href="#" className="btn btn-green-bordered"><i className="fa fa-cloud"></i>Google Drive</a>
