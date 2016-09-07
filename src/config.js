@@ -21,6 +21,7 @@ export const FORGET_PWD_AJAX = API_URL + '/postEmail';
 export const API_URL_PUBLIC = API_URL+'/public';
 
 export const API_URL_SIGNIN = API_URL+'/auth/signin';
+export const API_URL_SIGNIN_CONFIRM_ACCOUNT = API_URL+'/auth/signin_confirm_account';
 export const API_URL_SIGNUP = API_URL+'/auth/signup';
 export const API_URL_GETALLORGSBYEMAIL = API_URL_PUBLIC+'/findorgs_byemail';
 export const API_URL_GETORG_BYDOMAIN = API_URL_PUBLIC+'/findorgs_bydomain';
