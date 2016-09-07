@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link, hashHistory } from 'react-router'
 import ReactDOM from 'react-dom'
 
-import {ROOT_URL, SIGN_UP_URL, FORGET_PWD_URL} from '../config.js'
+import {ROOT_URL, SIGN_UP_URL, FORGET_PWD_URL, API_URL_SIGNIN_CONFIRM_ACCOUNT} from '../config.js'
 import OrgHelper from '../helpers/helper_org.js'
 import Auth from '../helpers/auth.js'
 import Localstore from '../helpers/localstore.js'
@@ -40,17 +40,32 @@ export default class LayoutLogin extends Component {
         var valid = jQuery(".loginForm").valid();
         if (!valid) {
             return false 
-        };       
-        Auth.attempt({email: this.refs.email.value, password: this.refs.password.value}).then((response) => {
-            if (response.data.token != null) {
-                // Localstore.setOrg(response.data.org)
-                // Localstore.setUser(response.data.user)
-                toastr.success(response.data.message);       
-                hashHistory.push('/dashboard')
-            } else {                
-                toastr.error(response.data.message);       
-            }
-        });
+        };  
+        var confirm_token = this.props.location.query.confirm_token;    
+
+        if (confirm_token) {
+            Auth.attempt_confirm_token({email: this.refs.email.value, password: this.refs.password.value, confirm_token: confirm_token}).then((response) => {
+                if (response.data.token != null) {
+                    // Localstore.setOrg(response.data.org)
+                    // Localstore.setUser(response.data.user)
+                    toastr.success(response.data.message);       
+                    hashHistory.push('/dashboard')
+                } else {                
+                    toastr.error(response.data.message);       
+                }
+            });
+        } else {
+            Auth.attempt({email: this.refs.email.value, password: this.refs.password.value}).then((response) => {
+                if (response.data.token != null) {
+                    // Localstore.setOrg(response.data.org)
+                    // Localstore.setUser(response.data.user)
+                    toastr.success(response.data.message);       
+                    hashHistory.push('/dashboard')
+                } else {                
+                    toastr.error(response.data.message);       
+                }
+            });
+        }
       
     }
 

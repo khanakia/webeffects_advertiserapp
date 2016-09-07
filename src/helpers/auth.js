@@ -1,4 +1,4 @@
-import {API_URL_SIGNIN} from '../config.js'
+import {API_URL_SIGNIN, API_URL_SIGNIN_CONFIRM_ACCOUNT} from '../config.js'
 import localstore from './localstore.js'
 import OrgHelper from './helper_org'
 
@@ -25,6 +25,21 @@ export default class Auth {
 		return ajaxObj;
 	}
 
+	static attempt_confirm_token({email=null, password=null, confirm_token=null}) {
+		var ajaxObj =  axios.post(API_URL_SIGNIN_CONFIRM_ACCOUNT, {
+					email: email,
+					password: password,
+					confirm_token: confirm_token,
+				})
+
+		ajaxObj.then(function (response) {
+			Auth.login(response.data.token)
+		}).catch(function (error) {
+			console.log(error);
+		});
+
+		return ajaxObj;
+	}
 	static login(token=null) {
 		if(!token) return "Cannot Login";
 		localStorage.setItem('token', token);
