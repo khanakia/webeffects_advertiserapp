@@ -13,7 +13,8 @@ import {
     FETCH_PROJECT_TASK, 
     FETCH_COMMENTS,
     FETCH_PROJECT_ACTIVITIES,
-    FILTER_PROJECT_LIST
+    FILTER_PROJECT_LIST,
+    FILTER_PROJECT_PEOPLE_LIST,
 } from '../actions/action_project';
 
 
@@ -33,6 +34,7 @@ const INITIAL_STATE = {
     comments : [],
     activities : [],
     filter_projectlist_params : [],
+    filter_projectuserlist_params : [],
 
 };
 
@@ -75,6 +77,8 @@ export default function(state = INITIAL_STATE, action) {
             return {...state, activities: action.payload.data };
         case FILTER_PROJECT_LIST:
             return {...state, filter_projectlist_params: action.payload };
+        case FILTER_PROJECT_PEOPLE_LIST:
+            return {...state, filter_projectuserlist_params: action.payload };
         default:
             return state;
     }

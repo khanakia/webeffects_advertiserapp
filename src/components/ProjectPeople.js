@@ -23,8 +23,8 @@ class ProjectPeople extends Component {
         
        this.props.fetchProjectUsers(this.projectId);
 
-       // ProjectUsersEditForm.showInPoup({data : {project_id : 1}})
-               // ProjectUserPermissionForm.showInPoup({})
+        // ProjectUsersEditForm.showInPoup({data : {project_id : 1}})
+        // ProjectUserPermissionForm.showInPoup({})
 
     }
 
@@ -48,6 +48,13 @@ class ProjectPeople extends Component {
                 });
             }.bind(this)
         });
+    }
+
+    filterChange(e) {
+        var value = e.target.value;
+        this.props.filterProjectPeopleList({
+            fullname : value
+        })
     }
 
     renderList(projectusers) {
@@ -96,17 +103,17 @@ class ProjectPeople extends Component {
             <div>
                 <div className="control-toolbar1">
                     <div className="left">
-                        <span className="title">Users on this Project</span>
+                        <div className="filter-header-input-wrap">
+                            <input placeholder="Find a user" className="filter-header-input" defaultValue="" onChange={(e)=>this.filterChange(e)}/>
+                        </div>
                     </div>
                     <div className="middle">
                     </div>
                     <div className="right">
                         <span className="pull-right">
-                            <span className="col mr10">
-                                
-                            </span>
+                            <span className="col mr10"></span>
                             <span className="col icons-group">
-                                <button className="btn btn-success" onClick={()=> PopupHelper.showProjectUsersEditForm({data : {project_id : this.projectId}})}><i className="fa fa-plus mr5"></i>Add Users</button>
+                                <button className="btn btn-green-bordered" onClick={()=> PopupHelper.showProjectUsersEditForm({data : {project_id : this.projectId}})}><i className="fa fa-plus mr5"></i>Add Users to Project</button>
                             </span>
                         </span>
                     </div>

@@ -12,6 +12,8 @@ export const FETCH_PROJECT_TASK = 'FETCH_PROJECT_TASK';
 
 export const FILTER_PROJECT_LIST = 'FILTER_PROJECT_LIST';
 
+export const FILTER_PROJECT_PEOPLE_LIST = 'FILTER_PROJECT_PEOPLE_LIST';
+
 export const FETCH_PROJECT_MESSAGES = 'FETCH_PROJECT_MESSAGES';
 export const FETCH_PROJECT_MESSAGE = 'FETCH_PROJECT_MESSAGE';
 
@@ -161,6 +163,13 @@ export function fetchProjectActivities(project_id) {
 export function filterProjectList(data) {
     return {
         type: FILTER_PROJECT_LIST,
+        payload: data
+    };
+}
+
+export function filterProjectPeopleList(data) {
+    return {
+        type: FILTER_PROJECT_PEOPLE_LIST,
         payload: data
     };
 }
