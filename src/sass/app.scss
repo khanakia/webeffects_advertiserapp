@@ -1462,3 +1462,119 @@ header {
 .dropdown-menu {
     min-width: 170px;
 }
+
+
+
+.subscribeForm {
+    li {
+        width: 16.66%;
+        float: left;
+        padding: 0 1px;
+        text-align: center;
+        list-style: none;
+        font-size: 12px;
+        border-radius: 4px;
+        .plan-details {
+            color: #fff;
+            margin-bottom: 2px;
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
+            .plan-name {
+                padding: 7px 0;
+                border-top-left-radius: 4px;
+                border-top-right-radius: 4px;
+            }
+            .plan-price {
+                margin-top: 10px;
+                font-size: 50px;
+                line-height: 55px;
+                sup {
+                    font-size: 12px;
+                    vertical-align: super;
+                }
+            }
+            .per-month {
+                padding-bottom: 10px;
+            }
+        }
+        .btn-style {
+            margin-top: 2px;
+        }
+        .style1 {
+            .plan-details,
+            .btn-style {
+                color: #fff;
+                background-color: #82daca;
+            }            
+            .plan-name {
+                background-color: #18dab7;
+            }
+        }
+        .style2 {
+            .plan-details,
+            .btn-style {
+                color: #fff;
+                background-color: #53cfe9;
+            }            
+            .plan-name {
+                background-color: #09b7dc;
+            }
+        }
+        .style3 {
+            .plan-details,
+            .btn-style {
+                color: #fff;
+                background-color: #2dcc70;
+            }            
+            .plan-name {
+                background-color: #04a246;
+            }
+        }
+        .style4 {
+            .plan-details,
+            .btn-style {
+                color: #fff;
+                background-color: #2880ce;
+            }            
+            .plan-name {
+                background-color: #055dab;
+            }
+        }
+        .style5 {
+            .plan-details,
+            .btn-style {
+                color: #fff;
+                background-color: #f98586;
+            }            
+            .plan-name {
+                background-color: #dc3b3c;
+            }
+        }
+        .btn {
+            width: 100%;
+        }
+        table {
+            margin: 0;
+            background-color: #f0f8ff;
+            td{
+                border: none;
+                .fa-check,
+                .fa-times {
+                    padding: 4px;
+                    color: #fff;
+                    font-size: 10px;
+                    background-color: #9ed97e;
+                    border-radius: 50%;
+                }
+                .fa-times {
+                    background-color: #e5938a;
+                }
+            }
+        }
+        table.featureBox {
+            margin-top: 125px;
+            text-align: right;
+            background-color: transparent;
+        }
+    }
+}

@@ -6679,4 +6679,83 @@ header {
 .dropdown-menu {
   min-width: 170px; }
 
+.subscribeForm li {
+  width: 16.66%;
+  float: left;
+  padding: 0 1px;
+  text-align: center;
+  list-style: none;
+  font-size: 12px;
+  border-radius: 4px; }
+  .subscribeForm li .plan-details {
+    color: #fff;
+    margin-bottom: 2px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px; }
+    .subscribeForm li .plan-details .plan-name {
+      padding: 7px 0;
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px; }
+    .subscribeForm li .plan-details .plan-price {
+      margin-top: 10px;
+      font-size: 50px;
+      line-height: 55px; }
+      .subscribeForm li .plan-details .plan-price sup {
+        font-size: 12px;
+        vertical-align: super; }
+    .subscribeForm li .plan-details .per-month {
+      padding-bottom: 10px; }
+  .subscribeForm li .btn-style {
+    margin-top: 2px; }
+  .subscribeForm li .style1 .plan-details,
+  .subscribeForm li .style1 .btn-style {
+    color: #fff;
+    background-color: #82daca; }
+  .subscribeForm li .style1 .plan-name {
+    background-color: #18dab7; }
+  .subscribeForm li .style2 .plan-details,
+  .subscribeForm li .style2 .btn-style {
+    color: #fff;
+    background-color: #53cfe9; }
+  .subscribeForm li .style2 .plan-name {
+    background-color: #09b7dc; }
+  .subscribeForm li .style3 .plan-details,
+  .subscribeForm li .style3 .btn-style {
+    color: #fff;
+    background-color: #2dcc70; }
+  .subscribeForm li .style3 .plan-name {
+    background-color: #04a246; }
+  .subscribeForm li .style4 .plan-details,
+  .subscribeForm li .style4 .btn-style {
+    color: #fff;
+    background-color: #2880ce; }
+  .subscribeForm li .style4 .plan-name {
+    background-color: #055dab; }
+  .subscribeForm li .style5 .plan-details,
+  .subscribeForm li .style5 .btn-style {
+    color: #fff;
+    background-color: #f98586; }
+  .subscribeForm li .style5 .plan-name {
+    background-color: #dc3b3c; }
+  .subscribeForm li .btn {
+    width: 100%; }
+  .subscribeForm li table {
+    margin: 0;
+    background-color: #f0f8ff; }
+    .subscribeForm li table td {
+      border: none; }
+      .subscribeForm li table td .fa-check,
+      .subscribeForm li table td .fa-times {
+        padding: 4px;
+        color: #fff;
+        font-size: 10px;
+        background-color: #9ed97e;
+        border-radius: 50%; }
+      .subscribeForm li table td .fa-times {
+        background-color: #e5938a; }
+  .subscribeForm li table.featureBox {
+    margin-top: 125px;
+    text-align: right;
+    background-color: transparent; }
+
 /*# sourceMappingURL=app.css.map */
