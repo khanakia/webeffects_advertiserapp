@@ -39,7 +39,7 @@ class CategorySelectControl extends Component {
 
  
         var tree = this.getNestedChildren(this.props.categoryList,null);
-        console.log('this.props.categoryList', tree)
+        // console.log('this.props.categoryList', tree)
         $('#tree').treeview({
             data: tree,
             showCheckbox: true,

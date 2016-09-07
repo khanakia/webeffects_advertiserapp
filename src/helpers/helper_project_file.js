@@ -76,12 +76,23 @@ export default class ProjectFileHelper {
         });
     }
 
-    static preview(id) {
+    static deleteMultiple(data) {
+        return axios({
+            method: 'post',
+            url: API_URL_PROJECT_FILE + '/delete_multiple',
+            data: data,
+            headers: Auth.header(),
+        });
+    }
+
+    static preview(id, hash) {
         return axios({
             method: 'get',
             url: API_URL_PROJECT_FILE + '/preview',
             params : {
-                id : id
+                id : id,
+                hash : hash
+
             },
             headers: Auth.header(),
         });

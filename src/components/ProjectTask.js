@@ -52,7 +52,7 @@ class ProjectTask extends Component {
         if (jQuery.isEmptyObject(data)) return false;
 
         return (
-            <div>
+            <div className="pageSingleTask">
                <div className="control-toolbar1 mb20">
                     <div className="left">
                         <span className="title">Task Details</span>
@@ -70,7 +70,8 @@ class ProjectTask extends Component {
                         </span>    
                     </div>
                 </div>
-               <TaskItem data={data} />
+
+               <TaskItem data={data} className="root" is_pageSingleTask={true}/>
 
                <div className="section_comments">
                     <CommentList object_type={OBJECT_TYPE_TASK} object_id={taskId} />

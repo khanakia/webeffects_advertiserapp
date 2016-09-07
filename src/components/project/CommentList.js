@@ -6,6 +6,7 @@ import {connectWithStore} from '../../store/index.js';
 import CategorySelectControl from '../category/CategorySelectControl'
 import ControlNotifyPeople from '../controls/ControlNotifyPeople'
 import ProjectFileAttachForm from '../project_file/ProjectFileAttachForm'
+import ProjectFileItem from '../project_file/ProjectFileItem'
 
 import {CommentHelper} from '../../helpers'
 import PopupHelper from '../../helpers/helper_popup'
@@ -74,25 +75,44 @@ class CommentList extends Component {
         });
     }
 
+    renderFilesList(items) {
+        if(!items) return false;
+        return items.map((item) => {
+            return (
+                <li className="list-group-item" key={item.id}>
+
+                   <ProjectFileItem file={item} layout="layout2"  />
+                </li>
+            );
+        });
+    }
+
     renderList(items) {
         return items.map((item) => {
             const {created_by_user} = item;
             return (
-                <div className="list-group-item" key={item.id}>
+                <li className="list-group-item11" key={item.id}>
                     <div className="d-table w100">
-                        <div className="d-table-cell xs-d-block wp100 xs-w100">
+                        <div className="d-table-cell xs-d-block wp80">
                             <div className="userInfoBlock">
-                                <div className="image d-inline-block valign-middle mr20">
-                                    <div className="avatar" style={{backgroundImage: "url('"+created_by_user.image_base64+"')"}}>
+                                <div className="image d-inline-block valign-middle mr10">
+                                    <div className="avatar" style={{backgroundImage: "url('"+created_by_user.profile_image_url+"')"}}>
                                     </div>
-                                </div>
-                                <div className="summary d-inline-block">
                                 </div>
                             </div>
                         </div>
                         <div className="d-table-cell xs-d-block xs-w100 valign-middle">
-                            <div className="title fw-b">{created_by_user.user_id} {created_by_user.fullname}</div>
-                            <div dangerouslySetInnerHTML={{__html: item.body}} />
+                            <div>
+                                <span className="title">{created_by_user.user_id} {created_by_user.fullname}</span>
+                                <span className="dated">{moment(item.created_at).format('llll')}</span>
+                            </div>
+
+                            <div className="comment_text">
+                                <div dangerouslySetInnerHTML={{__html: item.body}} />
+                            </div>
+                            <ul className="list-group-filelist-display">
+                                {this.renderFilesList(item.project_files)}
+                            </ul>
                         </div>
                         <div className="d-table-cell xs-d-block wp100 valign-middle text-right">
                             <span className="icons-group light">
@@ -101,7 +121,7 @@ class CommentList extends Component {
                             </span>
                         </div>
                     </div>
-                </div>
+                </li>
             );
         });
     }
@@ -113,9 +133,9 @@ class CommentList extends Component {
         return (
             <div className="comp-commentlist">
                 <h3>Comments</h3>
-                <div className="list-group">
+                <ul className="list-group-comments">
                     {this.renderList(data)}
-                </div>
+                </ul>
             </div>
         );
     }

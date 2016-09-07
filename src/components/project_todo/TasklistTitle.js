@@ -38,7 +38,7 @@ class TasklistTitle extends Component {
     }
 
     editTasklist(e, data) {
-       PopupHelper.showTasklistForm({data, onDataUpdate:this.onDataUpdate.bind(this)})
+       PopupHelper.showTasklistForm({data, is_new: false, onDataUpdate:this.onDataUpdate.bind(this)})
     }
     
     onDataUpdate() {

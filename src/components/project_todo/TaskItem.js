@@ -14,6 +14,10 @@ class TaskItem extends Component {
       
     }
 
+    static defaultProps = {
+        className : '',
+        is_pageSingleTask : false
+    }
     componentWillMount() {
       
     }
@@ -22,7 +26,7 @@ class TaskItem extends Component {
         $('.takslist_tasks').sortable({
             connectWith:'.takslist_tasks',
             tolerance:'intersect',
-            handle: ".fa-arrows",
+            handle: ".dragHandle",
             // placeholder: "ph"
             placeholder: "ui-state-highlight",
 
@@ -79,7 +83,7 @@ class TaskItem extends Component {
         
         return (
             <div className="comp_task_item" id={'tl_'+data.id} data-id={data.id}>
-                <TaskTitle data={data} />
+                <TaskTitle data={data} className={this.props.className} is_pageSingleTask={this.props.is_pageSingleTask} />
                 <div className="takslist_tasks comp_task_item_children" data-id={data.id}>
                     {this.renderItems(data.childrens)}
                 </div>

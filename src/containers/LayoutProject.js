@@ -4,17 +4,20 @@ import { connect } from 'react-redux';
 import { Link, hashHistory } from 'react-router'
 
 import {store} from '../store/index.js';
-import { fetchProject} from '../actions/action_project';
+import { fetchProject, fetchProjectTasklists } from '../actions/action_project';
 import { fetchTags} from '../actions/action_tag';
 
 
 import Sidebar from '../components/Sidebar'
 import PagePanel from '../components/PagePanel'
 
+import TasklistSidebar from '../components/project_todo/TasklistSidebar'
+
 class LayoutProjectComponent extends Component {
     
     componentWillMount() {
         this.props.fetchProject(this.props.params.projectId);
+        this.props.fetchProjectTasklists(this.props.params.projectId);
         this.props.fetchTags()  // Required to fetch the reason we are using it everywhere so we need to load tags data first
     }
 
@@ -28,20 +31,24 @@ class LayoutProjectComponent extends Component {
             <div>
                 <Sidebar>
                   {data.project_title}
+                   <ul className="nav_project">
+                        <li><Link activeClassName="active" to={project_url_suffix + "/overview"}><i className="fa fa-line-chart"></i> Overview</Link></li>
+                        <li><Link activeClassName="active" to={project_url_suffix + "/tasklists"}><i className="fa fa-tasks"></i> Tasks</Link></li>
+                        <li><Link activeClassName="active" to={project_url_suffix + "/files"}><i className="fa fa-file"></i> Files</Link></li>
+                        <li><Link activeClassName="active" to={project_url_suffix + "/messages"}><i className="fa fa-comments"></i> Discussions</Link></li>
+                        <li><Link activeClassName="active" to={project_url_suffix + "/people"}><i className="fa fa-users"></i> Peoples</Link></li>
+                    </ul>
+
+                    <div className="box-info">
+                        <h3>Tasklist</h3>
+                        <TasklistSidebar data={this.props.projectsTasklists} project_id={this.props.params.projectId} />
+                    </div>
 
                   <div id="childrenSidebar">
 
                   </div>
                 </Sidebar>
                 <PagePanel hasSidebar="true">
-                    <ul className="nav nav-pills">
-                        <li><Link to={project_url_suffix + "/overview"}><i className="fa fa-bullhorn"></i> Overview</Link></li>
-                        <li><Link to={project_url_suffix + "/tasklists"}><i className="fa fa-bullhorn"></i> Tasks</Link></li>
-                        <li><Link to={project_url_suffix + "/files"}><i className="fa fa-check-square-o"></i> Files</Link></li>
-                        <li><Link to={project_url_suffix + "/messages"}><i className="fa fa-envelope"></i> Messages</Link></li>
-                        <li><Link to={project_url_suffix + "/people"}><i className="fa fa-envelope"></i> Peoples</Link></li>
-                    </ul>
-
                     <div className="project_children pt30">
                         {this.props.children}
                     </div>
@@ -54,8 +61,9 @@ class LayoutProjectComponent extends Component {
 
 const mapStateToProps = (state) => {
     return {
+        state : state,
         projectCurrent: state.project.current,
-        state : state
+        projectsTasklists: state.project.tasklists,
     };
 }
 
@@ -65,8 +73,14 @@ const mapDispatchToProps = (dispatch) => {
         fetchProject: (project_id) => {
             dispatch(fetchProject(project_id)); 
         },
+
         fetchTags: () => {
             dispatch(fetchTags())
+        },
+
+        fetchProjectTasklists: (project_id) => {
+            dispatch(fetchProjectTasklists(project_id)).then((response) => {
+            });
         }
     }
 }

@@ -29,7 +29,9 @@ class TaskTitle extends Component {
         className : '',
 
         project_id : '',
-        data : []
+        data : [],
+
+        is_pageSingleTask : false
     }
 
     componentWillMount() {
@@ -84,13 +86,12 @@ class TaskTitle extends Component {
     render() {
         const item = this.props.data
         return (
-            <div className="comp_task_title">
-                <div className="d-table w100">
-                    <div className="d-table-cell xs-d-block wp60 xs-w100 valign-middle">
-                        <div className="icons-group light">
-                            <a href="#" className="mr10"><i className="fa fa-arrows"></i></a>
+            <div className={"comp_task_title " + this.props.className}>
+                <a href="#" className="mr10 dragHandle"><i className="fa fa-arrows"></i></a>
+                <div className="d-table inner w100">
+                
+                    <div className="d-table-cell xs-d-block wp20 xs-w100 valign-middle">
                             <input type="checkbox" />
-                        </div>
                     </div>
                     <div className="d-table-cell xs-d-block xs-w100 valign-middle">
                             {item.id}
@@ -107,15 +108,18 @@ class TaskTitle extends Component {
                     
                     <div className="d-table-cell xs-d-block valign-middle text-right">
                         <span className="icons-group light">
-                            <button className="btn btn-plain" title="Edit File Details" onClick={(e)=> this.editTask(e, item)} ><i className="fa fa-pencil"></i></button>
-                            <button className="btn btn-plain" title="View Single Page" onClick={(e)=> this.showTask(e, item)} ><i className="fa fa-external-link"></i></button>
+                            { this.props.is_pageSingleTask==false
+                              ? <span> 
+                                <button className="btn btn-plain" title="View Single Page" onClick={(e)=> this.showTask(e, item)} ><i className="fa fa-external-link"></i></button>
+                                <button className="btn btn-plain" title="Add Comment" onClick={(e)=> this.addComment(e, item)} ><i className="fa fa-comment"></i></button>
+                                </span>
+                              : ''  
+
+                            }
+                            <button className="btn btn-plain" title="Edit Task Details" onClick={(e)=> this.editTask(e, item)} ><i className="fa fa-pencil"></i></button>
                             <button className="btn btn-plain" title="Add SubTask" onClick={(e)=> this.addSubTask(e, item)} ><i className="fa fa-indent"></i></button>
-                            {/*<button className="btn btn-plain" title="Priority" onClick={(e)=> this.templates(e, item)} ><i className="fa fa-exclamation-circle"></i></button>*/}
-                            {/*<button className="btn btn-plain" title="Progress" onClick={(e)=> this.editTasklist(e, item)} ><i className="fa fa-spinner"></i></button>*/}
-                            {/*<button className="btn btn-plain" title="Add Tag" onClick={(e)=> this.deleteTasklist(e, item)} ><i className="fa fa-tag"></i></button>*/}
+                            
                             <TagAddButton object_type={OBJECT_TYPE_TASK} object_id={item.id} fetchData={this.fetchDataTag.bind(this)} strip_tags={item.tags} />
-                            <button className="btn btn-plain" title="Add Comment" onClick={(e)=> this.addComment(e, item)} ><i className="fa fa-comment"></i></button>
-                            {/*<button className="btn btn-plain" title="Move or Copy File" onClick={(e)=> this.showFile(e, item)} ><i className="fa fa-arrows"></i></button>*/}
                             <button className="btn btn-plain" title="Delete File" onClick={(e)=> this.deleteFile(e, item)} ><i className="fa fa-trash"></i></button>
                         </span>
                     </div>

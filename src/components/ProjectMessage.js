@@ -43,12 +43,12 @@ class ProjectMessage extends Component {
 
         return (
             <div>
-                <div className="control-toolbar1">
+                <div className="control-toolbar1 message">
                     <div className="left">
-                        <span className="title">{data.message_title}</span>
+                        <span className="title">{data.message_title}</span><br/>
+                        <span className="dated">Created on: {moment(data.created_at).format('llll')}</span>
                     </div>
-                    <div className="middle">
-                    </div>
+                  
                     <div className="right">
                         <span className="pull-right">
                             <span className="col mr10">
@@ -64,13 +64,15 @@ class ProjectMessage extends Component {
                 <div className="d-table w100 mt30">
                     <div className="d-table-cell xs-d-block w15 xs-w100">
                         <div className="userInfoBlock">
-                            <div className="image d-inline-block valign-middle mr20">
-                                <div className="avatar" style={{backgroundImage: "url('"+created_by_user.image_base64+"')"}}>
+                            <div className="image d-inline-block valign-middle text-center">
+                                <div className="avatar d-inline-block" style={{backgroundImage: "url('"+created_by_user.profile_image_url+"')"}}>
+                                </div>
+                                <div>
+                                    <span className="title">{created_by_user.user_id} {created_by_user.fullname}</span><br/>
+                                    
                                 </div>
                             </div>
-                            <div className="summary d-inline-block">
-                                <div className="title fw-b">{created_by_user.user_id} {created_by_user.fullname}</div>
-                            </div>
+                            
                         </div>
                     </div>
 

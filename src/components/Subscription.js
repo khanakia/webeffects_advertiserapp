@@ -64,114 +64,139 @@ class Subscription extends Component {
                 <PagePanel>
                     <div className="control-toolbar1">
                         <div className="left">
-                            <span className="title">You are currently using the Small Office plan.</span>
+                            <span className="title">You are currently using the Office plan.</span>
                         </div>
                         <div className="middle">
                         </div>
                     </div>
                     <div className="general-setting">
-                    <form className="form" ref='form' onSubmit={this.handleSubmit}>
-                        <table className="table text-center">
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    {this.planList(plan)}
-                                    
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Active Projects</td>
-                                    <td>2</td>
-                                    <td>5</td>
-                                    <td>15</td>
-                                    <td>40</td>
-                                    <td>85</td>
-                                    <td>200</td>
-                                    <td>500</td>
-                                </tr>
-                                <tr>
-                                    <td>File Storage Space</td>
-                                    <td>100 MB</td>
-                                    <td>1 GB</td>
-                                    <td>5 GB</td>
-                                    <td>20 GB</td>
-                                    <td>45 GB</td>
-                                    <td>100 GB</td>
-                                    <td>400 GB</td>
-                                </tr>
-                                <tr>
-                                    <td>30 Day Free Trail</td>
-                                    <td>Free Forever</td>
-                                    <td>YES</td>
-                                    <td>YES</td>
-                                    <td>YES</td>
-                                    <td>YES</td>
-                                    <td>YES</td>
-                                    <td>YES</td>
-                                </tr>
-                                <tr>
-                                    <td>Time Tracking</td>
-                                    <td>YES</td>
-                                    <td>YES</td>
-                                    <td>YES</td>
-                                    <td>YES</td>
-                                    <td>YES</td>
-                                    <td>YES</td>
-                                    <td>YES</td>
-                                </tr>
-                                <tr>
-                                    <td>256 Bit SSL</td>
-                                    <td>NO</td>
-                                    <td>NO</td>
-                                    <td>YES</td>
-                                    <td>YES</td>
-                                    <td>YES</td>
-                                    <td>YES</td>
-                                    <td>YES</td>
-                                </tr>
-                                <tr>
-                                    <td>Google Drive Integration</td>
-                                    <td>NO</td>
-                                    <td>NO</td>
-                                    <td>NO</td>
-                                    <td>YES</td>
-                                    <td>YES</td>
-                                    <td>YES</td>
-                                    <td>YES</td>
-                                </tr>
-                                <tr>
-                                    <td>BOX.com Integration</td>
-                                    <td>NO</td>
-                                    <td>NO</td>
-                                    <td>NO</td>
-                                    <td>NO</td>
-                                    <td>YES</td>
-                                    <td>YES</td>
-                                    <td>YES</td>
-                                </tr>
-                                <tr>
-                                    <td>Single Sign-in</td>
-                                    <td>NO</td>
-                                    <td>NO</td>
-                                    <td>NO</td>
-                                    <td>NO</td>
-                                    <td>NO</td>
-                                    <td>NO</td>
-                                    <td>NO</td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td><button type="button" className="btn btn-default btn-xs">Downgrade</button></td>
-                                    <td><button type="button" className="btn btn-default btn-xs">Downgrade</button></td>
-                                    <td><button type="button" className="btn btn-default btn-xs">Downgrade</button></td>
-                                    <td><button type="button" className="btn btn-primary btn-xs">Default</button></td>
-                                    <td><button type="button" className="btn btn-success btn-xs">Upgrade</button></td>
-                                    <td><button type="button" className="btn btn-success btn-xs">Upgrade</button></td>
-                                    <td><button type="button" className="btn btn-success btn-xs">Upgrade</button></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <form className="form subscribeForm" ref='form' onSubmit={this.handleSubmit}>
+                        <ul>
+                            <li>
+                                <table className="table featureBox">
+                                    <tbody>
+                                        <tr><td>Active Projects</td></tr>
+                                        <tr><td>File Storage Space</td></tr>
+                                        <tr><td>30 Day Free Trail</td></tr>
+                                        <tr><td>Time Tracking</td></tr>
+                                        <tr><td>256 Bit SSL</td></tr>
+                                        <tr><td>Google Drive Integration</td></tr>
+                                        <tr><td>BOX.com Integration</td></tr>
+                                        <tr><td>Single Sign-in</td></tr>
+                                    </tbody>
+                                </table>
+                            </li>
+                            <li>
+                                <div className="inner style1">
+                                    <div className="plan-details">
+                                        <div className="plan-name">Free Forever</div>
+                                        <div className="plan-price"><sup>$</sup>0</div>
+                                        <div className="per-month">per month</div>                                    
+                                    </div>
+                                    <table className="table">
+                                        <tbody>
+                                            <tr><td>2</td></tr>
+                                            <tr><td>100 MB</td></tr>
+                                            <tr><td>Free Forever</td></tr>
+                                            <tr><td><i className="fa fa-check"></i></td></tr>
+                                            <tr><td><i className="fa fa-times"></i></td></tr>
+                                            <tr><td><i className="fa fa-times"></i></td></tr>
+                                            <tr><td><i className="fa fa-times"></i></td></tr>
+                                            <tr><td><i className="fa fa-times"></i></td></tr>
+                                        </tbody>
+                                    </table>
+                                    <button type="button" className="btn btn-style">Downgrade</button>
+                                </div>
+                            </li>
+                            <li>
+                                <div className="inner style2">
+                                    <div className="plan-details">
+                                        <div className="plan-name">Personal</div>
+                                        <div className="plan-price"><sup>$</sup>24</div>
+                                        <div className="per-month">per month</div>                                    
+                                    </div>
+                                    <table className="table">
+                                        <tbody>
+                                            <tr><td>5</td></tr>
+                                            <tr><td>1 GB</td></tr>
+                                            <tr><td><i className="fa fa-check"></i></td></tr>
+                                            <tr><td><i className="fa fa-check"></i></td></tr>
+                                            <tr><td><i className="fa fa-times"></i></td></tr>
+                                            <tr><td><i className="fa fa-times"></i></td></tr>
+                                            <tr><td><i className="fa fa-times"></i></td></tr>
+                                            <tr><td><i className="fa fa-times"></i></td></tr>
+                                        </tbody>
+                                    </table>
+                                    <button type="button" className="btn btn-style">Downgrade</button>
+                                </div>
+                            </li>
+                            <li>
+                                <div className="inner style3">
+                                    <div className="plan-details">
+                                        <div className="plan-name">Office</div>
+                                        <div className="plan-price"><sup>$</sup>99</div>
+                                        <div className="per-month">per month</div>
+                                    </div>
+                                    <table className="table">
+                                        <tbody>
+                                            <tr><td>15</td></tr>
+                                            <tr><td>5 GB</td></tr>
+                                            <tr><td><i className="fa fa-check"></i></td></tr>
+                                            <tr><td><i className="fa fa-check"></i></td></tr>
+                                            <tr><td><i className="fa fa-check"></i></td></tr>
+                                            <tr><td><i className="fa fa-times"></i></td></tr>
+                                            <tr><td><i className="fa fa-times"></i></td></tr>
+                                            <tr><td><i className="fa fa-times"></i></td></tr>
+                                        </tbody>
+                                    </table>
+                                    <button type="button" className="btn btn-style">Default</button>
+                                </div>
+                            </li>
+                            <li>
+                                <div className="inner style4">
+                                    <div className="plan-details">
+                                        <div className="plan-name">Professional</div>
+                                        <div className="plan-price"><sup>$</sup>149</div>
+                                        <div className="per-month">per month</div>
+                                    </div>
+                                    <table className="table">
+                                        <tbody>
+                                            <tr><td>85</td></tr>
+                                            <tr><td>45 GB</td></tr>
+                                            <tr><td><i className="fa fa-check"></i></td></tr>
+                                            <tr><td><i className="fa fa-check"></i></td></tr>
+                                            <tr><td><i className="fa fa-check"></i></td></tr>
+                                            <tr><td><i className="fa fa-check"></i></td></tr>
+                                            <tr><td><i className="fa fa-check"></i></td></tr>
+                                            <tr><td><i className="fa fa-times"></i></td></tr>
+                                        </tbody>
+                                    </table>
+                                    <button type="button" className="btn btn-style">Upgrade</button>
+                                </div>
+                            </li>
+                            <li>
+                                <div className="inner style5">
+                                    <div className="plan-details">
+                                        <div className="plan-name">Business</div>
+                                        <div className="plan-price"><sup>$</sup>249</div>
+                                        <div className="per-month">per month</div>
+                                    </div>
+                                    <table className="table">
+                                        <tbody>
+                                            <tr><td>500</td></tr>
+                                            <tr><td>400 GB</td></tr>
+                                            <tr><td><i className="fa fa-check"></i></td></tr>
+                                            <tr><td><i className="fa fa-check"></i></td></tr>
+                                            <tr><td><i className="fa fa-check"></i></td></tr>
+                                            <tr><td><i className="fa fa-check"></i></td></tr>
+                                            <tr><td><i className="fa fa-check"></i></td></tr>
+                                            <tr><td><i className="fa fa-check"></i></td></tr>
+                                        </tbody>
+                                    </table>
+                                    <button type="button" className="btn btn-style">Upgrade</button>
+                                </div>
+                            </li>
+                        </ul>
                     </form>
                     </div>
                 </PagePanel>

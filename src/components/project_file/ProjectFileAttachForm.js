@@ -15,24 +15,19 @@ import ProjectFileBrowseForm from './ProjectFileBrowseForm'
 var FileListRender = React.createClass({
     render: function() {
       return (
-        <ul className="list-group">
+        <ul className="list-group-uploadedfiles">
           {this.props.list.map(function(item){
             return (
-                <li className="list-group-item" key={item.id}>
-                    <input type="hidden" name="files[]" defaultValue={item.id} />
-                    <div className="d-table w100">
-                        <div className="d-table-cell xs-d-block w20 xs-w100 valign-middle">
-                            <h4 className="list-group-item-heading">
-                                {   item.project_file_version_latest ?
-                                    item.project_file_version_latest.file_displayname
-                                    : ''
-                                }
-
-                                <button type="button" className="pull-right"><i className="fa fa-trash"></i></button>
-                            </h4>
-                        </div>
-                        
-                    </div>
+                <li className="" key={item.id}>
+                    {/*<input type="hidden" name="files[]" defaultValue={item.id} />*/}
+                    <label className="title">
+                        <input type="checkbox" name="files[]" defaultValue={item.id} defaultChecked={true} />
+                        {   item.project_file_version_latest ?
+                            item.project_file_version_latest.file_displayname
+                            : ''
+                        }
+                    </label>
+                    
                 </li>
             )
           })}
@@ -51,6 +46,8 @@ class ProjectFileAttachForm extends Component {
     static defaultProps = {
         defaultValue : '',
         className : '',
+
+        selectedFiles : []
     }
 
     componentWillMount() {
@@ -138,26 +135,31 @@ class ProjectFileAttachForm extends Component {
         );
     }
 
+    renderFiles(items) {
+
+    }
   
     render() {
+        var data = this.props.selectedFiles;
         return (
             <div className="comp-projectfileAttachform">
-           
+                
+                <div ref="selected_files_list">
+                    <FileListRender list={data}/>
+                </div>
 
-                <p>Drop Files Here</p>
                 <div ref="attached_files_list">
+                
                 </div>
                 <div ref="uploaded_files_list">
                 </div>
+
                 <div className="d-table w100">
-                    <div className="d-inline-block mr20 xs-d-block xs-w100">
-                        <div type="button" className="btn btn-default" ref="btn_add_files" >Add Files</div>
-                    </div>
-                    <div className="d-inline-block mr20 xs-d-block xs-w100">
-                        <button type="button" className="btn" onClick={this.selectExistingFiles.bind(this)}>Select From Existing Files</button>
-                    </div>
-                    <div className="d-inline-block mr20 xs-d-block xs-w100">
-                        <button type="button" className="btn" onClick={this.addFiles.bind(this)}>Google Drive</button>
+                    <div className="d-inline-block mr20 xs-d-block xs-w100">Drop Files Here</div>
+                    <div className="d-inline-block pull-right xs-d-block xs-w100">
+                        <div type="button" className="btn btn-plain mr10" ref="btn_add_files" ><i className="fa fa-upload"></i></div>
+                        <button type="button" className="btn btn-plain mr10" onClick={this.selectExistingFiles.bind(this)}><i className="fa fa-file"></i></button>
+                        <button type="button" className="btn btn-plain" onClick={this.addFiles.bind(this)}><i className="fa fa-cloud-upload"></i></button>
                     </div>
                 </div>
             </div>
