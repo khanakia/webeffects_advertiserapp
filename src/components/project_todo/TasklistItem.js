@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactDom from 'react-dom';
 import { Link } from 'react-router';
 
-import TasklistHelper from '../../helpers/helper_tasklist.js'
+import {TasklistHelper, Localstore} from '../../helpers'
 
 import TasklistTitle from './TasklistTitle'
 
@@ -10,6 +10,8 @@ import Task from './Task'
 // import TaskForm from './TaskForm'
 
 import TaskItem from './TaskItem'
+import TasklistCompletedTasks from './TasklistCompletedTasks'
+
 
 
 class TasklistItem extends Component {
@@ -28,7 +30,11 @@ class TasklistItem extends Component {
         className : '',
 
         project_id : '',
-        data : []
+        data : [],
+
+        onTasklistDataUpdate : function(tasklist) {},
+        onTaskDataUpdate: function(task) {},
+
     }
 
     componentWillMount() {
@@ -88,12 +94,12 @@ class TasklistItem extends Component {
     // }
 
 
-    renderItems1(items) {
+    renderItems(items) {
         if(!items) return false;
         return items.map((item) => {
-            if(item.parent_id) return false;
+            if(item.parent_id || item.status=="completed") return false;
             return (
-                <TaskItem key={item.id} data={item} />
+                <TaskItem key={item.id} data={item} onTaskDataUpdate={this.props.onTaskDataUpdate.bind(this)} is_template={this.props.data.is_template} />
             );
         });
     }
@@ -101,14 +107,26 @@ class TasklistItem extends Component {
 
     render() {
         const data = this.props.data;
+        if (jQuery.isEmptyObject(data)) return false;
+        
+        const localStoreData = Localstore.getTasklistLocalStore(data.id)
         return (
             <div className="comp_tasklist_item" id={'tl_'+data.id} data-id={data.id}>
-                <TasklistTitle data={data} />
-                <div className="takslist_tasks level-0" data-id="null">
-                    { /*(this.state.tasks.length>0) ? '' : 'No Tasks Found'*/ }
+                <TasklistTitle data={data} onTasklistDataUpdate={this.props.onTasklistDataUpdate.bind(this)} onTaskDataUpdate={this.props.onTaskDataUpdate.bind(this)} />
+                <div className="content_wrapper" style={{display: localStoreData.show_tasks ? 'block' : 'none'}}>
+                    <div className="takslist_tasks level-0" data-id="null">
+                        { /*(this.state.tasks.length>0) ? '' : 'No Tasks Found'*/ }
 
-                    {/*this.renderItems(this.state.tasks)*/}
-                    {this.renderItems1(data.tasks)}
+                        {/*this.renderItems(this.state.tasks)*/}
+                        {this.renderItems(data.tasks)}
+                    </div>
+
+                    {
+                        data.is_template==false 
+                        ? <TasklistCompletedTasks data={data.tasks} />
+                        : ''
+                    }
+                    
                 </div>
             </div>
         );

@@ -485,6 +485,11 @@ body {
 
 
 // Shared
+.label-skyblue {
+    background-color: #5595cc;
+    font-family: proxima_nova_rgregular;
+}
+
 .btn-green,
 .btn-green:link,
 .btn-green:hover,
@@ -948,6 +953,65 @@ body {
 
 
 
+
+.checkbox-custom, .radio-custom {
+    opacity: 0;
+    position: absolute;   
+}
+
+.checkbox-custom, .checkbox-custom-label, .radio-custom, .radio-custom-label {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.checkbox-custom-label, .radio-custom-label {
+    position: relative;
+}
+
+.checkbox-custom + .checkbox-custom-label:before, .radio-custom + .radio-custom-label:before {
+    content: '';
+    background: #fff;
+    border: 2px solid #ddd;
+    display: inline-block;
+    vertical-align: middle;
+    width: 20px;
+    height: 20px;
+    padding: 0px;
+    margin-right: 10px;
+    text-align: center;
+    line-height: 16px;
+    outline: none;
+    font-size: 12px;
+}
+
+.checkbox-custom:checked + .checkbox-custom-label:before {
+    content: "\f00c";
+    font-family: 'FontAwesome';
+    background: green;
+    color: #fff;
+}
+
+.radio-custom + .radio-custom-label:before {
+    border-radius: 50%;
+}
+
+.radio-custom:checked + .radio-custom-label:before {
+    content: "\f00c";
+    font-family: 'FontAwesome';
+    color: green;
+    border-color: green;
+}
+
+// .checkbox-custom:focus + .checkbox-custom-label, .radio-custom:focus + .radio-custom-label {
+//   outline: 1px solid #ddd; /* focus style */
+// }
+
+.comp_tasklist_item {
+    margin-bottom: 10px;
+}
+
 .comp_task_item {
     position: relative;
     // padding: 10px 30px 10px 10px;
@@ -957,6 +1021,16 @@ body {
 
     }
 }
+
+.comp_task_item_children {
+    // display: none;
+
+    &.active {
+        display: block;
+    }
+}
+
+
 .comp_task_item_children, .takslist_tasks {
     margin-left: 30px;
 
@@ -979,8 +1053,13 @@ body {
     position: relative;
     
     >.inner {
-        background-color: #fbf6f6;
-        padding: 10px;
+        border: 1px solid #efeaea;
+        // padding: 10px;
+        min-height: 35px;
+
+      &:hover {
+        background-color: #f5f5f5;
+      }  
     }
     .dragHandle {
         display: none;
@@ -1165,6 +1244,31 @@ body {
         &:hover {
             background: #f5f5f5;
         }
+    }
+}
+
+.list-group-activity {
+    list-style: none;
+    padding: 0;
+
+    .avatar {
+        width: 30px;
+        height: 30px;
+    }
+
+    li {
+        padding: 10px;
+        border-bottom: 1px solid #f5f5f5;
+    }
+
+    .date_bar {
+        background: #f5f5f5;
+        padding: 10px;
+        margin-bottom: 20px;
+    }
+
+    a {
+        color: #2386c8;
     }
 }
 

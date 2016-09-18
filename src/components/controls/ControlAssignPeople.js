@@ -4,6 +4,7 @@ import {connectWithStore} from '../../store/index.js';
 
 // import CompanyHelper from '../../helpers/helper_company'
 import { fetchProjectUsers } from '../../actions/action_project';
+import { fetchOrgUsers } from '../../actions/action_organization';
 
 class ControlAssignPeople extends Component {
     constructor(props) {
@@ -19,11 +20,17 @@ class ControlAssignPeople extends Component {
         selectedUsers : [],
 
         project_id : '',
-        projectUsers : []
+        projectUsers : [],
+
+        is_template : false,
     }
 
     componentWillMount() {
-        this.props.fetchProjectUsers(this.props.project_id)
+        if(this.props.is_template==true) {
+            this.props.fetchOrgUsers()
+        } else {
+            this.props.fetchProjectUsers(this.props.project_id)
+        }
     }
     
     componentDidMount() {
@@ -31,6 +38,9 @@ class ControlAssignPeople extends Component {
     }
 
     shouldComponentUpdate = (nextProps, nextState, nextContext) => {
+        if(this.props.is_template==true) {
+            return !(nextProps.orgUsers == this.props.orgUsers);    
+        }
         return !(nextProps.projectUsers == this.props.projectUsers);
     }
 
@@ -62,8 +72,11 @@ class ControlAssignPeople extends Component {
     }
 
     render() {
-        
-        const data = this.props.projectUsers
+        let data = this.props.projectUsers
+        if(this.props.is_template==true) {
+            data = this.props.orgUsers    
+        }
+        if (jQuery.isEmptyObject(data)) return false;
         return (
             <div className="control-controlassignpeople">
                 <select className={ 'controlassignpeople' + this.props.className} ref="controlassignpeople" name={this.props.name} onChange={(e) => this.props.onChange(e)} multiple={true} >
@@ -85,7 +98,8 @@ const mapStateToProps = (state) => {
         current_org: state.appdata.current_org,  // FETCH_APPDATA_CURRENTORG
         projectUsers : state.project.users,      // FETCH_PROJECT_USERS 
         projectCurrent : state.project.current,  // FETCH_PROJECT_CURRENT 
-        project_id : state.project.current.id
+        project_id : state.project.current.id,
+        orgUsers: state.org.userlist.data,
     };
 }
 
@@ -97,7 +111,14 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(fetchProjectUsers(project_id)).then((response) => {
                 
             });
-        }
+        },
+        fetchOrgUsers: () => {
+            dispatch(fetchOrgUsers()).then((response) => {
+                
+            });
+        },
+
+        
     }
 }
 

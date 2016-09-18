@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 
 import { Auth } from '../helpers'
+import PopupHelper from '../helpers/helper_popup'
+
 
 import TasklistItem from './project_todo/TasklistItem'
 
@@ -10,9 +12,8 @@ class ProjectTaskList extends Component {
         super(props);
     }
 
-       componentWillMount() {
+    componentWillMount() {
        this.props.fetchProjectTasklist(this.props.params.tasklistId);
-       // console.info("Mounted")
     }
 
     // shouldComponentUpdate = (nextProps, nextState, nextContext) => {
@@ -30,9 +31,22 @@ class ProjectTaskList extends Component {
     addTask(e, data) {
 
     }
+
+    copyTasksFromTemplate(e, data) {
+        PopupHelper.showTaskCopyFromTemplateForm({tasklist_id : data.id, onDataUpdate: this.onCopyTaskUpdated.bind(this)})
+    }
+
+    onCopyTaskUpdated() {
+        this.props.fetchProjectTasklist(this.props.params.tasklistId);
+    }
+
+    onTasklistDataUpdate() {
+        this.props.fetchProjectTasklist(this.props.params.tasklistId);
+    }
    
     render() {
         const data = this.props.projectTasklist;
+        if (jQuery.isEmptyObject(data)) return false;
 
         return (
             <div>
@@ -48,13 +62,14 @@ class ProjectTaskList extends Component {
                                 
                             </span>
                             <span className="col icons-group">
-                                <button className="btn btn-success" onClick={(e)=> this.addTask(e)}><i className="fa fa-plus mr10"></i>Add Task</button>
+                                <button className="btn btn-green-bordered" onClick={(e)=> this.addTask(e)}><i className="fa fa-plus mr10"></i>Add Task</button>
+                                <button className="btn btn-green-bordered" onClick={(e)=> this.copyTasksFromTemplate(e, data)}><i className="fa fa-plus mr10"></i>Copy Task</button>
                             </span>
                         </span>    
                     </div>
                 </div>
                
-               <TasklistItem data={data} />
+               <TasklistItem data={data} onTasklistDataUpdate={this.onTasklistDataUpdate.bind(this)} />
             </div>
 
         );

@@ -4,7 +4,8 @@ import { Link } from 'react-router';
 
 
 import TaskTitle from './TaskTitle'
-import {TaskHelper } from '../../helpers'
+import {TaskHelper, Localstore } from '../../helpers'
+import PopupHelper from '../../helpers/helper_popup'
 
 
 class TaskItem extends Component {
@@ -16,7 +17,12 @@ class TaskItem extends Component {
 
     static defaultProps = {
         className : '',
-        is_pageSingleTask : false
+        is_pageSingleTask : false,
+        showCompleted : false,
+
+        onTaskDataUpdate: function(task) {},
+
+        is_template : false,
     }
     componentWillMount() {
       
@@ -68,24 +74,41 @@ class TaskItem extends Component {
     }
 
 
+    addSubTaskForm(e, data) {
+        PopupHelper.showTaskForm({tasklist_id:data.tasklist_id, parent_id:data.id})
+    }
+
     renderItems(items) {
         if(!items) return false;
         return items.map((item) => {
+            if(!this.props.showCompleted && item.status=="completed") return false;
             return (
-                <TaskItem key={item.id} data={item} />
+                <TaskItem key={item.id} data={item} onTaskDataUpdate={this.props.onTaskDataUpdate.bind(this)} is_template={this.props.is_template} />
             );
         });
     }
 
 
     render() {
-        const data = this.props.data;
-        
+        const data = this.props.data; // Get Task Object
+        if (jQuery.isEmptyObject(data)) return false;
+
+        const localStoreData = Localstore.getTaskLocalStore(data.id)
+        // console.info(localStoreData)
         return (
-            <div className="comp_task_item" id={'tl_'+data.id} data-id={data.id}>
-                <TaskTitle data={data} className={this.props.className} is_pageSingleTask={this.props.is_pageSingleTask} />
-                <div className="takslist_tasks comp_task_item_children" data-id={data.id}>
+            <div className="comp_task_item" id={'task_'+data.id} data-id={data.id}>
+                <TaskTitle 
+                    data={data} 
+                    className={this.props.className} 
+                    is_pageSingleTask={this.props.is_pageSingleTask} 
+                    onTaskDataUpdate={this.props.onTaskDataUpdate.bind(this)} 
+                    is_template={this.props.is_template} />
+                <div className="takslist_tasks comp_task_item_children" data-id={data.id} style={{display: localStoreData.show_subtasks ? 'block' : 'none'}}>
                     {this.renderItems(data.childrens)}
+
+                    <div>
+                        {/*<button className="btn btn-link" title="Add SubTask" onClick={(e)=> this.addSubTaskForm(e, data)} ><i className="fa fa-indent"></i> Add Subtask</button>*/}
+                    </div>
                 </div>
             </div>
         );

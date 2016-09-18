@@ -88,7 +88,7 @@ export default class Header extends Component {
 										<li role="separator" className="divider"></li>
 										<li className="dropdown-header">Settings</li>
 										{/*<li><Link to="settings/general">General</Link></li>*/}
-										<li><Link to="settings/template"><i className="fa fa-users"></i> Template</Link></li>
+										<li><Link to="task-templates/tasklists"><i className="fa fa-users"></i> Template</Link></li>
 										<li><Link to="settings/tags"><i className="fa fa-tags"></i> Tags</Link></li>
 
 										<li role="separator" className="divider"></li>

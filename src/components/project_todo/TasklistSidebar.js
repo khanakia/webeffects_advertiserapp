@@ -16,7 +16,7 @@ class TasklistSidebar extends Component {
     }
 
     render() {
-        console.info("this.props", this.props.project_id)
+        // console.info("this.props", this.props.project_id)
         const data = this.props.data;
         const project_id = this.props.project_id;
         if (jQuery.isEmptyObject(data)) return false;

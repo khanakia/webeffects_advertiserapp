@@ -7,7 +7,7 @@ export default function(WrappedComponent) {
     class AuthenticatedComponent extends React.Component {
         componentWillMount() {
             if (!this.props.isAuthenticated) {
-                hashHistory.push('login')
+                hashHistory.push('/')
             }
         }
 

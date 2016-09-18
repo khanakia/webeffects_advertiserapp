@@ -48,7 +48,7 @@ class ProjectTask extends Component {
     render() {
         const data = this.props.projectTask;
         const taskId = this.props.params.taskId;
-        console.info(this.props.params.taskId)
+        // console.info(this.props.params.taskId)
         if (jQuery.isEmptyObject(data)) return false;
 
         return (
@@ -71,7 +71,7 @@ class ProjectTask extends Component {
                     </div>
                 </div>
 
-               <TaskItem data={data} className="root" is_pageSingleTask={true}/>
+               <TaskItem data={data} className="root" is_pageSingleTask={true} showCompleted={true}/>
 
                <div className="section_comments">
                     <CommentList object_type={OBJECT_TYPE_TASK} object_id={taskId} />

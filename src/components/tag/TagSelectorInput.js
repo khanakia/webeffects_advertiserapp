@@ -57,7 +57,7 @@ class TagSelectorInput extends Component {
 
     render() {
         const data = this.state.tags_selected
-        console.info('data', data)
+        // console.info('data', data)
         return (
             <span className="comp_TagSelectorInput">
                 {this.renderTags(data)}

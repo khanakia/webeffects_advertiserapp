@@ -14,7 +14,7 @@ class ProjectTasks extends Component {
     }
 
     componentWillMount() {
-       this.props.fetchProjectTasklists(this.projectId);
+       this.props.fetchTasklists_Templates();
     }
 
     componentDidMount() {
@@ -28,33 +28,29 @@ class ProjectTasks extends Component {
         });
     }
 
-
     createTasklist(e) {
-        PopupHelper.showTasklistForm({onDataUpdate:this.onTasklistDataUpdate.bind(this)})
+        PopupHelper.showTasklistForm({data : {is_template: "1"}, onDataUpdate:this.onTasklistDataUpdate.bind(this)})
     }
 
     onTasklistDataUpdate() {
-        this.props.fetchProjectTasklists(this.projectId)
+        this.props.fetchTasklists_Templates();
     }
 
-
-    onTaskDataUpdate() {
-        // this.props.fetchProjectFiles(this.projectId);   
+    onDataUpdate() {
+        this.props.fetchTasklists_Templates();
     }
-  
-   
+
     renderList(items) {
         return items.map((item) => {
-            if(item.is_template==true) return false;
             return (
-                <TasklistItem data={item} key={item.id} onTasklistDataUpdate={this.onTasklistDataUpdate.bind(this)} onTaskDataUpdate={this.onTaskDataUpdate.bind(this)}  />
+                <TasklistItem data={item} key={item.id} onTasklistDataUpdate={this.onTasklistDataUpdate.bind(this)} onTaskDataUpdate={this.onDataUpdate.bind(this)} />
             );
         });
     }
-
+   
     render() {
         const data = this.props.projectsTasklists;
-        if (jQuery.isEmptyObject(data)) return false;
+
 
         return (
             <div>
@@ -70,7 +66,7 @@ class ProjectTasks extends Component {
                                 
                             </span>
                             <span className="col icons-group">
-                                <button className="btn btn-success" onClick={(e)=> this.createTasklist(e)}><i className="fa fa-plus mr10"></i>Add Tasklist</button>
+                                <button className="btn btn-green-bordered" onClick={(e)=> this.createTasklist(e)}><i className="fa fa-plus mr10"></i>Add Template</button>
                             </span>
                         </span>    
                     </div>

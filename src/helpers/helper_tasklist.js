@@ -1,4 +1,4 @@
-import {API_URL_TASKLIST,API_URL_TASKLIST_TASKS_FN} from '../config.js'
+import {API_URL_TASKLIST, API_URL_TASKLIST_TEMPLATES, API_URL_TASKLIST_TASKS_FN} from '../config.js'
 import Auth from './auth.js'
 
 export default class TasklistHelper {
@@ -14,6 +14,14 @@ export default class TasklistHelper {
             params: {
                 project_id : project_id
             },
+        });
+    }
+
+    static indexTemplates() {
+        return axios({
+            method: 'get',
+            url: API_URL_TASKLIST_TEMPLATES,
+            headers: Auth.header(),
         });
     }
 
@@ -69,6 +77,25 @@ export default class TasklistHelper {
             var ajaxObj = TasklistHelper.store(data);
         }
         return ajaxObj;
+    }
+
+    static delete(id) {
+        return axios({
+            method: 'delete',
+            url: API_URL_TASKLIST + '/' + id,
+            headers: Auth.header(),
+        });
+    }
+
+
+    static copy_tasks_from_template(data) {
+        const dataJson = URI.parseQuery(data);
+        return axios({
+            method: 'post',
+            url: API_URL_TASKLIST + '/copy_tasks_from_template',
+            headers: Auth.header(),
+            data: data
+        });
     }
 
 }

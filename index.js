@@ -16,7 +16,7 @@ import LayoutResetpwd from './src/containers/LayoutResetpwd'
 import LayoutFindMyOrg from './src/containers/LayoutFindMyOrg'
 import LayoutProject from './src/containers/LayoutProject'
 
-import Dashboard from './src/containers/Dashboard'
+import DashboardContainer from './src/containers/DashboardContainer'
 import OrganizationList from './src/containers/OrganizationListContainer'
 import OrganizationUsers from './src/containers/OrganizationUsersContainer'
 
@@ -45,6 +45,9 @@ import ProjectTaskListsContainer from './src/containers/ProjectTaskListsContaine
 import ProjectTaskContainer from './src/containers/ProjectTaskContainer'
 import ProjectTaskListContainer from './src/containers/ProjectTaskListContainer'
 
+import LayoutTaskTemplate from './src/containers/LayoutTaskTemplate'
+import ProjectTaskListsTemplateContainer from './src/containers/ProjectTaskListsTemplateContainer'
+
 
 import configureStore from './src/store/configureStore.dev.js';
 
@@ -71,13 +74,19 @@ import RequireAuth from './src/containers/RequireAuth';
     		<Route path="/resetpwd" component={LayoutResetpwd} />
 
 		    <Route path="/" component={RequireAuth(Layout)}>
-		       <Route path="dashboard" component={Dashboard} />
+		       <Route path="dashboard" component={DashboardContainer} />
 		       <Route path="organization" component={OrganizationList} />
 		       <Route path="organization/companies" component={OrganizationCompanies} />
 		       <Route path="organization/peoples" component={OrganizationUsers} />
                <Route path="settings/tags" component={TagList} />
                <Route path="settings/logo" component={CompaniesLogos} />
 		       <Route path="settings/general" component={OrganizationGeneral} />
+
+
+		       <Route path="task-templates" component={LayoutTaskTemplate}>
+					<Route path="tasklists" component={ProjectTaskListsTemplateContainer} />
+					{/*<Route path="tasklists/:tasklistId" component={ProjectTaskListContainer} />*/}
+		       </Route>
 
 		       <Route path="subscription" component={Subscription} />
 

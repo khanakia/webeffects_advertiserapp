@@ -41,6 +41,15 @@ export default class TaskHelper {
         });
     }
 
+    static updateStatus(data) {
+        return  axios({
+            method: 'post',
+            url: API_URL_TASK + '/update_status',
+            headers: Auth.header(),
+            data : data
+        });
+    }
+
 
     static store(data) {
         return axios({
@@ -104,4 +113,19 @@ export default class TaskHelper {
  //                    data : data
  //                  });
 	// }
+
+
+    static delete(id) {
+        return axios({
+            method: 'delete',
+            url: API_URL_TASK + '/' + id,
+            headers: Auth.header(),
+        });
+    }
+    
+
+    // UTILS FUNCTIIONS ------------------------------------------------
+
+    
+
 }

@@ -5,7 +5,7 @@ import { Link, hashHistory } from 'react-router'
 import {connectWithStore} from '../../store/index.js';
 
 
-import { Auth,  TasklistHelper } from '../../helpers'
+import { Auth,  TasklistHelper, TaskHelper, Localstore } from '../../helpers'
 import PopupHelper from '../../helpers/helper_popup'
 
 
@@ -25,16 +25,25 @@ class TaskTitle extends Component {
     }
 
     static defaultProps = {
+        onDataUpdate: function(item) {},
         defaultValue : '',
         className : '',
 
         project_id : '',
         data : [],
 
-        is_pageSingleTask : false
+        is_pageSingleTask : false,
+
+        onTaskDataUpdate: function(task) {},
+        is_template : false,
+
+
     }
 
+
+
     componentWillMount() {
+
     }
 
     componentDidMount() {
@@ -42,20 +51,48 @@ class TaskTitle extends Component {
     }
 
     editTask(e, data) {
-        PopupHelper.showTaskForm({data, tasklist_id:this.props.data.id})
+        PopupHelper.showTaskForm({data, tasklist_id:this.props.data.tasklist_id, is_new: false, is_template: this.props.is_template, onDataUpdate: this.props.onTaskDataUpdate.bind(this) })
     }
 
     deleteTask(e, data) {
+        $.confirm({
+            title: '',
+            content: 'Are you sure you want to remove ?',
+            confirmButton: 'Yes',
+            cancelButton: 'No',
+            confirm: function(){
+                TaskHelper.delete(data.id).then((response) => {
+                    this.props.onTaskDataUpdate()
+                });
+            }.bind(this)
+        });
+    }
 
+    showSubtasks(e, item) {
+        e.preventDefault()
+        var $target = jQuery(e.target).parents('.comp_task_title').next('.comp_task_item_children');
+        jQuery(e.target).parents('.comp_task_title').next('.comp_task_item_children').toggle();
+        // localStorage.setItem('task_'+item.id, JSON.stringify({
+        //     show_subtasks :  !$target.is(':hidden')
+        // }));
+
+        Localstore.setTaskLocalStore(item.id, {
+            show_subtasks : !$target.is(':hidden')
+        })
+
+        // console.info(TaskHelper.getLocalStore(item.id))
     }
 
     addSubTask(e, item) {
-        console.log("sdf")
-        jQuery(e.target).parents('.comp_task_title').next('.comp_task_item_children').toggleClass('active');
+        jQuery(e.target).parents('.comp_task_title').next('.comp_task_item_children').show().toggleClass('active');
+    }
+
+    addSubTaskForm(e, data) {
+        PopupHelper.showTaskForm({tasklist_id:data.tasklist_id, parent_id:data.id, onDataUpdate: this.props.onTaskDataUpdate.bind(this) })
     }
 
     showTask(e, item) {
-              var url = 'projects/'+this.props.project_id+'/tasks/'+item.id;
+        var url = 'projects/'+this.props.project_id+'/tasks/'+item.id;
         hashHistory.push(url)
     }
 
@@ -70,13 +107,21 @@ class TaskTitle extends Component {
         this.props.fetchProjectTask(this.props.data.id);
     }
 
+    changeTaskStatus(e, item_id) {
+        const status = (jQuery(e.target).is(":checked"))
+
+        TaskHelper.updateStatus({id: item_id, status }).then((response) => {
+            console.log(response)
+            // this.fetchDataTag()
+        })
+    }
 
 
     renderAssignedUsers(users) {
         if(undefined==users) return false;
         return users.map((item) => {
             return (
-                <span key={item.id} className="ml5 label label-default">
+                <span key={item.id} className="ml5 label label-skyblue">
                     {item.fullname}
                 </span>
             )
@@ -85,42 +130,74 @@ class TaskTitle extends Component {
 
     render() {
         const item = this.props.data
+        // console.info(this.localData())
+        
+        if (jQuery.isEmptyObject(item)) return false;
+        // console.info(item.id, item.status)
         return (
             <div className={"comp_task_title " + this.props.className}>
                 <a href="#" className="mr10 dragHandle"><i className="fa fa-arrows"></i></a>
                 <div className="d-table inner w100">
                 
                     <div className="d-table-cell xs-d-block wp20 xs-w100 valign-middle">
-                            <input type="checkbox" />
+                        <div>
+                            {
+                                this.props.is_template==false 
+                                ? <span> <input id={ "checkbox-" + item.id } className="checkbox-custom" name="checkbox-group" type="checkbox" 
+                                    onChange={(e) => {this.changeTaskStatus(e, item.id)}} defaultChecked={item.status=='completed'} />
+                                <label htmlFor={ "checkbox-" + item.id } className="checkbox-custom-label"></label> </span>
+                                : ''
+                            }
+                        </div>
                     </div>
                     <div className="d-table-cell xs-d-block xs-w100 valign-middle">
                             {item.id}
                             <div className="d-inline-block">
-                                <Link data-id={item.id} to={'projects/'+this.props.project_id+'/tasks/'+item.id}>{item.task_title}</Link>
+                            {
+                                this.props.is_template==false 
+                                ? <Link data-id={item.id} to={'projects/'+this.props.project_id+'/tasks/'+item.id}>{item.task_title}</Link>
+                                : item.task_title
+                            }
+                                
                             </div>
-                            <span className={'mx10 priority_'+item.priority} title={item.priority}><i className="fa fa-exclamation-circle"></i></span>
-                            <span>{item.progress}%</span>
                             {this.renderAssignedUsers(item.task_users)}
+
+                            { item.priority!=='none' && item.priority && item.priority!==null
+                                ? <span className={'mx10 priority_'+item.priority} title={item.priority}><i className="fa fa-exclamation-circle"></i></span>
+                                : ''
+                            }
+
+                            { item.progress 
+                                ? <span>{item.progress}%</span>
+                                : ''
+                            }
                             <span className="ml20">
                                 <TagItemTitleMultiple data={item.tag_items} fetchData={this.fetchDataTag.bind(this)} />
                             </span>
+
+                            
                     </div>
                     
                     <div className="d-table-cell xs-d-block valign-middle text-right">
                         <span className="icons-group light">
-                            { this.props.is_pageSingleTask==false
+                            <a className="badge mr5" href="#" onClick={(e)=> this.showSubtasks(e, item)}>
+                                {(item.childrens.length)}
+                            </a>
+                            <button className="btn btn-plain" title="Show SubTasks" onClick={(e)=> this.addSubTask(e, item)} ><i className="fa fa-indent"></i></button>
+                            <button className="btn btn-plain" title="Add SubTask" onClick={(e)=> this.addSubTaskForm(e, item)} ><i className="fa fa-plus"></i></button>
+
+                            { 
+                              /*this.props.is_pageSingleTask==false
                               ? <span> 
                                 <button className="btn btn-plain" title="View Single Page" onClick={(e)=> this.showTask(e, item)} ><i className="fa fa-external-link"></i></button>
                                 <button className="btn btn-plain" title="Add Comment" onClick={(e)=> this.addComment(e, item)} ><i className="fa fa-comment"></i></button>
                                 </span>
-                              : ''  
-
+                              : ''  */
                             }
                             <button className="btn btn-plain" title="Edit Task Details" onClick={(e)=> this.editTask(e, item)} ><i className="fa fa-pencil"></i></button>
-                            <button className="btn btn-plain" title="Add SubTask" onClick={(e)=> this.addSubTask(e, item)} ><i className="fa fa-indent"></i></button>
                             
                             <TagAddButton object_type={OBJECT_TYPE_TASK} object_id={item.id} fetchData={this.fetchDataTag.bind(this)} strip_tags={item.tags} />
-                            <button className="btn btn-plain" title="Delete File" onClick={(e)=> this.deleteFile(e, item)} ><i className="fa fa-trash"></i></button>
+                            <button className="btn btn-plain" title="Delete File" onClick={(e)=> this.deleteTask(e, item)} ><i className="fa fa-trash"></i></button>
                         </span>
                     </div>
                 </div>

@@ -78,7 +78,7 @@ class TasklistForm extends Component {
 
         TasklistHelper.save(data).then(function(response) {
             // console.log(response);
-            this.props.fetchProjectTasklists(this.props.project_id)
+            // this.props.fetchProjectTasklists(this.props.project_id)
             this.props.onDataUpdate(response.data.project)
             this.hidePopup();
         }.bind(this));
@@ -101,6 +101,7 @@ class TasklistForm extends Component {
                 <form className="form" ref='form' onSubmit={this.handleSubmit}>
                     <input type="hidden" name="project_id" defaultValue={this.props.project_id} placeholder={'project_id'} />
                     <input type="hidden" name="id" defaultValue={this.props.data.id} placeholder="id" />
+                    <input type="text" name="is_template" defaultValue={this.props.data.is_template} placeholder="is_template" />
                     <div className="content-area">
                         <div className="mb20">  
                             <input type="text" className="form-control required" name="tasklist_title" defaultValue={this.props.data.tasklist_title} placeholder="Title" />

@@ -84,6 +84,8 @@ export const API_URL_COMMENT = API_URL+'/comment';
 export const API_URL_GET_USER = API_URL+'/user/view';
 
 export const API_URL_TASKLIST = API_URL+'/tasklist';
+export const API_URL_TASKLIST_TEMPLATES = API_URL+'/tasklist_templates';
+
 export const API_URL_TASKLIST_TASKS_FN = function(id=null) {
 	return API_URL_TASKLIST+'/'+id+'/tasks';
 };

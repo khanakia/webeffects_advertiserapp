@@ -29,6 +29,7 @@ import ProjectMessageForm from '../components/project/ProjectMessageForm'
 
 import TasklistForm from '../components/project_todo/TasklistForm'
 import TaskForm from '../components/project_todo/TaskForm'
+import TaskCopyFromTemplateForm from '../components/project_todo/TaskCopyFromTemplateForm'
 
 import TagForm from '../components/tag/TagForm'
 
@@ -443,6 +444,30 @@ export default class PopupHelper {
                 ReactDom.render(
                 <Provider store={store} key="provider">
                     <TaskForm popup_id={pid} {...args} />
+                </Provider>,
+                document.getElementById(uniq));
+            },
+            onclose: function(e) {
+                ReactDom.unmountComponentAtNode(document.getElementById(uniq))
+            }
+        });
+    }
+
+    static showTaskCopyFromTemplateForm(args = {}) {
+        var uniq = 'id' + (new Date()).getTime();
+        // console.log(uniq)
+        Controls.showpopup({
+            detach: true,
+            message: '<div id="' + uniq + '"></div>',
+            container_class: "",
+            opacity: 0.5,
+            blur: false,
+            autozindex : true,
+            onopen: function(e) {
+                var pid = (jQuery(e).attr('id'));
+                ReactDom.render(
+                <Provider store={store} key="provider">
+                    <TaskCopyFromTemplateForm popup_id={pid} {...args} />
                 </Provider>,
                 document.getElementById(uniq));
             },

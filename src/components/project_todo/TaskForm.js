@@ -18,10 +18,13 @@ import TagSelectorInput from '../tag/TagSelectorInput'
 class TaskForm extends Component {
     constructor(props) {
         super(props);
+
+        this.msg_btn_save_text = 'Create Task'
+        this.msg_heading = 'Create Task'
     }
 
     static defaultProps = {
-        onDataUpdate: function(org) {},
+        onDataUpdate: function(task) {},
         popup_id: '',
         settings : {},
 
@@ -30,12 +33,20 @@ class TaskForm extends Component {
         },
 
         project_id : '',
-        tasklist_id : ''
+        tasklist_id : '',
+        parent_id : '',
+
+        is_new : true,
+
+        is_template : false,
         
     }
 
     componentWillMount() {
-
+        if(!this.props.is_new) {
+            this.msg_btn_save_text = "Update Task"
+            this.msg_heading = 'Edit Task'
+        }
     }
 
     componentDidMount() {
@@ -69,15 +80,15 @@ class TaskForm extends Component {
         e.preventDefault();
 
         let data = jQuery(this.refs.form).serialize();
-        console.log(data);
+        // console.log(data);
 
-        // var valid = jQuery(this.refs.form).valid();
-        // if (!valid) {return false};
+        var valid = jQuery(this.refs.form).valid();
+        if (!valid) {return false};
 
         TaskHelper.save(data).then(function(response){
-            this.props.fetchProjectTasklists(this.props.project_id)
-            this.props.onDataUpdate(response.data.project)
-            // this.hidePopup();
+            // this.props.fetchProjectTasklists(this.props.project_id)
+            this.props.onDataUpdate()
+            this.hidePopup();
         }.bind(this));
 
         return false;
@@ -86,21 +97,21 @@ class TaskForm extends Component {
 
 
     render() {
-        console.info("this.props.data", this.props.data)
+        // console.info("this.props.data", this.props.data)
         return (
             <div>
                 <div className="modal-header">
-                    <h4 className="modal-title">Task Detail</h4>
+                    <h4 className="modal-title">{this.msg_heading}</h4>
                 </div>
 
                 <form className="form-horizontal control-label-left" ref='form' onSubmit={this.handleSubmit}>
-                    <input type="text" name="tasklist_id" defaultValue={this.props.tasklist_id} />
-                    <input type="text" name="id" defaultValue={this.props.data.id} />
-                    <input type="text" name="parent_id" defaultValue={this.props.data.parent_id} />
+                    <input type="text" name="tasklist_id" defaultValue={this.props.tasklist_id} placeholder="tasklist_id" />
+                    <input type="text" name="id" defaultValue={this.props.data.id} placeholder="id" />
+                    <input type="text" name="parent_id" defaultValue={this.props.parent_id} placeholder="parent_id" />
                     <div className="content-area">
                         <div className="mb20">
 
-                            <input type="text" className="form-control" name="task_title" id="task_title" defaultValue={this.props.data.task_title} placeholder="Title" />
+                            <input type="text" className="form-control required" name="task_title" id="task_title" defaultValue={this.props.data.task_title} placeholder="Title" />
                         </div>
                         <ul className="nav nav-tabs" role="tablist">
                             <li role="presentation" className="active"><a href="#general" aria-controls="general" role="tab" data-toggle="tab"><i className="fa fa-user" aria-hidden="true"></i></a></li>
@@ -120,7 +131,7 @@ class TaskForm extends Component {
                                             <div className="col-sm-7">
                                                 
 
-                                                <ControlAssignPeople selectedUsers={this.props.data.task_users} />
+                                                <ControlAssignPeople selectedUsers={this.props.data.task_users} is_template={this.props.is_template}/>
 
                                                 <div className="fs12 mt10">
                                                     <label htmlFor="notify_by_email">
@@ -205,7 +216,7 @@ class TaskForm extends Component {
                     </div>
 
                     <div className="modal-footer text-right">
-                        <button type="submit" className="btn btn-success" ref="btn_save" >Save</button>
+                        <button type="submit" className="btn btn-blue-link">{this.msg_btn_save_text}</button>
                     </div>
                 </form>
 

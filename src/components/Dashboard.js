@@ -9,7 +9,7 @@ import PagePanel from './PagePanel'
 import ProjectForm from './project/ProjectForm'
 
 
-class ProjectOverview extends Component {
+class Dashboard extends Component {
     constructor(props, context) {
         super(props, context);
         this.projectId = this.props.params.projectId
@@ -87,14 +87,18 @@ class ProjectOverview extends Component {
         console.info("datadatadata", data)
         return (
             <div>
-               <ul className="list-group-activity">
-                {this.renderList(data)}
-               </ul>
+                <Sidebar>
+                   
+                </Sidebar>
+                <PagePanel hasSidebar="true">
+                    <ul className="list-group-activity">
+                        {this.renderList(data)}
+                    </ul>
+                </PagePanel>
             </div>
-
         );
     }
 }
 
 
-export default ProjectOverview;
+export default Dashboard;
