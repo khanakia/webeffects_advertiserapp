@@ -1,13 +1,23 @@
 import { connect } from 'react-redux'
-import { fetchProjects, fetchProjectUsers} from '../actions/action_project';
+import { fetchProjects, fetchProjectUsers, filterProjectPeopleList} from '../actions/action_project';
 
 import ProjectPeople from '../components/ProjectPeople';
+
+const filterList = (items, filterParams) => {
+    return _.filter(items, function(item) {
+        if(filterParams.fullname.toLowerCase() && item.user.fullname.toLowerCase() && item.user.fullname.toLowerCase().indexOf(filterParams.fullname) === -1) {
+            return false;
+        }
+        return true;
+    })
+}
 
 const mapStateToProps = (state) => {
     return {
         state : state,
-        projectUsers: state.project.users,
-        current_org: state.appdata.current_org
+        current_org: state.appdata.current_org,
+        // projectUsers: state.project.users,
+        projectUsers: filterList(state.project.users, state.project.filter_projectuserlist_params),
     };
 }
 
@@ -18,7 +28,11 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(fetchProjectUsers(project_id)).then((response) => {
                 
             });
-        }
+        },
+
+        filterProjectPeopleList: (data) => {
+            dispatch(filterProjectPeopleList(data))
+        },
     }
 }
 

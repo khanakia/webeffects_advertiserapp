@@ -119,14 +119,13 @@ class ProjectUsersEditForm extends Component {
             resultsCount = 1;
             return (
                 <li className="list-group-item" key={item.id}>
-                    <div className="d-table w100">
-                        <div className="d-table-cell wp50">
-                            
+                    <label className="d-table w100">
+                        <div className="d-table-cell wp35">
                             <input type="checkbox" name="user_ids[]" defaultValue={item.user_id} />
                         </div>
                         <div className="d-table-cell">
                             <div className="userInfoBlock">
-                                <div className="image d-inline-block valign-middle mr20">
+                                <div className="image d-inline-block valign-middle mr15">
                                     <div className="avatar" style={{backgroundImage: "url('"+item.user.profile_image_url+"')"}}>
                                     </div>
                                 </div>
@@ -137,7 +136,7 @@ class ProjectUsersEditForm extends Component {
                                 </div>
                             </div>
                         </div>
-                    </div>    
+                    </label>
                 </li>
             );
         });
@@ -170,23 +169,23 @@ class ProjectUsersEditForm extends Component {
         return (
             <div>
                 <div className="modal-header">
-                    <h4 className="modal-title">Add People to Project</h4>
+                    <h4 className="modal-title">Add Users to Project</h4>
                 </div>
 
                 <form className="form form-horizontal" ref='form' onSubmit={this.handleSubmit}>
                     <input type="hidden" className="form-control" ref="project_id" name="project_id" id="project_id" defaultValue={this.props.data.project_id} />
                     <div className="content-area">
                         <div className="form-group">
-                            <label className="col-sm-2 control-label">Search</label>
-                            <div className="col-sm-3">
+                            <label className="col-sm-2 col-xs-3 control-label xs-mt5">Search</label>
+                            <div className="col-sm-3 col-xs-9">
                                 <input type="text" className="w100" refs="search_user" onChange={(e) => this.search(e)} />
                             </div>
-                            <div className="col-sm-3 ">
+                            <div className="col-sm-3 col-xs-12 xs-mt15">
                                 <DropdownCompanies name="company_id" defaultValue={this.props.data.company_id} onChange={(e) => this.search_company(e)} />
                             </div>
                         </div>
 
-                        <ul className="list-group style1">
+                        <ul className="list-group style2">
                             {this.renderList(this.state.org_users)}
                         </ul>
                     </div>
