@@ -5,7 +5,7 @@ import ProjectPeople from '../components/ProjectPeople';
 
 const filterList = (items, filterParams) => {
     return _.filter(items, function(item) {
-        if(filterParams.fullname.toLowerCase() && item.user.fullname.toLowerCase() && item.user.fullname.toLowerCase().indexOf(filterParams.fullname) === -1) {
+        if(filterParams.fullname && item.user.fullname.toLowerCase() && item.user.fullname.toLowerCase().indexOf(filterParams.fullname) === -1) {
             return false;
         }
         return true;

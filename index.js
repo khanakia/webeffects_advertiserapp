@@ -63,6 +63,9 @@ import RequireAuth from './src/containers/RequireAuth';
 import Localstore from './src/helpers/localstore.js'
 
 
+import {language} from './src/lang/index.js';
+window.lang = language.en;
+
 // If user is on Root URL then render Find My Organization page
 
 	render((

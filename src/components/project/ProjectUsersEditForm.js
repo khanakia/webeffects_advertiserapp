@@ -45,7 +45,7 @@ class ProjectUsersEditForm extends Component {
 
                 this.setState({
                     org_users : response_orgusers.payload.data,
-                    project_users: response_projectusers.payload.data
+                    project_users: response_projectusers.payload.data.data
                 })
             });
         });

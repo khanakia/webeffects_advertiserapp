@@ -41,6 +41,11 @@ const INITIAL_STATE = {
 
 export default function(state = INITIAL_STATE, action) {
     let error;
+    
+    if(undefined!==action.payload && action.payload.data.status=='ERROR') {
+        return state;
+    }
+
     switch (action.type) {
         case FETCH_PROJECTS:
             return {...state, list: action.payload.data };
@@ -52,7 +57,6 @@ export default function(state = INITIAL_STATE, action) {
             // var copy = Object.assign({}, state.users.data); // First Create a Copy of object and then mutate
             // copy[project_id] = action.payload.data;
             // return {...state, users: copy};
-
             return {...state, users: action.payload.data};
         case FETCH_TASKLISTS:
             return {...state, tasklists: action.payload.data };

@@ -38,16 +38,28 @@ export default class ProjectHelper {
     }
 
     static update(data) {
-        data.start_date = moment(new Date(data.start_date)).format('YYYY-MM-DD');
-        data.end_date = moment(new Date(data.end_date)).format('YYYY-MM-DD');
+        const dataJson = URI.parseQuery(data);
+        dataJson.start_date = moment(new Date(dataJson.start_date)).format('YYYY-MM-DD');
+        dataJson.end_date = moment(new Date(dataJson.end_date)).format('YYYY-MM-DD');
+        // console.log(jQuery.param(dataJson))
         return axios({
             method: 'put',
-            url: API_URL_PROJECT + '/' + data.id,
+            url: API_URL_PROJECT + '/' + dataJson.id,
             headers: Auth.header(),
-            data: data
+            data: dataJson
         });
     }
 
+
+    static save(data) {
+        const dataJson = URI.parseQuery(data);
+        if (dataJson.id) {
+            var ajaxObj = ProjectHelper.update(data);
+        } else {
+            var ajaxObj = ProjectHelper.store(data);
+        }
+        return ajaxObj;
+    }
 
 
     static delete(id) {

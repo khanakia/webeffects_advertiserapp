@@ -58,7 +58,8 @@ class ProjectPeople extends Component {
     }
 
     renderList(projectusers) {
-        if(undefined==projectusers) return;
+        if(undefined==projectusers || jQuery.isEmptyObject(projectusers)) return;
+        console.info(projectusers);
         return projectusers.map((projectuser) => {
             return (
                 <li className="list-group-item" key={projectuser.id}>
@@ -70,7 +71,7 @@ class ProjectPeople extends Component {
                         <div className="text-center">
                             <h4 className="list-group-item-heading">
                                 {projectuser.user.fullname}
-                                {(this.props.current_org.permissions.org_can_update) ?
+                                {(this.props.current_org.permissions.org_can_update || this.props.current_org.permissions.can_add_projects) ?
                                     <div className="dropdown d-inline-block">
                                         <a href="javascript:void(0)" className="dropdown-toggle" data-toggle="dropdown" role="button"><i className="fa fa-chevron-down"></i></a>
                                         <ul className="text-left dropdown-menu dropdown-menu-right">
@@ -113,7 +114,10 @@ class ProjectPeople extends Component {
                         <span className="pull-right">
                             <span className="col mr10"></span>
                             <span className="col icons-group">
-                                <button className="btn btn-green-bordered" onClick={()=> PopupHelper.showProjectUsersEditForm({data : {project_id : this.projectId}})}><i className="fa fa-plus mr5"></i>Add Users to Project</button>
+                                {(this.props.current_org.permissions.org_can_update || this.props.current_org.permissions.can_add_projects) ?
+                                        <button className="btn btn-green-bordered" onClick={()=> PopupHelper.showProjectUsersEditForm({data : {project_id : this.projectId}})}><i className="fa fa-plus mr5"></i>Add Users to Project</button>
+                                    : ''
+                                }
                             </span>
                         </span>
                     </div>

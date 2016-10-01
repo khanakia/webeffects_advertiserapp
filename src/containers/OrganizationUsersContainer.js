@@ -7,7 +7,7 @@ import OrgHelper from '../helpers/helper_org'
 
 const filterList = (items, filterParams) => {
     return _.filter(items, function(item) {
-        if(filterParams.user_title.toLowerCase() && item.user.fullname.toLowerCase() && item.user.fullname.toLowerCase().indexOf(filterParams.user_title) === -1) {
+        if(filterParams.user_title && item.user.fullname.toLowerCase() && item.user.fullname.toLowerCase().indexOf(filterParams.user_title) === -1) {
             return false;
         }
         return true;

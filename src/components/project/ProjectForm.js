@@ -11,6 +11,9 @@ import InputDate from '../controls/InputDate'
 class ProjectForm extends Component {
     constructor(props) {
         super(props);
+
+        this.msg_btn_save_text = 'Create Project'
+        this.msg_heading = 'Create Project'
     }
 
     static defaultProps = {
@@ -29,28 +32,15 @@ class ProjectForm extends Component {
     }
 
     componentWillMount() {
-
+        if(!this.props.is_new) {
+            this.msg_btn_save_text = "Update Project"
+            this.msg_heading = 'Edit Project'
+        }
     }
 
     componentDidMount() {
         
     }
-
-
-    // static showInPoup({settings={}, data={}, onDataUpdate=this.defaultProps.onDataUpdate()}) {
-    //     var uniq = 'id' + (new Date()).getTime();
-
-    //     Controls.showpopup({
-    //         detach : true,
-    //         message : '<div id="' + uniq + '"></div>',
-    //         opacity: 0.5,
-    //         blur: false,
-    //         onopen : function(e){
-    //           var pid = (jQuery(e).attr('id'));
-    //           ReactDom.render(<ProjectForm popup_id={pid} settings={settings} data={data} onDataUpdate={onDataUpdate} />, document.getElementById(uniq));
-    //         }
-    //     });
-    // }
 
 
     hidePopup = () => {
@@ -63,27 +53,31 @@ class ProjectForm extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
 
-        let data = jQuery(this.refs.form).serialize();
-        data = URI.parseQuery(data);
+        // data = URI.parseQuery(data);
 
         var valid = jQuery(this.refs.form).valid();
         if (!valid) {return false};
 
+        let data = jQuery(this.refs.form).serialize();
 
-        if (data.id) {
-            var ajaxObj = ProjectHelper.update(data);
-            console.log("Update");
-        } else {
-            var ajaxObj = ProjectHelper.store(data);
-        }
+        // if (data.id) {
+        //     var ajaxObj = ProjectHelper.update(data);
+        //     console.log("Update");
+        // } else {
+        //     var ajaxObj = ProjectHelper.store(data);
+        // }
 
-        ajaxObj.then(function(response) {
-            console.log(response);
-            
+        ProjectHelper.save(data).then(function(response) {
+            // console.log(response);
             store.dispatch(fetchProjects()).then((response) => {
             });
             this.props.onDataUpdate(response.data.project)
             this.hidePopup();
+
+            if(response.data.status=="OK") {
+                toastr.success(lang[response.data.code])
+            }
+
         }.bind(this));
 
         return false;
@@ -91,20 +85,19 @@ class ProjectForm extends Component {
     }
 
     render() {
+        if (jQuery.isEmptyObject(this.props.data)) return false;
         return (
             <div>
                 <div className="modal-header">
-                    <h4 className="modal-title">Add People to Project</h4>
+                    <h4 className="modal-title">{this.msg_heading}</h4>
                 </div>
-
-                <ul className="nav nav-tabs" role="tablist">
-                    <li role="presentation" className="active"><a href="#general" aria-controls="general" role="tab" data-toggle="tab">General</a></li>
-                    <li role="presentation"><a href="#description" aria-controls="description" role="tab" data-toggle="tab">Description</a></li>
-                </ul>
-
                 <form className="form-horizontal11" ref='form' onSubmit={this.handleSubmit}>
+                    <input type="hidden" className="form-control" ref="id" name="id" id="id" defaultValue={this.props.data.id} />
                     <div className="content-area">
-                        <input type="hidden" className="form-control" ref="id" name="id" id="id" defaultValue={this.props.data.id} />
+                        <ul className="nav nav-tabs" role="tablist">
+                            <li role="presentation" className="active"><a href="#general" aria-controls="general" role="tab" data-toggle="tab">General</a></li>
+                            <li role="presentation"><a href="#description" aria-controls="description" role="tab" data-toggle="tab">Description</a></li>
+                        </ul>
 
                         <div className="tab-content">
                             <div role="tabpanel" className="tab-pane active" id="general">
@@ -150,7 +143,7 @@ class ProjectForm extends Component {
                         </div>    
                     </div>
                     <div className="modal-footer text-right">
-                        <button type="submit" className="btn btn-success">Save</button>
+                        <button type="submit" className="btn btn-blue-link">{this.msg_btn_save_text}</button>
                     </div>
                 </form>
 

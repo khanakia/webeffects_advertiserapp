@@ -5,7 +5,7 @@ import Projects from '../components/Projects';
 
 const filterList = (items, filterParams) => {
     return _.filter(items, function(item) {
-        if(filterParams.project_name.toLowerCase() && item.project_name.toLowerCase() && item.project_name.toLowerCase().indexOf(filterParams.project_name) === -1) {
+        if(filterParams.project_name && item.project_name.toLowerCase() && item.project_name.toLowerCase().indexOf(filterParams.project_name) === -1) {
             return false;
         }
         return true;

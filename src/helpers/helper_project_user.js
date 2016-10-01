@@ -24,16 +24,16 @@ export default class ProjectUserHelper {
     }
 
 
-    static index_not_assigned(project_id) {
-        return axios({
-            method: 'get',
-            url: API_URL_PROJECT_USER_NOT_ASSIGNED,
-            headers: Auth.header(),
-            params: {
-                project_id : project_id
-            },
-        });
-    }
+    // static index_not_assigned(project_id) {
+    //     return axios({
+    //         method: 'get',
+    //         url: API_URL_PROJECT_USER_NOT_ASSIGNED,
+    //         headers: Auth.header(),
+    //         params: {
+    //             project_id : project_id
+    //         },
+    //     });
+    // }
 
     static store(data) {
         return axios({

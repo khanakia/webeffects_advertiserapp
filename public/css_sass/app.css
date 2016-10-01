@@ -6171,9 +6171,7 @@ body {
 .popup_block {
   display: none; }
   .popup_block .modal-header {
-    padding: 10px;
-    color: #fff;
-    background-color: #2386c8; }
+    padding: 10px; }
   .popup_block .modal-title {
     text-align: center; }
 

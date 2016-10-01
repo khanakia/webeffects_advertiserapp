@@ -36,7 +36,10 @@ class LayoutProjectComponent extends Component {
                         <li><Link activeClassName="active" to={project_url_suffix + "/tasklists"}><i className="fa fa-tasks"></i> Tasks</Link></li>
                         <li><Link activeClassName="active" to={project_url_suffix + "/files"}><i className="fa fa-file"></i> Files</Link></li>
                         <li><Link activeClassName="active" to={project_url_suffix + "/messages"}><i className="fa fa-comments"></i> Discussions</Link></li>
-                        <li><Link activeClassName="active" to={project_url_suffix + "/people"}><i className="fa fa-users"></i> Peoples</Link></li>
+                        {(this.props.current_org.permissions.org_can_update) ?
+                            <li><Link activeClassName="active" to={project_url_suffix + "/people"}><i className="fa fa-users"></i> Peoples</Link></li>
+                            : ''
+                        }
                     </ul>
 
                     <div className="box-info">
@@ -62,6 +65,7 @@ class LayoutProjectComponent extends Component {
 const mapStateToProps = (state) => {
     return {
         state : state,
+        current_org: state.appdata.current_org,
         projectCurrent: state.project.current,
         projectsTasklists: state.project.tasklists,
     };
