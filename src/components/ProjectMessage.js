@@ -5,18 +5,10 @@ import { Link, hashHistory } from 'react-router'
 import { OBJECT_TYPE_MESSAGE } from '../config.js'
 
 import { Auth, ProjectMessageHelper } from '../helpers'
+import PopupHelper from '../helpers/helper_popup'
+
 import CommentList from './project/CommentList'
 import CommentForm from './project/CommentForm'
-
-
-// import Sidebar from './Sidebar'
-// import PagePanel from './PagePanel'
-
-// import CategoryTree1 from './category/CategoryTree1'
-// import CategoryForm from './category/CategoryForm'
-// import CategoryManage from './category/CategoryManage'
-
-// import ProjectMessageForm from './project/ProjectMessageForm'
 
 
 class ProjectMessage extends Component {
@@ -35,7 +27,16 @@ class ProjectMessage extends Component {
     componentDidUpdate() {
        
     }
+
+    editMessage(e, data) {
+        e.preventDefault()
+        PopupHelper.showProjectMessageForm({data, is_new: false, onDataUpdate:this.onDataUpdate.bind(this)})
+    }
    
+    onDataUpdate() {
+        this.props.fetchProjectMessage(this.messageId)
+    }
+
     render() {
         if (jQuery.isEmptyObject(this.props.projectMessagesCurrent)) return false;
         const data = this.props.projectMessagesCurrent;
@@ -55,14 +56,14 @@ class ProjectMessage extends Component {
                                 
                             </span>
                             <span className="col icons-group">
-                                <button className="btn btn-success" onClick={()=> ProjectMessageForm.showInPoup({}, {},this.props)}><i className="fa fa-plus"></i></button>
+                                <a href="#" className="" title="Edit" onClick={(e)=> this.editMessage(e, data)} ><i className="fa fa-pencil"></i></a>
                             </span>
                         </span>    
                     </div>
                 </div>
                
                 <div className="d-table w100 mt30">
-                    <div className="d-table-cell xs-d-block w15 xs-w100">
+                    <div className="d-table-cell xs-d-block wp150 xs-w100">
                         <div className="userInfoBlock">
                             <div className="image d-inline-block valign-middle text-center">
                                 <div className="avatar d-inline-block" style={{backgroundImage: "url('"+created_by_user.profile_image_url+"')"}}>
@@ -76,7 +77,7 @@ class ProjectMessage extends Component {
                         </div>
                     </div>
 
-                    <div className="d-table-cell xs-d-block w85 xs-w100 pr20 valign-top">
+                    <div className="d-table-cell xs-d-block xs-w100 pr20 valign-top">
                         <div className="">
                             <div dangerouslySetInnerHTML={{__html: data.message_body}} />
                         </div>

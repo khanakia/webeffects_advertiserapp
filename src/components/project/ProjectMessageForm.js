@@ -11,6 +11,7 @@ import {store } from '../../store/index.js';
 
 import CategorySelectControl from '../category/CategorySelectControl'
 import ControlNotifyPeople from '../controls/ControlNotifyPeople'
+import ProjectFileAttachForm from '../project_file/ProjectFileAttachForm'
 
 import {connectWithStore} from '../../store/index.js';
 
@@ -18,6 +19,9 @@ import {connectWithStore} from '../../store/index.js';
 class ProjectMessageForm extends Component {
     constructor(props) {
         super(props);
+
+        this.msg_btn_save_text = 'Save Message'
+        this.msg_heading = 'Create Message'
     }
 
     static defaultProps = {
@@ -35,10 +39,16 @@ class ProjectMessageForm extends Component {
         },
         // categoryList : [],
         projectId: '',
+
+        is_new : true,
     }
 
     componentWillMount() {
-       
+        console.info("this.props.is_new", this.props.is_new)
+        if(!this.props.is_new) {
+            this.msg_btn_save_text = "Update Message"
+            this.msg_heading = 'Edit Message'
+        }
     }
 
     componentDidMount() {
@@ -99,37 +109,39 @@ class ProjectMessageForm extends Component {
         return (
             <div>
                 <div className="modal-header">
-                    <h4 className="modal-title">Message Detail </h4>
+                    <h4 className="modal-title">{this.msg_heading}</h4>
                 </div>
 
-                <form className="form-horizontal11" ref='form' onSubmit={this.handleSubmit}>
+                <form className="form-horizontal11 form" ref='form' onSubmit={this.handleSubmit}>
                     <div className="content-area">
-                        <input type="text" name="project_id" defaultValue={this.props.project_id} placeholder="project_id" />
-                        <input type="text" name="id" defaultValue={this.props.data.id} placeholder="id" />
+                        <input type="hidden" name="project_id" defaultValue={this.props.project_id} placeholder="project_id" />
+                        <input type="hidden" name="id" defaultValue={this.props.data.id} placeholder="id" />
                         <div className="">
-                            <input type="text" className="message_title w50 required" name="message_title" defaultValue={this.props.data.message_title} placeholder="Message Title" />
+                            <input type="text" className="message_title w100 required" name="message_title" defaultValue={this.props.data.message_title} placeholder="Message Title" />
                         </div>
                         <div className="">
                             <textarea id="message_body" name="message_body" ref="message_body"></textarea>
                         </div>
 
+                        <div className="mb30 w100" ref="attach_form">
+                            <ProjectFileAttachForm selectedFiles={this.props.data.project_files} />
+                        </div>
+
                         <div className="d-table w100">
                             <div className="d-inline-block mr20 xs-d-block xs-w100">
-                                <label>Notify by Email</label>
+                                <label className="mr10">Notify by Email</label>
                                 <ControlNotifyPeople selectedUsers={this.props.data.notify_users} />
                             </div>
                             <div className="d-inline-block mr20 xs-d-block xs-w100">
-                                <label>Category</label>
-                                <CategorySelectControl selectedValues={this.props.data.categories} object_type={OBJECT_TYPE_MESSAGE}  />
-                            </div>
-                           
-                            <div className="d-inline-block mr20 xs-d-block xs-w100">
-                                <label>Attach Files</label>
+                                <label className="mr10">Category</label>
+                                <span className="d-inline-block">
+                                    <CategorySelectControl selectedValues={this.props.data.categories} object_type={OBJECT_TYPE_MESSAGE}  />
+                                </span>
                             </div>
                         </div>
                     </div>
                     <div className="modal-footer text-right">
-                        <button type="submit" className="btn btn-success" ref="btn_save" >Save</button>
+                        <button type="submit" className="btn btn-blue-link">{this.msg_btn_save_text}</button>
                     </div>
                 </form>
             </div>
