@@ -1,8 +1,9 @@
-export const ROOT_HOST = 'react.pma';
-export const ROOT_URL = 'http://react.pma';
-export const API_HOST = 'http://localhost:9001';
-export const API_URL = 'http://localhost:9001/api/v1';
+export const ROOT_HOST = 'pma.react';
+export const ROOT_URL = 'http://pma.react';
+export const API_HOST = 'http://pma.api';
+export const API_URL = 'http://pma.api/api/v1';
 
+console.log("khkj")
 // The Browser API key obtained from the Google Developers Console.
 export const google_developerKey = 'AIzaSyCC08zovo1bG7VqIcazb1cNT7zEYfxv8vY';
 // The Client ID obtained from the Google Developers Console. Replace with your own Client ID.
