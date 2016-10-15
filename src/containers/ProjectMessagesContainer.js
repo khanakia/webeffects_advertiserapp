@@ -8,6 +8,7 @@ const mapStateToProps = (state) => {
     return {
         state : state,
         current_org: state.appdata.current_org,
+        current_user: state.appdata.current_user,
         projectMessages: state.project.messages,
         categoryList: state.category.type_message_list,
     };

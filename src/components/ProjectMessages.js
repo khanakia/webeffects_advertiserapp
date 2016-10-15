@@ -5,12 +5,7 @@ import { Link, hashHistory } from 'react-router'
 import { Auth, ProjectMessageHelper, TagItemHelper } from '../helpers'
 import PopupHelper from '../helpers/helper_popup'
 
-// import Sidebar from './Sidebar'
-// import PagePanel from './PagePanel'
-
 import CategoryTree2 from './category/CategoryTree2'
-// import CategoryForm from './category/CategoryForm'
-// import CategoryManage from './category/CategoryManage'
 
 import ProjectMessageForm from './project/ProjectMessageForm'
 import {store} from '../store/index.js';
@@ -82,12 +77,12 @@ class ProjectMessages extends Component {
         PopupHelper.showProjectMessageForm({onDataUpdate:this.onDataUpdate.bind(this)})
     }
 
-    editMessae(e, data) {
+    editMessage(e, data) {
         e.preventDefault()
         // const href = 'projects/'+this.projectId+'/messages/create'
         // hashHistory.push(href)
         console.log("datadata", data)
-        PopupHelper.showProjectMessageForm({data, onDataUpdate:this.onDataUpdate.bind(this)})
+        PopupHelper.showProjectMessageForm({data, is_new: false, onDataUpdate:this.onDataUpdate.bind(this)})
     }
 
     onDataUpdate() {
@@ -331,66 +326,6 @@ class ProjectMessages extends Component {
     }
 
 
-    // renderList11(items) {
-    //     return items.map((item) => {
-    //         if(this.checkCategoryExists(item.categories)==false) return;
-    //         const {created_by_user} = item;
-    //         return (
-    //             <li className="list-group-item" key={item.id}>
-                    
-    //                 <div className="d-table w100">
-    //                     <div className="d-table-cell xs-d-block w15 xs-w100">
-    //                         <div className="userInfoBlock">
-    //                             <div className="image d-inline-block valign-middle mr20">
-    //                                 <div className="avatar" style={{backgroundImage: "url('"+created_by_user.profile_image_url+"')"}}>
-    //                                 </div>
-    //                             </div>
-    //                             <div className="summary d-inline-block">
-    //                                 <div className="title fw-b">{created_by_user.user_id} {created_by_user.fullname}</div>
-    //                             </div>
-    //                         </div>
-    //                     </div>
-
-    //                     <div className="d-table-cell xs-d-block w50 xs-w100 pr20 valign-middle">
-    //                         <h4 className="list-group-item-heading">
-    //                             {item.id} 
-    //                             <Link to={'projects/'+this.projectId+'/messages/'+item.id}>{item.message_title}</Link><br/>
-                                
-                                
-    //                         </h4>
-    //                         <div className="fs12">
-    //                             <div dangerouslySetInnerHTML={{__html: item.excerpt}} />
-
-    //                             <div className="mt10">
-    //                                 {/*{this.renderTags(item.tag_items)}*/}
-    //                                 <TagItemTitleMultiple data={item.tag_items} fetchData={this.fetchDataTag.bind(this)} />
-    //                             </div>
-    //                         </div>
-    //                     </div>
-                        
-    //                     <div className="d-table-cell xs-d-block w15 xs-w100 valign-middle">
-    //                         {this.renderCategoryBadges(item.categories)}
-    //                     </div>
-
-    //                     <div className="d-table-cell xs-d-block w10 xs-w100 valign-middle">
-    //                         {item.created_at}
-    //                     </div>
-    //                     <div className="d-table-cell xs-d-block valign-middle text-right">
-    //                         <span className="icons-group light">
-    //                             <button className="btn btn-plain" title="View" onClick={(e)=> this.showMessae(e, item)} ><i className="fa fa-eye"></i></button>
-    //                             <button className="btn btn-plain" title="Edit" onClick={(e)=> this.editMessae(e, item)} ><i className="fa fa-pencil"></i></button>
-    //                             <button className="btn btn-plain" title="Edit" onClick={(e)=> this.deleteMessage(e, item)} ><i className="fa fa-trash"></i></button>
-    //                             <button className="btn btn-plain" title="Add Comment" onClick={(e)=> this.addComment(e, item)} ><i className="fa fa-comment"></i></button>
-    //                             {/*<button className="btn btn-plain a-addtags" title="Tags" data-id={item.id} ><i className="fa fa-tags"></i></button>*/}
-    //                             <TagAddButton object_type={OBJECT_TYPE_MESSAGE} object_id={item.id} fetchData={this.fetchDataTag.bind(this)} strip_tags={item.tags} />
-    //                         </span>
-    //                     </div>
-    //                 </div>
-    //             </li>
-    //         );
-    //     });
-    // }
-
     renderList(items) {
         return items.map((item) => {
             if(this.checkCategoryExists(item.categories)==false) return;
@@ -415,12 +350,23 @@ class ProjectMessages extends Component {
 
                         <div className="controls">
                             <TagAddButton object_type={OBJECT_TYPE_MESSAGE} object_id={item.id} fetchData={this.fetchDataTag.bind(this)} strip_tags={item.tags} />
+
                             <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button"><i className="fa fa-chevron-down"></i></a>
                             <ul className="dropdown-menu dropdown-menu-right">
                                 <li><a href="#" className="" title="View" onClick={(e)=> this.showMessae(e, item)} ><i className="fa fa-eye"></i>View discussion</a></li>
-                                <li><a href="#" className="" title="Edit" onClick={(e)=> this.editMessae(e, item)} ><i className="fa fa-pencil"></i>Edit discussion</a></li>
-                                <li><a href="#" className="" title="Edit" onClick={(e)=> this.deleteMessage(e, item)} ><i className="fa fa-trash"></i>Delete discussion</a></li>
                                 <li><a href="#" className="" title="Add Comment" onClick={(e)=> this.addComment(e, item)} ><i className="fa fa-comment"></i>Add comment</a></li>
+
+                                { item.created_by_user_id==this.props.current_user.id
+                                    ? <li><a href="#" className="" title="Edit" onClick={(e)=> this.editMessage(e, item)} ><i className="fa fa-pencil"></i>Edit discussion</a></li>
+                                    : ''
+                                }
+
+                                { item.created_by_user_id==this.props.current_user.id
+                                    ? <li><a href="#" className="" title="Delete" onClick={(e)=> this.deleteMessage(e, item)} ><i className="fa fa-trash"></i>Delete discussion</a></li>
+                                    : ''
+                                }
+                                
+                                
                             </ul>
                         </div>
                     </div>

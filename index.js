@@ -37,7 +37,7 @@ import ProjectsContainer from './src/containers/ProjectsContainer'
 import ProjectOverviewContainer from './src/containers/ProjectOverviewContainer'
 import ProjectMessagesContainer from './src/containers/ProjectMessagesContainer'
 import ProjectMessageContainer from './src/containers/ProjectMessageContainer'
-import ProjectMessageCreateContainer from './src/containers/ProjectMessageCreateContainer'
+// import ProjectMessageCreateContainer from './src/containers/ProjectMessageCreateContainer'
 import ProjectFilesContainer from './src/containers/ProjectFilesContainer'
 import ProjectFileContainer from './src/containers/ProjectFileContainer'
 import ProjectPeopleContainer from './src/containers/ProjectPeopleContainer'
@@ -103,7 +103,6 @@ window.lang = language.en;
 					<Route path="tasklists/:tasklistId" component={ProjectTaskListContainer} />
 					<Route path="tasks/:taskId" component={ProjectTaskContainer} />
 					<Route path="messages" component={ProjectMessagesContainer} />
-					<Route path="messages/create" component={ProjectMessageCreateContainer} />
 					<Route path="messages/:messageId" component={ProjectMessageContainer} />
 					<Route path="files" component={ProjectFilesContainer} />
 					<Route path="files/:fileId" component={ProjectFileContainer} />
