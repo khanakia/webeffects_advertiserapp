@@ -4,9 +4,6 @@ import {
     } from '../config.js'
 
 
-
-import Auth from './auth.js'
-
 export default class ProjectHelper {
     constructor() {
 
@@ -24,7 +21,7 @@ export default class ProjectHelper {
         return axios({
             method: 'get',
             url: API_URL_PROJECT + '/' + id,
-            headers: Auth.header(),
+            // headers: Auth.header(),
         });
     }
 
@@ -69,16 +66,5 @@ export default class ProjectHelper {
             headers: Auth.header(),
         });
     }
-
-
-    // static getPeoplesOnProject(project_id) {
-    //     return axios({
-    //         method: 'get',
-    //         params: {
-    //             project_id : project_id
-    //         },
-    //         url: API_URL_GETALLORGSBYEMAIL,
-    //     });
-    // }
 }
 

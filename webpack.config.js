@@ -1,5 +1,5 @@
 module.exports = {
-    entry: "./index.js",
+    entry: "./src/main.js",
     output: {
         path: __dirname+"/public/",
         filename: "bundle.js"
@@ -15,6 +15,8 @@ module.exports = {
             }
           },
           {test: /\.jsx$/, loader: 'babel', exclude: /(node_modules|bower_components)/, query: { presets: ['react', 'es2015'] }},
+
+          { test: /\.json$/, loader: 'json' },
         ]
      }
 };

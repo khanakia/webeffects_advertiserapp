@@ -1,6 +1,5 @@
 import {API_URL_SIGNIN, API_URL_SIGNIN_CONFIRM_ACCOUNT} from '../config.js'
 import localstore from './localstore.js'
-import OrgHelper from './helper_org'
 
 import UserHelper from './helper_user'
 
@@ -81,25 +80,9 @@ export default class Auth {
 		return 'Bearer ' + Auth.getToken();	
 	}
 
-
-
-	static getCurrentOrg() {
-		return OrgHelper.showCurrent()
-	}
-
 	static getCurrentUser() {
 		return UserHelper.showCurrent()
 	}
 
-	static updateCurrentOrg() {
-		var org = localstore.getItem('org');
-		return OrgHelper.show(org.id).then(function(response){
-			localstore.setOrg(response.data);
-			// window.location.href = "/";
-		})
-	}
-
-
-	switch
 
 }

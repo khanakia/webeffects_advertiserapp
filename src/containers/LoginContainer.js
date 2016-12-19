@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
+import {PageLogin} from '../components'
 
-import {PageProjectOverview} from '../components'
 const mapStateToProps = (state) => {
     return {
         state : state,
@@ -14,6 +14,6 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 
-const ProjectOverviewContainer = connect(mapStateToProps, mapDispatchToProps)(PageProjectOverview)
+const LoginContainer = connect(mapStateToProps, mapDispatchToProps)(PageLogin)
 
-export default ProjectOverviewContainer
+export default LoginContainer
