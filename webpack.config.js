@@ -1,3 +1,5 @@
+var WebpackBuildNotifierPlugin = require('webpack-build-notifier');
+
 module.exports = {
     entry: "./src/main.js",
     output: {
@@ -18,5 +20,14 @@ module.exports = {
 
           { test: /\.json$/, loader: 'json' },
         ]
-     }
+     },
+
+     plugins: [
+        new WebpackBuildNotifierPlugin({
+          title: "My Project Webpack Build",
+          // logo: path.resolve("./img/favicon.png"),
+          // suppressSuccess: true,
+          sound: "Tink"
+        }),
+    ],
 };

@@ -66,5 +66,13 @@ export default class ProjectHelper {
             headers: Auth.header(),
         });
     }
+
+    static delete_zalen(id) {
+        return axios({
+            method: 'post',
+            url: API_URL_PROJECT + '/delete_zalen/' + id,
+            // headers: Auth.header(),
+        });
+    }
 }
 

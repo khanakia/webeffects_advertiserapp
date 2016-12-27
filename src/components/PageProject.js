@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 
 import Tab from './Tab'
 import ClonableInput from './ClonableInput'
-
+import CheckboxList from './CheckboxList'
+import Zalen from './Zalen'
 
 
 class PageProject extends Component {
@@ -57,7 +58,13 @@ class PageProject extends Component {
         )
     }
 
+    onZalenRemoved() {
+        console.log('Zalen Removed')
+        this.props.fetchProject(this.props.params.projectId);
+    }
+
     render() {
+        const project = this.props.project
 
         let items = [
             {
@@ -71,12 +78,29 @@ class PageProject extends Component {
             }
         ]
 
-     
-        
+
+        const checkboxGebouwen = [
+            {
+                "title": "Attractiepark",
+                "value": 22
+            },
+            {
+                "title": "Boerderij",
+                "value": 23
+            },
+            {
+                "title": "Congrescentrium",
+                "value": 24
+            }
+        ]        
+        const selectedGebouwen = [22,23]
         
         return (
+            
             <div>
                 <form ref="form" id="form1">
+                    {/*<CheckboxList items={checkboxGebouwen} selectedItems={selectedGebouwen} />*/}
+                    <Zalen items={project.project_rooms} onZalenRemoved={()=>{this.onZalenRemoved()}} />
                     <div className="row">
                         <div className="col-md-6">
                             <div className="input-group">
