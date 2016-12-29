@@ -17,7 +17,7 @@ class PageLogin extends Component {
             return false 
         };        
         var confirm_token = this.props.location.query.confirm_token;    
-
+        
         if (confirm_token) {
             Auth.attempt_confirm_token({email: this.refs.email.value, password: this.refs.password.value, confirm_token: confirm_token}).then((response) => {
                 if (response.data.token != null) {
