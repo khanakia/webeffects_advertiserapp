@@ -70,5 +70,97 @@ div.clear {
 	}
 }
 
-
+.formstyle1 {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 0 30px 20px;
+    border: 1px solid #e6eaeb;
+	color: #101010;
 	
+	a {
+		color: #101010;
+		text-decoration: underline;
+	}	
+	.form_title {
+	    padding: 20px 0;
+	    border-bottom: 1px solid #e6eaeb;
+		margin-bottom: 35px;
+	}
+	input {
+	    border: 1px solid #e6eaeb;
+	    margin-bottom: 20px;
+	}
+	.form-control.error {
+	    background: transparent url(../images/icons/cross-icon.png) no-repeat center right 12px;
+	    border: 1px solid #ff2a00;
+	    outline: none;
+	}
+	.form-control.valid {
+	    background: transparent url(../images/icons/green-check-icon.png) no-repeat center right 12px;
+	}
+	label.error {
+		position: absolute;
+	    left: 110%;
+	    top: -11px;
+	    width: 100%;
+	    color: #101010;
+	    background-color: #fff;
+	    padding: 18px;
+	    border: 1px solid #e6eaeb;
+		font-weight: 100;
+	}
+
+	.errordiv {
+		position: absolute;
+	    left: 110%;
+	    top: -11px;
+	    width: 100%;
+	    color: #101010;
+	    background-color: #fff;
+	    padding: 18px;
+	    border: 1px solid #e6eaeb;
+		font-weight: 100;
+		display: none;
+		
+		ul {
+			padding: 0;
+			margin: 0;
+
+			li {
+			    list-style: none;
+			}
+		}
+		.errorli {
+			color: #ff2a00;
+		    background: transparent url(../images/icons/cross-icon.png) no-repeat center left;
+		    outline: none;
+		    padding: 0 22px;
+		    background-size: 10px;
+		}
+		.validli {
+			color: #08b995;
+		    background: transparent url(../images/icons/green-check-icon.png) no-repeat center left;
+		    outline: none;
+		    padding: 0 22px;
+		    background-size: 10px;
+
+		}
+
+	}
+}
+
+.loginform {
+	padding: 50px 0; 	
+    background-color: #ecf5f8;
+}
+
+.btn-green {
+    border-radius: 20px;
+    padding: 8px 19px;
+    font-size: 16px;
+    background-color: #08b995;
+    outline: none;
+    color: #fff;
+}
+
