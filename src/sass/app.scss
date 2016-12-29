@@ -1,4 +1,14 @@
-@import "bootstrap-sass/assets/stylesheets/bootstrap";
+
+@import "_page-panel";
+@import "_form";
+@import "_comp-fileinput";
+@import "_comp-zalen";
+
+
+body {
+	background-color: #ECF5F8;
+	font-family: 'Open Sans', sans-serif;
+}
 
 div.clear {
   clear: both;
@@ -8,24 +18,82 @@ div.clear {
   margin-top: -1px;
 }
 
+
+.block-info {
+	padding: 20px;
+	border-bottom: 1px solid #CDD4D7;
+
+	.last_updated {
+		color: #A0A8AC;
+	}
+}
+
+
+.btn-green, .btn-green:focus {
+    color: #fff;
+    background-color: #08B995;
+    border-color: #08B995;
+    outline: none;
+
+    &:hover {
+	    color: #08B995;
+	    background-color: #fff;
+	    border-color: #08B995;
+	    outline: none;
+	}
+}
+
+.btn-plain {
+	border: none;
+	color: #7C8589;
+	background: none;
+
+	&:hover {
+		color: #08B995;
+	}
+}
+
+.btn--round {
+	border-radius: 40px;
+    padding: 8px 20px;
+}
+
+
+.btn--nopad {
+	padding: 0;
+}
+
+
+
+.input-group-vmerge {
+	.input-group {
+		margin-top: -1px;
+	}
+
+	input[readonly] {
+	    background-color: #fff;
+	    color: #DDDDDD;
+	    &:focus {
+	    	border-color: #CDD4D7;
+	    }
+	}
+
+
+}
 .input-group-addon {
-	a {
-		color: #7C8589;
-	}
-	span {
-		width: 20px;
-    	display: inline-block;
-	}
-	span.hover {
+	min-width: 40px;
+	border-radius: 0;
+
+	.hover-show {
 		display: none;
 	}
 
 	&:hover {
-		span.hover {
-			display: block;
+		.hover-show {
+			display: inherit;
 		}
 
-		span.default {
+		.hover-hide {
 			display: none;
 		}
 	}

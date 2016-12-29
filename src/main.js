@@ -17,7 +17,8 @@ import {
     AppContainer,
     LoginContainer,
     ProjectOverviewContainer,
-    ProjectContainer
+    ProjectContainer,
+    AccountContainer
 } from './containers';
 
 
@@ -49,6 +50,8 @@ import RequireAuth from './containers/RequireAuth';
 
     			<Route path="projects/:projectId" component={ProjectContainer} />
     			<Route path="project/add" component={ProjectContainer} />
+
+                <Route path="account" component={AccountContainer} />
     		</Route>
     		
 		    

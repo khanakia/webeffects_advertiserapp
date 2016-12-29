@@ -36,14 +36,12 @@ export default class ProjectHelper {
 
     static update(data) {
         const dataJson = URI.parseQuery(data);
-        dataJson.start_date = moment(new Date(dataJson.start_date)).format('YYYY-MM-DD');
-        dataJson.end_date = moment(new Date(dataJson.end_date)).format('YYYY-MM-DD');
-        // console.log(jQuery.param(dataJson))
+
         return axios({
             method: 'put',
             url: API_URL_PROJECT + '/' + dataJson.id,
-            headers: Auth.header(),
-            data: dataJson
+            // headers: Auth.header(),
+            data: data
         });
     }
 
@@ -67,12 +65,5 @@ export default class ProjectHelper {
         });
     }
 
-    static delete_zalen(id) {
-        return axios({
-            method: 'post',
-            url: API_URL_PROJECT + '/delete_zalen/' + id,
-            // headers: Auth.header(),
-        });
-    }
 }
 

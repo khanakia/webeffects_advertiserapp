@@ -24,7 +24,18 @@ export const API_URL_UPDATE_USER = API_URL+'/user/update';
 
 export const API_URL_USER = API_URL+'/user';
 
-export const API_URL_PROJECT = API_URL+'/project';
+export const API_URL_PROJECT = API_URL+'/projects';
+
+
+export const API_URL_ATTACHMENTS = API_URL+'/attachments';
+export const API_URL_ATTACHMENTS_UPLOAD = API_URL_ATTACHMENTS+'/upload';
+
+export const API_URL_ATTACHMENT_MAPPINGS = API_URL+'/attachment_mappings';
+
+export const API_URL_PROJECT_VIDEOS = API_URL+'/project_videos';
+export const API_URL_PROJECT_IFRAMES = API_URL+'/project_iframes';
+export const API_URL_PROJECT_ROOMS = API_URL+'/project_rooms';
+
 
 
 
