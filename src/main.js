@@ -16,6 +16,9 @@ console.log(window.Env)
 import {
     AppContainer,
     LoginContainer,
+    ResetlinkContainer,
+    ForgetpasswordContainer,
+    ChangepasswordContainer,
     ProjectOverviewContainer,
     ProjectContainer,
     AccountContainer
@@ -45,7 +48,10 @@ import RequireAuth from './containers/RequireAuth';
 		<Provider store={store}>
 		  <Router history={hashHistory}>
     		<Route path="/" component={AppContainer}>
-    			<Route path="login" component={LoginContainer} />
+                <Route path="login" component={LoginContainer} />
+                <Route path="resetlink" component={ResetlinkContainer} />
+                <Route path="forgetpwd" component={ForgetpasswordContainer} />
+    			<Route path="changepwd" component={ChangepasswordContainer} />
     			<Route path="dashboard" component={ProjectOverviewContainer} />
 
     			<Route path="projects/:projectId" component={ProjectContainer} />

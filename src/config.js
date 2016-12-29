@@ -16,10 +16,22 @@ export const FORGET_PWD_AJAX = API_URL + '/postEmail';
 
 export const API_URL_PUBLIC = API_URL+'/public';
 
-export const API_URL_SIGNIN = API_URL+'/auth/signin';
+// export const API_URL_SIGNIN = API_URL+'/auth/signin';
+export const API_URL_SIGNIN = 'http://webeffects.dnls/api/login';
+
 export const API_URL_SIGNIN_CONFIRM_ACCOUNT = API_URL+'/auth/signin_confirm_account';
 export const API_URL_SIGNUP = API_URL+'/auth/signup';
-export const API_URL_CHANGE_PWD = API_URL+'/user/changepwd';
+
+// export const API_URL_CHANGE_PWD = API_URL+'/changepwd';
+export const API_URL_CHANGE_PWD = 'http://webeffects.dnls/api/changepassword';
+
+export const RESET_PWD_API = API_URL+'/forgotpassword';
+// export const RESET_PWD_AJAX = 'http://webeffects.dnls/api/forgotpassword';
+
+// export const RESET_PWD_API_URL = API_URL+'/resetpassword';
+export const RESET_PWD_AJAX_URL = 'http://webeffects.dnls/api/resetpassword';
+
+
 export const API_URL_UPDATE_USER = API_URL+'/user/update';
 
 export const API_URL_USER = API_URL+'/user';
