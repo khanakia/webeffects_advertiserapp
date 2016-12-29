@@ -15,27 +15,40 @@ class PageForgetpassword extends Component {
         var resetpwdFormEl = jQuery(".ForgetpwdForm");
         var password_value = jQuery("#password").val();
         var password_confirmation = jQuery("#password_confirmation").val();
+        var haserror = 0;
 
-        jQuery(".errordiv").show();
+
         if( password_value.length === 0) {
+            haserror = 1;
            jQuery( ".passworderror" ).html( "<ul><li class='errorli'>Required Field</li><li class='errorli'>Must be more than 6 characters</li></ul>" );
-           return false; 
         }
         if( password_value.length >= 1 && password_value.length <= 5) {
+            haserror = 1;
            jQuery( ".passworderror" ).html( "<ul><li class='validli'>Required Field</li><li class='errorli'>Must be more than 6 characters</li></ul>" );
-            return false;
         }
         if( password_value.length >= 1 && password_value.length >= 5) {
+            haserror = 1;
            jQuery( ".passworderror" ).html( "<ul><li class='validli'>Required Field</li><li class='validli'>Must be more than 6 characters</li></ul>" );
-            return false;
         }
         if( password_value !== password_confirmation) {
+            haserror = 1;
            jQuery( ".passwordconfirmerror" ).html( "<ul><li class='errorli'>Password Confirm</li></ul>" );
-           return false;
         }
         if( password_value === password_confirmation) {
+            haserror = 1;
            jQuery( ".passwordconfirmerror" ).html( "<ul><li class='validli'>Password Confirm</li></ul>" );
+        }
+        if( password_confirmation.length === 0) {
+            haserror = 1;
+           jQuery( ".passwordconfirmerror" ).html( "<ul><li class='errorli'>Password Confirm</li></ul>" );
+        }
+
+        console.log(haserror);
+        if (haserror) {
+            jQuery(".errordiv").show();
             return false;
+        }else {
+            jQuery(".errordiv").hide();
         }
 
         jQuery( "#password" ).change(function() {
