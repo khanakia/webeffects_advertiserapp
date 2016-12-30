@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Auth from '../helpers/auth.js'
 
 
-class PageLogin extends Component {
+class Login extends Component {
     constructor(props, context) {
         super(props, context);
     }
@@ -83,4 +83,4 @@ class PageLogin extends Component {
 }
 
 
-export default PageLogin;
+export default Login;

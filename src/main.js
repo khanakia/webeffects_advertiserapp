@@ -16,9 +16,8 @@ console.log(window.Env)
 import {
     AppContainer,
     LoginContainer,
-    ResetlinkContainer,
-    ForgetpasswordContainer,
-    ChangepasswordContainer,
+    ResetPasswordContainer,
+    ForgotPasswordContainer,
     ProjectOverviewContainer,
     ProjectContainer,
     AccountContainer
@@ -42,27 +41,18 @@ import RequireAuth from './containers/RequireAuth';
 // import {language} from './src/lang/index.js';
 // window.lang = language.en;
 
-// If user is on Root URL then render Find My Organization page
-
 	render((
 		<Provider store={store}>
 		  <Router history={hashHistory}>
+            <Route path="/" component={LoginContainer} />
+            <Route path="/forgetpwd" component={ForgotPasswordContainer} />
+            <Route path="/resetpwd" component={ResetPasswordContainer} />
     		<Route path="/" component={AppContainer}>
-                <Route path="login" component={LoginContainer} />
-                <Route path="resetlink" component={ResetlinkContainer} />
-                <Route path="forgetpwd" component={ForgetpasswordContainer} />
-    			<Route path="changepwd" component={ChangepasswordContainer} />
     			<Route path="dashboard" component={ProjectOverviewContainer} />
-
     			<Route path="projects/:projectId" component={ProjectContainer} />
     			<Route path="project/add" component={ProjectContainer} />
-
                 <Route path="account" component={AccountContainer} />
     		</Route>
-    		
-		    
-
-		  
 		  </Router>
 		</Provider>  
 	), document.getElementById('root'))

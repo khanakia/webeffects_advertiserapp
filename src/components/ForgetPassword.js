@@ -4,7 +4,7 @@ import {ROOT_URL, RESET_PWD_AJAX_URL} from '../config.js'
 import Auth from '../helpers/auth.js'
 import Localstore from '../helpers/localstore.js'
 
-class PageForgetpassword extends Component {
+class ForgetPassword extends Component {
     constructor(props, context) {
         super(props, context);
     }
@@ -123,4 +123,4 @@ class PageForgetpassword extends Component {
 }
 
 
-export default PageForgetpassword;
+export default ForgetPassword;

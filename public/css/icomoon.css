@@ -10,7 +10,7 @@
   font-style: normal;
 }
 
-[class^="icon-"], [class*=" icon-"] {
+[class^="iconc-"], [class*=" iconc-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'icomoon' !important;
   speak: none;
@@ -25,152 +25,156 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-concept:before {
+.iconc-chevron-down:before {
+  content: "\e92c";
+}
+.iconc-concept:before {
   content: "\e900";
 }
-.icon-cross:before {
+.iconc-cross:before {
   content: "\e901";
 }
-.icon-edit:before {
+.iconc-edit:before {
   content: "\e902";
 }
-.icon-empty:before {
+.iconc-empty:before {
   content: "\e903";
 }
-.icon-erase:before {
+.iconc-erase:before {
   content: "\e904";
 }
-.icon-food:before {
+.iconc-food:before {
   content: "\e905";
 }
-.icon-globe:before {
+.iconc-globe:before {
   content: "\e906";
 }
-.icon-hamburger:before {
+.iconc-hamburger:before {
   content: "\e907";
 }
-.icon-italic:before {
+.iconc-italic:before {
   content: "\e908";
 }
-.icon-link:before {
+.iconc-link:before {
   content: "\e909";
 }
-.icon-location-pointer:before {
+.iconc-location-pointer:before {
   content: "\e90a";
 }
-.icon-lock:before {
+.iconc-lock:before {
   content: "\e90b";
 }
-.icon-logo-dnls .path1:before {
+.iconc-logo-dnls .path1:before {
   content: "\e90c";
   color: rgb(255, 113, 62);
 }
-.icon-logo-dnls .path2:before {
+.iconc-logo-dnls .path2:before {
   content: "\e90d";
   margin-left: -1em;
   color: rgb(60, 60, 59);
 }
-.icon-logo-dnls-simple .path1:before {
+.iconc-logo-dnls-simple .path1:before {
   content: "\e90e";
   color: rgb(255, 113, 62);
 }
-.icon-logo-dnls-simple .path2:before {
+.iconc-logo-dnls-simple .path2:before {
   content: "\e90f";
   margin-left: -1em;
   color: rgb(60, 60, 59);
 }
-.icon-mail:before {
+.iconc-mail:before {
   content: "\e910";
 }
-.icon-no-food:before {
+.iconc-no-food:before {
   content: "\e911";
 }
-.icon-numbered-list:before {
+.iconc-numbered-list:before {
   content: "\e912";
 }
-.icon-parking .path1:before {
+.iconc-parking .path1:before {
   content: "\e913";
   color: rgb(52, 63, 71);
 }
-.icon-parking .path2:before {
+.iconc-parking .path2:before {
   content: "\e914";
   margin-left: -0.6875em;
   color: rgb(255, 255, 255);
 }
-.icon-parking-price .path1:before {
+.iconc-parking-price .path1:before {
   content: "\e915";
   color: rgb(52, 63, 71);
 }
-.icon-parking-price .path2:before {
+.iconc-parking-price .path2:before {
   content: "\e916";
   margin-left: -0.724609375em;
   color: rgb(255, 255, 255);
 }
-.icon-parking-price .path3:before {
+.iconc-parking-price .path3:before {
   content: "\e917";
   margin-left: -0.724609375em;
   color: rgb(8, 185, 149);
 }
-.icon-parking-price .path4:before {
+.iconc-parking-price .path4:before {
   content: "\e918";
   margin-left: -0.724609375em;
   color: rgb(255, 255, 255);
 }
-.icon-person:before {
+.iconc-person:before {
   content: "\e919";
 }
-.icon-phone:before {
+.iconc-phone:before {
   content: "\e91a";
 }
-.icon-pie:before {
+.iconc-pie:before {
   content: "\e91b";
 }
-.icon-plus:before {
+.iconc-plus:before {
   content: "\e91c";
 }
-.icon-published:before {
+.iconc-published:before {
   content: "\e91d";
 }
-.icon-room:before {
+.iconc-room:before {
   content: "\e91e";
 }
-.icon-search:before {
+.iconc-search:before {
   content: "\e91f";
 }
-.icon-trash:before {
+.iconc-trash:before {
   content: "\e920";
 }
-.icon-underlined:before {
+.iconc-underlined:before {
   content: "\e921";
 }
-.icon-unordered-list:before {
+.iconc-unordered-list:before {
   content: "\e922";
 }
-.icon-uploaded:before {
+.iconc-uploaded:before {
   content: "\e923";
 }
-.icon-vimeo:before {
+.iconc-vimeo:before {
   content: "\e924";
 }
-.icon-youtube:before {
+.iconc-youtube:before {
   content: "\e925";
 }
-.icon-bold2:before {
+.iconc-bold2:before {
   content: "\e926";
 }
-.icon-buildings:before {
+.iconc-buildings:before {
   content: "\e927";
 }
-.icon-champagne:before {
+.iconc-champagne:before {
   content: "\e928";
 }
-.icon-check:before {
+.iconc-check:before {
   content: "\e929";
 }
-.icon-chevron:before {
+.iconc-chevron:before {
   content: "\e92a";
 }
-.icon-bold:before {
+.iconc-bold:before {
   content: "\e92b";
 }
+
 

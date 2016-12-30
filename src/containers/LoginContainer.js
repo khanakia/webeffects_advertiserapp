@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import {PageLogin} from '../components'
+import {Login} from '../components'
 
 const mapStateToProps = (state) => {
     return {
@@ -14,6 +14,6 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 
-const LoginContainer = connect(mapStateToProps, mapDispatchToProps)(PageLogin)
+const LoginContainer = connect(mapStateToProps, mapDispatchToProps)(Login)
 
 export default LoginContainer

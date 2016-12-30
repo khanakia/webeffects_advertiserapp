@@ -37,6 +37,7 @@ export const API_URL_UPDATE_USER = API_URL+'/user/update';
 export const API_URL_USER = API_URL+'/user';
 
 export const API_URL_PROJECT = API_URL+'/projects';
+export const API_URL_PROJECT_FORMDATA = API_URL_PROJECT +'/formdata';
 
 
 export const API_URL_ATTACHMENTS = API_URL+'/attachments';

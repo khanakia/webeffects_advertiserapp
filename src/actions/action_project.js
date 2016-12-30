@@ -2,6 +2,7 @@ import axios from 'axios';
 
 export const FETCH_PROJECTS = 'FETCH_PROJECTS';
 export const FETCH_PROJECT_CURRENT = 'FETCH_PROJECT_CURRENT';
+export const FETCH_PROJECT_FORMDATA = 'FETCH_PROJECT_FORMDATA';
 
 import {AuthHelper, ProjectHelper} from '../helpers'
 
@@ -21,4 +22,10 @@ export function fetchProject(project_id) {
     };
 }
 
-
+export function fetchProjectFormdata() {
+    const request = ProjectHelper.formdata();
+    return {
+        type: FETCH_PROJECT_FORMDATA,
+        payload: request
+    }
+}

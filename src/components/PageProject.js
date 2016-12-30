@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 
 import {ProjectHelper} from '../helpers'
 
+import ContentWrapper from './shared/ContentWrapper'
 import Tab from './Tab'
 import ClonableInput from './ClonableInput'
 import CheckboxList from './CheckboxList'
+import RadioList from './RadioList'
 import Zalen from './Zalen'
 
 import FileInput from './FileInput'
@@ -18,6 +20,8 @@ class PageProject extends Component {
     }
 
     componentWillMount() {
+
+        this.props.fetchProjectFormdata()
         // console.log(this.props.params.projectId)
         if(this.props.params.projectId) {
             this.props.fetchProject(this.props.params.projectId);
@@ -26,14 +30,11 @@ class PageProject extends Component {
 
     componentDidMount() {
         this.initJs()
-
     }
 
     componentDidUpdate() {
-        
         this.initJs()
     }
-
 
     initJs() {
         var _this = this;
@@ -82,6 +83,7 @@ class PageProject extends Component {
 
     _render_tabGeneral() {
         // console.log(this.props.project)
+        let images = _.filter(this.props.project.attachment_mappings, { 'filter_value_id': null});
         return (
             <div>
                 <div className="form-group">
@@ -94,7 +96,7 @@ class PageProject extends Component {
                 </div>
                 <div className="form-group">
                     <label>Representatieve buitenafbeelding</label>
-                    {/*<FileInput name="foto[]" onAttachmentDeleted={this.onAttachmentDeleted} selectedItems={this.props.project.attachment_mappings} />*/}
+                    <FileInput name="foto" onAttachmentDeleted={this.onAttachmentDeleted} selectedItems={images} />
                 </div>
 
                 <div className="form-group">
@@ -126,6 +128,20 @@ class PageProject extends Component {
     }
 
     _render_tabDetails() {
+        console.log("this.props.project.eigen_catering", this.props.project.eigen_catering)
+        const radioEigenCaterign = [
+            {
+                "title": "Geen eigen catering mogelijk",
+                "value": 0,
+                "icon_class": "iconc iconc-no-food"
+            },
+
+            {
+                "title": "Eigen catering mogelijk",
+                "value": 1,
+                "icon_class": "iconc iconc-food"
+            }
+        ]
         return (
             <div>
                 <div className="form-group">
@@ -152,23 +168,27 @@ class PageProject extends Component {
 
                 <div className="form-group">
                     <label>Catering</label>
+                    <RadioList items={radioEigenCaterign} selectedValue={this.props.project.eigen_catering} />
+
                 </div>
 
                 <div className="row">
                     <div className="col-md-4">
                         <div className="form-group">
                             <label>Gebouwen</label>
-                            {/*<CheckboxList items={checkboxGebouwen} selectedItems={selectedGebouwen} />*/}
+                            <CheckboxList items={this.props.project_formdata.gebouwens} selectedItems={[]} />
                         </div>
                     </div>
                     <div className="col-md-4">
                         <div className="form-group">
                             <label>Ligging</label>
+                            <CheckboxList items={this.props.project_formdata.liggings} selectedItems={[]} />
                         </div>
                     </div>
                     <div className="col-md-4">
                         <div className="form-group">
                             <label>Eigenschappen</label>
+                            <CheckboxList items={this.props.project_formdata.eigenschappens} selectedItems={[]} />
                         </div>
                     </div>
                 </div>
@@ -217,102 +237,120 @@ class PageProject extends Component {
 
 
 
+    _render_catForm(catitem) {
+        let fvm = _.find(this.props.project.categories_mapping, { 'filter_value_id': catitem.value });
+        fvm = undefined==fvm ? [] : fvm;
+        // console.log("fvm", fvm)
+        let images = _.filter(this.props.project.attachment_mappings, { 'filter_value_id': catitem.value });
+        images = undefined==images ? [] : images;
+        // console.log("images", images)
+        return (
+            <div>
+                <div className="form-group">
+                    <label>Algemene beschrijving</label>
+                    <textarea className="editor" name="description" defaultValue={fvm.description}></textarea>
+                </div>
+                <div className="form-group">
+                    <label>Representatieve buitenafbeelding</label>
+                    <FileInput name="foto1" filter_value_id={catitem.value} onAttachmentDeleted={this.onAttachmentDeleted} selectedItems={images} />
+                </div>
+            </div>
+        )
+    }
+
     render() {
-        if(this.props.params.projectId && jQuery.isEmptyObject(this.props.project)) {
+        if(!this.props.params.projectId || jQuery.isEmptyObject(this.props.project) || jQuery.isEmptyObject(this.props.project_formdata)) {
             return false
         }
         
-
         const project = this.props.project
-
-        let items = [
-            {
-                "title": "Algemene beschrijving",
-                // "content": this._contentTab1()
-            },
-
-            {
-                "title": "Algemene beschrijving",
-                "content": ""
-            }
-        ]
-
-
-        const checkboxGebouwen = [
-            {
-                "title": "Attractiepark",
-                "value": 22
-            },
-            {
-                "title": "Boerderij",
-                "value": 23
-            },
-            {
-                "title": "Congrescentrium",
-                "value": 24
-            }
-        ]        
-        const selectedGebouwen = [22,23]
+     
         
         return (
-            <div className="p20">
-                <div className="page-panel">
-                    <div className="page-panel__heading">Account instellingen</div>
-                    <div className="page-panel__inner">
-                        <div className="page-panel__inner__left">
-                            <ul className="nav nav-tabs nav-tabs--vertical" role="tablist">
-                                <li role="presentation" className="active">
-                                    <a href="#general" aria-controls="general" role="tab" data-toggle="tab">Algemene beschrijving</a>
-                                </li>
-                                <li role="presentation">
-                                    <a href="#details" aria-controls="details" role="tab" data-toggle="tab">Details</a>
-                                </li>
-                                <li role="presentation">
-                                    <a href="#zalen" aria-controls="zalen" role="tab" data-toggle="tab">Zalen</a>
-                                </li>
-                                <li role="presentation">
-                                    <a href="#contact" aria-controls="contact" role="tab" data-toggle="tab">Contact</a>
-                                </li>
-                                <li role="presentation">
-                                    <a href="#locatie" aria-controls="locatie" role="tab" data-toggle="tab">Locatie & parkeren</a>
-                                </li>
-                                <li role="presentation">
-                                    <a href="#aanvragen" aria-controls="aanvragen" role="tab" data-toggle="tab">Aanvragen</a>
-                                </li>
-                                <li role="presentation">
-                                    <a href="#statistieken" aria-controls="statistieken" role="tab" data-toggle="tab">Statistieken</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div className="page-panel__inner__content">
-                            <form className="form-default" ref="form">
-                                <input type="text" name="id" defaultValue={project.id} />
-                                <div className="tab-content">
-                                    <h3 className="d_active tab_drawer_heading">
+            <div className="">
+                <ContentWrapper hasSidebar={true}>
+                    <div className="page-panel">
+                        <div className="page-panel__heading">Account instellingen</div>
+                        <div className="page-panel__inner">
+                            <div className="page-panel__inner__left">
+                                <ul className="nav nav-tabs nav-tabs--vertical" role="tablist">
+                                    <li role="presentation" className="active">
                                         <a href="#general" aria-controls="general" role="tab" data-toggle="tab">Algemene beschrijving</a>
-                                    </h3>
-                                    <div role="tabpanel" className="tab-pane " id="general">
-                                       {this._render_tabGeneral()}
-                                    </div>
-
-                                    <h3 className="tab_drawer_heading">
+                                    </li>
+                                    <li role="presentation">
                                         <a href="#details" aria-controls="details" role="tab" data-toggle="tab">Details</a>
-                                    </h3>
-                                    <div role="tabpanel" className="tab-pane" id="details">
-                                        {this._render_tabDetails()}
-                                    </div>
+                                    </li>
+                                    <li role="presentation">
+                                        <a href="#zalen" aria-controls="zalen" role="tab" data-toggle="tab">Zalen</a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a href="#contact" aria-controls="contact" role="tab" data-toggle="tab">Contact</a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a href="#locatie" aria-controls="locatie" role="tab" data-toggle="tab">Locatie & parkeren</a>
+                                    </li>
 
-                                    <div role="tabpanel" className="tab-pane active" id="zalen">
-                                        <Zalen items={project.project_rooms} onZalenRemoved={this.onZalenRemoved} />
+                                    {
+                                        this.props.project_formdata.gelegenhendens.map((item, index) => {
+                                            return (
+                                                <li role="presentation" key={index}>
+                                                    <a href={`#cat_${item.value}`} role="tab" data-toggle="tab">{item.title}</a>
+                                                </li>
+                                            )
+                                        })
+
+                                    }
+
+                                    <li role="presentation">
+                                        <a href="#aanvragen" aria-controls="aanvragen" role="tab" data-toggle="tab">Aanvragen</a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a href="#statistieken" aria-controls="statistieken" role="tab" data-toggle="tab">Statistieken</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div className="page-panel__inner__content">
+                                <form className="form-default" ref="form">
+                                    <input type="text" name="id" defaultValue={project.id} />
+                                    <div className="tab-content">
+                                        <h3 className="d_active tab_drawer_heading">
+                                            <a href="#general" aria-controls="general" role="tab" data-toggle="tab">Algemene beschrijving</a>
+                                        </h3>
+                                        <div role="tabpanel" className="tab-pane " id="general">
+                                           {this._render_tabGeneral()}
+                                        </div>
+
+                                        <h3 className="tab_drawer_heading">
+                                            <a href="#details" aria-controls="details" role="tab" data-toggle="tab">Details</a>
+                                        </h3>
+                                        <div role="tabpanel" className="tab-pane active" id="details">
+                                            {this._render_tabDetails()}
+                                        </div>
+
+                                        {
+                                            this.props.project_formdata.gelegenhendens.map((item, index) => {
+                                                return (
+                                                    <div role="tabpanel" className="tab-pane" id={`cat_${item.value}`} key={index}>
+                                                        {this._render_catForm(item)}
+                                                    </div>
+                                                )
+                                            })
+                                        }
+
+
+
+                                        <div role="tabpanel" className="tab-pane " id="zalen">
+                                            <Zalen items={project.project_rooms} onZalenRemoved={this.onZalenRemoved} />
+                                        </div>
                                     </div>
-                                </div>
-                            </form>  
-                        </div>
-                        <div className="page-panel__inner__right">
-                            {this._render_rightBlock()}
+                                </form>  
+                            </div>
+                            <div className="page-panel__inner__right">
+                                {this._render_rightBlock()}
+                            </div>
                         </div>
                     </div>
-                </div>
+                </ContentWrapper>
             </div>
         );
     }

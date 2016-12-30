@@ -1,6 +1,7 @@
 import {
     FETCH_PROJECTS,
     FETCH_PROJECT_CURRENT,
+    FETCH_PROJECT_FORMDATA
 } from '../actions/action_project';
 
 
@@ -8,6 +9,7 @@ import {
 const INITIAL_STATE = {
     list: [], // List all the Projects
     current: [],  // Current Project User is Viewing
+    formdata: []
 };
 
 
@@ -23,6 +25,8 @@ export default function(state = INITIAL_STATE, action) {
             return {...state, list: action.payload.data };
         case FETCH_PROJECT_CURRENT:
             return {...state, current: action.payload.data };
+        case FETCH_PROJECT_FORMDATA:
+            return {...state, formdata: action.payload.data };    
         default:
             return state;
     }

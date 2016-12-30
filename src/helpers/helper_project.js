@@ -1,5 +1,6 @@
 import {
         API_URL_PROJECT, 
+        API_URL_PROJECT_FORMDATA
         
     } from '../config.js'
 
@@ -13,7 +14,7 @@ export default class ProjectHelper {
         return axios({
             method: 'get',
             url: API_URL_PROJECT,
-            headers: Auth.header(),
+            // headers: Auth.header(),
         });
     }
 
@@ -62,6 +63,14 @@ export default class ProjectHelper {
             method: 'delete',
             url: API_URL_PROJECT + '/' + id,
             headers: Auth.header(),
+        });
+    }
+
+    static formdata() {
+        return axios({
+            method: 'get',
+            url: API_URL_PROJECT_FORMDATA,
+            // headers: Auth.header(),
         });
     }
 

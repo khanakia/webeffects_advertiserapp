@@ -8,7 +8,7 @@ class Zalen extends React.Component {
 
         this.state = {
             itemsNew: [],
-            isDesktop: false
+            isDesktop: true
         }
         
     }

@@ -5,7 +5,7 @@ import Auth from '../helpers/auth.js'
 import Localstore from '../helpers/localstore.js'
 
 
-class PageResetlink extends Component {
+class ResetPassword extends Component {
     constructor(props, context) {
         super(props, context);
     }
@@ -66,4 +66,4 @@ class PageResetlink extends Component {
 }
 
 
-export default PageResetlink;
+export default ResetPassword;

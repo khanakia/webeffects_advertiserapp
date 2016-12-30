@@ -1,26 +1,25 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router'
-import ReactDOM from 'react-dom'
+import { connect } from 'react-redux'
 
-export default class AppContainer extends Component {
+import { fetchProjects } from '../actions/action_project';
 
-    componentWillMount() {
-        
-    }
-
-    componentDidMount() {
-        
-    }
-
-    render() {
-        return (
-          <div id="main">
-            <section id="content">
-                {this.props.children}
-
-            </section>
-          </div>
-        )
-    }
-
+import {App} from '../components'
+const mapStateToProps = (state) => {
+    return {
+        state : state,
+        project_list: state.project.list,
+    };
 }
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        dispatch,
+        fetchProjects: () => {
+            dispatch(fetchProjects()); 
+        },
+    }
+}
+
+
+const AppContainer = connect(mapStateToProps, mapDispatchToProps)(App)
+
+export default AppContainer

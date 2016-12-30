@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import ContentWrapper from './shared/ContentWrapper'
+
 class Account extends Component {
     constructor(props, context) {
         super(props, context);
@@ -42,38 +44,40 @@ class Account extends Component {
         
         return (
             <div className="p20">
-                <div className="page-panel">
-                    <div className="page-panel__heading">Account instellingen</div>
-                    <div className="page-panel__inner">
-                        <div className="page-panel__inner__left">
-                              <ul className="nav nav-tabs nav-tabs--vertical" role="tablist">
-                                <li role="presentation" className="active">
-                                    <a href="#home" aria-controls="home" role="tab" data-toggle="tab">Uw gegevens</a>
-                                </li>
-                                <li role="presentation">
-                                    <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Wachtwoord wijzigen</a>
-                                </li>
-                              </ul>
-                        </div>
-                        <div className="page-panel__inner__content">
-                             
-                              <div className="tab-content">
-                                <h3 className="d_active tab_drawer_heading">
-                                    <a href="#home" aria-controls="home" role="tab" data-toggle="tab">Uw gegevens</a>
-                                </h3>
-                                <div role="tabpanel" className="tab-pane active" id="home">..sdfsda.</div>
+                <ContentWrapper hasSidebar={true}>
+                    <div className="page-panel">
+                        <div className="page-panel__heading">Account instellingen</div>
+                        <div className="page-panel__inner">
+                            <div className="page-panel__inner__left">
+                                  <ul className="nav nav-tabs nav-tabs--vertical" role="tablist">
+                                    <li role="presentation" className="active">
+                                        <a href="#home" aria-controls="home" role="tab" data-toggle="tab">Uw gegevens</a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Wachtwoord wijzigen</a>
+                                    </li>
+                                  </ul>
+                            </div>
+                            <div className="page-panel__inner__content">
+                                 
+                                  <div className="tab-content">
+                                    <h3 className="d_active tab_drawer_heading">
+                                        <a href="#home" aria-controls="home" role="tab" data-toggle="tab">Uw gegevens</a>
+                                    </h3>
+                                    <div role="tabpanel" className="tab-pane active" id="home">..sdfsda.</div>
 
-                                <h3 className="tab_drawer_heading">
-                                    <a href="#profile" aria-controls="home" role="tab" data-toggle="tab">Wachtwoord wijzigen</a>
-                                </h3>
-                                <div role="tabpanel" className="tab-pane" id="profile">...eeee</div>
-                              </div>
+                                    <h3 className="tab_drawer_heading">
+                                        <a href="#profile" aria-controls="home" role="tab" data-toggle="tab">Wachtwoord wijzigen</a>
+                                    </h3>
+                                    <div role="tabpanel" className="tab-pane" id="profile">...eeee</div>
+                                  </div>
 
-                        </div>
-                        <div className="page-panel__inner__right">
+                            </div>
+                            <div className="page-panel__inner__right">
+                            </div>
                         </div>
                     </div>
-                </div>
+                </ContentWrapper>
             </div>
         );
     }

@@ -6,20 +6,23 @@ class FileInput extends React.Component {
     constructor(props) {
         super(props);
         
+        this.state = {
+            itemsNew: [],
+        }
     }
 
     static defaultProps = {        
         className: '',
-        name: 'images[]',
+        name: 'images',
         theme: '',
         selectedItems: [],
+        filter_value_id: '',
         onAttachmentDeleted: function() {}
         
     }
 
-    
-
     componentDidMount() {
+        var _this = this;
         jQuery(this.refs.input).change(function(){
             var data = new FormData();
             // var names = [];
@@ -36,18 +39,16 @@ class FileInput extends React.Component {
                 contentType: false,
                 data: data,
                 success: function(response){
-                    console.log(data);
-                    // $.each( response, function( key, value ) {
-                    //     var html = _this.html_item(value);
-                    //     _this.$modal.find('.items').prepend(html);
-                    // });
+
+                    _this.setState({
+                        itemsNew: response
+                    })
                     
-                }
+                }.bind(this)
             });
         });
        
     }
-
  
     deleteMapping(attachment_mapping_id) {
         jQuery.ajax({
@@ -60,6 +61,12 @@ class FileInput extends React.Component {
                 
             }.bind(this)
         });
+    }
+
+
+    handleRemoveItem(index) {
+        var items = this.state.itemsNew
+        this.setState({itemsNew: items.filter((_, i) => i!==index)})
     }
 
     render() {
@@ -76,19 +83,30 @@ class FileInput extends React.Component {
                         </label>
                     </div>
                 </div>
-                <div className="item">
-                    <div className="inner">
-                        <div className="title">Korte zaal</div>
-                    </div>
-                </div>
+         
 
-                {this.props.selectedItems.map(function(item) {
+                {this.state.itemsNew.map(function(item, index) {
+                    return (
+                        <div className="item" key={item.id}>
+                            <button type="button" onClick={() => {this.handleRemoveItem(index)}}>Delete</button><br />
+                            
+                            <input type="text" name={`${this.props.name}_new[${index}][filter_value_id]`} defaultValue={this.props.filter_value_id} placeholder="filter_value_id" /> <br/> 
+                            <input type="text" name={`${this.props.name}_new[${index}][attachment_id]`} defaultValue={item.id} placeholder="attachment_id" />
+                            <div className="inner" style={{backgroundImage : 'url("' + item.url + '")'}}>
+                                <div className="title">{item.attachment_title}</div>
+                            </div>
+                        </div>
+                    )
+                }, this)}
+
+                {this.props.selectedItems.map(function(item, index) {
                     return (
                         <div className="item" key={item.id}>
                             <button type="button" onClick={() => {this.deleteMapping(item.id)}}>Delete</button><br />
                             <input type="text" name="project_id[]" defaultValue={item.object_id} placeholder="project_id" /> <br/>
-                            <input type="text" name={this.props.name} defaultValue={item.attachment.id} placeholder="attachment_id" />
-                            <div className="inner" style={{backgroundImage : 'url(' + item.attachment.url + ')'}}>
+                            <input type="text" name={`${this.props.name}[${index}][filter_value_id]`} defaultValue={item.filter_value_id} placeholder="filter_value_id" /> <br/> 
+                            <input type="text" name={`${this.props.name}[${index}][attachment_id]`} defaultValue={item.attachment.id} placeholder="attachment_id" />
+                            <div className="inner" style={{backgroundImage : 'url("' + item.attachment.url + '")'}}>
                                 <div className="title">{item.attachment.attachment_title}</div>
                             </div>
                         </div>

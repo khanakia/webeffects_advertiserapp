@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import {PageChangepassword} from '../components'
+import {ForgetPassword} from '../components'
 
 const mapStateToProps = (state) => {
     return {
@@ -14,6 +14,6 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 
-const ChangepasswordContainer = connect(mapStateToProps, mapDispatchToProps)(PageChangepassword)
+const ForgotPasswordContainer = connect(mapStateToProps, mapDispatchToProps)(ForgetPassword)
 
-export default ChangepasswordContainer
+export default ForgotPasswordContainer
