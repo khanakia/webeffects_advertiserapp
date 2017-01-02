@@ -102,17 +102,27 @@
 			float: none;
 			margin-bottom: 0;
 			a {
+				margin: 0;
 				padding: 20px;
 				border-radius: 0;
 				border: none;
 				border-bottom: 1px solid #CDD4D7;
 				color: #101010;
+				i {
+				    margin-top: 5px;
+				    float: right;
+					font-size: 11px;
+					color: #101010;
+				}
 			}
 			&.active {
 				a, a:hover, a:focus {
 					color: #FF713E;
 					border: none;
 					border-bottom: 1px solid #CDD4D7;
+					i {
+						color: #FF713E;
+					}
 				}
 			}
 		}

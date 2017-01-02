@@ -13,9 +13,14 @@ class Header extends Component {
     }
 
     componentDidMount() {
-        jQuery(".header__menu, .mobile-overlay-menu a").click(function(){
+        jQuery(".header__menu").click(function(){
             jQuery(".mobile-overlay-menu").slideToggle()
             jQuery(".header__menu").toggleClass("opened")
+        })
+        jQuery("a.has-childerns").click(function(){
+            jQuery(this).parent().find(".submenu").slideToggle()
+            jQuery(this).find("i.slideUpDown").toggleClass("iconc-chevron-down iconc-check")
+            return false
         })
     }
 
@@ -59,7 +64,7 @@ class Header extends Component {
                 <div className="mobile-overlay-menu">
                     <ul>
                         <li>
-                            <a href="#" className="has-childerns">Locaties</a>
+                            <a href="#" className="has-childerns">Locaties <i className="slideUpDown iconc-chevron-down"></i></a>
                             <ul className="submenu">
                                 <ProjectsLinkList project_list={this.props.project_list} />
                             </ul>

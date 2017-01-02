@@ -259,7 +259,7 @@ class PageProject extends Component {
             <div>
                 <div className="block-info">
                     <label>Bewerkingen</label>
-                    <div className="last_updated">Zojuist om 11:38</div>
+                    <div className="last_updated mt5">Zojuist om 11:38</div>
 
                     <div className="d-table w100 mt20">
                         <div className="d-table-cell v-align-middle">
@@ -272,22 +272,42 @@ class PageProject extends Component {
                 </div>
                 <div className="block-info">
                     <label>Locatie bekijken</label>
-                    <div><a className="" href="#">Live</a> <i className="fa fa-link pull-right"></i></div>
-                    <div><a className="" href="#">Concept</a> <i className="fa fa-link pull-right"></i></div>
+                    <div><a className="live" href="#">Live</a> <i className="fa fa-link pull-right"></i></div>
+                    <div><a className="concept" href="#">Concept</a> <i className="fa fa-link pull-right"></i></div>
                 </div>
                 <div className="block-info">
                     <label>Status</label>
-                    <div className="">
-                        <i className="fa fa-file"></i>Gepubliceerd
-                        <a className="pull-right" href="#"><i className="fa fa-pencil"></i></a>
-                    </div>    
+                    <div className="dropdown dropdown--status">
+                        <i className="iconc-published before_text"></i>Gepubliceerd
+                        <a className="pull-right dropdown-toggle" id="gepubliceerd" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i className="fa fa-pencil"></i></a>
+
+                        <ul className="dropdown-menu dropdown-menu--status" aria-labelledby="gepubliceerd">
+                            <li>
+                                <a href="">
+                                    <label>
+                                        <input type="radio" name="aanhef" value="dhr" />
+                                        <span>Gepubliceerd <i className="iconc-published"></i></span>
+                                    </label>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <label>
+                                        <input type="radio" name="aanhef" value="concept" />
+                                        <span>Concept <i className="iconc-concept"></i></span>
+                                    </label>
+                                </a>
+                            </li>
+                            
+                        </ul>   
+                    </div> 
                 </div>
                 <div className="block-info">
                     <label>Datum van publicatie</label>
                     <div className="last_updated">20 oktober 2016 om 17:15</div>
                 </div>
                 <div className="block-info">
-                    <a href="#"><i className="fa fa-trash"></i>Zet deze locatie offline</a>
+                    <a href="#"><i className="iconc-trash before_text"></i>Zet deze locatie offline</a>
                 </div>
             </div>
         )
@@ -333,26 +353,26 @@ class PageProject extends Component {
                             <div className="page-panel__inner__left">
                                 <ul className="nav nav-tabs nav-tabs--vertical" role="tablist">
                                     <li role="presentation" className="active">
-                                        <a href="#general" aria-controls="general" role="tab" data-toggle="tab">Algemene beschrijving</a>
+                                        <a href="#general" aria-controls="general" role="tab" data-toggle="tab">Algemene beschrijving <i className="iconc-chevron"></i></a>
                                     </li>
                                     <li role="presentation">
-                                        <a href="#details" aria-controls="details" role="tab" data-toggle="tab">Details</a>
+                                        <a href="#details" aria-controls="details" role="tab" data-toggle="tab">Details <i className="iconc-chevron"></i></a>
                                     </li>
                                     <li role="presentation">
-                                        <a href="#zalen" aria-controls="zalen" role="tab" data-toggle="tab">Zalen</a>
+                                        <a href="#zalen" aria-controls="zalen" role="tab" data-toggle="tab">Zalen <i className="iconc-chevron"></i></a>
                                     </li>
                                     <li role="presentation">
-                                        <a href="#contact" aria-controls="contact" role="tab" data-toggle="tab">Contact</a>
+                                        <a href="#contact" aria-controls="contact" role="tab" data-toggle="tab">Contact <i className="iconc-chevron"></i></a>
                                     </li>
                                     <li role="presentation">
-                                        <a href="#locatie" aria-controls="locatie" role="tab" data-toggle="tab">Locatie & parkeren</a>
+                                        <a href="#locatie" aria-controls="locatie" role="tab" data-toggle="tab">Locatie & parkeren <i className="iconc-chevron"></i></a>
                                     </li>
 
                                     {
                                         this.props.project_formdata.gelegenhendens.map((item, index) => {
                                             return (
                                                 <li role="presentation" key={index}>
-                                                    <a href={`#cat_${item.value}`} role="tab" data-toggle="tab">{item.title}</a>
+                                                    <a href={`#cat_${item.value}`} role="tab" data-toggle="tab">{item.title} <i className="iconc-chevron"></i></a>
                                                 </li>
                                             )
                                         })
@@ -360,10 +380,10 @@ class PageProject extends Component {
                                     }
 
                                     <li role="presentation">
-                                        <a href="#aanvragen" aria-controls="aanvragen" role="tab" data-toggle="tab">Aanvragen</a>
+                                        <a href="#aanvragen" aria-controls="aanvragen" role="tab" data-toggle="tab">Aanvragen <i className="iconc-chevron"></i></a>
                                     </li>
                                     <li role="presentation">
-                                        <a href="#statistieken" aria-controls="statistieken" role="tab" data-toggle="tab">Statistieken</a>
+                                        <a href="#statistieken" aria-controls="statistieken" role="tab" data-toggle="tab">Statistieken <i className="iconc-chevron"></i></a>
                                     </li>
                                 </ul>
                             </div>

@@ -28,21 +28,24 @@ class ProjectOverview extends Component {
                                 <th>Status</th>
                                 <th>Titel</th>
                                 <th>Laatste bewerking</th>
-                                <th>Link</th>
-                                <th>Verwijder</th>
-                                <th>Bewerk</th>
+                                <th className="text-center">Link</th>
+                                <th className="text-center">Verwijder</th>
+                                <th className="text-center">Bewerk</th>
                             </tr>
                         </thead>
                         <tbody>
                             {this.props.project_list.map(function(item, index){
                                 return (
                                     <tr key={index}>
-                                        <td>{item.project_status_id}</td>
-                                        <td>{item.project_title}</td>
+                                        <td><i className="iconc-concept"></i> <span>{item.project_status_id}</span></td>
+                                        <td>
+                                            <span className="title">{item.project_title}</span>
+                                            <span className="subtitle">Bennekom <i className="fa fa-circle" aria-hidden="true"></i> Gelderland</span>
+                                        </td>
                                         <td>{item.updated_at}</td>
-                                        <td><a target="_blank" href=""><i className="iconc iconc-link"></i></a></td>
-                                        <td><button className="btn btn-plain"><i className="iconc iconc-trash"></i></button></td>
-                                        <td><Link to={'/projects/'+item.id}><i className="iconc iconc-edit"></i></Link></td>
+                                        <td className="text-center link-icon"><a target="_blank" href=""><i className="iconc iconc-link"></i></a></td>
+                                        <td className="text-center link-icon"><button className="btn btn-plain"><i className="iconc iconc-trash"></i></button></td>
+                                        <td className="text-center link-icon"><Link to={'/projects/'+item.id}><i className="iconc iconc-edit"></i></Link></td>
                                     </tr>
                                 )
                             })}

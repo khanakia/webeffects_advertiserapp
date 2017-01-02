@@ -45,6 +45,136 @@ div.clear {
 	.last_updated {
 		color: #A0A8AC;
 	}
+	.live {
+		padding-bottom: 5px;
+	}
+	.live,
+	.concept {
+		display: inline-block;
+		text-decoration: underline;
+	}
+	label {
+		font-weight: 400;
+	}
+	a {
+		color: #101010;
+		&:hover {
+			text-decoration: none;
+		}
+	}
+	i {
+		color: #000000;
+		&.before_text {
+    		margin-right: 15px;
+			font-size: 24px;
+    		vertical-align: middle;
+		}
+	}
+	.dropdown-menu--status {
+		margin: 0;
+		padding: 0;
+		top: 45px;
+		right: 0px;
+		border-radius: 0px;
+		a {
+			padding: 15px;
+			color: #7C8589;
+			i {
+				float: right;
+				margin-left: 20px;
+				font-size: 20px;
+				color: #7C8589;
+			}
+			&:hover {
+				color: #08B995;
+				background-color: transparent;
+				i {
+					color: #08B995;
+				}
+			}
+			input {
+				margin-right: 10px;
+			}
+			label {
+				display: block;
+			}
+		}
+		&:before,
+		&:after {
+			content: " ";
+			position: absolute;
+			bottom: 100%;
+			left: 50%;
+			height: 0;
+			width: 0;
+			border: solid transparent;
+			pointer-events: none;
+		}
+		&:after {
+			margin-left: -16px;
+			border-width: 16px;
+			border-color: rgba(136, 183, 213, 0);
+			border-bottom-color: #fff;
+		}
+		&:before {
+			margin-left: -18px;
+			border-width: 18px;
+			border-color: rgba(194, 225, 245, 0);
+			border-bottom-color: rgba(0, 0, 0, 0.15);
+		}
+	}
+}
+
+
+label input[type="checkbox"],
+label input[type="radio"] {
+	display: inline;
+	margin: 0;
+	opacity: 0;
+	position: absolute;
+}
+
+label input[type="checkbox"] + span::before,
+label input[type="radio"] + span::before {
+    left: 0;
+    position: absolute;
+    top: 4px;
+}
+
+label input[type="radio"] + span::before {
+    background-image: url("../images/radio-spirit.jpg");
+    background-repeat: no-repeat;
+    background-position: -4px -4px;
+    background-size: 25px;
+    content: "";
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+}
+
+label input[type="checkbox"] + span::before {
+	background-image: url("../images/checkbox-spirit.jpg");
+    background-repeat: no-repeat;
+	background-position: -5px -5px;
+	background-size: 24px;
+    content: "";
+    display: inline-block;
+    height: 15px;
+    width: 15px;
+}
+
+label input[type="radio"]:checked + span::before {
+    background-position: -4px -64px;
+}
+
+label input[type="checkbox"]:checked + span::before {
+    background-position: -5px -60px;
+}
+
+label input[type="checkbox"] + span,
+label input[type="radio"] + span {
+	position: relative;
+	padding: 0 0 0 25px;
 }
 
 
@@ -286,11 +416,55 @@ div.clear {
 
 .table--default {
 	background-color: #fff;
-	th {
-		font-weight: normal;
-		color: #A0A8AC;
-		padding: 10px;
-		text-align: center;
+	font-size: 16px;
+	color: #7C8589;
+	> thead:first-child {
+		> tr:first-child  {
+			> th {
+				padding: 15px 17px;
+				font-weight: normal;
+				color: #A0A8AC;
+				border-bottom-width: 0px;
+			}
+		}
+	}
+
+	> tbody {
+		> tr {
+			> td {
+				padding: 15px;
+				line-height: 45px;
+				i {
+					vertical-align: middle;
+				}
+				&:first-of-type {
+					i {
+						margin-right: 10px;
+						font-size: 28px;
+					}
+				}
+				.title {
+					display: block;
+					color: #101010;
+					line-height: 21px;
+				}
+				.subtitle {
+					margin-top: 3px;
+					display: block;
+					font-size: 14px;
+					line-height: 21px;
+					i {
+						margin: 0 12px;
+					    font-size: 6px;
+					}
+				}
+				&.link-icon {
+					i {
+						color: #000000;
+					}
+				}
+			}
+		}
 	}
 }
 

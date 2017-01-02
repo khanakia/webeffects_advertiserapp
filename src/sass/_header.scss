@@ -6,6 +6,20 @@ header.desktop {
 
 	.dropdown--user {
 		float: right;
+		.btn-user, .btn-user:focus {
+			> span {
+		    	padding: 0px;
+			}
+			i {
+				padding: 5px 10px;
+				color: #fff;
+				font-size: 22px;
+			}
+			i.iconc-person {
+				padding-right: 20px;
+				font-size: 26px;
+			}
+		}
 	}
 
 	@media (max-width: 992px) {
@@ -40,6 +54,10 @@ header.mobile {
 			color: #fff;
 			font-size: 26px;
     		vertical-align: middle;
+    		opacity: 1;
+		}
+		i.iconc-cross {
+			font-size: 16px;
 		}
 
 		i.close {
@@ -70,10 +88,19 @@ header.mobile {
 		font-size: 16px;
 		color: #fff;
 		display: block;
-		padding: 10px 15px;
+		padding: 10px 20px;
+		text-decoration: none;
+		border-bottom: 1px solid #343F47;
 
 		&:hover {
 			background-color: #4B5A65;
+		}
+		&.has-childerns {
+			i {
+				float: right;
+				color: #fff;
+				font-size: 20px;
+			}
 		}
 	}
 
@@ -83,8 +110,20 @@ header.mobile {
 	}
 
 	ul.submenu {
+		display: none;
 		a {
+			position: relative;
 			padding-left: 50px;
+			&:hover,
+			&:focus {
+				&:before {
+					content: "•";
+					position: absolute;
+					top: 10px;
+					left: 20px;
+	    			color: #fff;
+				}
+			}
 		}
 	}
 }
