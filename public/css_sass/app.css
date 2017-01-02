@@ -271,6 +271,9 @@ body {
   background-color: #ECF5F8;
   font-family: 'Open Sans', sans-serif; }
 
+i {
+  color: #7C8589; }
+
 div.clear {
   clear: both;
   height: 1px;
@@ -292,6 +295,10 @@ div.clear {
   .block-info .last_updated {
     color: #A0A8AC; }
 
+.btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn.active.focus {
+  outline: none;
+  box-shadow: none; }
+
 .btn-green, .btn-green:focus {
   color: #fff;
   background-color: #08B995;
@@ -309,6 +316,20 @@ div.clear {
   background: none; }
   .btn-plain:hover {
     color: #08B995; }
+
+.btn-dropdown {
+  width: 100%;
+  padding: 10px 15px;
+  border-radius: 0;
+  background: #fff;
+  border: 1px solid #CDD4D7;
+  color: #7C8589;
+  outline: none;
+  box-shadow: none;
+  text-align: left; }
+  .btn-dropdown i {
+    float: right;
+    font-size: 18px; }
 
 .btn--round {
   border-radius: 40px;
@@ -339,6 +360,20 @@ div.clear {
     padding: 5px 15px; }
   .btn-user .usericon, .btn-user:focus .usericon {
     font-size: 20px; }
+
+.dropdown--style1 .dropdown-menu {
+  border-radius: 0;
+  margin: 0;
+  padding: 0;
+  min-width: 185px;
+  width: 100%; }
+  .dropdown--style1 .dropdown-menu > li {
+    border-bottom: 1px solid #CDD4D7; }
+    .dropdown--style1 .dropdown-menu > li > a {
+      color: #7C8589;
+      padding: 15px 25px; }
+    .dropdown--style1 .dropdown-menu > li > a:hover, .dropdown--style1 .dropdown-menu > li > a:focus {
+      color: #7C8589; }
 
 /* Used in header desktop */
 .dropdown-menu--user {
@@ -377,6 +412,51 @@ div.clear {
   font-weight: normal; }
 .input-groups-radiocheck input {
   margin-right: 15px; }
+
+.input-group--style-label .input-group-addon {
+  border: 1px solid #CDD4D7;
+  border-right: 0; }
+.input-group--style-label label {
+  display: table-cell;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  float: left;
+  width: 100%;
+  margin-bottom: 0;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #7C8589;
+  font-weight: normal;
+  background-color: #fff;
+  text-align: left;
+  outline: 0;
+  border: 1px solid #CDD4D7; }
+
+.input-group--style-button .input-group-addon {
+  border: 0;
+  border-right: 1px solid #CDD4D7; }
+.input-group--style-button button {
+  display: table-cell;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  float: left;
+  width: 100%;
+  margin-bottom: 0;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  border: none;
+  text-align: left;
+  outline: 0; }
+  .input-group--style-button button:hover {
+    background-color: #fbfbfb; }
 
 .table--default {
   background-color: #fff; }

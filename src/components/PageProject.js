@@ -12,7 +12,7 @@ import Zalen from './Zalen'
 import FileInput from './FileInput'
 import VideoInput from './VideoInput'
 import IframeInput from './IframeInput'
-
+import ContactPersonDropdown from './ContactPersonDropdown'
 
 class PageProject extends Component {
     constructor(props, context) {
@@ -84,6 +84,20 @@ class PageProject extends Component {
     _render_tabGeneral() {
         // console.log(this.props.project)
         let images = _.filter(this.props.project.attachment_mappings, { 'filter_value_id': null});
+
+        let toevoegenList = [];
+        toevoegenList.push({
+            "title": "Geen actie",
+            "value": '',
+        })
+
+        this.props.project_formdata.gelegenhendens.map((item, index) => {
+            toevoegenList.push({
+                "title": 'Actie voor '+item.title,
+                "value": item.value,
+            })
+        })
+
         return (
             <div>
                 <div className="form-group">
@@ -92,7 +106,7 @@ class PageProject extends Component {
                 </div>
                 <div className="form-group">
                     <label>Algemene beschrijving</label>
-                    {/*<textarea className="editor" name="description" defaultValue={this.props.project.description}></textarea>*/}
+                    <textarea className="editor" name="description" defaultValue={this.props.project.description}></textarea>
                 </div>
                 <div className="form-group">
                     <label>Representatieve buitenafbeelding</label>
@@ -110,6 +124,7 @@ class PageProject extends Component {
 
                 <div className="form-group">
                     <label>Actie toevoegen</label>
+                    <RadioList name="discount_filter_value_id" items={toevoegenList} selectedValue={this.props.project.discount_filter_value_id} />
                     
                 </div>
 
@@ -128,7 +143,7 @@ class PageProject extends Component {
     }
 
     _render_tabDetails() {
-        console.log("this.props.project.eigen_catering", this.props.project.eigen_catering)
+        // console.log("this.props.project.eigen_catering", this.props.project.eigen_catering)
         const radioEigenCaterign = [
             {
                 "title": "Geen eigen catering mogelijk",
@@ -168,7 +183,7 @@ class PageProject extends Component {
 
                 <div className="form-group">
                     <label>Catering</label>
-                    <RadioList items={radioEigenCaterign} selectedValue={this.props.project.eigen_catering} />
+                    <RadioList name="eigen_catering" items={radioEigenCaterign} selectedValue={this.props.project.eigen_catering} />
 
                 </div>
 
@@ -176,21 +191,64 @@ class PageProject extends Component {
                     <div className="col-md-4">
                         <div className="form-group">
                             <label>Gebouwen</label>
-                            <CheckboxList items={this.props.project_formdata.gebouwens} selectedItems={[]} />
+                            <CheckboxList name='gebouws[]' items={this.props.project_formdata.gebouwens} selectedItems={this.props.project.gebouws_mapping_ids} />
                         </div>
                     </div>
                     <div className="col-md-4">
                         <div className="form-group">
                             <label>Ligging</label>
-                            <CheckboxList items={this.props.project_formdata.liggings} selectedItems={[]} />
+                            <CheckboxList name='liggings[]' items={this.props.project_formdata.liggings} selectedItems={this.props.project.liggings_mapping_ids} />
                         </div>
                     </div>
                     <div className="col-md-4">
                         <div className="form-group">
                             <label>Eigenschappen</label>
-                            <CheckboxList items={this.props.project_formdata.eigenschappens} selectedItems={[]} />
+                            <CheckboxList name='eigenschappens[]' items={this.props.project_formdata.eigenschappens} selectedItems={this.props.project.eigenschappens_mapping_ids} />
                         </div>
                     </div>
+                </div>
+            </div>
+        )
+    }
+
+    _render_tabContact() {
+        return (
+            <div>
+                <div className="form-group">
+                    <label>Aantal personen</label>
+                    <div className="row">
+                        <div className="col-md-4">
+                            <ContactPersonDropdown selectedValue={this.props.project.contact_id} items={this.props.project_formdata.contacts} />
+                        </div>
+                        <div className="col-md-4 input-group-vmerge input-group--style-label">
+                            <div className="input-group">
+                                <span className="input-group-addon">
+                                    <i className="iconc iconc-person"></i>
+                                </span>
+                                <label>{this.props.project.contact.name}</label>
+                            </div>
+                            <div className="input-group">
+                                <span className="input-group-addon">
+                                    <i className="iconc iconc-mail"></i>
+                                </span>
+                                
+                                <label>{this.props.project.contact.phone}</label>
+                            </div>
+                            <div className="input-group">
+                                <span className="input-group-addon">
+                                    <i className="iconc iconc-phone"></i>
+                                </span>
+                                
+                                <label>{this.props.project.contact.email}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="form-group">
+                    <label>Website</label>
+                    <input type="text" className="form-control" name="website" defaultValue={this.props.project.website} />
+
                 </div>
             </div>
         )
@@ -248,7 +306,7 @@ class PageProject extends Component {
             <div>
                 <div className="form-group">
                     <label>Algemene beschrijving</label>
-                    <textarea className="editor" name="description" defaultValue={fvm.description}></textarea>
+                    <textarea className="editor" name={`cat[${catitem.value}][description]`} defaultValue={fvm.description}></textarea>
                 </div>
                 <div className="form-group">
                     <label>Representatieve buitenafbeelding</label>
@@ -265,12 +323,12 @@ class PageProject extends Component {
         
         const project = this.props.project
      
-        
+        const title = this.props.project.project_title ? this.props.project.project_title : 'Add New'
         return (
             <div className="">
                 <ContentWrapper hasSidebar={true}>
                     <div className="page-panel">
-                        <div className="page-panel__heading">Account instellingen</div>
+                        <div className="page-panel__heading">{title}</div>
                         <div className="page-panel__inner">
                             <div className="page-panel__inner__left">
                                 <ul className="nav nav-tabs nav-tabs--vertical" role="tablist">
@@ -323,9 +381,21 @@ class PageProject extends Component {
                                         <h3 className="tab_drawer_heading">
                                             <a href="#details" aria-controls="details" role="tab" data-toggle="tab">Details</a>
                                         </h3>
-                                        <div role="tabpanel" className="tab-pane active" id="details">
+                                        <div role="tabpanel" className="tab-pane " id="details">
                                             {this._render_tabDetails()}
                                         </div>
+                                        <div role="tabpanel" className="tab-pane " id="zalen">
+                                            <Zalen items={project.project_rooms} onZalenRemoved={this.onZalenRemoved} />
+                                        </div>
+
+                                        <div role="tabpanel" className="tab-pane active" id="contact">
+                                            {this._render_tabContact()}
+                                        </div>
+
+                                        <div role="tabpanel" className="tab-pane " id="locatie">
+                                            Locatie
+                                        </div>
+
 
                                         {
                                             this.props.project_formdata.gelegenhendens.map((item, index) => {
@@ -338,10 +408,18 @@ class PageProject extends Component {
                                         }
 
 
-
-                                        <div role="tabpanel" className="tab-pane " id="zalen">
-                                            <Zalen items={project.project_rooms} onZalenRemoved={this.onZalenRemoved} />
+                                        <div role="tabpanel" className="tab-pane " id="aanvragen">
+                                            Aanvragen
                                         </div>
+
+
+                                        <div role="tabpanel" className="tab-pane " id="statistieken">
+                                            Statistieken
+                                        </div>
+
+
+
+
                                     </div>
                                 </form>  
                             </div>

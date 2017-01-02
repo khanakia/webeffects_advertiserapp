@@ -30,12 +30,14 @@ class RadioList extends React.Component {
     }
 
     renderList() {
-        console.log("selectedValue", this.props.selectedValue)
+        // console.log("selectedValue", this.props.selectedValue)
         return this.props.items.map(function(item, index) {
             var checked = this.props.selectedValue===item.value ? true : false;
             return (
                 <div className="input-group" key={index}>
-                    <span className="input-group-addon" id="basic-addon1"><i className={item.icon_class}></i></span>
+                    {this.props.isIcon ?
+                        <span className="input-group-addon" id="basic-addon1"><i className={item.icon_class}></i></span>
+                    : '' }
                     <label className="form-control"><input type="radio" name={this.props.name} defaultValue={item.value} defaultChecked={checked} />{item.title}</label>
                 </div>
             )

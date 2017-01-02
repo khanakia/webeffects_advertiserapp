@@ -11,6 +11,7 @@ class ChekcboxList extends React.Component {
 
     static defaultProps = {        
         className: '',
+        name: 'checkboxes[]',
 
         items: [],
         selectedItems: []
@@ -29,11 +30,12 @@ class ChekcboxList extends React.Component {
     }
 
     renderList() {
+        // console.log("this.props.selectedItems", this.props.selectedItems)
         return this.props.items.map(function(item, index) {
             var checked = this.props.selectedItems.indexOf(item.value)!==-1 ? true : false;
             return (
                 <li className="list-group-item" key={index}>
-                    <label><input type="checkbox" defaultValue={item.value} defaultChecked={checked} />{item.title}</label>
+                    <label><input type="checkbox" name={this.props.name} defaultValue={item.value} defaultChecked={checked} />{item.value}</label>
                 </li>
             )
         }, this)

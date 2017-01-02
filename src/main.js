@@ -11,7 +11,7 @@ window.ReactDom = ReactDom;
 window.React = React;
 window.Env = Env;
 
-console.log(window.Env)
+// console.log(window.Env)
 
 import {
     AppContainer,

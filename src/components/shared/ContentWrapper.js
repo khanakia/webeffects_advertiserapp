@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 
 export default class ContentWrapper extends Component {
     componentWillMount() {
-        console.log(this.props);
+        // console.log(this.props);
 
         this.sidebarClass = this.props.hasSidebar ? ' has-sidebar' : '';
     }

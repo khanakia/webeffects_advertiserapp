@@ -15,7 +15,7 @@ class ProjectsLinkList extends Component {
 
  
     render() {
-        console.log("this.props.project_list sidebar", this.props.project_list)
+        // console.log("this.props.project_list sidebar", this.props.project_list)
         return (
             <div>
                 
