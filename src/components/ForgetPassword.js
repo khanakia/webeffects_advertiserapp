@@ -88,33 +88,31 @@ class ForgetPassword extends Component {
         return (
             <div className="loginform">
                 <div className="container">
-                    <div className="row">    
-                        <div className="row">
-                            <form className="form-horizontal formstyle1 ForgetpwdForm" ref='form' onSubmit={this.handleSubmit}>
-                                <h3 className="form_title text-center">Change password</h3>
-                                <div className="row">
-                                    <div className="col-md-12">
-                                        <div className="form-group">
-                                            <label className="col-sm-12">New Password</label>
-                                            <div className="col-sm-12">
-                                                <input type="password" className="form-control required" name="password" id="password"  placeholder="••••••••••" />
-                                                <div className="passworderror errordiv"></div>
-                                            </div>
+                    <div className="row formstyle1Ct">    
+                        <form className="form-horizontal formstyle1 ForgetpwdForm" ref='form' onSubmit={this.handleSubmit}>
+                            <h3 className="form_title text-center">Eigen wachtwoord aanmaken</h3>
+                            <div className="row">
+                                <div className="col-md-12">
+                                    <div className="form-group">
+                                        <label className="col-sm-12">Nieuw wachtwoord</label>
+                                        <div className="col-sm-12">
+                                            <input type="password" className="form-control required" name="password" id="password"  placeholder="••••••••••" />
+                                            <div className="passworderror errordiv"></div>
                                         </div>
-                                        <div className="form-group">
-                                            <label className="col-sm-12"><div className="row"><div className="col-sm-12">Confirm New Password</div></div></label>
-                                            <div className="col-sm-12">
-                                                <input type="password" className="form-control required updatePassword" name="password_confirmation" id="password_confirmation" placeholder="••••••••••"/>
-                                                <div className="passwordconfirmerror errordiv"></div>
-                                            </div>
+                                    </div>
+                                    <div className="form-group">
+                                        <label className="col-sm-12"><div className="row"><div className="col-sm-12">Herhaal uw nieuwe wachtwoord</div></div></label>
+                                        <div className="col-sm-12">
+                                            <input type="password" className="form-control required updatePassword" name="password_confirmation" id="password_confirmation" placeholder="••••••••••"/>
+                                            <div className="passwordconfirmerror errordiv"></div>
                                         </div>
                                     </div>
                                 </div>
-                                <div className="text-center">
-                                    <button type="submit" className="btn btn-green">Update Password</button>
-                                </div>
-                            </form>
-                        </div>    
+                            </div>
+                            <div className="text-center">
+                                <button type="submit" className="btn btn-green btn--round">Bevesigen</button>
+                            </div>
+                        </form>
                     </div>
                 </div>    
             </div>

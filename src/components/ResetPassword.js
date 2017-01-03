@@ -37,12 +37,12 @@ class ResetPassword extends Component {
         
         return (
             <div className="loginform">
-            <div id="errordiv"></div>
+                <div id="errordiv"></div>
                 <div className="container">
                     <div className="row">    
-                        <div className="row">
+                        <div className="formstyle1Ct">
+                            <h3 className="form_title text-center">Resetlink Page</h3>
                             <form className="form-horizontal formstyle1 loginForm" ref='form' onSubmit={this.handleSubmit}>
-                                <h3 className="form_title text-center">Resetlink Page</h3>
                                 <div className="row">
                                     <div className="col-md-12">
                                         <div className="form-group">
@@ -54,7 +54,7 @@ class ResetPassword extends Component {
                                     </div>
                                 </div>
                                 <div className="text-center">
-                                    <button type="submit" className="btn btn-green">Submit</button>
+                                    <button type="submit" className="btn btn-green btn--round">Submit</button>
                                 </div>
                             </form>
                         </div>    

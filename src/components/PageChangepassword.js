@@ -69,7 +69,7 @@ class PageChangepassword extends Component {
                                     </div>
                                 </div>
                                 <div className="text-center">
-                                    <button type="submit" className="btn btn-green">Update Password</button>
+                                    <button type="submit" className="btn btn-green btn--round">Update Password</button>
                                 </div>
                             </form>
                         </div>    

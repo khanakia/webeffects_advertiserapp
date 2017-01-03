@@ -1,8 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react'
 import { Link, hashHistory } from 'react-router'
 
 import ProjectsLinkList from './ProjectsLinkList'
 import Sidebar from './Sidebar'
+import Auth from '../../helpers/auth.js'
+
 class Header extends Component {
     constructor(props, context) {
         super(props, context);
@@ -26,7 +28,8 @@ class Header extends Component {
 
     logout(e) {
         e.preventDefault();
-        alert("Logout")
+        Auth.logout()
+        hashHistory.push('/')
     }
  
     render() {

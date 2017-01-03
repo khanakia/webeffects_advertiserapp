@@ -22,17 +22,7 @@ class ProjectsLinkList extends Component {
                     <ul>
                         <li>
                             <Link to={'/dashboard'}>Alle Locaties</Link>
-                        </li>
-                        
-                        {this.props.project_list.map(function(item, index){
-                            return (
-                                <li key={index}>
-                                    <Link to={'projects/'+item.id} >{item.project_title}</Link>
-                                </li>
-                            )    
-                        })}
-                        
-                        
+                        </li>                        
                     </ul>
               
             </div>

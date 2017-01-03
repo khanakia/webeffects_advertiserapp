@@ -162,7 +162,7 @@ header.mobile {
       position: relative;
       padding-left: 50px; }
       .mobile-overlay-menu ul.submenu a:hover:before, .mobile-overlay-menu ul.submenu a:focus:before {
-        content: "•";
+        content: "ΓÇó";
         position: absolute;
         top: 10px;
         left: 20px;
@@ -657,67 +657,75 @@ label input[type="radio"] + span {
   .Tab .content.active {
     display: block; }
 
-.formstyle1 {
+.formstyle1Ct {
   max-width: 400px;
   margin: 0 auto;
   background-color: #fff;
-  padding: 0 30px 20px;
+  padding: 0 0px 20px;
   border: 1px solid #e6eaeb;
   color: #101010; }
-  .formstyle1 a {
-    color: #101010;
-    text-decoration: underline; }
-  .formstyle1 .form_title {
+  .formstyle1Ct .form_title {
     padding: 20px 0;
     border-bottom: 1px solid #e6eaeb;
-    margin-bottom: 35px; }
-  .formstyle1 input {
-    border: 1px solid #e6eaeb;
-    margin-bottom: 20px; }
-  .formstyle1 .form-control.error {
-    background: transparent url(../images/icons/cross-icon.png) no-repeat center right 12px;
-    border: 1px solid #ff2a00;
-    outline: none; }
-  .formstyle1 .form-control.valid {
-    background: transparent url(../images/icons/green-check-icon.png) no-repeat center right 12px; }
-  .formstyle1 label.error {
-    position: absolute;
-    left: 110%;
-    top: -11px;
-    width: 100%;
-    color: #101010;
-    background-color: #fff;
-    padding: 18px;
-    border: 1px solid #e6eaeb;
-    font-weight: 100; }
-  .formstyle1 .errordiv {
-    position: absolute;
-    left: 110%;
-    top: -11px;
-    width: 100%;
-    color: #101010;
-    background-color: #fff;
-    padding: 18px;
-    border: 1px solid #e6eaeb;
-    font-weight: 100;
-    display: none; }
-    .formstyle1 .errordiv ul {
-      padding: 0;
-      margin: 0; }
-      .formstyle1 .errordiv ul li {
-        list-style: none; }
-    .formstyle1 .errordiv .errorli {
-      color: #ff2a00;
-      background: transparent url(../images/icons/cross-icon.png) no-repeat center left;
-      outline: none;
-      padding: 0 22px;
-      background-size: 10px; }
-    .formstyle1 .errordiv .validli {
-      color: #08b995;
-      background: transparent url(../images/icons/green-check-icon.png) no-repeat center left;
-      outline: none;
-      padding: 0 22px;
-      background-size: 10px; }
+    margin-bottom: 35px;
+    padding: 10px 0 26px; }
+  .formstyle1Ct .formstyle1 {
+    padding: 0 30px 0px; }
+    .formstyle1Ct .formstyle1 label {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 10px; }
+    .formstyle1Ct .formstyle1 a {
+      color: #101010;
+      border-bottom: 1px solid #101010; }
+    .formstyle1Ct .formstyle1 input {
+      border: 1px solid #e6eaeb;
+      margin-bottom: 20px; }
+    .formstyle1Ct .formstyle1 .form-control.error {
+      background: transparent url(../images/icons/cross-icon.png) no-repeat center right 12px;
+      border: 1px solid #ff2a00;
+      outline: none; }
+    .formstyle1Ct .formstyle1 .form-control.valid {
+      background: transparent url(../images/icons/green-check-icon.png) no-repeat center right 12px; }
+    .formstyle1Ct .formstyle1 label.error {
+      position: absolute;
+      left: 110%;
+      top: -11px;
+      width: 100%;
+      color: #101010;
+      background-color: #fff;
+      padding: 18px;
+      border: 1px solid #e6eaeb;
+      font-weight: 100; }
+    .formstyle1Ct .formstyle1 .errordiv {
+      position: absolute;
+      left: 110%;
+      top: -16px;
+      width: 100%;
+      color: #101010;
+      background-color: #fff;
+      padding: 18px;
+      border: 1px solid #e6eaeb;
+      font-weight: 100;
+      display: none; }
+      .formstyle1Ct .formstyle1 .errordiv ul {
+        padding: 0;
+        margin: 0; }
+        .formstyle1Ct .formstyle1 .errordiv ul li {
+          list-style: none; }
+      .formstyle1Ct .formstyle1 .errordiv .errorli {
+        color: #ff2a00;
+        background: transparent url(../images/icons/cross-icon.png) no-repeat center left;
+        outline: none;
+        padding: 0 22px;
+        background-size: 10px;
+        font-weight: normal; }
+      .formstyle1Ct .formstyle1 .errordiv .validli {
+        color: #08b995;
+        background: transparent url(../images/icons/green-check-icon.png) no-repeat center left;
+        outline: none;
+        padding: 0 22px;
+        background-size: 10px; }
 
 .loginform {
   padding: 50px 0;
