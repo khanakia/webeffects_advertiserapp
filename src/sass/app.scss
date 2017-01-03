@@ -16,6 +16,7 @@ i {
 	color: #7C8589;
 }
 
+
 div.clear {
   clear: both;
   height: 1px;
@@ -195,6 +196,19 @@ label input[type="radio"] + span {
 	    color: #08B995;
 	    background-color: #fff;
 	    border-color: #08B995;
+	    outline: none;
+	}
+}
+.btn-grey, .btn-grey:focus {
+    color: #fff;
+    background-color: #cdd4d7;
+    border-color: #cdd4d7;
+    outline: none;
+
+    &:hover {
+	    color: #cdd4d7;
+	    background-color: #fff;
+	    border-color: #cdd4d7;
 	    outline: none;
 	}
 }
@@ -516,18 +530,19 @@ label input[type="radio"] + span {
     margin: 0 auto;
     background-color: #fff;
     padding: 0 0px 20px;
-    border: 1px solid #e6eaeb;
+    border: 2px solid #e6eaeb;
 	color: #101010;
 
 	.form_title {
 	    padding: 20px 0;
-	    border-bottom: 1px solid #e6eaeb;
+	    border-bottom: 2px solid #e6eaeb;
 		margin-bottom: 35px;
 		padding: 10px 0 26px;
+	    color: #101010;
 	}
 
 	.formstyle1 {
-    	padding: 0 30px 0px;
+    	padding: 0 40px 0px;
 		
 		label {
 		    font-size: 13px;
@@ -538,41 +553,38 @@ label input[type="radio"] + span {
 		a {
 			color: #101010;
 		    border-bottom: 1px solid #101010;
+			text-decoration: none;
 		}	
 		input {
-		    border: 1px solid #e6eaeb;
+		    border: 2px solid #e6eaeb;
 		    margin-bottom: 20px;
+			height: 40px;
+		    outline: none;
+		    box-shadow: none;
 		}
 		.form-control.error {
 		    background: transparent url(../images/icons/cross-icon.png) no-repeat center right 12px;
 		    border: 1px solid #ff2a00;
 		    outline: none;
+		    box-shadow: none;
 		}
 		.form-control.valid {
 		    background: transparent url(../images/icons/green-check-icon.png) no-repeat center right 12px;
 		}
 		label.error {
-			position: absolute;
-		    left: 110%;
-		    top: -11px;
-		    width: 100%;
-		    color: #101010;
-		    background-color: #fff;
-		    padding: 18px;
-		    border: 1px solid #e6eaeb;
-			font-weight: 100;
+			display: none !important;
 		}
 
 		.errordiv {
 			position: absolute;
 		    left: 110%;
 		    top: -16px;
-		    width: 100%;
 		    color: #101010;
 		    background-color: #fff;
-		    padding: 18px;
+		    padding: 18px 3px 18px 18px;
 		    border: 1px solid #e6eaeb;
 			font-weight: 100;
+			width: 100%;
 			display: none;
 			
 			ul {
@@ -583,6 +595,7 @@ label input[type="radio"] + span {
 				    list-style: none;
 				}
 			}
+
 			.errorli {
 				color: #ff2a00;
 			    background: transparent url(../images/icons/cross-icon.png) no-repeat center left;
@@ -591,21 +604,84 @@ label input[type="radio"] + span {
 			    background-size: 10px;
 		        font-weight: normal;
 			}
+
 			.validli {
 				color: #08b995;
 			    background: transparent url(../images/icons/green-check-icon.png) no-repeat center left;
 			    outline: none;
 			    padding: 0 22px;
 			    background-size: 10px;
-
 			}
 
+			::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+			  color: #ced5d8;
+			}
+			::-moz-placeholder { /* Firefox 19+ */
+			  color: #ced5d8;
+			}
+			:-ms-input-placeholder { /* IE 10+ */
+			  color: #ced5d8;
+			}
+			:-moz-placeholder { /* Firefox 18- */
+			  color: #ced5d8;
+			}
+
+			&.passworderror {
+				top: -29px;
+			}
+			&.passwordconfirmerror {
+				top: -9px;
+			}
+
+			@media (max-width: 767px) {
+				position: initial;
+				border: none;
+				padding: 0;
+			}
+		}
+
+		button.btn {
+			font-size: 16px;
+		}
+	}
+	&.changepwdCt {
+		margin: initial;
+		border: none;
+		background-color: transparent;
+		max-width: 350px;
+
+		.formstyle1 {	
+			padding: 0;
+
+			label {
+			    font-size: 16px;
+			    margin-bottom: 15px;
+			}
+			input {
+			    margin: 0;
+			    &:focus {
+				    border: 1px solid #08B995;
+			    }
+			}
+			.form-control.valid {
+			    border: 1px solid #08B995;
+			}
+		}
+		@media (max-width: 992px) {
+			margin: 0 auto;	
 		}
 	}
 }
 .loginform {
 	padding: 50px 0; 	
     background-color: #ecf5f8;
+}
+
+.pad0.tab-pane {
+	padding: 0; 
+	@media (max-width: 991px) {
+		padding: 20px;
+	}
 }
 
 
