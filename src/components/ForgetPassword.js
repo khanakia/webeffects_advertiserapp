@@ -16,31 +16,59 @@ class ForgetPassword extends Component {
         var password_value = jQuery("#password").val();
         var password_confirmation = jQuery("#password_confirmation").val();
         var haserror = 0;
-
+        
+        function countUpperCaseChars(str) {
+          var count=0,len=str.length;
+          for(var i=0;i<len;i++) {
+            if(/[A-Z]/.test(str.charAt(i))) count++;
+          }
+          return count;
+        }
+        var pwduppercase = countUpperCaseChars(password_value);
+        console.log(pwduppercase);
 
         if( password_value.length === 0) {
             haserror = 1;
-           jQuery( ".passworderror" ).html( "<ul><li class='errorli'>Required Field</li><li class='errorli'>Must be more than 6 characters</li></ul>" );
+            jQuery("#password").addClass( "required error" );
+            jQuery( ".passworderror" ).html( "<ul><li class='errorli'>Required Field</li><li class='errorli'>Must be more than 6 characters</li><li class='errorli'>Must be an uppercase letter</li></ul>" );
         }
-        if( password_value.length >= 1 && password_value.length <= 5) {
+        if( password_value.length >= 1 && password_value.length <= 5 && pwduppercase <= 1) {
             haserror = 1;
-           jQuery( ".passworderror" ).html( "<ul><li class='validli'>Required Field</li><li class='errorli'>Must be more than 6 characters</li></ul>" );
+            jQuery("#password").addClass( "required error" );
+            jQuery( ".passworderror" ).html( "<ul><li class='validli'>Required Field</li><li class='errorli'>Must be more than 6 characters</li><li class='errorli'>Must be an uppercase letter</li></ul>" );
         }
-        if( password_value.length >= 1 && password_value.length >= 5) {
+        if( password_value.length >= 1 && password_value.length <= 5 && pwduppercase >= 1) {
             haserror = 1;
-           jQuery( ".passworderror" ).html( "<ul><li class='validli'>Required Field</li><li class='validli'>Must be more than 6 characters</li></ul>" );
+            jQuery("#password").addClass( "required error" );
+            jQuery( ".passworderror" ).html( "<ul><li class='validli'>Required Field</li><li class='errorli'>Must be more than 6 characters</li><li class='validli'>Must be an uppercase letter</li></ul>" );
         }
+
+        if( password_value.length >= 1 && password_value.length >= 5 && pwduppercase <= 1) {
+            jQuery("#password").removeClass( "error" );
+            jQuery("#password").addClass( "valid" );
+            jQuery( ".passworderror" ).html( "<ul><li class='validli'>Required Field</li><li class='validli'>Must be more than 6 characters</li><li class='errorli'>Must be an uppercase letter</li></ul>" );
+        }
+
+        if( password_value.length >= 1 && password_value.length >= 5 && pwduppercase >= 1) {
+            jQuery("#password").removeClass( "error" );
+            jQuery("#password").addClass( "valid" );
+            jQuery( ".passworderror" ).html( "<ul><li class='validli'>Required Field</li><li class='validli'>Must be more than 6 characters</li><li class='validli'>Must be an uppercase letter</li></ul>" );
+        }
+
         if( password_value !== password_confirmation) {
             haserror = 1;
-           jQuery( ".passwordconfirmerror" ).html( "<ul><li class='errorli'>Password Confirm</li></ul>" );
+            jQuery("#password_confirmation").addClass( "required error" );
+            jQuery( ".passwordconfirmerror" ).html( "<ul><li class='errorli'>Password Confirm</li></ul>" );
         }
-        if( password_value === password_confirmation) {
-            haserror = 1;
-           jQuery( ".passwordconfirmerror" ).html( "<ul><li class='validli'>Password Confirm</li></ul>" );
+        if( password_confirmation.length >= 1 && password_value === password_confirmation) {
+            jQuery("#password_confirmation").removeClass( "error" );
+            jQuery("#password_confirmation").addClass( "valid" );
+            jQuery( ".passwordconfirmerror" ).html( "<ul><li class='validli'>Password Confirm</li></ul>" );
         }
         if( password_confirmation.length === 0) {
             haserror = 1;
-           jQuery( ".passwordconfirmerror" ).html( "<ul><li class='errorli'>Password Confirm</li></ul>" );
+            jQuery("#password_confirmation").addClass( "required error" );
+            jQuery( ".passwordconfirmerror" ).html( "<ul><li class='errorli'>Password Confirm</li></ul>" );
         }
 
         console.log(haserror);
@@ -89,8 +117,8 @@ class ForgetPassword extends Component {
             <div className="loginform">
                 <div className="container">
                     <div className="row formstyle1Ct">    
+                        <h3 className="form_title text-center">Eigen wachtwoord aanmaken</h3>
                         <form className="form-horizontal formstyle1 ForgetpwdForm" ref='form' onSubmit={this.handleSubmit}>
-                            <h3 className="form_title text-center">Eigen wachtwoord aanmaken</h3>
                             <div className="row">
                                 <div className="col-md-12">
                                     <div className="form-group">
@@ -110,7 +138,7 @@ class ForgetPassword extends Component {
                                 </div>
                             </div>
                             <div className="text-center">
-                                <button type="submit" className="btn btn-green btn--round">Bevesigen</button>
+                                <button type="submit" className="btn btn-grey btn--round">Bevesigen</button>
                             </div>
                         </form>
                     </div>
