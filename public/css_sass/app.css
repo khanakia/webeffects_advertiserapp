@@ -542,6 +542,7 @@ label input[type="radio"] + span {
     display: none; }
 
 .input-group-vmerge .input-group {
+  min-width: 250px;
   margin-top: -1px; }
 .input-group-vmerge input[readonly] {
   background-color: #fff;
@@ -803,5 +804,11 @@ label input[type="radio"] + span {
 
 .trumbowyg-button-pane .trumbowyg-button-group:not(:empty) + .trumbowyg-button-group::before {
   content: none; }
+
+.trumbowyg-editor, .trumbowyg-textarea {
+  min-height: auto; }
+
+.trumbowyg-box, .trumbowyg-editor {
+  min-height: 200px; }
 
 /*# sourceMappingURL=app.css.map */

@@ -337,6 +337,7 @@ label input[type="radio"] + span {
 
 .input-group-vmerge {
 	.input-group {
+		min-width: 250px;
 		margin-top: -1px;
 	}
 
@@ -689,6 +690,14 @@ label input[type="radio"] + span {
 
 .trumbowyg-button-pane .trumbowyg-button-group:not(:empty)+.trumbowyg-button-group::before {
 	content: none;
+}
+
+.trumbowyg-editor, .trumbowyg-textarea {
+	min-height: auto;
+}
+
+.trumbowyg-box, .trumbowyg-editor {
+	min-height: 200px;
 }
 
 
