@@ -336,8 +336,6 @@ div.clear {
   .block-info .concept {
     display: inline-block;
     text-decoration: underline; }
-  .block-info label {
-    font-weight: 400; }
   .block-info a {
     color: #101010; }
     .block-info a:hover {
@@ -390,6 +388,9 @@ div.clear {
       border-width: 18px;
       border-color: rgba(194, 225, 245, 0);
       border-bottom-color: rgba(0, 0, 0, 0.15); }
+
+label {
+  font-weight: 400; }
 
 label input[type="checkbox"],
 label input[type="radio"] {
@@ -731,6 +732,7 @@ label input[type="radio"] + span {
   padding: 50px 0;
   background-color: #ecf5f8; }
 
+/* Jquery confirm popup box styling -------------------- */
 .jconfirm .jconfirm-box {
   padding: 0; }
 
@@ -781,5 +783,25 @@ label input[type="radio"] + span {
     .jconfirm.jconfirm-white .jconfirm-box .jconfirm-buttons button.btn-default:first-of-type:hover,
     .jconfirm.jconfirm-light .jconfirm-box .jconfirm-buttons button.btn-default:first-of-type:hover {
       color: #08B995; }
+
+/* editor styling ------------------------- */
+.trumbowyg-button-pane {
+  background: transparent;
+  border-bottom: 1px solid #CDD4D7; }
+
+.trumbowyg-button-pane button.trumbowyg-active,
+.trumbowyg-button-pane button:not(.trumbowyg-disable):focus,
+.trumbowyg-button-pane button:not(.trumbowyg-disable):hover {
+  background-color: transparent; }
+  .trumbowyg-button-pane button.trumbowyg-active svg,
+  .trumbowyg-button-pane button:not(.trumbowyg-disable):focus svg,
+  .trumbowyg-button-pane button:not(.trumbowyg-disable):hover svg {
+    fill: #08B995; }
+
+.trumbowyg-button-pane button {
+  width: 30px; }
+
+.trumbowyg-button-pane .trumbowyg-button-group:not(:empty) + .trumbowyg-button-group::before {
+  content: none; }
 
 /*# sourceMappingURL=app.css.map */

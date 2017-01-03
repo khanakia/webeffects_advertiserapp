@@ -53,9 +53,7 @@ div.clear {
 		display: inline-block;
 		text-decoration: underline;
 	}
-	label {
-		font-weight: 400;
-	}
+
 	a {
 		color: #101010;
 		&:hover {
@@ -123,6 +121,10 @@ div.clear {
 			border-bottom-color: rgba(0, 0, 0, 0.15);
 		}
 	}
+}
+
+label {
+	font-weight: 400;
 }
 
 
@@ -605,6 +607,8 @@ label input[type="radio"] + span {
     background-color: #ecf5f8;
 }
 
+
+/* Jquery confirm popup box styling -------------------- */
 .jconfirm .jconfirm-box {
 	padding: 0;
 }
@@ -662,3 +666,30 @@ label input[type="radio"] + span {
     	}
     }
 }
+
+
+/* editor styling ------------------------- */
+.trumbowyg-button-pane {
+	background: transparent;
+    border-bottom: 1px solid #CDD4D7;
+}
+
+.trumbowyg-button-pane button.trumbowyg-active,
+.trumbowyg-button-pane button:not(.trumbowyg-disable):focus,
+.trumbowyg-button-pane button:not(.trumbowyg-disable):hover {
+	background-color: transparent;
+	svg {
+		fill: #08B995;
+	}
+}
+
+.trumbowyg-button-pane button {
+	width: 30px;
+}
+
+.trumbowyg-button-pane .trumbowyg-button-group:not(:empty)+.trumbowyg-button-group::before {
+	content: none;
+}
+
+
+

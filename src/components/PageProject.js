@@ -48,40 +48,39 @@ class PageProject extends Component {
 
 
         $('.editor').trumbowyg({
-            autogrow: true
+            btns: [['bold', 'italic', 'underline'], ['unorderedList'], ['orderedList']]
+            // autogrow: true
         });
 
         // $(this.refs.body).trumbowyg('html', this.props.data.body);
     }
 
     handleSumbit() {
-        jQuery.confirm({
-                title: 'Verwijderen',
-                content: "Weet u zeker dat u de zaal ‘De Duif’ wilt verwijderen?",
-                closeIcon: true,
-                buttons: {
-                    // somethingElse: {
-                        cancelAction: {
-                            text: 'Annuleren',
-                            action: function () {
-                                jQuery(".jconfirm").hide()
-                            }
-                        },
-                        deleteUser: {
-                            text: 'Verwijder',
-                            action: function () {
-                                jQuery(".jconfirm").hide()
-                            }
-                        }
-                    }
-                // }
-            })
-        // var _this = this;
-        // let data = jQuery(_this.refs.form).serialize();    
-
-        // ProjectHelper.update(data).then((response) => {
-        //     _this.props.fetchProject(_this.props.params.projectId);
+        // jQuery.confirm({
+        //     title: 'Verwijderen',
+        //     content: "Weet u zeker dat u de zaal ‘De Duif’ wilt verwijderen?",
+        //     closeIcon: true,
+        //     buttons: {
+        //         cancelAction: {
+        //             text: 'Annuleren',
+        //             action: function () {
+        //                 jQuery(".jconfirm").hide()
+        //             }
+        //         },
+        //         deleteUser: {
+        //             text: 'Verwijder',
+        //             action: function () {
+        //                 jQuery(".jconfirm").hide()
+        //             }
+        //         }
+        //     }
         // })
+        var _this = this;
+        let data = jQuery(_this.refs.form).serialize();    
+
+        ProjectHelper.update(data).then((response) => {
+            _this.props.fetchProject(_this.props.params.projectId);
+        })
 
     }
 
@@ -119,6 +118,7 @@ class PageProject extends Component {
                 "value": item.value,
             })
         })
+        
 
         return (
             <div>
