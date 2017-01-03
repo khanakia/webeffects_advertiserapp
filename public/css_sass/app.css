@@ -162,7 +162,7 @@ header.mobile {
       position: relative;
       padding-left: 50px; }
       .mobile-overlay-menu ul.submenu a:hover:before, .mobile-overlay-menu ul.submenu a:focus:before {
-        content: "ΓÇó";
+        content: "•";
         position: absolute;
         top: 10px;
         left: 20px;
@@ -730,5 +730,65 @@ label input[type="radio"] + span {
 .loginform {
   padding: 50px 0;
   background-color: #ecf5f8; }
+
+.jconfirm .jconfirm-box {
+  padding: 0; }
+
+.jconfirm .jconfirm-box div.jconfirm-title-c {
+  font-size: 18px;
+  font-family: 'Rubik', sans-serif;
+  border-bottom: 1px solid #CDD4D7; }
+
+.jconfirm .jconfirm-box div.jconfirm-title-c .jconfirm-title {
+  padding: 15px; }
+
+.jconfirm .jconfirm-box div.jconfirm-closeIcon {
+  top: 15px;
+  right: 15px; }
+
+.jconfirm .jconfirm-box div.jconfirm-content-pane {
+  height: 100px;
+  margin-bottom: 0;
+  color: #7C8589;
+  border-bottom: 1px solid #CDD4D7; }
+
+.jconfirm .jconfirm-box div.jconfirm-content-pane .jconfirm-content {
+  padding: 15px 15px 40px 15px; }
+
+.jconfirm .jconfirm-box .jconfirm-buttons {
+  padding: 10px; }
+
+.jconfirm.jconfirm-white .jconfirm-box .jconfirm-buttons button.btn-default,
+.jconfirm.jconfirm-light .jconfirm-box .jconfirm-buttons button.btn-default {
+  padding: 8px 20px;
+  color: #fff;
+  background-color: #08B995;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  outline: none;
+  border: 1px solid transparent;
+  border-color: #08B995;
+  border-radius: 40px;
+  text-transform: capitalize; }
+  .jconfirm.jconfirm-white .jconfirm-box .jconfirm-buttons button.btn-default:hover,
+  .jconfirm.jconfirm-light .jconfirm-box .jconfirm-buttons button.btn-default:hover {
+    color: #08B995;
+    border-color: #08B995;
+    background-color: #fff; }
+  .jconfirm.jconfirm-white .jconfirm-box .jconfirm-buttons button.btn-default:first-of-type,
+  .jconfirm.jconfirm-light .jconfirm-box .jconfirm-buttons button.btn-default:first-of-type {
+    color: #7C8589;
+    border: none;
+    background-color: transparent; }
+    .jconfirm.jconfirm-white .jconfirm-box .jconfirm-buttons button.btn-default:first-of-type:hover,
+    .jconfirm.jconfirm-light .jconfirm-box .jconfirm-buttons button.btn-default:first-of-type:hover {
+      color: #08B995; }
+
+/*.jconfirm.jconfirm-white .jconfirm-box .buttons button.btn-default {
+	color: #fff;
+	&:hover {
+		background-color: #fff;
+	}
+}*/
 
 /*# sourceMappingURL=app.css.map */

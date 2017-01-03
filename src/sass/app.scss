@@ -604,3 +604,69 @@ label input[type="radio"] + span {
 	padding: 50px 0; 	
     background-color: #ecf5f8;
 }
+
+.jconfirm .jconfirm-box {
+	padding: 0;
+}
+
+.jconfirm .jconfirm-box div.jconfirm-title-c {
+	font-size: 18px;
+	font-family: 'Rubik', sans-serif;
+    border-bottom: 1px solid #CDD4D7;
+}
+
+.jconfirm .jconfirm-box div.jconfirm-title-c .jconfirm-title {
+	padding: 15px;
+}
+
+.jconfirm .jconfirm-box div.jconfirm-closeIcon {
+	top: 15px;
+	right: 15px;
+}
+
+.jconfirm .jconfirm-box div.jconfirm-content-pane {
+	height: 100px;
+	margin-bottom: 0;
+	color: #7C8589;
+	border-bottom: 1px solid #CDD4D7;
+}
+.jconfirm .jconfirm-box div.jconfirm-content-pane .jconfirm-content {
+	padding: 15px 15px 40px 15px;
+}
+
+.jconfirm .jconfirm-box .jconfirm-buttons {
+	padding: 10px;
+}
+
+.jconfirm.jconfirm-white .jconfirm-box .jconfirm-buttons button.btn-default,
+.jconfirm.jconfirm-light .jconfirm-box .jconfirm-buttons button.btn-default {
+    padding: 8px 20px;
+	color: #fff;
+    background-color: #08B995;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    outline: none;
+    border: 1px solid transparent;
+    border-color: #08B995;
+    border-radius: 40px;
+    text-transform: capitalize;
+    &:hover {
+		color: #08B995;
+	    border-color: #08B995;
+    	background-color: #fff;
+    }
+    &:first-of-type {
+    	color: #7C8589;
+    	border: none;
+    	background-color: transparent;
+    	&:hover {
+    		color: #08B995;
+    	}
+    }
+}
+/*.jconfirm.jconfirm-white .jconfirm-box .buttons button.btn-default {
+	color: #fff;
+	&:hover {
+		background-color: #fff;
+	}
+}*/

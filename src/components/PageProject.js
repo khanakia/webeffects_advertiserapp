@@ -55,12 +55,34 @@ class PageProject extends Component {
     }
 
     handleSumbit() {
-        var _this = this;
-        let data = jQuery(_this.refs.form).serialize();    
+        jQuery.confirm({
+                title: 'Verwijderen',
+                content: "Weet u zeker dat u de zaal ‘De Duif’ wilt verwijderen?",
+                closeIcon: true,
+                buttons: {
+                    // somethingElse: {
+                        cancelAction: {
+                            text: 'Annuleren',
+                            action: function () {
+                                jQuery(".jconfirm").hide()
+                            }
+                        },
+                        deleteUser: {
+                            text: 'Verwijder',
+                            action: function () {
+                                jQuery(".jconfirm").hide()
+                            }
+                        }
+                    }
+                // }
+            })
+        // var _this = this;
+        // let data = jQuery(_this.refs.form).serialize();    
 
-        ProjectHelper.update(data).then((response) => {
-            _this.props.fetchProject(_this.props.params.projectId);
-        })
+        // ProjectHelper.update(data).then((response) => {
+        //     _this.props.fetchProject(_this.props.params.projectId);
+        // })
+
     }
 
     onAttachmentDeleted = () => {
