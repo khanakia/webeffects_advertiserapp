@@ -625,13 +625,11 @@ label input[type="radio"] + span {
 }
 
 .jconfirm .jconfirm-box div.jconfirm-content-pane {
-	height: 100px;
+	min-height: 80px;
+	padding: 15px;
 	margin-bottom: 0;
 	color: #7C8589;
 	border-bottom: 1px solid #CDD4D7;
-}
-.jconfirm .jconfirm-box div.jconfirm-content-pane .jconfirm-content {
-	padding: 15px 15px 40px 15px;
 }
 
 .jconfirm .jconfirm-box .jconfirm-buttons {
@@ -664,9 +662,3 @@ label input[type="radio"] + span {
     	}
     }
 }
-/*.jconfirm.jconfirm-white .jconfirm-box .buttons button.btn-default {
-	color: #fff;
-	&:hover {
-		background-color: #fff;
-	}
-}*/
