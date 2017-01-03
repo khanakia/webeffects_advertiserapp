@@ -91,7 +91,21 @@ class Account extends Component {
                                     <h3 className="d_active tab_drawer_heading">
                                         <a href="#home" aria-controls="home" role="tab" data-toggle="tab">Uw gegevens</a>
                                     </h3>
-                                    <div role="tabpanel" className="tab-pane active" id="home">..sdfsda.</div>
+                                    <div role="tabpanel" className="tab-pane active" id="home">
+                                        <div className="form-group">
+                                            <label className="mb15">Bedrijfsnaam</label>
+                                            <div className="row">
+                                                <div className="col-md-4">
+                                                    <div className="input-group">
+                                                        <span className="input-group-addon">
+                                                            <i className="iconc-buildings"></i>
+                                                        </span>
+                                                        <input type="text" className="form-control" name="bedrijfsnaam" defaultValue="Marie Aubain" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 
                                     <h3 className="tab_drawer_heading">
                                         <a href="#profile" aria-controls="home" role="tab" data-toggle="tab">Wachtwoord wijzigen</a>

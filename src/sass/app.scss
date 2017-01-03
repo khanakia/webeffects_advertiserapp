@@ -54,9 +54,7 @@ div.clear {
 		display: inline-block;
 		text-decoration: underline;
 	}
-	label {
-		font-weight: 400;
-	}
+
 	a {
 		color: #101010;
 		&:hover {
@@ -124,6 +122,10 @@ div.clear {
 			border-bottom-color: rgba(0, 0, 0, 0.15);
 		}
 	}
+}
+
+label {
+	font-weight: 400;
 }
 
 
@@ -680,4 +682,90 @@ label input[type="radio"] + span {
 		padding: 20px;
 	}
 }
+
+
+/* Jquery confirm popup box styling -------------------- */
+.jconfirm .jconfirm-box {
+	padding: 0;
+}
+
+.jconfirm .jconfirm-box div.jconfirm-title-c {
+	font-size: 18px;
+	font-family: 'Rubik', sans-serif;
+    border-bottom: 1px solid #CDD4D7;
+}
+
+.jconfirm .jconfirm-box div.jconfirm-title-c .jconfirm-title {
+	padding: 15px;
+}
+
+.jconfirm .jconfirm-box div.jconfirm-closeIcon {
+	top: 15px;
+	right: 15px;
+}
+
+.jconfirm .jconfirm-box div.jconfirm-content-pane {
+	min-height: 80px;
+	padding: 15px;
+	margin-bottom: 0;
+	color: #7C8589;
+	border-bottom: 1px solid #CDD4D7;
+}
+
+.jconfirm .jconfirm-box .jconfirm-buttons {
+	padding: 10px;
+}
+
+.jconfirm.jconfirm-white .jconfirm-box .jconfirm-buttons button.btn-default,
+.jconfirm.jconfirm-light .jconfirm-box .jconfirm-buttons button.btn-default {
+    padding: 8px 20px;
+	color: #fff;
+    background-color: #08B995;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    outline: none;
+    border: 1px solid transparent;
+    border-color: #08B995;
+    border-radius: 40px;
+    text-transform: capitalize;
+    &:hover {
+		color: #08B995;
+	    border-color: #08B995;
+    	background-color: #fff;
+    }
+    &:first-of-type {
+    	color: #7C8589;
+    	border: none;
+    	background-color: transparent;
+    	&:hover {
+    		color: #08B995;
+    	}
+    }
+}
+
+
+/* editor styling ------------------------- */
+.trumbowyg-button-pane {
+	background: transparent;
+    border-bottom: 1px solid #CDD4D7;
+}
+
+.trumbowyg-button-pane button.trumbowyg-active,
+.trumbowyg-button-pane button:not(.trumbowyg-disable):focus,
+.trumbowyg-button-pane button:not(.trumbowyg-disable):hover {
+	background-color: transparent;
+	svg {
+		fill: #08B995;
+	}
+}
+
+.trumbowyg-button-pane button {
+	width: 30px;
+}
+
+.trumbowyg-button-pane .trumbowyg-button-group:not(:empty)+.trumbowyg-button-group::before {
+	content: none;
+}
+
+
 

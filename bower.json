@@ -55,7 +55,7 @@
     "jwt-decode": "~2.1.0",
     "bootstrap-tagsinput": "~0.8.0",
     "switchery": "~0.8.1",
-    "jquery-confirm2": "~2.5.1",
+    "jquery-confirm2": "~3.0.1",
     "jstree": "~3.3.2",
     "bootstrap-treeview": "~1.2.0",
     "jquery-file-download": "~1.4.4",

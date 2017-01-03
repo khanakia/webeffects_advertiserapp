@@ -38,7 +38,10 @@ class RadioList extends React.Component {
                     {this.props.isIcon ?
                         <span className="input-group-addon" id="basic-addon1"><i className={item.icon_class}></i></span>
                     : '' }
-                    <label className="form-control"><input type="radio" name={this.props.name} defaultValue={item.value} defaultChecked={checked} />{item.title}</label>
+                    <label className="form-control">
+                        <input type="radio" name={this.props.name} defaultValue={item.value} defaultChecked={checked} />
+                        <span>{item.title}</span>
+                        </label>
                 </div>
             )
         }, this)
