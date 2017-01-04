@@ -20,16 +20,12 @@ class Zalen extends React.Component {
     }
 
     componentDidMount() {
-        this._checkDesktopMobile()
-        window.addEventListener('resize', (event) => {
-            this._checkDesktopMobile()
-        });
+        // this._checkDesktopMobile()
+        // window.addEventListener('resize', (event) => {
+        //     this._checkDesktopMobile()
+        // });
 
         this.accordionInit()
-    }
-
-    compoentDidUpdate() {
-        this.accordionInit()   
     }
 
     _checkDesktopMobile() {
@@ -74,8 +70,11 @@ class Zalen extends React.Component {
         var $mc = jQuery(this.refs.mobile_container)
         $mc.find(".content").hide();
         $mc.find(".content:first").show().addClass("active");
-        jQuery(document).on('click', ".accordion-heading", function(){
+        $mc.find(".accordion-heading:first").addClass("active");
+        $mc.find(".accordion-heading").click(function(){
             var href = $(this).attr('href');
+            $(".accordion-heading").removeClass("active");
+            $(this).addClass("active");
             if($mc.find('.content'+href).hasClass("active")) {
                 return false;
             }
@@ -128,7 +127,7 @@ class Zalen extends React.Component {
                             <tr key={`z-${item.id}`}>
                                 <td>
                                         <button type="button" className="btn btn-plain btn--nopad" onClick={()=>{this.handleRemoveZalen(item.id)}}>
-                                            <i className="fa fa-trash"></i>
+                                            <i className="iconc-trash"></i>
                                         </button>
                                 </td>
                                 <td>
@@ -153,7 +152,7 @@ class Zalen extends React.Component {
                         return (
                             <tr key={item}>
                                 <td>
-                                    <button type="button" className="btn btn-plain btn--nopad" onClick={()=>{this.handleRemoveRow(index)}}><i className="fa fa-trash"></i></button>
+                                    <button type="button" className="btn btn-plain btn--nopad" onClick={()=>{this.handleRemoveRow(index)}}><i className="iconc-trash"></i></button>
                                 </td>
                                 <td>
                                     <input type="text" name={`zalen_new[${index}][room_name]`} />
@@ -191,12 +190,12 @@ class Zalen extends React.Component {
                 {this.props.items.map(function(item, index) {
                     return (
                         <div key={`z-${item.id}`}>
-                            <div className="input-group input-group--style-label">
+                            <div className="input-group input-group--style-label input-group--style-a">
                                 <span className="input-group-addon">
                                     <button type="button" className="btn btn-plain btn--nopad hover-show" onClick={(e) => this.handleRemoveZalen(item.id)}>
-                                        <i className="fa fa-trash"></i>
+                                        <i className="iconc-trash"></i>
                                     </button>
-                                    <i className="fa fa-link hover-hide"></i>
+                                    <i className="iconc-room hover-hide"></i>
                                 </span>
                                 <a className="accordion-heading" href={`#z-${item.id}`}>Vondelkerk</a>
                             </div>
@@ -211,39 +210,39 @@ class Zalen extends React.Component {
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>Title</th>
+                                            <th>Daglicht</th>
                                             <td><input type="text" name={`zalen[${index}][daglicht]`} defaultValue={item.daglicht} /></td>
                                         </tr>
                                         <tr>
-                                            <th>Title</th>
+                                            <th>U-vorm</th>
                                             <td><input type="text" name={`zalen[${index}][u_vorm]`} defaultValue={item.u_vorm} /></td>
                                         </tr>
                                         <tr>
-                                            <th>Title</th>
+                                            <th>Carre</th>
                                             <td><input type="text" name={`zalen[${index}][carre]`} defaultValue={item.carre} /></td>
                                         </tr>
                                         <tr>
-                                            <th>Title</th>
+                                            <th>School</th>
                                             <td><input type="text" name={`zalen[${index}][school]`} defaultValue={item.school} /></td>
                                         </tr>
                                         <tr>
-                                            <th>Title</th>
+                                            <th>Theater</th>
                                             <td><input type="text" name={`zalen[${index}][theater]`} defaultValue={item.theater} /></td>
                                         </tr>
                                         <tr>
-                                            <th>Title</th>
+                                            <th>Cabaret</th>
                                             <td><input type="text" name={`zalen[${index}][cabaret]`} defaultValue={item.cabaret} /></td>
                                         </tr>
                                         <tr>
-                                            <th>Title</th>
+                                            <th>Receptie</th>
                                             <td><input type="text" name={`zalen[${index}][receptie]`} defaultValue={item.receptie} /></td>
                                         </tr>
                                         <tr>
-                                            <th>Title</th>
+                                            <th>Diner</th>
                                             <td><input type="text" name={`zalen[${index}][diner]`} defaultValue={item.diner} /></td>
                                         </tr>
                                         <tr>
-                                            <th>Title</th>
+                                            <th>Feest</th>
                                             <td><input type="text" name={`zalen[${index}][feest]`} defaultValue={item.feest} /></td>
                                         </tr>
                                     </tbody>
@@ -257,12 +256,12 @@ class Zalen extends React.Component {
                 {this.state.itemsNew.map(function(item, index) {
                     return (
                         <div key={`z-${item}`}>
-                            <div className="input-group input-group--style-label">
+                            <div className="input-group input-group--style-label input-group--style-a">
                                 <span className="input-group-addon">
                                     <button type="button" className="btn btn-plain btn--nopad hover-show" onClick={(e) => this.handleRemoveZalen(item.id)}>
-                                        <i className="fa fa-trash"></i>
+                                        <i className="iconc-trash"></i>
                                     </button>
-                                    <i className="fa fa-link hover-hide"></i>
+                                    <i className="iconc-room hover-hide"></i>
                                 </span>
                                 <a className="accordion-heading" href={`#zn-${item}`}>Vondelkerk</a>
                             </div>
@@ -276,39 +275,39 @@ class Zalen extends React.Component {
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>Title</th>
+                                            <th>Daglicht</th>
                                             <td><input type="text" name={`zalen_new[${index}][daglicht]`} /></td>
                                         </tr>
                                         <tr>
-                                            <th>Title</th>
+                                            <th>U-vorm</th>
                                             <td><input type="text" name={`zalen_new[${index}][u_vorm]`} /></td>
                                         </tr>
                                         <tr>
-                                            <th>Title</th>
+                                            <th>Carre</th>
                                             <td><input type="text" name={`zalen_new[${index}][carre]`} /></td>
                                         </tr>
                                         <tr>
-                                            <th>Title</th>
+                                            <th>School</th>
                                             <td><input type="text" name={`zalen_new[${index}][school]`} /></td>
                                         </tr>
                                         <tr>
-                                            <th>Title</th>
+                                            <th>Theater</th>
                                             <td><input type="text" name={`zalen_new[${index}][theater]`} /></td>
                                         </tr>
                                         <tr>
-                                            <th>Title</th>
+                                            <th>Cabaret</th>
                                             <td><input type="text" name={`zalen_new[${index}][cabaret]`} /></td>
                                         </tr>
                                         <tr>
-                                            <th>Title</th>
+                                            <th>Receptie</th>
                                             <td><input type="text" name={`zalen_new[${index}][receptie]`} /></td>
                                         </tr>
                                         <tr>
-                                            <th>Title</th>
+                                            <th>Diner</th>
                                             <td><input type="text" name={`zalen_new[${index}][diner]`} /></td>
                                         </tr>
                                         <tr>
-                                            <th>Title</th>
+                                            <th>Feest</th>
                                             <td><input type="text" name={`zalen_new[${index}][feest]`} /></td>
                                         </tr>
                                     </tbody>
@@ -318,13 +317,13 @@ class Zalen extends React.Component {
                     )
                 }, this)}
 
-                <div className="input-group input-group--style-label">
+                <div className="input-group input-group-vmerge">
                     <span className="input-group-addon">
-                        <button type="button" className="btn btn-plain btn--nopad" onClick={(e) => this.handleAddClick()}>
-                            <i className="fa fa-plus"></i>
+                        <button type="button" className="btn btn-plain btn--nopad" onClick={() => this.handleAddClick()}>
+                            <i className="iconc-plus"></i>
                         </button>
                     </span>
-                    <label>Zaal toevoegen</label>
+                    <input type="text" className="form-control" defaultValue="Vimeo of YouTube link toevoegen" readOnly />
                 </div>
             </div>
         )

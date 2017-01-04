@@ -15,30 +15,42 @@ class Login extends Component {
             hashHistory.push('/dashboard')
             return false;
         }
+        var token = this.props.location.query.token;
+        if (token) {
+            Auth.login(token)
+            hashHistory.push('/dashboard')
+        }         
     }
     
     handleSubmit = (e) => {
         e.preventDefault();
-
-
         var valid = jQuery(".loginForm").valid();
         if (!valid) {
             return false 
         };        
         var confirm_token = this.props.location.query.confirm_token;    
-        console.log(confirm_token);
-        // return false;
-        if (confirm_token) {
-            Auth.attempt_confirm_token({email: this.refs.email.value, password: this.refs.password.value, confirm_token: confirm_token}).then((response) => {
-                if (response.data.token != null) {
-                    // Localstore.setOrg(response.data.org)
-                    // Localstore.setUser(response.data.user)
-                    toastr.success(response.data.message);       
-                    hashHistory.push('/dashboard')
-                } else {                
-                    toastr.error(response.data.message);       
-                }
-            });
+        var token = this.props.location.query.token;
+        var login_token = "92bdf65fd5da14f49f70dabce502c07dfb62311e68bdef65a6b1c7ea1c845126";
+        if (token) {
+            // Auth.attempt_confirm_token({email: this.refs.email.value, password: this.refs.password.value, confirm_token: confirm_token}).then((response) => {
+            //     if (response.data.token != null) {
+            //         // Localstore.setOrg(response.data.org)
+            //         // Localstore.setUser(response.data.user)
+            //         toastr.success(response.data.message);       
+            //         hashHistory.push('/dashboard')
+            //     } else {                
+            //         toastr.error(response.data.message);       
+            //     }
+            // });
+            console.log("abc");
+            Auth.login(token)
+            if (toke == login_token) {
+                toastr.success("Project Login Direct");       
+                hashHistory.push('/dashboard')
+            }else {
+                toastr.success("Token not Match");      
+            }
+
         } else {
             Auth.attempt({email: this.refs.email.value, password: this.refs.password.value}).then((response) => {
                 if (response.data.token != null) {

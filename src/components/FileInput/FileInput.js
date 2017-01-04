@@ -77,8 +77,8 @@ class FileInput extends React.Component {
                 <div className="item selector">
                     <div className="inner">
                         <label>
-                            <div className="icon-placeholder"><i className="fa fa-upload"></i></div>
-                            <div className="placeholder">Voeg foto’s toe</div>
+                            <div className="icon-placeholder"><i className="iconc-uploaded"></i></div>
+                            <div className="placeholder">Voeg foto toe</div>
                             <input type="file" multiple ref="input" />
                         </label>
                     </div>

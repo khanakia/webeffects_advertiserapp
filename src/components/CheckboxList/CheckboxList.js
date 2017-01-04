@@ -35,7 +35,10 @@ class ChekcboxList extends React.Component {
             var checked = this.props.selectedItems.indexOf(item.value)!==-1 ? true : false;
             return (
                 <li className="list-group-item" key={index}>
-                    <label><input type="checkbox" name={this.props.name} defaultValue={item.value} defaultChecked={checked} />{item.value}</label>
+                    <label>
+                        <input type="checkbox" name={this.props.name} defaultValue={item.value} defaultChecked={checked} />
+                        <span>{item.value}</span>
+                    </label>
                 </li>
             )
         }, this)
