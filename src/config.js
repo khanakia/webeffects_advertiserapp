@@ -35,6 +35,7 @@ export const RESET_PWD_AJAX_URL = 'http://webeffects.dnls/api/resetpassword';
 export const API_URL_UPDATE_USER = API_URL+'/user/update';
 
 export const API_URL_USER = API_URL+'/user';
+export const API_URL_CONTACTS = API_URL+'/contacts';
 
 export const API_URL_PROJECT = API_URL+'/projects';
 export const API_URL_PROJECT_FORMDATA = API_URL_PROJECT +'/formdata';

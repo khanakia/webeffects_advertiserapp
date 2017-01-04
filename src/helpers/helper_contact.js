@@ -1,11 +1,9 @@
 import {
-        API_URL_PROJECT, 
-        API_URL_PROJECT_FORMDATA
-        
+        API_URL_CONTACTS, 
     } from '../config.js'
 
 
-export default class ProjectHelper {
+export default class ContactHelper {
     constructor() {
 
     }
@@ -13,7 +11,7 @@ export default class ProjectHelper {
     static index() {
         return axios({
             method: 'get',
-            url: API_URL_PROJECT,
+            url: API_URL_CONTACTS,
             headers: Auth.header(),
         });
     }
@@ -21,7 +19,7 @@ export default class ProjectHelper {
     static show(id) {
         return axios({
             method: 'get',
-            url: API_URL_PROJECT + '/' + id,
+            url: API_URL_CONTACTS + '/' + id,
             headers: Auth.header(),
         });
     }
@@ -29,7 +27,7 @@ export default class ProjectHelper {
     static store(data) {
         return axios({
             method: 'post',
-            url: API_URL_PROJECT,
+            url: API_URL_CONTACTS,
             headers: Auth.header(),
             data: data
         });
@@ -40,7 +38,16 @@ export default class ProjectHelper {
 
         return axios({
             method: 'put',
-            url: API_URL_PROJECT + '/' + dataJson.id,
+            url: API_URL_CONTACTS + '/' + dataJson.id,
+            headers: Auth.header(),
+            data: data
+        });
+    }
+
+    static saveAll(data) {
+        return axios({
+            method: 'post',
+            url: API_URL_CONTACTS + '/saveall',
             headers: Auth.header(),
             data: data
         });
@@ -50,9 +57,9 @@ export default class ProjectHelper {
     static save(data) {
         const dataJson = URI.parseQuery(data);
         if (dataJson.id) {
-            var ajaxObj = ProjectHelper.update(data);
+            var ajaxObj = ContactHelper.update(data);
         } else {
-            var ajaxObj = ProjectHelper.store(data);
+            var ajaxObj = ContactHelper.store(data);
         }
         return ajaxObj;
     }
@@ -61,30 +68,11 @@ export default class ProjectHelper {
     static delete(id) {
         return axios({
             method: 'delete',
-            url: API_URL_PROJECT + '/' + id,
+            url: API_URL_CONTACTS + '/' + id,
             headers: Auth.header(),
         });
     }
 
-
-    static updateContact(project_id, contact_id) {
-        return axios({
-            method: 'post',
-            url: API_URL_PROJECT + '/' + project_id + '/update_contact',
-            headers: Auth.header(),
-            data: {
-                contact_id: contact_id
-            }
-        });
-    }
-
-    static formdata() {
-        return axios({
-            method: 'get',
-            url: API_URL_PROJECT_FORMDATA,
-            headers: Auth.header(),
-        });
-    }
 
 }
 

@@ -82,7 +82,9 @@ export default class Auth {
 	}
 
 	static getCurrentUser() {
-		return UserHelper.showCurrent()
+		return UserHelper.showCurrent().catch(function (error) {
+			Auth.logout()
+		});
 	}
 
 

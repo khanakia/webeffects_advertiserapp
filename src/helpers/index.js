@@ -4,3 +4,4 @@ export ProjectHelper from './helper_project';
 export ProjectVideoHelper from './helper_project_video';
 export ProjectIframeHelper from './helper_project_iframe';
 export ProjectRoomHelper from './/helper_project_room'
+export ContactHelper from './/helper_contact'

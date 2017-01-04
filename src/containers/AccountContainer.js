@@ -1,15 +1,22 @@
 import { connect } from 'react-redux'
 import {Account} from '../components'
 
+import { fetchContacts } from '../actions/action_contact';
+
 const mapStateToProps = (state) => {
     return {
         state : state,
+        contact_list: state.contact.list,
+        project_list: state.project.list,
     };
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        dispatch
+        dispatch,
+        fetchContacts: () => {
+            dispatch(fetchContacts()); 
+        },
     }
 }
 

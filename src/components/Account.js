@@ -3,9 +3,13 @@ import React, { Component } from 'react';
 import ContentWrapper from './shared/ContentWrapper'
 
 import {ROOT_URL, API_URL_CHANGE_PWD} from '../config.js'
-import Auth from '../helpers/auth.js'
-import Localstore from '../helpers/localstore.js'
-import UserHelper from '../helpers/helper_user.js'
+
+import {Auth, Localstore, UserHelper, ContactHelper, ProjectHelper} from '../helpers'
+
+
+
+import ContactPersonInput from './ContactPersonInput'
+import ProjectContactInput from './ProjectContactInput'
 
 class Account extends Component {
     constructor(props, context) {
@@ -13,7 +17,7 @@ class Account extends Component {
     }
 
     componentDidMount() {
-      
+        this.props.fetchContacts()
     }
 
     tabsFn() {
@@ -44,7 +48,7 @@ class Account extends Component {
 
     }
 
-    handleSubmit = (e) => {
+    handleSubmitChangePassword = (e) => {
         e.preventDefault();
         var valid = jQuery(this.refs.form).valid();
         if (!valid) { return false };
@@ -67,8 +71,119 @@ class Account extends Component {
         }.bind(this));
     }
 
+    handleSumbit() {
+        var _this = this;
+        let data = jQuery(_this.refs.form_contactperson).serialize();    
+
+        ContactHelper.saveAll(data).then((response) => {
+            _this.props.fetchContacts();
+        })
+
+    }
+
+    onContactItemChange = (item, project_id) => {
+        console.log(item)
+        ProjectHelper.updateContact(project_id, item.id)
+    }
+
+    _render_tabPassword() {
+        return (
+            <div>
+                <div className="formstyle1Ct changepwdCt">
+                    <form className="form-horizontal formstyle1 ChangepwdForm" ref='form' onSubmit={this.handleSubmitChangePassword}>
+                        <div className="row">
+                            <div className="col-md-12">
+                                <div className="form-group">
+                                    <label className="col-sm-12">Uw oude wachtwoord</label>
+                                    <div className="col-sm-12">
+                                        <div className="input-group">
+                                            <div className="input-group-addon"><i className="fa fa-key" aria-hidden="true"></i></div>
+                                            <input type="password" className="form-control required" name="oldpassword" id="oldpassword"  placeholder="••••••••••" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="form-group">
+                                    <label className="col-sm-12">Uw nieuwe wachtwoord</label>
+                                    <div className="col-sm-12">
+                                        <div className="input-group">
+                                            <div className="input-group-addon"><i className="fa fa-key" aria-hidden="true"></i></div>
+                                            <input type="password" className="form-control required" name="password" id="password"  placeholder="••••••••••" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="form-group">
+                                    <label className="col-sm-12"><div className="row"><div className="col-sm-12">Noogmaals uw nieuwe wachtwoord</div></div></label>
+                                    <div className="col-sm-12">
+                                        <div className="input-group">
+                                            <div className="input-group-addon"><i className="fa fa-key" aria-hidden="true"></i></div>
+                                            <input type="password" className="form-control required updatePassword" name="password_confirmation" id="password_confirmation" placeholder="••••••••••"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="text-right">
+                            <button type="submit" className="btn btn-green btn--round">Bevestig</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        )
+    }
+
+    _render_tabGegevens() {
+        return (
+            <div>
+                <div className="form-group">
+                    <label className="mb15">Bedrijfsnaam</label>
+                    <div className="row">
+                        <div className="col-md-4">
+                            <div className="input-group">
+                                <span className="input-group-addon">
+                                    <i className="iconc-buildings"></i>
+                                </span>
+                                <input type="text" className="form-control" name="bedrijfsnaam" defaultValue="Marie Aubain" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="form-group">
+                    <label>Contactpersonen</label>
+                    <form ref="form_contactperson">
+                        <ContactPersonInput items={this.props.contact_list} />
+                    </form>
+                </div>
+
+                <div className="form-group">
+                    <label>Locaties en contactpersonen</label>
+                    <ProjectContactInput onItemChange={this.onContactItemChange} items={this.props.project_list}  contact_list={this.props.contact_list}/>
+                </div>
+            </div>
+        )
+    }
+
+    _render_rightBlock() {
+        return (
+            <div>
+                <div className="block-info">
+                    <label>Bewerkingen</label>
+                    <div className="d-table w100 mt20">
+                        <div className="d-table-cell v-align-middle">
+                            <button ref="submit" type="button" className="btn btn-green btn--round" onClick={()=>{this.handleSumbit()}}>Opslaan</button>
+                        </div>
+                        <div className="d-table-cell v-align-middle">
+                            <button ref="annuleren" type="button" className="btn btn-plain">Annuleren</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+
     render() {
-        
+         
         
         return (
             <div className="p20">
@@ -79,7 +194,7 @@ class Account extends Component {
                             <div className="page-panel__inner__left">
                                   <ul className="nav nav-tabs nav-tabs--vertical" role="tablist">
                                     <li role="presentation" className="active">
-                                        <a href="#home" aria-controls="home" role="tab" data-toggle="tab">Uw gegevens</a>
+                                        <a href="#changepassword" aria-controls="changepassword" role="tab" data-toggle="tab">Uw gegevens</a>
                                     </li>
                                     <li role="presentation">
                                         <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Wachtwoord wijzigen</a>
@@ -89,71 +204,23 @@ class Account extends Component {
                             <div className="page-panel__inner__content">                                 
                                 <div className="tab-content">
                                     <h3 className="d_active tab_drawer_heading">
-                                        <a href="#home" aria-controls="home" role="tab" data-toggle="tab">Uw gegevens</a>
+                                        <a href="#changepassword" aria-controls="changepassword" role="tab" data-toggle="tab">Uw gegevens</a>
                                     </h3>
-                                    <div role="tabpanel" className="tab-pane active" id="home">
-                                        <div className="form-group">
-                                            <label className="mb15">Bedrijfsnaam</label>
-                                            <div className="row">
-                                                <div className="col-md-4">
-                                                    <div className="input-group">
-                                                        <span className="input-group-addon">
-                                                            <i className="iconc-buildings"></i>
-                                                        </span>
-                                                        <input type="text" className="form-control" name="bedrijfsnaam" defaultValue="Marie Aubain" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <div role="tabpanel" className="tab-pane " id="changepassword">
+                                        {this._render_tabPassword()}
                                     </div>
 
                                     <h3 className="tab_drawer_heading">
                                         <a href="#profile" aria-controls="home" role="tab" data-toggle="tab">Wachtwoord wijzigen</a>
                                     </h3>
-                                    <div role="tabpanel" className="tab-pane pad0" id="profile">
-                                        <div className="formstyle1Ct changepwdCt">
-                                            <form className="form-horizontal formstyle1 ChangepwdForm" ref='form' onSubmit={this.handleSubmit}>
-                                                <div className="row">
-                                                    <div className="col-md-12">
-                                                        <div className="form-group">
-                                                            <label className="col-sm-12">Uw oude wachtwoord</label>
-                                                            <div className="col-sm-12">
-                                                                <div className="input-group">
-                                                                    <div className="input-group-addon"><i className="fa fa-key" aria-hidden="true"></i></div>
-                                                                    <input type="password" className="form-control required" name="oldpassword" id="oldpassword"  placeholder="••••••••••" />
-                                                                </div>
-                                                            </div>
-                                                        </div>
 
-                                                        <div className="form-group">
-                                                            <label className="col-sm-12">Uw nieuwe wachtwoord</label>
-                                                            <div className="col-sm-12">
-                                                                <div className="input-group">
-                                                                    <div className="input-group-addon"><i className="fa fa-key" aria-hidden="true"></i></div>
-                                                                    <input type="password" className="form-control required" name="password" id="password"  placeholder="••••••••••" />
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div className="form-group">
-                                                            <label className="col-sm-12"><div className="row"><div className="col-sm-12">Noogmaals uw nieuwe wachtwoord</div></div></label>
-                                                            <div className="col-sm-12">
-                                                                <div className="input-group">
-                                                                    <div className="input-group-addon"><i className="fa fa-key" aria-hidden="true"></i></div>
-                                                                    <input type="password" className="form-control required updatePassword" name="password_confirmation" id="password_confirmation" placeholder="••••••••••"/>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div className="text-right">
-                                                    <button type="submit" className="btn btn-green btn--round">Bevestig</button>
-                                                </div>
-                                            </form>
-                                        </div>
+                                    <div role="tabpanel" className="tab-pane active" id="profile">
+                                        {this._render_tabGegevens()}
                                     </div>
                                 </div>
                             </div>
                             <div className="page-panel__inner__right">
+                                {this._render_rightBlock()}
                             </div>
                         </div>
                     </div>

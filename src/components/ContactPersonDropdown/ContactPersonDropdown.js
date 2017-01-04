@@ -17,7 +17,11 @@ class ContactPersonDropdown extends React.Component {
 		emptyPlaceholder: 'Kies een contactpersoon',
 
 		onAddNewClick: function(){},
-		onItemChange: function(item){}
+		onItemChange: function(item, project_id){},
+
+		isVisibleAddNewButton: true,
+
+		project_id : null // this i used in ProjectContactInput Control where contact dropdonw should specify project_id
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -33,7 +37,7 @@ class ContactPersonDropdown extends React.Component {
 		this.setState({
 			selectedValue: item.id
 		})
-		this.props.onItemChange(item)
+		this.props.onItemChange(item, this.props.project_id)
 	}
 
 	handleAddNewClick() {
@@ -53,7 +57,7 @@ class ContactPersonDropdown extends React.Component {
 		
 		return (
 			<div>
-				<input type="text" name={this.props.name} value={this.state.selectedValue} onChange={this.handleChange} />
+				<input type="hidden" name={this.props.name} value={this.state.selectedValue} onChange={this.handleChange} />
 				<div className="dropdown dropdown--style1">
 				  <button className="btn btn-dropdown dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 				    {selectedItem ? selectedItem.name : this.props.emptyPlaceholder}
@@ -73,14 +77,18 @@ class ContactPersonDropdown extends React.Component {
 						    </li>
 				  		)
 				  	}, this)}
-				    <li>
-				    	<div className="input-group input-group--style-button">
-				            <span className="input-group-addon">
-				                <i className="iconc iconc-plus"></i>
-				            </span>
-				            <button type="button" onClick={()=>{this.handleAddNewClick()}}>Nieuw contactpersoon</button>
-				        </div>
-				    </li>
+
+				  	{this.props.isVisibleAddNewButton  ?
+					    <li>
+					    	<div className="input-group input-group--style-button">
+					            <span className="input-group-addon">
+					                <i className="iconc iconc-plus"></i>
+					            </span>
+					            <button type="button" onClick={()=>{this.handleAddNewClick()}}>Nieuw contactpersoon</button>
+					        </div>
+					    </li>
+				  		: ''
+				  	}
 				  </ul>
 				</div>
 			</div>

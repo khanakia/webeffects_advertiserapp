@@ -1,22 +1,22 @@
 .form-default {
 
-	.form-group {
-	    margin-bottom: 25px;
-		>label {
-			font-family: 'Rubik', sans-serif;
-			font-weight: normal;
-			margin-bottom: 15px;
-			font-size: 16px;
-		}
+}
+.form-group {
+    margin-bottom: 25px;
+	>label {
+		font-family: 'Rubik', sans-serif;
+		font-weight: normal;
+		margin-bottom: 15px;
+		font-size: 16px;
 	}
+}
 
-	.form-control {
-		box-shadow: none;
-		border-radius: 0;
-		border-color: #CDD4D7;
+.form-control {
+	box-shadow: none;
+	border-radius: 0;
+	border-color: #CDD4D7;
 
-		&:focus {
-			border-color: #08B995;
-		}
+	&:focus {
+		border-color: #08B995;
 	}
 }
