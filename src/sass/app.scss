@@ -195,6 +195,7 @@ label input[type="checkbox"] + span,
 label input[type="radio"] + span {
 	position: relative;
 	padding: 0 0 0 25px;
+	color: #7C8589;
 }
 
 label input[type="checkbox"]:checked + span,

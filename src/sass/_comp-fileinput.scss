@@ -60,6 +60,16 @@
 					color: #7C8589;
 					text-align: center;
 				}
+				&:hover {
+					.icon-placeholder {
+						i {
+							color: #08B995;
+						}
+					}
+					.placeholder {
+						color: #08B995;
+					}
+				}
 			}
 		}
 	}

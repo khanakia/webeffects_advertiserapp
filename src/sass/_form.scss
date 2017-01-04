@@ -50,11 +50,15 @@
 		}
 	}
 	.question-mark-icon {
-		position: relative;
+		/*position: relative;*/
+		padding-right: 20px;
 		a {
-			position: absolute;
+			/*position: absolute;
 			right: 10px;
-			bottom: 10px;
+			bottom: 10px;*/
+			position: relative;
+			display: inline-block;
+			float: right;
 			width: 22px;
 			height: 22px;
 			background-image: url("../images/icon-question.svg");
@@ -70,11 +74,15 @@
 		border-radius: 0px;
 	}
 
+	.popover.bottom {
+		margin-top: 20px;
+	}
+
 	.popover-content {
 		padding: 10px 15px;
 		color: #101010;
 		line-height: 24px;
-		font-size: 16px;
+		font-size: 14px;
 		font-family: 'Open Sans', sans-serif;
 	}
 
