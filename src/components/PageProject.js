@@ -13,6 +13,7 @@ import FileInput from './FileInput'
 import VideoInput from './VideoInput'
 import IframeInput from './IframeInput'
 import ContactPersonDropdown from './ContactPersonDropdown'
+import OfferRequestList from './OfferRequestList'
 
 class PageProject extends Component {
     constructor(props, context) {
@@ -30,6 +31,11 @@ class PageProject extends Component {
 
     componentDidMount() {
         this.initJs()
+
+        if(this.props.params.projectId) {
+            this.props.fetchOfferRequestDetailsList(this.props.params.projectId);
+        }
+
     }
 
     componentDidUpdate() {
@@ -456,7 +462,7 @@ class PageProject extends Component {
 
 
                                         <div role="tabpanel" className="tab-pane " id="aanvragen">
-                                            Aanvragen
+                                            <OfferRequestList items={this.props.project_offer_request_details_list} />
                                         </div>
 
 

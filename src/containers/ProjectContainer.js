@@ -2,12 +2,13 @@ import { connect } from 'react-redux'
 
 import {PageProject} from '../components'
 
-import { fetchProject, fetchProjectFormdata } from '../actions/action_project';
+import { fetchProject, fetchProjectFormdata, fetchOfferRequestDetailsList } from '../actions/action_project';
 const mapStateToProps = (state) => {
     return {
         state : state,
         project: state.project.current,
         project_formdata: state.project.formdata,
+        project_offer_request_details_list: state.project.offer_request_details_list
     };
 }
 
@@ -20,7 +21,12 @@ const mapDispatchToProps = (dispatch) => {
 
         fetchProjectFormdata: () => {
             dispatch(fetchProjectFormdata())
+        },
+
+        fetchOfferRequestDetailsList: (project_id) => {
+            dispatch(fetchOfferRequestDetailsList(project_id))
         }
+
     }
 }
 

@@ -67,6 +67,14 @@ export default class ProjectHelper {
     }
 
 
+    static getOfferRequestDetails(project_id) {
+        return axios({
+            method: 'get',
+            url: API_URL_PROJECT + '/' + project_id + '/offer_request_details',
+            headers: Auth.header(),
+        });
+    }
+
     static updateContact(project_id, contact_id) {
         return axios({
             method: 'post',
