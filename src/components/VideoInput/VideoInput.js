@@ -78,7 +78,7 @@ class VideoInput extends React.Component {
                         <div className="input-group" key={index}>
                             <span className="input-group-addon">
                                 <button type="button" className="btn btn-plain btn--nopad hover-show" onClick={(e) => this.deleteProjectVideo(item.id)}>
-                                    <i className="fa fa-trash"></i>
+                                    <i className="iconc-trash"></i>
                                 </button>
                                 <i className="fa fa-youtube hover-hide"></i>
                             </span>
@@ -96,7 +96,7 @@ class VideoInput extends React.Component {
                         <div className="input-group" key={key}>
                             <span className="input-group-addon">
                                 <button type="button" className="btn btn-plain btn--nopad" onClick={() => this.handleRemoveRow(index)}>
-                                    <i className="fa fa-trash"></i>
+                                    <i className="iconc-trash"></i>
                                 </button>
                             </span>
                             <input type="text" className="form-control" name="video_url_new[]" />
@@ -108,7 +108,7 @@ class VideoInput extends React.Component {
                 <div className="input-group">
                     <span className="input-group-addon">
                         <button type="button" className="btn btn-plain btn--nopad" onClick={() => this.handleAddClick()}>
-                            <i className="fa fa-plus"></i>
+                            <i className="iconc-plus"></i>
                         </button>
                     </span>
                     <input type="text" className="form-control" defaultValue="Vimeo of YouTube link toevoegen" readOnly />

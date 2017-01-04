@@ -74,21 +74,26 @@
 
 
 	.table--vertical {
-
+		margin-bottom: 0px;
 		background-color: #fff;
 		th {
+			width: 50%;
+			height: 30px;
+			padding: 10px;
 			font-weight: normal;
 			color: #A0A8AC;
-			padding: 10px;
+			line-height: 26px;
 		}
 
 		td {
 			input {
 				width: 100%;
+				height: 30px;
 				padding: 8px;
 				border: none;
 				outline: none;
 				color: #7C8589;
+				font-size: 15px;
 			}
 		}
 

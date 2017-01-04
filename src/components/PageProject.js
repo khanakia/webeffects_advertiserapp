@@ -34,6 +34,7 @@ class PageProject extends Component {
 
     componentDidUpdate() {
         this.initJs()
+        jQuery('[data-toggle="popover"]').popover()
     }
 
     initJs() {
@@ -151,13 +152,17 @@ class PageProject extends Component {
                 </div>
 
                 <div className="form-group">
-                    <label>Aanbieding (korte versie - max 40 karakters)</label>
+                    <label className="question-mark-icon">Aanbieding <br />(korte versie - max 40 karakters)
+                        <a href="#" className="popoverData" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content="De lange versie van de actie zal naast het formulier dat de gebruiker in moet vullen komen te staan."></a>
+                    </label>
                     <input type="text" className="form-control" name="discount_short_title" defaultValue={this.props.project.discount_short_title} />
                     
                 </div>
 
                 <div className="form-group">
-                    <label>Aanbieding (lange versie - max 80 karakters)</label>
+                    <label className="question-mark-icon">Aanbieding <br />(lange versie - max 80 karakters)
+                        <a href="#" className="popoverData" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content="De lange versie van de actie zal naast het formulier dat de gebruiker in moet vullen komen te staan."></a>
+                    </label>
                     <input type="text" className="form-control" name="discount_long_title" defaultValue={this.props.project.discount_long_title} />
                 </div>
             </div>
@@ -181,21 +186,21 @@ class PageProject extends Component {
         ]
         return (
             <div>
-                <div className="form-group">
+                <div className="form-group aantal-personen">
                     <label>Aantal personen</label>
                     <div className="row">
-                        <div className="col-md-3">
+                        <div className="col-lg-4">
                             <div className="input-group">
                                 <span className="input-group-addon">
-                                    <i className="fa fa-users"></i> Min.
+                                    <i className="iconc-person"></i> Min.
                                 </span>
                                 <input type="text" className="form-control" name="person_min" defaultValue={this.props.project.person_min} />
                             </div>
                         </div>
-                        <div className="col-md-3">
+                        <div className="col-lg-4">
                             <div className="input-group">
                                 <span className="input-group-addon">
-                                    <i className="fa fa-users"></i> Min.
+                                    <i className="iconc-person"></i> Max.
                                 </span>
                                 <input type="text" className="form-control" name="person_max" defaultValue={this.props.project.person_max} />
                             </div>
@@ -210,19 +215,19 @@ class PageProject extends Component {
                 </div>
 
                 <div className="row">
-                    <div className="col-md-4">
+                    <div className="col-lg-4">
                         <div className="form-group">
                             <label>Gebouwen</label>
                             <CheckboxList name='gebouws[]' items={this.props.project_formdata.gebouwens} selectedItems={this.props.project.gebouws_mapping_ids} />
                         </div>
                     </div>
-                    <div className="col-md-4">
+                    <div className="col-lg-4">
                         <div className="form-group">
                             <label>Ligging</label>
                             <CheckboxList name='liggings[]' items={this.props.project_formdata.liggings} selectedItems={this.props.project.liggings_mapping_ids} />
                         </div>
                     </div>
-                    <div className="col-md-4">
+                    <div className="col-lg-4">
                         <div className="form-group">
                             <label>Eigenschappen</label>
                             <CheckboxList name='eigenschappens[]' items={this.props.project_formdata.eigenschappens} selectedItems={this.props.project.eigenschappens_mapping_ids} />
@@ -294,14 +299,14 @@ class PageProject extends Component {
                 </div>
                 <div className="block-info">
                     <label>Locatie bekijken</label>
-                    <div><a className="live" href="#">Live</a> <i className="fa fa-link pull-right"></i></div>
-                    <div><a className="concept" href="#">Concept</a> <i className="fa fa-link pull-right"></i></div>
+                    <div><a className="live" href="#">Live</a> <i className="iconc-link pull-right"></i></div>
+                    <div><a className="concept" href="#">Concept</a> <i className="iconc-link pull-right"></i></div>
                 </div>
                 <div className="block-info">
                     <label>Status</label>
                     <div className="dropdown dropdown--status">
                         <i className="iconc-published before_text"></i>Gepubliceerd
-                        <a className="pull-right dropdown-toggle" id="gepubliceerd" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i className="fa fa-pencil"></i></a>
+                        <a className="pull-right dropdown-toggle" id="gepubliceerd" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i className="iconc-edit"></i></a>
 
                         <ul className="dropdown-menu dropdown-menu--status" aria-labelledby="gepubliceerd">
                             <li>
@@ -426,11 +431,11 @@ class PageProject extends Component {
                                         <div role="tabpanel" className="tab-pane " id="details">
                                             {this._render_tabDetails()}
                                         </div>
-                                        <div role="tabpanel" className="tab-pane active" id="zalen">
+                                        <div role="tabpanel" className="tab-pane " id="zalen">
                                             <Zalen items={project.project_rooms} onZalenRemoved={this.onZalenRemoved} />
                                         </div>
 
-                                        <div role="tabpanel" className="tab-pane " id="contact">
+                                        <div role="tabpanel" className="tab-pane active" id="contact">
                                             {this._render_tabContact()}
                                         </div>
 
