@@ -8,7 +8,7 @@ class Zalen extends React.Component {
 
         this.state = {
             itemsNew: [],
-            isDesktop: true
+            isDesktop: false
         }
         
     }
@@ -24,6 +24,8 @@ class Zalen extends React.Component {
         // window.addEventListener('resize', (event) => {
         //     this._checkDesktopMobile()
         // });
+
+        this.accordionInit()
     }
 
     _checkDesktopMobile() {
@@ -61,6 +63,27 @@ class Zalen extends React.Component {
     handleRemoveZalen = (id) => {
         ProjectRoomHelper.delete(id).then((response) => {
             this.props.onZalenRemoved()
+        })
+    }
+
+    accordionInit() {
+        var $mc = jQuery(this.refs.mobile_container)
+        $mc.find(".content").hide();
+        $mc.find(".content:first").show().addClass("active");
+        $mc.find(".accordion-heading").click(function(){
+            var href = $(this).attr('href');
+            if($mc.find('.content'+href).hasClass("active")) {
+                return false;
+            }
+
+            $mc.find('.content').removeClass('active');
+            $mc.find('.content'+href).addClass('active');
+            
+            $mc.find('.content').slideUp();
+            $mc.find('.content'+href).slideDown();
+
+            return false;
+
         })
     }
 
@@ -160,8 +183,139 @@ class Zalen extends React.Component {
 
     _renderMobile() {
         return (
-            <div>
-                Mobile
+            <div ref="mobile_container">
+                {this.props.items.map(function(item, index) {
+                    return (
+                        <div key={`z-${item.id}`}>
+                            <div className="input-group input-group--style-label">
+                                <span className="input-group-addon">
+                                    <button type="button" className="btn btn-plain btn--nopad hover-show" onClick={(e) => this.handleRemoveZalen(item.id)}>
+                                        <i className="fa fa-trash"></i>
+                                    </button>
+                                    <i className="fa fa-link hover-hide"></i>
+                                </span>
+                                <a className="accordion-heading" href={`#z-${item.id}`}>Vondelkerk</a>
+                            </div>
+                            <div className="content" id={`z-${item.id}`}>
+                                <table className="table table-bordered table--vertical" >
+                                    <tbody>
+                                        <tr>
+                                            <th>Title</th>
+                                            <td>
+                                                <input type="hidden" name={`zalen[${index}][id]`} defaultValue={item.id} />
+                                                <input type="text" name={`zalen[${index}][room_name]`} defaultValue={item.room_name} />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Title</th>
+                                            <td><input type="text" name={`zalen[${index}][daglicht]`} defaultValue={item.daglicht} /></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Title</th>
+                                            <td><input type="text" name={`zalen[${index}][u_vorm]`} defaultValue={item.u_vorm} /></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Title</th>
+                                            <td><input type="text" name={`zalen[${index}][carre]`} defaultValue={item.carre} /></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Title</th>
+                                            <td><input type="text" name={`zalen[${index}][school]`} defaultValue={item.school} /></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Title</th>
+                                            <td><input type="text" name={`zalen[${index}][theater]`} defaultValue={item.theater} /></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Title</th>
+                                            <td><input type="text" name={`zalen[${index}][cabaret]`} defaultValue={item.cabaret} /></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Title</th>
+                                            <td><input type="text" name={`zalen[${index}][receptie]`} defaultValue={item.receptie} /></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Title</th>
+                                            <td><input type="text" name={`zalen[${index}][diner]`} defaultValue={item.diner} /></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Title</th>
+                                            <td><input type="text" name={`zalen[${index}][feest]`} defaultValue={item.feest} /></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    )
+                }, this)}
+
+
+                {this.state.itemsNew.map(function(item, index) {
+                    return (
+                        <div key={`z-${item}`}>
+                            <div className="input-group input-group--style-label">
+                                <span className="input-group-addon">
+                                    <button type="button" className="btn btn-plain btn--nopad hover-show" onClick={(e) => this.handleRemoveZalen(item.id)}>
+                                        <i className="fa fa-trash"></i>
+                                    </button>
+                                    <i className="fa fa-link hover-hide"></i>
+                                </span>
+                                <a className="accordion-heading" href={`#zn-${item}`}>Vondelkerk</a>
+                            </div>
+                            <div className="content" id={`zn-${item}`}>
+                                <table className="table table-bordered table--vertical" >
+                                    <tbody>
+                                        <tr>
+                                            <th>Title</th>
+                                            <td>
+                                                <input type="text" name={`zalen_new[${index}][room_name]`} />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Title</th>
+                                            <td><input type="text" name={`zalen_new[${index}][daglicht]`} /></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Title</th>
+                                            <td><input type="text" name={`zalen_new[${index}][u_vorm]`} /></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Title</th>
+                                            <td><input type="text" name={`zalen_new[${index}][carre]`} /></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Title</th>
+                                            <td><input type="text" name={`zalen_new[${index}][school]`} /></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Title</th>
+                                            <td><input type="text" name={`zalen_new[${index}][theater]`} /></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Title</th>
+                                            <td><input type="text" name={`zalen_new[${index}][cabaret]`} /></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Title</th>
+                                            <td><input type="text" name={`zalen_new[${index}][receptie]`} /></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Title</th>
+                                            <td><input type="text" name={`zalen_new[${index}][diner]`} /></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Title</th>
+                                            <td><input type="text" name={`zalen_new[${index}][feest]`} /></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    )
+                }, this)}
+
+                
+                <button type="button" className="btn btn-plain btn--nopad" onClick={()=>this.handleAddClick()}><i className="fa fa-plus"></i></button>
             </div>
         )
     }

@@ -162,7 +162,7 @@ header.mobile {
       position: relative;
       padding-left: 50px; }
       .mobile-overlay-menu ul.submenu a:hover:before, .mobile-overlay-menu ul.submenu a:focus:before {
-        content: "ΓÇó";
+        content: "•";
         position: absolute;
         top: 10px;
         left: 20px;
@@ -271,6 +271,18 @@ header.mobile {
     display: block;
     font-weight: normal;
     margin: 0; }
+.comp-zalen .table--vertical {
+  background-color: #fff; }
+  .comp-zalen .table--vertical th {
+    font-weight: normal;
+    color: #A0A8AC;
+    padding: 10px; }
+  .comp-zalen .table--vertical td input {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    outline: none;
+    color: #7C8589; }
 
 .comp-sidebar {
   position: fixed;

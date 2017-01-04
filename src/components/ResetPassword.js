@@ -22,6 +22,7 @@ class ResetPassword extends Component {
         var email = jQuery("#email").val();
         var ajaxObj =  axios.post(RESET_PWD_API, {
             email: email,
+            domain: ROOT_URL
         })
         .then(function (response) {
             toastr.success(response.data.message);       

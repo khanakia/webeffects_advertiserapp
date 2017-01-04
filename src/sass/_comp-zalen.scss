@@ -71,4 +71,26 @@
 			}
 		}
 	}
+
+
+	.table--vertical {
+
+		background-color: #fff;
+		th {
+			font-weight: normal;
+			color: #A0A8AC;
+			padding: 10px;
+		}
+
+		td {
+			input {
+				width: 100%;
+				padding: 8px;
+				border: none;
+				outline: none;
+				color: #7C8589;
+			}
+		}
+
+	}
 }

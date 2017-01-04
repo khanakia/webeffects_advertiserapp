@@ -404,11 +404,11 @@ class PageProject extends Component {
                                         <div role="tabpanel" className="tab-pane " id="details">
                                             {this._render_tabDetails()}
                                         </div>
-                                        <div role="tabpanel" className="tab-pane " id="zalen">
+                                        <div role="tabpanel" className="tab-pane active" id="zalen">
                                             <Zalen items={project.project_rooms} onZalenRemoved={this.onZalenRemoved} />
                                         </div>
 
-                                        <div role="tabpanel" className="tab-pane active" id="contact">
+                                        <div role="tabpanel" className="tab-pane " id="contact">
                                             {this._render_tabContact()}
                                         </div>
 
