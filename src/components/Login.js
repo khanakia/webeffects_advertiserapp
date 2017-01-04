@@ -52,24 +52,19 @@ class Login extends Component {
             <div id="errordiv"></div>
                 <div className="container">
                     <div className="row">    
-                        <div className="row">
                         <div className="formstyle1Ct">
                             <h3 className="form_title text-center">Adverteerder inlog</h3>
-                            <form className="form-horizontal formstyle1 loginForm" ref='form' onSubmit={this.handleSubmit}>
-                                <div className="row">
-                                    <div className="col-md-12">
-                                        <div className="form-group">
-                                            <label className="col-sm-12">E-mailadres</label>
-                                            <div className="col-sm-12">
-                                                <input type="email" className="form-control required" name="email" id="email" placeholder="bv.jan@jan.nl" ref='email'/>
-                                            </div>
-                                        </div>
-                                        <div className="form-group">
-                                            <label className="col-sm-12"><div className="row"><div className="col-sm-6">Wachtwoord</div> <div className="col-sm-6 text-right"><a href="#/resetpwd">Wachtwoord vergeten?</a></div></div></label>
-                                            <div className="col-sm-12">
-                                                <input type="password" className="form-control required minlength" name="password" id="password"  placeholder="••••••••••" ref='password'/>
-                                            </div>
-                                        </div>
+                            <form className="form-horizontal formstyle1 loginForm" ref='form' onSubmit={this.handleSubmit}>    
+                                <div className="form-group">
+                                    <label className="col-sm-12 col-xs-12">E-mailadres</label>
+                                    <div className="col-sm-12 col-xs-12">
+                                        <input type="email" className="form-control required" name="email" id="email" placeholder="bv.jan@jan.nl" ref='email'/>
+                                    </div>
+                                </div>
+                                <div className="form-group">
+                                    <label className="col-sm-12 col-xs-12"><div className="row"><div className="col-sm-5">Wachtwoord</div> <div className="col-sm-7 col-xs-12 text-right"><a href="#/resetpwd">Wachtwoord vergeten?</a></div></div></label>
+                                    <div className="col-sm-12 col-xs-12">
+                                        <input type="password" className="form-control required minlength" name="password" id="password"  placeholder="••••••••••" ref='password'/>
                                     </div>
                                 </div>
                                 <div className="text-center">
@@ -79,7 +74,6 @@ class Login extends Component {
                                 <p className="text-center">Ik ben nog geen adverteerder</p>
                             </form>
                         </div>
-                        </div>    
                     </div>
                 </div>    
             </div>

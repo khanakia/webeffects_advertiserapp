@@ -91,42 +91,62 @@ class Account extends Component {
                                     <h3 className="d_active tab_drawer_heading">
                                         <a href="#home" aria-controls="home" role="tab" data-toggle="tab">Uw gegevens</a>
                                     </h3>
-                                    <div role="tabpanel" className="tab-pane active" id="home">..sdfsda.</div>
+                                    <div role="tabpanel" className="tab-pane active" id="home">
+                                        <div className="form-group">
+                                            <label className="mb15">Bedrijfsnaam</label>
+                                            <div className="row">
+                                                <div className="col-md-4">
+                                                    <div className="input-group">
+                                                        <span className="input-group-addon">
+                                                            <i className="iconc-buildings"></i>
+                                                        </span>
+                                                        <input type="text" className="form-control" name="bedrijfsnaam" defaultValue="Marie Aubain" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 
                                     <h3 className="tab_drawer_heading">
                                         <a href="#profile" aria-controls="home" role="tab" data-toggle="tab">Wachtwoord wijzigen</a>
                                     </h3>
-                                    <div role="tabpanel" className="tab-pane" id="profile">
-                                        <div className="formstyle1Ct">
-                                            <h3 className="form_title text-center">Change Password</h3>
+                                    <div role="tabpanel" className="tab-pane pad0" id="profile">
+                                        <div className="formstyle1Ct changepwdCt">
                                             <form className="form-horizontal formstyle1 ChangepwdForm" ref='form' onSubmit={this.handleSubmit}>
                                                 <div className="row">
                                                     <div className="col-md-12">
                                                         <div className="form-group">
-                                                            <label className="col-sm-12">Old Password</label>
+                                                            <label className="col-sm-12">Uw oude wachtwoord</label>
                                                             <div className="col-sm-12">
-                                                                <input type="password" className="form-control required" name="oldpassword" id="oldpassword"  placeholder="••••••••••" />
+                                                                <div className="input-group">
+                                                                    <div className="input-group-addon"><i className="fa fa-key" aria-hidden="true"></i></div>
+                                                                    <input type="password" className="form-control required" name="oldpassword" id="oldpassword"  placeholder="••••••••••" />
+                                                                </div>
                                                             </div>
                                                         </div>
 
                                                         <div className="form-group">
-                                                            <label className="col-sm-12">New Password</label>
+                                                            <label className="col-sm-12">Uw nieuwe wachtwoord</label>
                                                             <div className="col-sm-12">
-                                                                <input type="password" className="form-control required" name="password" id="password"  placeholder="••••••••••" />
-                                                                <div className="passworderror errordiv"></div>
+                                                                <div className="input-group">
+                                                                    <div className="input-group-addon"><i className="fa fa-key" aria-hidden="true"></i></div>
+                                                                    <input type="password" className="form-control required" name="password" id="password"  placeholder="••••••••••" />
+                                                                </div>
                                                             </div>
                                                         </div>
                                                         <div className="form-group">
-                                                            <label className="col-sm-12"><div className="row"><div className="col-sm-12">Confirm New Password</div></div></label>
+                                                            <label className="col-sm-12"><div className="row"><div className="col-sm-12">Noogmaals uw nieuwe wachtwoord</div></div></label>
                                                             <div className="col-sm-12">
-                                                                <input type="password" className="form-control required updatePassword" name="password_confirmation" id="password_confirmation" placeholder="••••••••••"/>
-                                                                <div className="passwordconfirmerror errordiv"></div>
+                                                                <div className="input-group">
+                                                                    <div className="input-group-addon"><i className="fa fa-key" aria-hidden="true"></i></div>
+                                                                    <input type="password" className="form-control required updatePassword" name="password_confirmation" id="password_confirmation" placeholder="••••••••••"/>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div className="text-center">
-                                                    <button type="submit" className="btn btn-green btn--round">Update Password</button>
+                                                <div className="text-right">
+                                                    <button type="submit" className="btn btn-green btn--round">Bevestig</button>
                                                 </div>
                                             </form>
                                         </div>
