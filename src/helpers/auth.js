@@ -13,6 +13,7 @@ export default class Auth {
 		var ajaxObj =  axios.post(API_URL_SIGNIN, {
 					email: email,
 					password: password,
+					site_id: Env.site_id
 				})
 
 		ajaxObj.then(function (response) {

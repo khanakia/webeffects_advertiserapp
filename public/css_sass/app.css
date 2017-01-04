@@ -162,7 +162,7 @@ header.mobile {
       position: relative;
       padding-left: 50px; }
       .mobile-overlay-menu ul.submenu a:hover:before, .mobile-overlay-menu ul.submenu a:focus:before {
-        content: "•";
+        content: "ΓÇó";
         position: absolute;
         top: 10px;
         left: 20px;
@@ -376,6 +376,12 @@ div.clear {
   overflow: hidden;
   font-size: 0pt;
   margin-top: -1px; }
+
+.color-red {
+  color: #FF713E; }
+
+.color-green {
+  color: #08B995; }
 
 .content-wrapper {
   padding: 35px; }

@@ -50,5 +50,25 @@ export const API_URL_PROJECT_IFRAMES = API_URL+'/project_iframes';
 export const API_URL_PROJECT_ROOMS = API_URL+'/project_rooms';
 
 
+export const PROJECT_STATUSES = {
+	"1" : {
+		'title' : 'Gepubliceerd',
+		'icon_class' : 'iconc iconc-published color-green',
+	},
+
+	"2" : {
+		'title' : 'Verstuurd',
+		'icon_class' : 'iconc iconc-uploaded color-red',
+	},
+
+	"3" : {
+		'title' : 'Concept',
+		'icon_class' : 'iconc iconc-concept',
+	}
+
+}
+
+
+
 
 

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link, hashHistory } from 'react-router'
 
 import ContentWrapper from './shared/ContentWrapper'
-
+import {PROJECT_STATUSES} from '../config'
 
 class ProjectOverview extends Component {
     constructor(props, context) {
@@ -11,6 +11,7 @@ class ProjectOverview extends Component {
 
     componentDidMount() {
         this.props.fetchProjects()
+        console.log(PROJECT_STATUSES)
     }
    
     render() {
@@ -35,10 +36,11 @@ class ProjectOverview extends Component {
                         </thead>
                         <tbody>
                             { this.props.project_list.map(function(item, index){
+                                let status = PROJECT_STATUSES[item.project_status_id]
 
                                 return (
                                     <tr key={index}>
-                                        <td><i className="iconc-concept"></i> <span>{item.project_status_id}</span></td>
+                                        <td><i className={status.icon_class}></i> <span>{status.title}</span></td>
                                         <td>
                                             <span className="title">{item.project_title}</span>
                                             <span className="subtitle">Bennekom <i className="fa fa-circle" aria-hidden="true"></i> Gelderland</span>
