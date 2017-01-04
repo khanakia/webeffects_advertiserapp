@@ -4,16 +4,18 @@ import ReactDom from 'react-dom';
 import { Provider } from 'react-redux';
 import { Router, Route, hashHistory } from 'react-router'
 
-
+import Auth from './helpers/auth'
 import Env from './env.json'
 
 window.ReactDom = ReactDom;
 window.React = React;
 window.Env = Env;
+window.Auth = Auth;
 
 // console.log(window.Env)
 
 import {
+    RequireAuth,
     AppContainer,
     LoginContainer,
     ResetPasswordContainer,
@@ -32,12 +34,6 @@ import {store} from './store/index.js';
 
 import {ROOT_HOST} from './config.js'
 
-// // import Auth from './src/helpers/auth.js'
-import RequireAuth from './containers/RequireAuth';
-
-// import Localstore from './src/helpers/localstore.js'
-
-
 // import {language} from './src/lang/index.js';
 // window.lang = language.en;
 
@@ -47,7 +43,7 @@ import RequireAuth from './containers/RequireAuth';
             <Route path="/" component={LoginContainer} />
             <Route path="/forgetpwd" component={ForgotPasswordContainer} />
             <Route path="/resetpwd" component={ResetPasswordContainer} />
-    		<Route path="/" component={AppContainer}>
+            <Route path="/" component={RequireAuth(AppContainer)}>
     			<Route path="dashboard" component={ProjectOverviewContainer} />
     			<Route path="projects/:projectId" component={ProjectContainer} />
     			<Route path="project/add" component={ProjectContainer} />

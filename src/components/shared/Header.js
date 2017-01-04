@@ -11,7 +11,8 @@ class Header extends Component {
     }
 
     static defaultProps = {
-        project_list: []
+        project_list: [],
+        userTitle: ''
     }
 
     componentDidMount() {
@@ -41,7 +42,7 @@ class Header extends Component {
                     <div className="dropdown dropdown--user">
                         <button className="btn btn-user dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                             <span className="usericon"><i className="iconc iconc-person"></i></span>
-                            <span>Dropdown</span>
+                            <span>{this.props.userTitle}</span>
                             <span><i className="iconc iconc-chevron-down"></i></span>
                         </button>
                         <ul className="dropdown-menu dropdown-menu-right dropdown-menu--user" aria-labelledby="dropdownMenu1">

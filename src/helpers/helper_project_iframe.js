@@ -13,7 +13,7 @@ export default class ProjectIframeHelper {
         return axios({
             method: 'delete',
             url: API_URL_PROJECT_IFRAMES + '/' + id,
-            // headers: Auth.header(),
+            headers: Auth.header(),
         });
     }
 

@@ -10,6 +10,13 @@ class Login extends Component {
         super(props, context);
     }
 
+    componentDidMount() {
+        if(Auth.check()) {
+            hashHistory.push('/dashboard')
+            return false;
+        }
+    }
+    
     handleSubmit = (e) => {
         e.preventDefault();
 
@@ -35,7 +42,6 @@ class Login extends Component {
         } else {
             Auth.attempt({email: this.refs.email.value, password: this.refs.password.value}).then((response) => {
                 if (response.data.token != null) {
-                    toastr.success(response.data.message);       
                     hashHistory.push('/dashboard')
                 } else {                
                     toastr.error(response.data.message);       
@@ -49,7 +55,7 @@ class Login extends Component {
         
         return (
             <div className="loginform">
-            <div id="errordiv"></div>
+                <div id="errordiv"></div>
                 <div className="container">
                     <div className="row">    
                         <div className="formstyle1Ct">

@@ -5,3 +5,4 @@ export ForgotPasswordContainer from './ForgotPasswordContainer';
 export ProjectOverviewContainer from './ProjectOverviewContainer';
 export ProjectContainer from './ProjectContainer';
 export AccountContainer from './AccountContainer'
+export RequireAuth from './RequireAuth'

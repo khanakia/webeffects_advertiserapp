@@ -14,7 +14,7 @@ export default class ProjectHelper {
         return axios({
             method: 'get',
             url: API_URL_PROJECT,
-            // headers: Auth.header(),
+            headers: Auth.header(),
         });
     }
 
@@ -22,7 +22,7 @@ export default class ProjectHelper {
         return axios({
             method: 'get',
             url: API_URL_PROJECT + '/' + id,
-            // headers: Auth.header(),
+            headers: Auth.header(),
         });
     }
 
@@ -41,7 +41,7 @@ export default class ProjectHelper {
         return axios({
             method: 'put',
             url: API_URL_PROJECT + '/' + dataJson.id,
-            // headers: Auth.header(),
+            headers: Auth.header(),
             data: data
         });
     }
@@ -70,7 +70,7 @@ export default class ProjectHelper {
         return axios({
             method: 'get',
             url: API_URL_PROJECT_FORMDATA,
-            // headers: Auth.header(),
+            headers: Auth.header(),
         });
     }
 

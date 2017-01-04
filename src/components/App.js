@@ -15,6 +15,7 @@ export default class AppContainer extends Component {
     }
 
     componentWillMount() {
+        this.props.fetchCurrentUser()
         this.props.fetchProjects()
     }
 
@@ -30,7 +31,7 @@ export default class AppContainer extends Component {
         
         return (
           <div id="main">
-            <Header project_list={this.props.project_list} />
+            <Header userTitle={this.props.current_user.name} project_list={this.props.project_list} />
             <div id="main-inner">
                 {this.props.children}
             </div>

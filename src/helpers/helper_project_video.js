@@ -13,7 +13,7 @@ export default class ProjectVideoHelper {
         return axios({
             method: 'delete',
             url: API_URL_PROJECT_VIDEOS + '/' + id,
-            // headers: Auth.header(),
+            headers: Auth.header(),
         });
     }
 

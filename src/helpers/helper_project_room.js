@@ -13,7 +13,7 @@ export default class ProjectRoomHelper {
         return axios({
             method: 'delete',
             url: API_URL_PROJECT_ROOMS + '/' + id,
-            // headers: Auth.header(),
+            headers: Auth.header(),
         });
     }
 
