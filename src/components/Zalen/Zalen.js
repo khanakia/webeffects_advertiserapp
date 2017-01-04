@@ -20,12 +20,16 @@ class Zalen extends React.Component {
     }
 
     componentDidMount() {
-        // this._checkDesktopMobile()
-        // window.addEventListener('resize', (event) => {
-        //     this._checkDesktopMobile()
-        // });
+        this._checkDesktopMobile()
+        window.addEventListener('resize', (event) => {
+            this._checkDesktopMobile()
+        });
 
         this.accordionInit()
+    }
+
+    compoentDidUpdate() {
+        this.accordionInit()   
     }
 
     _checkDesktopMobile() {
@@ -70,7 +74,7 @@ class Zalen extends React.Component {
         var $mc = jQuery(this.refs.mobile_container)
         $mc.find(".content").hide();
         $mc.find(".content:first").show().addClass("active");
-        $mc.find(".accordion-heading").click(function(){
+        jQuery(document).on('click', ".accordion-heading", function(){
             var href = $(this).attr('href');
             if($mc.find('.content'+href).hasClass("active")) {
                 return false;
@@ -314,8 +318,14 @@ class Zalen extends React.Component {
                     )
                 }, this)}
 
-                
-                <button type="button" className="btn btn-plain btn--nopad" onClick={()=>this.handleAddClick()}><i className="fa fa-plus"></i></button>
+                <div className="input-group input-group--style-label">
+                    <span className="input-group-addon">
+                        <button type="button" className="btn btn-plain btn--nopad" onClick={(e) => this.handleAddClick()}>
+                            <i className="fa fa-plus"></i>
+                        </button>
+                    </span>
+                    <label>Zaal toevoegen</label>
+                </div>
             </div>
         )
     }
