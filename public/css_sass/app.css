@@ -162,7 +162,7 @@ header.mobile {
       position: relative;
       padding-left: 50px; }
       .mobile-overlay-menu ul.submenu a:hover:before, .mobile-overlay-menu ul.submenu a:focus:before {
-        content: "•";
+        content: "ΓÇó";
         position: absolute;
         top: 10px;
         left: 20px;
