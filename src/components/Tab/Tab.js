@@ -25,8 +25,7 @@ class Tab extends React.Component {
 
             jQuery(this).addClass('active')
             $tab.find(".content[data-index='" + index +"']").show('fast').addClass('active');
-        })
-       
+        });
     }
 
 
