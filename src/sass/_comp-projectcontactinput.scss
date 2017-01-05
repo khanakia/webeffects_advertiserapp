@@ -1,0 +1,21 @@
+
+.comp-projectcontactinput {
+	.btn-dropdown {
+		border: none;
+	}
+	.dropdown--style1 .dropdown-menu {
+		margin: -1px;
+	}
+	.dropdown--style1 .dropdown-menu > li {
+		border-radius: 0px;
+	}
+	@media (max-width: 991px) {
+		.btn-dropdown {
+			border: 1px solid #CDD4D7;
+			border-top: none;
+		}
+		.input-group--style-label:last-child .input-group-addon {
+			border-top: none;
+		}
+	}
+}
