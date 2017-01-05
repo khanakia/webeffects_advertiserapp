@@ -14,6 +14,7 @@ import VideoInput from './VideoInput'
 import IframeInput from './IframeInput'
 import ContactPersonDropdown from './ContactPersonDropdown'
 import OfferRequestList from './OfferRequestList'
+import LocatieInput from './LocatieInput'
 
 class PageProject extends Component {
     constructor(props, context) {
@@ -446,7 +447,13 @@ class PageProject extends Component {
                                         </div>
 
                                         <div role="tabpanel" className="tab-pane " id="locatie">
-                                            Locatie
+                                            <LocatieInput 
+                                                address={this.props.project.address}
+                                                address_lat={this.props.project.lat}
+                                                address_lng={this.props.project.lon}
+                                                parkingItems={this.props.project.project_parkings}
+                                               
+                                             />
                                         </div>
 
 
