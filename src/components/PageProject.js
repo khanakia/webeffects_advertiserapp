@@ -427,7 +427,6 @@ class PageProject extends Component {
                             </div>
                             <div className="page-panel__inner__content">
                                 <form className="form-default" ref="form">
-                                    <input type="text" name="id" defaultValue={project.id} />
                                     <div className="tab-content">
                                         <h3 className="d_active tab_drawer_heading">
                                             <a href="#general" aria-controls="general" role="tab" data-toggle="tab">Algemene beschrijving</a>
