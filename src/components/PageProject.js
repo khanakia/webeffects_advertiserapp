@@ -110,6 +110,10 @@ class PageProject extends Component {
         this.props.fetchProject(this.props.params.projectId);   
     }
 
+    onAttachmentTitleUpdated = () => {
+        this.props.fetchProject(this.props.params.projectId);   
+    }
+
     _render_tabGeneral() {
         // console.log(this.props.project)
         let images = _.filter(this.props.project.attachment_mappings, { 'filter_value_id': null});
@@ -140,7 +144,7 @@ class PageProject extends Component {
                 </div>
                 <div className="form-group">
                     <label>Representatieve buitenafbeelding</label>
-                    <FileInput name="foto" onAttachmentDeleted={this.onAttachmentDeleted} selectedItems={images} />
+                    <FileInput name="foto" onAttachmentDeleted={this.onAttachmentDeleted} selectedItems={images} onTitleUpdated={this.onAttachmentTitleUpdated} />
                 </div>
 
                 <div className="form-group">
@@ -428,7 +432,7 @@ class PageProject extends Component {
                                         <h3 className="d_active tab_drawer_heading">
                                             <a href="#general" aria-controls="general" role="tab" data-toggle="tab">Algemene beschrijving</a>
                                         </h3>
-                                        <div role="tabpanel" className="tab-pane " id="general">
+                                        <div role="tabpanel" className="tab-pane active" id="general">
                                            {this._render_tabGeneral()}
                                         </div>
 
@@ -442,7 +446,7 @@ class PageProject extends Component {
                                             <Zalen items={project.project_rooms} onZalenRemoved={this.onZalenRemoved} />
                                         </div>
 
-                                        <div role="tabpanel" className="tab-pane active" id="contact">
+                                        <div role="tabpanel" className="tab-pane " id="contact">
                                             {this._render_tabContact()}
                                         </div>
 

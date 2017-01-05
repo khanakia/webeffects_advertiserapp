@@ -6,3 +6,4 @@ export ProjectOverviewContainer from './ProjectOverviewContainer';
 export ProjectContainer from './ProjectContainer';
 export AccountContainer from './AccountContainer'
 export RequireAuth from './RequireAuth'
+export DemoContainer from './DemoContainer'

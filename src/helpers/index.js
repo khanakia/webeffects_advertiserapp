@@ -3,6 +3,8 @@ export AccountHelper from './helper_account';
 export ProjectHelper from './helper_project';
 export ProjectVideoHelper from './helper_project_video';
 export ProjectIframeHelper from './helper_project_iframe';
-export ProjectRoomHelper from './/helper_project_room'
-export ProjectParkingHelper from './/helper_project_parking'
-export ContactHelper from './/helper_contact'
+export ProjectRoomHelper from './helper_project_room'
+export ProjectParkingHelper from './helper_project_parking'
+export ContactHelper from './helper_contact'
+export AttachmentHelper from './helper_attachment'
+export AttachmentMappingHelper from './helper_attachment_mapping'

@@ -6,4 +6,5 @@ export PageProject from './PageProject';
 
 export Account from './Account';
 export App from './App';
+export Demo from './Demo'
 
