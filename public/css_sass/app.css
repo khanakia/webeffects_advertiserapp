@@ -178,32 +178,36 @@ header.mobile {
     font-weight: normal; }
 
 .form-control {
+  height: 40px;
   box-shadow: none;
   border-radius: 0;
-  border-color: #CDD4D7; }
+  border-color: #CDD4D7;
+  color: #7C8589; }
   .form-control:focus {
     border-color: #08B995; }
 
-.form-default .input-group {
+.input-group {
   width: 100%; }
-.form-default input {
-  padding: 15px;
-  height: 50px;
+
+input {
+  padding: 10px;
+  height: 40px;
   color: #7C8589;
   font-size: 16px; }
-.form-default .input-group-addon {
+
+.input-group-addon {
   width: 50px; }
-  .form-default .input-group-addon i {
+  .input-group-addon i {
     font-size: 16px;
     vertical-align: middle; }
-.form-default .comp-radiolist .form-control {
-  height: 50px; }
-  .form-default .comp-radiolist .form-control span {
-    line-height: 35px; }
-.form-default .question-mark-icon {
+
+.comp-radiolist .form-control span {
+  line-height: 25px; }
+
+.question-mark-icon {
   /*position: relative;*/
   padding-right: 20px; }
-  .form-default .question-mark-icon a {
+  .question-mark-icon a {
     /*position: absolute;
     right: 10px;
     bottom: 10px;*/
@@ -218,17 +222,21 @@ header.mobile {
     background-size: 8px 17px;
     border-radius: 50%;
     border: 1px solid #CDD4D7; }
-.form-default .popover {
+
+.popover {
   border-radius: 0px; }
-.form-default .popover.bottom {
+
+.popover.bottom {
   margin-top: 20px; }
-.form-default .popover-content {
+
+.popover-content {
   padding: 10px 15px;
   color: #101010;
   line-height: 24px;
   font-size: 14px;
   font-family: 'Open Sans', sans-serif; }
-.form-default .aantal-personen .input-group-addon {
+
+.aantal-personen .input-group-addon {
   width: 75px; }
 
 .comp-fileinput:after, .comp-fileinput:before {
@@ -375,6 +383,36 @@ header.mobile {
   @media (max-width: 992px) {
     .comp-sidebar {
       display: none; } }
+
+.comp-contactpersoninput .table--horizontal td input {
+  text-align: left; }
+@media (max-width: 991px) {
+  .comp-contactpersoninput .personinput-checkbox .form-control {
+    width: 90%;
+    color: #DDDDDD;
+    border-right: none; }
+  .comp-contactpersoninput .personinput-checkbox label {
+    width: 10%;
+    border-left: none; }
+  .comp-contactpersoninput .input-group .form-control:last-child {
+    border-bottom: none; }
+  .comp-contactpersoninput .input-group--style-label .input-group-addon {
+    border-bottom: none; }
+  .comp-contactpersoninput .input-group--style-label:last-child .input-group-addon {
+    border-bottom: 1px solid #CDD4D7; } }
+
+.comp-projectcontactinput .btn-dropdown {
+  border: none; }
+.comp-projectcontactinput .dropdown--style1 .dropdown-menu {
+  margin: -1px; }
+.comp-projectcontactinput .dropdown--style1 .dropdown-menu > li {
+  border-radius: 0px; }
+@media (max-width: 991px) {
+  .comp-projectcontactinput .btn-dropdown {
+    border: 1px solid #CDD4D7;
+    border-top: none; }
+  .comp-projectcontactinput .input-group--style-label:last-child .input-group-addon {
+    border-top: none; } }
 
 body {
   background-color: #ECF5F8;
@@ -663,7 +701,7 @@ label input[type="radio"]:checked + span {
 
 .input-group--style-label .input-group-addon {
   width: 50px;
-  height: 50px;
+  height: 40px;
   border: 1px solid #CDD4D7;
   border-right: 0; }
 .input-group--style-label label {
@@ -674,10 +712,10 @@ label input[type="radio"]:checked + span {
   float: left;
   width: 100%;
   margin-bottom: 0;
-  height: 34px;
+  height: 40px;
   padding: 6px 12px;
   font-size: 14px;
-  line-height: 1.42857143;
+  line-height: 26px;
   color: #7C8589;
   font-weight: normal;
   background-color: #fff;
@@ -689,7 +727,7 @@ label input[type="radio"]:checked + span {
   border-bottom: none; }
 .input-group--style-a a {
   display: block;
-  padding: 15px;
+  padding: 10px;
   color: #7C8589;
   border-width: 1px 1px 0 1px;
   border-color: #CDD4D7;
@@ -766,7 +804,11 @@ label input[type="radio"]:checked + span {
 .table--horizontal {
   background-color: #fff; }
   .table--horizontal.table > tbody > tr > th, .table--horizontal.table > tbody > tr > td {
-    padding: 0; }
+    padding: 0;
+    vertical-align: middle; }
+  .table--horizontal.table > thead:first-child > tr:first-child > th {
+    color: #A0A8AC;
+    vertical-align: middle; }
   .table--horizontal.table-bordered > thead > tr > th, .table--horizontal.table-bordered > thead > tr > td {
     border-bottom-width: 1px; }
   .table--horizontal th {
@@ -792,7 +834,8 @@ label input[type="radio"]:checked + span {
       border: none;
       outline: none;
       text-align: center;
-      color: #7C8589; }
+      color: #7C8589;
+      font-size: 14px; }
     .table--horizontal td:first-child {
       background-color: #F0F0F0;
       color: #7C8589;
@@ -809,6 +852,9 @@ label input[type="radio"]:checked + span {
     display: block;
     font-weight: normal;
     margin: 0; }
+  .table--horizontal .input-group-addon {
+    padding: 10px 15px;
+    border: none; }
 
 .table--vertical {
   background-color: #fff; }
@@ -1038,7 +1084,7 @@ label input[type="radio"]:checked + span {
 
 .trumbowyg-button-pane button {
   width: 30px;
-  height: 48px; }
+  height: 38px; }
 
 .trumbowyg-button-pane::after {
   content: none; }
@@ -1053,10 +1099,40 @@ label input[type="radio"]:checked + span {
 .trumbowyg-box, .trumbowyg-editor {
   margin: 0;
   min-height: 200px;
-  border: 1px solid #CDD4D7; }
+  border: 2px solid #CDD4D7; }
 
 .trumbowyg-editor {
   border: none; }
+
+.offerrequesttab .offerrequesttable {
+  padding: 20px; }
+.offerrequesttab .accordion-heading {
+  background-color: #fff;
+  border: 1px solid #f5f5f5;
+  padding: 15px; }
+  .offerrequesttab .accordion-heading a {
+    font-size: 16px;
+    text-decoration: none;
+    font-weight: 600;
+    color: #101010; }
+    .offerrequesttab .accordion-heading a span {
+      padding-left: 25px;
+      font-weight: normal; }
+  .offerrequesttab .accordion-heading.active a {
+    color: #08B995; }
+.offerrequesttab h5 {
+  font-size: 14px;
+  font-weight: bold; }
+.offerrequesttab .accordion-group {
+  background-color: #fff; }
+.offerrequesttab .accordion-toggle.collapsed:after,
+.offerrequesttab .accordion-toggle:after {
+  font-family: 'FontAwesome';
+  content: "\f107";
+  float: right;
+  font-size: 21px; }
+.offerrequesttab .accordion-heading.active .accordion-toggle:after {
+  content: "\f106"; }
 
 /* Locatie parking CSS ------------- */
 #locatie .google-map {

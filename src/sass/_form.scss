@@ -12,83 +12,82 @@
 
 
 .form-control {
+	height: 40px;
 	box-shadow: none;
 	border-radius: 0;
 	border-color: #CDD4D7;
+	color: #7C8589;
 
 	&:focus {
 		border-color: #08B995;
 	}
 }
 
-.form-default {
-	.input-group {
-		width: 100%;
-	}
+.input-group {
+	width: 100%;
+}
 
-	input {
-		padding: 15px;
-		height: 50px;
-		color: #7C8589;
+input {
+	padding: 10px;
+	height: 40px;
+	color: #7C8589;
+	font-size: 16px;
+}
+
+.input-group-addon {
+	width: 50px;
+	i {
 		font-size: 16px;
+		vertical-align: middle;
 	}
+}
 
+.comp-radiolist {
+	.form-control {
+		span {
+			line-height: 25px;
+		}
+	}
+}
+.question-mark-icon {
+	/*position: relative;*/
+	padding-right: 20px;
+	a {
+		/*position: absolute;
+		right: 10px;
+		bottom: 10px;*/
+		position: relative;
+		display: inline-block;
+		float: right;
+		width: 22px;
+		height: 22px;
+		background-image: url("../images/icon-question.svg");
+	    background-repeat: no-repeat;
+	    background-position: center;
+	    background-size: 8px 17px;
+	    border-radius: 50%;
+		border: 1px solid #CDD4D7;
+	}
+}
+
+.popover {
+	border-radius: 0px;
+}
+
+.popover.bottom {
+	margin-top: 20px;
+}
+
+.popover-content {
+	padding: 10px 15px;
+	color: #101010;
+	line-height: 24px;
+	font-size: 14px;
+	font-family: 'Open Sans', sans-serif;
+}
+
+.aantal-personen {
 	.input-group-addon {
-		width: 50px;
-		i {
-			font-size: 16px;
-			vertical-align: middle;
-		}
-	}
-
-	.comp-radiolist {
-		.form-control {
-			height: 50px;
-			span {
-				line-height: 35px;
-			}
-		}
-	}
-	.question-mark-icon {
-		/*position: relative;*/
-		padding-right: 20px;
-		a {
-			/*position: absolute;
-			right: 10px;
-			bottom: 10px;*/
-			position: relative;
-			display: inline-block;
-			float: right;
-			width: 22px;
-			height: 22px;
-			background-image: url("../images/icon-question.svg");
-		    background-repeat: no-repeat;
-		    background-position: center;
-		    background-size: 8px 17px;
-		    border-radius: 50%;
-			border: 1px solid #CDD4D7;
-		}
-	}
-
-	.popover {
-		border-radius: 0px;
-	}
-
-	.popover.bottom {
-		margin-top: 20px;
-	}
-
-	.popover-content {
-		padding: 10px 15px;
-		color: #101010;
-		line-height: 24px;
-		font-size: 14px;
-		font-family: 'Open Sans', sans-serif;
-	}
-
-	.aantal-personen {
-		.input-group-addon {
-			width: 75px;
-		}
+		width: 75px;
 	}
 }

@@ -61,7 +61,7 @@ class ContactPersonDropdown extends React.Component {
 				<div className="dropdown dropdown--style1">
 				  <button className="btn btn-dropdown dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 				    {selectedItem ? selectedItem.name : this.props.emptyPlaceholder}
-				    <i className="fa fa-angle-down"></i>
+				    <i className="iconc-chevron-down"></i>
 				  </button>
 
 				  <ul className="dropdown-menu" aria-labelledby="dropdownMenu1">

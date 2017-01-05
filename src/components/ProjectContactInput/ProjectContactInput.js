@@ -53,7 +53,7 @@ class ProjectContactInput extends React.Component {
             <table className="table table-bordered table--horizontal">
                 <thead>
                     <tr>
-                        <th><i className="fa fa-archive"></i></th>
+                        <th><i className="iconc-location-pointer"></i></th>
                         <th>Naam</th>
                         <th>E-mailadressen</th>
                     </tr>
@@ -64,7 +64,12 @@ class ProjectContactInput extends React.Component {
                         return (
                             <tr key={`z-${item.id}`}>
                                 <td>
-                                    <i className="fa fa-trash"></i>
+                                    <span className="input-group-addon">
+                                        <button type="button" className="btn btn-plain btn--nopad hover-show">
+                                            <i className="iconc-trash"></i>
+                                        </button>
+                                        <i className="iconc-location-pointer hover-hide"></i>
+                                    </span>
                                 </td>
                                 <td>
                                     <input type="hidden" name={`contact[${index}][id]`} defaultValue={item.id} />
@@ -89,13 +94,13 @@ class ProjectContactInput extends React.Component {
                         <div className="contact_item" key={`z-${item.id}`}>
                             <div className="input-group input-group--style-label">
                                 <span className="input-group-addon">
-                                    <i className="fa fa-link"></i>
+                                    <i className="iconc-location-pointer"></i>
                                 </span>
                                 <label>{item.project_title}</label>
                             </div>
-                            <div className="input-group input-group--style-label">
+                            <div className="input-group input-group--style-label mb20">
                                 <span className="input-group-addon">
-                                    <i className="fa fa-link"></i>
+                                    <i className="iconc-mail"></i>
                                 </span>
                                 <ContactPersonDropdown selectedValue={item.contact_id} project_id={item.id} items={this.props.contact_list} onItemChange={this.props.onItemChange} isVisibleAddNewButton={false} />
                             </div>

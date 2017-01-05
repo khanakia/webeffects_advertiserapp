@@ -1,0 +1,32 @@
+
+.comp-contactpersoninput {
+	.table--horizontal {
+		td {
+			input {
+				text-align: left;
+			}
+		}
+	}
+	@media (max-width: 991px) {
+		.personinput-checkbox {
+			.form-control {
+				width: 90%;
+				color: #DDDDDD;
+				border-right: none;
+			}
+			label {
+				width: 10%;
+				border-left: none;
+			}
+		}
+		.input-group .form-control:last-child {
+			border-bottom: none
+		}
+		.input-group--style-label .input-group-addon {
+			border-bottom: none;
+		}
+		.input-group--style-label:last-child .input-group-addon {
+			border-bottom: 1px solid #CDD4D7;
+		}
+	}
+}

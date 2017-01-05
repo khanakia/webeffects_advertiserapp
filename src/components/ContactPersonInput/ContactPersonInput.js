@@ -74,10 +74,10 @@ class ContactPersonInput extends React.Component {
 
     _renderDesktop() {
         return (
-            <table className="table table-bordered table--horizontal">
+            <table className="table table-bordered table--horizontal input-group-vmerge">
                 <thead>
                     <tr>
-                        <th><i className="fa fa-archive"></i></th>
+                        <th><i className="iconc-person"></i></th>
                         <th>Naam</th>
                         <th>Mail</th>
                         <th>Telefoon</th>
@@ -90,9 +90,12 @@ class ContactPersonInput extends React.Component {
                         return (
                             <tr key={`z-${item.id}`}>
                                 <td>
-                                        <button type="button" className="btn btn-plain btn--nopad" onClick={()=>{this.handleRemoveZalen(item.id)}}>
-                                            <i className="fa fa-trash"></i>
+                                    <span className="input-group-addon">
+                                        <button type="button" className="btn btn-plain btn--nopad hover-show" onClick={()=>{this.handleRemoveZalen(item.id)}}>
+                                            <i className="iconc-trash"></i>
                                         </button>
+                                        <i className="iconc-person hover-hide"></i>
+                                    </span>
                                 </td>
                                 <td>
                                     <input type="hidden" name={`contact[${index}][id]`} defaultValue={item.id} />
@@ -100,7 +103,7 @@ class ContactPersonInput extends React.Component {
                                 </td>
                                 <td><input type="text" name={`contact[${index}][email]`} defaultValue={item.email} /></td>
                                 <td><input type="text" name={`contact[${index}][phone]`} defaultValue={item.phone} /></td>
-                                <td><input type="checkbox" name={`contact[${index}][is_company]`} defaultChecked={item.is_company} /></td>
+                                <td><label><input type="checkbox" name={`contact[${index}][is_company]`} defaultChecked={item.is_company} /><span></span></label></td>
                             </tr>
                         )
                     }, this)}
@@ -110,20 +113,26 @@ class ContactPersonInput extends React.Component {
                         return (
                             <tr key={item}>
                                 <td>
-                                    <button type="button" className="btn btn-plain btn--nopad" onClick={()=>{this.handleRemoveRow(index)}}><i className="fa fa-trash"></i></button>
+                                    <span className="input-group-addon">
+                                        <button type="button" className="btn btn-plain btn--nopad hover-show" onClick={()=>{this.handleRemoveRow(index)}}>
+                                            <i className="iconc-trash"></i>
+                                        </button>
+                                        <i className="iconc-person hover-hide"></i>
+                                    </span>
                                 </td>
                                 <td>
                                     <input type="text" name={`contact_new[${index}][name]`} />
                                 </td>
                                 <td><input type="text" name={`contact_new[${index}][email]`} /></td>
                                 <td><input type="text" name={`contact_new[${index}][phone]`} /></td>
+                                <td><label><input type="checkbox" name={`contact_new[${index}][is_company]`} defaultChecked={item.is_company} /><span></span></label></td>
                             </tr>
                         )
                     }, this)}
                 </tbody>
                 <tfoot>
                     <tr>
-                        <td><button type="button" className="btn btn-plain btn--nopad" onClick={()=>this.handleAddClick()}><i className="fa fa-plus"></i></button></td>
+                        <td><button type="button" className="btn btn-plain btn--nopad" onClick={()=>this.handleAddClick()}><i className="iconc-plus"></i></button></td>
                         <td colSpan="10">
                             <label className="placeholder">Nieuw contactpersoon</label>
                         </td>
@@ -143,25 +152,34 @@ class ContactPersonInput extends React.Component {
                             <div className="input-group input-group--style-label">
                                 <span className="input-group-addon">
                                     <button type="button" className="btn btn-plain btn--nopad hover-show" onClick={(e) => this.handleRemoveZalen(item.id)}>
-                                        <i className="fa fa-trash"></i>
+                                        <i className="iconc-trash"></i>
                                     </button>
-                                    <i className="fa fa-link hover-hide"></i>
+                                    <i className="iconc-person hover-hide"></i>
                                 </span>
                                 <input type="text" className="form-control" name={`contact[${index}][name]`} defaultValue={item.name} />
                             </div>
 
                             <div className="input-group input-group--style-label">
                                 <span className="input-group-addon">
-                                    <i className="fa fa-link"></i>
+                                    <i className="iconc-mail"></i>
                                 </span>
                                 <input type="text" className="form-control" name={`contact[${index}][email]`} defaultValue={item.email} />
                             </div>
 
                             <div className="input-group input-group--style-label">
                                 <span className="input-group-addon">
-                                    <i className="fa fa-link"></i>
+                                    <i className="iconc-phone"></i>
                                 </span>
                                 <input type="text" className="form-control" name={`contact[${index}][phone]`} defaultValue={item.phone} />
+                            </div>
+                            <div className="input-group input-group--style-label mb20">
+                                <div className="personinput-checkbox">
+                                    <input type="text" className="form-control" readonly="" value="Contactpersoon bedrijf" />
+                                    <label>
+                                        <input type="checkbox" name={`contact_new[${index}][is_company]`} defaultChecked={item.is_company} />
+                                        <span></span>
+                                    </label>
+                                </div>
                             </div>
                         </div>
                     )
@@ -174,25 +192,34 @@ class ContactPersonInput extends React.Component {
                             <div className="input-group input-group--style-label">
                                 <span className="input-group-addon">
                                     <button type="button" className="btn btn-plain btn--nopad hover-show" onClick={(e) => this.handleRemoveRow(index)}>
-                                        <i className="fa fa-trash"></i>
+                                        <i className="iconc-trash"></i>
                                     </button>
-                                    <i className="fa fa-link hover-hide"></i>
+                                    <i className="iconc-person hover-hide"></i>
                                 </span>
                                 <input type="text" className="form-control" name={`contact_new[${index}][name]`} />
                             </div>
 
                             <div className="input-group input-group--style-label">
                                 <span className="input-group-addon">
-                                    <i className="fa fa-link"></i>
+                                    <i className="iconc-mail"></i>
                                 </span>
                                 <input type="text" className="form-control" name={`contact_new[${index}][email]`} />
                             </div>
 
                             <div className="input-group input-group--style-label">
                                 <span className="input-group-addon">
-                                    <i className="fa fa-link"></i>
+                                    <i className="iconc-phone"></i>
                                 </span>
                                 <input type="text" className="form-control" name={`contact_new[${index}][phone]`} />
+                            </div>
+                            <div className="input-group input-group--style-label mb20">
+                                <div className="personinput-checkbox">
+                                    <input type="text" className="form-control" readonly="" value="Contactpersoon bedrijf" />
+                                    <label>
+                                        <input type="checkbox" name={`contact_new[${index}][is_company]`} />
+                                        <span></span>
+                                    </label>
+                                </div>
                             </div>
                         </div>
                     )
@@ -204,7 +231,7 @@ class ContactPersonInput extends React.Component {
                 <div className="input-group input-group--style-label">
                     <span className="input-group-addon">
                         <button type="button" className="btn btn-plain btn--nopad" onClick={(e) => this.handleAddClick()}>
-                            <i className="fa fa-plus"></i>
+                            <i className="iconc-plus"></i>
                         </button>
                     </span>
                     <label>Zaal toevoegen</label>
