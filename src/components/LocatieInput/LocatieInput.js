@@ -214,9 +214,10 @@ class LocatieInput extends React.Component {
                 <div className="form-group">
                     <div className="input-group">
                         <div className="input-group-addon"><i className="fa fa-key"></i></div>
-                        <input type="text" id="autocomplete-field" className="form-control" name="address" ref="address" defaultValue={this.props.address} />
-                        <input type="text" className="form-control" name="address_lat" ref="address_lat" value={this.props.address_lat} onChange={()=>{this.onInputChange()}} />
-                        <input type="text" className="form-control" name="address_lng" ref="address_lng" value={this.props.address_lng} onChange={()=>{this.onInputChange()}} />
+                        <input type="text" id="autocomplete-field" className="form-control" defaultValue={this.state.address} />
+                        <input type="text" className="form-control" name="address" ref="address" value={this.state.address} onChange={()=>{this.onInputChange()}} />
+                        <input type="text" className="form-control" name="address_lat" ref="address_lat" value={this.state.address_lat} onChange={()=>{this.onInputChange()}} />
+                        <input type="text" className="form-control" name="address_lng" ref="address_lng" value={this.state.address_lng} onChange={()=>{this.onInputChange()}} />
                     </div>
 
                     {this.state.parkingItems.map(function(item, index) {
