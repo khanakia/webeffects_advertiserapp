@@ -6,11 +6,12 @@ import { Router, Route, hashHistory } from 'react-router'
 
 import Auth from './helpers/auth'
 import Env from './env.json'
-
+import language from './translation';
 window.ReactDom = ReactDom;
 window.React = React;
 window.Env = Env;
 window.Auth = Auth;
+window.trans = language[Env.site_id];
 
 // console.log(window.Env)
 
@@ -35,8 +36,7 @@ import {store} from './store/index.js';
 
 import {ROOT_HOST} from './config.js'
 
-// import {language} from './src/lang/index.js';
-// window.lang = language.en;
+
 
 	render((
 		<Provider store={store}>

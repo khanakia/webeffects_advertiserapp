@@ -71,7 +71,7 @@ class Login extends Component {
                 <div className="container">
                     <div className="row">    
                         <div className="formstyle1Ct">
-                            <h3 className="form_title text-center">Adverteerder inlog</h3>
+                            <h3 className="form_title text-center">{trans.login_title}</h3>
                             <form className="form-horizontal formstyle1 loginForm" ref='form' onSubmit={this.handleSubmit}>    
                                 <div className="form-group">
                                     <label className="col-sm-12 col-xs-12">E-mailadres</label>

@@ -16,6 +16,8 @@ import ContactPersonDropdown from './ContactPersonDropdown'
 import OfferRequestList from './OfferRequestList'
 import LocatieInput from './LocatieInput'
 
+import PopupHelper from 'helpers/helper_popup'
+
 class PageProject extends Component {
     constructor(props, context) {
         super(props, context);
@@ -249,6 +251,14 @@ class PageProject extends Component {
         )
     }
 
+    onContactFormonDataUpdate = (data) => {
+        this.props.fetchProjectFormdata()
+    }
+
+    onContactDropdownAddNewClick = () => {
+        PopupHelper.showContactForm({onDataUpdate: this.onContactFormonDataUpdate.bind(this)})
+    }
+
     _render_tabContact() {
         return (
             <div>
@@ -256,7 +266,10 @@ class PageProject extends Component {
                     <label>Aantal personen</label>
                     <div className="row">
                         <div className="col-md-4">
-                            <ContactPersonDropdown selectedValue={this.props.project.contact_id} items={this.props.project_formdata.contacts} />
+                            <ContactPersonDropdown
+                                onAddNewClick={this.onContactDropdownAddNewClick} 
+                                selectedValue={this.props.project.contact_id} 
+                                items={this.props.project_formdata.contacts} />
                         </div>
                         <div className="col-md-4 input-group-vmerge input-group--style-label">
                             <div className="input-group">
@@ -427,6 +440,7 @@ class PageProject extends Component {
                             </div>
                             <div className="page-panel__inner__content">
                                 <form className="form-default" ref="form">
+                                    <input type="text" name="id" defaultValue={this.props.project.id} />
                                     <div className="tab-content">
                                         <h3 className="d_active tab_drawer_heading">
                                             <a href="#general" aria-controls="general" role="tab" data-toggle="tab">Algemene beschrijving</a>

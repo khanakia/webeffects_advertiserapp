@@ -44,6 +44,8 @@ class FileInput extends React.Component {
                 processData: false,
                 contentType: false,
                 data: data,
+                headers: Auth.header(),
+
                 success: function(response){
 
                     _this.setState({
