@@ -435,7 +435,7 @@ class PageProject extends Component {
                                         <h3 className="d_active tab_drawer_heading">
                                             <a href="#general" aria-controls="general" role="tab" data-toggle="tab">Algemene beschrijving</a>
                                         </h3>
-                                        <div role="tabpanel" className="tab-pane active" id="general">
+                                        <div role="tabpanel" className="tab-pane " id="general">
                                            {this._render_tabGeneral()}
                                         </div>
 
@@ -453,7 +453,7 @@ class PageProject extends Component {
                                             {this._render_tabContact()}
                                         </div>
 
-                                        <div role="tabpanel" className="tab-pane " id="locatie">
+                                        <div role="tabpanel" className="tab-pane active" id="locatie">
                                             <LocatieInput 
                                                 address={this.props.project.address}
                                                 address_lat={this.props.project.lat}
