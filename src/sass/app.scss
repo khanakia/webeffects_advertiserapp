@@ -1142,6 +1142,14 @@ label input[type="radio"]:checked + span {
 
 #locatie {
 
+	.section-heading {
+
+		h3 {
+			margin: 0;
+			font-weight: 600;
+		}
+	}
+
 	.google-map {
 		width: 100%;
 		height: 600px;

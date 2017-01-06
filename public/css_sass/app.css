@@ -1222,6 +1222,9 @@ label input[type="radio"]:checked + span {
   content: "\f106"; }
 
 /* Locatie parking CSS ------------- */
+#locatie .section-heading h3 {
+  margin: 0;
+  font-weight: 600; }
 #locatie .google-map {
   width: 100%;
   height: 600px; }
