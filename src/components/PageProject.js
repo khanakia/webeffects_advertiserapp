@@ -317,7 +317,7 @@ class PageProject extends Component {
                     <label>Status</label>
                     <div className="dropdown dropdown--status">
                         <i className="iconc-published before_text"></i>Gepubliceerd
-                        <a className="pull-right dropdown-toggle" id="gepubliceerd" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i className="iconc-edit"></i></a>
+                        <a className="pull-right dropdown-toggle px5" id="gepubliceerd" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i className="iconc-edit"></i></a>
 
                         <ul className="dropdown-menu dropdown-menu--status" aria-labelledby="gepubliceerd">
                             <li>
@@ -369,6 +369,10 @@ class PageProject extends Component {
                 <div className="form-group">
                     <label>Representatieve buitenafbeelding</label>
                     <FileInput name="foto1" filter_value_id={catitem.value} onAttachmentDeleted={this.onAttachmentDeleted} selectedItems={images} />
+                </div>
+                <div className="visible-xs twoBtnStyle">
+                    <a href="#" className="">Meer</a>
+                    <a href="#" className="">Opslaan</a>
                 </div>
             </div>
         )
