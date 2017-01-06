@@ -590,7 +590,6 @@ label input[type="radio"]:checked + span {
 .table--horizontal {
 	&.table > tbody > tr > th, &.table > tbody > tr > td {
 		padding: 0;
-		vertical-align: middle;
 	}
 
 	&.table > thead:first-child > tr:first-child > th {

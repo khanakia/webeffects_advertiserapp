@@ -9,14 +9,11 @@
 	}
 	@media (max-width: 991px) {
 		.personinput-checkbox {
-			.form-control {
-				width: 90%;
-				color: #DDDDDD;
-				border-right: none;
-			}
 			label {
-				width: 10%;
-				border-left: none;
+				color: #DDDDDD;
+				input[type="checkbox"] + span {
+					float: right;
+				}
 			}
 		}
 		.input-group .form-control:last-child {

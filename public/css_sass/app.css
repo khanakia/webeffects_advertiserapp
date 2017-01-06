@@ -56,6 +56,25 @@
 @media screen and (max-width: 992px) {
   .tab-content .tab_drawer_heading {
     display: block; }
+    .tab-content .tab_drawer_heading a {
+      margin: 0;
+      padding: 20px;
+      border-radius: 0;
+      border: 1px solid #CDD4D7;
+      border-bottom: none;
+      color: #101010; }
+      .tab-content .tab_drawer_heading a i {
+        margin-top: 5px;
+        float: right;
+        font-size: 11px;
+        color: #101010; }
+    .tab-content .tab_drawer_heading.d_active a, .tab-content .tab_drawer_heading.d_active a:hover, .tab-content .tab_drawer_heading.d_active a:focus {
+      color: #FF713E;
+      border-bottom: 1px solid #CDD4D7; }
+      .tab-content .tab_drawer_heading.d_active a i, .tab-content .tab_drawer_heading.d_active a:hover i, .tab-content .tab_drawer_heading.d_active a:focus i {
+        color: #FF713E; }
+    .tab-content .tab_drawer_heading:last-of-type a {
+      border-bottom: 1px solid #CDD4D7; }
   .tab-content .tab-pane {
     padding: 20px; } }
 
@@ -162,7 +181,7 @@ header.mobile {
       position: relative;
       padding-left: 50px; }
       .mobile-overlay-menu ul.submenu a:hover:before, .mobile-overlay-menu ul.submenu a:focus:before {
-        content: "ΓÇó";
+        content: "•";
         position: absolute;
         top: 10px;
         left: 20px;
@@ -463,13 +482,10 @@ input {
 .comp-contactpersoninput .table--horizontal td input {
   text-align: left; }
 @media (max-width: 991px) {
-  .comp-contactpersoninput .personinput-checkbox .form-control {
-    width: 90%;
-    color: #DDDDDD;
-    border-right: none; }
   .comp-contactpersoninput .personinput-checkbox label {
-    width: 10%;
-    border-left: none; }
+    color: #DDDDDD; }
+    .comp-contactpersoninput .personinput-checkbox label input[type="checkbox"] + span {
+      float: right; }
   .comp-contactpersoninput .input-group .form-control:last-child {
     border-bottom: none; }
   .comp-contactpersoninput .input-group--style-label .input-group-addon {
@@ -905,8 +921,7 @@ label input[type="radio"]:checked + span {
 .table--horizontal {
   background-color: #fff; }
   .table--horizontal.table > tbody > tr > th, .table--horizontal.table > tbody > tr > td {
-    padding: 0;
-    vertical-align: middle; }
+    padding: 0; }
   .table--horizontal.table > thead:first-child > tr:first-child > th {
     color: #A0A8AC;
     vertical-align: middle; }

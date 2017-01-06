@@ -447,26 +447,36 @@ class PageProject extends Component {
                                     <input type="text" name="id" defaultValue={this.props.project.id} />
                                     <div className="tab-content">
                                         <h3 className="d_active tab_drawer_heading">
-                                            <a href="#general" aria-controls="general" role="tab" data-toggle="tab">Algemene beschrijving</a>
+                                            <a href="#general" aria-controls="general" role="tab" data-toggle="tab">Algemene beschrijving <i className="iconc-chevron"></i></a>
                                         </h3>
                                         <div role="tabpanel" className="tab-pane " id="general">
                                            {this._render_tabGeneral()}
                                         </div>
 
                                         <h3 className="tab_drawer_heading">
-                                            <a href="#details" aria-controls="details" role="tab" data-toggle="tab">Details</a>
+                                            <a href="#details" aria-controls="details" role="tab" data-toggle="tab">Details <i className="iconc-chevron"></i></a>
                                         </h3>
                                         <div role="tabpanel" className="tab-pane " id="details">
                                             {this._render_tabDetails()}
                                         </div>
+
+                                        <h3 className="tab_drawer_heading">
+                                            <a href="#zalen" aria-controls="zalen" role="tab" data-toggle="tab">Zalen <i className="iconc-chevron"></i></a>
+                                        </h3>
                                         <div role="tabpanel" className="tab-pane " id="zalen">
                                             <Zalen items={project.project_rooms} onZalenRemoved={this.onZalenRemoved} />
                                         </div>
 
+                                        <h3 className="tab_drawer_heading">
+                                            <a href="#contact" aria-controls="contact" role="tab" data-toggle="tab">Contact <i className="iconc-chevron"></i></a>
+                                        </h3>
                                         <div role="tabpanel" className="tab-pane " id="contact">
                                             {this._render_tabContact()}
                                         </div>
 
+                                        <h3 className="tab_drawer_heading">
+                                            <a href="#locatie" aria-controls="locatie" role="tab" data-toggle="tab">Locatie & parkeren <i className="iconc-chevron"></i></a>
+                                        </h3>
                                         <div role="tabpanel" className="tab-pane active" id="locatie">
                                             <LocatieInput 
                                                 address={this.props.project.address}
@@ -474,32 +484,37 @@ class PageProject extends Component {
                                                 address_lng={this.props.project.lon}
                                                 parkingItems={this.props.project.project_parkings}
                                                
-                                             />
+                                            />
                                         </div>
 
 
                                         {
                                             this.props.project_formdata.gelegenhendens.map((item, index) => {
-                                                return (
+                                                return [
+                                                    <h3 className="tab_drawer_heading">
+                                                        <a href={`#cat_${item.value}`} aria-controls="general" role="tab" data-toggle="tab">{item.title} <i className="iconc-chevron"></i></a>
+                                                    </h3>,
+
                                                     <div role="tabpanel" className="tab-pane" id={`cat_${item.value}`} key={index}>
                                                         {this._render_catForm(item)}
                                                     </div>
-                                                )
+                                                ]
                                             })
                                         }
 
-
+                                        <h3 className="tab_drawer_heading">
+                                            <a href="#aanvragen" aria-controls="aanvragen" role="tab" data-toggle="tab">Aanvragen <i className="iconc-chevron"></i></a>
+                                        </h3>
                                         <div role="tabpanel" className="tab-pane " id="aanvragen">
                                             <OfferRequestList items={this.props.project_offer_request_details_list} />
                                         </div>
 
-
+                                        <h3 className="tab_drawer_heading">
+                                            <a href="#statistieken" aria-controls="statistieken" role="tab" data-toggle="tab">Statistieken <i className="iconc-chevron"></i></a>
+                                        </h3>
                                         <div role="tabpanel" className="tab-pane " id="statistieken">
                                             Statistieken
                                         </div>
-
-
-
 
                                     </div>
                                 </form>  
