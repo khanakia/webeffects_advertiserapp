@@ -39,7 +39,7 @@ class OfferRequestList extends React.Component {
             <div>
                 {this.props.items.map(function(item, index){
                     return (
-                        <div className="offerrequesttab">    
+                        <div className="offerrequesttab" key={index}>    
                             <div className={'comp-offerrequestlist ' + item.offer_request_id} ref="offerrequestlist">
                                 <div className="accordion" id={'collapse' + item.id}>
                                     <div className="accordion-group">

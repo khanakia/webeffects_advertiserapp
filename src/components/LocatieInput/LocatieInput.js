@@ -8,7 +8,12 @@ class LocatieInput extends React.Component {
         super(props);
 
         this.state = {
-            parkingItems: []
+            address: this.props.address,
+            address_lat: this.props.address_lat,
+            address_lng: this.props.address_lng,
+            parkingItems: this.props.parkingItems,
+            parkingItemsNew: [],
+            markers: []
         }
     }
 
@@ -33,7 +38,17 @@ class LocatieInput extends React.Component {
     
 
     componentDidMount() {
-        var map = new google.maps.Map(document.getElementById('google-map'), {
+        this.gmapInit()
+    }
+
+    componentDidUpdate() {
+        // this.map_autocomplete_init()
+        this.gmapInit()
+    }
+
+
+    gmapInit() {
+        this.map = new google.maps.Map(document.getElementById('google-map'), {
             center: {lat: -33.8688, lng: 151.2195},
             zoom: 6,
             disableDefaultUI: true,
@@ -45,63 +60,89 @@ class LocatieInput extends React.Component {
             },
             styles: [{"featureType": "road","elementType": "geometry","stylers": [{"visibility": "off"}]},{"featureType": "administrative.province","elementType": "all","stylers": [{"visibility": "off"}]},{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#444444"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2f2f2"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":-100},{"lightness":45}]},{"featureType":"road","elementType":"geometry.fill","stylers":[{"color":"#77bc1f"}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType": "road.highway","elementType": "labels","stylers": [{"visibility": "off"}]},{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#ffffff"},{"visibility":"on"}]}],
         });
+    
 
-        var inputbox = (document.getElementById('autocomplete-field'));
+        var markers = [];
 
-        var autocomplete = new google.maps.places.Autocomplete(inputbox);
-        autocomplete.bindTo('bounds', map);
-
+        // Add Project Address Marker
         var marker = new google.maps.Marker({
-            map: map,
-            anchorPoint: new google.maps.Point(0, -29)
+            map: this.map,
+            position: new google.maps.LatLng(this.state.address_lat, this.state.address_lng),
         });
+        markers.push(marker)
 
-        autocomplete.addListener('place_changed', function() {
-            marker.setVisible(false);
-            var place = autocomplete.getPlace();
 
-            if (!place.geometry) {
-                // User entered the name of a Place that was not suggested and
-                // pressed the Enter key, or the Place Details request failed.
-                window.alert("No details available for input: '" + place.name + "'");
-                return;
-            }
+        // Add Parking Markders
+        this.state.parkingItems.map((item, index) => {
+            var marker = new google.maps.Marker({
+                map: this.map,
+                position: new google.maps.LatLng(item.lat, item.lon),
+            });
+            markers.push(marker)
+        })
 
-            // If the place has a geometry, then present it on a map.
-            if (place.geometry.viewport) {
-                map.fitBounds(place.geometry.viewport);
-            } else {
-                map.setCenter(place.geometry.location);
-                map.setZoom(17);  // Why 17? Because it looks good.
-            }
 
-            marker.setIcon(/** @type {google.maps.Icon} */({
-                url: place.icon,
-                size: new google.maps.Size(71, 71),
-                origin: new google.maps.Point(0, 0),
-                anchor: new google.maps.Point(17, 34),
-                scaledSize: new google.maps.Size(35, 35)
-            }));
+        // Auto Center Markers
+        var bounds = new google.maps.LatLngBounds();
+        for (var i = 0; i < markers.length; i++) {
+            bounds.extend(markers[i].getPosition());
+        }
 
-            marker.setPosition(place.geometry.location);
-            marker.setVisible(true);
+        this.map.fitBounds(bounds);
 
-            var latitude = place.geometry.location.lat();
-            var longitude = place.geometry.location.lng();
-            console.log(latitude);
-            console.log(longitude);
+        this.map_autocomplete_init()
 
-            var address = '';
-            if (place.address_components) {
-                address = [
-                    (place.address_components[0] && place.address_components[0].short_name || ''),
-                    (place.address_components[1] && place.address_components[1].short_name || ''),
-                    (place.address_components[2] && place.address_components[2].short_name || '')
-                ].join(' ');
-            }
-        });
     }
 
+    map_autocomplete_init() {
+        const _this = this;
+
+        var defaultBounds = new google.maps.LatLngBounds(
+            new google.maps.LatLng(-33.8902, 151.1759),
+            new google.maps.LatLng(-33.8474, 151.2631));
+
+        var i = 0;
+        var options = {
+            bounds: defaultBounds,
+        };
+        var input = document.getElementsByClassName('parking_address');
+
+        let autocomplete = [];
+        for (i = 0; i < input.length; i++) {
+            let item_id = jQuery(input[i]).data('id')
+            let input_elem = input[i];
+            autocomplete[i] = new google.maps.places.Autocomplete(input[i], options);
+            autocomplete[i].addListener('place_changed', function() {
+                var place = this.getPlace();
+                var latitude = place.geometry.location.lat();
+                var longitude = place.geometry.location.lng();
+                var address = jQuery(input_elem).val()
+                // console.log(latitude);
+                // console.log(longitude);
+                _this.updateLatLng(item_id, address, latitude, longitude)
+            });
+        }
+    }
+
+
+    updateLatLng(item_id, address, lat, lng) {
+        let newArray = [];
+        this.state.parkingItems.map((item, index) => {
+            if(item_id==item.id) {
+                var clonedItem = Object.assign({}, item);
+                clonedItem.address = address;
+                clonedItem.lat = lat;
+                clonedItem.lon = lng;
+                newArray[index] = clonedItem;
+            } else {
+                newArray[index] = item;
+            }
+        })
+
+        // console.log(newArray)
+        // console.log(this.state.parkingItemsNew)
+        this.setState({ parkingItems: newArray});
+    }
 
     componentWillReceiveProps(nextProps) {
         // If nextProp item are greater than current prop items it means user clicked the Save button so clear all the Newitems in state input because they already saved and will show as NextProp items
@@ -114,18 +155,39 @@ class LocatieInput extends React.Component {
     handleAddClick() {
         // var itemsNew = this.state.itemsNew.length;
         var newKey = (_.last(this.state.parkingItems)||0)+1
-        this.setState({ parkingItems: this.state.parkingItems.concat(newKey)});
+        // this.setState({ parkingItemsNew: this.state.parkingItemsNew.concat(newKey)});
+        var obj = {
+            id: newKey,
+            address: '',
+            lat: '',
+            lon: '',
+            is_new: 1
+        }
+        let newArray = [];
+        this.state.parkingItems.map((item, index) => {
+            newArray[index] = item;
+        })
+        newArray.push(obj);
+        // console.log(newArray)
+        // console.log(this.state.parkingItems)
+        this.setState({ parkingItems: newArray});
     }
 
-    handleRemoveRow(index) {
-        var items = this.state.parkingItems
-        this.setState({parkingItems: items.filter((_, i) => i!==index)})
-    }
 
-    handelDeleteParkingItem = (id) => {
+    handelDeleteParkingItem = (item) => {
+        console.log(item)
+        var newArray = this.state.parkingItems.filter((item_array, index) => {
+            return (item_array.id!==item.id)
+        })
+        this.setState({parkingItems: newArray})
+        // console.log(newArray)
         // ContactHelper.delete(id).then((response) => {
         //     this.props.onRowDeleted()
         // })
+    }
+
+    onInputChange() {
+
     }
 
     render() {
@@ -142,40 +204,26 @@ class LocatieInput extends React.Component {
                         <input type="text" className="form-control" name="address_lng" ref="address_lng" defaultValue={this.props.address_lng} />
                     </div>
 
-                    {this.props.parkingItems.map(function(item, index) {
+                    {this.state.parkingItems.map(function(item, index) {
                         return (
-                            <div className="input-group input-group--style-label" key={`z-${item.id}`}>
+                            <div className="input-group input-group--style-label" key={index}>
                                 <span className="input-group-addon">
-                                    <button type="button" className="btn btn-plain btn--nopad hover-show" onClick={(e) => this.handelDeleteParkingItem(index)}>
+                                    <button type="button" className="btn btn-plain btn--nopad hover-show" onClick={(e) => this.handelDeleteParkingItem(item)}>
                                         <i className="fa fa-trash"></i>
                                     </button>
                                     <i className="fa fa-link hover-hide"></i>
                                 </span>
                                 <input type="hidden" name={`parkingitem[${index}][id]`} defaultValue={item.id} />
-                                <input type="text" className="form-control" name={`parkingitem[${index}][address]`} defaultValue={item.address} />
-                                <input type="text" className="form-control" name={`parkingitem[${index}][lat]`} defaultValue={item.lat} />
-                                <input type="text" className="form-control" name={`parkingitem[${index}][lon]`} defaultValue={item.lon} />
+                                <input type="text" className="form-control parking_address" defaultValue={item.address} data-id={item.id} />
+
+                                <input type="text" className="form-control" name={`parkingitem[${index}][address]`} value={item.address} data-id={item.id} onChange={()=>{this.onInputChange()}} />
+
+                                <input type="text" className="form-control" name={`parkingitem[${index}][lat]`} value={item.lat} onChange={()=>{this.onInputChange()}} />
+                                <input type="text" className="form-control" name={`parkingitem[${index}][lon]`} value={item.lon} onChange={()=>{this.onInputChange()}} />
                                 <input type="text" className="form-control" name={`parkingitem[${index}][is_paid]`} defaultValue={item.is_paid} />
                                 <input type="text" className="form-control" name={`parkingitem[${index}][price]`} defaultValue={item.price} />
-                            </div>
-                        )
-                    }, this)}
 
-                    {this.state.parkingItems.map(function(item, index) {
-                        return (
-                            <div className="input-group input-group--style-label" key={`z-${item}`}>
-                                <span className="input-group-addon">
-                                    <button type="button" className="btn btn-plain btn--nopad hover-show" onClick={(e) => this.handleRemoveRow(index)}>
-                                        <i className="fa fa-trash"></i>
-                                    </button>
-                                    <i className="fa fa-link hover-hide"></i>
-                                </span>
-                                <input type="hidden" name={`parkingitem_new[${index}][id]`} defaultValue={item.id} />
-                                <input type="text" className="form-control" name={`parkingitem_new[${index}][address]`} defaultValue={item.address} />
-                                <input type="text" className="form-control"  name={`parkingitem_new[${index}][lat]`} defaultValue={item.lat} />
-                                <input type="text" className="form-control" name={`parkingitem_new[${index}][lon]`} defaultValue={item.lon} />
-                                <input type="text" className="form-control" name={`parkingitem_new[${index}][is_paid]`} defaultValue={item.is_paid} />
-                                <input type="text" className="form-control" name={`parkingitem_new[${index}][price]`} defaultValue={item.price} />
+                                <input type="text" className="form-control" name={`parkingitem[${index}][is_new]`} defaultValue={item.is_new} />
                             </div>
                         )
                     }, this)}
