@@ -174,10 +174,9 @@ class ContactPersonInput extends React.Component {
                             </div>
                             <div className="input-group input-group--style-label mb20">
                                 <div className="personinput-checkbox">
-                                    <input type="text" className="form-control" readonly="" value="Contactpersoon bedrijf" />
-                                    <label>
+                                    <label className="placeholder">Contactpersoon bedrijf
                                         <input type="checkbox" name={`contact_new[${index}][is_company]`} defaultChecked={item.is_company} />
-                                        <span></span>
+                                        <span readonly="true"></span>
                                     </label>
                                 </div>
                             </div>

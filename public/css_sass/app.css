@@ -463,13 +463,10 @@ input {
 .comp-contactpersoninput .table--horizontal td input {
   text-align: left; }
 @media (max-width: 991px) {
-  .comp-contactpersoninput .personinput-checkbox .form-control {
-    width: 90%;
-    color: #DDDDDD;
-    border-right: none; }
   .comp-contactpersoninput .personinput-checkbox label {
-    width: 10%;
-    border-left: none; }
+    color: #DDDDDD; }
+    .comp-contactpersoninput .personinput-checkbox label input[type="checkbox"] + span {
+      float: right; }
   .comp-contactpersoninput .input-group .form-control:last-child {
     border-bottom: none; }
   .comp-contactpersoninput .input-group--style-label .input-group-addon {
@@ -905,8 +902,7 @@ label input[type="radio"]:checked + span {
 .table--horizontal {
   background-color: #fff; }
   .table--horizontal.table > tbody > tr > th, .table--horizontal.table > tbody > tr > td {
-    padding: 0;
-    vertical-align: middle; }
+    padding: 0; }
   .table--horizontal.table > thead:first-child > tr:first-child > th {
     color: #A0A8AC;
     vertical-align: middle; }
@@ -1317,6 +1313,9 @@ label input[type="radio"]:checked + span {
   content: "\f106"; }
 
 /* Locatie parking CSS ------------- */
+#locatie .section-heading h3 {
+  margin: 0;
+  font-weight: 600; }
 #locatie .google-map {
   width: 100%;
   height: 600px; }

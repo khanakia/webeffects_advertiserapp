@@ -30,22 +30,16 @@ class LocatieInput extends React.Component {
         address_lat: '',
         address_lng: '',
         parkingItems: [],
-
-
         onRowDeleted: function(){}
     }
-
-    
 
     componentDidMount() {
         this.gmapInit()
     }
 
     componentDidUpdate() {
-        // this.map_autocomplete_init()
         this.gmapInit()
     }
-
 
     gmapInit() {
         this.map = new google.maps.Map(document.getElementById('google-map'), {
@@ -71,7 +65,6 @@ class LocatieInput extends React.Component {
         });
         markers.push(marker)
 
-
         // Add Parking Markders
         this.state.parkingItems.map((item, index) => {
             var marker = new google.maps.Marker({
@@ -80,7 +73,6 @@ class LocatieInput extends React.Component {
             });
             markers.push(marker)
         })
-
 
         // Auto Center Markers
         var bounds = new google.maps.LatLngBounds();
@@ -208,6 +200,9 @@ class LocatieInput extends React.Component {
     render() {
         return (
             <div className={'comp-locatieinput ' + this.props.className} ref="locatieinput">
+                <div className="section-heading">
+                    <h3>Adres</h3>
+                </div>
                 <div className="form-group">
 
                 </div>
@@ -215,9 +210,9 @@ class LocatieInput extends React.Component {
                     <div className="input-group">
                         <div className="input-group-addon"><i className="fa fa-key"></i></div>
                         <input type="text" id="autocomplete-field" className="form-control" defaultValue={this.state.address} />
-                        <input type="text" className="form-control" name="address" ref="address" value={this.state.address} onChange={()=>{this.onInputChange()}} />
-                        <input type="text" className="form-control" name="address_lat" ref="address_lat" value={this.state.address_lat} onChange={()=>{this.onInputChange()}} />
-                        <input type="text" className="form-control" name="address_lng" ref="address_lng" value={this.state.address_lng} onChange={()=>{this.onInputChange()}} />
+                        <input type="hidden" className="form-control" name="address" ref="address" value={this.state.address} onChange={()=>{this.onInputChange()}} />
+                        <input type="hidden" className="form-control" name="address_lat" ref="address_lat" value={this.state.address_lat} onChange={()=>{this.onInputChange()}} />
+                        <input type="hidden" className="form-control" name="address_lng" ref="address_lng" value={this.state.address_lng} onChange={()=>{this.onInputChange()}} />
                     </div>
 
                     {this.state.parkingItems.map(function(item, index) {
@@ -232,14 +227,14 @@ class LocatieInput extends React.Component {
                                 <input type="hidden" name={`parkingitem[${index}][id]`} defaultValue={item.id} />
                                 <input type="text" className="form-control parking_address" defaultValue={item.address} data-id={item.id} />
 
-                                <input type="text" className="form-control" name={`parkingitem[${index}][address]`} value={item.address} data-id={item.id} onChange={()=>{this.onInputChange()}} />
+                                <input type="hidden" className="form-control" name={`parkingitem[${index}][address]`} value={item.address} data-id={item.id} onChange={()=>{this.onInputChange()}} />
 
-                                <input type="text" className="form-control" name={`parkingitem[${index}][lat]`} value={item.lat} onChange={()=>{this.onInputChange()}} />
-                                <input type="text" className="form-control" name={`parkingitem[${index}][lon]`} value={item.lon} onChange={()=>{this.onInputChange()}} />
+                                <input type="hidden" className="form-control" name={`parkingitem[${index}][lat]`} value={item.lat} onChange={()=>{this.onInputChange()}} />
+                                <input type="hidden" className="form-control" name={`parkingitem[${index}][lon]`} value={item.lon} onChange={()=>{this.onInputChange()}} />
                                 <input type="text" className="form-control" name={`parkingitem[${index}][is_paid]`} defaultValue={item.is_paid} />
                                 <input type="text" className="form-control" name={`parkingitem[${index}][price]`} defaultValue={item.price} />
 
-                                <input type="text" className="form-control" name={`parkingitem[${index}][is_new]`} defaultValue={item.is_new} />
+                                <input type="hidden" className="form-control" name={`parkingitem[${index}][is_new]`} defaultValue={item.is_new} />
                             </div>
                         )
                     }, this)}
