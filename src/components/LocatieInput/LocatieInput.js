@@ -92,6 +92,20 @@ class LocatieInput extends React.Component {
 
         this.map_autocomplete_init()
 
+        this.villa_autocomplete_init();
+    }
+
+    villa_autocomplete_init() {
+        const _this = this;
+
+        var inputbox = (document.getElementById('autocomplete-field'));
+
+        var autocomplete = new google.maps.places.Autocomplete(inputbox);
+
+        autocomplete.addListener('place_changed', function() {
+            var place = autocomplete.getPlace();
+            _this.setState({address: inputbox.value, address_lat: place.geometry.location.lat(), address_lng: place.geometry.location.lng()});
+        });
     }
 
     map_autocomplete_init() {
@@ -99,7 +113,8 @@ class LocatieInput extends React.Component {
 
         var defaultBounds = new google.maps.LatLngBounds(
             new google.maps.LatLng(-33.8902, 151.1759),
-            new google.maps.LatLng(-33.8474, 151.2631));
+            new google.maps.LatLng(-33.8474, 151.2631)
+        );
 
         var i = 0;
         var options = {
@@ -200,8 +215,8 @@ class LocatieInput extends React.Component {
                     <div className="input-group">
                         <div className="input-group-addon"><i className="fa fa-key"></i></div>
                         <input type="text" id="autocomplete-field" className="form-control" name="address" ref="address" defaultValue={this.props.address} />
-                        <input type="text" className="form-control" name="address_lat" ref="address_lat" defaultValue={this.props.address_lat} />
-                        <input type="text" className="form-control" name="address_lng" ref="address_lng" defaultValue={this.props.address_lng} />
+                        <input type="text" className="form-control" name="address_lat" ref="address_lat" value={this.props.address_lat} onChange={()=>{this.onInputChange()}} />
+                        <input type="text" className="form-control" name="address_lng" ref="address_lng" value={this.props.address_lng} onChange={()=>{this.onInputChange()}} />
                     </div>
 
                     {this.state.parkingItems.map(function(item, index) {
