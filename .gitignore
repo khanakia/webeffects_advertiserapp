@@ -18,6 +18,7 @@ compiled/
 .sass-cache
 #/public/css_sass
 public/bundle.js
+public/vendor.bundle.js
 
 # ignore OS generated files
 .DS_Store

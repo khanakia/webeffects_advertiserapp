@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDom from 'react-dom';
 
-import ContactHelper from '../../helpers'
+import {ContactHelper} from '../../helpers'
 
 
 class ContactForm extends Component {
@@ -82,12 +82,12 @@ class ContactForm extends Component {
                         </div>
                         <div className="form-group">
                             <label>Email</label>
-                            <input type="text" className="form-control required" name="email" id="email" defaultValue={this.props.data.email} placeholder="" />
+                            <input type="text" className="form-control required email" name="email" id="email" defaultValue={this.props.data.email} placeholder="" />
                         </div>
 
                     </div>
                     <div className="modal-footer text-right">
-                        <button type="submit" className="btn btn-blue-link">{this.msg_btn_save_text}</button>
+                        <button type="submit" className="btn btn-green btn--round">{this.msg_btn_save_text}</button>
                     </div>
                 </form>
 

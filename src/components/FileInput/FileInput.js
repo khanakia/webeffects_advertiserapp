@@ -44,6 +44,8 @@ class FileInput extends React.Component {
                 processData: false,
                 contentType: false,
                 data: data,
+                headers: Auth.header(),
+
                 success: function(response){
 
                     _this.setState({
@@ -115,10 +117,10 @@ class FileInput extends React.Component {
                     {this.state.itemsNew.map(function(item, index) {
                         return (
                             <div className="item" key={item.id}>
-                                <button type="button" onClick={() => {this.handleRemoveItem(index)}}>Delete</button><br />
+                                <a href="#" className="deleteBtn" onClick={() => {this.handleRemoveItem(index)}}><i className="iconc-cross"></i></a>
                                 
-                                <input type="text" name={`${this.props.name}_new[${index}][filter_value_id]`} defaultValue={this.props.filter_value_id} placeholder="filter_value_id" /> <br/> 
-                                <input type="text" name={`${this.props.name}_new[${index}][attachment_id]`} defaultValue={item.id} placeholder="attachment_id" />
+                                <input type="hidden" name={`${this.props.name}_new[${index}][filter_value_id]`} defaultValue={this.props.filter_value_id} placeholder="filter_value_id" />
+                                <input type="hidden" name={`${this.props.name}_new[${index}][attachment_id]`} defaultValue={item.id} placeholder="attachment_id" />
                                 <div className="inner" style={{backgroundImage : 'url("' + item.url + '")'}}>
                                     
                                 </div>
@@ -129,21 +131,23 @@ class FileInput extends React.Component {
                     {this.props.selectedItems.map(function(item, index) {
                         return (
                             <div className="item" key={item.id}>
-                                <button type="button" onClick={() => {this.deleteMapping(item.id)}}>Delete</button><br />
-                                <input type="text" name="project_id[]" defaultValue={item.object_id} placeholder="project_id" /> <br/>
-                                <input type="text" name={`${this.props.name}[${index}][filter_value_id]`} defaultValue={item.filter_value_id} placeholder="filter_value_id" /> <br/> 
-                                <input type="text" name={`${this.props.name}[${index}][attachment_id]`} defaultValue={item.attachment.id} placeholder="attachment_id" />
+                                <a href="#" className="deleteBtn" onClick={() => {this.deleteMapping(item.id)}}><i className="iconc-cross"></i></a>
+                                <input type="hidden" name="project_id[]" defaultValue={item.object_id} placeholder="project_id" />
+                                <input type="hidden" name={`${this.props.name}[${index}][filter_value_id]`} defaultValue={item.filter_value_id} placeholder="filter_value_id" />
+                                <input type="hidden" name={`${this.props.name}[${index}][attachment_id]`} defaultValue={item.attachment.id} placeholder="attachment_id" />
                                 <div className="inner" style={{backgroundImage : 'url("' + item.attachment.url + '")'}}>
                                     <div className="title">{item.attachment.attachment_title}</div>
-                                    <button type="button" onClick={()=>{this.editTitle(item.attachment.id)}}>Edit</button>
+                                    <a hraf="#" className="editBtn" onClick={()=>{this.editTitle(item.attachment.id)}}><i className="iconc-edit"></i></a>
                                 </div>
 
                                 {
                                     (this.state.isEditing && this.state.editingItemId==item.attachment.id) ?
-                                        <div>
-                                            <input type="text" ref="title_input" />
-                                            <button type="button" className="btn btn-plain" onClick={()=>{this.saveTitle()}}><i className="fa fa-check"></i></button>
-                                            <button type="button" className="btn btn-plain" onClick={()=>{this.cancelEditing()}}><i className="fa fa-close"></i></button>
+                                        <div className="image-popup">
+                                            <textarea></textarea>
+                                            <div className="button-wrapper">
+                                                <button type="button" className="btn btn-plain ml10 mr5 green-color" onClick={()=>{this.saveTitle()}}><i className="iconc-check"></i></button>
+                                                <button type="button" className="btn btn-plain red-color" onClick={()=>{this.cancelEditing()}}><i className="iconc-cross"></i></button>
+                                            </div>
                                         </div>
 
                                     : ''
