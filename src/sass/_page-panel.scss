@@ -89,6 +89,34 @@
 	@media screen and (max-width: 992px) {
 		.tab_drawer_heading {
 			display: block;
+			a {
+				margin: 0;
+				padding: 20px;
+				border-radius: 0;
+				border: 1px solid #CDD4D7;
+				border-bottom: none;
+				color: #101010;
+				i {
+				    margin-top: 5px;
+				    float: right;
+					font-size: 11px;
+					color: #101010;
+				}
+			}
+			&.d_active {
+				a, a:hover, a:focus {
+					color: #FF713E;
+					border-bottom: 1px solid #CDD4D7;
+					i {
+						color: #FF713E;
+					}
+				}
+			}
+			&:last-of-type {
+				a {
+					border-bottom: 1px solid #CDD4D7;
+				}
+			}
 		}
 		.tab-pane {
 			padding: 20px;

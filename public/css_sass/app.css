@@ -56,6 +56,25 @@
 @media screen and (max-width: 992px) {
   .tab-content .tab_drawer_heading {
     display: block; }
+    .tab-content .tab_drawer_heading a {
+      margin: 0;
+      padding: 20px;
+      border-radius: 0;
+      border: 1px solid #CDD4D7;
+      border-bottom: none;
+      color: #101010; }
+      .tab-content .tab_drawer_heading a i {
+        margin-top: 5px;
+        float: right;
+        font-size: 11px;
+        color: #101010; }
+    .tab-content .tab_drawer_heading.d_active a, .tab-content .tab_drawer_heading.d_active a:hover, .tab-content .tab_drawer_heading.d_active a:focus {
+      color: #FF713E;
+      border-bottom: 1px solid #CDD4D7; }
+      .tab-content .tab_drawer_heading.d_active a i, .tab-content .tab_drawer_heading.d_active a:hover i, .tab-content .tab_drawer_heading.d_active a:focus i {
+        color: #FF713E; }
+    .tab-content .tab_drawer_heading:last-of-type a {
+      border-bottom: 1px solid #CDD4D7; }
   .tab-content .tab-pane {
     padding: 20px; } }
 
