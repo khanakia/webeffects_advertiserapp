@@ -137,7 +137,7 @@ class FileInput extends React.Component {
                                 <input type="hidden" name={`${this.props.name}[${index}][attachment_id]`} defaultValue={item.attachment.id} placeholder="attachment_id" />
                                 <div className="inner" style={{backgroundImage : 'url("' + item.attachment.url + '")'}}>
                                     <div className="title">{item.attachment.attachment_title}</div>
-                                    <a hraf="#" className="editBtn" onClick={()=>{this.editTitle(item.attachment.id)}}><i className="iconc-edit"></i></a>
+                                    <a href="#" className="editBtn" onClick={()=>{this.editTitle(item.attachment.id)}}><i className="iconc-edit"></i></a>
                                 </div>
 
                                 {

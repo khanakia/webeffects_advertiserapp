@@ -459,14 +459,24 @@ class PageProject extends Component {
                                         <div role="tabpanel" className="tab-pane " id="details">
                                             {this._render_tabDetails()}
                                         </div>
+
+                                        <h3 className="tab_drawer_heading">
+                                            <a href="#zalen" aria-controls="zalen" role="tab" data-toggle="tab">Zalen</a>
+                                        </h3>
                                         <div role="tabpanel" className="tab-pane " id="zalen">
                                             <Zalen items={project.project_rooms} onZalenRemoved={this.onZalenRemoved} />
                                         </div>
 
+                                        <h3 className="tab_drawer_heading">
+                                            <a href="#contact" aria-controls="contact" role="tab" data-toggle="tab">Contact</a>
+                                        </h3>
                                         <div role="tabpanel" className="tab-pane " id="contact">
                                             {this._render_tabContact()}
                                         </div>
 
+                                        <h3 className="tab_drawer_heading">
+                                            <a href="#locatie" aria-controls="locatie" role="tab" data-toggle="tab">Locatie & parkeren</a>
+                                        </h3>
                                         <div role="tabpanel" className="tab-pane active" id="locatie">
                                             <LocatieInput 
                                                 address={this.props.project.address}
@@ -480,26 +490,31 @@ class PageProject extends Component {
 
                                         {
                                             this.props.project_formdata.gelegenhendens.map((item, index) => {
-                                                return (
+                                                return [
+                                                    <h3 className="tab_drawer_heading">
+                                                        <a href={`#cat_${item.value}`} aria-controls="general" role="tab" data-toggle="tab">{item.title}</a>
+                                                    </h3>,
+
                                                     <div role="tabpanel" className="tab-pane" id={`cat_${item.value}`} key={index}>
                                                         {this._render_catForm(item)}
                                                     </div>
-                                                )
+                                                ]
                                             })
                                         }
 
-
+                                        <h3 className="tab_drawer_heading">
+                                            <a href="#aanvragen" aria-controls="aanvragen" role="tab" data-toggle="tab">Aanvragen</a>
+                                        </h3>
                                         <div role="tabpanel" className="tab-pane " id="aanvragen">
                                             <OfferRequestList items={this.props.project_offer_request_details_list} />
                                         </div>
 
-
+                                        <h3 className="tab_drawer_heading">
+                                            <a href="#statistieken" aria-controls="statistieken" role="tab" data-toggle="tab">Statistieken</a>
+                                        </h3>
                                         <div role="tabpanel" className="tab-pane " id="statistieken">
                                             Statistieken
                                         </div>
-
-
-
 
                                     </div>
                                 </form>  

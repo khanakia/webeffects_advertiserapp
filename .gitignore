@@ -19,6 +19,8 @@ compiled/
 #/public/css_sass
 public/bundle.js
 public/vendor.bundle.js
+public/bundle/bundle.js
+public/bundle/vendor.bundle.js
 
 # ignore OS generated files
 .DS_Store
