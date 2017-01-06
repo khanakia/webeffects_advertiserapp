@@ -47,7 +47,7 @@ class DropdownList extends React.Component {
 	
 		return (
 			<div>
-				<input type="text" name={this.props.name} value={this.state.selectedValue} onChange={this.handleChange} />
+				<input type="hidden" name={this.props.name} value={this.state.selectedValue} onChange={this.handleChange} />
 				<div className="dropdown dropdown--style1">
 				  <button className="btn btn-dropdown dropdown-toggle" type="button" id={dropdownId} data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 				    {selectedItem ? selectedItem.title : this.props.emptyPlaceholder}

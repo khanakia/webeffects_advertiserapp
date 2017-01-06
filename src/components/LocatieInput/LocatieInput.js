@@ -2,6 +2,8 @@ import React, { PropTypes } from 'react'
 
 import {ProjectParkingHelper} from '../../helpers'
 
+import DropdownList from '../DropdownList'
+
 class LocatieInput extends React.Component {
 
     constructor(props) {
@@ -198,17 +200,53 @@ class LocatieInput extends React.Component {
     }
 
     render() {
+        const items = [
+            {
+                "id": 1,
+                "title": '+7 km',
+            },
+            {
+                "id": 2,
+                "title": '+8 km',
+            },
+            {
+                "id": 3,
+                "title": '+9 km',
+            }
+        ]
+
         return (
             <div className={'comp-locatieinput ' + this.props.className} ref="locatieinput">
                 <div className="section-heading">
                     <h3>Adres</h3>
                 </div>
+                <div className="section-zoek">
+                    <span>Zoek parkeerplaatsen in een straal van</span>
+                    <span className="short-dropdown">
+                        <DropdownList items={items} selectedValue={3} />
+                    </span>
+                    <span>
+                        <a href="#">Voeg automatisch parkeerplaatsen toe</a>
+                    </span>
+                </div>
+                <div className="section-data">
+                    <span>
+                        <DropdownList items={items} selectedValue={3} />
+                    </span>
+                    <span>
+                        <DropdownList items={items} selectedValue={3} />
+                    </span>
+                    <span>
+                        <DropdownList items={items} selectedValue={3} />
+                    </span>
+                </div>
+
                 <div className="form-group">
 
                 </div>
                 <div className="form-group">
                     <div className="input-group">
-                        <div className="input-group-addon"><i className="fa fa-key"></i></div>
+                        <div className="input-group-addon"><i className="iconc-location-pointer"></i></div>
                         <input type="text" id="autocomplete-field" className="form-control" defaultValue={this.state.address} />
                         <input type="hidden" className="form-control" name="address" ref="address" value={this.state.address} onChange={()=>{this.onInputChange()}} />
                         <input type="hidden" className="form-control" name="address_lat" ref="address_lat" value={this.state.address_lat} onChange={()=>{this.onInputChange()}} />
@@ -219,20 +257,23 @@ class LocatieInput extends React.Component {
                         return (
                             <div className="input-group input-group--style-label" key={index}>
                                 <span className="input-group-addon">
-                                    <button type="button" className="btn btn-plain btn--nopad hover-show" onClick={(e) => this.handelDeleteParkingItem(item)}>
-                                        <i className="fa fa-trash"></i>
+                                    <button type="button" className="btn btn-plain btn--nopad" onClick={(e) => this.handelDeleteParkingItem(item)}>
+                                        <i className="iconc-trash"></i>
                                     </button>
-                                    <i className="fa fa-link hover-hide"></i>
                                 </span>
                                 <input type="hidden" name={`parkingitem[${index}][id]`} defaultValue={item.id} />
                                 <input type="text" className="form-control parking_address" defaultValue={item.address} data-id={item.id} />
+                                <span className="input-group-addon">
+                                    <input className="hidden-ispaid" type="checkbox" name="ispaid-yesno" value="1" />
+                                    <i className="iconc-trash"></i>
+                                </span>
+                                <input type="text" className="form-control" name={`parkingitem[${index}][price]`} defaultValue={item.price} />
 
                                 <input type="hidden" className="form-control" name={`parkingitem[${index}][address]`} value={item.address} data-id={item.id} onChange={()=>{this.onInputChange()}} />
 
                                 <input type="hidden" className="form-control" name={`parkingitem[${index}][lat]`} value={item.lat} onChange={()=>{this.onInputChange()}} />
                                 <input type="hidden" className="form-control" name={`parkingitem[${index}][lon]`} value={item.lon} onChange={()=>{this.onInputChange()}} />
-                                <input type="text" className="form-control" name={`parkingitem[${index}][is_paid]`} defaultValue={item.is_paid} />
-                                <input type="text" className="form-control" name={`parkingitem[${index}][price]`} defaultValue={item.price} />
+                                <input type="hidden" className="form-control" name={`parkingitem[${index}][is_paid]`} defaultValue={item.is_paid} />
 
                                 <input type="hidden" className="form-control" name={`parkingitem[${index}][is_new]`} defaultValue={item.is_new} />
                             </div>
