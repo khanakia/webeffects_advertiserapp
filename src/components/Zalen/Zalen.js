@@ -61,8 +61,28 @@ class Zalen extends React.Component {
     }
 
     handleRemoveZalen = (id) => {
-        ProjectRoomHelper.delete(id).then((response) => {
-            this.props.onZalenRemoved()
+
+        jQuery.confirm({
+            title: 'Verwijderen',
+            content: "Weet u zeker dat u de zaal 'De Duif' wilt verwijderen?",
+            closeIcon: true,
+            buttons: {
+                cancelAction: {
+                    text: 'Annuleren',
+                    action: function () {
+                        jQuery(".jconfirm").hide()
+                    }
+                },
+                deleteAction: {
+                    text: 'Verwijder',
+                    action: function () {
+                        jQuery(".jconfirm").hide()
+                        ProjectRoomHelper.delete(id).then((response) => {
+                            this.props.onZalenRemoved()
+                        })
+                    }.bind(this)
+                }
+            }
         })
     }
 

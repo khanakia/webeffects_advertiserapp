@@ -6,6 +6,7 @@ import { fetchContacts } from '../actions/action_contact';
 const mapStateToProps = (state) => {
     return {
         state : state,
+        current_user: state.appdata.current_user,
         contact_list: state.contact.list,
         project_list: state.project.list,
     };

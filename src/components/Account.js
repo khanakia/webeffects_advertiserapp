@@ -18,6 +18,11 @@ class Account extends Component {
 
     componentDidMount() {
         this.props.fetchContacts()
+        this.tabsFn()
+    }
+
+    componentDidUpdate() {
+        // this.tabsFn()
     }
 
     tabsFn() {
@@ -40,6 +45,9 @@ class Account extends Component {
             }
             $('.nav-tabs li').removeClass('active');
             $('.nav-tabs li a[href="'+href+'"]').closest('li').addClass('active');
+
+            $('.tab_drawer_heading').removeClass('d_active');
+            $('.tab_drawer_heading a[href="'+href+'"]').closest('h3').addClass('d_active');
 
 
             $('.tab-pane').slideUp();
@@ -79,6 +87,29 @@ class Account extends Component {
             _this.props.fetchContacts();
         })
 
+    }
+
+    handleCancel() {
+        jQuery.confirm({
+            title: 'Pagina verlaten',
+            content: "U heeft uw bewerkingen niet opgeslagen, weet u zeker dat u de pagina wilt verlaten?",
+            closeIcon: true,
+            buttons: {
+                cancelAction: {
+                    text: 'Annuleren',
+                    action: function () {
+                        jQuery(".jconfirm").hide()
+                    }
+                },
+                deleteAction: {
+                    text: 'Verlaten en niet opslaan',
+                    action: function () {
+                        window.location.reload()
+                        jQuery(".jconfirm").hide()
+                    }
+                }
+            }
+        })
     }
 
     onContactItemChange = (item, project_id) => {
@@ -135,26 +166,27 @@ class Account extends Component {
     _render_tabGegevens() {
         return (
             <div>
-                <div className="form-group">
-                    <label className="mb15">Bedrijfsnaam</label>
-                    <div className="row">
-                        <div className="col-md-4">
-                            <div className="input-group">
-                                <span className="input-group-addon">
-                                    <i className="iconc-buildings"></i>
-                                </span>
-                                <input type="text" className="form-control" name="bedrijfsnaam" defaultValue="Marie Aubain" />
+                <form ref="form_contactperson">
+                    <div className="form-group">
+                        <label className="mb15">Bedrijfsnaam</label>
+                        <div className="row">
+                            <div className="col-md-4">
+                                <div className="input-group">
+                                    <span className="input-group-addon">
+                                        <i className="iconc-buildings"></i>
+                                    </span>
+                                    <input type="text" className="form-control" name="company_name" defaultValue={this.props.current_user.company_name}  />
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div className="form-group">
-                    <label>Contactpersonen</label>
-                    <form ref="form_contactperson">
-                        <ContactPersonInput items={this.props.contact_list} />
-                    </form>
-                </div>
+                    <div className="form-group">
+                        <label>Contactpersonen</label>
+                        
+                            <ContactPersonInput items={this.props.contact_list} />
+                    </div>
+                </form>
 
                 <div className="form-group">
                     <label>Locaties en contactpersonen</label>
@@ -174,7 +206,7 @@ class Account extends Component {
                             <button ref="submit" type="button" className="btn btn-green btn--round" onClick={()=>{this.handleSumbit()}}>Opslaan</button>
                         </div>
                         <div className="d-table-cell v-align-middle">
-                            <button ref="annuleren" type="button" className="btn btn-plain">Annuleren</button>
+                            <button ref="annuleren" type="button" className="btn btn-plain" onClick={()=>{this.handleCancel()}}>Annuleren</button>
                         </div>
                     </div>
                 </div>

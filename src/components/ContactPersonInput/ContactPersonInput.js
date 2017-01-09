@@ -176,7 +176,7 @@ class ContactPersonInput extends React.Component {
                                 <div className="personinput-checkbox">
                                     <label className="placeholder">Contactpersoon bedrijf
                                         <input type="checkbox" name={`contact_new[${index}][is_company]`} defaultChecked={item.is_company} />
-                                        <span readonly="true"></span>
+                                        <span readOnly="true"></span>
                                     </label>
                                 </div>
                             </div>
@@ -213,7 +213,7 @@ class ContactPersonInput extends React.Component {
                             </div>
                             <div className="input-group input-group--style-label mb20">
                                 <div className="personinput-checkbox">
-                                    <input type="text" className="form-control" readonly="" value="Contactpersoon bedrijf" />
+                                    <input type="text" className="form-control" readOnly="" value="Contactpersoon bedrijf" />
                                     <label>
                                         <input type="checkbox" name={`contact_new[${index}][is_company]`} />
                                         <span></span>

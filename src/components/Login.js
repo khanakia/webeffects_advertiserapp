@@ -50,7 +50,17 @@ class Login extends Component {
                 return false;
             } else {
                 toastr.success("Please Login");
-            }
+            // Auth.attempt_confirm_token({email: this.refs.email.value, password: this.refs.password.value, confirm_token: confirm_token}).then((response) => {
+            //     if (response.data.token != null) {
+            //         // Localstore.setOrg(response.data.org)
+            //         // Localstore.setUser(response.data.user)
+            //         toastr.success(response.data.message);       
+            //         hashHistory.push('/dashboard')
+            //     } else {                
+            //         toastr.error(response.data.message);       
+            //     }
+            // });
+            // console.log("abc");
         } else {
             Auth.attempt({email: this.refs.email.value, password: this.refs.password.value}).then((response) => {
                 if (response.data.token != null) {
