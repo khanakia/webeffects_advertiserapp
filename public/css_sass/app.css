@@ -181,7 +181,7 @@ header.mobile {
       position: relative;
       padding-left: 50px; }
       .mobile-overlay-menu ul.submenu a:hover:before, .mobile-overlay-menu ul.submenu a:focus:before {
-        content: "•";
+        content: "ΓÇó";
         position: absolute;
         top: 10px;
         left: 20px;
@@ -1372,5 +1372,9 @@ label input[type="radio"]:checked + span {
     margin: 0 0 10px; }
     #locatie .section-zoek > span.short-dropdown {
       max-width: 150px; } }
+
+.section_offerrequest_dropdown .short-dropdown {
+  max-width: 250px;
+  margin: 30px 0 20px; }
 
 /*# sourceMappingURL=app.css.map */

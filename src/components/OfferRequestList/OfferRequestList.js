@@ -2,6 +2,8 @@ import React, { PropTypes } from 'react'
 
 import {ProjectHelper} from '../../helpers'
 
+import DropdownList from '../DropdownList'
+
 class OfferRequestList extends React.Component {
 
     constructor(props) {
@@ -35,10 +37,37 @@ class OfferRequestList extends React.Component {
   
 
     render() {
+
+        var startDateString = "2016-10-01";
+        var endDateString = moment();
+        var startDate = moment(startDateString, "YYYY-M-DD");
+        var endDate = moment(endDateString, "YYYY-M-DD").endOf("month");
+        var months = [ "januari", "februari", "maart", "april", "mei", "juni",
+        "juli", "augustus", "september", "oktober", "november", "december" ];
+        var items = [];
+
+        while (startDate.isBefore(endDate)) {
+
+            var monthInt = new Date(startDate).getMonth();
+
+            var monthString = months[monthInt];
+            items.push({ id: startDate.format("MM-DD-YYYY"), title : monthString + startDate.format(" YYYY") });
+            startDate = startDate.add(1, "month");
+
+        };
+
+        console.log(items);
+
         return (
             <div>
+                <div className="section_offerrequest_dropdown">
+                    <div>Offerte aanvragen</div>
+                    <div className="short-dropdown">
+                        <DropdownList items={items} selectedValue={3} />
+                    </div>
+                </div>
                 {this.props.items.map(function(item, index){
-                    return (
+                    return (                
                         <div className="offerrequesttab" key={index}>    
                             <div className={'comp-offerrequestlist ' + item.offer_request_id} ref="offerrequestlist">
                                 <div className="accordion" id={'collapse' + item.id}>

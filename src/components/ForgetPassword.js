@@ -86,14 +86,14 @@ class ForgetPassword extends Component {
             }
         });
 
-        var confirm_token = this.props.location.query.confirm_token;    
-        var confirm_email = this.props.location.query.email;    
+        var token = this.props.location.query.token;    
+        var email = this.props.location.query.email;    
         var formdata = resetpwdFormEl.serialize();
         var password = jQuery("#password").val();
         var ajaxObj =  axios.post(RESET_PWD_AJAX_URL, {
-            _token: confirm_token,  
-            confirm_email: confirm_email,
-            confirm_token: confirm_token,
+            _token: token,  
+            email: email,
+            token: token,
             formdata: formdata,
         })
         .then(function (response) {

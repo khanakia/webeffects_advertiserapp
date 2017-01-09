@@ -1235,3 +1235,10 @@ label input[type="radio"]:checked + span {
 		}
 	}
 }
+
+.section_offerrequest_dropdown {
+	.short-dropdown {
+		max-width: 250px;
+	    margin: 30px 0 20px;
+	}
+}
