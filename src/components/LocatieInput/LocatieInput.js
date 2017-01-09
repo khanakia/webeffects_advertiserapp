@@ -220,7 +220,7 @@ class LocatieInput extends React.Component {
 
     priceChange(event) {
         const _this = this;
-        jQuery(".price-icon input").change(function(){
+        jQuery(document).on("change", ".price-icon input", function(){
             _this._priceChange(this);
         });
     }
