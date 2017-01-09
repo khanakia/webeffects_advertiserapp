@@ -181,7 +181,7 @@ header.mobile {
       position: relative;
       padding-left: 50px; }
       .mobile-overlay-menu ul.submenu a:hover:before, .mobile-overlay-menu ul.submenu a:focus:before {
-        content: "•";
+        content: "ΓÇó";
         position: absolute;
         top: 10px;
         left: 20px;
@@ -1364,6 +1364,37 @@ label input[type="radio"]:checked + span {
 #locatie .google-map {
   width: 100%;
   height: 600px; }
+#locatie .group-wrapper {
+  overflow: hidden; }
+#locatie .input-group-custom {
+  display: table;
+  width: 100%;
+  position: relative;
+  overflow: hidden; }
+#locatie .small-cell {
+  display: table-cell;
+  vertical-align: middle; }
+#locatie .parking-icon {
+  width: 50px;
+  padding: 6px 12px;
+  text-align: center;
+  background-color: #eee;
+  border: 1px solid #cdd4d7;
+  border-right: none; }
+#locatie .price-icon {
+  width: 50px;
+  padding: 6px 12px;
+  text-align: center;
+  border: 1px solid #cdd4d7;
+  border-left: none;
+  border-right: none;
+  cursor: pointer; }
+  #locatie .price-icon.active i {
+    color: #08b995; }
+#locatie .price-field {
+  width: 135px;
+  position: absolute;
+  right: -134px; }
 @media screen and (max-width: 1350px) {
   #locatie .section-zoek > span {
     display: block;

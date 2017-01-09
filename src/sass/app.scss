@@ -1219,6 +1219,51 @@ label input[type="radio"]:checked + span {
 		height: 600px;
 	}
 
+	.group-wrapper {
+		overflow: hidden;
+	}
+
+	.input-group-custom {
+		display: table;
+		width: 100%;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.small-cell {
+		display: table-cell;
+		vertical-align: middle;
+	}
+
+	.parking-icon {
+		width: 50px;
+		padding: 6px 12px;
+		text-align: center;
+		background-color: #eee;
+		border: 1px solid #cdd4d7;
+		border-right: none;
+	}
+
+	.price-icon {
+		width: 50px;
+		padding: 6px 12px;
+		text-align: center;
+		border: 1px solid #cdd4d7;
+		border-left: none;
+		border-right: none;
+		cursor: pointer;
+
+		&.active i {
+			color: #08b995;
+		}
+	}
+
+	.price-field {
+		width: 135px;
+		position: absolute;
+		right: -134px;
+	}
+
 	@media screen and (max-width: 1350px) {
 		.section-zoek {
 
