@@ -593,7 +593,7 @@ class PageProject extends Component {
                     </div>
                 </ContentWrapper>
 
-                <div className="hidden-xs meerBlockMobile">
+                <div className="visible-xs meerBlockMobile">
                     <div className="block-info">
                         <label>Bewerkingen</label>
                         <div className="last_updated mt5">Zojuist om 11:38</div>
