@@ -545,10 +545,11 @@ class PageProject extends Component {
                                                 address_lat={this.props.project.lat}
                                                 address_lng={this.props.project.lon}
                                                 parkingItems={this.props.project.project_parkings}
-                                               
+                                                itemsProvice={this.props.project_formdata.eigenschappens}
+                                                itemsPlaats={this.props.project_formdata.gebouwens}
+                                                itemsGebied={this.props.project_formdata.gelegenhendens}
                                             />
                                         </div>
-
 
                                         {
                                             this.props.project_formdata.gelegenhendens.map((item, index) => {
