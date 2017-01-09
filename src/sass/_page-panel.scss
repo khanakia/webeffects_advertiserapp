@@ -90,6 +90,7 @@
 		.tab_drawer_heading {
 			display: block;
 			a {
+				position: relative;
 				margin: 0;
 				padding: 20px;
 				border-radius: 0;
@@ -97,9 +98,11 @@
 				border-bottom: none;
 				color: #101010;
 				i {
+				    position: absolute;
+				    top: 13px;
+				    right: 20px;
 				    margin-top: 5px;
-				    float: right;
-					font-size: 11px;
+					font-size: 20px;
 					color: #101010;
 				}
 			}

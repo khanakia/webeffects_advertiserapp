@@ -57,6 +57,7 @@
   .tab-content .tab_drawer_heading {
     display: block; }
     .tab-content .tab_drawer_heading a {
+      position: relative;
       margin: 0;
       padding: 20px;
       border-radius: 0;
@@ -64,9 +65,11 @@
       border-bottom: none;
       color: #101010; }
       .tab-content .tab_drawer_heading a i {
+        position: absolute;
+        top: 13px;
+        right: 20px;
         margin-top: 5px;
-        float: right;
-        font-size: 11px;
+        font-size: 20px;
         color: #101010; }
     .tab-content .tab_drawer_heading.d_active a, .tab-content .tab_drawer_heading.d_active a:hover, .tab-content .tab_drawer_heading.d_active a:focus {
       color: #FF713E;
@@ -533,6 +536,9 @@ div.clear {
   transform: rotate(25deg);
   display: inline-block; }
 
+.a-hover-color:hover {
+  color: #08B995; }
+
 input.error {
   border: 1px solid red; }
 
@@ -680,9 +686,12 @@ label input[type="radio"] + span {
 
 label input[type="checkbox"]:checked + span,
 label input[type="radio"]:checked + span {
-  display: inline;
+  display: block;
   background-color: transparent;
   color: #08B995; }
+  label input[type="checkbox"]:checked + span i,
+  label input[type="radio"]:checked + span i {
+    color: #08B995; }
 
 .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn.active.focus {
   outline: none;
@@ -1403,5 +1412,18 @@ label input[type="radio"]:checked + span {
     margin: 0 0 10px; }
     #locatie .section-zoek > span.short-dropdown {
       max-width: 150px; } }
+
+.projectPageContent {
+  position: relative; }
+  .projectPageContent .meerBlockMobile {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff; }
+
+@media screen and (max-width: 767px) {
+  .mx-w-300 {
+    max-width: 300px; } }
 
 /*# sourceMappingURL=app.css.map */

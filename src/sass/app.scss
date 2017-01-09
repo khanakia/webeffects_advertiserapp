@@ -44,6 +44,10 @@ div.clear {
     display: inline-block;
 }
 
+.a-hover-color:hover {
+	color: #08B995;
+}
+
 input.error {
     border: 1px solid red;
 }
@@ -232,9 +236,12 @@ label input[type="radio"] + span {
 
 label input[type="checkbox"]:checked + span,
 label input[type="radio"]:checked + span {
-    display: inline;
+    display: block;
     background-color: transparent;
     color: #08B995;
+    i {
+    	color: #08B995;
+    }
 }
 
 
@@ -1278,5 +1285,23 @@ label input[type="radio"]:checked + span {
 				}
 			}
 		}
+	}
+}
+
+
+.projectPageContent {
+	position: relative;
+	.meerBlockMobile {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		background-color: #fff;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.mx-w-300 {
+		max-width: 300px;
 	}
 }
