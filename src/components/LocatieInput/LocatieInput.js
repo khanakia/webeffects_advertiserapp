@@ -236,20 +236,14 @@ class LocatieInput extends React.Component {
     }
 
     render() {
-        const items = [
-            {
-                "value": 1,
-                "title": '+7 km',
-            },
-            {
-                "value": 2,
-                "title": '+8 km',
-            },
-            {
-                "value": 3,
-                "title": '+9 km',
-            }
+        const countitems = [
+            {"value": 1, "title": '+7 km'},
+            {"value": 2, "title": '+8 km'},
+            {"value": 3, "title": '+9 km'}
         ]
+        const itemsprovice = this.props.itemsProvice;
+        const itemsplaats = this.props.itemsPlaats;
+        const itemsgebied = this.props.itemsGebied;
 
         return (
             <div className={'comp-locatieinput ' + this.props.className} ref="locatieinput">
@@ -259,7 +253,7 @@ class LocatieInput extends React.Component {
                 <div className="section-zoek">
                     <span>Zoek parkeerplaatsen in een straal van</span>
                     <span className="short-dropdown">
-                        <DropdownList items={items} selectedValue={3} />
+                        <DropdownList items={countitems} selectedValue={3} />
                     </span>
                     <span>
                         <a href="#">Voeg automatisch parkeerplaatsen toe</a>
@@ -267,13 +261,13 @@ class LocatieInput extends React.Component {
                 </div>
                 <div className="section-data">
                     <span>
-                        <DropdownList items={items} selectedValue={3} />
+                        <DropdownList items={itemsprovice} selectedValue={3} />
                     </span>
                     <span>
-                        <DropdownList items={items} selectedValue={3} />
+                        <DropdownList items={itemsplaats} selectedValue={3} />
                     </span>
                     <span>
-                        <DropdownList items={items} selectedValue={3} />
+                        <DropdownList items={itemsgebied} selectedValue={3} />
                     </span>
                 </div>
 

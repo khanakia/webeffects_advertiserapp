@@ -1,7 +1,7 @@
 import {
         API_URL_PROJECT, 
-        API_URL_PROJECT_FORMDATA
-        
+        API_URL_PROJECT_FORMDATA,
+        API_URL_PROJECT_UPDATE_STATUS
     } from '../config.js'
 
 
@@ -94,5 +94,11 @@ export default class ProjectHelper {
         });
     }
 
+    static projectStatus() {
+        return axios({
+            method: 'post',
+            url: API_URL_PROJECT + '/' + 1 + '/update_status',
+            headers: Auth.header(),
+        });
+    }
 }
-

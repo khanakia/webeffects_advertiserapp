@@ -53,7 +53,7 @@ class ProjectContactInput extends React.Component {
             <table className="table table-bordered table--horizontal">
                 <thead>
                     <tr>
-                        <th><i className="iconc-location-pointer"></i></th>
+                        <th className="wp45"><i className="iconc-location-pointer"></i></th>
                         <th>Naam</th>
                         <th>E-mailadressen</th>
                     </tr>
@@ -63,7 +63,7 @@ class ProjectContactInput extends React.Component {
                     {this.props.items.map(function(item, index) {
                         return (
                             <tr key={`z-${item.id}`}>
-                                <td>
+                                <td className="wp45">
                                     <span className="input-group-addon">
                                         <button type="button" className="btn btn-plain btn--nopad hover-show">
                                             <i className="iconc-trash"></i>
