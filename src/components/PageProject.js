@@ -323,14 +323,14 @@ class PageProject extends Component {
                 </div>
                 <div className="block-info">
                     <label>Locatie bekijken</label>
-                    <div><a className="live" href="#">Live</a> <i className="iconc-link pull-right"></i></div>
-                    <div><a className="concept" href="#">Concept</a> <i className="iconc-link pull-right"></i></div>
+                    <div><a className="live" href="#">Live</a> <i className="iconc-link pull-right px5 i-rotate25"></i></div>
+                    <div><a className="concept" href="#">Concept</a> <i className="iconc-link pull-right px5 i-rotate25"></i></div>
                 </div>
                 <div className="block-info">
                     <label>Status</label>
                     <div className="dropdown dropdown--status">
                         <i className="iconc-published before_text"></i>Gepubliceerd
-                        <a className="pull-right dropdown-toggle px5" id="gepubliceerd" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i className="iconc-edit"></i></a>
+                        <a className="pull-right dropdown-toggle px5 i-rotate25" id="gepubliceerd" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i className="iconc-edit"></i></a>
 
                         <ul className="dropdown-menu dropdown-menu--status" aria-labelledby="gepubliceerd">
                             <li>
@@ -382,10 +382,6 @@ class PageProject extends Component {
                 <div className="form-group">
                     <label>Representatieve buitenafbeelding</label>
                     <FileInput name="foto1" filter_value_id={catitem.value} onAttachmentDeleted={this.onAttachmentDeleted} selectedItems={images} />
-                </div>
-                <div className="visible-xs twoBtnStyle">
-                    <a href="#" className="">Meer</a>
-                    <a href="#" className="">Opslaan</a>
                 </div>
             </div>
         )
@@ -517,6 +513,69 @@ class PageProject extends Component {
                                         </div>
 
                                     </div>
+                                    <div className="visible-xs twoBtnStyle">
+                                        <a href="#" className="">Meer</a>
+                                        <a href="#" className="">Opslaan</a>
+                                    </div>
+
+                                    <div className="visible-xs">
+                                        <div className="block-info">
+                                            <label>Bewerkingen</label>
+                                            <div className="last_updated mt5">Zojuist om 11:38</div>
+
+                                            <div className="d-table w100 mt20 mx-w-300">
+                                                <div className="d-table-cell v-align-middle">
+                                                    <button ref="submit" type="button" className="btn btn-green btn--round" onClick={()=>{this.handleSumbit()}}>Opslaan</button>
+                                                </div>
+                                                <div className="d-table-cell v-align-middle">
+                                                    <button ref="annuleren" type="button" className="btn btn-plain">Annuleren</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="block-info">
+                                            <label>Locatie bekijken</label>
+                                            <div><a className="live" href="#">Live</a> <i className="iconc-link pull-right px5 i-rotate25"></i></div>
+                                            <div><a className="concept" href="#">Concept</a> <i className="iconc-link pull-right px5 i-rotate25"></i></div>
+                                        </div>
+                                        <div className="block-info">
+                                            <label>Status</label>
+                                            <div className="dropdown dropdown--status">
+                                                <i className="iconc-published before_text"></i>Gepubliceerd
+                                                <a className="pull-right dropdown-toggle px5 i-rotate25" id="gepubliceerd" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i className="iconc-edit"></i></a>
+
+                                                <ul className="dropdown-menu dropdown-menu--status" aria-labelledby="gepubliceerd">
+                                                    <li>
+                                                        <a href="">
+                                                            <label>
+                                                                <input type="radio" name="aanhef" value="dhr" />
+                                                                <span>Gepubliceerd <i className="iconc-published"></i></span>
+                                                            </label>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="">
+                                                            <label>
+                                                                <input type="radio" name="aanhef" value="concept" />
+                                                                <span>Concept <i className="iconc-concept"></i></span>
+                                                            </label>
+                                                        </a>
+                                                    </li>
+                                                    
+                                                </ul>   
+                                            </div> 
+                                        </div>
+                                        <div className="block-info">
+                                            <label>Datum van publicatie</label>
+                                            <div className="last_updated">20 oktober 2016 om 17:15</div>
+                                        </div>
+                                        <div className="block-info">
+                                            <a href="#"><i className="iconc-trash before_text"></i>Zet deze locatie offline</a>
+                                        </div>
+                                        <div className="block-info text-center">
+                                            <a href="#">Terug</a>
+                                        </div>
+                                    </div>
+
                                 </form>  
                             </div>
                             <div className="page-panel__inner__right">

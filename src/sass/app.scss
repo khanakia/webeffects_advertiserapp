@@ -232,9 +232,12 @@ label input[type="radio"] + span {
 
 label input[type="checkbox"]:checked + span,
 label input[type="radio"]:checked + span {
-    display: inline;
+    display: block;
     background-color: transparent;
     color: #08B995;
+    i {
+    	color: #08B995;
+    }
 }
 
 
@@ -1233,5 +1236,11 @@ label input[type="radio"]:checked + span {
 				}
 			}
 		}
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.mx-w-300 {
+		max-width: 300px;
 	}
 }
