@@ -54,6 +54,7 @@ class PageProject extends Component {
     tabsFn() {
         $(".tab-pane").hide();
         $(".tab-pane:first").show();
+        $(".tab_drawer_heading.d_active").find("i").removeClass("iconc-chevron-down").addClass("iconc-chevron-up");
 
         $('.nav-tabs li a').click(function (e) {     
             var href = $(this).attr('href');    
@@ -66,6 +67,7 @@ class PageProject extends Component {
 
         $('.tab_drawer_heading a').click(function (e) {     
             var href = $(this).attr('href');
+            var self = $(this);
             if($('.tab-pane'+href).hasClass("active")) {
                 return false;
             }
@@ -78,6 +80,10 @@ class PageProject extends Component {
 
             $('.tab-pane').slideUp();
             $('.tab-pane'+href).slideDown();
+
+            $(".tab_drawer_heading").find("i").addClass("iconc-chevron-down").removeClass("iconc-chevron-up");
+            $(".tab_drawer_heading.d_active").find("i").removeClass("iconc-chevron-down").addClass("iconc-chevron-up");
+            // self.find("i").removeClass("iconc-chevron-down").addClass("iconc-chevron-up");
         })
 
     }
@@ -456,7 +462,7 @@ class PageProject extends Component {
      
         const title = this.props.project.project_title ? this.props.project.project_title : 'Add New'
         return (
-            <div className="">
+            <div className="projectPageContent">
                 <ContentWrapper hasSidebar={true}>
                     <div className="page-panel">
                         <div className="page-panel__heading">{title}</div>
@@ -503,35 +509,35 @@ class PageProject extends Component {
                                     <input type="text" name="id" defaultValue={this.props.project.id} />
                                     <div className="tab-content">
                                         <h3 className="d_active tab_drawer_heading">
-                                            <a href="#general" aria-controls="general" role="tab" data-toggle="tab">Algemene beschrijving <i className="iconc-chevron"></i></a>
+                                            <a href="#general" aria-controls="general" role="tab" data-toggle="tab">Algemene beschrijving <i className="iconc-chevron-down"></i></a>
                                         </h3>
                                         <div role="tabpanel" className="tab-pane " id="general">
                                            {this._render_tabGeneral()}
                                         </div>
 
                                         <h3 className="tab_drawer_heading">
-                                            <a href="#details" aria-controls="details" role="tab" data-toggle="tab">Details <i className="iconc-chevron"></i></a>
+                                            <a href="#details" aria-controls="details" role="tab" data-toggle="tab">Details <i className="iconc-chevron-down"></i></a>
                                         </h3>
                                         <div role="tabpanel" className="tab-pane " id="details">
                                             {this._render_tabDetails()}
                                         </div>
 
                                         <h3 className="tab_drawer_heading">
-                                            <a href="#zalen" aria-controls="zalen" role="tab" data-toggle="tab">Zalen <i className="iconc-chevron"></i></a>
+                                            <a href="#zalen" aria-controls="zalen" role="tab" data-toggle="tab">Zalen <i className="iconc-chevron-down"></i></a>
                                         </h3>
                                         <div role="tabpanel" className="tab-pane " id="zalen">
                                             <Zalen items={project.project_rooms} onZalenRemoved={this.onZalenRemoved} />
                                         </div>
 
                                         <h3 className="tab_drawer_heading">
-                                            <a href="#contact" aria-controls="contact" role="tab" data-toggle="tab">Contact <i className="iconc-chevron"></i></a>
+                                            <a href="#contact" aria-controls="contact" role="tab" data-toggle="tab">Contact <i className="iconc-chevron-down"></i></a>
                                         </h3>
                                         <div role="tabpanel" className="tab-pane " id="contact">
                                             {this._render_tabContact()}
                                         </div>
 
                                         <h3 className="tab_drawer_heading">
-                                            <a href="#locatie" aria-controls="locatie" role="tab" data-toggle="tab">Locatie & parkeren <i className="iconc-chevron"></i></a>
+                                            <a href="#locatie" aria-controls="locatie" role="tab" data-toggle="tab">Locatie & parkeren <i className="iconc-chevron-down"></i></a>
                                         </h3>
                                         <div role="tabpanel" className="tab-pane active" id="locatie">
                                             <LocatieInput 
@@ -548,7 +554,7 @@ class PageProject extends Component {
                                             this.props.project_formdata.gelegenhendens.map((item, index) => {
                                                 return [
                                                     <h3 className="tab_drawer_heading">
-                                                        <a href={`#cat_${item.value}`} aria-controls="general" role="tab" data-toggle="tab">{item.title} <i className="iconc-chevron"></i></a>
+                                                        <a href={`#cat_${item.value}`} aria-controls="general" role="tab" data-toggle="tab">{item.title} <i className="iconc-chevron-down"></i></a>
                                                     </h3>,
 
                                                     <div role="tabpanel" className="tab-pane" id={`cat_${item.value}`} key={index}>
@@ -559,14 +565,14 @@ class PageProject extends Component {
                                         }
 
                                         <h3 className="tab_drawer_heading">
-                                            <a href="#aanvragen" aria-controls="aanvragen" role="tab" data-toggle="tab">Aanvragen <i className="iconc-chevron"></i></a>
+                                            <a href="#aanvragen" aria-controls="aanvragen" role="tab" data-toggle="tab">Aanvragen <i className="iconc-chevron-down"></i></a>
                                         </h3>
                                         <div role="tabpanel" className="tab-pane " id="aanvragen">
                                             <OfferRequestList items={this.props.project_offer_request_details_list} />
                                         </div>
 
                                         <h3 className="tab_drawer_heading">
-                                            <a href="#statistieken" aria-controls="statistieken" role="tab" data-toggle="tab">Statistieken <i className="iconc-chevron"></i></a>
+                                            <a href="#statistieken" aria-controls="statistieken" role="tab" data-toggle="tab">Statistieken <i className="iconc-chevron-down"></i></a>
                                         </h3>
                                         <div role="tabpanel" className="tab-pane " id="statistieken">
                                             <SnoobiPage />
@@ -578,64 +584,6 @@ class PageProject extends Component {
                                         <a href="#" className="">Opslaan</a>
                                     </div>
 
-                                    <div className="visible-xs">
-                                        <div className="block-info">
-                                            <label>Bewerkingen</label>
-                                            <div className="last_updated mt5">Zojuist om 11:38</div>
-
-                                            <div className="d-table w100 mt20 mx-w-300">
-                                                <div className="d-table-cell v-align-middle">
-                                                    <button ref="submit" type="button" className="btn btn-green btn--round" onClick={()=>{this.handleSumbit()}}>Opslaan</button>
-                                                </div>
-                                                <div className="d-table-cell v-align-middle">
-                                                    <button ref="annuleren" type="button" className="btn btn-plain">Annuleren</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="block-info">
-                                            <label>Locatie bekijken</label>
-                                            <div><a className="live" href="#">Live</a> <i className="iconc-link pull-right px5 i-rotate25"></i></div>
-                                            <div><a className="concept" href="#">Concept</a> <i className="iconc-link pull-right px5 i-rotate25"></i></div>
-                                        </div>
-                                        <div className="block-info">
-                                            <label>Status</label>
-                                            <div className="dropdown dropdown--status">
-                                                <i className="iconc-published before_text"></i>Gepubliceerd
-                                                <a className="pull-right dropdown-toggle px5 i-rotate25" id="gepubliceerd" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i className="iconc-edit"></i></a>
-
-                                                <ul className="dropdown-menu dropdown-menu--status" aria-labelledby="gepubliceerd">
-                                                    <li>
-                                                        <a href="">
-                                                            <label>
-                                                                <input type="radio" name="aanhef" value="dhr" />
-                                                                <span>Gepubliceerd <i className="iconc-published"></i></span>
-                                                            </label>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="">
-                                                            <label>
-                                                                <input type="radio" name="aanhef" value="concept" />
-                                                                <span>Concept <i className="iconc-concept"></i></span>
-                                                            </label>
-                                                        </a>
-                                                    </li>
-                                                    
-                                                </ul>   
-                                            </div> 
-                                        </div>
-                                        <div className="block-info">
-                                            <label>Datum van publicatie</label>
-                                            <div className="last_updated">20 oktober 2016 om 17:15</div>
-                                        </div>
-                                        <div className="block-info">
-                                            <a href="#"><i className="iconc-trash before_text"></i>Zet deze locatie offline</a>
-                                        </div>
-                                        <div className="block-info text-center">
-                                            <a href="#">Terug</a>
-                                        </div>
-                                    </div>
-
                                 </form>  
                             </div>
                             <div className="page-panel__inner__right">
@@ -644,7 +592,66 @@ class PageProject extends Component {
                         </div>
                     </div>
                 </ContentWrapper>
+
+                <div className="hidden-xs meerBlockMobile">
+                    <div className="block-info">
+                        <label>Bewerkingen</label>
+                        <div className="last_updated mt5">Zojuist om 11:38</div>
+
+                        <div className="d-table w100 mt20 mx-w-300">
+                            <div className="d-table-cell v-align-middle">
+                                <button ref="submit" type="button" className="btn btn-green btn--round" onClick={()=>{this.handleSumbit()}}>Opslaan</button>
+                            </div>
+                            <div className="d-table-cell v-align-middle">
+                                <button ref="annuleren" type="button" className="btn btn-plain">Annuleren</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="block-info">
+                        <label>Locatie bekijken</label>
+                        <div><a className="live" href="#">Live</a> <i className="iconc-link pull-right px5 i-rotate25"></i></div>
+                        <div><a className="concept" href="#">Concept</a> <i className="iconc-link pull-right px5 i-rotate25"></i></div>
+                    </div>
+                    <div className="block-info">
+                        <label>Status</label>
+                        <div className="dropdown dropdown--status">
+                            <i className="iconc-published before_text"></i>Gepubliceerd
+                            <a className="pull-right dropdown-toggle px5 i-rotate25" id="gepubliceerd" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i className="iconc-edit"></i></a>
+
+                            <ul className="dropdown-menu dropdown-menu--status" aria-labelledby="gepubliceerd">
+                                <li>
+                                    <a href="">
+                                        <label>
+                                            <input type="radio" name="aanhef" value="dhr" />
+                                            <span>Gepubliceerd <i className="iconc-published"></i></span>
+                                        </label>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <label>
+                                            <input type="radio" name="aanhef" value="concept" />
+                                            <span>Concept <i className="iconc-concept"></i></span>
+                                        </label>
+                                    </a>
+                                </li>
+                                
+                            </ul>   
+                        </div> 
+                    </div>
+                    <div className="block-info">
+                        <label>Datum van publicatie</label>
+                        <div className="last_updated">20 oktober 2016 om 17:15</div>
+                    </div>
+                    <div className="block-info">
+                        <a href="#"><i className="iconc-trash before_text"></i>Zet deze locatie offline</a>
+                    </div>
+                    <div className="block-info text-center">
+                        <a href="#" className="a-hover-color">Terug</a>
+                    </div>
+                </div>
             </div>
+            
         );
     }
 }
