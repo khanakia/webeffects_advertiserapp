@@ -24,6 +24,10 @@ class LocatieInput extends React.Component {
         theme: '',
         items: [],
 
+        itemsProvice: [],
+        itemsPlaats: [],
+        itemsGebied: [],
+
         province_id: '',
         plaat_id: '',
         gebied_id: '',
@@ -234,15 +238,15 @@ class LocatieInput extends React.Component {
     render() {
         const items = [
             {
-                "id": 1,
+                "value": 1,
                 "title": '+7 km',
             },
             {
-                "id": 2,
+                "value": 2,
                 "title": '+8 km',
             },
             {
-                "id": 3,
+                "value": 3,
                 "title": '+9 km',
             }
         ]

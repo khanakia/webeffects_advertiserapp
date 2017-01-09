@@ -30,7 +30,7 @@ class DropdownList extends React.Component {
 	handleItemChange(e, item) {
 		e.preventDefault()
 		this.setState({
-			selectedValue: item.id
+			selectedValue: item.value
 		})
 		this.props.onItemChange(item)
 	}
@@ -42,7 +42,7 @@ class DropdownList extends React.Component {
 
 	render() {
 
-		const selectedItem = _.find(this.props.items, {"id": this.state.selectedValue})
+		const selectedItem = _.find(this.props.items, {"value": this.state.selectedValue})
 		const dropdownId = this.props.name+'_dropdownMenu1'
 	
 		return (
