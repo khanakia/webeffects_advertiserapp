@@ -680,9 +680,12 @@ label input[type="radio"] + span {
 
 label input[type="checkbox"]:checked + span,
 label input[type="radio"]:checked + span {
-  display: inline;
+  display: block;
   background-color: transparent;
   color: #08B995; }
+  label input[type="checkbox"]:checked + span i,
+  label input[type="radio"]:checked + span i {
+    color: #08B995; }
 
 .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn.active.focus {
   outline: none;
@@ -1372,5 +1375,9 @@ label input[type="radio"]:checked + span {
     margin: 0 0 10px; }
     #locatie .section-zoek > span.short-dropdown {
       max-width: 150px; } }
+
+@media screen and (max-width: 767px) {
+  .mx-w-300 {
+    max-width: 300px; } }
 
 /*# sourceMappingURL=app.css.map */
