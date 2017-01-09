@@ -24,6 +24,10 @@ class LocatieInput extends React.Component {
         theme: '',
         items: [],
 
+        itemsProvice: [],
+        itemsPlaats: [],
+        itemsGebied: [],
+
         province_id: '',
         plaat_id: '',
         gebied_id: '',
@@ -37,6 +41,8 @@ class LocatieInput extends React.Component {
 
     componentDidMount() {
         this.gmapInit()
+        this.priceChange();
+        this.handleChange();
     }
 
     componentDidUpdate() {
@@ -199,21 +205,45 @@ class LocatieInput extends React.Component {
 
     }
 
-    render() {
-        const items = [
-            {
-                "id": 1,
-                "title": '+7 km',
-            },
-            {
-                "id": 2,
-                "title": '+8 km',
-            },
-            {
-                "id": 3,
-                "title": '+9 km',
+    handleChange() {
+        const _this = this;
+        jQuery(".price-icon input").each(function(){
+            var inputvalue = jQuery(this).data("checked");
+            if (inputvalue == 1) {
+                jQuery(this).prop('checked', true);
+            } else {
+                jQuery(this).prop('checked', false);
             }
+            _this._priceChange(this);
+        });
+    }
+
+    priceChange(event) {
+        const _this = this;
+        jQuery(document).on("change", ".price-icon input", function(){
+            _this._priceChange(this);
+        });
+    }
+
+    _priceChange(element){
+        if(jQuery(element).prop("checked") == true) {
+            jQuery(element).parents(".price-icon").addClass("active");
+            jQuery(element).parents(".input-group-custom").find(".price-field").css("position", "static");
+        } else {
+            jQuery(element).parents(".price-icon").removeClass("active");
+            jQuery(element).parents(".input-group-custom").find(".price-field").css("position", "absolute");
+        }
+    }
+
+    render() {
+        const countitems = [
+            {"value": 1, "title": '+7 km'},
+            {"value": 2, "title": '+8 km'},
+            {"value": 3, "title": '+9 km'}
         ]
+        const itemsprovice = this.props.itemsProvice;
+        const itemsplaats = this.props.itemsPlaats;
+        const itemsgebied = this.props.itemsGebied;
 
         return (
             <div className={'comp-locatieinput ' + this.props.className} ref="locatieinput">
@@ -223,7 +253,7 @@ class LocatieInput extends React.Component {
                 <div className="section-zoek">
                     <span>Zoek parkeerplaatsen in een straal van</span>
                     <span className="short-dropdown">
-                        <DropdownList items={items} selectedValue={3} />
+                        <DropdownList items={countitems} selectedValue={3} />
                     </span>
                     <span>
                         <a href="#">Voeg automatisch parkeerplaatsen toe</a>
@@ -231,13 +261,13 @@ class LocatieInput extends React.Component {
                 </div>
                 <div className="section-data">
                     <span>
-                        <DropdownList items={items} selectedValue={3} />
+                        <DropdownList items={itemsprovice} selectedValue={3} />
                     </span>
                     <span>
-                        <DropdownList items={items} selectedValue={3} />
+                        <DropdownList items={itemsplaats} selectedValue={3} />
                     </span>
                     <span>
-                        <DropdownList items={items} selectedValue={3} />
+                        <DropdownList items={itemsgebied} selectedValue={3} />
                     </span>
                 </div>
 
@@ -255,27 +285,32 @@ class LocatieInput extends React.Component {
 
                     {this.state.parkingItems.map(function(item, index) {
                         return (
-                            <div className="input-group input-group--style-label" key={index}>
-                                <span className="input-group-addon">
-                                    <button type="button" className="btn btn-plain btn--nopad" onClick={(e) => this.handelDeleteParkingItem(item)}>
+                            <div className="group-wrapper" key={index}>
+                                <div className="input-group-custom">
+                                    <div className="parking-icon small-cell">
+                                        <button type="button" className="btn btn-plain btn--nopad" onClick={(e) => this.handelDeleteParkingItem(item)}>
+                                            <i className="iconc-trash"></i>
+                                        </button>
+                                    </div>
+                                    <div className="parking-field small-cell">
+                                        <input type="text" className="form-control parking_address" defaultValue={item.address} data-id={item.id} />
+                                    </div>
+                                    <label className="price-icon small-cell">
+                                        <input type="checkbox" className="hidden-ispaid" name={`parkingitem[${index}][is_paid]`} data-checked={item.is_paid} defaultValue="1" />
                                         <i className="iconc-trash"></i>
-                                    </button>
-                                </span>
-                                <input type="hidden" name={`parkingitem[${index}][id]`} defaultValue={item.id} />
-                                <input type="text" className="form-control parking_address" defaultValue={item.address} data-id={item.id} />
-                                <span className="input-group-addon">
-                                    <input className="hidden-ispaid" type="checkbox" name="ispaid-yesno" value="1" />
-                                    <i className="iconc-trash"></i>
-                                </span>
-                                <input type="text" className="form-control" name={`parkingitem[${index}][price]`} defaultValue={item.price} />
+                                    </label>
+                                    <div className="price-field small-cell">
+                                        <input type="text" className="form-control" name={`parkingitem[${index}][price]`} defaultValue={item.price} />
+                                    </div>
 
-                                <input type="hidden" className="form-control" name={`parkingitem[${index}][address]`} value={item.address} data-id={item.id} onChange={()=>{this.onInputChange()}} />
+                                    <input type="hidden" name={`parkingitem[${index}][id]`} defaultValue={item.id} />
+                                    <input type="hidden" className="form-control" name={`parkingitem[${index}][address]`} value={item.address} data-id={item.id} onChange={()=>{this.onInputChange()}} />
 
-                                <input type="hidden" className="form-control" name={`parkingitem[${index}][lat]`} value={item.lat} onChange={()=>{this.onInputChange()}} />
-                                <input type="hidden" className="form-control" name={`parkingitem[${index}][lon]`} value={item.lon} onChange={()=>{this.onInputChange()}} />
-                                <input type="hidden" className="form-control" name={`parkingitem[${index}][is_paid]`} defaultValue={item.is_paid} />
+                                    <input type="hidden" className="form-control" name={`parkingitem[${index}][lat]`} value={item.lat} onChange={()=>{this.onInputChange()}} />
+                                    <input type="hidden" className="form-control" name={`parkingitem[${index}][lon]`} value={item.lon} onChange={()=>{this.onInputChange()}} />
 
-                                <input type="hidden" className="form-control" name={`parkingitem[${index}][is_new]`} defaultValue={item.is_new} />
+                                    <input type="hidden" className="form-control" name={`parkingitem[${index}][is_new]`} defaultValue={item.is_new} />
+                                </div>
                             </div>
                         )
                     }, this)}

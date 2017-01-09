@@ -21,15 +21,15 @@ class Demo extends Component {
     render() {
         const items = [
             {
-                "id": 1,
+                "value": 1,
                 "title": 'Demo1',
             },
             {
-                "id": 2,
+                "value": 2,
                 "title": 'Demo2',
             },
             {
-                "id": 3,
+                "value": 3,
                 "title": 'Demo3',
             }
         ]
