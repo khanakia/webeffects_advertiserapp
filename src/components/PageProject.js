@@ -15,6 +15,7 @@ import IframeInput from './IframeInput'
 import ContactPersonDropdown from './ContactPersonDropdown'
 import OfferRequestList from './OfferRequestList'
 import LocatieInput from './LocatieInput'
+import SnoobiPage from './SnoobiPage'
 
 import PopupHelper from 'helpers/helper_popup'
 
@@ -39,11 +40,46 @@ class PageProject extends Component {
             this.props.fetchOfferRequestDetailsList(this.props.params.projectId);
         }
 
+        this.tabsFn();
     }
 
     componentDidUpdate() {
         this.initJs()
         jQuery('[data-toggle="popover"]').popover()
+
+        this.tabsFn();
+    }
+
+
+    tabsFn() {
+        $(".tab-pane").hide();
+        $(".tab-pane:first").show();
+
+        $('.nav-tabs li a').click(function (e) {     
+            var href = $(this).attr('href');    
+            $('.tab_drawer_heading').removeClass('d_active');
+            $('.tab_drawer_heading a[href="'+href+'"]').closest('h3').addClass('d_active');
+
+            $('.tab-pane').hide();
+            $('.tab-pane'+href).show();
+        })
+
+        $('.tab_drawer_heading a').click(function (e) {     
+            var href = $(this).attr('href');
+            if($('.tab-pane'+href).hasClass("active")) {
+                return false;
+            }
+            $('.nav-tabs li').removeClass('active');
+            $('.nav-tabs li a[href="'+href+'"]').closest('li').addClass('active');
+
+            $('.tab_drawer_heading').removeClass('d_active');
+            $('.tab_drawer_heading a[href="'+href+'"]').closest('h3').addClass('d_active');
+
+
+            $('.tab-pane').slideUp();
+            $('.tab-pane'+href).slideDown();
+        })
+
     }
 
     initJs() {
@@ -92,6 +128,30 @@ class PageProject extends Component {
             _this.props.fetchProject(_this.props.params.projectId);
         })
 
+    }
+
+
+    handleCancel() {
+        jQuery.confirm({
+            title: 'Verwijderen',
+            content: "U heeft uw bewerkingen niet opgeslagen, weet u zeker dat u de pagina wilt verlaten?",
+            closeIcon: true,
+            buttons: {
+                cancelAction: {
+                    text: 'Annuleren',
+                    action: function () {
+                        jQuery(".jconfirm").hide()
+                    }
+                },
+                deleteAction: {
+                    text: 'Verlaten en niet opslaan',
+                    action: function () {
+                        window.location.reload()
+                        jQuery(".jconfirm").hide()
+                    }
+                }
+            }
+        })
     }
 
     onAttachmentDeleted = () => {
@@ -317,7 +377,7 @@ class PageProject extends Component {
                             <button ref="submit" type="button" className="btn btn-green btn--round" onClick={()=>{this.handleSumbit()}}>Opslaan</button>
                         </div>
                         <div className="d-table-cell v-align-middle">
-                            <button ref="annuleren" type="button" className="btn btn-plain">Annuleren</button>
+                            <button ref="annuleren" type="button" className="btn btn-plain" onClick={()=>{this.handleCancel()}}>Annuleren</button>
                         </div>
                     </div>
                 </div>
@@ -513,7 +573,7 @@ class PageProject extends Component {
                                             <a href="#statistieken" aria-controls="statistieken" role="tab" data-toggle="tab">Statistieken <i className="iconc-chevron"></i></a>
                                         </h3>
                                         <div role="tabpanel" className="tab-pane " id="statistieken">
-                                            Statistieken
+                                            <SnoobiPage />
                                         </div>
 
                                     </div>

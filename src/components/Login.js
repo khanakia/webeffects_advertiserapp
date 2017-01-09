@@ -42,10 +42,10 @@ class Login extends Component {
             //         toastr.error(response.data.message);       
             //     }
             // });
-            console.log("abc");
+            // console.log("abc");
             Auth.login(token)
             if (toke == login_token) {
-                toastr.success("Project Login Direct");       
+                // toastr.success("Project Login Direct");       
                 hashHistory.push('/dashboard')
             }else {
                 toastr.success("Token not Match");      
