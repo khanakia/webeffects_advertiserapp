@@ -516,7 +516,7 @@ class PageProject extends Component {
                                         </div>
 
                                         <h3 className="tab_drawer_heading">
-                                            <a href="#details" aria-controls="details" role="tab" data-toggle="tab">Details <i className="iconc-chevron-down"></i></a>
+                                            <a href="#details" aria-controls="details" role="tab" data-toggle="tab">`Details <i className="iconc-chevron-down"></i></a>
                                         </h3>
                                         <div role="tabpanel" className="tab-pane " id="details">
                                             {this._render_tabDetails()}
@@ -594,7 +594,7 @@ class PageProject extends Component {
                     </div>
                 </ContentWrapper>
 
-                <div className="visible-xs meerBlockMobile">
+                <div className=" meerBlockMobile">
                     <div className="block-info">
                         <label>Bewerkingen</label>
                         <div className="last_updated mt5">Zojuist om 11:38</div>

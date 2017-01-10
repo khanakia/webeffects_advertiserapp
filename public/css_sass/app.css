@@ -222,7 +222,7 @@ header.mobile {
       position: relative;
       padding-left: 50px; }
       .mobile-overlay-menu ul.submenu a:hover:before, .mobile-overlay-menu ul.submenu a:focus:before {
-        content: "ΓÇó";
+        content: "•";
         position: absolute;
         top: 10px;
         left: 20px;
@@ -546,6 +546,63 @@ input {
     border-top: none; }
   .comp-projectcontactinput .input-group--style-label:last-child .input-group-addon {
     border-top: none; } }
+
+.belangrijkste-wrapper {
+  position: relative;
+  width: 100%;
+  display: inline-block;
+  padding: 15px;
+  font-size: 14px;
+  color: #3C3C3C;
+  overflow: hidden; }
+  .belangrijkste-wrapper .owl-carousel {
+    display: block; }
+  .belangrijkste-wrapper .item {
+    max-width: 320px;
+    display: inline-block;
+    margin-right: 20px;
+    margin-bottom: 20px; }
+    .belangrijkste-wrapper .item .img-wrapper {
+      width: 100%;
+      height: 194px;
+      background: url("../images/img1.png") no-repeat center/cover; }
+    .belangrijkste-wrapper .item .text-wrapper {
+      padding: 20px 15px;
+      border: 1px solid #CDD4D7;
+      border-top: none; }
+      .belangrijkste-wrapper .item .text-wrapper .title label {
+        font-size: 16px;
+        color: #101010; }
+      .belangrijkste-wrapper .item .text-wrapper .title span {
+        color: #969696;
+        float: right; }
+      .belangrijkste-wrapper .item .text-wrapper p {
+        margin-bottom: 0px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #CDD4D7; }
+      .belangrijkste-wrapper .item .text-wrapper i {
+        display: inline-block;
+        width: 18px;
+        margin-right: 10px;
+        vertical-align: middle; }
+      .belangrijkste-wrapper .item .text-wrapper .info-wrapper {
+        padding: 6px 0; }
+    .belangrijkste-wrapper .item:last-child {
+      margin-right: 0; }
+  @media screen and (min-width: 768px) and (max-width: 1650px) {
+    .belangrijkste-wrapper .item {
+      max-width: 280px; }
+      .belangrijkste-wrapper .item .text-wrapper p {
+        min-height: 78px; } }
+  @media screen and (max-width: 767px) {
+    .belangrijkste-wrapper {
+      /*max-width: 600px;*/ }
+      .belangrijkste-wrapper .item {
+        max-width: auto;
+        width: 100%;
+        margin: 0; }
+        .belangrijkste-wrapper .item .text-wrapper p {
+          min-height: 78px; } }
 
 body {
   background-color: #ECF5F8;
@@ -1352,7 +1409,8 @@ label input[type="radio"]:checked + span {
   padding: 20px; }
 .offerrequesttab .accordion-heading {
   background-color: #fff;
-  border: 1px solid #f5f5f5; }
+  border: 1px solid #CDD4D7;
+  border-bottom: none; }
   .offerrequesttab .accordion-heading a {
     position: relative;
     display: block;
@@ -1365,6 +1423,8 @@ label input[type="radio"]:checked + span {
       font-weight: normal; }
   .offerrequesttab .accordion-heading.active a {
     color: #08B995; }
+  .offerrequesttab .accordion-heading:last-of-type {
+    border-bottom: 1px solid #CDD4D7; }
 .offerrequesttab h5 {
   font-size: 14px;
   font-weight: bold; }
@@ -1386,7 +1446,9 @@ label input[type="radio"]:checked + span {
 .offerrequesttab .accordion-inner {
   padding: 20px 15px;
   color: #7C8589;
-  font-size: 15px; }
+  font-size: 15px;
+  border: 1px solid #CDD4D7;
+  border-bottom: none; }
   .offerrequesttab .accordion-inner label {
     color: #101010; }
   .offerrequesttab .accordion-inner p {
@@ -1394,6 +1456,11 @@ label input[type="radio"]:checked + span {
   .offerrequesttab .accordion-inner .table > tbody > tr > td {
     padding: 8px 0px;
     border-top: none; }
+.offerrequesttab .accordion-group:last-child .accordion-heading {
+  border-bottom: 1px solid #CDD4D7; }
+.offerrequesttab .accordion-group:last-child .accordion-inner {
+  border-top: none;
+  border-bottom: 1px solid #CDD4D7; }
 
 /* Locatie parking CSS ------------- */
 #locatie .section-heading h3 {
@@ -1475,6 +1542,7 @@ label input[type="radio"]:checked + span {
 .projectPageContent {
   position: relative; }
   .projectPageContent .meerBlockMobile {
+    display: none;
     position: absolute;
     top: 0;
     left: 0;
@@ -1484,5 +1552,22 @@ label input[type="radio"]:checked + span {
 @media screen and (max-width: 767px) {
   .mx-w-300 {
     max-width: 300px; } }
+.warning-message {
+  padding: 40px 20px;
+  font-size: 20px;
+  color: #FF713E;
+  text-align: center;
+  background-color: #fff;
+  border: 1px solid #FF713E; }
+  @media screen and (max-width: 1199px) {
+    .warning-message {
+      font-size: 15px; } }
+
+.snoobi-wrapper .img-wrapper {
+  margin-bottom: 20px;
+  width: 268px;
+  height: 94px;
+  display: inline-block;
+  background: url("../images/snoobi-logo.png") no-repeat center; }
 
 /*# sourceMappingURL=app.css.map */
