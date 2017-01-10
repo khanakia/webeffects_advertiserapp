@@ -41,6 +41,8 @@ class PageProject extends Component {
         }
 
         this.tabsFn();
+
+        // ProjectHelper.projectStatus();
     }
 
     componentDidUpdate() {
