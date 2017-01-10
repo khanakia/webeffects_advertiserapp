@@ -1336,9 +1336,11 @@ label input[type="radio"]:checked + span {
 
 .projectPageContent {
 	position: relative;
+
 	.meerBlockMobile {
 		display: none;
 		position: absolute;
+		display: none;
 		top: 0;
 		left: 0;
 		width: 100%;
