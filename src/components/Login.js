@@ -61,6 +61,7 @@ class Login extends Component {
             //     }
             // });
             // console.log("abc");
+            }
         } else {
             Auth.attempt({email: this.refs.email.value, password: this.refs.password.value}).then((response) => {
                 if (response.data.token != null) {
