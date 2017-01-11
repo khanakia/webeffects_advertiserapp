@@ -2,6 +2,8 @@ import React, { PropTypes } from 'react'
 
 import {ProjectParkingHelper} from '../../helpers'
 
+import {ROOT_URL} from '../../config'
+
 import DropdownList from '../DropdownList'
 
 class LocatieInput extends React.Component {
@@ -62,21 +64,23 @@ class LocatieInput extends React.Component {
             },
             styles: [{"featureType": "road","elementType": "geometry","stylers": [{"visibility": "off"}]},{"featureType": "administrative.province","elementType": "all","stylers": [{"visibility": "off"}]},{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#444444"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2f2f2"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":-100},{"lightness":45}]},{"featureType":"road","elementType":"geometry.fill","stylers":[{"color":"#77bc1f"}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType": "road.highway","elementType": "labels","stylers": [{"visibility": "off"}]},{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#ffffff"},{"visibility":"on"}]}],
         });
-    
 
         var markers = [];
 
         // Add Project Address Marker
         var marker = new google.maps.Marker({
             map: this.map,
+            icon: ROOT_URL+'/public/images/villa-marker.png',
             position: new google.maps.LatLng(this.state.address_lat, this.state.address_lng),
         });
         markers.push(marker)
 
         // Add Parking Markders
         this.state.parkingItems.map((item, index) => {
+            var icontype = item.is_paid ? "parking-paid" : "parking";
             var marker = new google.maps.Marker({
                 map: this.map,
+                icon: ROOT_URL+'/public/images/'+icontype+'-marker.png',
                 position: new google.maps.LatLng(item.lat, item.lon),
             });
             markers.push(marker)
