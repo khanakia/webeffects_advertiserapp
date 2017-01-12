@@ -117,7 +117,7 @@ class FileInput extends React.Component {
                     {this.state.itemsNew.map(function(item, index) {
                         return (
                             <div className="item" key={item.id}>
-                                <a href="#" className="deleteBtn" onClick={() => {this.handleRemoveItem(index)}}><i className="iconc-cross"></i></a>
+                                <button type="button" className="btn btn-plain deleteBtn" onClick={() => {this.handleRemoveItem(index)}}><i className="iconc-cross"></i></button>
                                 
                                 <input type="hidden" name={`${this.props.name}_new[${index}][filter_value_id]`} defaultValue={this.props.filter_value_id} placeholder="filter_value_id" />
                                 <input type="hidden" name={`${this.props.name}_new[${index}][attachment_id]`} defaultValue={item.id} placeholder="attachment_id" />
@@ -131,13 +131,13 @@ class FileInput extends React.Component {
                     {this.props.selectedItems.map(function(item, index) {
                         return (
                             <div className="item" key={item.id}>
-                                <a href="#" className="deleteBtn" onClick={() => {this.deleteMapping(item.id)}}><i className="iconc-cross"></i></a>
+                                <button type="button" className="btn btn-plain deleteBtn" onClick={() => {this.deleteMapping(item.id)}}><i className="iconc-cross"></i></button>
                                 <input type="hidden" name="project_id[]" defaultValue={item.object_id} placeholder="project_id" />
                                 <input type="hidden" name={`${this.props.name}[${index}][filter_value_id]`} defaultValue={item.filter_value_id} placeholder="filter_value_id" />
                                 <input type="hidden" name={`${this.props.name}[${index}][attachment_id]`} defaultValue={item.attachment.id} placeholder="attachment_id" />
                                 <div className="inner" style={{backgroundImage : 'url("' + item.attachment.url + '")'}}>
                                     <div className="title">{item.attachment.attachment_title}</div>
-                                    <a href="#" className="editBtn" onClick={()=>{this.editTitle(item.attachment.id)}}><i className="iconc-edit"></i></a>
+                                    <button type="button" className="btn btn-plain editBtn" onClick={()=>{this.editTitle(item.attachment.id)}}><i className="iconc-edit"></i></button>
                                 </div>
 
                                 {
