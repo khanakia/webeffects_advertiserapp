@@ -7,6 +7,7 @@
 @import "_comp-sidebar";
 @import "_comp-contactpersoninput";
 @import "_comp-projectcontactinput";
+@import "_owl-block";
 
 
 body {
@@ -1127,7 +1128,8 @@ label input[type="radio"]:checked + span {
 
 	.accordion-heading {
 		background-color: #fff;			
-		border: 1px solid #f5f5f5;
+		border: 1px solid #CDD4D7;
+		border-bottom: none;
 		a {
 			position: relative;
 			display: block;
@@ -1146,6 +1148,9 @@ label input[type="radio"]:checked + span {
 			a {
 				color: #08B995;			
 			}
+		}
+		&:last-of-type {
+			border-bottom: 1px solid #CDD4D7;
 		}
 	}
 
@@ -1176,6 +1181,8 @@ label input[type="radio"]:checked + span {
 		padding: 20px 15px;
 		color: #7C8589;
 		font-size: 15px;
+		border: 1px solid #CDD4D7;
+		border-bottom: none;
 		label {
 			color: #101010;
 		}
@@ -1185,6 +1192,16 @@ label input[type="radio"]:checked + span {
 		.table > tbody > tr > td {
 			padding: 8px 0px;
 			border-top: none
+		}
+	}
+
+	.accordion-group:last-child {
+		.accordion-heading {
+			border-bottom: 1px solid #CDD4D7;
+		}
+		.accordion-inner {
+			border-top: none;
+			border-bottom: 1px solid #CDD4D7;
 		}
 	}
 }
@@ -1321,6 +1338,7 @@ label input[type="radio"]:checked + span {
 	position: relative;
 
 	.meerBlockMobile {
+		display: none;
 		position: absolute;
 		display: none;
 		top: 0;
@@ -1333,5 +1351,26 @@ label input[type="radio"]:checked + span {
 @media screen and (max-width: 767px) {
 	.mx-w-300 {
 		max-width: 300px;
+	}
+}
+
+.warning-message {
+	padding: 40px 20px;
+	font-size: 20px;
+	color: #FF713E;
+	text-align: center;
+	background-color: #fff;
+	border: 1px solid #FF713E;
+	@media screen and (max-width: 1199px) {
+		font-size: 15px;
+	}
+}
+.snoobi-wrapper {
+	.img-wrapper {
+		margin-bottom: 20px;
+		width: 268px;
+		height: 94px;
+		display: inline-block;
+		background: url("../images/snoobi-logo.png") no-repeat center;
 	}
 }
