@@ -42,20 +42,20 @@ class ResetPassword extends Component {
                 <div className="container">
                     <div className="row">    
                         <div className="formstyle1Ct">
-                            <h3 className="form_title text-center">Resetlink Page</h3>
+                            <h3 className="form_title text-center">{trans.reset_title}</h3>
                             <form className="form-horizontal formstyle1 loginForm" ref='form' onSubmit={this.handleSubmit}>
                                 <div className="row">
                                     <div className="col-md-12">
                                         <div className="form-group">
-                                            <label className="col-sm-12">E-mailadres</label>
+                                            <label className="col-sm-12">{trans.reset_email_label}</label>
                                             <div className="col-sm-12">
-                                                <input type="email" className="form-control required" name="email" id="email" placeholder="e-mailadres"/>
+                                                <input type="email" className="form-control required" name="email" id="email" placeholder="••••••••••" />
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="text-center">
-                                    <button type="submit" className="btn btn-green btn--round">Submit</button>
+                                    <button type="submit" className="btn btn-green btn--round">{trans.reset_submit_btn}</button>
                                 </div>
                             </form>
                         </div>    

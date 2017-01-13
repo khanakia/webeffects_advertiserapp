@@ -54,8 +54,8 @@ class ProjectContactInput extends React.Component {
                 <thead>
                     <tr>
                         <th className="wp45"><i className="iconc-location-pointer"></i></th>
-                        <th>Naam</th>
-                        <th>E-mailadressen</th>
+                        <th>{trans.projectContactInput_naam_label}</th>
+                        <th>{trans.projectContactInput_email_label}</th>
                     </tr>
                 </thead>
                 <tbody>

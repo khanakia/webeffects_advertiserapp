@@ -101,13 +101,13 @@ class FileInput extends React.Component {
         
         return (
             <div className={'comp-fileinput ' + this.props.className} ref="fileinput">
-                <h3>{this.state.itemsNew.length+this.props.selectedItems.length}{" foto's"}</h3>
+                <h3>{this.state.itemsNew.length+this.props.selectedItems.length}{trans.fileInput_foto}</h3>
                 <div className="items-wrapper">
                     <div className="item selector">
                         <div className="inner">
                             <label>
                                 <div className="icon-placeholder"><i className="iconc-uploaded"></i></div>
-                                <div className="placeholder">Voeg foto toe</div>
+                                <div className="placeholder">{trans.fileInput_placeholder_voeg}</div>
                                 <input type="file" multiple ref="input" />
                             </label>
                         </div>

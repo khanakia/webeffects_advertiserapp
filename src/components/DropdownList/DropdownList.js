@@ -14,7 +14,7 @@ class DropdownList extends React.Component {
 		name: 'ddl',
 		items: [],
 		selectedValue: '',
-		emptyPlaceholder: 'Kies een contactpersoon',
+		emptyPlaceholder: trans.contactPersonDD_empty_placeholder,
 		onItemChange: function(item){},
 	}
 

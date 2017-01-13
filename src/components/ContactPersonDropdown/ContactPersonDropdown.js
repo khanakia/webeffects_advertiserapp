@@ -14,7 +14,7 @@ class ContactPersonDropdown extends React.Component {
 		name: 'contact_id',
 		items: [],
 		selectedValue: '',
-		emptyPlaceholder: 'Kies een contactpersoon',
+		emptyPlaceholder: trans.contactPersonDD_empty_placeholder,
 
 		onAddNewClick: function(){},
 		onItemChange: function(item, project_id){},
@@ -84,7 +84,7 @@ class ContactPersonDropdown extends React.Component {
 					            <span className="input-group-addon">
 					                <i className="iconc iconc-plus"></i>
 					            </span>
-					            <button type="button" onClick={()=>{this.handleAddNewClick()}}>Nieuw contactpersoon</button>
+					            <button type="button" onClick={()=>{this.handleAddNewClick()}}>{trans.contactPersonDD_empty_placeholder}</button>
 					        </div>
 					    </li>
 				  		: ''

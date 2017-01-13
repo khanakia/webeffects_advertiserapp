@@ -99,7 +99,7 @@ class ClonableInput extends React.Component {
                             <a href="#" className="remove" onClick={(e) => _this.removeField(e, index)}><i className="fa fa-remove"></i></a>
                             <ul>
                                 <li>
-                                    <label>Name <span className="red">*</span></label>
+                                    <label>{trans.clonableInput_naam_label} <span className="red">*</span></label>
                                     <input type="text" name="videos[]" className="required" ref={'name'+index} defaultValue={item ? item.url : ''}  />
                                 </li>
 
@@ -115,7 +115,7 @@ class ClonableInput extends React.Component {
                             <a href="#" className="remove" onClick={(e) => _this.removeField(e, index)}><i className="fa fa-remove"></i></a>
                             <ul>
                                 <li>
-                                    <label>Name <span className="red">*</span></label>
+                                    <label>{trans.clonableInput_naam_label} <span className="red">*</span></label>
                                     <input type="text" className="required" name="videos[]" ref={'name'+index} defaultValue='' />
                                 </li>
 

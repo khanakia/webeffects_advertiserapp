@@ -21,7 +21,7 @@ class ProjectsLinkList extends Component {
                 
                     <ul>
                         <li>
-                            <Link to={'/dashboard'}>Alle Locaties</Link>
+                            <Link to={'/dashboard'}>{trans.projectLink_all_locatie_link}</Link>
                         </li>                        
                     </ul>
               

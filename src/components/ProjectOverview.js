@@ -66,12 +66,12 @@ class ProjectOverview extends Component {
                     <table className="table table-bordered table--default table--projectoverview">
                         <thead>
                             <tr>
-                                <th className="wp200">Status</th>
-                                <th>Titel</th>
-                                <th className="wp200">Laatste bewerking</th>
-                                <th className="text-center wp100">Link</th>
-                                <th className="text-center wp100">Verwijder</th>
-                                <th className="text-center wp100">Bewerk</th>
+                                <th className="wp200">{trans.pageOverview_status}</th>
+                                <th>{trans.pageOverview_titel}</th>
+                                <th className="wp200">{trans.pageOverview_laatste}</th>
+                                <th className="text-center wp100">{trans.pageOverview_link}</th>
+                                <th className="text-center wp100">{trans.pageOverview_verwijder}</th>
+                                <th className="text-center wp100">{trans.pageOverview_bewerk}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -114,7 +114,7 @@ class ProjectOverview extends Component {
         return (
             <div>
                 <ContentWrapper hasSidebar={true}>
-                    <h3 className="mb20">Locatie overzicht</h3>
+                    <h3 className="mb20">{trans.pageOverview_locatie_title}</h3>
                     {
                         (this.state.isDesktop) ? this._renderDesktop() : this._renderMobile()
                     }

@@ -61,7 +61,7 @@ class OfferRequestList extends React.Component {
         return (
             <div>
                 <div className="section_offerrequest_dropdown">
-                    <div>Offerte aanvragen</div>
+                    <div>{trans.offerte_title}</div>
                     <div className="short-dropdown">
                         <DropdownList items={items} selectedValue={3} />
                     </div>
@@ -82,7 +82,7 @@ class OfferRequestList extends React.Component {
                                                 <div className="row">
                                                     <div className="col-md-12">
                                                         <div>
-                                                            <h5>Offerte Aanvraag</h5>
+                                                            <h5>{trans.offerte_aanvraag_label}</h5>
                                                             <p>{item.offer_request.aanhef}</p>
                                                         </div>                                                                
                                                     </div>
@@ -90,49 +90,49 @@ class OfferRequestList extends React.Component {
                                                 <div className="row">
                                                     <div className="col-md-3 col-sm-12">
                                                         <div>
-                                                            <h5>Naam</h5>
+                                                            <h5>{trans.offerte_naam_label}</h5>
                                                             <p>{item.offer_request.name}</p>
                                                         </div>                                                                
                                                     </div>
                                                     <div className="col-md-3 col-sm-12">
                                                         <div>
-                                                            <h5>Datum aanvraag</h5>
+                                                            <h5>{trans.offerte_datum_label}</h5>
                                                             <p>{item.formatted_updated_at}</p>
                                                         </div>                                                                
                                                     </div>
                                                     <div className="col-md-3 col-sm-12">
                                                         <div>
-                                                            <h5>Bedrijfsnaam</h5>
+                                                            <h5>{trans.offerte_bedrijfsnaam}</h5>
                                                         </div>                                                                
                                                     </div>
                                                     <div className="col-md-3 col-sm-12">
                                                         <div>
-                                                            <h5>Adres bedrif</h5>
+                                                            <h5>{trans.offerte_adres_bedrif_label}</h5>
                                                         </div>                                                                                                                            
                                                     </div>
                                                 </div>
                                                 <div className="row">    
                                                     <div className="col-md-3 col-sm-12">
                                                         <div>
-                                                            <h5>Evenementdatum</h5>
+                                                            <h5>{trans.offerte_evenementdatum_label}</h5>
                                                             <p>{item.offer_request.name}</p>
                                                         </div>                                                                
                                                     </div>
                                                     <div className="col-md-3 col-sm-12">
                                                         <div>
-                                                            <h5>Aantal personen</h5>
+                                                            <h5>{trans.offerte_aantal_personen_label}</h5>
                                                             <p>{item.offer_request.no_of_person}</p>
                                                         </div>                                                                
                                                     </div>
                                                     <div className="col-md-3 col-sm-12">
                                                         <div>
-                                                            <h5>E-mailadres</h5>
+                                                            <h5>{trans.offerte_emailadres_label}</h5>
                                                             <p>{item.offer_request.email}</p>
                                                         </div>                                                                
                                                     </div>
                                                     <div className="col-md-3 col-sm-12">
                                                         <div>
-                                                            <h5>Telefoonnummer</h5>
+                                                            <h5>{trans.offerte_telefoonnummer}</h5>
                                                             <p>{item.offer_request.phone}</p>
                                                         </div>                                                                                                                            
                                                     </div>
@@ -140,7 +140,7 @@ class OfferRequestList extends React.Component {
                                                 <div className="row">    
                                                     <div className="col-md-12">
                                                         <div>
-                                                            <h5>Locatie specifieke opmerking</h5>
+                                                            <h5>{trans.offerte_locatie_label}</h5>
                                                             <p>{item.offer_request.aanhef}</p>
                                                         </div>
                                                     </div>
@@ -148,7 +148,7 @@ class OfferRequestList extends React.Component {
                                                 <div className="row">    
                                                     <div className="col-md-12">
                                                         <div>
-                                                            <h5>Algemene opmerking</h5>
+                                                            <h5>{trans.offerte_algemene}</h5>
                                                             <p>{item.offer_request.description}</p>
                                                         </div>
                                                     </div>

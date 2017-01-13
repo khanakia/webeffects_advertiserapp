@@ -141,18 +141,18 @@ class PageProject extends Component {
 
     handleCancel() {
         jQuery.confirm({
-            title: 'Verwijderen',
-            content: "U heeft uw bewerkingen niet opgeslagen, weet u zeker dat u de pagina wilt verlaten?",
+            title: trans.pageProject_confirm_title,
+            content: trans.pageProject_confirm_content,
             closeIcon: true,
             buttons: {
                 cancelAction: {
-                    text: 'Annuleren',
+                    text: trans.pageProject_confirm_cancel,
                     action: function () {
                         jQuery(".jconfirm").hide()
                     }
                 },
                 deleteAction: {
-                    text: 'Verlaten en niet opslaan',
+                    text: trans.pageProject_confirm_delete,
                     action: function () {
                         window.location.reload()
                         jQuery(".jconfirm").hide()
@@ -205,44 +205,44 @@ class PageProject extends Component {
         return (
             <div>
                 <div className="form-group">
-                    <label>Naam locatie</label>
+                    <label>{trans.pageProject_naam_locatie_label}</label>
                     <input type="text" className="form-control" name="project_title" defaultValue={this.props.project.project_title} />
                 </div>
                 <div className="form-group">
-                    <label>Algemene beschrijving</label>
+                    <label>{trans.pageProject_algemene_label}</label>
                     <textarea className="editor" name="description" defaultValue={this.props.project.description}></textarea>
                 </div>
                 <div className="form-group">
-                    <label>Representatieve buitenafbeelding</label>
+                    <label>{trans.pageProject_representatieve_label}</label>
                     <FileInput name="foto" onAttachmentDeleted={this.onAttachmentDeleted} selectedItems={images} onTitleUpdated={this.onAttachmentTitleUpdated} />
                 </div>
 
                 <div className="form-group">
-                    <label>3 video links</label>
+                    <label>{trans.pageProject_video_link_label}</label>
                     <VideoInput items={this.props.project.project_videos} onVideoDeleted={this.onVideoDeleted} />
                 </div>
                 <div className="form-group">
-                    <label>360 graden tour iframe</label>
+                    <label>{trans.pageProject_garden_tour_label}</label>
                     <IframeInput items={this.props.project.project_iframes} onIframeDeleted={this.onIframeDeleted} />
                 </div>
 
                 <div className="form-group">
-                    <label>Actie toevoegen</label>
+                    <label>{trans.pageProject_actie_label}</label>
                     <RadioList name="discount_filter_value_id" items={toevoegenList} selectedValue={this.props.project.discount_filter_value_id} />
                     
                 </div>
 
                 <div className="form-group">
-                    <label className="question-mark-icon">Aanbieding <br />(korte versie - max 40 karakters)
-                        <a href="#" className="popoverData" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content="De lange versie van de actie zal naast het formulier dat de gebruiker in moet vullen komen te staan."></a>
+                    <label className="question-mark-icon">{trans.pageProject_Aanbieding_label} <br /> {trans.pageProject_aanbieding_korte_label}
+                        <a href="#" className="popoverData" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_aanbieding_korte_data_content}></a>
                     </label>
                     <input type="text" className="form-control" name="discount_short_title" defaultValue={this.props.project.discount_short_title} />
                     
                 </div>
 
                 <div className="form-group">
-                    <label className="question-mark-icon">Aanbieding <br />(lange versie - max 80 karakters)
-                        <a href="#" className="popoverData" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content="De lange versie van de actie zal naast het formulier dat de gebruiker in moet vullen komen te staan."></a>
+                    <label className="question-mark-icon">{trans.pageProject_Aanbieding_label} <br /> {trans.pageProject_aanbieding_lange_label}
+                        <a href="#" className="popoverData" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_aanbieding_lange_data_content}></a>
                     </label>
                     <input type="text" className="form-control" name="discount_long_title" defaultValue={this.props.project.discount_long_title} />
                 </div>
@@ -254,13 +254,13 @@ class PageProject extends Component {
         // console.log("this.props.project.eigen_catering", this.props.project.eigen_catering)
         const radioEigenCaterign = [
             {
-                "title": "Geen eigen catering mogelijk",
+                "title": trans.pageProject_radio_geen_eigen,
                 "value": 0,
                 "icon_class": "iconc iconc-no-food"
             },
 
             {
-                "title": "Eigen catering mogelijk",
+                "title": trans.pageProject_radio_eigen,
                 "value": 1,
                 "icon_class": "iconc iconc-food"
             }
@@ -268,12 +268,12 @@ class PageProject extends Component {
         return (
             <div>
                 <div className="form-group aantal-personen">
-                    <label>Aantal personen</label>
+                    <label>{trans.pageProject_details_aantal_personen}</label>
                     <div className="row">
                         <div className="col-lg-4">
                             <div className="input-group">
                                 <span className="input-group-addon">
-                                    <i className="iconc-person"></i> Min.
+                                    <i className="iconc-person"></i> {trans.pageProject_details_min}
                                 </span>
                                 <input type="text" className="form-control" name="person_min" defaultValue={this.props.project.person_min} />
                             </div>
@@ -281,7 +281,7 @@ class PageProject extends Component {
                         <div className="col-lg-4">
                             <div className="input-group">
                                 <span className="input-group-addon">
-                                    <i className="iconc-person"></i> Max.
+                                    <i className="iconc-person"></i> {trans.pageProject_details_max}
                                 </span>
                                 <input type="text" className="form-control" name="person_max" defaultValue={this.props.project.person_max} />
                             </div>
@@ -290,7 +290,7 @@ class PageProject extends Component {
                 </div>
 
                 <div className="form-group">
-                    <label>Catering</label>
+                    <label>{trans.pageProject_details_catering}</label>
                     <RadioList name="eigen_catering" items={radioEigenCaterign} selectedValue={this.props.project.eigen_catering} />
 
                 </div>
@@ -298,19 +298,19 @@ class PageProject extends Component {
                 <div className="row">
                     <div className="col-lg-4">
                         <div className="form-group">
-                            <label>Gebouwen</label>
+                            <label>{trans.pageProject_details_gebouwen}</label>
                             <CheckboxList name='gebouws[]' items={this.props.project_formdata.gebouwens} selectedItems={this.props.project.gebouws_mapping_ids} />
                         </div>
                     </div>
                     <div className="col-lg-4">
                         <div className="form-group">
-                            <label>Ligging</label>
+                            <label>{trans.pageProject_details_ligging}</label>
                             <CheckboxList name='liggings[]' items={this.props.project_formdata.liggings} selectedItems={this.props.project.liggings_mapping_ids} />
                         </div>
                     </div>
                     <div className="col-lg-4">
                         <div className="form-group">
-                            <label>Eigenschappen</label>
+                            <label>{trans.pageProject_details_eigenschappen}</label>
                             <CheckboxList name='eigenschappens[]' items={this.props.project_formdata.eigenschappens} selectedItems={this.props.project.eigenschappens_mapping_ids} />
                         </div>
                     </div>
@@ -331,7 +331,7 @@ class PageProject extends Component {
         return (
             <div>
                 <div className="form-group">
-                    <label>Aantal personen</label>
+                    <label>{trans.pageProject_details_aantal_personen}</label>
                     <div className="row">
                         <div className="col-md-4">
                             <ContactPersonDropdown
@@ -365,7 +365,7 @@ class PageProject extends Component {
                 </div>
 
                 <div className="form-group">
-                    <label>Website</label>
+                    <label>{trans.pageProject_website_label}</label>
                     <input type="text" className="form-control" name="website" defaultValue={this.props.project.website} />
 
                 </div>
@@ -377,27 +377,27 @@ class PageProject extends Component {
         return (
             <div>
                 <div className="block-info">
-                    <label>Bewerkingen</label>
-                    <div className="last_updated mt5">Zojuist om 11:38</div>
+                    <label>{trans.pageProject_rightBlock_bewerkingen}</label>
+                    <div className="last_updated mt5">{trans.pageProject_rightBlock_updated}</div>
 
                     <div className="d-table w100 mt20">
                         <div className="d-table-cell v-align-middle">
-                            <button ref="submit" type="button" className="btn btn-green btn--round" onClick={()=>{this.handleSumbit()}}>Opslaan</button>
+                            <button ref="submit" type="button" className="btn btn-green btn--round" onClick={()=>{this.handleSumbit()}}>{trans.pageProject_rightBlock_opslaan}</button>
                         </div>
                         <div className="d-table-cell v-align-middle">
-                            <button ref="annuleren" type="button" className="btn btn-plain" onClick={()=>{this.handleCancel()}}>Annuleren</button>
+                            <button ref="annuleren" type="button" className="btn btn-plain" onClick={()=>{this.handleCancel()}}>{trans.pageProject_rightBlock_annuleren}</button>
                         </div>
                     </div>
                 </div>
                 <div className="block-info">
-                    <label>Locatie bekijken</label>
-                    <div><a className="live" href="#">Live</a> <i className="iconc-link pull-right px5 i-rotate25"></i></div>
-                    <div><a className="concept" href="#">Concept</a> <i className="iconc-link pull-right px5 i-rotate25"></i></div>
+                    <label>{trans.pageProject_rightBlock_locatie}</label>
+                    <div><a className="live" href="#">{trans.pageProject_rightBlock_link_live}</a> <i className="iconc-link pull-right px5 i-rotate25"></i></div>
+                    <div><a className="concept" href="#">{trans.pageProject_rightBlock_link_concept}</a> <i className="iconc-link pull-right px5 i-rotate25"></i></div>
                 </div>
                 <div className="block-info">
-                    <label>Status</label>
+                    <label>{trans.pageProject_rightBlock_status}</label>
                     <div className="dropdown dropdown--status">
-                        <i className="iconc-published before_text"></i>Gepubliceerd
+                        <i className="iconc-published before_text"></i>{trans.pageProject_rightBlock_gepubliceerd}
                         <a className="pull-right dropdown-toggle px5 i-rotate25" id="gepubliceerd" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i className="iconc-edit"></i></a>
 
                         <ul className="dropdown-menu dropdown-menu--status" aria-labelledby="gepubliceerd">
@@ -405,7 +405,7 @@ class PageProject extends Component {
                                 <a href="">
                                     <label>
                                         <input type="radio" name="aanhef" value="dhr" />
-                                        <span>Gepubliceerd <i className="iconc-published"></i></span>
+                                        <span>{trans.pageProject_rightBlock_gepubliceerd} <i className="iconc-published"></i></span>
                                     </label>
                                 </a>
                             </li>
@@ -413,7 +413,7 @@ class PageProject extends Component {
                                 <a href="">
                                     <label>
                                         <input type="radio" name="aanhef" value="concept" />
-                                        <span>Concept <i className="iconc-concept"></i></span>
+                                        <span>{trans.pageProject_rightBlock_concept} <i className="iconc-concept"></i></span>
                                     </label>
                                 </a>
                             </li>
@@ -422,11 +422,11 @@ class PageProject extends Component {
                     </div> 
                 </div>
                 <div className="block-info">
-                    <label>Datum van publicatie</label>
+                    <label>{trans.pageProject_rightBlock_datum}</label>
                     <div className="last_updated">20 oktober 2016 om 17:15</div>
                 </div>
                 <div className="block-info">
-                    <a href="#"><i className="iconc-trash before_text"></i>Zet deze locatie offline</a>
+                    <a href="#"><i className="iconc-trash before_text"></i>{trans.pageProject_rightBlock_zet_deze}</a>
                 </div>
             </div>
         )
@@ -444,11 +444,11 @@ class PageProject extends Component {
         return (
             <div>
                 <div className="form-group">
-                    <label>Algemene beschrijving</label>
+                    <label>{trans.pageProject_algemene_label}</label>
                     <textarea className="editor" name={`cat[${catitem.value}][description]`} defaultValue={fvm.description}></textarea>
                 </div>
                 <div className="form-group">
-                    <label>Representatieve buitenafbeelding</label>
+                    <label>{trans.pageProject_representatieve_label}</label>
                     <FileInput name="foto1" filter_value_id={catitem.value} onAttachmentDeleted={this.onAttachmentDeleted} selectedItems={images} />
                 </div>
             </div>
@@ -472,19 +472,19 @@ class PageProject extends Component {
                             <div className="page-panel__inner__left">
                                 <ul className="nav nav-tabs nav-tabs--vertical" role="tablist">
                                     <li role="presentation" className="active">
-                                        <a href="#general" aria-controls="general" role="tab" data-toggle="tab">Algemene beschrijving <i className="iconc-chevron"></i></a>
+                                        <a href="#general" aria-controls="general" role="tab" data-toggle="tab">{trans.pageProject_algemene_label} <i className="iconc-chevron"></i></a>
                                     </li>
                                     <li role="presentation">
-                                        <a href="#details" aria-controls="details" role="tab" data-toggle="tab">Details <i className="iconc-chevron"></i></a>
+                                        <a href="#details" aria-controls="details" role="tab" data-toggle="tab">{trans.pageProject_tab_details} <i className="iconc-chevron"></i></a>
                                     </li>
                                     <li role="presentation">
-                                        <a href="#zalen" aria-controls="zalen" role="tab" data-toggle="tab">Zalen <i className="iconc-chevron"></i></a>
+                                        <a href="#zalen" aria-controls="zalen" role="tab" data-toggle="tab">{trans.pageProject_tab_zalen} <i className="iconc-chevron"></i></a>
                                     </li>
                                     <li role="presentation">
-                                        <a href="#contact" aria-controls="contact" role="tab" data-toggle="tab">Contact <i className="iconc-chevron"></i></a>
+                                        <a href="#contact" aria-controls="contact" role="tab" data-toggle="tab">{trans.pageProject_tab_contact} <i className="iconc-chevron"></i></a>
                                     </li>
                                     <li role="presentation">
-                                        <a href="#locatie" aria-controls="locatie" role="tab" data-toggle="tab">Locatie & parkeren <i className="iconc-chevron"></i></a>
+                                        <a href="#locatie" aria-controls="locatie" role="tab" data-toggle="tab">{trans.pageProject_tab_locatie} <i className="iconc-chevron"></i></a>
                                     </li>
 
                                     {
@@ -499,10 +499,10 @@ class PageProject extends Component {
                                     }
 
                                     <li role="presentation">
-                                        <a href="#aanvragen" aria-controls="aanvragen" role="tab" data-toggle="tab">Aanvragen <i className="iconc-chevron"></i></a>
+                                        <a href="#aanvragen" aria-controls="aanvragen" role="tab" data-toggle="tab">{trans.pageProject_tab_aanvragen} <i className="iconc-chevron"></i></a>
                                     </li>
                                     <li role="presentation">
-                                        <a href="#statistieken" aria-controls="statistieken" role="tab" data-toggle="tab">Statistieken <i className="iconc-chevron"></i></a>
+                                        <a href="#statistieken" aria-controls="statistieken" role="tab" data-toggle="tab">{trans.pageProject_tab_statistieken} <i className="iconc-chevron"></i></a>
                                     </li>
                                 </ul>
                             </div>
@@ -511,35 +511,35 @@ class PageProject extends Component {
                                     <input type="text" name="id" defaultValue={this.props.project.id} />
                                     <div className="tab-content">
                                         <h3 className="d_active tab_drawer_heading">
-                                            <a href="#general" aria-controls="general" role="tab" data-toggle="tab">Algemene beschrijving <i className="iconc-chevron-down"></i></a>
+                                            <a href="#general" aria-controls="general" role="tab" data-toggle="tab">{trans.pageProject_algemene_label} <i className="iconc-chevron-down"></i></a>
                                         </h3>
                                         <div role="tabpanel" className="tab-pane " id="general">
                                            {this._render_tabGeneral()}
                                         </div>
 
                                         <h3 className="tab_drawer_heading">
-                                            <a href="#details" aria-controls="details" role="tab" data-toggle="tab">`Details <i className="iconc-chevron-down"></i></a>
+                                            <a href="#details" aria-controls="details" role="tab" data-toggle="tab">{trans.pageProject_tab_details} <i className="iconc-chevron-down"></i></a>
                                         </h3>
                                         <div role="tabpanel" className="tab-pane " id="details">
                                             {this._render_tabDetails()}
                                         </div>
 
                                         <h3 className="tab_drawer_heading">
-                                            <a href="#zalen" aria-controls="zalen" role="tab" data-toggle="tab">Zalen <i className="iconc-chevron-down"></i></a>
+                                            <a href="#zalen" aria-controls="zalen" role="tab" data-toggle="tab">{trans.pageProject_tab_zalen} <i className="iconc-chevron-down"></i></a>
                                         </h3>
                                         <div role="tabpanel" className="tab-pane " id="zalen">
                                             <Zalen items={project.project_rooms} onZalenRemoved={this.onZalenRemoved} />
                                         </div>
 
                                         <h3 className="tab_drawer_heading">
-                                            <a href="#contact" aria-controls="contact" role="tab" data-toggle="tab">Contact <i className="iconc-chevron-down"></i></a>
+                                            <a href="#contact" aria-controls="contact" role="tab" data-toggle="tab">{trans.pageProject_tab_contact} <i className="iconc-chevron-down"></i></a>
                                         </h3>
                                         <div role="tabpanel" className="tab-pane " id="contact">
                                             {this._render_tabContact()}
                                         </div>
 
                                         <h3 className="tab_drawer_heading">
-                                            <a href="#locatie" aria-controls="locatie" role="tab" data-toggle="tab">Locatie & parkeren <i className="iconc-chevron-down"></i></a>
+                                            <a href="#locatie" aria-controls="locatie" role="tab" data-toggle="tab">{trans.pageProject_tab_locatie} <i className="iconc-chevron-down"></i></a>
                                         </h3>
                                         <div role="tabpanel" className="tab-pane active" id="locatie">
                                             <LocatieInput 
@@ -568,14 +568,14 @@ class PageProject extends Component {
                                         }
 
                                         <h3 className="tab_drawer_heading">
-                                            <a href="#aanvragen" aria-controls="aanvragen" role="tab" data-toggle="tab">Aanvragen <i className="iconc-chevron-down"></i></a>
+                                            <a href="#aanvragen" aria-controls="aanvragen" role="tab" data-toggle="tab">{trans.pageProject_tab_aanvragen} <i className="iconc-chevron-down"></i></a>
                                         </h3>
                                         <div role="tabpanel" className="tab-pane " id="aanvragen">
                                             <OfferRequestList items={this.props.project_offer_request_details_list} />
                                         </div>
 
                                         <h3 className="tab_drawer_heading">
-                                            <a href="#statistieken" aria-controls="statistieken" role="tab" data-toggle="tab">Statistieken <i className="iconc-chevron-down"></i></a>
+                                            <a href="#statistieken" aria-controls="statistieken" role="tab" data-toggle="tab">{trans.pageProject_tab_statistieken} <i className="iconc-chevron-down"></i></a>
                                         </h3>
                                         <div role="tabpanel" className="tab-pane " id="statistieken">
                                             <SnoobiPage />
@@ -583,8 +583,8 @@ class PageProject extends Component {
 
                                     </div>
                                     <div className="visible-xs twoBtnStyle">
-                                        <a href="#" className="">Meer</a>
-                                        <a href="#" className="">Opslaan</a>
+                                        <a href="#" className="">{trans.pageProject_2btn_meer}</a>
+                                        <a href="#" className="">{trans.pageProject_2btn_opslaan}</a>
                                     </div>
 
                                 </form>  
@@ -598,27 +598,27 @@ class PageProject extends Component {
 
                 <div className=" meerBlockMobile">
                     <div className="block-info">
-                        <label>Bewerkingen</label>
-                        <div className="last_updated mt5">Zojuist om 11:38</div>
+                        <label>{trans.pageProject_rightBlock_bewerkingen}</label>
+                        <div className="last_updated mt5">{trans.pageProject_rightBlock_updated}</div>
 
                         <div className="d-table w100 mt20 mx-w-300">
                             <div className="d-table-cell v-align-middle">
-                                <button ref="submit" type="button" className="btn btn-green btn--round" onClick={()=>{this.handleSumbit()}}>Opslaan</button>
+                                <button ref="submit" type="button" className="btn btn-green btn--round" onClick={()=>{this.handleSumbit()}}>{trans.pageProject_rightBlock_opslaan}</button>
                             </div>
                             <div className="d-table-cell v-align-middle">
-                                <button ref="annuleren" type="button" className="btn btn-plain">Annuleren</button>
+                                <button ref="annuleren" type="button" className="btn btn-plain">{trans.pageProject_rightBlock_annuleren}</button>
                             </div>
                         </div>
                     </div>
                     <div className="block-info">
-                        <label>Locatie bekijken</label>
-                        <div><a className="live" href="#">Live</a> <i className="iconc-link pull-right px5 i-rotate25"></i></div>
-                        <div><a className="concept" href="#">Concept</a> <i className="iconc-link pull-right px5 i-rotate25"></i></div>
+                        <label>{trans.pageProject_rightBlock_locatie}</label>
+                        <div><a className="live" href="#">{trans.pageProject_rightBlock_link_live}</a> <i className="iconc-link pull-right px5 i-rotate25"></i></div>
+                        <div><a className="concept" href="#">{trans.pageProject_rightBlock_link_concept}</a> <i className="iconc-link pull-right px5 i-rotate25"></i></div>
                     </div>
                     <div className="block-info">
-                        <label>Status</label>
+                        <label>{trans.pageProject_rightBlock_status}</label>
                         <div className="dropdown dropdown--status">
-                            <i className="iconc-published before_text"></i>Gepubliceerd
+                            <i className="iconc-published before_text"></i>{trans.pageProject_rightBlock_gepubliceerd}
                             <a className="pull-right dropdown-toggle px5 i-rotate25" id="gepubliceerd" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i className="iconc-edit"></i></a>
 
                             <ul className="dropdown-menu dropdown-menu--status" aria-labelledby="gepubliceerd">
@@ -626,7 +626,7 @@ class PageProject extends Component {
                                     <a href="">
                                         <label>
                                             <input type="radio" name="aanhef" value="dhr" />
-                                            <span>Gepubliceerd <i className="iconc-published"></i></span>
+                                            <span>{trans.pageProject_rightBlock_gepubliceerd} <i className="iconc-published"></i></span>
                                         </label>
                                     </a>
                                 </li>
@@ -634,7 +634,7 @@ class PageProject extends Component {
                                     <a href="">
                                         <label>
                                             <input type="radio" name="aanhef" value="concept" />
-                                            <span>Concept <i className="iconc-concept"></i></span>
+                                            <span>{trans.pageProject_rightBlock_concept} <i className="iconc-concept"></i></span>
                                         </label>
                                     </a>
                                 </li>
@@ -643,14 +643,14 @@ class PageProject extends Component {
                         </div> 
                     </div>
                     <div className="block-info">
-                        <label>Datum van publicatie</label>
+                        <label>{trans.pageProject_rightBlock_datum}</label>
                         <div className="last_updated">20 oktober 2016 om 17:15</div>
                     </div>
                     <div className="block-info">
-                        <a href="#"><i className="iconc-trash before_text"></i>Zet deze locatie offline</a>
+                        <a href="#"><i className="iconc-trash before_text"></i>{trans.pageProject_rightBlock_zet_deze}</a>
                     </div>
                     <div className="block-info text-center">
-                        <a href="#" className="a-hover-color">Terug</a>
+                        <a href="#" className="a-hover-color">{trans.pageProject_rightBlock_terug}</a>
                     </div>
                 </div>
             </div>

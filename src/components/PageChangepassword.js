@@ -42,25 +42,25 @@ class PageChangepassword extends Component {
                     <div className="row">    
                         <div className="row">
                             <form className="form-horizontal formstyle1 ChangepwdForm" ref='form' onSubmit={this.handleSubmit}>
-                                <h3 className="form_title text-center">Change Password</h3>
+                                <h3 className="form_title text-center">{trans.changePwd_title}</h3>
                                 <div className="row">
                                     <div className="col-md-12">
                                         <div className="form-group">
-                                            <label className="col-sm-12">Old Password</label>
+                                            <label className="col-sm-12">{trans.changePwd_old}</label>
                                             <div className="col-sm-12">
                                                 <input type="password" className="form-control required" name="oldpassword" id="oldpassword"  placeholder="••••••••••" />
                                             </div>
                                         </div>
 
                                         <div className="form-group">
-                                            <label className="col-sm-12">New Password</label>
+                                            <label className="col-sm-12">{trans.changePwd_new}</label>
                                             <div className="col-sm-12">
                                                 <input type="password" className="form-control required" name="password" id="password"  placeholder="••••••••••" />
                                                 <div className="passworderror errordiv"></div>
                                             </div>
                                         </div>
                                         <div className="form-group">
-                                            <label className="col-sm-12"><div className="row"><div className="col-sm-12">Confirm New Password</div></div></label>
+                                            <label className="col-sm-12"><div className="row"><div className="col-sm-12">{trans.changePwd_new_confirm}</div></div></label>
                                             <div className="col-sm-12">
                                                 <input type="password" className="form-control required updatePassword" name="password_confirmation" id="password_confirmation" placeholder="••••••••••"/>
                                                 <div className="passwordconfirmerror errordiv"></div>
@@ -69,7 +69,7 @@ class PageChangepassword extends Component {
                                     </div>
                                 </div>
                                 <div className="text-center">
-                                    <button type="submit" className="btn btn-green btn--round">Update Password</button>
+                                    <button type="submit" className="btn btn-green btn--round">{trans.changePwd_submit_btn}</button>
                                 </div>
                             </form>
                         </div>    

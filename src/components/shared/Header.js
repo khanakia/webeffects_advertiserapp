@@ -47,11 +47,11 @@ class Header extends Component {
                         </button>
                         <ul className="dropdown-menu dropdown-menu-right dropdown-menu--user" aria-labelledby="dropdownMenu1">
                             <li>
-                                <Link to={'account'}>Account instellingen</Link>
+                                <Link to={'account'}>{trans.headerSection_account_link}</Link>
                             </li>
                             <li role="separator" className="divider"></li>
                             <li>
-                                <a href="#" onClick={(e)=>{this.logout(e)}}>Uitloggen</a>
+                                <a href="#" onClick={(e)=>{this.logout(e)}}>{trans.headerSection_uitloggen_link}</a>
                             </li>
                         </ul>
                     </div>
@@ -68,7 +68,7 @@ class Header extends Component {
                 <div className="mobile-overlay-menu">
                     <ul>
                         <li>
-                            <a href="#" className="has-childerns">Locaties <i className="slideUpDown iconc-chevron-down"></i></a>
+                            <a href="#" className="has-childerns">{trans.headerSection_locaties_link} <i className="slideUpDown iconc-chevron-down"></i></a>
                             <ul className="submenu">
                                 <ProjectsLinkList project_list={this.props.project_list} />
                             </ul>
@@ -78,7 +78,7 @@ class Header extends Component {
                         </li>
                         <li role="separator" className="divider"></li>
                         <li>
-                            <a href="#" onClick={(e)=>{this.logout(e)}}>Uitloggen</a>
+                            <a href="#" onClick={(e)=>{this.logout(e)}}>{trans.headerSection_uitloggen_link}</a>
                         </li>
                     </ul>
                 </div>

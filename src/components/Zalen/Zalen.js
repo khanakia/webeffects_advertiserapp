@@ -63,18 +63,18 @@ class Zalen extends React.Component {
     handleRemoveZalen = (id) => {
 
         jQuery.confirm({
-            title: 'Verwijderen',
-            content: "Weet u zeker dat u de zaal 'De Duif' wilt verwijderen?",
+            title: trans.zalen_confirm_title,
+            content: trans.zalen_confirm_subtitle,
             closeIcon: true,
             buttons: {
                 cancelAction: {
-                    text: 'Annuleren',
+                    text: trans.zalen_confirm_cancel_text,
                     action: function () {
                         jQuery(".jconfirm").hide()
                     }
                 },
                 deleteAction: {
-                    text: 'Verwijder',
+                    text: trans.zalen_confirm_delete_text,
                     action: function () {
                         jQuery(".jconfirm").hide()
                         ProjectRoomHelper.delete(id).then((response) => {
@@ -128,16 +128,16 @@ class Zalen extends React.Component {
                 <thead>
                     <tr>
                     <th><i className="fa fa-archive"></i></th>
-                    <th>Titel</th>
-                    <th>Daglicht</th>
-                    <th>U-vorm</th>
-                    <th>Carre</th>
-                    <th>School</th>
-                    <th>Theater</th>
-                    <th>Cabaret</th>
-                    <th>Receptie</th>
-                    <th>Diner</th>
-                    <th>Feest</th>
+                    <th>{trans.zalen_tab_title}</th>
+                    <th>{trans.zalen_tab_daglicht}</th>
+                    <th>{trans.zalen_tab_u_vorm}</th>
+                    <th>{trans.zalen_tab_carre}</th>
+                    <th>{trans.zalen_tab_school}</th>
+                    <th>{trans.zalen_tab_theater}</th>
+                    <th>{trans.zalen_tab_cabaret}</th>
+                    <th>{trans.zalen_tab_receptie}</th>
+                    <th>{trans.zalen_tab_diner}</th>
+                    <th>{trans.zalen_tab_feest}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -196,7 +196,7 @@ class Zalen extends React.Component {
                     <tr>
                         <td><button type="button" className="btn btn-plain btn--nopad" onClick={()=>this.handleAddClick()}><i className="fa fa-plus"></i></button></td>
                         <td colSpan="10">
-                            <label className="placeholder">Zall toevoegen</label>
+                            <label className="placeholder">{trans.zalen_zaal}</label>
                         </td>
                     </tr>
                 </tfoot>
@@ -217,52 +217,52 @@ class Zalen extends React.Component {
                                     </button>
                                     <i className="iconc-room hover-hide"></i>
                                 </span>
-                                <a className="accordion-heading" href={`#z-${item.id}`}>Vondelkerk</a>
+                                <a className="accordion-heading" href={`#z-${item.id}`}>{trans.zalen_vondelkerk}</a>
                             </div>
                             <div className="content" id={`z-${item.id}`}>
                                 <table className="table table-bordered table--vertical" >
                                     <tbody>
                                         <tr>
-                                            <th>Title</th>
+                                            <th>{trans.zalen_tab_title}</th>
                                             <td>
                                                 <input type="hidden" name={`zalen[${index}][id]`} defaultValue={item.id} />
                                                 <input type="text" name={`zalen[${index}][room_name]`} defaultValue={item.room_name} />
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>Daglicht</th>
+                                            <th>{trans.zalen_tab_daglicht}</th>
                                             <td><input type="text" name={`zalen[${index}][daglicht]`} defaultValue={item.daglicht} /></td>
                                         </tr>
                                         <tr>
-                                            <th>U-vorm</th>
+                                            <th>{trans.zalen_tab_u_vorm}</th>
                                             <td><input type="text" name={`zalen[${index}][u_vorm]`} defaultValue={item.u_vorm} /></td>
                                         </tr>
                                         <tr>
-                                            <th>Carre</th>
+                                            <th>{trans.zalen_tab_carre}</th>
                                             <td><input type="text" name={`zalen[${index}][carre]`} defaultValue={item.carre} /></td>
                                         </tr>
                                         <tr>
-                                            <th>School</th>
+                                            <th>{trans.zalen_tab_school}</th>
                                             <td><input type="text" name={`zalen[${index}][school]`} defaultValue={item.school} /></td>
                                         </tr>
                                         <tr>
-                                            <th>Theater</th>
+                                            <th>{trans.zalen_tab_theater}</th>
                                             <td><input type="text" name={`zalen[${index}][theater]`} defaultValue={item.theater} /></td>
                                         </tr>
                                         <tr>
-                                            <th>Cabaret</th>
+                                            <th>{trans.zalen_tab_cabaret}</th>
                                             <td><input type="text" name={`zalen[${index}][cabaret]`} defaultValue={item.cabaret} /></td>
                                         </tr>
                                         <tr>
-                                            <th>Receptie</th>
+                                            <th>{trans.zalen_tab_receptie}</th>
                                             <td><input type="text" name={`zalen[${index}][receptie]`} defaultValue={item.receptie} /></td>
                                         </tr>
                                         <tr>
-                                            <th>Diner</th>
+                                            <th>{trans.zalen_tab_diner}</th>
                                             <td><input type="text" name={`zalen[${index}][diner]`} defaultValue={item.diner} /></td>
                                         </tr>
                                         <tr>
-                                            <th>Feest</th>
+                                            <th>{trans.zalen_tab_feest}</th>
                                             <td><input type="text" name={`zalen[${index}][feest]`} defaultValue={item.feest} /></td>
                                         </tr>
                                     </tbody>
@@ -283,51 +283,51 @@ class Zalen extends React.Component {
                                     </button>
                                     <i className="iconc-room hover-hide"></i>
                                 </span>
-                                <a className="accordion-heading" href={`#zn-${item}`}>Vondelkerk</a>
+                                <a className="accordion-heading" href={`#zn-${item}`}>{trans.zalen_vondelkerk}</a>
                             </div>
                             <div className="content" id={`zn-${item}`}>
                                 <table className="table table-bordered table--vertical" >
                                     <tbody>
                                         <tr>
-                                            <th>Title</th>
+                                            <th>{trans.zalen_tab_title}</th>
                                             <td>
                                                 <input type="text" name={`zalen_new[${index}][room_name]`} />
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>Daglicht</th>
+                                            <th>{trans.zalen_tab_daglicht}</th>
                                             <td><input type="text" name={`zalen_new[${index}][daglicht]`} /></td>
                                         </tr>
                                         <tr>
-                                            <th>U-vorm</th>
+                                            <th>{trans.zalen_tab_u_vorm}</th>
                                             <td><input type="text" name={`zalen_new[${index}][u_vorm]`} /></td>
                                         </tr>
                                         <tr>
-                                            <th>Carre</th>
+                                            <th>{trans.zalen_tab_carre}</th>
                                             <td><input type="text" name={`zalen_new[${index}][carre]`} /></td>
                                         </tr>
                                         <tr>
-                                            <th>School</th>
+                                            <th>{trans.zalen_tab_school}</th>
                                             <td><input type="text" name={`zalen_new[${index}][school]`} /></td>
                                         </tr>
                                         <tr>
-                                            <th>Theater</th>
+                                            <th>{trans.zalen_tab_theater}</th>
                                             <td><input type="text" name={`zalen_new[${index}][theater]`} /></td>
                                         </tr>
                                         <tr>
-                                            <th>Cabaret</th>
+                                            <th>{trans.zalen_tab_cabaret}</th>
                                             <td><input type="text" name={`zalen_new[${index}][cabaret]`} /></td>
                                         </tr>
                                         <tr>
-                                            <th>Receptie</th>
+                                            <th>{trans.zalen_tab_receptie}</th>
                                             <td><input type="text" name={`zalen_new[${index}][receptie]`} /></td>
                                         </tr>
                                         <tr>
-                                            <th>Diner</th>
+                                            <th>{trans.zalen_tab_diner}</th>
                                             <td><input type="text" name={`zalen_new[${index}][diner]`} /></td>
                                         </tr>
                                         <tr>
-                                            <th>Feest</th>
+                                            <th>{trans.zalen_tab_feest}</th>
                                             <td><input type="text" name={`zalen_new[${index}][feest]`} /></td>
                                         </tr>
                                     </tbody>

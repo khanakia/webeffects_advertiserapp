@@ -8,8 +8,8 @@ class ContactForm extends Component {
     constructor(props) {
         super(props);
 
-        this.msg_btn_save_text = 'Create Contact'
-        this.msg_heading = 'Create Contact'
+        this.msg_btn_save_text = trans.contactForm_msg_btn_save_text
+        this.msg_heading = trans.contactForm_msg_heading
     }
 
     static defaultProps = {
@@ -29,8 +29,8 @@ class ContactForm extends Component {
 
     componentWillMount() {
         if(!this.props.is_new) {
-            this.msg_btn_save_text = "Update Contact"
-            this.msg_heading = 'Edit Contact'
+            this.msg_btn_save_text = trans.contactForm_update_msg_btn_save_text
+            this.msg_heading = trans.contactForm_update_msg_heading
         }
     }
 
@@ -73,15 +73,15 @@ class ContactForm extends Component {
                     <input type="hidden" className="form-control" ref="id" name="id" id="id" defaultValue={this.props.data.id} />
                     <div className="content-area mt10">
                         <div className="form-group">
-                            <label>Name</label>
+                            <label>{trans.contactForm_naam_label}</label>
                             <input type="text" className="form-control required" name="name" id="name" defaultValue={this.props.data.name} placeholder="" />
                         </div>
                         <div className="form-group">
-                            <label>Phone</label>
+                            <label>{trans.contactForm_phone_label}</label>
                             <input type="text" className="form-control required" name="phone" id="phone" defaultValue={this.props.data.phone} placeholder="" />
                         </div>
                         <div className="form-group">
-                            <label>Email</label>
+                            <label>{trans.contactForm_email_label}</label>
                             <input type="text" className="form-control required email" name="email" id="email" defaultValue={this.props.data.email} placeholder="" />
                         </div>
 

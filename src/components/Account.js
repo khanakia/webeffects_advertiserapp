@@ -91,18 +91,18 @@ class Account extends Component {
 
     handleCancel() {
         jQuery.confirm({
-            title: 'Pagina verlaten',
-            content: "U heeft uw bewerkingen niet opgeslagen, weet u zeker dat u de pagina wilt verlaten?",
+            title: trans.account_confirm_title,
+            content: trans.account_confirm_content,
             closeIcon: true,
             buttons: {
                 cancelAction: {
-                    text: 'Annuleren',
+                    text: trans.account_confirm_cancel,
                     action: function () {
                         jQuery(".jconfirm").hide()
                     }
                 },
                 deleteAction: {
-                    text: 'Verlaten en niet opslaan',
+                    text: trans.account_confirm_delete,
                     action: function () {
                         window.location.reload()
                         jQuery(".jconfirm").hide()
@@ -125,7 +125,7 @@ class Account extends Component {
                         <div className="row">
                             <div className="col-md-12">
                                 <div className="form-group">
-                                    <label className="col-sm-12">Uw oude wachtwoord</label>
+                                    <label className="col-sm-12">{trans.account_uw_oude_wachtwoord}</label>
                                     <div className="col-sm-12">
                                         <div className="input-group">
                                             <div className="input-group-addon"><i className="fa fa-key" aria-hidden="true"></i></div>
@@ -135,7 +135,7 @@ class Account extends Component {
                                 </div>
 
                                 <div className="form-group">
-                                    <label className="col-sm-12">Uw nieuwe wachtwoord</label>
+                                    <label className="col-sm-12">{trans.account_uw_nieuwe_wachtwoord}</label>
                                     <div className="col-sm-12">
                                         <div className="input-group">
                                             <div className="input-group-addon"><i className="fa fa-key" aria-hidden="true"></i></div>
@@ -144,7 +144,7 @@ class Account extends Component {
                                     </div>
                                 </div>
                                 <div className="form-group">
-                                    <label className="col-sm-12"><div className="row"><div className="col-sm-12">Noogmaals uw nieuwe wachtwoord</div></div></label>
+                                    <label className="col-sm-12"><div className="row"><div className="col-sm-12">{trans.account_noogmaals}</div></div></label>
                                     <div className="col-sm-12">
                                         <div className="input-group">
                                             <div className="input-group-addon"><i className="fa fa-key" aria-hidden="true"></i></div>
@@ -155,7 +155,7 @@ class Account extends Component {
                             </div>
                         </div>
                         <div className="text-right">
-                            <button type="submit" className="btn btn-green btn--round">Bevestig</button>
+                            <button type="submit" className="btn btn-green btn--round">{trans.account_bevestig_btn}</button>
                         </div>
                     </form>
                 </div>
@@ -168,7 +168,7 @@ class Account extends Component {
             <div>
                 <form ref="form_contactperson">
                     <div className="form-group">
-                        <label className="mb15">Bedrijfsnaam</label>
+                        <label className="mb15">{trans.account_bedrijfsnaam_label}</label>
                         <div className="row">
                             <div className="col-md-4">
                                 <div className="input-group">
@@ -182,14 +182,14 @@ class Account extends Component {
                     </div>
 
                     <div className="form-group">
-                        <label>Contactpersonen</label>
+                        <label>{trans.account_contactpersonen}</label>
                         
                             <ContactPersonInput items={this.props.contact_list} />
                     </div>
                 </form>
 
                 <div className="form-group">
-                    <label>Locaties en contactpersonen</label>
+                    <label>{trans.account_locatie_contactpersonen}</label>
                     <ProjectContactInput onItemChange={this.onContactItemChange} items={this.props.project_list}  contact_list={this.props.contact_list}/>
                 </div>
             </div>
@@ -200,13 +200,13 @@ class Account extends Component {
         return (
             <div>
                 <div className="block-info">
-                    <label>Bewerkingen</label>
+                    <label>{trans.account_bewerkingen_label}</label>
                     <div className="d-table w100 mt20">
                         <div className="d-table-cell v-align-middle">
-                            <button ref="submit" type="button" className="btn btn-green btn--round" onClick={()=>{this.handleSumbit()}}>Opslaan</button>
+                            <button ref="submit" type="button" className="btn btn-green btn--round" onClick={()=>{this.handleSumbit()}}>{trans.account_link_opslaan}</button>
                         </div>
                         <div className="d-table-cell v-align-middle">
-                            <button ref="annuleren" type="button" className="btn btn-plain" onClick={()=>{this.handleCancel()}}>Annuleren</button>
+                            <button ref="annuleren" type="button" className="btn btn-plain" onClick={()=>{this.handleCancel()}}>{trans.account_link_annuleren}</button>
                         </div>
                     </div>
                 </div>
@@ -221,29 +221,29 @@ class Account extends Component {
             <div className="p20">
                 <ContentWrapper hasSidebar={true}>
                     <div className="page-panel">
-                        <div className="page-panel__heading">Account instellingen</div>
+                        <div className="page-panel__heading">{trans.account_title}</div>
                         <div className="page-panel__inner">
                             <div className="page-panel__inner__left">
                                   <ul className="nav nav-tabs nav-tabs--vertical" role="tablist">
                                     <li role="presentation" className="active">
-                                        <a href="#changepassword" aria-controls="changepassword" role="tab" data-toggle="tab">Uw gegevens</a>
+                                        <a href="#changepassword" aria-controls="changepassword" role="tab" data-toggle="tab">{trans.account_link_gegevens}</a>
                                     </li>
                                     <li role="presentation">
-                                        <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Wachtwoord wijzigen</a>
+                                        <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">{trans.account_link_wachtwoord_wijzigen}</a>
                                     </li>
                                   </ul>
                             </div>
                             <div className="page-panel__inner__content">                                 
                                 <div className="tab-content">
                                     <h3 className="d_active tab_drawer_heading">
-                                        <a href="#changepassword" aria-controls="changepassword" role="tab" data-toggle="tab">Uw gegevens</a>
+                                        <a href="#changepassword" aria-controls="changepassword" role="tab" data-toggle="tab">{trans.account_link_gegevens}</a>
                                     </h3>
                                     <div role="tabpanel" className="tab-pane " id="changepassword">
                                         {this._render_tabPassword()}
                                     </div>
 
                                     <h3 className="tab_drawer_heading">
-                                        <a href="#profile" aria-controls="home" role="tab" data-toggle="tab">Wachtwoord wijzigen</a>
+                                        <a href="#profile" aria-controls="home" role="tab" data-toggle="tab">{trans.account_link_wachtwoord_wijzigen}</a>
                                     </h3>
 
                                     <div role="tabpanel" className="tab-pane active" id="profile">

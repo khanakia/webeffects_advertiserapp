@@ -67,28 +67,28 @@ class SnoobiPage extends React.Component {
             {"value": "mei", "title": 'mei 2016'}
         ]
         const countSortRecent = [
-            {"value": "recent", "title": 'Recente activiteit'},
-            {"value": "alfabet", "title": 'Alfabet'}
+            {"value": "recent", "title": trans.snoobiPage_sort_recente},
+            {"value": "alfabet", "title": trans.snoobiPage_sort_alfabet}
         ]
         return (
             <div className="statistieken-wrapper">
                 <div className="form-group">
                     <div className="row">
                         <div className="form-group col-md-12">
-                            <label>Uw advertentie is bezocht door</label>
+                            <label>{trans.snoobiPage_uw_advertentie}</label>
                         </div>
                     </div>
                     <div className="row">
                         <div className="col-md-6 col-lg-3 mb20">
                             <div className="dropdown dropdown--style1 xs-w100 wp120 dropdown-inline">
-                                <button className="btn btn-dropdown dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Filters<i className="iconc-chevron-down"></i></button>
+                                <button className="btn btn-dropdown dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{trans.snoobiPage_filter_text}<i className="iconc-chevron-down"></i></button>
                                 <ul className="dropdown-menu list-group" aria-labelledby="dropdownMenu1">
-                                    <li className="list-group-item"><label><input type="checkbox" name="algemeen" value="algemeen" /><span>Algemeen</span></label></li>
-                                    <li className="list-group-item"><label><input type="checkbox" name="telefoonnummer" value="telefoonnummer" /><span>Telefoonnummer</span></label></li>
-                                    <li className="list-group-item"><label><input type="checkbox" name="trouwen" value="trouwen" /><span>Trouwen</span></label></li>
-                                    <li className="list-group-item"><label><input type="checkbox" name="zalen" value="zalen" /><span>Zalen</span></label></li>
-                                    <li className="list-group-item"><label><input type="checkbox" name="vergaderen" value="vergaderen" /><span>Vergaderen & congres</span></label></li>
-                                    <li className="list-group-item"><label><input type="checkbox" name="vermelding" value="vermelding" /><span>Vermelding</span></label></li>
+                                    <li className="list-group-item"><label><input type="checkbox" name="algemeen" value="algemeen" /><span>{trans.snoobiPage_filter_option_algemeen}</span></label></li>
+                                    <li className="list-group-item"><label><input type="checkbox" name="telefoonnummer" value="telefoonnummer" /><span>{trans.snoobiPage_filter_option_telefoonnummer}</span></label></li>
+                                    <li className="list-group-item"><label><input type="checkbox" name="trouwen" value="trouwen" /><span>{trans.snoobiPage_filter_option_trouwen}</span></label></li>
+                                    <li className="list-group-item"><label><input type="checkbox" name="zalen" value="zalen" /><span>{trans.snoobiPage_filter_option_zalen}</span></label></li>
+                                    <li className="list-group-item"><label><input type="checkbox" name="vergaderen" value="vergaderen" /><span>{trans.snoobiPage_filter_option_vergaderen}</span></label></li>
+                                    <li className="list-group-item"><label><input type="checkbox" name="vermelding" value="vermelding" /><span>{trans.snoobiPage_filter_option_vermelding}</span></label></li>
                                 </ul>
                             </div>
                         </div>
@@ -107,8 +107,8 @@ class SnoobiPage extends React.Component {
                             <div className="dropdown dropdown--style1 hidden-lg">
                                 <button className="btn btn-dropdown dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sorteren op<i className="iconc-chevron-down"></i></button>
                                 <ul className="dropdown-menu list-group" aria-labelledby="dropdownMenu1">
-                                    <li className="list-group-item"><label><input type="radio" name="staus" value="recent" /><span>Recente activiteit</span></label></li>
-                                    <li className="list-group-item"><label><input type="radio" name="status" value="alfabet" /><span>Alfabet</span></label></li>
+                                    <li className="list-group-item"><label><input type="radio" name="staus" value="recent" /><span>{trans.snoobiPage_sort_recente}</span></label></li>
+                                    <li className="list-group-item"><label><input type="radio" name="status" value="alfabet" /><span>{trans.snoobiPage_sort_alfabet}</span></label></li>
 
                                     <li className="list-group-item"><label><span>Datum</span></label></li>
                                     <li className="list-group-item"><label><input type="radio" name="datum" value="trouwen" /><span>februari 2016</span></label></li>
@@ -252,7 +252,7 @@ class SnoobiPage extends React.Component {
                     </div>
                     <div className="row">
                         <div className="col-md-12">
-                            <label className="mt20 mb15">Uw belangrijkste concurrenten op DNLS</label>
+                            <label className="mt20 mb15">{trans.snoobiPage_uw_belangrijkste_title}</label>
                             <div className="belangrijkste-wrapper">
                                 <div className="owl-carousel owl-theme" id="belangrijkste_carousel">
                                     <div className="item active">
@@ -333,11 +333,11 @@ class SnoobiPage extends React.Component {
                     </div>
                     <div className="row">
                         <div className="col-md-12">
-                            <div className="warning-message my40">Er zijn gemiddeld 3 bezoeken nodig voordat een bezoeker een aanvraag doet</div>
-                            <label className="mt20">Hoe komen we aan deze informatie?</label>
+                            <div className="warning-message my40">{trans.snoobiPage_warning_msg}</div>
+                            <label className="mt20">{trans.snoobiPage_snoobi_img_title}</label>
                             <div className="snoobi-wrapper">
                                 <div className="img-wrapper"></div>
-                                <p>Snoobi laat zien in welke volgorde bezoekers de pagina’s van uw website hebben bezocht. Dit betekent dat u het specifieke gedrag van een bezoeker kunt achterhalen, bijvoorbeeld welke zoekterm de bezoeker heeft gebruikt, welke producten en hoe lang de bezoeker een specifieke pagina heeft bekeken en wat zijn uiteindelijke actie is geweest! Voor meer informatie bekijk www.snoobi.nl.</p>
+                                <p>{trans.snoobiPage_snoobi_img_desc}</p>
                             </div>
                         </div>
                     </div>

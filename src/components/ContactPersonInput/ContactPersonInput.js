@@ -78,10 +78,10 @@ class ContactPersonInput extends React.Component {
                 <thead>
                     <tr>
                         <th><i className="iconc-person"></i></th>
-                        <th>Naam</th>
-                        <th>Mail</th>
-                        <th>Telefoon</th>
-                        <th>Contactpersoon bedrijf</th>
+                        <th>{trans.contactPersonInput_naam}</th>
+                        <th>{trans.contactPersonInput_mail}</th>
+                        <th>{trans.contactPersonInput_telefon}</th>
+                        <th>{trans.contactPersonInput_bedrijf}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -134,7 +134,7 @@ class ContactPersonInput extends React.Component {
                     <tr>
                         <td><button type="button" className="btn btn-plain btn--nopad" onClick={()=>this.handleAddClick()}><i className="iconc-plus"></i></button></td>
                         <td colSpan="10">
-                            <label className="placeholder">Nieuw contactpersoon</label>
+                            <label className="placeholder">{trans.contactPersonInput_nieuw_btn}</label>
                         </td>
                     </tr>
                 </tfoot>
@@ -174,7 +174,7 @@ class ContactPersonInput extends React.Component {
                             </div>
                             <div className="input-group input-group--style-label mb20">
                                 <div className="personinput-checkbox">
-                                    <label className="placeholder">Contactpersoon bedrijf
+                                    <label className="placeholder">{trans.contactPersonInput_bedrijf}
                                         <input type="checkbox" name={`contact_new[${index}][is_company]`} defaultChecked={item.is_company} />
                                         <span readOnly="true"></span>
                                     </label>
@@ -213,7 +213,7 @@ class ContactPersonInput extends React.Component {
                             </div>
                             <div className="input-group input-group--style-label mb20">
                                 <div className="personinput-checkbox">
-                                    <input type="text" className="form-control" readOnly="" value="Contactpersoon bedrijf" />
+                                    <input type="text" className="form-control" readOnly="" value={trans.contactPersonInput_bedrijf} />
                                     <label>
                                         <input type="checkbox" name={`contact_new[${index}][is_company]`} />
                                         <span></span>
@@ -233,7 +233,7 @@ class ContactPersonInput extends React.Component {
                             <i className="iconc-plus"></i>
                         </button>
                     </span>
-                    <label>Zaal toevoegen</label>
+                    <label>{trans.contactPersonInput_zaal}</label>
                 </div>
             </div>
         )

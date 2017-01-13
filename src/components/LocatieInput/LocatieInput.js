@@ -252,15 +252,15 @@ class LocatieInput extends React.Component {
         return (
             <div className={'comp-locatieinput ' + this.props.className} ref="locatieinput">
                 <div className="section-heading">
-                    <h3>Adres</h3>
+                    <h3>{trans.locatieInput_adres}</h3>
                 </div>
                 <div className="section-zoek">
-                    <span>Zoek parkeerplaatsen in een straal van</span>
+                    <span>{trans.locatieInput_zoek}</span>
                     <span className="short-dropdown">
                         <DropdownList items={countitems} selectedValue={3} />
                     </span>
                     <span>
-                        <a href="#">Voeg automatisch parkeerplaatsen toe</a>
+                        <a href="#">{trans.locatieInput_voeg}</a>
                     </span>
                 </div>
                 <div className="section-data">
@@ -326,7 +326,7 @@ class LocatieInput extends React.Component {
                                 <i className="fa fa-plus"></i>
                             </button>
                         </span>
-                        <label>Zaal toevoegen</label>
+                        <label>{trans.locatieInput_zaal}</label>
                     </div>
 
                     <div>
