@@ -85,7 +85,6 @@ class PageProject extends Component {
 
             $(".tab_drawer_heading").find("i").addClass("iconc-chevron-down").removeClass("iconc-chevron-up");
             $(".tab_drawer_heading.d_active").find("i").removeClass("iconc-chevron-down").addClass("iconc-chevron-up");
-            // self.find("i").removeClass("iconc-chevron-down").addClass("iconc-chevron-up");
         })
 
     }

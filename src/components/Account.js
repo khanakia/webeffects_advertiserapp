@@ -28,6 +28,7 @@ class Account extends Component {
     tabsFn() {
         $(".tab-pane").hide();
         $(".tab-pane:first").show();
+        $(".tab_drawer_heading.d_active").find("i").removeClass("iconc-chevron-down").addClass("iconc-chevron-up");
 
         $('.nav-tabs li a').click(function (e) {     
             var href = $(this).attr('href');    
@@ -40,6 +41,7 @@ class Account extends Component {
 
         $('.tab_drawer_heading a').click(function (e) {     
             var href = $(this).attr('href');
+            var self = $(this);
             if($('.tab-pane'+href).hasClass("active")) {
                 return false;
             }
@@ -52,6 +54,9 @@ class Account extends Component {
 
             $('.tab-pane').slideUp();
             $('.tab-pane'+href).slideDown();
+            
+            $(".tab_drawer_heading").find("i").addClass("iconc-chevron-down").removeClass("iconc-chevron-up");
+            $(".tab_drawer_heading.d_active").find("i").removeClass("iconc-chevron-down").addClass("iconc-chevron-up");
         })
 
     }
@@ -226,24 +231,24 @@ class Account extends Component {
                             <div className="page-panel__inner__left">
                                   <ul className="nav nav-tabs nav-tabs--vertical" role="tablist">
                                     <li role="presentation" className="active">
-                                        <a href="#changepassword" aria-controls="changepassword" role="tab" data-toggle="tab">{trans.account_link_gegevens}</a>
+                                        <a href="#changepassword" aria-controls="changepassword" role="tab" data-toggle="tab">{trans.account_link_gegevens} <i className="iconc-chevron"></i></a>
                                     </li>
                                     <li role="presentation">
-                                        <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">{trans.account_link_wachtwoord_wijzigen}</a>
+                                        <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">{trans.account_link_wachtwoord_wijzigen} <i className="iconc-chevron"></i></a>
                                     </li>
                                   </ul>
                             </div>
                             <div className="page-panel__inner__content">                                 
                                 <div className="tab-content">
                                     <h3 className="d_active tab_drawer_heading">
-                                        <a href="#changepassword" aria-controls="changepassword" role="tab" data-toggle="tab">{trans.account_link_gegevens}</a>
+                                        <a href="#changepassword" aria-controls="changepassword" role="tab" data-toggle="tab">{trans.account_link_gegevens} <i className="iconc-chevron-down"></i></a>
                                     </h3>
                                     <div role="tabpanel" className="tab-pane " id="changepassword">
                                         {this._render_tabPassword()}
                                     </div>
 
                                     <h3 className="tab_drawer_heading">
-                                        <a href="#profile" aria-controls="home" role="tab" data-toggle="tab">{trans.account_link_wachtwoord_wijzigen}</a>
+                                        <a href="#profile" aria-controls="home" role="tab" data-toggle="tab">{trans.account_link_wachtwoord_wijzigen} <i className="iconc-chevron-down"></i></a>
                                     </h3>
 
                                     <div role="tabpanel" className="tab-pane active" id="profile">
