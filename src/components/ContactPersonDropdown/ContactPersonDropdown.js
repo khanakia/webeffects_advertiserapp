@@ -14,7 +14,7 @@ class ContactPersonDropdown extends React.Component {
 		name: 'contact_id',
 		items: [],
 		selectedValue: '',
-		emptyPlaceholder: trans.contactPersonDD_empty_placeholder,
+		emptyPlaceholder: '',
 
 		onAddNewClick: function(){},
 		onItemChange: function(item, project_id){},
@@ -60,7 +60,7 @@ class ContactPersonDropdown extends React.Component {
 				<input type="hidden" name={this.props.name} value={this.state.selectedValue} onChange={this.handleChange} />
 				<div className="dropdown dropdown--style1">
 				  <button className="btn btn-dropdown dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-				    {selectedItem ? selectedItem.name : this.props.emptyPlaceholder}
+				    {selectedItem ? selectedItem.name : trans.contactPersonDD_empty_placeholder}
 				    <i className="iconc-chevron-down"></i>
 				  </button>
 

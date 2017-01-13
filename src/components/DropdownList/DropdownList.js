@@ -14,7 +14,7 @@ class DropdownList extends React.Component {
 		name: 'ddl',
 		items: [],
 		selectedValue: '',
-		emptyPlaceholder: trans.contactPersonDD_empty_placeholder,
+		emptyPlaceholder: '',
 		onItemChange: function(item){},
 	}
 
@@ -50,7 +50,7 @@ class DropdownList extends React.Component {
 				<input type="hidden" name={this.props.name} value={this.state.selectedValue} onChange={this.handleChange} />
 				<div className="dropdown dropdown--style1">
 				  <button className="btn btn-dropdown dropdown-toggle" type="button" id={dropdownId} data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-				    {selectedItem ? selectedItem.title : this.props.emptyPlaceholder}
+				    {selectedItem ? selectedItem.title : trans.contactPersonDD_empty_placeholder}
 				    <i className="fa fa-angle-down"></i>
 				  </button>
 
