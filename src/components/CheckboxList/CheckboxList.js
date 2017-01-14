@@ -37,7 +37,7 @@ class ChekcboxList extends React.Component {
                 <li className="list-group-item" key={index}>
                     <label>
                         <input type="checkbox" name={this.props.name} defaultValue={item.value} defaultChecked={checked} />
-                        <span>{item.value}</span>
+                        <span>{item.title}</span>
                     </label>
                 </li>
             )

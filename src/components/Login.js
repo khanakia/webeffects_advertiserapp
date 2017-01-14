@@ -11,24 +11,27 @@ class Login extends Component {
     }
 
     componentDidMount() {
-        if(Auth.check()) {
-            hashHistory.push('/dashboard')
-            return false;
-        }
+       
         var token = this.props.location.query.token;
         var url = this.props.location.query.url;
         var token = this.props.location.query.token;
         if (token) {
             Auth.login(token)
+            console.log(Auth.getToken())
             if(Auth.check()) {  
-                hashHistory.push('/dashboard')
                 if (url) {
                     hashHistory.push(url)
-                }else {
+                } else {
                     hashHistory.push("/dashboard")
                 }
             }    
-        }         
+        } else {
+            if(Auth.check()) {
+                hashHistory.push('/dashboard')
+                return false;
+            }
+
+        }      
     }
     
     handleSubmit = (e) => {
@@ -48,20 +51,7 @@ class Login extends Component {
                     hashHistory.push("/dashboard")
                 }
                 return false;
-            } else {
-                toastr.success("Please Login");
-            // Auth.attempt_confirm_token({email: this.refs.email.value, password: this.refs.password.value, confirm_token: confirm_token}).then((response) => {
-            //     if (response.data.token != null) {
-            //         // Localstore.setOrg(response.data.org)
-            //         // Localstore.setUser(response.data.user)
-            //         toastr.success(response.data.message);       
-            //         hashHistory.push('/dashboard')
-            //     } else {                
-            //         toastr.error(response.data.message);       
-            //     }
-            // });
-            // console.log("abc");
-            }
+            } 
         } else {
             Auth.attempt({email: this.refs.email.value, password: this.refs.password.value}).then((response) => {
                 if (response.data.token != null) {
@@ -91,7 +81,12 @@ class Login extends Component {
                                     </div>
                                 </div>
                                 <div className="form-group">
-                                    <label className="col-sm-12 col-xs-12"><div className="row"><div className="col-sm-5">{trans.login_wachtwoord}</div> <div className="col-sm-7 col-xs-12 text-right"><a href="#/resetpwd">{trans.login_wachtwoord_vergeten}</a></div></div></label>
+                                    <label className="col-sm-12 col-xs-12">
+                                        <div className="row">
+                                            <div className="col-sm-5">{trans.login_wachtwoord}</div> 
+                                            <div className="col-sm-7 col-xs-12 text-right"><a href="#/forgetpwd">{trans.login_wachtwoord_vergeten}</a></div>
+                                        </div>
+                                    </label>
                                     <div className="col-sm-12 col-xs-12">
                                         <input type="password" className="form-control required minlength" name="password" id="password"  placeholder="••••••••••" ref='password'/>
                                     </div>

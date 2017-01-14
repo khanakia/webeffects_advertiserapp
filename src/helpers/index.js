@@ -1,4 +1,5 @@
 export AuthHelper from './auth';
+export UserHelper from './helper_user';
 export AccountHelper from './helper_account';
 export ProjectHelper from './helper_project';
 export ProjectVideoHelper from './helper_project_video';

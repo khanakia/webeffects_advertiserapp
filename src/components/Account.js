@@ -6,7 +6,7 @@ import {ROOT_URL, API_URL_CHANGE_PWD} from '../config.js'
 
 import {Auth, Localstore, UserHelper, ContactHelper, ProjectHelper} from '../helpers'
 
-
+import ChangePasswordForm from 'components/Forms/ChangePasswordForm'
 
 import ContactPersonInput from './ContactPersonInput'
 import ProjectContactInput from './ProjectContactInput'
@@ -56,28 +56,28 @@ class Account extends Component {
 
     }
 
-    handleSubmitChangePassword = (e) => {
-        e.preventDefault();
-        var valid = jQuery(this.refs.form).valid();
-        if (!valid) { return false };
+    // handleSubmitChangePassword = (e) => {
+    //     e.preventDefault();
+    //     var valid = jQuery(this.refs.form).valid();
+    //     if (!valid) { return false };
 
-        let param = jQuery(this.refs.form).serialize();
+    //     let param = jQuery(this.refs.form).serialize();
 
-        // let data1 = jQuery(this.refs.password1.value);
-        // let confirm = jQuery(this.refs.confirm1.value);
-        // console.log(data);
-        // if (data!=confirm) {
-        //     toastr.error('Please insert confirm password same as password.');
-        //     return false
-        // };
-        UserHelper.changePassword(param).then(function(response){
-            if (response.data.STATUS=="FAILED") {
-                toastr.error(response.data.error_message.password);
-            } else {
-                toastr.success('Password changed successfully.')
-            }
-        }.bind(this));
-    }
+    //     // let data1 = jQuery(this.refs.password1.value);
+    //     // let confirm = jQuery(this.refs.confirm1.value);
+    //     // console.log(data);
+    //     // if (data!=confirm) {
+    //     //     toastr.error('Please insert confirm password same as password.');
+    //     //     return false
+    //     // };
+    //     UserHelper.changePassword(param).then(function(response){
+    //         if (response.data.STATUS=="FAILED") {
+    //             toastr.error(response.data.error_message.password);
+    //         } else {
+    //             toastr.success('Password changed successfully.')
+    //         }
+    //     }.bind(this));
+    // }
 
     handleSumbit() {
         var _this = this;
@@ -117,51 +117,51 @@ class Account extends Component {
         ProjectHelper.updateContact(project_id, item.id)
     }
 
-    _render_tabPassword() {
-        return (
-            <div>
-                <div className="formstyle1Ct changepwdCt">
-                    <form className="form-horizontal formstyle1 ChangepwdForm" ref='form' onSubmit={this.handleSubmitChangePassword}>
-                        <div className="row">
-                            <div className="col-md-12">
-                                <div className="form-group">
-                                    <label className="col-sm-12">{trans.account_uw_oude_wachtwoord}</label>
-                                    <div className="col-sm-12">
-                                        <div className="input-group">
-                                            <div className="input-group-addon"><i className="fa fa-key" aria-hidden="true"></i></div>
-                                            <input type="password" className="form-control required" name="oldpassword" id="oldpassword"  placeholder="••••••••••" />
-                                        </div>
-                                    </div>
-                                </div>
+    // _render_tabPassword() {
+    //     return (
+    //         <div>
+    //             <div className="formstyle1Ct changepwdCt">
+    //                 <form className="form-horizontal formstyle1 ChangepwdForm" ref='form' onSubmit={this.handleSubmitChangePassword}>
+    //                     <div className="row">
+    //                         <div className="col-md-12">
+    //                             <div className="form-group">
+    //                                 <label className="col-sm-12">{trans.account_uw_oude_wachtwoord}</label>
+    //                                 <div className="col-sm-12">
+    //                                     <div className="input-group">
+    //                                         <div className="input-group-addon"><i className="fa fa-key" aria-hidden="true"></i></div>
+    //                                         <input type="password" className="form-control required" name="oldpassword" id="oldpassword"  placeholder="••••••••••" />
+    //                                     </div>
+    //                                 </div>
+    //                             </div>
 
-                                <div className="form-group">
-                                    <label className="col-sm-12">{trans.account_uw_nieuwe_wachtwoord}</label>
-                                    <div className="col-sm-12">
-                                        <div className="input-group">
-                                            <div className="input-group-addon"><i className="fa fa-key" aria-hidden="true"></i></div>
-                                            <input type="password" className="form-control required" name="password" id="password"  placeholder="••••••••••" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="form-group">
-                                    <label className="col-sm-12"><div className="row"><div className="col-sm-12">{trans.account_noogmaals}</div></div></label>
-                                    <div className="col-sm-12">
-                                        <div className="input-group">
-                                            <div className="input-group-addon"><i className="fa fa-key" aria-hidden="true"></i></div>
-                                            <input type="password" className="form-control required updatePassword" name="password_confirmation" id="password_confirmation" placeholder="••••••••••"/>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="text-right">
-                            <button type="submit" className="btn btn-green btn--round">{trans.account_bevestig_btn}</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        )
-    }
+    //                             <div className="form-group">
+    //                                 <label className="col-sm-12">{trans.account_uw_nieuwe_wachtwoord}</label>
+    //                                 <div className="col-sm-12">
+    //                                     <div className="input-group">
+    //                                         <div className="input-group-addon"><i className="fa fa-key" aria-hidden="true"></i></div>
+    //                                         <input type="password" className="form-control required" name="password" id="password"  placeholder="••••••••••" />
+    //                                     </div>
+    //                                 </div>
+    //                             </div>
+    //                             <div className="form-group">
+    //                                 <label className="col-sm-12"><div className="row"><div className="col-sm-12">{trans.account_noogmaals}</div></div></label>
+    //                                 <div className="col-sm-12">
+    //                                     <div className="input-group">
+    //                                         <div className="input-group-addon"><i className="fa fa-key" aria-hidden="true"></i></div>
+    //                                         <input type="password" className="form-control required updatePassword" name="password_confirmation" id="password_confirmation" placeholder="••••••••••"/>
+    //                                     </div>
+    //                                 </div>
+    //                             </div>
+    //                         </div>
+    //                     </div>
+    //                     <div className="text-right">
+    //                         <button type="submit" className="btn btn-green btn--round">{trans.account_bevestig_btn}</button>
+    //                     </div>
+    //                 </form>
+    //             </div>
+    //         </div>
+    //     )
+    // }
 
     _render_tabGegevens() {
         return (
@@ -198,7 +198,7 @@ class Account extends Component {
 
     _render_rightBlock() {
         return (
-            <div>
+            <div className="block-right">
                 <div className="block-info">
                     <label>{trans.account_bewerkingen_label}</label>
                     <div className="d-table w100 mt20">
@@ -226,29 +226,34 @@ class Account extends Component {
                             <div className="page-panel__inner__left">
                                   <ul className="nav nav-tabs nav-tabs--vertical" role="tablist">
                                     <li role="presentation" className="active">
-                                        <a href="#changepassword" aria-controls="changepassword" role="tab" data-toggle="tab">{trans.account_link_gegevens}</a>
+                                        <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">{trans.account_link_gegevens}</a>
                                     </li>
                                     <li role="presentation">
-                                        <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">{trans.account_link_wachtwoord_wijzigen}</a>
+                                        <a href="#changepassword" aria-controls="changepassword" role="tab" data-toggle="tab">{trans.account_link_wachtwoord_wijzigen}</a>
                                     </li>
                                   </ul>
                             </div>
                             <div className="page-panel__inner__content">                                 
                                 <div className="tab-content">
                                     <h3 className="d_active tab_drawer_heading">
-                                        <a href="#changepassword" aria-controls="changepassword" role="tab" data-toggle="tab">{trans.account_link_gegevens}</a>
+                                        <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">{trans.account_link_gegevens}</a>
                                     </h3>
-                                    <div role="tabpanel" className="tab-pane " id="changepassword">
-                                        {this._render_tabPassword()}
-                                    </div>
-
-                                    <h3 className="tab_drawer_heading">
-                                        <a href="#profile" aria-controls="home" role="tab" data-toggle="tab">{trans.account_link_wachtwoord_wijzigen}</a>
-                                    </h3>
-
                                     <div role="tabpanel" className="tab-pane active" id="profile">
                                         {this._render_tabGegevens()}
                                     </div>
+
+                                    <h3 className="tab_drawer_heading">
+                                        <a href="#changepassword" aria-controls="changepassword" role="tab" data-toggle="tab">{trans.account_link_wachtwoord_wijzigen}</a>
+                                    </h3>
+                                    <div role="tabpanel" className="tab-pane " id="changepassword">
+                                        {/*this._render_tabPassword()*/}
+                                        <ChangePasswordForm layout="layout2" />
+                                    </div>                                    
+                                </div>
+
+                                <div className="visible-xs visible-sm twoBtnStyle">
+                                    <button ref="annuleren" type="button" className="btn btn-plain" onClick={()=>{this.handleCancel()}}>{trans.account_link_annuleren}</button>
+                                    <button ref="submit" type="button" className="btn btn-plain" onClick={()=>{this.handleSumbit()}}>{trans.account_link_opslaan}</button>
                                 </div>
                             </div>
                             <div className="page-panel__inner__right">

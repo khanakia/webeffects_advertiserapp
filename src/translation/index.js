@@ -1,6 +1,8 @@
 const language = {
 	"1" : {
-
+		"months": [ "januari", "februari", "maart", "april", "mei", "juni",
+        "juli", "augustus", "september", "oktober", "november", "december" ],
+		"select_empty_placeholder": 'Select',
 		"login_title": "Adverteerder inlog",
 		"login_email_label": "E-mailadres",
 		"login_email_placeholder": "bv.jan@jan.nl",
@@ -9,19 +11,22 @@ const language = {
 		"login_submit_btn": "Inloggen",
 		"login_ik_ben": "Ik ben nog geen adverteerder",
 
-		"forget_pwd_title": "Eigen wachtwoord aanmaken",
-		"forget_pwd_nieuw": "Nieuw wachtwoord",
-		"forget_pwd_herhaal": "Herhaal uw nieuwe wachtwoord",
-		"forget_pwd_required_title": "Required Field",
-		"forget_pwd_must_be_6_char": "Must be more than 6 characters",
-		"forget_pwd_must_be_6_uppercase": "Must be an uppercase letter",
-		"forget_pwd_confirm_pwd": "Password Confirm",
-		"forget_pwd_submit_btn": "Bevesigen",
+		"resetpwd_title": "Eigen wachtwoord aanmaken",
+		"resetpwd_nieuw": "Nieuw wachtwoord",
+		"resetpwd_herhaal": "Herhaal uw nieuwe wachtwoord",
+		"resetpwd_required_title": "Required Field",
+		"resetpwd_must_be_6_char": "Must be more than 6 characters",
+		"resetpwd_must_be_6_uppercase": "Must be an uppercase letter",
+		"resetpwd_confirm_pwd": "Password Confirm",
+		"resetpwd_submit_btn": "Bevesigen",
+		"reset_email_sent": "Password Reset Successfully",
 
-		"reset_title": "Resetlink Page",
-		"reset_email_label": "E-mailadres",
-		"reset_email_placeholder": "e-mailadres",
-		"reset_submit_btn": "Submit",
+		"forgotpwd_title": "Forgot Password",
+		"forgotpwd_email_label": "E-mailadres",
+		"forgotpwd_email_placeholder": "e-mailadres",
+		"forgotpwd_submit_btn": "Submit",
+		"reset_email_sent": "Password Reset Email sent on your email.",
+		"reset_error": "Sorry canno reeset password",
 
 		"account_confirm_title": "Pagina verlaten",
 		"account_confirm_content": "U heeft uw bewerkingen niet opgeslagen, weet u zeker dat u de pagina wilt verlaten?",
@@ -196,6 +201,10 @@ const language = {
 		"zalen_vondelkerk": "Vondelkerk",
 		"zalen_zaal": "Zall toevoegen",
 
+
+		"invalid_password" : "Password is invalid.",
+		"invalid_user" : "User not found.",
+		"invalid_token" : "Token is invalid",
 		"invalid_credentials" : "Invalid Credentials",
 		"could_not_create_token" : "could_not_create_token",
 		"token_not_provided" : "token_not_provided",

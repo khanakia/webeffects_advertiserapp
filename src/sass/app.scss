@@ -9,7 +9,10 @@
 @import "_comp-projectcontactinput";
 @import "_owl-block";
 
-
+.popover {
+	z-index: 999999;
+	max-width: 500px;
+}
 body {
 	background-color: #ECF5F8;
 	font-family: 'Open Sans', sans-serif;
@@ -161,7 +164,7 @@ label.error {
 
 .twoBtnStyle {
 	border: 1px solid #CDD4D7;
-	a {
+	button {
 		display: inline-block;
 		width: 50%;
 		padding: 10px;
@@ -1334,25 +1337,7 @@ label input[type="radio"]:checked + span {
 	}
 }
 
-.projectPageContent {
-	position: relative;
 
-	.meerBlockMobile {
-		display: none;
-		position: absolute;
-		display: none;
-		top: 0;
-		left: 0;
-		width: 100%;
-		background-color: #fff;
-	}
-}
-
-@media screen and (max-width: 767px) {
-	.mx-w-300 {
-		max-width: 300px;
-	}
-}
 
 .warning-message {
 	padding: 40px 20px;

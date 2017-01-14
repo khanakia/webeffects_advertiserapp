@@ -4,21 +4,22 @@ import ContentWrapper from './shared/ContentWrapper'
 
 import DropdownList from './DropdownList'
 
-import ContactForm from 'components/Forms/ContactForm'
+import ChangePasswordForm from 'components/Forms/ChangePasswordForm'
 import PopupHelper from 'helpers/helper_popup'
 class Demo extends Component {
     constructor(props, context) {
         super(props, context);
 
     }
-
+ 
     componentDidMount() {
-        PopupHelper.showContactForm({})
+        PopupHelper.showChangePasswordForm({})
     }
 
 
 
     render() {
+        console.log(this.props);
         const items = [
             {
                 "value": 1,
@@ -40,6 +41,7 @@ class Demo extends Component {
                    Demo
                    <DropdownList items={items} selectedValue={3} />
 
+                   
                    
                 </ContentWrapper>
             </div>

@@ -10,6 +10,10 @@ class OfferRequestList extends React.Component {
         super(props);
     }
 
+    static defaultProps = {
+        onDateItemChange: function(item) {}
+    }
+
 
     componentWillMount() {
     }
@@ -34,36 +38,41 @@ class OfferRequestList extends React.Component {
     }
 
 
-  
-
-    render() {
-
+    dateItemArray() {
         var startDateString = "2016-10-01";
         var endDateString = moment();
         var startDate = moment(startDateString, "YYYY-M-DD");
         var endDate = moment(endDateString, "YYYY-M-DD").endOf("month");
-        var months = [ "januari", "februari", "maart", "april", "mei", "juni",
-        "juli", "augustus", "september", "oktober", "november", "december" ];
+        
         var items = [];
+        items.push({ 
+            value: '',
+            title: 'Select Month'
+        })
 
         while (startDate.isBefore(endDate)) {
-
             var monthInt = new Date(startDate).getMonth();
-
-            var monthString = months[monthInt];
-            items.push({ id: startDate.format("MM-DD-YYYY"), title : monthString + startDate.format(" YYYY") });
+            var monthString = trans.months[monthInt];
+            items.push({ value: startDate.format("YYYY-MM-DD"), title : monthString + startDate.format(" YYYY") });
             startDate = startDate.add(1, "month");
-
         };
 
-        console.log(items);
+        return items;        
+    }
+
+    onItemChange = (item) => {
+        this.props.onDateItemChange(item)
+        // console.log("dsfasdfdsaf", item)
+    }
+
+    render() {
 
         return (
             <div>
                 <div className="section_offerrequest_dropdown">
                     <div>{trans.offerte_title}</div>
                     <div className="short-dropdown">
-                        <DropdownList items={items} selectedValue={3} />
+                        <DropdownList items={this.dateItemArray()} onItemChange={this.onItemChange} emptyPlaceholder={trans.select_empty_placeholder} />
                     </div>
                 </div>
                 {this.props.items.map(function(item, index){

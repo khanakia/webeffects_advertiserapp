@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactDom from 'react-dom';
 
 import ContactForm from 'components/Forms/ContactForm'
+import ChangePasswordForm from 'components/Forms/ChangePasswordForm'
 
 export default class PopupHelper {
     constructor() {
@@ -36,6 +37,12 @@ export default class PopupHelper {
     static showContactForm(args = {}) {
         PopupHelper.openPopup(args,function(uniq,pid){
             ReactDom.render(<ContactForm popup_id={pid} {...args} />, document.getElementById(uniq));
+        })
+    }
+
+    static showChangePasswordForm(args = {}) {
+        PopupHelper.openPopup(args,function(uniq,pid){
+            ReactDom.render(<ChangePasswordForm popup_id={pid} {...args} />, document.getElementById(uniq));
         })
     }
 }

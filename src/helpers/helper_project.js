@@ -48,13 +48,12 @@ export default class ProjectHelper {
 
 
     static save(data) {
-        const dataJson = URI.parseQuery(data);
-        if (dataJson.id) {
-            var ajaxObj = ProjectHelper.update(data);
-        } else {
-            var ajaxObj = ProjectHelper.store(data);
-        }
-        return ajaxObj;
+        return axios({
+            method: 'post',
+            url: API_URL_PROJECT + '/save',
+            headers: Auth.header(),
+            data: data
+        });
     }
 
 
@@ -67,10 +66,13 @@ export default class ProjectHelper {
     }
 
 
-    static getOfferRequestDetails(project_id) {
+    static getOfferRequestDetails(project_id, date=null) {
         return axios({
-            method: 'get',
+            method: 'post',
             url: API_URL_PROJECT + '/' + project_id + '/offer_request_details',
+            data: {
+                date: date
+            },
             headers: Auth.header(),
         });
     }

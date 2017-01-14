@@ -69,7 +69,7 @@ class ContactForm extends Component {
                     <h4 className="modal-title">{this.msg_heading}</h4>
                 </div>
 
-                <form className="form" ref='form' onSubmit={this.handleSubmit}>
+                <form className="form " ref='form' onSubmit={this.handleSubmit}>
                     <input type="hidden" className="form-control" ref="id" name="id" id="id" defaultValue={this.props.data.id} />
                     <div className="content-area mt10">
                         <div className="form-group">

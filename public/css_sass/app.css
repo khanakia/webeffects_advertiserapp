@@ -32,10 +32,22 @@
       .page-panel__heading {
         background: none;
         border: none; }
-      .page-panel__inner__left, .page-panel__inner__right {
+      .page-panel__inner__left {
         display: none; }
+      .page-panel__inner__right {
+        display: block; }
       .page-panel__inner__content {
-        padding: 0; } }
+        display: block;
+        padding: 0; }
+      .page-panel .block-right {
+        display: none;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        background-color: #fff; } }
 
 .tab-content .tab_drawer_heading {
   margin: 0;
@@ -604,6 +616,10 @@ input {
         .belangrijkste-wrapper .item .text-wrapper p {
           min-height: 78px; } }
 
+.popover {
+  z-index: 999999;
+  max-width: 500px; }
+
 body {
   background-color: #ECF5F8;
   font-family: 'Open Sans', sans-serif; }
@@ -718,16 +734,16 @@ label.error {
 
 .twoBtnStyle {
   border: 1px solid #CDD4D7; }
-  .twoBtnStyle a {
+  .twoBtnStyle button {
     display: inline-block;
     width: 50%;
     padding: 10px;
     text-align: center;
     color: #7C8589; }
-    .twoBtnStyle a:hover {
+    .twoBtnStyle button:hover {
       color: #08B995;
       text-decoration: none; }
-    .twoBtnStyle a:first-child {
+    .twoBtnStyle button:first-child {
       border-right: 1px solid #CDD4D7; }
 
 label {
@@ -1539,20 +1555,6 @@ label input[type="radio"]:checked + span {
   max-width: 250px;
   margin: 30px 0 20px; }
 
-.projectPageContent {
-  position: relative; }
-  .projectPageContent .meerBlockMobile {
-    display: none;
-    position: absolute;
-    display: none;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: #fff; }
-
-@media screen and (max-width: 767px) {
-  .mx-w-300 {
-    max-width: 300px; } }
 .warning-message {
   padding: 40px 20px;
   font-size: 20px;

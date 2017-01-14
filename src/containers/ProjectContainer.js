@@ -7,6 +7,10 @@ const mapStateToProps = (state) => {
     return {
         state : state,
         project: state.project.current,
+        project_province: state.project.current.province,
+        project_plaat: state.project.current.plaat,
+        project_gebied: state.project.current.gebied,
+        project_contact: state.project.current.contact,
         project_formdata: state.project.formdata,
         project_offer_request_details_list: state.project.offer_request_details_list
     };
@@ -23,8 +27,8 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(fetchProjectFormdata())
         },
 
-        fetchOfferRequestDetailsList: (project_id) => {
-            dispatch(fetchOfferRequestDetailsList(project_id))
+        fetchOfferRequestDetailsList: (project_id, date=null) => {
+            dispatch(fetchOfferRequestDetailsList(project_id, date))
         }
 
     }

@@ -77,13 +77,31 @@ class ProjectOverview extends Component {
                         <tbody>
                             { this.props.project_list.map((item, index) => {
                                 let status = PROJECT_STATUSES[item.project_status_id]
-
+                                const province_name = undefined!==item.province[0] ? item.province[0]['name'] : '';
+                                const plaat_name = undefined!==item.plaat[0] ? item.plaat[0]['name'] : '';
                                 return (
                                     <tr key={index}>
                                         <td><i className={status.icon_class}></i> <span>{status.title}</span></td>
                                         <td>
                                             <span className="title">{item.project_title}</span>
-                                            <span className="subtitle">Bennekom <i className="fa fa-circle" aria-hidden="true"></i> Gelderland</span>
+                                            <span className="subtitle">
+                                                {
+                                                    province_name ?
+                                                        <span>{province_name}  </span>
+                                                    : ''
+                                                }
+                                                {
+                                                    (province_name && plaat_name) ?
+                                                        <i className="fa fa-circle" aria-hidden="true"></i>
+                                                    : ''
+                                                }
+                                                {
+                                                    plaat_name ?
+                                                        <span>{plaat_name}</span>
+                                                    : ''
+                                                }
+                                                
+                                            </span>
                                         </td>
                                         <td className="color-7C8589">{item.formatted_updated_at}</td>
                                         <td className="text-center link-icon">

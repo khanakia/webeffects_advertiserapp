@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { Link, hashHistory } from 'react-router'
 import {ProjectHelper} from '../helpers'
 
 import ContentWrapper from './shared/ContentWrapper'
@@ -22,6 +22,16 @@ import PopupHelper from 'helpers/helper_popup'
 class PageProject extends Component {
     constructor(props, context) {
         super(props, context);
+    }
+
+    static defaultProps = {        
+        project_province: [],
+        project_plaat: [],
+        project_gebied: [],
+        project_contact: {
+            name: ''
+        }
+        
     }
 
     componentWillMount() {
@@ -54,8 +64,8 @@ class PageProject extends Component {
 
 
     tabsFn() {
-        $(".tab-pane").hide();
-        $(".tab-pane:first").show();
+        // $(".tab-pane").hide();
+        // $(".tab-pane:first").show();
         $(".tab_drawer_heading.d_active").find("i").removeClass("iconc-chevron-down").addClass("iconc-chevron-up");
 
         $('.nav-tabs li a').click(function (e) {     
@@ -132,9 +142,17 @@ class PageProject extends Component {
         var _this = this;
         let data = jQuery(_this.refs.form).serialize();    
 
-        ProjectHelper.update(data).then((response) => {
-            _this.props.fetchProject(_this.props.params.projectId);
-        })
+        const dataJson = URI.parseQuery(data);
+        if (dataJson.id) {
+            ProjectHelper.save(data).then((response) => {
+                _this.props.fetchProject(_this.props.params.projectId);
+            })
+        } else {
+            ProjectHelper.save(data).then((response) => {
+                hashHistory.push('/dashboard')
+            })
+        }
+
 
     }
 
@@ -182,6 +200,28 @@ class PageProject extends Component {
 
     onAttachmentTitleUpdated = () => {
         this.props.fetchProject(this.props.params.projectId);   
+    }
+
+    onOfferlistDateItemChange = (item) => {
+        if(this.props.params.projectId) {
+            this.props.fetchOfferRequestDetailsList(this.props.params.projectId, item.value);
+        }
+    }
+
+    onRightBlockTerugClick (){
+        jQuery(this.refs.block_right).slideUp('slow');
+    }
+
+    onMeerBtnClick (){
+        jQuery(this.refs.block_right).slideDown('slow');
+    }
+
+    onContactFormonDataUpdate = (data) => {
+        this.props.fetchProjectFormdata()
+    }
+
+    onContactDropdownAddNewClick = () => {
+        PopupHelper.showContactForm({onDataUpdate: this.onContactFormonDataUpdate.bind(this)})
     }
 
     _render_tabGeneral() {
@@ -319,13 +359,7 @@ class PageProject extends Component {
         )
     }
 
-    onContactFormonDataUpdate = (data) => {
-        this.props.fetchProjectFormdata()
-    }
-
-    onContactDropdownAddNewClick = () => {
-        PopupHelper.showContactForm({onDataUpdate: this.onContactFormonDataUpdate.bind(this)})
-    }
+   
 
     _render_tabContact() {
         return (
@@ -337,30 +371,39 @@ class PageProject extends Component {
                             <ContactPersonDropdown
                                 onAddNewClick={this.onContactDropdownAddNewClick} 
                                 selectedValue={this.props.project.contact_id} 
-                                items={this.props.project_formdata.contacts} />
+                                items={this.props.project_formdata.contacts} 
+                                emptyPlaceholder={trans.contactPersonDD_empty_placeholder}
+                                />
                         </div>
-                        <div className="col-md-4 input-group-vmerge input-group--style-label">
-                            <div className="input-group">
-                                <span className="input-group-addon">
-                                    <i className="iconc iconc-person"></i>
-                                </span>
-                                <label>{this.props.project.contact.name}</label>
-                            </div>
-                            <div className="input-group">
-                                <span className="input-group-addon">
-                                    <i className="iconc iconc-mail"></i>
-                                </span>
-                                
-                                <label>{this.props.project.contact.phone}</label>
-                            </div>
-                            <div className="input-group">
-                                <span className="input-group-addon">
-                                    <i className="iconc iconc-phone"></i>
-                                </span>
-                                
-                                <label>{this.props.project.contact.email}</label>
-                            </div>
-                        </div>
+
+                        {
+                            this.props.project_contact ?
+                                <div className="col-md-4 input-group-vmerge input-group--style-label">
+                                    <div className="input-group">
+                                        <span className="input-group-addon">
+                                            <i className="iconc iconc-person"></i>
+                                        </span>
+                                        <label>{this.props.project_contact.name}</label>
+                                    </div>
+                                    <div className="input-group">
+                                        <span className="input-group-addon">
+                                            <i className="iconc iconc-mail"></i>
+                                        </span>
+                                        
+                                        <label>{this.props.project_contact.phone}</label>
+                                    </div>
+                                    <div className="input-group">
+                                        <span className="input-group-addon">
+                                            <i className="iconc iconc-phone"></i>
+                                        </span>
+                                        
+                                        <label>{this.props.project_contact.email}</label>
+                                    </div>
+                                </div>
+
+                            : ''
+
+                        }
                     </div>
                 </div>
 
@@ -373,9 +416,11 @@ class PageProject extends Component {
         )
     }
 
+    
+
     _render_rightBlock() {
         return (
-            <div>
+            <div className="block-right" ref="block_right">
                 <div className="block-info">
                     <label>{trans.pageProject_rightBlock_bewerkingen}</label>
                     <div className="last_updated mt5">{trans.pageProject_rightBlock_updated}</div>
@@ -391,8 +436,8 @@ class PageProject extends Component {
                 </div>
                 <div className="block-info">
                     <label>{trans.pageProject_rightBlock_locatie}</label>
-                    <div><a className="live" href="#">{trans.pageProject_rightBlock_link_live}</a> <i className="iconc-link pull-right px5 i-rotate25"></i></div>
-                    <div><a className="concept" href="#">{trans.pageProject_rightBlock_link_concept}</a> <i className="iconc-link pull-right px5 i-rotate25"></i></div>
+                    <div><a className="live" href={this.props.project.url} target="_blank">{trans.pageProject_rightBlock_link_live}</a> <i className="iconc-link pull-right px5 i-rotate25"></i></div>
+                    <div><a className="concept" href={this.props.project.url_concept} target="_blank">{trans.pageProject_rightBlock_link_concept}</a> <i className="iconc-link pull-right px5 i-rotate25"></i></div>
                 </div>
                 <div className="block-info">
                     <label>{trans.pageProject_rightBlock_status}</label>
@@ -428,6 +473,9 @@ class PageProject extends Component {
                 <div className="block-info">
                     <a href="#"><i className="iconc-trash before_text"></i>{trans.pageProject_rightBlock_zet_deze}</a>
                 </div>
+                <div className="block-info text-center">
+                    <button type="button" onClick={()=>{this.onRightBlockTerugClick()}} className="a-hover-color">{trans.pageProject_rightBlock_terug}</button>
+                </div>
             </div>
         )
     }
@@ -456,7 +504,8 @@ class PageProject extends Component {
     }
 
     render() {
-        if(!this.props.params.projectId || jQuery.isEmptyObject(this.props.project) || jQuery.isEmptyObject(this.props.project_formdata)) {
+        console.log(this.props);
+        if(this.props.params.projectId && jQuery.isEmptyObject(this.props.project) || jQuery.isEmptyObject(this.props.project_formdata)) {
             return false
         }
         
@@ -541,15 +590,18 @@ class PageProject extends Component {
                                         <h3 className="tab_drawer_heading">
                                             <a href="#locatie" aria-controls="locatie" role="tab" data-toggle="tab">{trans.pageProject_tab_locatie} <i className="iconc-chevron-down"></i></a>
                                         </h3>
-                                        <div role="tabpanel" className="tab-pane active" id="locatie">
+                                        <div role="tabpanel" className="tab-pane " id="locatie">
                                             <LocatieInput 
                                                 address={this.props.project.address}
                                                 address_lat={this.props.project.lat}
                                                 address_lng={this.props.project.lon}
                                                 parkingItems={this.props.project.project_parkings}
-                                                itemsProvice={this.props.project_formdata.eigenschappens}
-                                                itemsPlaats={this.props.project_formdata.gebouwens}
-                                                itemsGebied={this.props.project_formdata.gelegenhendens}
+                                                itemsProvice={this.props.project_formdata.provinces}
+                                                itemsPlaats={this.props.project_formdata.plaats}
+                                                itemsGebied={this.props.project_formdata.gebieds}
+                                                selectedProvinceId={this.props.project_province.length>0 ? this.props.project.province[0].id : ''}
+                                                selectedPlaatId={this.props.project_plaat.length>0 ? this.props.project.plaat[0].id : ''}
+                                                selectedGebiedId={this.props.project_gebied.length>0 ? this.props.project.gebied[0].id : ''}
                                             />
                                         </div>
 
@@ -570,8 +622,8 @@ class PageProject extends Component {
                                         <h3 className="tab_drawer_heading">
                                             <a href="#aanvragen" aria-controls="aanvragen" role="tab" data-toggle="tab">{trans.pageProject_tab_aanvragen} <i className="iconc-chevron-down"></i></a>
                                         </h3>
-                                        <div role="tabpanel" className="tab-pane " id="aanvragen">
-                                            <OfferRequestList items={this.props.project_offer_request_details_list} />
+                                        <div role="tabpanel" className="tab-pane active" id="aanvragen">
+                                            <OfferRequestList onDateItemChange={this.onOfferlistDateItemChange} items={this.props.project_offer_request_details_list} />
                                         </div>
 
                                         <h3 className="tab_drawer_heading">
@@ -582,9 +634,9 @@ class PageProject extends Component {
                                         </div>
 
                                     </div>
-                                    <div className="visible-xs twoBtnStyle">
-                                        <a href="#" className="">{trans.pageProject_2btn_meer}</a>
-                                        <a href="#" className="">{trans.pageProject_2btn_opslaan}</a>
+                                    <div className="visible-xs visible-sm twoBtnStyle">
+                                        <button type="button" className="" onClick={()=>{this.onMeerBtnClick()}}>{trans.pageProject_2btn_meer}</button>
+                                        <button type="button" className="" onClick={()=>{this.handleSumbit()}}>{trans.pageProject_rightBlock_opslaan}</button>
                                     </div>
 
                                 </form>  
@@ -596,63 +648,7 @@ class PageProject extends Component {
                     </div>
                 </ContentWrapper>
 
-                <div className=" meerBlockMobile">
-                    <div className="block-info">
-                        <label>{trans.pageProject_rightBlock_bewerkingen}</label>
-                        <div className="last_updated mt5">{trans.pageProject_rightBlock_updated}</div>
-
-                        <div className="d-table w100 mt20 mx-w-300">
-                            <div className="d-table-cell v-align-middle">
-                                <button ref="submit" type="button" className="btn btn-green btn--round" onClick={()=>{this.handleSumbit()}}>{trans.pageProject_rightBlock_opslaan}</button>
-                            </div>
-                            <div className="d-table-cell v-align-middle">
-                                <button ref="annuleren" type="button" className="btn btn-plain">{trans.pageProject_rightBlock_annuleren}</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="block-info">
-                        <label>{trans.pageProject_rightBlock_locatie}</label>
-                        <div><a className="live" href="#">{trans.pageProject_rightBlock_link_live}</a> <i className="iconc-link pull-right px5 i-rotate25"></i></div>
-                        <div><a className="concept" href="#">{trans.pageProject_rightBlock_link_concept}</a> <i className="iconc-link pull-right px5 i-rotate25"></i></div>
-                    </div>
-                    <div className="block-info">
-                        <label>{trans.pageProject_rightBlock_status}</label>
-                        <div className="dropdown dropdown--status">
-                            <i className="iconc-published before_text"></i>{trans.pageProject_rightBlock_gepubliceerd}
-                            <a className="pull-right dropdown-toggle px5 i-rotate25" id="gepubliceerd" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i className="iconc-edit"></i></a>
-
-                            <ul className="dropdown-menu dropdown-menu--status" aria-labelledby="gepubliceerd">
-                                <li>
-                                    <a href="">
-                                        <label>
-                                            <input type="radio" name="aanhef" value="dhr" />
-                                            <span>{trans.pageProject_rightBlock_gepubliceerd} <i className="iconc-published"></i></span>
-                                        </label>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="">
-                                        <label>
-                                            <input type="radio" name="aanhef" value="concept" />
-                                            <span>{trans.pageProject_rightBlock_concept} <i className="iconc-concept"></i></span>
-                                        </label>
-                                    </a>
-                                </li>
-                                
-                            </ul>   
-                        </div> 
-                    </div>
-                    <div className="block-info">
-                        <label>{trans.pageProject_rightBlock_datum}</label>
-                        <div className="last_updated">20 oktober 2016 om 17:15</div>
-                    </div>
-                    <div className="block-info">
-                        <a href="#"><i className="iconc-trash before_text"></i>{trans.pageProject_rightBlock_zet_deze}</a>
-                    </div>
-                    <div className="block-info text-center">
-                        <a href="#" className="a-hover-color">{trans.pageProject_rightBlock_terug}</a>
-                    </div>
-                </div>
+                
             </div>
             
         );
