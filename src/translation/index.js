@@ -81,6 +81,8 @@ const language = {
 		"pageProject_details_gebouwen": "Gebouwen",
 		"pageProject_details_ligging": "Ligging",
 		"pageProject_details_eigenschappen": "Eigenschappen",
+		"pageProject_geen_actie": "Geen actie",
+		"pageProject_actie_voor": "Actie voor",
 
 		"pageProject_website_label": "Website",
 

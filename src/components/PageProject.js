@@ -230,13 +230,13 @@ class PageProject extends Component {
 
         let toevoegenList = [];
         toevoegenList.push({
-            "title": "Geen actie",
+            "title": trans.pageProject_geen_actie,
             "value": '',
         })
 
         this.props.project_formdata.gelegenhendens.map((item, index) => {
             toevoegenList.push({
-                "title": 'Actie voor '+item.title,
+                "title": trans.pageProject_geen_actie+' '+item.title,
                 "value": item.value,
             })
         })
