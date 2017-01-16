@@ -474,8 +474,8 @@ class PageProject extends Component {
                 <div className="block-info">
                     <a href="#"><i className="iconc-trash before_text"></i>{trans.pageProject_rightBlock_zet_deze}</a>
                 </div>
-                <div className="block-info text-center">
-                    <button type="button" onClick={()=>{this.onRightBlockTerugClick()}} className="btn btn-green btn--round a-hover-color">{trans.pageProject_rightBlock_terug}</button>
+                <div className="block-info text-center box--shadow hidden-md hidden-lg">
+                    <button type="button" onClick={()=>{this.onRightBlockTerugClick()}} className="btn btn--transparent a-hover-color">{trans.pageProject_rightBlock_terug}</button>
                 </div>
             </div>
         )
@@ -635,9 +635,9 @@ class PageProject extends Component {
                                         </div>
 
                                     </div>
-                                    <div className="visible-xs visible-sm twoBtnStyle">
-                                        <button type="button" className="" onClick={()=>{this.onMeerBtnClick()}}>{trans.pageProject_2btn_meer}</button>
-                                        <button type="button" className="" onClick={()=>{this.handleSumbit()}}>{trans.pageProject_rightBlock_opslaan}</button>
+                                    <div className="visible-xs visible-sm twoBtnStyle box--shadow">
+                                        <button type="button" className="btn btn--transparent a-hover-color" onClick={()=>{this.onMeerBtnClick()}}>{trans.pageProject_2btn_meer}</button>
+                                        <button type="button" className="btn btn--transparent a-hover-color" onClick={()=>{this.handleSumbit()}}>{trans.pageProject_rightBlock_opslaan}</button>
                                     </div>
 
                                 </form>  

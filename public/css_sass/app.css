@@ -733,13 +733,16 @@ label.error {
       border-bottom-color: rgba(0, 0, 0, 0.15); }
 
 .twoBtnStyle {
-  border: 1px solid #CDD4D7; }
+  border: 1px solid #CDD4D7;
+  border-top: none; }
   .twoBtnStyle button {
     display: inline-block;
     width: 50%;
-    padding: 10px;
+    padding: 15px;
     text-align: center;
-    color: #7C8589; }
+    color: #7C8589;
+    border: none;
+    border-radius: 0; }
     .twoBtnStyle button:hover {
       color: #08B995;
       text-decoration: none; }
@@ -857,6 +860,13 @@ label input[type="radio"]:checked + span {
 .btn--round {
   border-radius: 40px;
   padding: 8px 20px; }
+
+.box--shadow {
+  -webkit-box-shadow: 0 -3px 4px rgba(0, 0, 0, 0.175);
+  box-shadow: 0 -3px 4px rgba(0, 0, 0, 0.175); }
+
+.btn--transparent {
+  background-color: transparent; }
 
 .btn--nopad {
   padding: 0; }
