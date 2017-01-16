@@ -115,6 +115,9 @@ const language = {
 		"changePwd_new": "New Password",
 		"changePwd_new_confirm": "Confirm New Password",
 		"changePwd_submit_btn": "Update Password",
+		"changePwd_error_min8_char": "Minstens 8 karakters.",
+		"changePwd_error_min1_hoofdletter": "Minstens 1 hoofdletter.",
+		"changePwd_error_min1_cijfer": "Minstens 1 cijfer.",
 
 		"clonableInput_naam_label": "Name",
 

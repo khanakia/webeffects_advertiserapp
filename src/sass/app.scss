@@ -306,8 +306,8 @@ label input[type="radio"]:checked + span {
     i {
     	position: absolute;
     	right: 15px;
-    	top: 13px;
-    	font-size: 18px;
+    	top: 11px;
+    	font-size: 20px;
     }
 }
 
@@ -371,6 +371,11 @@ label input[type="radio"]:checked + span {
 			>a:hover, >a:focus {
 				color: #7C8589;
 			}
+		}
+	}
+	&.open {
+		.iconc-chevron-down:before {
+			content: "\e92d";
 		}
 	}
 
@@ -1127,7 +1132,7 @@ label input[type="radio"]:checked + span {
 .offerrequesttab {
 
 	.offerrequesttable {
-		padding: 20px;
+		/*padding: 20px;*/
 	}	
 
 	.accordion-heading {
@@ -1358,5 +1363,27 @@ label input[type="radio"]:checked + span {
 		height: 94px;
 		display: inline-block;
 		background: url("../images/snoobi-logo.png") no-repeat center;
+	}
+}
+
+.popover.right {
+	border-radius: 4px;
+}
+
+.password_field_errors,
+.password_confirmation_field_errors {
+	div {
+		padding: 2px 0;
+		> i {
+    		width: 18px;
+    		display: inline-block;
+			font-size: 13px;
+			color: #08B995;
+			vertical-align: middle;
+		}
+		> i.iconc-cross {
+			font-size: 10px;
+			color: #FF2A00;
+		}
 	}
 }

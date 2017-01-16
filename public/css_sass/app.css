@@ -851,8 +851,8 @@ label input[type="radio"]:checked + span {
   .btn-dropdown i {
     position: absolute;
     right: 15px;
-    top: 13px;
-    font-size: 18px; }
+    top: 11px;
+    font-size: 20px; }
 
 .btn--round {
   border-radius: 40px;
@@ -897,6 +897,8 @@ label input[type="radio"]:checked + span {
       padding: 15px 25px; }
     .dropdown--style1 .dropdown-menu > li > a:hover, .dropdown--style1 .dropdown-menu > li > a:focus {
       color: #7C8589; }
+.dropdown--style1.open .iconc-chevron-down:before {
+  content: "\e92d"; }
 
 /* Used in header desktop */
 .dropdown-menu--user {
@@ -1423,7 +1425,7 @@ label input[type="radio"]:checked + span {
   border: none; }
 
 .offerrequesttab .offerrequesttable {
-  padding: 20px; }
+  /*padding: 20px;*/ }
 .offerrequesttab .accordion-heading {
   background-color: #fff;
   border: 1px solid #CDD4D7;
@@ -1573,5 +1575,23 @@ label input[type="radio"]:checked + span {
   height: 94px;
   display: inline-block;
   background: url("../images/snoobi-logo.png") no-repeat center; }
+
+.popover.right {
+  border-radius: 4px; }
+
+.password_field_errors div,
+.password_confirmation_field_errors div {
+  padding: 2px 0; }
+  .password_field_errors div > i,
+  .password_confirmation_field_errors div > i {
+    width: 18px;
+    display: inline-block;
+    font-size: 13px;
+    color: #08B995;
+    vertical-align: middle; }
+  .password_field_errors div > i.iconc-cross,
+  .password_confirmation_field_errors div > i.iconc-cross {
+    font-size: 10px;
+    color: #FF2A00; }
 
 /*# sourceMappingURL=app.css.map */

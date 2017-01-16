@@ -110,21 +110,21 @@ class ChangePasswordForm extends Component {
         var html = '';
 
         if(error_object.minlength==true) {
-            html += '<div><i class="fa fa-check"></i> Minstens 8 karakters.</div>';
+            html += '<div><i class="iconc-check"></i> '+trans.changePwd_error_min8_char+'</div>';
         } else {
-            html += '<div><i class="fa fa-times"></i> Minstens 8 karakters.</div>';
+            html += '<div><i class="iconc-cross"></i> '+trans.changePwd_error_min8_char+'</div>';
         }
 
         if(error_object.ContainsAtLeastOneCapitalLetter==true) {
-            html += '<div><i class="fa fa-check"></i> Minstens 1 hoofdletter.</div>';
+            html += '<div><i class="iconc-check"></i> '+trans.changePwd_error_min1_hoofdletter+'</div>';
         } else {
-            html += '<div><i class="fa fa-times"></i> Minstens 1 hoofdletter.</div>';
+            html += '<div><i class="iconc-cross"></i> '+trans.changePwd_error_min1_hoofdletter+'</div>';
         }
 
         if(error_object.ContainsAtLeastOneDigit==true) {
-            html += '<div><i class="fa fa-check"></i> Minstens 1 cijfer.</div>';
+            html += '<div><i class="iconc-check"></i> '+trans.changePwd_error_min1_cijfer+'</div>';
         } else {
-            html += '<div><i class="fa fa-times"></i> Minstens 1 cijfer.</div>';
+            html += '<div><i class="iconc-cross"></i> '+trans.changePwd_error_min1_cijfer+'</div>';
         }
 
         // jQuery(this.refs.password).data('bs.popover').options.content = html;
@@ -159,9 +159,9 @@ class ChangePasswordForm extends Component {
         var html = '';
 
         if(error_object.equalTo==true) {
-            html += '<div><i class="fa fa-check"></i> Minstens 8 karakters.</div>';
+            html += '<div><i class="iconc-check"></i> '+trans.changePwd_error_min8_char+'</div>';
         } else {
-            html += '<div><i class="fa fa-times"></i> Minstens 8 karakters.</div>';
+            html += '<div><i class="iconc-check"></i> '+trans.changePwd_error_min8_char+'</div>';
         }
 
         return html;

@@ -474,7 +474,7 @@ class PageProject extends Component {
                     <a href="#"><i className="iconc-trash before_text"></i>{trans.pageProject_rightBlock_zet_deze}</a>
                 </div>
                 <div className="block-info text-center">
-                    <button type="button" onClick={()=>{this.onRightBlockTerugClick()}} className="a-hover-color">{trans.pageProject_rightBlock_terug}</button>
+                    <button type="button" onClick={()=>{this.onRightBlockTerugClick()}} className="btn btn-green btn--round a-hover-color">{trans.pageProject_rightBlock_terug}</button>
                 </div>
             </div>
         )

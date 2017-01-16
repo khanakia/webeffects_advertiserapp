@@ -77,7 +77,7 @@ class ContactPersonInput extends React.Component {
             <table className="table table-bordered table--horizontal input-group-vmerge">
                 <thead>
                     <tr>
-                        <th><i className="iconc-person"></i></th>
+                        <th className="wp45"><i className="iconc-person"></i></th>
                         <th>{trans.contactPersonInput_naam}</th>
                         <th>{trans.contactPersonInput_mail}</th>
                         <th>{trans.contactPersonInput_telefon}</th>
