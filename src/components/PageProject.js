@@ -162,6 +162,7 @@ class PageProject extends Component {
             title: trans.pageProject_confirm_title,
             content: trans.pageProject_confirm_content,
             closeIcon: true,
+            columnClass: 'col-md-6 col-md-offset-3',
             buttons: {
                 cancelAction: {
                     text: trans.pageProject_confirm_cancel,
