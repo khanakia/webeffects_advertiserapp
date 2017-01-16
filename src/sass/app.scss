@@ -1387,3 +1387,14 @@ label input[type="radio"]:checked + span {
 		}
 	}
 }
+
+.headerPublic-wrapper {
+	padding: 10px 20px;
+	.img-wrapper {
+		> .logo {
+			height: 68px;
+			width: 221px;
+			background: url("../images/header-public-logo.png") no-repeat center;
+		}
+	}
+}

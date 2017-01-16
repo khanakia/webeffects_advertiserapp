@@ -1594,4 +1594,11 @@ label input[type="radio"]:checked + span {
     font-size: 10px;
     color: #FF2A00; }
 
+.headerPublic-wrapper {
+  padding: 10px 20px; }
+  .headerPublic-wrapper .img-wrapper > .logo {
+    height: 68px;
+    width: 221px;
+    background: url("../images/header-public-logo.png") no-repeat center; }
+
 /*# sourceMappingURL=app.css.map */

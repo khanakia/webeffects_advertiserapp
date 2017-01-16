@@ -3,6 +3,7 @@ import { Link, hashHistory } from 'react-router'
 import {ROOT_URL, RESET_PWD_AJAX_URL} from '../config.js'
 import Auth from '../helpers/auth.js'
 import Localstore from '../helpers/localstore.js'
+import HeaderPublic from './HeaderPublic'
 
 
 import ChangePasswordForm from 'components/Forms/ChangePasswordForm'
@@ -27,10 +28,13 @@ class ResetPassword extends Component {
         var email = this.props.location.query.email;    
 
         return (
-            <div className="loginform">
-                <div className="container">
-                   <ChangePasswordForm layout="layout3" onDataUpdate={this.onDataUpdate} token={token} email={email} />
-                </div>    
+            <div>
+                <HeaderPublic />
+                <div className="loginform">
+                    <div className="container">
+                       <ChangePasswordForm layout="layout3" onDataUpdate={this.onDataUpdate} token={token} email={email} />
+                    </div>    
+                </div>
             </div>
         );
     }

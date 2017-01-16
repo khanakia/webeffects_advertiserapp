@@ -1,3 +1,4 @@
+export HeaderPublic from './HeaderPublic';
 export Login from './Login';
 export ResetPassword from './ResetPassword';
 export ForgetPassword from './ForgetPassword';
