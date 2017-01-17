@@ -257,16 +257,16 @@ class LocatieInput extends React.Component {
                     <h3>{trans.locatieInput_adres}</h3>
                 </div>
                 <div className="section-zoek">
-                    <span>{trans.locatieInput_zoek}</span>
+                    <span className="zoek_text">{trans.locatieInput_zoek}</span>
                     <span className="short-dropdown">
                         <DropdownList items={countitems} selectedValue={3} name="" />
                     </span>
                     <span>
-                        <a href="#">{trans.locatieInput_voeg}</a>
+                        <button type="button" className="btn--whitebg">{trans.locatieInput_voeg}</button>
                     </span>
                 </div>
                 <div className="section-data">
-                    <span>
+                    <span className="wp130">
                         <DropdownList items={itemsprovice} selectedValue={this.props.selectedProvinceId} name="province_id" emptyPlaceholder={trans.select_empty_placeholder}/>
                     </span>
                     <span>

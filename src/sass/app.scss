@@ -328,6 +328,18 @@ label input[type="radio"]:checked + span {
 	background-color: transparent;
 }
 
+.btn--whitebg {
+	width: 100%;
+    padding: 10px 15px;
+    height: 40px;
+    border-radius: 0;
+    background: #fff;
+    border: 1px solid #CDD4D7;
+    color: #7C8589;
+    outline: none;
+    box-shadow: none;
+}
+
 .btn--nopad {
 	padding: 0;
 }
@@ -1251,7 +1263,7 @@ label input[type="radio"]:checked + span {
 
 	.section-data {
 		color: #7c8589;
-		margin: 20px 0 0;
+		margin: 15px 0 0;
 
 		> span {
 			display: inline-block;
@@ -1272,6 +1284,17 @@ label input[type="radio"]:checked + span {
 
 	.input-group-addon {
 		position: relative;
+		border-bottom: none;
+	}
+
+	.form-control {
+		border-bottom: none;
+	}
+
+	.input-group--style-label {
+		.input-group-addon {
+			border-bottom: 1px solid #cdd4d7;
+		}
 	}
 
 	.hidden-ispaid {
@@ -1309,6 +1332,7 @@ label input[type="radio"]:checked + span {
 		background-color: #eee;
 		border: 1px solid #cdd4d7;
 		border-right: none;
+		border-bottom: none;
 	}
 
 	.price-icon {
@@ -1318,6 +1342,7 @@ label input[type="radio"]:checked + span {
 		border: 1px solid #cdd4d7;
 		border-left: none;
 		border-right: none;
+		border-bottom: none;
 		cursor: pointer;
 
 		&.active i {
@@ -1335,13 +1360,17 @@ label input[type="radio"]:checked + span {
 		.section-zoek {
 
 			> span {
-				display: block;
-				width: 100%;
 				min-width: auto;
 				margin: 0 0 10px;
 
 				&.short-dropdown {
-					max-width: 150px;
+					width: 100px;
+					float: left;
+					margin-right: 5px;
+				}
+				&.zoek_text {
+					display: block;
+					width: 100%;
 				}
 			}
 		}

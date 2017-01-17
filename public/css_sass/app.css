@@ -868,6 +868,17 @@ label input[type="radio"]:checked + span {
 .btn--transparent {
   background-color: transparent; }
 
+.btn--whitebg {
+  width: 100%;
+  padding: 10px 15px;
+  height: 40px;
+  border-radius: 0;
+  background: #fff;
+  border: 1px solid #CDD4D7;
+  color: #7C8589;
+  outline: none;
+  box-shadow: none; }
+
 .btn--nopad {
   padding: 0; }
 
@@ -1503,7 +1514,7 @@ label input[type="radio"]:checked + span {
     min-width: 100px; }
 #locatie .section-data {
   color: #7c8589;
-  margin: 20px 0 0; }
+  margin: 15px 0 0; }
   #locatie .section-data > span {
     display: inline-block;
     margin: 0 10px 0 0;
@@ -1515,7 +1526,12 @@ label input[type="radio"]:checked + span {
     right: 10px;
     top: 50%; }
 #locatie .input-group-addon {
-  position: relative; }
+  position: relative;
+  border-bottom: none; }
+#locatie .form-control {
+  border-bottom: none; }
+#locatie .input-group--style-label .input-group-addon {
+  border-bottom: 1px solid #cdd4d7; }
 #locatie .hidden-ispaid {
   position: absolute;
   width: 10px;
@@ -1540,7 +1556,8 @@ label input[type="radio"]:checked + span {
   text-align: center;
   background-color: #eee;
   border: 1px solid #cdd4d7;
-  border-right: none; }
+  border-right: none;
+  border-bottom: none; }
 #locatie .price-icon {
   width: 50px;
   padding: 6px 12px;
@@ -1548,6 +1565,7 @@ label input[type="radio"]:checked + span {
   border: 1px solid #cdd4d7;
   border-left: none;
   border-right: none;
+  border-bottom: none;
   cursor: pointer; }
   #locatie .price-icon.active i {
     color: #08b995; }
@@ -1557,12 +1575,15 @@ label input[type="radio"]:checked + span {
   right: -134px; }
 @media screen and (max-width: 1350px) {
   #locatie .section-zoek > span {
-    display: block;
-    width: 100%;
     min-width: auto;
     margin: 0 0 10px; }
     #locatie .section-zoek > span.short-dropdown {
-      max-width: 150px; } }
+      width: 100px;
+      float: left;
+      margin-right: 5px; }
+    #locatie .section-zoek > span.zoek_text {
+      display: block;
+      width: 100%; } }
 
 .section_offerrequest_dropdown .short-dropdown {
   max-width: 250px;
