@@ -3,6 +3,7 @@ import { Link, hashHistory } from 'react-router'
 
 import ContentWrapper from './shared/ContentWrapper'
 import {PROJECT_STATUSES} from '../config'
+import {ProjectHelper} from '../helpers'
 
 class ProjectOverview extends Component {
     constructor(props, context) {
@@ -35,7 +36,10 @@ class ProjectOverview extends Component {
     }
     
     handleDelete = (id) => {
-        alert("Delete Function")
+        ProjectHelper.updateStatus(id, Env.project_status.waiting_for_unpublish).then((response) => {
+            this.props.fetchProjects()
+        })
+        // alert("Delete Function")
     }
 
    _renderMobile() {

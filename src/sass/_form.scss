@@ -8,6 +8,10 @@
 		font-family: 'Rubik', sans-serif;
 		font-weight: normal;
 	}
+
+	&.no-margin-bottom {
+		margin-bottom: 0;
+	}
 }
 
 
@@ -89,5 +93,32 @@ input {
 .aantal-personen {
 	.input-group-addon {
 		width: 75px;
+	}
+}
+
+
+.password-form-wrapper {
+	.is_mobile {
+		display: none;
+	}
+	@media screen and (max-width: 991px) {
+		.is_mobile {
+			display: block;
+		}
+
+		.popover {
+			display: none !important;
+		}
+	}
+
+
+	&.is_popup {
+		.is_mobile {
+			display: block;
+		}
+
+		.popover {
+			display: none !important;
+		}
 	}
 }

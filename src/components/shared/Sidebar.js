@@ -25,7 +25,7 @@ class Sidebar extends Component {
                     <ProjectsLinkList project_list={this.props.project_list} />
                 </div>
 
-                <Link to="/projects/add" className="btn btn-green btn--round btn--add"><i className="iconc iconc-plus mr10"></i>{trans.sidebar_voeg_link}</Link>
+                <Link to="/project/add" className="btn btn-green btn--round btn--add"><i className="iconc iconc-plus mr10"></i>{trans.sidebar_voeg_link}</Link>
             </div>
         );
     }

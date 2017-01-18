@@ -23,6 +23,7 @@ import {
     ForgotPasswordContainer,
     ProjectOverviewContainer,
     ProjectContainer,
+    ProjectNewContainer,
     AccountContainer,
     DemoContainer
 } from './containers';
@@ -48,7 +49,7 @@ import {ROOT_HOST} from './config.js'
                 <Route path="demo" component={DemoContainer} />
     			<Route path="dashboard" component={ProjectOverviewContainer} />
     			<Route path="projects/:projectId" component={ProjectContainer} />
-    			<Route path="project/add" component={ProjectContainer} />
+    			<Route path="project/add" component={ProjectNewContainer} />
                 <Route path="account" component={AccountContainer} />
     		</Route>
 		  </Router>

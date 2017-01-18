@@ -71,7 +71,16 @@ class VideoInput extends React.Component {
                 </div>
 
                 {this.props.items.map(function(item, index) {
-                    
+                    let iconClass = 'fa fa-film';
+
+                    if(item.type=="vimeo") {
+                        iconClass = 'fa fa-vimeo';
+                    }
+
+                    if(item.type=="youtube") {
+                        iconClass = 'fa fa-youtube';
+                    }
+
                     return (
                         
                             
@@ -80,7 +89,7 @@ class VideoInput extends React.Component {
                                 <button type="button" className="btn btn-plain btn--nopad hover-show" onClick={(e) => this.deleteProjectVideo(item.id)}>
                                     <i className="iconc-trash"></i>
                                 </button>
-                                <i className="fa fa-youtube hover-hide"></i>
+                                <i className={`hover-hide ${iconClass}`}></i>
                             </span>
                             <input type="text" className="form-control" name="video_url[]" defaultValue={item.url} />
                             <input type="hidden" className="form-control" name="video_id[]" defaultValue={item.id} />

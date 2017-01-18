@@ -110,7 +110,7 @@ const language = {
 		"pageProject_rightBlock_zet_deze": "Zet deze locatie offline",
 		"pageProject_rightBlock_terug": "Terug",
 
-		"changePwd_title": "Change Password",
+		"changePwd_title": "Eigen wachtwoord aanmaken",
 		"changePwd_old": "Old Password",
 		"changePwd_new": "New Password",
 		"changePwd_new_confirm": "Confirm New Password",
@@ -118,6 +118,9 @@ const language = {
 		"changePwd_error_min8_char": "Minstens 8 karakters.",
 		"changePwd_error_min1_hoofdletter": "Minstens 1 hoofdletter.",
 		"changePwd_error_min1_cijfer": "Minstens 1 cijfer.",
+		"changePwd_error_confirmation": "Wachtwoorden komen niet overeen.",
+		"changePwd_savebtn": "Bevestigen",
+		
 
 		"clonableInput_naam_label": "Name",
 
@@ -224,6 +227,7 @@ const language = {
 		"deleted" : "Deleted Successfully",
 		"validation_failed" : "validation_failed",
 		"entry_not_found" : "entry_not_found",
+		"no_data_found" : "No Data Found.",
 		
 
 		

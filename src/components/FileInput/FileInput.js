@@ -143,7 +143,7 @@ class FileInput extends React.Component {
                                 {
                                     (this.state.isEditing && this.state.editingItemId==item.attachment.id) ?
                                         <div className="image-popup">
-                                            <textarea></textarea>
+                                            <textarea ref="title_input"></textarea>
                                             <div className="button-wrapper">
                                                 <button type="button" className="btn btn-plain ml10 mr5 green-color" onClick={()=>{this.saveTitle()}}><i className="iconc-check"></i></button>
                                                 <button type="button" className="btn btn-plain red-color" onClick={()=>{this.cancelEditing()}}><i className="iconc-cross"></i></button>

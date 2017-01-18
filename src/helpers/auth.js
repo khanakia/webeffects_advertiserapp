@@ -62,10 +62,16 @@ export default class Auth {
 		return jwt_decode(Auth.getToken());
 	}
 
+	static is_admin() {
+		const data = Auth.getTokenDecoded();
+		return data.is_admin;
+	}
+	
 	static getOrgID() {
 		const data = Auth.getTokenDecoded();
 		return data.org_id;
 	}
+
 
 	static getUserID() {
 		const data = Auth.getTokenDecoded();

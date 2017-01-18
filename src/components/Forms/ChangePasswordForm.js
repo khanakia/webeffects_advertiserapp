@@ -8,8 +8,8 @@ class ChangePasswordForm extends Component {
     constructor(props) {
         super(props);
 
-        this.msg_btn_save_text = trans.contactForm_msg_btn_save_text
-        this.msg_heading = trans.contactForm_msg_heading
+        this.msg_btn_save_text = trans.changePwd_savebtn
+        this.msg_heading = trans.changePwd_title
     }
 
     static defaultProps = {
@@ -27,8 +27,8 @@ class ChangePasswordForm extends Component {
 
     componentWillMount() {
         if(!this.props.is_new) {
-            this.msg_btn_save_text = trans.contactForm_update_msg_btn_save_text
-            this.msg_heading = trans.contactForm_update_msg_heading
+            this.msg_btn_save_text = trans.changePwd_savebtn
+            this.msg_heading = trans.changePwd_title
         }
     }
 
@@ -44,15 +44,15 @@ class ChangePasswordForm extends Component {
                     ContainsAtLeastOneDigit: true,
                 },
                 password_confirmation: {
-                    // equalTo: "#password"
+                    equalTo: "#password"
                 }
             },
 
-            // errorPlacement: function(error) {
-            //     console.log(error)
-            //     _this.showPasswordPopover()
-            //     _this.showPasswordConfirmationPopover()
-            // },
+            errorPlacement: function(error) {
+                // console.log(error)
+                _this.showPasswordPopover()
+                _this.showPasswordConfirmationPopover()
+            },
 
             success: function(label) {
               _this.showPasswordPopover()
@@ -140,7 +140,7 @@ class ChangePasswordForm extends Component {
         if(!jQuery(this.refs.password).data('bs.popover')) {
             jQuery(this.refs.password).popover({
                 html: true,
-                container: 'body',
+                container: '.password-form-wrapper',
                 trigger: 'manual',
                 placement: 'right',
                 content: function() {
@@ -159,9 +159,9 @@ class ChangePasswordForm extends Component {
         var html = '';
 
         if(error_object.equalTo==true) {
-            html += '<div><i class="iconc-check"></i> '+trans.changePwd_error_min8_char+'</div>';
+            html += '<div><i class="iconc-check"></i> '+trans.changePwd_error_confirmation+'</div>';
         } else {
-            html += '<div><i class="iconc-check"></i> '+trans.changePwd_error_min8_char+'</div>';
+            html += '<div><i class="iconc-cross"></i> '+trans.changePwd_error_confirmation+'</div>';
         }
 
         return html;
@@ -171,12 +171,13 @@ class ChangePasswordForm extends Component {
     showPasswordConfirmationPopover = () => {
         let $elem = jQuery(this.refs.password_confirmation)
         var errors_password_field = this.validator.ruleValidationStatus($elem); 
+        // console.log(errors_password_field)
         var html = this._error_PasswordConfirmation(errors_password_field);
 
         if(!$elem.data('bs.popover')) {
             $elem.popover({
                 html: true,
-                container: 'body',
+                container: '.password-form-wrapper',
                 trigger: 'manual',
                 placement: 'right',
                 content: function() {
@@ -251,7 +252,7 @@ class ChangePasswordForm extends Component {
     // this layout used on where advertiser logins in first time so he much change password this form will show in popup
     _render_layout1() {
         return (
-            <div>
+            <div className="password-form-wrapper is_popup">
                 <div className="modal-header">
                     <h4 className="modal-title">{this.msg_heading}</h4>
                 </div>
@@ -264,18 +265,18 @@ class ChangePasswordForm extends Component {
                         <div className="form-group">
                             <label className="">{trans.account_uw_nieuwe_wachtwoord}</label>
                             <input type="password" className="form-control" name="password" id="password" ref="password"  placeholder="••••••••••" />
-                            
+                            <div className="password_field_errors is_mobile"></div>
                         </div>
-                        <div className="form-group">
+                        <div className="form-group no-margin-bottom">
                             <label className="">{trans.account_noogmaals}</label>
                             
                             <input type="password" className="form-control required updatePassword" name="password_confirmation" id="password_confirmation" ref="password_confirmation" placeholder="••••••••••"/>
-                            
+                            <div className="password_confirmation_field_errors is_mobile"></div>
                         </div>
 
                     </div>
-                    <div className="modal-footer text-right">
-                        <button type="submit" className="btn btn-green btn--round">{trans.account_bevestig_btn}</button>
+                    <div className="modal-footer11 text-center pb20">
+                        <button type="submit" className="btn btn-green btn--round">{trans.changePwd_savebtn}</button>
                     </div>
                 </form>
 
@@ -287,7 +288,7 @@ class ChangePasswordForm extends Component {
     _render_layout2() {
         return (
             <div>
-                <div className="formstyle1Ct changepwdCt">
+                <div className="formstyle1Ct changepwdCt password-form-wrapper">
                     <form className="form-horizontal formstyle1 ChangepwdForm" ref='form' onSubmit={this.handleSubmit_Layout2}>
                         <div className="row">
                             <div className="col-md-12">
@@ -308,6 +309,7 @@ class ChangePasswordForm extends Component {
                                             <div className="input-group-addon"><i className="fa fa-key" aria-hidden="true"></i></div>
                                             <input type="password" className="form-control required" name="password" id="password" ref="password"  placeholder="••••••••••" />
                                         </div>
+                                        <div className="password_field_errors is_mobile"></div>
                                     </div>
                                 </div>
                                 <div className="form-group">
@@ -317,12 +319,13 @@ class ChangePasswordForm extends Component {
                                             <div className="input-group-addon"><i className="fa fa-key" aria-hidden="true"></i></div>
                                             <input type="password" className="form-control required updatePassword" name="password_confirmation" id="password_confirmation" ref="password_confirmation" placeholder="••••••••••"/>
                                         </div>
+                                        <div className="password_confirmation_field_errors is_mobile"></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div className="text-right">
-                            <button type="submit" className="btn btn-green btn--round">{trans.account_bevestig_btn}</button>
+                            <button type="submit" className="btn btn-green btn--round">{trans.changePwd_savebtn}</button>
                         </div>
                     </form>
                 </div>
@@ -334,7 +337,7 @@ class ChangePasswordForm extends Component {
     // this layout used on ForgotPassword Page
     _render_layout3() {
         return (
-            <div className="row formstyle1Ct">    
+            <div className="row formstyle1Ct password-form-wrapper">    
                 <h3 className="form_title text-center">{trans.resetpwd_title}</h3>
                 <form className="form-horizontal formstyle1 ForgetpwdForm" ref='form' onSubmit={this.handleSubmit_Layout3}>
                     <input type="hidden" name="token" defaultValue={this.props.token}/>
@@ -345,14 +348,14 @@ class ChangePasswordForm extends Component {
                                 <label className="col-sm-12">{trans.resetpwd_nieuw}</label>
                                 <div className="col-sm-12">
                                     <input type="password" className="form-control required" name="password" id="password" ref="password"  placeholder="••••••••••" />
-                                    <div className="passworderror errordiv"></div>
+                                    <div className="password_field_errors is_mobile"></div>
                                 </div>
                             </div>
                             <div className="form-group">
                                 <label className="col-sm-12"><div className="row"><div className="col-sm-12">{trans.resetpwd_herhaal}</div></div></label>
                                 <div className="col-sm-12">
                                     <input type="password" className="form-control required updatePassword" name="password_confirmation" id="password_confirmation" ref="password_confirmation" placeholder="••••••••••"/>
-                                    <div className="passwordconfirmerror errordiv"></div>
+                                    <div className="password_confirmation_field_errors is_mobile"></div>
                                 </div>
                             </div>
                         </div>

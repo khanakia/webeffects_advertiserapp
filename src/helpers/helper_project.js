@@ -96,13 +96,13 @@ export default class ProjectHelper {
         });
     }
 
-    static projectStatus(project_id,project_status) {
+    static updateStatus(project_id,project_status_id) {
         return axios({
             method: 'post',
             url: API_URL_PROJECT + '/' + project_id + '/update_status',
             headers: Auth.header(),
             data: {
-                project_status_id: project_status
+                project_status_id: project_status_id
             }
         });
     }

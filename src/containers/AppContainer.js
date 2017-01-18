@@ -4,6 +4,8 @@ import { fetchProjects } from '../actions/action_project';
 import { fetchCurrentUser } from '../actions/action_appdata';
 
 import {App} from '../components'
+
+
 const mapStateToProps = (state) => {
     return {
         state : state,
@@ -15,13 +17,17 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         dispatch,
-        fetchCurrentUser: () => {
-            dispatch(fetchCurrentUser())
-        },
-
-        fetchProjects: () => {
+        fethcInitialData: () => {
+            
+            dispatch(fetchCurrentUser()).then((response) => {
+                // console.log("fetched")
+            });
             dispatch(fetchProjects()); 
         },
+
+        // fetchProjects: () => {
+        //     dispatch(fetchProjects()); 
+        // },
     }
 }
 

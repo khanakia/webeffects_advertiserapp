@@ -57,14 +57,25 @@ export const PROJECT_STATUSES = {
 	},
 
 	"2" : {
-		'title' : 'Verstuurd',
-		'icon_class' : 'iconc iconc-uploaded color-red',
+		'title' : 'Nieuw',
+		'icon_class' : 'iconc iconc-concept color-red',
 	},
 
 	"3" : {
-		'title' : 'Concept',
-		'icon_class' : 'iconc iconc-concept',
-	}
+		'title' : 'Ter goedkeuring',
+		'icon_class' : 'iconc iconc-uploaded color-red',
+	},
+
+	"4" : {
+		'title' : 'Wachten op depubliceren',
+		'icon_class' : 'iconc iconc-uploaded color-red',
+	},
+
+	"5" : {
+		'title' : 'Unpublished',
+		'icon_class' : 'iconc iconc-uploaded color-red',
+	},
+
 
 }
 

@@ -15,8 +15,9 @@ export default class AppContainer extends Component {
     }
 
     componentWillMount() {
-        this.props.fetchCurrentUser()
-        this.props.fetchProjects()
+        this.props.fethcInitialData()
+        // this.props.fetchCurrentUser()
+        // this.props.fetchProjects()
     }
 
     componentDidMount() {

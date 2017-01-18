@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 
 import {PageProject} from '../components'
 
-import { fetchProject, fetchProjectFormdata, fetchOfferRequestDetailsList } from '../actions/action_project';
+import { fetchProjects, fetchProject, fetchProjectFormdata, fetchOfferRequestDetailsList } from '../actions/action_project';
 const mapStateToProps = (state) => {
     return {
         state : state,
@@ -29,7 +29,11 @@ const mapDispatchToProps = (dispatch) => {
 
         fetchOfferRequestDetailsList: (project_id, date=null) => {
             dispatch(fetchOfferRequestDetailsList(project_id, date))
-        }
+        },
+
+        fetchProjects: () => {
+            dispatch(fetchProjects()); 
+        },
 
     }
 }

@@ -8,7 +8,7 @@ class Zalen extends React.Component {
 
         this.state = {
             itemsNew: [],
-            isDesktop: false
+            isDesktop: true
         }
         
     }
@@ -278,7 +278,7 @@ class Zalen extends React.Component {
                         <div key={`z-${item}`}>
                             <div className="input-group input-group--style-label input-group--style-a">
                                 <span className="input-group-addon">
-                                    <button type="button" className="btn btn-plain btn--nopad hover-show" onClick={(e) => this.handleRemoveZalen(item.id)}>
+                                    <button type="button" className="btn btn-plain btn--nopad hover-show" onClick={(e) => this.handleRemoveRow(index)}>
                                         <i className="iconc-trash"></i>
                                     </button>
                                     <i className="iconc-room hover-hide"></i>
@@ -343,7 +343,7 @@ class Zalen extends React.Component {
                             <i className="iconc-plus"></i>
                         </button>
                     </span>
-                    <input type="text" className="form-control" defaultValue="Vimeo of YouTube link toevoegen" readOnly />
+                    <input type="text" className="form-control" defaultValue={trans.zalen_zaal} readOnly />
                 </div>
             </div>
         )

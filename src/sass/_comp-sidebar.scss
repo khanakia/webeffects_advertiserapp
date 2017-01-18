@@ -15,7 +15,11 @@
 	>.logo {
 		width: 100%;
 		height: 125px;
-		background-color: #343F47;
+		background: url(../images/logo.png);
+	    background-repeat: no-repeat;
+	    background-size: 185px;
+	    background-color: #343F47;
+	    background-position: center;
 	}
 
 	.projects-list-wrapper {
