@@ -218,11 +218,10 @@ label.error {
 
 .twoBtnStyle {
 	border: 1px solid #CDD4D7;
-	border-top: none;
 	button {
 		display: inline-block;
 		width: 50%;
-		padding: 15px;
+		padding: 20px;
 		text-align: center;
 		color: #7C8589;
 		border: none;
@@ -317,11 +316,18 @@ label input[type="radio"]:checked + span {
     border-color: #08B995;
     outline: none;
 
+    i {
+    	color: #fff;
+    }
+
     &:hover {
 	    color: #08B995;
 	    background-color: #fff;
 	    border-color: #08B995;
 	    outline: none;
+	    i {
+	    	color: #08B995;
+	    }
 	}
 }
 .btn-grey, .btn-grey:focus {
@@ -342,6 +348,21 @@ label input[type="radio"]:checked + span {
 	border: none;
 	color: #7C8589;
 	background: none;
+
+	&:hover {
+		color: #08B995;
+	}
+}
+
+.btn-plainBlack {
+	padding-left: 0;
+	border: none;
+	color: #101010;
+	background: none;
+
+	i.before_text {
+		margin-right: 15px;
+	}
 
 	&:hover {
 		color: #08B995;

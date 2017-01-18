@@ -23,7 +23,7 @@ class Header extends Component {
         })
         jQuery("a.has-childerns").click(function(){
             jQuery(this).parent().find(".submenu").slideToggle()
-            jQuery(this).find("i.slideUpDown").toggleClass("iconc-chevron-down iconc-check")
+            jQuery(this).find("i.slideUpDown").toggleClass("iconc-chevron-down iconc-chevron-up")
             return false
         })
     }
@@ -63,8 +63,8 @@ class Header extends Component {
                 <header className="mobile">
                    <a href="/" className="header__logo"></a>
                     <button type="button" className="header__menu">
-                        <i className="iconc iconc-hamburger open"></i>
-                        <i className="iconc iconc-cross close"></i>
+                        <i className="iconc-hamburger open"></i>
+                        <i className="iconc-cross close"></i>
                     </button>
                 </header>
 

@@ -793,12 +793,11 @@ label.error {
       border-bottom-color: rgba(0, 0, 0, 0.15); }
 
 .twoBtnStyle {
-  border: 1px solid #CDD4D7;
-  border-top: none; }
+  border: 1px solid #CDD4D7; }
   .twoBtnStyle button {
     display: inline-block;
     width: 50%;
-    padding: 15px;
+    padding: 20px;
     text-align: center;
     color: #7C8589;
     border: none;
@@ -876,11 +875,15 @@ label input[type="radio"]:checked + span {
   background-color: #08B995;
   border-color: #08B995;
   outline: none; }
+  .btn-green i, .btn-green:focus i {
+    color: #fff; }
   .btn-green:hover, .btn-green:focus:hover {
     color: #08B995;
     background-color: #fff;
     border-color: #08B995;
     outline: none; }
+    .btn-green:hover i, .btn-green:focus:hover i {
+      color: #08B995; }
 
 .btn-grey, .btn-grey:focus {
   color: #fff;
@@ -898,6 +901,16 @@ label input[type="radio"]:checked + span {
   color: #7C8589;
   background: none; }
   .btn-plain:hover {
+    color: #08B995; }
+
+.btn-plainBlack {
+  padding-left: 0;
+  border: none;
+  color: #101010;
+  background: none; }
+  .btn-plainBlack i.before_text {
+    margin-right: 15px; }
+  .btn-plainBlack:hover {
     color: #08B995; }
 
 .btn-dropdown {

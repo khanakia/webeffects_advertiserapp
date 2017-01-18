@@ -9,7 +9,7 @@ import {Auth, Localstore, UserHelper, ContactHelper, ProjectHelper} from '../hel
 import ChangePasswordForm from 'components/Forms/ChangePasswordForm'
 
 import ContactPersonInput from './ContactPersonInput'
-import ProjectContactInput from './ProjectContactInput'
+import ProjectContactInput from './ProjectContactInput' 
 
 class Account extends Component {
     constructor(props, context) {
@@ -244,6 +244,10 @@ class Account extends Component {
                                     </h3>
                                     <div role="tabpanel" className="tab-pane active" id="profile">
                                         {this._render_tabGegevens()}
+                                        <div className="visible-xs visible-sm twoBtnStyle">
+                                            <button ref="annuleren" type="button" className="btn btn-plain" onClick={()=>{this.handleCancel()}}>{trans.account_link_annuleren}</button>
+                                            <button ref="submit" type="button" className="btn btn-plain" onClick={()=>{this.handleSumbit()}}>{trans.account_link_opslaan}</button>
+                                        </div>
                                     </div>
 
                                     <h3 className="tab_drawer_heading">
@@ -253,11 +257,6 @@ class Account extends Component {
                                         {/*this._render_tabPassword()*/}
                                         <ChangePasswordForm layout="layout2" />
                                     </div>                                    
-                                </div>
-
-                                <div className="visible-xs visible-sm twoBtnStyle">
-                                    <button ref="annuleren" type="button" className="btn btn-plain" onClick={()=>{this.handleCancel()}}>{trans.account_link_annuleren}</button>
-                                    <button ref="submit" type="button" className="btn btn-plain" onClick={()=>{this.handleSumbit()}}>{trans.account_link_opslaan}</button>
                                 </div>
                             </div>
                             <div className="page-panel__inner__right">

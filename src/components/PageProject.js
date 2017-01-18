@@ -527,7 +527,7 @@ class PageProject extends Component {
                             <div className="last_updated">{this.props.project.formatted_updated_at}</div>
                         </div>
                         <div className="block-info">
-                            <button className="btn btn-plain" onClick={()=>{this.handleDelete(this.props.project.id)}}><i className="iconc-trash before_text"></i>{trans.pageProject_rightBlock_zet_deze}</button>
+                            <button className="btn btn-plainBlack" onClick={()=>{this.handleDelete(this.props.project.id)}}><i className="iconc-trash before_text"></i>{trans.pageProject_rightBlock_zet_deze}</button>
                         </div>
                     </div>
 

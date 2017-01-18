@@ -127,7 +127,7 @@ class Zalen extends React.Component {
             <table className="table table-bordered table--horizontal">
                 <thead>
                     <tr>
-                    <th><i className="fa fa-archive"></i></th>
+                    <th><i className="iconc-room"></i></th>
                     <th>{trans.zalen_tab_title}</th>
                     <th>{trans.zalen_tab_daglicht}</th>
                     <th>{trans.zalen_tab_u_vorm}</th>
@@ -146,9 +146,14 @@ class Zalen extends React.Component {
                         return (
                             <tr key={`z-${item.id}`}>
                                 <td>
-                                        <button type="button" className="btn btn-plain btn--nopad" onClick={()=>{this.handleRemoveZalen(item.id)}}>
+                                <div className="input-group" key={index}>
+                                    <span className="input-group-addon">
+                                        <button type="button" className="btn btn-plain btn--nopad hover-show" onClick={()=>{this.handleRemoveZalen(item.id)}}>
                                             <i className="iconc-trash"></i>
                                         </button>
+                                        <i className="hover-hide iconc-room"></i>
+                                    </span>
+                                </div>
                                 </td>
                                 <td>
                                     <input type="hidden" name={`zalen[${index}][id]`} defaultValue={item.id} />
