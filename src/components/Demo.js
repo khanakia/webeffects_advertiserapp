@@ -39,7 +39,7 @@ class Demo extends Component {
             <div>
                 <ContentWrapper hasSidebar={true}>
                    Demo
-                   <CheckboxListDropdown items={items} />
+                   <CheckboxListDropdown items={items}  />
 
                    
                    

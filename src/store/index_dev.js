@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 
-import configureStore from './configureStore.prod.js';
+import configureStore from './configureStore.dev.js';
 export const store = configureStore();
 
 // Custom Connect to Passing The Store Down Explicitly Via Props
