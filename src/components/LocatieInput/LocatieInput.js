@@ -72,7 +72,7 @@ class LocatieInput extends React.Component {
         // Add Project Address Marker
         var marker = new google.maps.Marker({
             map: this.map,
-            icon: ROOT_URL+'/public/images/villa-marker.png',
+            icon: ROOT_URL+'/images/villa-marker.png',
             position: new google.maps.LatLng(this.state.address_lat, this.state.address_lng),
         });
         markers.push(marker)
@@ -82,7 +82,7 @@ class LocatieInput extends React.Component {
             var icontype = item.is_paid ? "parking-paid" : "parking";
             var marker = new google.maps.Marker({
                 map: this.map,
-                icon: ROOT_URL+'/public/images/'+icontype+'-marker.png',
+                icon: ROOT_URL+'/images/'+icontype+'-marker.png',
                 position: new google.maps.LatLng(item.lat, item.lon),
             });
             markers.push(marker)
