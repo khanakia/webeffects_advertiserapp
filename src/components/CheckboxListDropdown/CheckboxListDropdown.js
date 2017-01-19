@@ -1,4 +1,5 @@
 import React, {PropTypes} from 'react'
+import { Link, hashHistory } from 'react-router'
 
 class CheckboxListDropdown extends React.Component {
 
@@ -32,10 +33,8 @@ class CheckboxListDropdown extends React.Component {
 		var itemValue = e.target.value;
 
 		const status = (jQuery(e.target).is(":checked"))
-		console.log(status)
-		// console.log(e.target.value)
-		var selectedItems = this.state.selectedItems;
 
+		var selectedItems = this.state.selectedItems;
 
 		if(status) {
 			var index = selectedItems.indexOf(itemValue);
@@ -59,18 +58,35 @@ class CheckboxListDropdown extends React.Component {
 		this.props.onItemChange(item)
 	}
 
+	removeFilter = (value) => {
+		var selectedItems = this.state.selectedItems;
+
+		selectedItems = _.filter(selectedItems, function(o) { 
+			return o!==value; 
+		});
+
+		this.setState({
+			selectedItems: selectedItems
+		})
+	}
+
 	render() {
 		const dropdownId = this.props.name+'_dropdownMenu1'
 		var checked = this.state.isChecked;
+		var filterTitle;
 		return (
 			<div>
 				<div className="filters_list">
 					{this.state.selectedItems.map(function(value, index){
-				  		
+						{this.props.items.map(function(item){
+							if (value == item.value) {
+								filterTitle = item.title;
+							}
+						}, this)}
 				  		return (
-						        <label key={index}>
-                        			<span>{value}</span>
-						        </label>
+					        <label key={index}>
+                    			<span className="filterSelectedValue">{filterTitle} <button className="btn btn-plain" onClick={()=>{this.removeFilter(value)}}><i className="iconc-cross"></i></button></span>
+					        </label>
 				  		)
 				  	}, this)}
 				</div>
@@ -86,7 +102,7 @@ class CheckboxListDropdown extends React.Component {
 				  		// console.log(this.state.selectedItems)
 				  		// console.log(item.value, checked);
 				  		return (
-						    <li key={index}>
+						    <li className="list-group-item" key={index}>
 						        <label>
 						        	<input type="checkbox" onClick={(e)=>{this.handleItemChange(e, item)}} value={item.value} checked={checked} />
                         			<span>{item.title}</span>

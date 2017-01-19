@@ -1525,3 +1525,20 @@ label input[type="radio"]:checked + span {
 		}
 	}
 }
+
+.filterSelectedValue {
+	margin-right: 5px;
+	padding: 6px 10px;
+	border: 1px solid #CDD4D7;
+	border-radius: 4px;
+	color: #7C8589;
+	.btn {
+		padding: 0 0 3px 0;
+		margin-left: 5px;
+	}
+	i {
+		font-size: 10px;
+		color: #7C8589;
+    	vertical-align: middle;
+	}
+}
