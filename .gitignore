@@ -4,6 +4,7 @@ node_modules
 Homestead.yaml
 Homestead.json
 .env
+src/env.json
 
 public/tmp/*
 
@@ -17,6 +18,8 @@ bower_components/
 compiled/
 .sass-cache
 #/public/css_sass
+public/bundle/
+!public/bundle/index.html
 public/bundle.js
 public/vendor.bundle.js
 public/bundle/bundle.js

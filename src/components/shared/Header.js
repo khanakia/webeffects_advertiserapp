@@ -4,7 +4,7 @@ import { Link, hashHistory } from 'react-router'
 import ProjectsLinkList from './ProjectsLinkList'
 import Sidebar from './Sidebar'
 import Auth from '../../helpers/auth.js'
-import LoadingBar from 'react-redux-loading-bar'
+// import LoadingBar from 'react-redux-loading-bar'
 
 class Header extends Component {
     constructor(props, context) {
@@ -38,7 +38,7 @@ class Header extends Component {
 
         return (
             <div>
-                <LoadingBar style={{ backgroundColor: '#08B995' }} />
+                {/*<LoadingBar style={{ backgroundColor: '#08B995' }} />*/}
 
                 <Sidebar project_list={this.props.project_list} />
                 <header className="desktop">
