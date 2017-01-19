@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dashboard</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i|Rubik" rel="stylesheet">
+    <link rel="stylesheet" href="bower_components/jquery-ui/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="bower_components/toastr/toastr.css">
+    <link rel="stylesheet" href="bower_components/trumbowyg/dist/ui/trumbowyg.min.css">
+    <link rel="stylesheet" href="bower_components/jquery-confirm2/css/jquery-confirm.css" />
+    <link rel="stylesheet" href="bower_components/owl.carousel/dist/assets/owl.carousel.min.css" />
+    <link rel="stylesheet" href="bower_components/owl.carousel/dist/assets/owl.theme.default.css" />
+    <link rel="stylesheet" href="css_sass/helper.css"> 
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="css_sass/global.css"> 
+    <link rel="stylesheet" href="css_sass/app.css"> 
+
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+  </head>
+  <body>
+    <div id="root">
+    </div>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVPCUUAYU54oyUU-CZbaxkXuXPtBoiwa0&libraries=places"></script>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/jquery-ui/jquery-ui.js"></script>
+    <script src="bower_components/modernizr/modernizr.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/jquery-popup-overlay/jquery.popupoverlay.js"></script>
+    <script src="bower_components/toastr/toastr.js"></script>
+    <script src="bower_components/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="bower_components/jquery.serializeJSON/jquery.serializejson.js"></script>
+    <script src="bower_components/owl.carousel/dist/owl.carousel.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/lodash/dist/lodash.js"></script>
+    <script src="bower_components/axios/dist/axios.js"></script>
+    <script src="bower_components/urijs/src/URI.js"></script>
+    <script src="bower_components/trumbowyg/dist/trumbowyg.min.js"></script>
+    <script src="bower_components/jwt-decode/build/jwt-decode.js"></script>
+    <script src="bower_components/jquery-confirm2/js/jquery-confirm.js"></script>
+    <script src="js/common.js"></script>
+    <!-- <script src="js/custom.js"></script> -->
+    <script src="bundle/vendor.bundle.js"></script>
+    <script src="bundle/bundle.js"></script>
+
+    <script>
+    console.log(Env);
+        document.title = Env.site_title;
+        if (Env.show_intercom==1) {
+            window.intercomSettings = {
+                app_id: "qna5k04f"
+            };  
+            (function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/qna5k04f';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()
+        }
+
+        if(Env.show_usersnap) {
+            (function() {
+                var s = document.createElement("script");
+                s.type = "text/javascript";
+                s.async = true;
+                s.src = '//api.usersnap.com/load/'+
+                        Env.usersnap_apikey+'.js';
+                var x = document.getElementsByTagName('script')[0];
+                x.parentNode.insertBefore(s, x);
+            })();
+        }
+  
+    // $.getJSON("../src/env.json", function(data) {
+    // });
+
+    </script>
+    
+  </body>
+</html>

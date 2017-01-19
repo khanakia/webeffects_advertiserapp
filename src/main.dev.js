@@ -19,7 +19,7 @@ window.Env = Env;
 window.Auth = Auth;
 window.trans = language[Env.site_id];
 
-// console.log(window.Env)
+console.log(window.Env)
 
 import {
     RequireAuth,
