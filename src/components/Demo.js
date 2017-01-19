@@ -3,7 +3,7 @@ import { Link, hashHistory } from 'react-router'
 import ContentWrapper from './shared/ContentWrapper'
 
 import DropdownList from './DropdownList'
-
+import CheckboxListDropdown from './CheckboxListDropdown'
 import ChangePasswordForm from 'components/Forms/ChangePasswordForm'
 import PopupHelper from 'helpers/helper_popup'
 class Demo extends Component {
@@ -13,7 +13,7 @@ class Demo extends Component {
     }
  
     componentDidMount() {
-        PopupHelper.showChangePasswordForm({})
+        // PopupHelper.showChangePasswordForm({})
     }
 
 
@@ -22,15 +22,15 @@ class Demo extends Component {
         console.log(this.props);
         const items = [
             {
-                "value": 1,
+                "value": "1",
                 "title": 'Demo1',
             },
             {
-                "value": 2,
+                "value": "2",
                 "title": 'Demo2',
             },
             {
-                "value": 3,
+                "value": "3",
                 "title": 'Demo3',
             }
         ]
@@ -39,7 +39,7 @@ class Demo extends Component {
             <div>
                 <ContentWrapper hasSidebar={true}>
                    Demo
-                   <DropdownList items={items} selectedValue={3} />
+                   <CheckboxListDropdown items={items} />
 
                    
                    
