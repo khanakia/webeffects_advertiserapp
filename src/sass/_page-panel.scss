@@ -2,8 +2,11 @@
 	border: 1px solid #CDD4D7;
 	&__heading {
 		background: #fff;
-		padding: 15px;
+		padding: 12px;
 		text-align: center;
+		font-size: 18px;
+		font-weight: 600;
+		font-family: 'Rubik', sans-serif;
 		border-bottom: 1px solid #CDD4D7;
 	}
 
@@ -25,6 +28,9 @@
 			vertical-align: top;
 			background: #fff;
 			border-left: 1px solid #CDD4D7;
+			label {
+				font-weight: 600;
+			}
 		}
 
 		&__content {
@@ -67,6 +73,8 @@
 			left: 0;
 			right: 0;
 			width: 100%;
+			z-index: 1;
+			overflow: auto;
 			background-color: #fff;
 		}
 	}

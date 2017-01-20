@@ -296,7 +296,7 @@ class ChangePasswordForm extends Component {
                                     <label className="col-sm-12">{trans.account_uw_oude_wachtwoord}</label>
                                     <div className="col-sm-12">
                                         <div className="input-group">
-                                            <div className="input-group-addon"><i className="fa fa-key" aria-hidden="true"></i></div>
+                                            <div className="input-group-addon"><i className="iconc-lock i-rotate25" aria-hidden="true"></i></div>
                                             <input type="password" className="form-control required" name="oldpassword" id="oldpassword" ref="oldpassword"  placeholder="••••••••••" />
                                         </div>
                                     </div>
@@ -306,7 +306,7 @@ class ChangePasswordForm extends Component {
                                     <label className="col-sm-12">{trans.account_uw_nieuwe_wachtwoord}</label>
                                     <div className="col-sm-12">
                                         <div className="input-group">
-                                            <div className="input-group-addon"><i className="fa fa-key" aria-hidden="true"></i></div>
+                                            <div className="input-group-addon"><i className="iconc-lock i-rotate25" aria-hidden="true"></i></div>
                                             <input type="password" className="form-control required" name="password" id="password" ref="password"  placeholder="••••••••••" />
                                         </div>
                                         <div className="password_field_errors is_mobile"></div>
@@ -316,7 +316,7 @@ class ChangePasswordForm extends Component {
                                     <label className="col-sm-12"><div className="row"><div className="col-sm-12">{trans.account_noogmaals}</div></div></label>
                                     <div className="col-sm-12">
                                         <div className="input-group">
-                                            <div className="input-group-addon"><i className="fa fa-key" aria-hidden="true"></i></div>
+                                            <div className="input-group-addon"><i className="iconc-lock i-rotate25" aria-hidden="true"></i></div>
                                             <input type="password" className="form-control required updatePassword" name="password_confirmation" id="password_confirmation" ref="password_confirmation" placeholder="••••••••••"/>
                                         </div>
                                         <div className="password_confirmation_field_errors is_mobile"></div>

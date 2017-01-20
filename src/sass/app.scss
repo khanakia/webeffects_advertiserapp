@@ -63,12 +63,15 @@ label.error {
 
 .content-wrapper {
 	padding: 35px;
+	h3 {
+		font-family: 'Rubik', sans-serif;
+	}
 	&.has-sidebar {
 		margin-left: 225px;
 	}
 
-	@media (max-width: 992px) {
-		padding: 15px;
+	@media (max-width: 1199px) {
+		padding: 0px;
 		&.has-sidebar {
 			margin-left: 0;
 		}
@@ -226,8 +229,11 @@ label.error {
 		color: #7C8589;
 		border: none;
 		border-radius: 0;
-		&:hover {
+		&:last-child {
 			color: #08B995;
+		}
+		&:hover {
+			color: #06a786;
 			text-decoration: none;
 		}
 		&:first-child {
@@ -313,7 +319,7 @@ label input[type="radio"]:checked + span {
 .btn-green, .btn-green:focus {
     color: #fff;
     background-color: #08B995;
-    border-color: #08B995;
+    border: none;
     outline: none;
 
     i {
@@ -321,13 +327,9 @@ label input[type="radio"]:checked + span {
     }
 
     &:hover {
-	    color: #08B995;
-	    background-color: #fff;
-	    border-color: #08B995;
+    	color: #fff;
+	    background-color: #06a786;
 	    outline: none;
-	    i {
-	    	color: #08B995;
-	    }
 	}
 }
 .btn-grey, .btn-grey:focus {
@@ -391,7 +393,7 @@ label input[type="radio"]:checked + span {
 
 .btn--round {
 	border-radius: 40px;
-    padding: 8px 20px;
+    padding: 10px 20px;
 }
 
 .box--shadow {
@@ -552,7 +554,7 @@ label input[type="radio"]:checked + span {
 
 .input-group--style-label {
 	.input-group-addon {
-		width: 50px;
+		width: 40px;
 		height: 40px;
 		border: 1px solid #CDD4D7;
 		border-right: 0;
@@ -989,6 +991,7 @@ label input[type="radio"]:checked + span {
 		margin-bottom: 35px;
 		padding: 10px 0 26px;
 	    color: #101010;
+	    font-family: 'Rubik', sans-serif;
 	}
 
 	.formstyle1 {
@@ -996,8 +999,8 @@ label input[type="radio"]:checked + span {
 		
 		label {
 		    font-size: 13px;
-		    font-weight: 600;
 			margin-bottom: 10px;
+			font-family: 'Open Sans', sans-serif;
 		}
 		
 		a {
@@ -1006,11 +1009,12 @@ label input[type="radio"]:checked + span {
 			text-decoration: none;
 		}	
 		input {
-		    border: 2px solid #e6eaeb;
+		    border: 1px solid #CDD4D7;
 		    margin-bottom: 20px;
 			height: 40px;
 		    outline: none;
 		    box-shadow: none;
+		    border-radius: 4px;
 		}
 		.form-control.error {
 		    background: transparent url(../images/icons/cross-icon.png) no-repeat center right 12px;
@@ -1231,7 +1235,7 @@ label input[type="radio"]:checked + span {
 .trumbowyg-box, .trumbowyg-editor {
 	margin: 0;
 	min-height: 200px;
-	border: 2px solid #CDD4D7;
+	border: 1px solid #CDD4D7;
 }
 
 .trumbowyg-editor {
@@ -1412,7 +1416,7 @@ label input[type="radio"]:checked + span {
 	}
 
 	.parking-icon {
-		width: 50px;
+		width: 40px;
 		padding: 6px 12px;
 		text-align: center;
 		background-color: #eee;
@@ -1422,7 +1426,7 @@ label input[type="radio"]:checked + span {
 	}
 
 	.price-icon {
-		width: 50px;
+		width: 40px;
 		padding: 6px 12px;
 		text-align: center;
 		border: 1px solid #cdd4d7;
@@ -1466,7 +1470,7 @@ label input[type="radio"]:checked + span {
 .section_offerrequest_dropdown {
 	.short-dropdown {
 		max-width: 250px;
-	    margin: 30px 0 20px;
+	    margin: 0px 0 20px;
 	}
 }
 
@@ -1521,7 +1525,10 @@ label input[type="radio"]:checked + span {
 		> .logo {
 			height: 68px;
 			width: 221px;
-			background: url("../images/header-public-logo.png") no-repeat center;
+			background-image: url("../images/header-public-logo.png");
+			background-image: url("../images/header-public-logo.svg");
+			background-repeat: no-repeat;
+			background-position: center;
 		}
 	}
 }
@@ -1540,5 +1547,29 @@ label input[type="radio"]:checked + span {
 		font-size: 10px;
 		color: #7C8589;
     	vertical-align: middle;
+	}
+}
+
+
+/* Snoobi Page styling ----------------------- */
+.sorteren-inner {
+	float: right;
+}
+@media screen and (min-width: 1200px) and (max-width: 1550px) {
+	.snoobiSorten-wrapper {
+		width: 100%;
+	}
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1300px) {
+	.snoobiSorten-wrapper {
+		width: 100%;
+		.sorteren-inner {
+			float: none;
+		}
+		.sorten-text {
+			display: block;
+			margin-bottom: 15px;
+		}
 	}
 }

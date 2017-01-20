@@ -20,10 +20,10 @@ class Zalen extends React.Component {
     }
 
     componentDidMount() {
-        // this._checkDesktopMobile()
-        // window.addEventListener('resize', (event) => {
-        //     this._checkDesktopMobile()
-        // });
+        this._checkDesktopMobile()
+        window.addEventListener('resize', (event) => {
+            this._checkDesktopMobile()
+        });
 
         this.accordionInit()
     }
@@ -124,88 +124,93 @@ class Zalen extends React.Component {
 
     _renderDesktop() {
         return (
-            <table className="table table-bordered table--horizontal">
-                <thead>
-                    <tr>
-                    <th><i className="iconc-room"></i></th>
-                    <th>{trans.zalen_tab_title}</th>
-                    <th>{trans.zalen_tab_daglicht}</th>
-                    <th>{trans.zalen_tab_u_vorm}</th>
-                    <th>{trans.zalen_tab_carre}</th>
-                    <th>{trans.zalen_tab_school}</th>
-                    <th>{trans.zalen_tab_theater}</th>
-                    <th>{trans.zalen_tab_cabaret}</th>
-                    <th>{trans.zalen_tab_receptie}</th>
-                    <th>{trans.zalen_tab_diner}</th>
-                    <th>{trans.zalen_tab_feest}</th>
-                    </tr>
-                </thead>
-                <tbody>
+            <div>
+                <div className="form-group">
+                    <label>{trans.zalen_page_title}</label>
+                </div>
+                <table className="table table-bordered table--horizontal">
+                    <thead>
+                        <tr>
+                        <th><i className="iconc-room"></i></th>
+                        <th>{trans.zalen_tab_title}</th>
+                        <th>{trans.zalen_tab_daglicht}</th>
+                        <th>{trans.zalen_tab_u_vorm}</th>
+                        <th>{trans.zalen_tab_carre}</th>
+                        <th>{trans.zalen_tab_school}</th>
+                        <th>{trans.zalen_tab_theater}</th>
+                        <th>{trans.zalen_tab_cabaret}</th>
+                        <th>{trans.zalen_tab_receptie}</th>
+                        <th>{trans.zalen_tab_diner}</th>
+                        <th>{trans.zalen_tab_feest}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
 
-                    {this.props.items.map(function(item, index) {
-                        return (
-                            <tr key={`z-${item.id}`}>
-                                <td>
-                                <div className="input-group" key={index}>
-                                    <span className="input-group-addon">
-                                        <button type="button" className="btn btn-plain btn--nopad hover-show" onClick={()=>{this.handleRemoveZalen(item.id)}}>
-                                            <i className="iconc-trash"></i>
-                                        </button>
-                                        <i className="hover-hide iconc-room"></i>
-                                    </span>
-                                </div>
-                                </td>
-                                <td>
-                                    <input type="hidden" name={`zalen[${index}][id]`} defaultValue={item.id} />
-                                    <input type="text" name={`zalen[${index}][room_name]`} defaultValue={item.room_name} />
-                                </td>
-                                <td><input type="text" name={`zalen[${index}][daglicht]`} defaultValue={item.daglicht} /></td>
-                                <td><input type="text" name={`zalen[${index}][u_vorm]`} defaultValue={item.u_vorm} /></td>
-                                <td><input type="text" name={`zalen[${index}][carre]`} defaultValue={item.carre} /></td>
-                                <td><input type="text" name={`zalen[${index}][school]`} defaultValue={item.school} /></td>
-                                <td><input type="text" name={`zalen[${index}][theater]`} defaultValue={item.theater} /></td>
-                                <td><input type="text" name={`zalen[${index}][cabaret]`} defaultValue={item.cabaret} /></td>
-                                <td><input type="text" name={`zalen[${index}][receptie]`} defaultValue={item.receptie} /></td>
-                                <td><input type="text" name={`zalen[${index}][diner]`} defaultValue={item.diner} /></td>
-                                <td><input type="text" name={`zalen[${index}][feest]`} defaultValue={item.feest} /></td>
-                            </tr>
-                        )
-                    }, this)}
-
-
-                    {this.state.itemsNew.map(function(item, index) {
-                        return (
-                            <tr key={item}>
-                                <td>
-                                    <button type="button" className="btn btn-plain btn--nopad" onClick={()=>{this.handleRemoveRow(index)}}><i className="iconc-trash"></i></button>
-                                </td>
-                                <td>
-                                    <input type="text" name={`zalen_new[${index}][room_name]`} />
-                                </td>
-                                <td><input type="text" name={`zalen_new[${index}][daglicht]`} /></td>
-                                <td><input type="text" name={`zalen_new[${index}][u_vorm]`} /></td>
-                                <td><input type="text" name={`zalen_new[${index}][carre]`} /></td>
-                                <td><input type="text" name={`zalen_new[${index}][school]`} /></td>
-                                <td><input type="text" name={`zalen_new[${index}][theater]`} /></td>
-                                <td><input type="text" name={`zalen_new[${index}][cabaret]`} /></td>
-                                <td><input type="text" name={`zalen_new[${index}][receptie]`} /></td>
-                                <td><input type="text" name={`zalen_new[${index}][diner]`} /></td>
-                                <td><input type="text" name={`zalen_new[${index}][feest]`} /></td>
-                            </tr>
-                        )
-                    }, this)}
+                        {this.props.items.map(function(item, index) {
+                            return (
+                                <tr key={`z-${item.id}`}>
+                                    <td>
+                                    <div className="input-group" key={index}>
+                                        <span className="input-group-addon">
+                                            <button type="button" className="btn btn-plain btn--nopad hover-show" onClick={()=>{this.handleRemoveZalen(item.id)}}>
+                                                <i className="iconc-trash"></i>
+                                            </button>
+                                            <i className="hover-hide iconc-room"></i>
+                                        </span>
+                                    </div>
+                                    </td>
+                                    <td>
+                                        <input type="hidden" name={`zalen[${index}][id]`} defaultValue={item.id} />
+                                        <input type="text" name={`zalen[${index}][room_name]`} defaultValue={item.room_name} />
+                                    </td>
+                                    <td><input type="text" name={`zalen[${index}][daglicht]`} defaultValue={item.daglicht} /></td>
+                                    <td><input type="text" name={`zalen[${index}][u_vorm]`} defaultValue={item.u_vorm} /></td>
+                                    <td><input type="text" name={`zalen[${index}][carre]`} defaultValue={item.carre} /></td>
+                                    <td><input type="text" name={`zalen[${index}][school]`} defaultValue={item.school} /></td>
+                                    <td><input type="text" name={`zalen[${index}][theater]`} defaultValue={item.theater} /></td>
+                                    <td><input type="text" name={`zalen[${index}][cabaret]`} defaultValue={item.cabaret} /></td>
+                                    <td><input type="text" name={`zalen[${index}][receptie]`} defaultValue={item.receptie} /></td>
+                                    <td><input type="text" name={`zalen[${index}][diner]`} defaultValue={item.diner} /></td>
+                                    <td><input type="text" name={`zalen[${index}][feest]`} defaultValue={item.feest} /></td>
+                                </tr>
+                            )
+                        }, this)}
 
 
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <td><button type="button" className="btn btn-plain btn--nopad" onClick={()=>this.handleAddClick()}><i className="fa fa-plus"></i></button></td>
-                        <td colSpan="10">
-                            <label className="placeholder">{trans.zalen_zaal}</label>
-                        </td>
-                    </tr>
-                </tfoot>
-            </table>
+                        {this.state.itemsNew.map(function(item, index) {
+                            return (
+                                <tr key={item}>
+                                    <td>
+                                        <button type="button" className="btn btn-plain btn--nopad" onClick={()=>{this.handleRemoveRow(index)}}><i className="iconc-trash"></i></button>
+                                    </td>
+                                    <td>
+                                        <input type="text" name={`zalen_new[${index}][room_name]`} />
+                                    </td>
+                                    <td><input type="text" name={`zalen_new[${index}][daglicht]`} /></td>
+                                    <td><input type="text" name={`zalen_new[${index}][u_vorm]`} /></td>
+                                    <td><input type="text" name={`zalen_new[${index}][carre]`} /></td>
+                                    <td><input type="text" name={`zalen_new[${index}][school]`} /></td>
+                                    <td><input type="text" name={`zalen_new[${index}][theater]`} /></td>
+                                    <td><input type="text" name={`zalen_new[${index}][cabaret]`} /></td>
+                                    <td><input type="text" name={`zalen_new[${index}][receptie]`} /></td>
+                                    <td><input type="text" name={`zalen_new[${index}][diner]`} /></td>
+                                    <td><input type="text" name={`zalen_new[${index}][feest]`} /></td>
+                                </tr>
+                            )
+                        }, this)}
+
+
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td><button type="button" className="btn btn-plain btn--nopad" onClick={()=>this.handleAddClick()}><i className="fa fa-plus"></i></button></td>
+                            <td colSpan="10">
+                                <label className="placeholder">{trans.zalen_zaal}</label>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
         )
     }
 
@@ -215,6 +220,9 @@ class Zalen extends React.Component {
                 {this.props.items.map(function(item, index) {
                     return (
                         <div key={`z-${item.id}`}>
+                            <div className="form-group">
+                                <label>{trans.zalen_page_title}</label>
+                            </div>
                             <div className="input-group input-group--style-label input-group--style-a">
                                 <span className="input-group-addon">
                                     <button type="button" className="btn btn-plain btn--nopad hover-show" onClick={(e) => this.handleRemoveZalen(item.id)}>

@@ -56,8 +56,8 @@ header.mobile {
     		vertical-align: middle;
     		opacity: 1;
 		}
-		i.iconc-cross {
-			font-size: 16px;
+		i.iconc-cross-thin {
+			font-size: 12px;
 		}
 
 		i.close {
@@ -88,11 +88,12 @@ header.mobile {
 		font-size: 16px;
 		color: #fff;
 		display: block;
-		padding: 10px 20px;
+		padding: 12px 20px;
 		text-decoration: none;
 		border-bottom: 1px solid #343F47;
 
-		&:hover {
+		&:hover,
+		&:focus {
 			background-color: #4B5A65;
 		}
 		&.has-childerns {

@@ -92,14 +92,14 @@ class SnoobiPage extends React.Component {
                                 </ul>
                             </div>
                         </div>
-                        <div className="col-md-6 col-lg-9 mb20">
-                            <div className="sorteren-wrapper pull-right visible-lg">
-                                <span>Sorteren op:</span>
+                        <div className="col-md-6 col-lg-9 mb20 snoobiSorten-wrapper">
+                            <div className="sorteren-inner visible-lg">
+                                <span className="mr15 sorten-text">{trans.snoobiPage_sorten_text}</span>
                                 
-                                <span className="wp150 ml15 mr10 dropdown-inline">
+                                <span className="wp140 mr10 dropdown-inline">
                                     <DropdownList items={countSortMonth} selectedValue={"feb"} />
                                 </span>
-                                <span className="wp180 dropdown-inline">
+                                <span className="wp170 dropdown-inline">
                                     <DropdownList items={countSortRecent} selectedValue={"recent"} />
                                 </span>
                                 

@@ -70,7 +70,7 @@ class OfferRequestList extends React.Component {
         if(undefined==this.props.items || jQuery.isEmptyObject(this.props.items)) {
             return (
                 <div>
-                    <h3>{trans.no_data_found}</h3>
+                    <h5>{trans.no_data_found}</h5>
                 </div>
             )
         }
@@ -175,8 +175,8 @@ class OfferRequestList extends React.Component {
         
         return (
             <div>
-                <div className="section_offerrequest_dropdown">
-                    <div>{trans.offerte_title}</div>
+                <div className="section_offerrequest_dropdown form-group">
+                    <label>{trans.offerte_title}</label>
                     <div className="short-dropdown">
                         <DropdownList items={this.dateItemArray()} onItemChange={this.onItemChange} emptyPlaceholder={trans.select_empty_placeholder} />
                     </div>

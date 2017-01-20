@@ -34,7 +34,7 @@ const language = {
 		"account_confirm_delete": "Verlaten en niet opslaan",
 		"account_uw_oude_wachtwoord": "Uw oude wachtwoord",
 		"account_uw_nieuwe_wachtwoord": "Uw nieuwe wachtwoord",
-		"account_noogmaals": "Noogmaals uw nieuwe wachtwoord",
+		"account_noogmaals": "Nogmaals uw nieuwe wachtwoord",
 		"account_bevestig_btn": "Bevestig",
 		"account_bedrijfsnaam_label": "Bedrijfsnaam",
 		"account_contactpersonen": "Contactpersonen",
@@ -61,14 +61,16 @@ const language = {
 		"pageProject_naam_locatie_label": "Naam locatie",
 		"pageProject_algemene_label": "Algemene beschrijving",
 		"pageProject_representatieve_label": "Representatieve buitenafbeelding",
-		"pageProject_video_link_label": "3 video links",
+		"pageProject_video_link_label": "Video links",
 		"pageProject_garden_tour_label": "360 graden tour iframe",
 		"pageProject_actie_label": "Actie toevoegen",
 		
 		"pageProject_Aanbieding_label": "Aanbieding",
 		"pageProject_aanbieding_korte_label": "(korte versie - max 40 karakters)",
-		"pageProject_aanbieding_korte_data_content": "De lange versie van de actie zal naast het formulier dat de gebruiker in moet vullen komen te staan.",
+		"pageProject_aanbieding_korte_placeholder": "Nu 20% korting bij 200 personen!",
+		"pageProject_aanbieding_korte_data_content": "De korte versie van de actie zal in het locatie overzicht en bovenin de detailpagina komen te staan.",
 		"pageProject_aanbieding_lange_label": "(lange versie - max 80 karakters)",
+		"pageProject_aanbieding_lange_placeholder": "U krijgt nu 20% korting bij een offerte van meer dan 200 personen!",
 		"pageProject_aanbieding_lange_data_content": "De lange versie van de actie zal naast het formulier dat de gebruiker in moet vullen komen te staan.",
 
 		"pageProject_radio_geen_eigen": "Geen eigen catering mogelijk",
@@ -155,7 +157,7 @@ const language = {
 		"offerte_naam_label": "Naam",
 		"offerte_datum_label": "Datum aanvraag",
 		"offerte_bedrijfsnaam": "Bedrijfsnaam",
-		"offerte_adres_bedrif_label": "Adres bedrif",
+		"offerte_adres_bedrif_label": "Adres bedrijf",
 		"offerte_evenementdatum_label": "Evenementdatum",
 		"offerte_aantal_personen_label": "Aantal personen",
 		"offerte_emailadres_label": "E-mailadres",
@@ -177,6 +179,7 @@ const language = {
 
 		"sidebar_voeg_link": "Voeg een locatie toe",
 
+		"snoobiPage_sorten_text": "Sorteren op:",
 		"snoobiPage_sort_recente": "Recente activiteit",
 		"snoobiPage_sort_alfabet": "Alfabet",
 		"snoobiPage_uw_advertentie": "Uw advertentie is bezocht door",
@@ -196,6 +199,7 @@ const language = {
 		"zalen_confirm_subtitle": "Weet u zeker dat u de zaal 'De Duif' wilt verwijderen?",
 		"zalen_confirm_cancel_text": "Annuleren",
 		"zalen_confirm_delete_text": "Verwijder",
+		"zalen_page_title": "Zalen",
 		"zalen_tab_title": "Titel",
 		"zalen_tab_daglicht": "Daglicht",
 		"zalen_tab_u_vorm": "U-vorm",
@@ -207,7 +211,7 @@ const language = {
 		"zalen_tab_diner": "Diner",
 		"zalen_tab_feest": "Feest",
 		"zalen_vondelkerk": "Vondelkerk",
-		"zalen_zaal": "Zall toevoegen",
+		"zalen_zaal": "Zaal toevoegen",
 
 
 		"invalid_password" : "Password is invalid.",
@@ -227,7 +231,7 @@ const language = {
 		"deleted" : "Deleted Successfully",
 		"validation_failed" : "validation_failed",
 		"entry_not_found" : "entry_not_found",
-		"no_data_found" : "No Data Found.",
+		"no_data_found" : "Geen gegevens gevonden",
 		
 
 		

@@ -447,10 +447,20 @@ class PageProject extends Component {
                     </div>
                 </div>
 
-                <div className="form-group">
-                    <label>{trans.pageProject_website_label}</label>
-                    <input type="text" className="form-control" name="website" defaultValue={this.props.project.website} />
-
+                <div className="form-group input-group-vmerge">
+                    <div className="row">
+                        <div className="col-md-8">
+                            <label>{trans.pageProject_website_label}</label>
+                            <div className="input-group">
+                                <span className="input-group-addon">
+                                    <button type="button" className="btn btn-plain btn--nopad">
+                                        <i className="iconc-globe"></i>
+                                    </button>
+                                </span>
+                                <input type="text" className="form-control" name="website" defaultValue={this.props.project.website} />
+                        </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         )

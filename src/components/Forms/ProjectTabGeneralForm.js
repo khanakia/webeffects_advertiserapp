@@ -60,7 +60,7 @@ class ProjectTabGeneralForm extends Component {
 
         this.props.project_formdata.gelegenhendens.map((item, index) => {
             toevoegenList.push({
-                "title": trans.pageProject_geen_actie+' '+item.title,
+                "title": trans.pageProject_actie_voor+' '+item.title,
                 "value": item.value,
             })
         })
@@ -100,7 +100,7 @@ class ProjectTabGeneralForm extends Component {
                     <label className="question-mark-icon">{trans.pageProject_Aanbieding_label} <br /> {trans.pageProject_aanbieding_korte_label}
                         <a href="#" className="popoverData" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_aanbieding_korte_data_content}></a>
                     </label>
-                    <input type="text" className="form-control" name="discount_short_title" defaultValue={this.props.discount_short_title} />
+                    <input type="text" className="form-control" name="discount_short_title" defaultValue={this.props.discount_short_title} placeholder={trans.pageProject_aanbieding_korte_placeholder} />
                     
                 </div>
 
@@ -108,7 +108,7 @@ class ProjectTabGeneralForm extends Component {
                     <label className="question-mark-icon">{trans.pageProject_Aanbieding_label} <br /> {trans.pageProject_aanbieding_lange_label}
                         <a href="#" className="popoverData" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_aanbieding_lange_data_content}></a>
                     </label>
-                    <input type="text" className="form-control" name="discount_long_title" defaultValue={this.props.discount_long_title} />
+                    <input type="text" className="form-control" name="discount_long_title" defaultValue={this.props.discount_long_title} placeholder={trans.pageProject_aanbieding_lange_placeholder} />
                 </div>
             </div>
         )
