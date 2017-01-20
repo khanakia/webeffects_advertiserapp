@@ -265,7 +265,8 @@ header.mobile {
   border-color: #CDD4D7;
   color: #7C8589; }
   .form-control:focus {
-    border-color: #08B995; }
+    border-color: #08B995;
+    box-shadow: none; }
 
 .input-group {
   width: 100%; }
@@ -555,9 +556,9 @@ input {
       position: relative;
       color: #fff;
       font-family: 'Rubik', sans-serif; }
-      .comp-sidebar li a:active, .comp-sidebar li a:focus {
+      .comp-sidebar li a.active {
         font-weight: bold; }
-        .comp-sidebar li a:active:before, .comp-sidebar li a:focus:before {
+        .comp-sidebar li a.active:before {
           content: "•";
           position: absolute;
           top: 0;

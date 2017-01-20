@@ -78,16 +78,16 @@ class ProjectTabGeneralForm extends Component {
                 </div>
                 <div className="form-group">
                     <label>{trans.pageProject_representatieve_label}</label>
-                    <FileInput name="foto" onAttachmentDeleted={this.onAttachmentDeleted} selectedItems={images} onTitleUpdated={this.onAttachmentTitleUpdated} />
+                    <FileInput name="foto" onAttachmentDeleted={this.props.onAttachmentDeleted} selectedItems={images} onTitleUpdated={this.props.onAttachmentTitleUpdated} maxItems={1} />
                 </div>
 
                 <div className="form-group">
                     <label>{trans.pageProject_video_link_label}</label>
-                    <VideoInput items={this.props.project_videos} onVideoDeleted={this.onVideoDeleted} />
+                    <VideoInput items={this.props.project_videos} onVideoDeleted={this.props.onVideoDeleted} />
                 </div>
                 <div className="form-group">
                     <label>{trans.pageProject_garden_tour_label}</label>
-                    <IframeInput items={this.props.project_iframes} onIframeDeleted={this.onIframeDeleted} />
+                    <IframeInput items={this.props.project_iframes} onIframeDeleted={this.props.onIframeDeleted} />
                 </div>
 
                 <div className="form-group">

@@ -28,7 +28,7 @@ class ProjectsLinkList extends Component {
                         {this.props.project_list.map(function(item, index){
                             return (
                                 <li key={index}>
-                                    <Link to={'projects/'+item.id} >{item.project_title}</Link>
+                                    <Link to={'projects/'+item.id} activeClassName="active">{item.project_title}</Link>
                                 </li>
                             )    
                         })}

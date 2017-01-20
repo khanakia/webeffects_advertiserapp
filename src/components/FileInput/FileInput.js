@@ -10,7 +10,7 @@ class FileInput extends React.Component {
         
         this.state = {
             itemsNew: [],
-
+            itemsCount: 0,
             isEditing: false,
             editingItemId: ''
         }
@@ -23,13 +23,54 @@ class FileInput extends React.Component {
         selectedItems: [],
         filter_value_id: '', // this i required for Category Tabs
         onAttachmentDeleted: function() {},
-        onTitleUpdated: function() {}
+        onTitleUpdated: function() {},
+        maxItems: 100
         
     }
 
     componentDidMount() {
+
+         this.onFileChange();
+    }
+
+    componentDidUpdate() {
+         this.onFileChange();
+    }
+
+    componentWillReceiveProps(nextProps) {
+        // If nextProp item are greater than current prop items it means user clicked the Save button so clear all the Newitems in state input because they already saved and will show as NextProp items
+        if(nextProps.selectedItems.length > this.props.selectedItems.length) {
+            this.setState({itemsNew: []})
+        }
+
+    }
+
+    onFileChange() {
+        var popup_content = _.template(trans.fileInput_confirm_subtitle);
+        var fileInput_confirm_subtitle = popup_content({ 'no_of_files': 10 });
+        
         var _this = this;
-        jQuery(this.refs.input).change(function(){
+        jQuery(this.refs.input).unbind("change").change(function(){
+
+            
+            if(this.files.length>_this.props.maxItems) {
+                jQuery.confirm({
+                    title: trans.fileInput_confirm_title,
+                    content: fileInput_confirm_subtitle,
+                    closeIcon: false,
+                    columnClass: 'col-md-6 col-md-offset-3',
+                    buttons: {
+                        cancelAction: {
+                            text: trans.fileInput_confirm_cancel_text,
+                            action: function () {
+                                jQuery(".jconfirm").hide()
+                            }
+                        },
+                    }
+                })
+                return false;
+            }
+        
             var data = new FormData();
             // var names = [];
             for (var i = 0; i < $(this).get(0).files.length; ++i) {
@@ -49,26 +90,19 @@ class FileInput extends React.Component {
                 success: function(response){
 
                     _this.setState({
-                        itemsNew: response
+                        itemsNew: response,
+                        itemsCount: response.length
                     })
                     
                 }.bind(this)
             });
-        });
-       
-    }
-
-    componentWillReceiveProps(nextProps) {
-        // If nextProp item are greater than current prop items it means user clicked the Save button so clear all the Newitems in state input because they already saved and will show as NextProp items
-        if(nextProps.selectedItems.length > this.props.selectedItems.length) {
-            this.setState({itemsNew: []})
-        }
-
+        });    
     }
  
     deleteMapping(attachment_mapping_id) {
 
         AttachmentMappingHelper.delete(attachment_mapping_id).then((response)=>{
+
             this.props.onAttachmentDeleted()
         })
     }
@@ -98,20 +132,32 @@ class FileInput extends React.Component {
 
     render() {
         var _this = this;
+        // console.log( "this.state.itemsNew.length", this.state.itemsNew.length, this.props.maxItems)
+        const itemsCount = this.state.itemsNew.length + this.props.selectedItems.length
         
         return (
             <div className={'comp-fileinput ' + this.props.className} ref="fileinput">
-                <h3>{this.state.itemsNew.length+this.props.selectedItems.length}{trans.fileInput_foto}</h3>
+                {
+                    itemsCount>1 ?
+                        <h3>{this.state.itemsNew.length+this.props.selectedItems.length}{trans.fileInput_foto}</h3>
+                    : ''
+                }
                 <div className="items-wrapper">
-                    <div className="item selector">
-                        <div className="inner">
-                            <label>
-                                <div className="icon-placeholder"><i className="iconc-uploaded"></i></div>
-                                <div className="placeholder">{trans.fileInput_placeholder_voeg}</div>
-                                <input type="file" multiple ref="input" />
-                            </label>
-                        </div>
-                    </div>
+                    {
+                        itemsCount<this.props.maxItems ?
+
+                            <div className="item selector">
+                                <div className="inner">
+                                    <label>
+                                        <div className="icon-placeholder"><i className="iconc-uploaded"></i></div>
+                                        <div className="placeholder">{trans.fileInput_placeholder_voeg}</div>
+                                        <input type="file" multiple ref="input" />
+                                    </label>
+                                </div>
+                            </div>
+
+                        : ''
+                    }
              
 
                     {this.state.itemsNew.map(function(item, index) {

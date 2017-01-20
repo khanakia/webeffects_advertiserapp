@@ -136,6 +136,10 @@ const language = {
 		"contactPersonInput_nieuw_btn": "Nieuw contactpersoon",
 		"contactPersonInput_zaal": "Zaal toevoegen",
 
+
+		"fileInput_confirm_title": "Cannot Upload",
+		"fileInput_confirm_subtitle": "Maximum <%= no_of_files %> file can upload.",
+		"fileInput_confirm_cancel_text": "Ok",
 		"fileInput_placeholder_voeg": "Voeg foto toe",
 		"fileInput_foto": " foto's",
 
@@ -196,7 +200,7 @@ const language = {
 		"snoobiPage_snoobi_img_desc": "Snoobi laat zien in welke volgorde bezoekers de pagina’s van uw website hebben bezocht. Dit betekent dat u het specifieke gedrag van een bezoeker kunt achterhalen, bijvoorbeeld welke zoekterm de bezoeker heeft gebruikt, welke producten en hoe lang de bezoeker een specifieke pagina heeft bekeken en wat zijn uiteindelijke actie is geweest! Voor meer informatie bekijk www.snoobi.nl.",
 
 		"zalen_confirm_title": "Verwijderen",
-		"zalen_confirm_subtitle": "Weet u zeker dat u de zaal 'De Duif' wilt verwijderen?",
+		"zalen_confirm_subtitle": "Weet u zeker dat u de zaal '<%= title %>' wilt verwijderen?",
 		"zalen_confirm_cancel_text": "Annuleren",
 		"zalen_confirm_delete_text": "Verwijder",
 		"zalen_page_title": "Zalen",

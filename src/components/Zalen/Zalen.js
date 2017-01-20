@@ -60,11 +60,13 @@ class Zalen extends React.Component {
         this.setState({itemsNew: items.filter((_, i) => i!==index)})
     }
 
-    handleRemoveZalen = (id) => {
+    handleRemoveZalen = (item) => {
+        var popup_content = _.template(trans.zalen_confirm_subtitle);
+        var zalen_confirm_subtitle = popup_content({ 'title': item.room_name });
 
         jQuery.confirm({
             title: trans.zalen_confirm_title,
-            content: trans.zalen_confirm_subtitle,
+            content: zalen_confirm_subtitle,
             closeIcon: true,
             buttons: {
                 cancelAction: {
@@ -77,7 +79,7 @@ class Zalen extends React.Component {
                     text: trans.zalen_confirm_delete_text,
                     action: function () {
                         jQuery(".jconfirm").hide()
-                        ProjectRoomHelper.delete(id).then((response) => {
+                        ProjectRoomHelper.delete(item.id).then((response) => {
                             this.props.onZalenRemoved()
                         })
                     }.bind(this)
@@ -152,7 +154,7 @@ class Zalen extends React.Component {
                                     <td>
                                     <div className="input-group" key={index}>
                                         <span className="input-group-addon">
-                                            <button type="button" className="btn btn-plain btn--nopad hover-show" onClick={()=>{this.handleRemoveZalen(item.id)}}>
+                                            <button type="button" className="btn btn-plain btn--nopad hover-show" onClick={()=>{this.handleRemoveZalen(item)}}>
                                                 <i className="iconc-trash"></i>
                                             </button>
                                             <i className="hover-hide iconc-room"></i>
@@ -225,7 +227,7 @@ class Zalen extends React.Component {
                             </div>
                             <div className="input-group input-group--style-label input-group--style-a">
                                 <span className="input-group-addon">
-                                    <button type="button" className="btn btn-plain btn--nopad hover-show" onClick={(e) => this.handleRemoveZalen(item.id)}>
+                                    <button type="button" className="btn btn-plain btn--nopad hover-show" onClick={(e) => this.handleRemoveZalen(item)}>
                                         <i className="iconc-trash"></i>
                                     </button>
                                     <i className="iconc-room hover-hide"></i>
