@@ -41,7 +41,7 @@ class RadioList extends React.Component {
                     <label className="form-control">
                         <input type="radio" name={this.props.name} defaultValue={item.value} defaultChecked={checked} />
                         <span>{item.title}</span>
-                        </label>
+                    </label>
                 </div>
             )
         }, this)
