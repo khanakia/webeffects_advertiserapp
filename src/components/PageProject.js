@@ -352,7 +352,7 @@ class PageProject extends Component {
                                 <span className="input-group-addon">
                                     <i className="iconc-person"></i> {trans.pageProject_details_min}
                                 </span>
-                                <input type="text" className="form-control" name="person_min" defaultValue={this.props.project.person_min} />
+                                <input type="number" className="form-control" name="person_min" defaultValue={this.props.project.person_min} />
                             </div>
                         </div>
                         <div className="col-lg-4">
@@ -360,7 +360,7 @@ class PageProject extends Component {
                                 <span className="input-group-addon">
                                     <i className="iconc-person"></i> {trans.pageProject_details_max}
                                 </span>
-                                <input type="text" className="form-control" name="person_max" defaultValue={this.props.project.person_max} />
+                                <input type="number" className="form-control" name="person_max" defaultValue={this.props.project.person_max} />
                             </div>
                         </div>
                     </div>
@@ -368,7 +368,7 @@ class PageProject extends Component {
 
                 <div className="form-group">
                     <div className="row">
-                        <div className="col-md-4">
+                        <div className="col-md-8">
                             <label>{trans.pageProject_details_catering}</label>
                             <RadioList name="eigen_catering" isIcon items={radioEigenCaterign} selectedValue={this.props.project.eigen_catering} />
                         </div>

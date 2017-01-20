@@ -840,44 +840,55 @@ label input[type="radio"] {
   opacity: 0;
   position: absolute; }
 
-label input[type="checkbox"] + span::before,
-label input[type="radio"] + span::before {
-  left: 0;
-  position: absolute;
-  top: 4px; }
-
-label input[type="radio"] + span::before {
-  background-image: url("../images/radio-spirit.jpg");
-  background-repeat: no-repeat;
-  background-position: -4px -4px;
-  background-size: 25px;
-  content: "";
-  display: inline-block;
-  height: 16px;
-  width: 16px; }
-
-label input[type="checkbox"] + span::before {
-  background-image: url("../images/checkbox-spirit.jpg");
-  background-repeat: no-repeat;
-  background-position: -5px -5px;
-  background-size: 24px;
-  content: "";
-  display: inline-block;
-  height: 15px;
-  width: 15px; }
-
-label input[type="radio"]:checked + span::before {
-  background-position: -4px -64px; }
-
-label input[type="checkbox"]:checked + span::before {
-  background-position: -5px -60px; }
-
 label input[type="checkbox"] + span,
 label input[type="radio"] + span {
   position: relative;
   display: block;
   padding: 0 0 0 25px;
   color: #7C8589; }
+
+label input[type="checkbox"] + span::before,
+label input[type="radio"] + span::before {
+  left: 0;
+  position: absolute;
+  top: 4px; }
+
+label input[type="radio"] + span::before,
+label input[type="checkbox"] + span::before {
+  position: absolute;
+  left: 0;
+  top: 8px;
+  content: '';
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 1px #7C8589; }
+
+label input[type="checkbox"] + span::before {
+  border-radius: 2px; }
+
+label input[type="radio"]:checked + span::before {
+  background: #08B995;
+  box-shadow: 0 0 0 1px #08B995; }
+
+label input[type="checkbox"]:checked + span::before {
+  background: #08B995;
+  border: none;
+  box-shadow: 0 0 0 1px #08B995; }
+
+label input[type="checkbox"]:checked + span::after {
+  position: absolute;
+  left: 4px;
+  top: 8px;
+  content: '';
+  display: inline-block;
+  width: 5px;
+  height: 9px;
+  border: solid #fff;
+  border-width: 0px 1px 1px 0;
+  transform: rotate(45deg); }
 
 label input[type="checkbox"]:checked + span,
 label input[type="radio"]:checked + span {
