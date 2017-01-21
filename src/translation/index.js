@@ -50,14 +50,23 @@ const language = {
 		"pageOverview_titel": "Titel",
 		"pageOverview_laatste": "Laatste bewerking",
 		"pageOverview_link": "Link",
+		"pageOverview_link_live": "Live",
 		"pageOverview_verwijder": "Verwijder",
 		"pageOverview_bewerk": "Bewerk",
 		"pageOverview_locatie_title": "Locatie overzicht",
 
+		"pageProject_addnew_title": "Voeg een locatie toe",
 		"pageProject_confirm_title": "Pagina verlaten",
 		"pageProject_confirm_content": "U heeft uw bewerkingen niet opgeslagen, weet u zeker dat u de pagina wilt verlaten?",
 		"pageProject_confirm_cancel": "Annuleren",
 		"pageProject_confirm_delete": "Verlaten en niet opslaan",
+
+		"project_deletepoup_title": "Verzoek tot verwijderen",
+		"project_deletepoup_content": "Met deze actie geeft u aan uw locatie te willen depubliceren op onze website. Deze aanvraag zal binnenkomen bij ons team en worden afgehandeld. U zult op de hoogte gesteld worden als uw verzoek verwerkt is.",
+		"project_deletepoup_cancel": "Annuleren",
+		"project_deletepoup_delete": "Begrepen. Verzend verzoek.",
+
+
 		"pageProject_naam_locatie_label": "Naam locatie",
 		"pageProject_algemene_label": "Algemene beschrijving",
 		"pageProject_representatieve_label": "Representatieve buitenafbeelding",
@@ -122,6 +131,7 @@ const language = {
 		"changePwd_error_min1_cijfer": "Minstens 1 cijfer.",
 		"changePwd_error_confirmation": "Wachtwoorden komen niet overeen.",
 		"changePwd_savebtn": "Bevestigen",
+		"changePwd_successfully": "Password Updated Successfully.",
 		
 
 		"clonableInput_naam_label": "Name",

@@ -36,9 +36,33 @@ class ProjectOverview extends Component {
     }
     
     handleDelete = (id) => {
-        ProjectHelper.updateStatus(id, Env.project_status.waiting_for_unpublish).then((response) => {
-            this.props.fetchProjects()
+
+        var _this = this;
+        jQuery.confirm({
+            title: trans.project_deletepoup_title,
+            content: trans.project_deletepoup_content,
+            closeIcon: true,
+            columnClass: 'col-md-6 col-md-offset-3',
+            buttons: {
+                cancelAction: {
+                    text: trans.project_deletepoup_cancel,
+                    action: function () {
+                        jQuery(".jconfirm").hide()
+                        // hashHistory.push('/dashboard')
+                    }
+                },
+                deleteAction: {
+                    text: trans.project_deletepoup_delete,
+                    action: function () {
+                        ProjectHelper.updateStatus(id, Env.project_status.waiting_for_unpublish).then((response) => {
+                            _this.props.fetchProjects()
+                        })
+                        jQuery(".jconfirm").hide()
+                    }
+                }
+            }
         })
+
         // alert("Delete Function")
     }
 
@@ -74,6 +98,7 @@ class ProjectOverview extends Component {
                                 <th>{trans.pageOverview_titel}</th>
                                 <th className="wp200">{trans.pageOverview_laatste}</th>
                                 <th className="text-center wp100">{trans.pageOverview_link}</th>
+                                <th className="text-center wp100">{trans.pageOverview_link_live}</th>
                                 <th className="text-center wp100">{trans.pageOverview_verwijder}</th>
                                 <th className="text-center wp100">{trans.pageOverview_bewerk}</th>
                             </tr>
@@ -110,6 +135,9 @@ class ProjectOverview extends Component {
                                         <td className="color-7C8589">{item.formatted_updated_at}</td>
                                         <td className="text-center link-icon">
                                             <a target="_blank" href={item.url_concept}><i className="iconc iconc-link fs22 i-rotate25"></i></a>
+                                        </td>
+                                        <td className="text-center link-icon">
+                                            <a target="_blank" href={item.url}><i className="iconc iconc-link fs22 i-rotate25"></i></a>
                                         </td>
                                         <td className="text-center link-icon">
                                             <button className="btn btn-plain" onClick={()=>{this.handleDelete(item.id)}}><i className="iconc iconc-trash fs22"></i></button>

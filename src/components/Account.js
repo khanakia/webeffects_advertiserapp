@@ -26,6 +26,7 @@ class Account extends Component {
     }
 
     tabsFn() {
+        var _this = this;
         // $(".tab-pane").hide();
         // $(".tab-pane:first").show();
         $(".tab_drawer_heading.d_active").find("i").removeClass("iconc-chevron-down").addClass("iconc-chevron-up");
@@ -37,6 +38,12 @@ class Account extends Component {
 
             $('.tab-pane').hide();
             $('.tab-pane'+href).show();
+
+            if(href=="#changepassword") {
+                jQuery(_this.refs.block_right).hide();
+            } else {
+                jQuery(_this.refs.block_right).show();
+            }
         })
 
         $('.tab_drawer_heading a').click(function (e) {     
@@ -55,6 +62,12 @@ class Account extends Component {
             $('.tab-pane'+href).slideDown();
             $(".tab_drawer_heading").find("i").addClass("iconc-chevron-down").removeClass("iconc-chevron-up");
             $(".tab_drawer_heading.d_active").find("i").removeClass("iconc-chevron-down").addClass("iconc-chevron-up");
+
+            if(href=="#changepassword") {
+                jQuery(_this.refs.block_right).hide();
+            } else {
+                jQuery(_this.refs.block_right).show();
+            }
         })
 
     }
@@ -202,7 +215,7 @@ class Account extends Component {
 
     _render_rightBlock() {
         return (
-            <div className="block-right">
+            <div className="block-right" ref="block_right">
                 <div className="block-info">
                     <label>{trans.account_bewerkingen_label}</label>
                     <div className="d-table w100 mt20">

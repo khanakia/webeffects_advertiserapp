@@ -202,6 +202,7 @@ class ChangePasswordForm extends Component {
         let data = jQuery(this.refs.form).serialize();
 
         UserHelper.changePasswordFirstlogin(data).then(function(response) {
+            toastr.success(trans.changePwd_successfully)
             this.props.onDataUpdate(response.data)
             this.hidePopup();
         }.bind(this));
@@ -221,6 +222,7 @@ class ChangePasswordForm extends Component {
         let data = jQuery(this.refs.form).serialize();
 
         UserHelper.changePasswordFirstlogin(data).then(function(response) {
+            toastr.success(trans.changePwd_successfully)
             this.props.onDataUpdate(response.data)
             this.hidePopup();
         }.bind(this));
@@ -240,6 +242,7 @@ class ChangePasswordForm extends Component {
         let data = jQuery(this.refs.form).serialize();
 
         AccountHelper.resetPassword(data).then(function(response) {
+            toastr.success(trans.changePwd_successfully)
             this.props.onDataUpdate(response.data)
             this.hidePopup();
         }.bind(this));

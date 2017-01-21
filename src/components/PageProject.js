@@ -187,6 +187,7 @@ class PageProject extends Component {
                     text: trans.pageProject_confirm_cancel,
                     action: function () {
                         jQuery(".jconfirm").hide()
+                        hashHistory.push('/dashboard')
                     }
                 },
                 deleteAction: {
@@ -247,10 +248,31 @@ class PageProject extends Component {
 
 
     handleDelete = (id) => {
-        ProjectHelper.updateStatus(id, Env.project_status.waiting_for_unpublish).then((response) => {
-            this.props.fetchProject(this.props.params.projectId); 
+        var _this = this;
+        jQuery.confirm({
+            title: trans.project_deletepoup_title,
+            content: trans.project_deletepoup_content,
+            closeIcon: true,
+            columnClass: 'col-md-6 col-md-offset-3',
+            buttons: {
+                cancelAction: {
+                    text: trans.project_deletepoup_cancel,
+                    action: function () {
+                        jQuery(".jconfirm").hide()
+                        // hashHistory.push('/dashboard')
+                    }
+                },
+                deleteAction: {
+                    text: trans.project_deletepoup_delete,
+                    action: function () {
+                        ProjectHelper.updateStatus(id, Env.project_status.waiting_for_unpublish).then((response) => {
+                            _this.props.fetchProject(_this.props.params.projectId); 
+                        })
+                        jQuery(".jconfirm").hide()
+                    }
+                }
+            }
         })
-        
     }
 
     handleUpdateStatus = (project_id, status_id) => {
@@ -583,7 +605,7 @@ class PageProject extends Component {
         
         const project = this.props.project
      
-        const title = this.props.project.project_title ? this.props.project.project_title : 'Add New'
+        const title = this.props.project.project_title ? this.props.project.project_title : trans.pageProject_addnew_title
         return (
             <div className="projectPageContent">
                 <ContentWrapper hasSidebar={true}>
