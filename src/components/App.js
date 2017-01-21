@@ -15,13 +15,17 @@ export default class AppContainer extends Component {
     }
 
     componentWillMount() {
-        this.props.fethcInitialData()
-        // this.props.fetchCurrentUser()
-        // this.props.fetchProjects()
+        // this.props.fethcInitialData()
+        this.props.fetchCurrentUser()
+        this.props.fetchProjects()
     }
 
     componentDidMount() {
         
+    }
+
+    componentDidUpdate() {
+       
     }
 
     onDataUpdate = (response) => {  
@@ -40,7 +44,10 @@ export default class AppContainer extends Component {
         }
 
         if(this.props.current_user.has_changed_pwd==false) {
-            // PopupHelper.showChangePasswordForm({layout: 'layout1', onDataUpdate: this.onDataUpdate})
+            if(undefined==window.ChangePasswordForm_popupid) {
+
+                PopupHelper.showChangePasswordForm({layout: 'layout1', onDataUpdate: this.onDataUpdate})
+            }
         }
         
         return (

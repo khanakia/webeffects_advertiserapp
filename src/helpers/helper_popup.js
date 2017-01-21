@@ -68,6 +68,7 @@ export default class PopupHelper {
 
     static showChangePasswordForm(args = {}) {
         PopupHelper.openPopupNoCloseButton(args,function(uniq,pid){
+            window.ChangePasswordForm_popupid = pid;
             ReactDom.render(<ChangePasswordForm popup_id={pid} {...args} />, document.getElementById(uniq));
         })
     }

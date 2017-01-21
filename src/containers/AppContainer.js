@@ -17,17 +17,17 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         dispatch,
-        fethcInitialData: () => {
+        fetchCurrentUser: () => {
             
             dispatch(fetchCurrentUser()).then((response) => {
                 // console.log("fetched")
             });
-            dispatch(fetchProjects()); 
+            // dispatch(fetchProjects()); 
         },
 
-        // fetchProjects: () => {
-        //     dispatch(fetchProjects()); 
-        // },
+        fetchProjects: () => {
+            dispatch(fetchProjects()); 
+        },
     }
 }
 
