@@ -35,12 +35,12 @@ export default class AppContainer extends Component {
 
 
     render() {
-        if(jQuery.isEmptyObject(this.props.project_list) || jQuery.isEmptyObject(this.props.current_user)) {
+        if(jQuery.isEmptyObject(this.props.current_user)) {
             return false
         }
 
         if(this.props.current_user.has_changed_pwd==false) {
-            PopupHelper.showChangePasswordForm({layout: 'layout1', onDataUpdate: this.onDataUpdate})
+            // PopupHelper.showChangePasswordForm({layout: 'layout1', onDataUpdate: this.onDataUpdate})
         }
         
         return (

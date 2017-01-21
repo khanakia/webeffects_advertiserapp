@@ -31,6 +31,17 @@ class FileInput extends React.Component {
     componentDidMount() {
 
          this.onFileChange();
+
+         $(".comp-fileinput .items-wrapper").sortable({
+          // connectWith: ".comp-fileinput .item",
+            stop: function () {
+                var nbElems = inputs.length;
+                $('input.currentposition').each(function(idx) {
+                    $(this).val(nbElems - idx);
+                });
+            }
+          
+        });
     }
 
     componentDidUpdate() {
