@@ -311,7 +311,6 @@ class LocatieInput extends React.Component {
                     {this.state.parkingItems.map(function(item, index) {
                         return (
                             <div className="group-wrapper" key={index}>
-                                {item.is_paid}
                                 <div className="input-group-custom">
                                     <div className="parking-icon small-cell">
                                         <button type="button" className="btn btn-plain btn--nopad hover-show" onClick={(e) => this.handelDeleteParkingItem(item)}>

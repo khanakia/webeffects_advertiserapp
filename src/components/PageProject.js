@@ -442,8 +442,8 @@ class PageProject extends Component {
                                         selectedValue={this.props.project.contact_id} 
                                         items={this.props.project_formdata.contacts} 
                                         emptyPlaceholder={trans.contactPersonDD_empty_placeholder} 
-                                        contact_phone={this.props.project_contact.phone}
-                                        contact_email={this.props.project_contact.email} />
+                                        contact_phone={this.props.project_contact ? this.props.project_contact.phone : ''}
+                                        contact_email={this.props.project_contact ? this.props.project_contact.email : ''} />
                         </div>
                     </div>
                 </div>
@@ -634,7 +634,7 @@ class PageProject extends Component {
                                         <h3 className="d_active tab_drawer_heading">
                                             <a href="#general" aria-controls="general" role="tab" data-toggle="tab">{trans.pageProject_algemene_label} <i className="iconc-chevron-down"></i></a>
                                         </h3>
-                                        <div role="tabpanel" className="tab-pane " id="general">
+                                        <div role="tabpanel" className="tab-pane active" id="general">
                                            {/*{this._render_tabGeneral()}*/}
                                            
                                                 <ProjectTabGeneralForm  
@@ -679,7 +679,7 @@ class PageProject extends Component {
                                         <h3 className="tab_drawer_heading">
                                             <a href="#locatie" aria-controls="locatie" role="tab" data-toggle="tab">{trans.pageProject_tab_locatie} <i className="iconc-chevron-down"></i></a>
                                         </h3>
-                                        <div role="tabpanel" className="tab-pane active" id="locatie">
+                                        <div role="tabpanel" className="tab-pane " id="locatie">
                                             <LocatieInput 
                                                 address={this.props.project.address}
                                                 address_lat={this.props.project.lat}
