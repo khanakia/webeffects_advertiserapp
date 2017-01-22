@@ -48,12 +48,12 @@ class ProjectTabCatForm extends Component {
         return (
             <div>
                 <div className="form-group">
-                    <label>{trans.pageProject_algemene_label}</label>
+                    <label>{trans.pageProject_catform_title+item.title}</label>
                     <textarea className="editor" ref="description" name={`cat[${item.value}][description]`} defaultValue={fvm.description}></textarea>
                 </div>
                 <div className="form-group">
                     <label>{trans.pageProject_representatieve_label}</label>
-                    <FileInput name="foto1" filter_value_id={item.value} onAttachmentDeleted={this.onAttachmentDeleted} selectedItems={images} />
+                    <FileInput name={"foto_cat_"+item.value} filter_value_id={item.value} onAttachmentDeleted={this.props.onAttachmentDeleted} onTitleUpdated={this.props.onAttachmentTitleUpdated} selectedItems={images} />
                 </div>
             </div>
         )

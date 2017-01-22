@@ -52,7 +52,7 @@
         left: 0;
         right: 0;
         width: 100%;
-        z-index: 1;
+        z-index: 99;
         overflow: auto;
         background-color: #fff; } }
 
@@ -969,6 +969,14 @@ label input[type="radio"]:checked + span {
   -webkit-box-shadow: 0 -3px 4px rgba(0, 0, 0, 0.175);
   box-shadow: 0 -3px 4px rgba(0, 0, 0, 0.175); }
 
+.bottom-buttons-pageproject {
+  box-shadow: 0px -1px 10px #888888;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #fff;
+  z-index: 95; }
+
 .btn--transparent {
   background-color: transparent; }
 
@@ -1040,14 +1048,18 @@ label input[type="radio"]:checked + span {
   .dropdown-menu--user > li > a:hover, .dropdown-menu--user > li > a:focus {
     color: #7C8589; }
 
-.input-group-addon {
+.input-group-addon,
+.input-group-custom {
   min-width: 40px;
   border-radius: 0; }
-  .input-group-addon .hover-show {
+  .input-group-addon .hover-show,
+  .input-group-custom .hover-show {
     display: none; }
-  .input-group-addon:hover .hover-show {
+  .input-group-addon:hover .hover-show,
+  .input-group-custom:hover .hover-show {
     display: inherit; }
-  .input-group-addon:hover .hover-hide {
+  .input-group-addon:hover .hover-hide,
+  .input-group-custom:hover .hover-hide {
     display: none; }
 
 .input-group-vmerge .input-group {
@@ -1642,7 +1654,7 @@ label input[type="radio"]:checked + span {
   position: relative;
   border-bottom: none; }
 #locatie .form-control {
-  border-bottom: none; }
+  border: none; }
 #locatie .input-group--style-label .input-group-addon {
   border-bottom: 1px solid #cdd4d7; }
 #locatie .hidden-ispaid {
@@ -1659,7 +1671,12 @@ label input[type="radio"]:checked + span {
   display: table;
   width: 100%;
   position: relative;
-  overflow: hidden; }
+  overflow: hidden;
+  border: 1px solid #cdd4d7;
+  margin-top: -1px; }
+  #locatie .input-group-custom .input-group-addon {
+    border: none;
+    border-right: 1px solid #cdd4d7; }
 #locatie .small-cell {
   display: table-cell;
   vertical-align: middle; }
@@ -1668,24 +1685,30 @@ label input[type="radio"]:checked + span {
   padding: 6px 12px;
   text-align: center;
   background-color: #eee;
-  border: 1px solid #cdd4d7;
-  border-right: none;
-  border-bottom: none; }
+  border-right: 1px solid #cdd4d7; }
 #locatie .price-icon {
   width: 40px;
   padding: 6px 12px;
   text-align: center;
-  border: 1px solid #cdd4d7;
-  border-left: none;
-  border-right: none;
-  border-bottom: none;
-  cursor: pointer; }
-  #locatie .price-icon.active i {
+  border-left: 1px solid #cdd4d7;
+  border-right: 1px solid #cdd4d7;
+  cursor: pointer;
+  color: #7C8589; }
+  #locatie .price-icon.active {
     color: #08b995; }
 #locatie .price-field {
   width: 135px;
   position: absolute;
-  right: -134px; }
+  right: -134px;
+  background: #fff;
+  /*border: 1px solid #CDD4D7;*/ }
+  #locatie .price-field input {
+    width: 75px;
+    border: none;
+    display: inline-block;
+    color: #7C8589; }
+  #locatie .price-field span {
+    color: #DDDDDD; }
 @media screen and (max-width: 1350px) {
   #locatie .section-zoek > span {
     min-width: auto;

@@ -1,0 +1,2 @@
+import ContactPersonSingleBlock from './ContactPersonSingleBlock'
+export default ContactPersonSingleBlock

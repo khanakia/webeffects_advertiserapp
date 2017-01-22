@@ -32,12 +32,18 @@ class FileInput extends React.Component {
 
          this.onFileChange();
 
-         $(".comp-fileinput .items-wrapper").sortable({
+         var $fileinput = jQuery(this.refs.fileinput)
+
+         $fileinput.find(".items-wrapper").sortable({
           // connectWith: ".comp-fileinput .item",
+            items: '.item:not(.selector)',
             stop: function () {
-                var nbElems = inputs.length;
-                $('input.currentposition').each(function(idx) {
-                    $(this).val(nbElems - idx);
+                var nbElems = $fileinput.find('.item:not(.selector)');
+                // console.log(nbElems)
+                nbElems.each(function(idx) {
+                    // $(this).val(nbElems - idx);
+                    jQuery(this).find('.sort_order').val(idx)
+                    // console.log(idx)
                 });
             }
           
@@ -178,6 +184,7 @@ class FileInput extends React.Component {
                                 
                                 <input type="hidden" name={`${this.props.name}_new[${index}][filter_value_id]`} defaultValue={this.props.filter_value_id} placeholder="filter_value_id" />
                                 <input type="hidden" name={`${this.props.name}_new[${index}][attachment_id]`} defaultValue={item.id} placeholder="attachment_id" />
+                                <input type="hidden" className="sort_order" name={`${this.props.name}_new[${index}][sort_order]`} placeholder="sort_order" />
                                 <div className="inner" style={{backgroundImage : 'url("' + item.url + '")'}}>
                                     
                                 </div>
@@ -192,6 +199,9 @@ class FileInput extends React.Component {
                                 <input type="hidden" name="project_id[]" defaultValue={item.object_id} placeholder="project_id" />
                                 <input type="hidden" name={`${this.props.name}[${index}][filter_value_id]`} defaultValue={item.filter_value_id} placeholder="filter_value_id" />
                                 <input type="hidden" name={`${this.props.name}[${index}][attachment_id]`} defaultValue={item.attachment.id} placeholder="attachment_id" />
+
+                                <input type="hidden" className="sort_order" name={`${this.props.name}[${index}][sort_order]`} defaultValue={item.sort_order} placeholder="sort_order" />
+                                <input type="hidden" name={`${this.props.name}[${index}][id]`} defaultValue={item.id} placeholder="id" />
                                 <div className="inner" style={{backgroundImage : 'url("' + item.attachment.url + '")'}}>
                                     <div className="title">{item.attachment.attachment_title}</div>
                                     <button type="button" className="btn btn-plain editBtn" onClick={()=>{this.editTitle(item.attachment.id)}}><i className="iconc-edit"></i></button>

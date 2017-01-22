@@ -205,7 +205,7 @@ class Zalen extends React.Component {
                     </tbody>
                     <tfoot>
                         <tr>
-                            <td><button type="button" className="btn btn-plain btn--nopad" onClick={()=>this.handleAddClick()}><i className="fa fa-plus"></i></button></td>
+                            <td><button type="button" className="btn btn-plain btn--nopad" onClick={()=>this.handleAddClick()}><i className="iconc-plus"></i></button></td>
                             <td colSpan="10">
                                 <label className="placeholder">{trans.zalen_zaal}</label>
                             </td>

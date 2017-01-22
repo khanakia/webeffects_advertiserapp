@@ -53,10 +53,18 @@ class LocatieInput extends React.Component {
         this.gmapInit()
     }
 
+    // componentWillReceiveProps(nextProps) {
+    //     // If nextProp item are greater than current prop items it means user clicked the Save button so clear all the Newitems in state input because they already saved and will show as NextProp items
+    //     if(nextProps.selectedItems.length > this.props.selectedItems.length) {
+    //         this.setState({itemsNew: []})
+    //     }
+
+    // }
+
     gmapInit() {
         this.map = new google.maps.Map(document.getElementById('google-map'), {
             center: {lat: -33.8688, lng: 151.2195},
-            zoom: 6,
+            zoom: 4,
             disableDefaultUI: true,
             streetViewControl: true,
             scrollwheel: false,
@@ -64,7 +72,7 @@ class LocatieInput extends React.Component {
             zoomControlOptions: {
                 position: google.maps.ControlPosition.RIGHT_BOTTOM,
             },
-            styles: [{"featureType": "road","elementType": "geometry","stylers": [{"visibility": "off"}]},{"featureType": "administrative.province","elementType": "all","stylers": [{"visibility": "off"}]},{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#444444"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2f2f2"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":-100},{"lightness":45}]},{"featureType":"road","elementType":"geometry.fill","stylers":[{"color":"#77bc1f"}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType": "road.highway","elementType": "labels","stylers": [{"visibility": "off"}]},{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#ffffff"},{"visibility":"on"}]}],
+            styles: [{"featureType":"landscape.natural","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"color":"#e0efef"}]},{"featureType":"poi","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"hue":"#1900ff"},{"color":"#c0e8e8"}]},{"featureType":"road","elementType":"geometry","stylers":[{"lightness":100},{"visibility":"simplified"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"transit.line","elementType":"geometry","stylers":[{"visibility":"on"},{"lightness":700}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#7dcdcd"}]}],
         });
 
         var markers = [];
@@ -72,7 +80,7 @@ class LocatieInput extends React.Component {
         // Add Project Address Marker
         var marker = new google.maps.Marker({
             map: this.map,
-            icon: ROOT_URL+'/images/villa-marker.png',
+            icon: ROOT_URL+'/images/marker.png',
             position: new google.maps.LatLng(this.state.address_lat, this.state.address_lng),
         });
         markers.push(marker)
@@ -96,6 +104,7 @@ class LocatieInput extends React.Component {
 
         this.map.fitBounds(bounds);
 
+        // this.map.setZoom(10)
         this.map_autocomplete_init()
 
         this.villa_autocomplete_init();
@@ -241,6 +250,16 @@ class LocatieInput extends React.Component {
         }
     }
 
+    handleIsPaidCheckboxChange = (e, index) => {
+        var state = Object.assign({}, this.state);
+        state.parkingItems[index].is_paid = e.target.checked;
+        this.setState({
+            parkingItems: state.parkingItems
+        })
+        console.log(state.parkingItems)
+        console.log(e.target.checked)
+    }
+
     render() {
         const countitems = [
             {"value": 1, "title": '+7 km'},
@@ -281,7 +300,7 @@ class LocatieInput extends React.Component {
 
                 </div>
                 <div className="form-group">
-                    <div className="input-group">
+                    <div className="input-group-custom">
                         <div className="input-group-addon"><i className="iconc-location-pointer"></i></div>
                         <input type="text" id="autocomplete-field" className="form-control" defaultValue={this.state.address} />
                         <input type="hidden" className="form-control" name="address" ref="address" value={this.state.address || ''} onChange={()=>{this.onInputChange()}} />
@@ -292,21 +311,24 @@ class LocatieInput extends React.Component {
                     {this.state.parkingItems.map(function(item, index) {
                         return (
                             <div className="group-wrapper" key={index}>
+                                {item.is_paid}
                                 <div className="input-group-custom">
                                     <div className="parking-icon small-cell">
-                                        <button type="button" className="btn btn-plain btn--nopad" onClick={(e) => this.handelDeleteParkingItem(item)}>
+                                        <button type="button" className="btn btn-plain btn--nopad hover-show" onClick={(e) => this.handelDeleteParkingItem(item)}>
                                             <i className="iconc-trash"></i>
                                         </button>
+                                        <i className="iconc-room hover-hide"></i>
                                     </div>
                                     <div className="parking-field small-cell">
                                         <input type="text" className="form-control parking_address" defaultValue={item.address} data-id={item.id} />
                                     </div>
                                     <label className="price-icon small-cell">
-                                        <input type="checkbox" className="hidden-ispaid" name={`parkingitem[${index}][is_paid]`} data-checked={item.is_paid} defaultValue="1" />
-                                        <i className="iconc-trash"></i>
+                                        <input type="checkbox" className="hidden-ispaid" name={`parkingitem[${index}][is_paid]`} data-checked={item.is_paid} defaultValue="0" onChange={(e)=>{this.handleIsPaidCheckboxChange(e, index)}} />
+                                        €
                                     </label>
                                     <div className="price-field small-cell">
-                                        <input type="text" className="form-control" name={`parkingitem[${index}][price]`} defaultValue={item.price} />
+                                        <input type="number" className="form-control" name={`parkingitem[${index}][price]`} defaultValue={item.price} />
+                                        <span>per uur</span>
                                     </div>
 
                                     <input type="hidden" name={`parkingitem[${index}][id]`} defaultValue={item.id} />
@@ -325,7 +347,7 @@ class LocatieInput extends React.Component {
                     <div className="input-group input-group--style-label">
                         <span className="input-group-addon">
                             <button type="button" className="btn btn-plain btn--nopad" onClick={(e) => this.handleAddClick()}>
-                                <i className="fa fa-plus"></i>
+                                <i className="iconc-plus"></i>
                             </button>
                         </span>
                         <label>{trans.locatieInput_zaal}</label>

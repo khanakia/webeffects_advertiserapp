@@ -134,51 +134,14 @@ class Account extends Component {
         ProjectHelper.updateContact(project_id, item.id)
     }
 
-    // _render_tabPassword() {
-    //     return (
-    //         <div>
-    //             <div className="formstyle1Ct changepwdCt">
-    //                 <form className="form-horizontal formstyle1 ChangepwdForm" ref='form' onSubmit={this.handleSubmitChangePassword}>
-    //                     <div className="row">
-    //                         <div className="col-md-12">
-    //                             <div className="form-group">
-    //                                 <label className="col-sm-12">{trans.account_uw_oude_wachtwoord}</label>
-    //                                 <div className="col-sm-12">
-    //                                     <div className="input-group">
-    //                                         <div className="input-group-addon"><i className="fa fa-key" aria-hidden="true"></i></div>
-    //                                         <input type="password" className="form-control required" name="oldpassword" id="oldpassword"  placeholder="••••••••••" />
-    //                                     </div>
-    //                                 </div>
-    //                             </div>
+    onContactItemRemoved = () => {
+        this.props.fetchContacts();
+    }
 
-    //                             <div className="form-group">
-    //                                 <label className="col-sm-12">{trans.account_uw_nieuwe_wachtwoord}</label>
-    //                                 <div className="col-sm-12">
-    //                                     <div className="input-group">
-    //                                         <div className="input-group-addon"><i className="fa fa-key" aria-hidden="true"></i></div>
-    //                                         <input type="password" className="form-control required" name="password" id="password"  placeholder="••••••••••" />
-    //                                     </div>
-    //                                 </div>
-    //                             </div>
-    //                             <div className="form-group">
-    //                                 <label className="col-sm-12"><div className="row"><div className="col-sm-12">{trans.account_noogmaals}</div></div></label>
-    //                                 <div className="col-sm-12">
-    //                                     <div className="input-group">
-    //                                         <div className="input-group-addon"><i className="fa fa-key" aria-hidden="true"></i></div>
-    //                                         <input type="password" className="form-control required updatePassword" name="password_confirmation" id="password_confirmation" placeholder="••••••••••"/>
-    //                                     </div>
-    //                                 </div>
-    //                             </div>
-    //                         </div>
-    //                     </div>
-    //                     <div className="text-right">
-    //                         <button type="submit" className="btn btn-green btn--round">{trans.account_bevestig_btn}</button>
-    //                     </div>
-    //                 </form>
-    //             </div>
-    //         </div>
-    //     )
-    // }
+    onContactItemUpdate = () => {
+        this.props.fetchContacts();   
+    }
+  
 
     _render_tabGegevens() {
         return (
@@ -201,7 +164,10 @@ class Account extends Component {
                     <div className="form-group">
                         <label>{trans.account_contactpersonen}</label>
                         
-                            <ContactPersonInput items={this.props.contact_list} />
+                            <ContactPersonInput 
+                                items={this.props.contact_list} 
+                                onUpdate={this.onContactItemUpdate}
+                                onRemoved={this.onContactItemRemoved} />
                     </div>
                 </form>
 

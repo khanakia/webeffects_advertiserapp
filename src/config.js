@@ -59,7 +59,7 @@ export const PROJECT_STATUSES = {
 
 	"2" : {
 		'title' : 'Nieuw',
-		'icon_class' : 'iconc iconc-concept color-red',
+		'icon_class' : 'iconc iconc-concept',
 	},
 
 	"3" : {

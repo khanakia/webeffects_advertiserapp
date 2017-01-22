@@ -13,6 +13,7 @@ import FileInput from './FileInput'
 import VideoInput from './VideoInput'
 import IframeInput from './IframeInput'
 import ContactPersonDropdown from './ContactPersonDropdown'
+import ContactPersonSingleBlock from './ContactPersonSingleBlock'
 import OfferRequestList from './OfferRequestList'
 import LocatieInput from './LocatieInput'
 import SnoobiPage from './SnoobiPage'
@@ -163,11 +164,13 @@ class PageProject extends Component {
         const dataJson = URI.parseQuery(data);
         if (dataJson.id) {
             ProjectHelper.save(data).then((response) => {
+                toastr.success(trans.pageProject_saved_successfully)
                 _this.props.fetchProject(_this.props.params.projectId);
                 _this.props.fetchProjects()
             })
         } else {
             ProjectHelper.save(data).then((response) => {
+                toastr.success(trans.pageProject_saved_successfully)
                 hashHistory.push('/dashboard')
             })
         }
@@ -231,7 +234,9 @@ class PageProject extends Component {
     }
 
     onRightBlockTerugClick (){
-        jQuery(this.refs.block_right).slideUp('slow');
+        jQuery(this.refs.block_right).slideUp('slow', function(){
+            jQuery(this).css("display", "")
+        });
     }
 
     onMeerBtnClick (){
@@ -428,45 +433,18 @@ class PageProject extends Component {
         return (
             <div>
                 <div className="form-group">
-                    <label>{trans.pageProject_details_aantal_personen}</label>
+                    <label>{trans.pageProject_details_contactpersonen}</label>
+
                     <div className="row">
                         <div className="col-md-4">
-                            <ContactPersonDropdown
-                                onAddNewClick={this.onContactDropdownAddNewClick} 
-                                selectedValue={this.props.project.contact_id} 
-                                items={this.props.project_formdata.contacts} 
-                                emptyPlaceholder={trans.contactPersonDD_empty_placeholder}
-                                />
+                            <ContactPersonSingleBlock  
+                                        onAddNewClick={this.onContactDropdownAddNewClick} 
+                                        selectedValue={this.props.project.contact_id} 
+                                        items={this.props.project_formdata.contacts} 
+                                        emptyPlaceholder={trans.contactPersonDD_empty_placeholder} 
+                                        contact_phone={this.props.project_contact.phone}
+                                        contact_email={this.props.project_contact.email} />
                         </div>
-
-                        {
-                            this.props.project_contact ?
-                                <div className="col-md-4 input-group-vmerge input-group--style-label">
-                                    <div className="input-group">
-                                        <span className="input-group-addon">
-                                            <i className="iconc iconc-person"></i>
-                                        </span>
-                                        <label>{this.props.project_contact.name}</label>
-                                    </div>
-                                    <div className="input-group">
-                                        <span className="input-group-addon">
-                                            <i className="iconc iconc-mail"></i>
-                                        </span>
-                                        
-                                        <label>{this.props.project_contact.phone}</label>
-                                    </div>
-                                    <div className="input-group">
-                                        <span className="input-group-addon">
-                                            <i className="iconc iconc-phone"></i>
-                                        </span>
-                                        
-                                        <label>{this.props.project_contact.email}</label>
-                                    </div>
-                                </div>
-
-                            : ''
-
-                        }
                     </div>
                 </div>
 
@@ -499,7 +477,7 @@ class PageProject extends Component {
             <div className="block-right" ref="block_right">
                 <div className="block-info">
                     <label>{trans.pageProject_rightBlock_bewerkingen}</label>
-                    {/*<div className="last_updated mt5">{trans.pageProject_rightBlock_updated}</div>*/}
+                    {<div className="last_updated mt5">{this.props.project.updated_at}</div>}
 
                     <div className="d-table w100 mt20">
                         <div className="d-table-cell v-align-middle">
@@ -656,7 +634,7 @@ class PageProject extends Component {
                                         <h3 className="d_active tab_drawer_heading">
                                             <a href="#general" aria-controls="general" role="tab" data-toggle="tab">{trans.pageProject_algemene_label} <i className="iconc-chevron-down"></i></a>
                                         </h3>
-                                        <div role="tabpanel" className="tab-pane active" id="general">
+                                        <div role="tabpanel" className="tab-pane " id="general">
                                            {/*{this._render_tabGeneral()}*/}
                                            
                                                 <ProjectTabGeneralForm  
@@ -701,7 +679,7 @@ class PageProject extends Component {
                                         <h3 className="tab_drawer_heading">
                                             <a href="#locatie" aria-controls="locatie" role="tab" data-toggle="tab">{trans.pageProject_tab_locatie} <i className="iconc-chevron-down"></i></a>
                                         </h3>
-                                        <div role="tabpanel" className="tab-pane " id="locatie">
+                                        <div role="tabpanel" className="tab-pane active" id="locatie">
                                             <LocatieInput 
                                                 address={this.props.project.address}
                                                 address_lat={this.props.project.lat}
@@ -753,7 +731,7 @@ class PageProject extends Component {
                                         </div>
 
                                     </div>
-                                    <div className="visible-xs visible-sm twoBtnStyle box--shadow">
+                                    <div className="visible-xs visible-sm twoBtnStyle bottom-buttons-pageproject">
                                         <button type="button" className="btn btn--transparent a-hover-color" onClick={()=>{this.onMeerBtnClick()}}>{trans.pageProject_2btn_meer}</button>
                                         <button type="button" className="btn btn--transparent a-hover-color" onClick={()=>{this.handleSumbit()}}>{trans.pageProject_rightBlock_opslaan}</button>
                                     </div>

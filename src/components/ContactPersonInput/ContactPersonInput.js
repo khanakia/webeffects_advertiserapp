@@ -16,7 +16,8 @@ class ContactPersonInput extends React.Component {
     static defaultProps = {        
         className: '',
         items: [],
-        onRemoved: function(){}
+        onRemoved: function(){},
+        onUpdate: function(){}
     }
 
     componentDidMount() {
@@ -63,13 +64,29 @@ class ContactPersonInput extends React.Component {
         this.setState({itemsNew: items.filter((_, i) => i!==index)})
     }
 
-    handleRemoveZalen = (id) => {
+    handleRemoveContact = (id) => {
         ContactHelper.delete(id).then((response) => {
-            this.props.onZalenRemoved()
+            
+            if(response.data.status=="ok") {
+                toastr.success(trans[response.data.message])
+            } else {
+                toastr.error(trans[response.data.message])
+            }
+            this.props.onRemoved()
         })
     }
 
- 
+    setAsCompany = (id) => {
+        ContactHelper.setAsCompany(id).then((response) => {
+            if(response.data.status=="ok") {
+                toastr.success(trans[response.data.message])
+            } else {
+                toastr.error(trans[response.data.message])
+            }
+
+            this.props.onUpdate()
+        })
+    }
 
 
     _renderDesktop() {
@@ -91,7 +108,7 @@ class ContactPersonInput extends React.Component {
                             <tr key={`z-${item.id}`}>
                                 <td>
                                     <span className="input-group-addon">
-                                        <button type="button" className="btn btn-plain btn--nopad hover-show" onClick={()=>{this.handleRemoveZalen(item.id)}}>
+                                        <button type="button" className="btn btn-plain btn--nopad hover-show" onClick={()=>{this.handleRemoveContact(item.id)}}>
                                             <i className="iconc-trash"></i>
                                         </button>
                                         <i className="iconc-person hover-hide"></i>
@@ -103,7 +120,7 @@ class ContactPersonInput extends React.Component {
                                 </td>
                                 <td><input type="text" name={`contact[${index}][email]`} defaultValue={item.email} /></td>
                                 <td><input type="text" name={`contact[${index}][phone]`} defaultValue={item.phone} /></td>
-                                <td><label><input type="checkbox" name={`contact[${index}][is_company]`} defaultChecked={item.is_company} /><span></span></label></td>
+                                <td><label><input type="checkbox" checked={item.is_company} onChange={()=>{this.setAsCompany(item.id)}} /><span></span></label></td>
                             </tr>
                         )
                     }, this)}
@@ -125,7 +142,9 @@ class ContactPersonInput extends React.Component {
                                 </td>
                                 <td><input type="text" name={`contact_new[${index}][email]`} /></td>
                                 <td><input type="text" name={`contact_new[${index}][phone]`} /></td>
-                                <td><label><input type="checkbox" name={`contact_new[${index}][is_company]`} defaultChecked={item.is_company} /><span></span></label></td>
+                                <td>
+                                    {/*<label><input type="checkbox" name={`contact_new[${index}][is_company]`} defaultChecked={item.is_company} /><span></span></label>*/}
+                                </td>
                             </tr>
                         )
                     }, this)}
@@ -151,7 +170,7 @@ class ContactPersonInput extends React.Component {
                             <input type="hidden" name={`contact[${index}][id]`} defaultValue={item.id} />
                             <div className="input-group input-group--style-label">
                                 <span className="input-group-addon">
-                                    <button type="button" className="btn btn-plain btn--nopad hover-show" onClick={(e) => this.handleRemoveZalen(item.id)}>
+                                    <button type="button" className="btn btn-plain btn--nopad hover-show" onClick={(e) => this.handleRemoveContact(item.id)}>
                                         <i className="iconc-trash"></i>
                                     </button>
                                     <i className="iconc-person hover-hide"></i>
@@ -215,7 +234,7 @@ class ContactPersonInput extends React.Component {
                                 <div className="personinput-checkbox">
                                     <input type="text" className="form-control" readOnly="" value={trans.contactPersonInput_bedrijf} />
                                     <label>
-                                        <input type="checkbox" name={`contact_new[${index}][is_company]`} />
+                                        {/*<input type="checkbox" name={`contact_new[${index}][is_company]`} />*/}
                                         <span></span>
                                     </label>
                                 </div>

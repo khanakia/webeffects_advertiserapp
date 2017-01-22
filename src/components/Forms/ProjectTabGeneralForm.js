@@ -78,7 +78,7 @@ class ProjectTabGeneralForm extends Component {
                 </div>
                 <div className="form-group">
                     <label>{trans.pageProject_representatieve_label}</label>
-                    <FileInput name="foto" onAttachmentDeleted={this.props.onAttachmentDeleted} selectedItems={images} onTitleUpdated={this.props.onAttachmentTitleUpdated} maxItems={5} />
+                    <FileInput name="foto" onAttachmentDeleted={this.props.onAttachmentDeleted} selectedItems={images} onTitleUpdated={this.props.onAttachmentTitleUpdated} maxItems={1} />
                 </div>
 
                 <div className="form-group">

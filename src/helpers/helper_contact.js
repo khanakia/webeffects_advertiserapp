@@ -74,5 +74,14 @@ export default class ContactHelper {
     }
 
 
+    static setAsCompany(id) {
+        return axios({
+            method: 'post',
+            url: API_URL_CONTACTS + '/' + id + '/setascompany',
+            headers: Auth.header(),
+            // data: data
+        });
+    }
+
 }
 

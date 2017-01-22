@@ -66,7 +66,7 @@ const language = {
 		"project_deletepoup_cancel": "Annuleren",
 		"project_deletepoup_delete": "Begrepen. Verzend verzoek.",
 
-
+		"pageProject_catform_title": "Beschrijving ",
 		"pageProject_naam_locatie_label": "Naam locatie",
 		"pageProject_algemene_label": "Algemene beschrijving",
 		"pageProject_representatieve_label": "Representatieve buitenafbeelding",
@@ -86,6 +86,7 @@ const language = {
 		"pageProject_radio_eigen": "Eigen catering mogelijk",
 
 		"pageProject_details_aantal_personen": "Aantal personen",
+		"pageProject_details_contactpersonen": "Contactpersoon",
 		"pageProject_details_min": "Min.",
 		"pageProject_details_max": "Max.",
 		"pageProject_details_catering": "Catering",
@@ -120,6 +121,7 @@ const language = {
 		"pageProject_rightBlock_datum": "Datum van publicatie",
 		"pageProject_rightBlock_zet_deze": "Zet deze locatie offline",
 		"pageProject_rightBlock_terug": "Terug",
+		"pageProject_saved_successfully": "Item succesvol opgeslagen",
 
 		"changePwd_title": "Eigen wachtwoord aanmaken",
 		"changePwd_old": "Old Password",
@@ -136,7 +138,7 @@ const language = {
 
 		"clonableInput_naam_label": "Name",
 
-		"contactPersonDD_empty_placeholder": "Kies een contactpersoon",
+		"contactPersonDD_empty_placeholder": "Nieuw contactpersoon",
 		"contactPersonDD_nieuw_btn": "Nieuw contactpersoon",
 
 		"contactPersonInput_naam": "Naam",
@@ -164,7 +166,7 @@ const language = {
 		"locatieInput_adres": "Adres",
 		"locatieInput_zoek": "Zoek parkeerplaatsen in een straal van",
 		"locatieInput_voeg": "Voeg automatisch parkeerplaatsen toe",
-		"locatieInput_zaal": "Zaal toevoegen",
+		"locatieInput_zaal": "Parkeerplaats toevoegen",
 
 		"offerte_title": "Offerte aanvragen",
 		"offerte_aanvraag_label": "Offerte Aanvraag",
@@ -180,7 +182,7 @@ const language = {
 		"offerte_algemene": "Algemene opmerking",
 
 		"projectContactInput_naam_label": "Naam",
-		"projectContactInput_email_label": "E-mailadressen",
+		"projectContactInput_email_label": "Contactpersonen",
 
 		"headerSection_account_link": "Account instellingen",
 		"headerSection_uitloggen_link": "Uitloggen",
@@ -234,7 +236,7 @@ const language = {
 		"invalid_credentials" : "Invalid Credentials",
 		"could_not_create_token" : "could_not_create_token",
 		"token_not_provided" : "token_not_provided",
-		"access_denied" : "access_denied",
+		"access_denied" : "Access Denied.",
 		"request_failed" : "We are unable to parse the request.",
 
 		"validation_failed" : "validation_failed",
@@ -246,6 +248,14 @@ const language = {
 		"validation_failed" : "validation_failed",
 		"entry_not_found" : "entry_not_found",
 		"no_data_found" : "Geen gegevens gevonden",
+
+		"contact_not_found": "Contact not found.",
+		"contact_with_company_cannot_delete": "Contact have company cannot be delete.",
+		"contact_assigned_to_project_cannot_delete": "Contact is assigned to some project.",
+		"contact_deleted_successfully": "Contact Removed Successfully",
+		"contact_cannot_update": "Contact Cannot Update",
+		"contact_updated_successfully": "Contact Update Successfully."
+
 		
 
 		
