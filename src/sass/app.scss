@@ -1616,3 +1616,12 @@ label input[type="radio"]:checked + span {
 		}
 	}
 }
+
+
+@media (min-width: 1550px) {
+	.offerrequesttab {
+		.col-md-6 {
+		    width: 25%;
+		}
+	}
+}
