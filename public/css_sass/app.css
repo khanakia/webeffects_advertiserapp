@@ -1800,5 +1800,8 @@ label input[type="radio"]:checked + span {
     .snoobiSorten-wrapper .sorten-text {
       display: block;
       margin-bottom: 15px; } }
+@media (min-width: 1550px) {
+  .offerrequesttab .col-md-6 {
+    width: 25%; } }
 
 /*# sourceMappingURL=app.css.map */
