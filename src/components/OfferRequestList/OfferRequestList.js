@@ -81,7 +81,7 @@ class OfferRequestList extends React.Component {
                     <div className={'comp-offerrequestlist ' + item.offer_request_id} ref="offerrequestlist">
                         <div className="accordion" id={'collapse' + item.id}>
                             <div className="accordion-group">
-                                <div  ="accordion-heading">
+                                <div  className="accordion-heading">
                                     <a className="accordion-toggle panel_title" data-toggle="collapse" data-parent={'collapse' + item.id} href={'#collapse' + item.offer_request_id}>
                                         {item.formatted_updated_at}<span>{item.offer_request.name}</span>
                                     </a>
