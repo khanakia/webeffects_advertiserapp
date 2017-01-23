@@ -316,7 +316,7 @@ class LocatieInput extends React.Component {
                                         <button type="button" className="btn btn-plain btn--nopad hover-show" onClick={(e) => this.handelDeleteParkingItem(item)}>
                                             <i className="iconc-trash"></i>
                                         </button>
-                                        <i className="iconc-room hover-hide"></i>
+                                        <i className="iconc-icn-parking hover-hide"></i>
                                     </div>
                                     <div className="parking-field small-cell">
                                         <input type="text" className="form-control parking_address" defaultValue={item.address} data-id={item.id} />

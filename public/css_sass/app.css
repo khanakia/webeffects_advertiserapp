@@ -6,7 +6,6 @@
     padding: 12px;
     text-align: center;
     font-size: 18px;
-    font-weight: 600;
     font-family: 'Rubik', sans-serif;
     border-bottom: 1px solid #CDD4D7; }
   .page-panel__inner {
@@ -71,7 +70,7 @@
   .tab-content .tab_drawer_heading.d_active a {
     color: #FF713E; }
 .tab-content .tab-pane {
-  padding: 20px 0; }
+  padding: 0 0 20px; }
 @media screen and (max-width: 992px) {
   .tab-content .tab_drawer_heading {
     display: block; }
@@ -270,6 +269,8 @@ header.mobile {
 
 .input-group {
   width: 100%; }
+  .input-group:last-of-type i {
+    font-size: 18px; }
 
 input {
   padding: 10px;
@@ -278,10 +279,16 @@ input {
   font-size: 16px; }
 
 .input-group-addon {
-  width: 40px; }
+  width: 40px;
+  padding: 6px 10px; }
   .input-group-addon i {
-    font-size: 16px;
+    font-size: 18px;
     vertical-align: middle; }
+  .input-group-addon i.iconc-plus {
+    font-size: 12px; }
+
+label {
+  margin-bottom: 0px; }
 
 .comp-radiolist .form-control span {
   line-height: 25px; }
@@ -557,7 +564,7 @@ input {
       color: #fff;
       font-family: 'Rubik', sans-serif; }
       .comp-sidebar li a.active {
-        font-weight: bold; }
+        /*font-weight: 600;*/ }
         .comp-sidebar li a.active:before {
           content: "•";
           position: absolute;
@@ -868,6 +875,7 @@ label input[type="checkbox"] + span::before {
   box-shadow: 0 0 0 1px #7C8589; }
 
 label input[type="checkbox"] + span::before {
+  top: 5px;
   border-radius: 2px; }
 
 label input[type="radio"]:checked + span::before {
@@ -882,7 +890,7 @@ label input[type="checkbox"]:checked + span::before {
 label input[type="checkbox"]:checked + span::after {
   position: absolute;
   left: 4px;
-  top: 8px;
+  top: 5px;
   content: '';
   display: inline-block;
   width: 5px;
@@ -1079,6 +1087,7 @@ label input[type="radio"]:checked + span {
 .input-group--style-label .input-group-addon {
   width: 40px;
   height: 40px;
+  padding: 6px 10px;
   border: 1px solid #CDD4D7;
   border-right: 0; }
 .input-group--style-label label {
@@ -1185,6 +1194,8 @@ label input[type="radio"]:checked + span {
   .table--horizontal.table > thead:first-child > tr:first-child > th {
     color: #A0A8AC;
     vertical-align: middle; }
+    .table--horizontal.table > thead:first-child > tr:first-child > th i {
+      font-size: 18px; }
   .table--horizontal.table-bordered > thead > tr > th, .table--horizontal.table-bordered > thead > tr > td {
     border-bottom-width: 1px; }
   .table--horizontal th {
@@ -1219,17 +1230,23 @@ label input[type="radio"]:checked + span {
       padding: 0;
       vertical-align: middle; }
       .table--horizontal td:first-child i {
-        font-size: 16px; }
+        font-size: 18px; }
+      .table--horizontal td:first-child i.iconc-plus {
+        font-size: 12px; }
     .table--horizontal td:nth-child(2) input {
       text-align: left; }
-  .table--horizontal tfoot .placeholder {
+  .table--horizontal s
+  tfoot .placeholder {
     text-align: left;
     color: #DDDDDD;
     display: block;
     font-weight: normal;
     margin: 0; }
+  .table--horizontal s
+  tfoot tr > td:first-child i {
+    font-size: 12px; }
   .table--horizontal .input-group-addon {
-    padding: 10px 15px;
+    padding: 10px;
     border: none; }
 
 .table--vertical {
@@ -1656,7 +1673,10 @@ label input[type="radio"]:checked + span {
 #locatie .form-control {
   border: none; }
 #locatie .input-group--style-label .input-group-addon {
-  border-bottom: 1px solid #cdd4d7; }
+  border-bottom: 1px solid #cdd4d7;
+  border-top: none; }
+#locatie .input-group--style-label label {
+  border-top: none; }
 #locatie .hidden-ispaid {
   position: absolute;
   width: 10px;
@@ -1674,6 +1694,8 @@ label input[type="radio"]:checked + span {
   overflow: hidden;
   border: 1px solid #cdd4d7;
   margin-top: -1px; }
+  #locatie .input-group-custom i {
+    font-size: 18px; }
   #locatie .input-group-custom .input-group-addon {
     border: none;
     border-right: 1px solid #cdd4d7; }
@@ -1682,7 +1704,7 @@ label input[type="radio"]:checked + span {
   vertical-align: middle; }
 #locatie .parking-icon {
   width: 40px;
-  padding: 6px 12px;
+  padding: 6px 10px;
   text-align: center;
   background-color: #eee;
   border-right: 1px solid #cdd4d7; }

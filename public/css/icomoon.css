@@ -1,11 +1,11 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('../fonts/icomoon.eot?6opuim');
-  src:  url('../fonts/icomoon.eot?6opuim#iefix') format('embedded-opentype'),
-    url('../fonts/icomoon.woff2?6opuim') format('woff2'),
-    url('../fonts/icomoon.ttf?6opuim') format('truetype'),
-    url('../fonts/icomoon.woff?6opuim') format('woff'),
-    url('../fonts/icomoon.svg?6opuim#icomoon') format('svg');
+  src:  url('../fonts/icomoon.eot?a8g3f7');
+  src:  url('../fonts/icomoon.eot?a8g3f7#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.woff2?a8g3f7') format('woff2'),
+    url('../fonts/icomoon.ttf?a8g3f7') format('truetype'),
+    url('../fonts/icomoon.woff?a8g3f7') format('woff'),
+    url('../fonts/icomoon.svg?a8g3f7#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -25,6 +25,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.iconc-icn-parking:before {
+  content: "\e92b";
+}
 .iconc-cross-thin:before {
   content: "\e92e";
 }
@@ -178,8 +181,5 @@
 }
 .iconc-chevron:before {
   content: "\e92a";
-}
-.iconc-bold:before {
-  content: "\e92b";
 }
 

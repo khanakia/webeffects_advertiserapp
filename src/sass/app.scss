@@ -285,6 +285,7 @@ label input[type="checkbox"] + span::before {
 }
 
 label input[type="checkbox"] + span::before {
+	top: 5px;
 	border-radius: 2px;
 }
 
@@ -302,7 +303,7 @@ label input[type="checkbox"]:checked + span::before {
 label input[type="checkbox"]:checked + span::after {
     position: absolute;
     left: 4px;
-    top: 8px;
+    top: 5px;
     content: '';
     display: inline-block;
     width: 5px;
@@ -579,6 +580,7 @@ label input[type="radio"]:checked + span {
 	.input-group-addon {
 		width: 40px;
 		height: 40px;
+		padding: 6px 10px;
 		border: 1px solid #CDD4D7;
 		border-right: 0;
 	}
@@ -736,6 +738,9 @@ label input[type="radio"]:checked + span {
 	&.table > thead:first-child > tr:first-child > th {
 		color: #A0A8AC;
 		vertical-align: middle;
+		i {
+			font-size: 18px;
+		}
 	}
 
 	&.table-bordered > thead > tr > th, &.table-bordered > thead > tr > td {
@@ -784,8 +789,11 @@ label input[type="radio"]:checked + span {
 		    vertical-align: middle;
 
 		    i {
-		    	font-size: 16px;
+		    	font-size: 18px;
 		    }
+		    i.iconc-plus {
+				font-size: 12px;
+			}
 		}
 
 		&:nth-child(2) {
@@ -793,7 +801,7 @@ label input[type="radio"]:checked + span {
 				text-align: left;
 			}
 		}
-	}
+	}s
 
 	tfoot {
 		.placeholder {
@@ -803,9 +811,16 @@ label input[type="radio"]:checked + span {
 		    font-weight: normal;
 		    margin: 0;
 		}
+		tr {
+			>td:first-child {
+				i {
+					font-size: 12px;
+				}
+			}
+		}
 	}
 	.input-group-addon {
-		padding: 10px 15px;
+		padding: 10px;
 		border: none;
 	}
 }
@@ -1407,6 +1422,10 @@ label input[type="radio"]:checked + span {
 	.input-group--style-label {
 		.input-group-addon {
 			border-bottom: 1px solid #cdd4d7;
+			border-top: none;
+		}
+		label {
+			border-top: none;
 		}
 	}
 
@@ -1433,6 +1452,9 @@ label input[type="radio"]:checked + span {
 		overflow: hidden;
 		border: 1px solid #cdd4d7;
 		margin-top: -1px;
+		i {
+			font-size: 18px;
+		}
 
 		.input-group-addon {
 			border: none;
@@ -1447,7 +1469,7 @@ label input[type="radio"]:checked + span {
 
 	.parking-icon {
 		width: 40px;
-		padding: 6px 12px;
+		padding: 6px 10px;
 		text-align: center;
 		background-color: #eee;
 		border-right: 1px solid #cdd4d7;
