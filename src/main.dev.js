@@ -29,6 +29,7 @@ import {
     ForgotPasswordContainer,
     ProjectOverviewContainer,
     ProjectContainer,
+    ProjectContainer1,
     ProjectNewContainer,
     AccountContainer,
     DemoContainer
@@ -47,6 +48,8 @@ import {
                 <Route path="demo" component={DemoContainer} />
     			<Route path="dashboard" component={ProjectOverviewContainer} />
     			<Route path="projects/:projectId" component={ProjectContainer} />
+                <Route path="projects1/:projectId" component={ProjectContainer1} />
+                <Route path="project1/add" component={ProjectContainer1} />
     			<Route path="project/add" component={ProjectNewContainer} />
                 <Route path="account" component={AccountContainer} />
     		</Route>
