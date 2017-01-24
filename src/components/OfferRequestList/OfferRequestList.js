@@ -11,7 +11,9 @@ class OfferRequestList extends React.Component {
     }
 
     static defaultProps = {
-        onDateItemChange: function(item) {}
+        onDateItemChange: function(item) {},
+        categories: [],
+        items: []
     }
 
 
@@ -65,6 +67,31 @@ class OfferRequestList extends React.Component {
         // console.log("dsfasdfdsaf", item)
     }
 
+    _renderDatumJson(datum) {
+        let json = JSON.parse(datum);
+        // console.log("json jsonjsonjson", json)
+        return json.map(function(item, index){
+            // console.log("item.startdateitem.startdateitem.startdate",item.startdate)
+            return (
+                <div key={index}>
+                    {item.startdate} {item.suffix} {item.enddate}
+                </div>
+            )
+        })
+    }
+
+    _renderCategories(catids) {
+        return JSON.parse(catids).map((id, index) => {
+            var item = _.find(this.props.categories, {value: Number(id)});
+            // console.info("ABCCCCCCCC", item)
+            return (
+                <div key={index}>
+                    {item.title}
+                </div>
+            )
+        })
+    }
+
     _renderItems() {
         // console.log("this.props.itemsthis.props.offererquesss  ", this.props.items)
         if(undefined==this.props.items || jQuery.isEmptyObject(this.props.items)) {
@@ -75,7 +102,7 @@ class OfferRequestList extends React.Component {
             )
         }
         
-        return this.props.items.map(function(item, index){
+        return this.props.items.map((item, index) => {
             console.log(item);
             return (
                 <div className="offerrequesttab" key={index}>    
@@ -105,7 +132,7 @@ class OfferRequestList extends React.Component {
                                             <div className="col-md-6 col-sm-12">
                                                 <div>
                                                     <h5>{trans.offerte_bedrijfsnaam_label}</h5>
-                                                    <p>{item.bedrijfsnaam}</p>
+                                                    <p>{item.offer_request.company}</p>
                                                 </div>                                                                
                                             </div>
                                             <div className="col-md-6 col-sm-12">
@@ -125,13 +152,13 @@ class OfferRequestList extends React.Component {
                                             <div className="col-md-6 col-sm-12">
                                                 <div>
                                                     <h5>{trans.offerte_straatnaam_label}</h5>
-                                                    <p>{item.offer_request.straatnaam}</p>
+                                                    <p>{item.offer_request.straat}</p>
                                                 </div>                                                                
                                             </div>
                                             <div className="col-md-6 col-sm-12">
                                                 <div>
                                                     <h5>{trans.offerte_huisnummer_label}</h5>
-                                                    <p>{item.offer_request.huisnummer}</p>
+                                                    <p>{item.offer_request.house_no}</p>
                                                 </div>                                                                
                                             </div>
                                             <div className="col-md-6 col-sm-12">
@@ -145,13 +172,13 @@ class OfferRequestList extends React.Component {
                                             <div className="col-md-6 col-sm-12">
                                                 <div>
                                                     <h5>{trans.offerte_plaats_label}</h5>
-                                                    <p>{item.plaats}</p>
+                                                    <p>{item.offer_request.plaat}</p>
                                                 </div>                                                                
                                             </div>
                                             <div className="col-md-6 col-sm-12">
                                                 <div>
                                                     <h5>{trans.offerte_geplande_datum_label}</h5>
-                                                    <p>{item.formatted_updated_at}</p>
+                                                    {this._renderDatumJson(item.offer_request.datum_json)}
                                                 </div>                                                                
                                             </div>
                                             <div className="col-md-6 col-sm-12">
@@ -163,7 +190,7 @@ class OfferRequestList extends React.Component {
                                             <div className="col-md-6 col-sm-12">
                                                 <div>
                                                     <h5>{trans.offerte_gelegenheden_label}</h5>
-                                                    <p>{item.offer_request.description}</p>
+                                                    {this._renderCategories(item.category_json)}
                                                 </div>
                                             </div>
                                         </div>
@@ -177,7 +204,7 @@ class OfferRequestList extends React.Component {
                                             <div className="col-md-6 col-sm-12">
                                                 <div>
                                                     <h5>{trans.offerte_locatie_label}</h5>
-                                                    <p>{item.offer_request.name}</p>
+                                                    <p>{item.description}</p>
                                                 </div>                                                                                                                            
                                             </div>
                                         </div>

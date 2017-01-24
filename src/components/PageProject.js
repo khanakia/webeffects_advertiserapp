@@ -720,7 +720,10 @@ class PageProject extends Component {
                                             <a href="#aanvragen" aria-controls="aanvragen" role="tab" data-toggle="tab">{trans.pageProject_tab_aanvragen} <i className="iconc-chevron-down"></i></a>
                                         </h3>
                                         <div role="tabpanel" className={`tab-pane ${hiddenClass}`} id="aanvragen">
-                                            <OfferRequestList onDateItemChange={this.onOfferlistDateItemChange} items={this.props.project_offer_request_details_list} />
+                                            <OfferRequestList 
+                                                categories={this.props.project_formdata.gelegenhendens}
+                                                onDateItemChange={this.onOfferlistDateItemChange} 
+                                                items={this.props.project_offer_request_details_list} />
                                         </div>
 
                                         <h3 className={`tab_drawer_heading ${hiddenClass}`}>
