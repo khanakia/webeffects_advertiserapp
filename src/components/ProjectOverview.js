@@ -110,7 +110,7 @@ class ProjectOverview extends Component {
                                 const plaat_name = undefined!==item.plaat[0] ? item.plaat[0]['name'] : '';
                                 return (
                                     <tr key={index}>
-                                        <td><i className={status.icon_class}></i> <span>{status.title}</span></td>
+                                        <td className="nowrap"><i className={status.icon_class}></i> <span>{status.title}</span></td>
                                         <td>
                                             <span className="title">{item.project_title}</span>
                                             <span className="subtitle">

@@ -47,7 +47,7 @@ class OfferRequestList extends React.Component {
         var items = [];
         items.push({ 
             value: '',
-            title: 'Select Month'
+            title: 'Selecteer maand'
         })
 
         while (startDate.isBefore(endDate)) {

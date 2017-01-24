@@ -73,7 +73,7 @@ export const PROJECT_STATUSES = {
 	},
 
 	"5" : {
-		'title' : 'Unpublished',
+		'title' : 'Uitgeschakeld',
 		'icon_class' : 'iconc iconc-uploaded color-red',
 	},
 

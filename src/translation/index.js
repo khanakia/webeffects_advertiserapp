@@ -49,7 +49,7 @@ const language = {
 		"pageOverview_status": "Status",
 		"pageOverview_titel": "Titel",
 		"pageOverview_laatste": "Laatste bewerking",
-		"pageOverview_link": "Link",
+		"pageOverview_link": "Draft",
 		"pageOverview_link_live": "Live",
 		"pageOverview_verwijder": "Verwijder",
 		"pageOverview_bewerk": "Bewerk",
