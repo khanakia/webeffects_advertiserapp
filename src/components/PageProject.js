@@ -58,17 +58,22 @@ class PageProject extends Component {
 
     componentWillUpdate = (nextProps, nextState) => {        
         // $('.editor').each(function(){ $(this).trumbowyg('destroy'); })
-        console.info(nextProps.params.projectId == this.props.params.projectId)
+        // console.info("this.params.projectId", this.props.params.projectId )
+        // console.info("nextProps.params.projectId", nextProps.params.projectId )
+        // console.info(nextProps.params.projectId == this.props.params.projectId)
 
         var currentLocation = this.props.location.pathname
         // if(nextProps.location.pathname=='/project/add' && nextProps.location.pathname!==currentLocation) {
         //     this.forceUpdate();
         //     return false;
         // }
-
+        if(this.refs.form) {
+            ReactDom.findDOMNode(this.refs.form).reset();
+            
+        }
         if(nextProps.params.projectId !== this.props.params.projectId) {
             if(nextProps.params.projectId) {
-                ReactDom.findDOMNode(this.refs.form).reset();
+                // console.info("ReactDom.findDOMNode(this.refs.form).reset();")
 
                 this.props.fetchProject(nextProps.params.projectId);
                 this.props.fetchOfferRequestDetailsList(nextProps.params.projectId);
@@ -142,8 +147,9 @@ class PageProject extends Component {
     initJs() {
         var _this = this;
         $('.editor').trumbowyg({
-            btns: [['bold', 'italic', 'underline'], ['unorderedList'], ['orderedList']]
-            // autogrow: true
+            btns: [['bold', 'italic', 'underline'], ['unorderedList'], ['orderedList']],
+            // autogrow: true,
+            removeformatPasted: true
         });
        
 
@@ -171,7 +177,8 @@ class PageProject extends Component {
         } else {
             ProjectHelper.save(data).then((response) => {
                 toastr.success(trans.pageProject_saved_successfully)
-                hashHistory.push('/dashboard')
+                // hashHistory.push('/dashboard')
+                hashHistory.push('projects/'+response.data.id)
             })
         }
 
@@ -477,7 +484,7 @@ class PageProject extends Component {
             <div className="block-right" ref="block_right">
                 <div className="block-info">
                     <label>{trans.pageProject_rightBlock_bewerkingen}</label>
-                    {<div className="last_updated mt5">{this.props.project.updated_at}</div>}
+                    {<div className="last_updated mt5">{this.props.project.updated_at_with_time}</div>}
 
                     <div className="d-table w100 mt20">
                         <div className="d-table-cell v-align-middle">

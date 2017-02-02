@@ -99,7 +99,7 @@ class Login extends Component {
                                         <button type="submit" className="btn btn-green btn--round">{trans.login_submit_btn}</button>
                                     </div>
                                     <br/>
-                                    <p className="text-center"><a target="_blank" href={API_HOST+Env.adverter_page_link}>{trans.login_ik_ben}</a></p>
+                                    <p className="text-center"><a target="_self" href={API_HOST+Env.adverter_page_link}>{trans.login_ik_ben}</a></p>
                                 </form>
                             </div>
                         </div>
