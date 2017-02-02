@@ -136,3 +136,11 @@ label {
 		}
 	}
 }
+
+@media screen and (min-width: 1550px) {
+	.page_project_details_checkbox {
+		.col-lg-6 {
+			width: 33.33%;
+		}
+	}
+}

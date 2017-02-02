@@ -403,20 +403,20 @@ class PageProject extends Component {
                     </div>
                 </div>
 
-                <div className="row">
-                    <div className="col-lg-4">
+                <div className="row page_project_details_checkbox">
+                    <div className="col-lg-6">
                         <div className="form-group">
                             <label>{trans.pageProject_details_gebouwen}</label>
                             <CheckboxList name='gebouws[]' items={this.props.project_formdata.gebouwens} selectedItems={this.props.project.gebouws_mapping_ids} />
                         </div>
                     </div>
-                    <div className="col-lg-4">
+                    <div className="col-lg-6">
                         <div className="form-group">
                             <label>{trans.pageProject_details_ligging}</label>
                             <CheckboxList name='liggings[]' items={this.props.project_formdata.liggings} selectedItems={this.props.project.liggings_mapping_ids} />
                         </div>
                     </div>
-                    <div className="col-lg-4">
+                    <div className="col-lg-6">
                         <div className="form-group">
                             <label>{trans.pageProject_details_eigenschappen}</label>
                             <CheckboxList name='eigenschappens[]' items={this.props.project_formdata.eigenschappens} selectedItems={this.props.project.eigenschappens_mapping_ids} />
