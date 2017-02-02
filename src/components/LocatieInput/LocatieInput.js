@@ -272,8 +272,8 @@ class LocatieInput extends React.Component {
 
         return (
             <div className={'comp-locatieinput ' + this.props.className} ref="locatieinput">
-                <div className="section-heading">
-                    <h3>{trans.locatieInput_adres}</h3>
+                <div className="form-group">
+                    <label>{trans.locatieInput_adres}</label>
                 </div>
                 <div className="section-zoek">
                     <span className="zoek_text">{trans.locatieInput_zoek}</span>
