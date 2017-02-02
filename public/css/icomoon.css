@@ -1,11 +1,11 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('../fonts/icomoon.eot?a8g3f7');
-  src:  url('../fonts/icomoon.eot?a8g3f7#iefix') format('embedded-opentype'),
-    url('../fonts/icomoon.woff2?a8g3f7') format('woff2'),
-    url('../fonts/icomoon.ttf?a8g3f7') format('truetype'),
-    url('../fonts/icomoon.woff?a8g3f7') format('woff'),
-    url('../fonts/icomoon.svg?a8g3f7#icomoon') format('svg');
+  src:  url('../fonts/icomoon.eot?t76hi');
+  src:  url('../fonts/icomoon.eot?t76hi#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.woff2?t76hi') format('woff2'),
+    url('../fonts/icomoon.ttf?t76hi') format('truetype'),
+    url('../fonts/icomoon.woff?t76hi') format('woff'),
+    url('../fonts/icomoon.svg?t76hi#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -27,9 +27,6 @@
 
 .iconc-icn-parking:before {
   content: "\e92b";
-}
-.iconc-cross-thin:before {
-  content: "\e92e";
 }
 .iconc-chevron-up:before {
   content: "\e92d";

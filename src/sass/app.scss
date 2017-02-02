@@ -1492,6 +1492,10 @@ label input[type="radio"]:checked + span {
 		margin-top: -1px;
 		i {
 			font-size: 18px;
+			vertical-align: middle;
+		}
+		i.iconc-icn-parking {
+			font-size: 16px;
 		}
 
 		.input-group-addon {

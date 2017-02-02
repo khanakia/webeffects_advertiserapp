@@ -1738,7 +1738,10 @@ label input[type="radio"]:checked + span {
   border: 1px solid #cdd4d7;
   margin-top: -1px; }
   #locatie .input-group-custom i {
-    font-size: 18px; }
+    font-size: 18px;
+    vertical-align: middle; }
+  #locatie .input-group-custom i.iconc-icn-parking {
+    font-size: 16px; }
   #locatie .input-group-custom .input-group-addon {
     border: none;
     border-right: 1px solid #cdd4d7; }
