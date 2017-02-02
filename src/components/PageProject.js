@@ -416,7 +416,7 @@ class PageProject extends Component {
                             <CheckboxList name='liggings[]' items={this.props.project_formdata.liggings} selectedItems={this.props.project.liggings_mapping_ids} />
                         </div>
                     </div>
-                    <div className="col-lg-6">
+                    <div className="col-lg-6 clear-both">
                         <div className="form-group">
                             <label>{trans.pageProject_details_eigenschappen}</label>
                             <CheckboxList name='eigenschappens[]' items={this.props.project_formdata.eigenschappens} selectedItems={this.props.project.eigenschappens_mapping_ids} />

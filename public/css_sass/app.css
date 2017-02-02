@@ -340,9 +340,15 @@ label {
 .password-form-wrapper.is_popup .popover {
   display: none !important; }
 
+.clear-both {
+  clear: both; }
+
 @media screen and (min-width: 1550px) {
   .page_project_details_checkbox .col-lg-6 {
-    width: 33.33%; } }
+    width: 33.33%; }
+
+  .clear-both {
+    clear: none; } }
 .comp-fileinput:after, .comp-fileinput:before {
   display: table;
   content: " "; }
