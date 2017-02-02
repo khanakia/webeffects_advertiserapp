@@ -90,66 +90,66 @@ class ProjectOverview extends Component {
    }
     _renderDesktop() {
         return (
-            <div>
-                    <table className="table table-bordered table--default table--projectoverview">
-                        <thead>
-                            <tr>
-                                <th className="wp200">{trans.pageOverview_status}</th>
-                                <th>{trans.pageOverview_titel}</th>
-                                <th className="wp200">{trans.pageOverview_laatste}</th>
-                                <th className="text-center wp100">{trans.pageOverview_link}</th>
-                                <th className="text-center wp100">{trans.pageOverview_link_live}</th>
-                                <th className="text-center wp100">{trans.pageOverview_verwijder}</th>
-                                <th className="text-center wp100">{trans.pageOverview_bewerk}</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            { this.props.project_list.map((item, index) => {
-                                let status = PROJECT_STATUSES[item.project_status_id]
-                                const province_name = undefined!==item.province[0] ? item.province[0]['name'] : '';
-                                const plaat_name = undefined!==item.plaat[0] ? item.plaat[0]['name'] : '';
-                                return (
-                                    <tr key={index}>
-                                        <td className="nowrap"><i className={status.icon_class}></i> <span>{status.title}</span></td>
-                                        <td>
-                                            <span className="title">{item.project_title}</span>
-                                            <span className="subtitle">
-                                                {
-                                                    province_name ?
-                                                        <span>{province_name}  </span>
-                                                    : ''
-                                                }
-                                                {
-                                                    (province_name && plaat_name) ?
-                                                        <i className="fa fa-circle" aria-hidden="true"></i>
-                                                    : ''
-                                                }
-                                                {
-                                                    plaat_name ?
-                                                        <span>{plaat_name}</span>
-                                                    : ''
-                                                }
-                                                
-                                            </span>
-                                        </td>
-                                        <td className="color-7C8589">{item.formatted_updated_at}</td>
-                                        <td className="text-center link-icon">
-                                            <a target="_blank" href={item.url_concept}><i className="iconc iconc-link fs22 i-rotate25"></i></a>
-                                        </td>
-                                        <td className="text-center link-icon">
-                                            <a target="_blank" href={item.url}><i className="iconc iconc-link fs22 i-rotate25"></i></a>
-                                        </td>
-                                        <td className="text-center link-icon">
-                                            <button className="btn btn-plain" onClick={()=>{this.handleDelete(item.id)}}><i className="iconc iconc-trash fs22"></i></button>
-                                        </td>
-                                        <td className="text-center link-icon">
-                                            <Link to={'/projects/'+item.id}><i className="iconc iconc-edit fs22 i-rotate25"></i></Link>
-                                        </td>
-                                    </tr>
-                                )}
+            <div className="table-wrapper-border">
+                <table className="table table-bordered table--default table--projectoverview">
+                    <thead>
+                        <tr>
+                            <th className="wp200">{trans.pageOverview_status}</th>
+                            <th>{trans.pageOverview_titel}</th>
+                            <th className="wp200">{trans.pageOverview_laatste}</th>
+                            <th className="text-center wp100">{trans.pageOverview_link}</th>
+                            <th className="text-center wp100">{trans.pageOverview_link_live}</th>
+                            <th className="text-center wp100">{trans.pageOverview_verwijder}</th>
+                            <th className="text-center wp100">{trans.pageOverview_bewerk}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        { this.props.project_list.map((item, index) => {
+                            let status = PROJECT_STATUSES[item.project_status_id]
+                            const province_name = undefined!==item.province[0] ? item.province[0]['name'] : '';
+                            const plaat_name = undefined!==item.plaat[0] ? item.plaat[0]['name'] : '';
+                            return (
+                                <tr key={index}>
+                                    <td className="nowrap"><i className={status.icon_class}></i> <span>{status.title}</span></td>
+                                    <td>
+                                        <span className="title">{item.project_title}</span>
+                                        <span className="subtitle">
+                                            {
+                                                province_name ?
+                                                    <span>{province_name}  </span>
+                                                : ''
+                                            }
+                                            {
+                                                (province_name && plaat_name) ?
+                                                    <i className="fa fa-circle" aria-hidden="true"></i>
+                                                : ''
+                                            }
+                                            {
+                                                plaat_name ?
+                                                    <span>{plaat_name}</span>
+                                                : ''
+                                            }
+                                            
+                                        </span>
+                                    </td>
+                                    <td className="color-7C8589">{item.formatted_updated_at}</td>
+                                    <td className="text-center link-icon">
+                                        <a target="_blank" href={item.url_concept}><i className="iconc iconc-link fs22 i-rotate25"></i></a>
+                                    </td>
+                                    <td className="text-center link-icon">
+                                        <a target="_blank" href={item.url}><i className="iconc iconc-link fs22 i-rotate25"></i></a>
+                                    </td>
+                                    <td className="text-center link-icon">
+                                        <button className="btn btn-plain" onClick={()=>{this.handleDelete(item.id)}}><i className="iconc iconc-trash fs22"></i></button>
+                                    </td>
+                                    <td className="text-center link-icon">
+                                        <Link to={'/projects/'+item.id}><i className="iconc iconc-edit fs22 i-rotate25"></i></Link>
+                                    </td>
+                                </tr>
                             )}
-                        </tbody>
-                    </table>
+                        )}
+                    </tbody>
+                </table>
             </div>
 
         );

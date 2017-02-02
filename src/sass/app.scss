@@ -850,7 +850,6 @@ label input[type="radio"]:checked + span {
 
 }
 
-.table-bordered,
 .list-group-item {
 	border: 1px solid #CDD4D7;
 }
@@ -862,10 +861,32 @@ label input[type="radio"]:checked + span {
 .table-bordered > tfoot > tr > th,
 .table-bordered > tfoot > tr > td {
 	border: 1px solid #CDD4D7;
+	border-left: none;
+	&:last-of-type {
+		border-right: none;
+	}
+}
+
+.table-bordered > tbody > tr,
+.table-bordered > tfoot > tr {
+	&:last-of-type {
+		> td {
+			border-bottom: none;
+		}
+	}
+}
+
+.table-wrapper-border {
+	border: 1px solid #CDD4D7;
+    border-radius: 4px;
+    overflow: auto;
+	.table-bordered {
+		margin-bottom: 0;
+		border: none;
+	}
 }
 
 .table--projectoverview {
-
 }
 
 .Tab {
