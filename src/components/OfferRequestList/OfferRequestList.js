@@ -84,6 +84,7 @@ class OfferRequestList extends React.Component {
         return JSON.parse(catids).map((id, index) => {
             var item = _.find(this.props.categories, {value: Number(id)});
             // console.info("ABCCCCCCCC", item)
+            if(undefined==item) return null;
             return (
                 <div key={index}>
                     {item.title}
@@ -111,7 +112,7 @@ class OfferRequestList extends React.Component {
                             <div className="accordion-group">
                                 <div  className="accordion-heading">
                                     <a className="accordion-toggle panel_title" data-toggle="collapse" data-parent={'collapse' + item.id} href={'#collapse' + item.offer_request_id}>
-                                        {item.formatted_updated_at}<span>{item.offer_request.name}</span>
+                                        {item.formatted_updated_at}<span>{item.offer_request.company ? item.offer_request.company : item.offer_request.name}</span>
                                     </a>
                                 </div>
                                 <div id={'collapse' + item.offer_request_id} className="accordion-body collapse offerrequesttable">
