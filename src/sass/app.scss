@@ -535,9 +535,13 @@ label input[type="radio"]:checked + span {
 
 .input-group-addon,
 .input-group-custom {
-	min-width: 40px; 
+	min-width: 40px;
+	padding: 0;
 	border-radius: 0;
-
+	.btn {
+		width: 39px;
+		height: 38px;
+	}
 	.hover-show {
 		display: none;
 	}
@@ -1459,8 +1463,13 @@ label input[type="radio"]:checked + span {
 
 	.input-group--style-label {
 		.input-group-addon {
+			padding: 0;
 			border-bottom: 1px solid #cdd4d7;
 			border-top: none;
+			.btn {
+				width: 39px;
+				height: 39px;
+			}
 		}
 		label {
 			border-top: none;
@@ -1511,10 +1520,14 @@ label input[type="radio"]:checked + span {
 
 	.parking-icon {
 		width: 40px;
-		padding: 6px 10px;
+		padding: 0;
 		text-align: center;
 		background-color: #eee;
 		border-right: 1px solid #cdd4d7;
+		.btn {
+			width: 39px;
+			height: 39px;
+		}
 		
 	}
 

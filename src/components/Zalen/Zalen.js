@@ -133,7 +133,7 @@ class Zalen extends React.Component {
                 <table className="table table-bordered table--horizontal">
                     <thead>
                         <tr>
-                        <th><i className="iconc-room"></i></th>
+                        <th className="wp40"><i className="iconc-room"></i></th>
                         <th>{trans.zalen_tab_title}</th>
                         <th>{trans.zalen_tab_daglicht}</th>
                         <th>{trans.zalen_tab_u_vorm}</th>
