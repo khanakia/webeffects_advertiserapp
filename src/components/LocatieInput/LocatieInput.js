@@ -64,7 +64,7 @@ class LocatieInput extends React.Component {
     gmapInit() {
         this.map = new google.maps.Map(document.getElementById('google-map'), {
             center: {lat: -33.8688, lng: 151.2195},
-            zoom: 4,
+            zoom: 7,
             disableDefaultUI: true,
             streetViewControl: true,
             scrollwheel: false,
@@ -205,7 +205,6 @@ class LocatieInput extends React.Component {
 
 
     handelDeleteParkingItem = (item) => {
-        console.log(item)
         var newArray = this.state.parkingItems.filter((item_array, index) => {
             return (item_array.id!==item.id)
         })
