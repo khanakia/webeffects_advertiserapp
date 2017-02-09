@@ -19,7 +19,7 @@ window.Env = Env;
 window.Auth = Auth;
 window.trans = language[Env.site_id];
 
-console.log(window.Env)
+// console.log(window.Env)
 
 import {
     RequireAuth,
@@ -47,10 +47,10 @@ import {
             <Route path="/" component={RequireAuth(AppContainer)}>
                 <Route path="demo" component={DemoContainer} />
     			<Route path="dashboard" component={ProjectOverviewContainer} />
-    			<Route path="projects/:projectId" component={ProjectContainer} />
-                <Route path="projects1/:projectId" component={ProjectContainer1} />
-                <Route path="project1/add" component={ProjectContainer1} />
-    			<Route path="project/add" component={ProjectNewContainer} />
+    			<Route path="projects_old/:projectId" component={ProjectContainer} />
+                <Route path="projects/:projectId" component={ProjectContainer1} />
+                <Route path="project/add" component={ProjectContainer1} />
+    			<Route path="project_old/add" component={ProjectNewContainer} />
                 <Route path="account" component={AccountContainer} />
     		</Route>
 		  </Router>

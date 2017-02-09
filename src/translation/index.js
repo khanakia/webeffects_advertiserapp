@@ -111,6 +111,8 @@ const language = {
 		"pageProject_rightBlock_bewerkingen": "Bewerkingen",
 		"pageProject_rightBlock_updated": "Zojuist om 11:38",
 		"pageProject_rightBlock_opslaan": "Opslaan",
+		"pageProject_rightBlock_opslaan_admin": "Finalize",
+		"pageProject_rightBlock_btn_loadactualdata": "Load Actual Data",
 		"pageProject_rightBlock_annuleren": "Annuleren",
 		"pageProject_rightBlock_locatie": "Locatie bekijken",
 		"pageProject_rightBlock_link_live": "Live",

@@ -26,6 +26,14 @@ export default class ProjectHelper {
         });
     }
 
+    static showRevision(id) {
+        return axios({
+            method: 'get',
+            url: API_URL_PROJECT + '/' + id + '/show_revision',
+            headers: Auth.header(),
+        });
+    }
+
     static store(data) {
         return axios({
             method: 'post',
@@ -34,6 +42,8 @@ export default class ProjectHelper {
             data: data
         });
     }
+
+   
 
     static update(data) {
         const dataJson = URI.parseQuery(data);
@@ -51,6 +61,15 @@ export default class ProjectHelper {
         return axios({
             method: 'post',
             url: API_URL_PROJECT + '/save',
+            headers: Auth.header(),
+            data: data
+        });
+    }
+
+     static saveRevision(data) {
+        return axios({
+            method: 'post',
+            url: API_URL_PROJECT + '/save_revision',
             headers: Auth.header(),
             data: data
         });

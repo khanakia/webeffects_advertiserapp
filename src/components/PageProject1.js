@@ -6,9 +6,14 @@ import ContentWrapper from './shared/ContentWrapper'
 
 
 import ProjectTabGeneralForm from './PageProject/ProjectTabGeneralForm'
+import ProjectTabDetailForm from './PageProject/ProjectTabDetailForm'
+import ProjectTabContactForm from './PageProject/ProjectTabContactForm'
+import ProjectTabLocatieForm from './PageProject/ProjectTabLocatieForm'
+import ProjectTabCatForm from './PageProject/ProjectTabCatForm'
 import RightBlock from './PageProject/RightBlock'
+import Zalen from './PageProject/Zalen'
 
-
+import InputBox from './PageProject/InputBox'
 import PopupHelper from 'helpers/helper_popup'
 
 import {PROJECT_STATUSES} from '../config'
@@ -16,49 +21,51 @@ import {PROJECT_STATUSES} from '../config'
 class PageProject extends Component {
     constructor(props, context) {
         super(props, context);
+        this.isReset = false;
+
+        // this.state = {
+        //     project: this.props.project 
+        // }
     }
 
     static defaultProps = {        
-        project_province: [],
-        project_plaat: [],
-        project_gebied: [],
-        project_contact: {
-            name: ''
-        },
-        project: {
-            project_title: ''
-        }
-        
+        project: {}  
+
     }
 
     componentWillMount() {
 
         this.props.fetchProjectFormdata()
-        // console.log(this.props.params.projectId)
+        log(this.props.params.projectId, 'type1')
         if(this.props.params.projectId) {
-            this.props.fetchProject(this.props.params.projectId);
+            this.props.fetchProjectRevision(this.props.params.projectId);
             this.props.fetchOfferRequestDetailsList(this.props.params.projectId);
         }
     }
 
 
-
     componentWillUpdate = (nextProps, nextState) => {        
         // $('.editor').each(function(){ $(this).trumbowyg('destroy'); })
-        console.info(nextProps.params.projectId == this.props.params.projectId)
+        // console.info(nextProps.params.projectId == this.props.params.projectId)
 
         var currentLocation = this.props.location.pathname
   
         if(nextProps.params.projectId !== this.props.params.projectId) {
             if(nextProps.params.projectId) {
-                ReactDom.findDOMNode(this.refs.form).reset();
+                // ReactDom.findDOMNode(this.refs.form).reset();
 
-                this.props.fetchProject(nextProps.params.projectId);
+                this.props.fetchProjectRevision(nextProps.params.projectId);
                 this.props.fetchOfferRequestDetailsList(nextProps.params.projectId);
 
+                this.isReset = true;
                 // window.location.reload()
+
+            } else {
+                this.props.createProject();
             }
         }
+                
+                this.isReset = true;
     }
 
     componentDidMount() {
@@ -71,6 +78,8 @@ class PageProject extends Component {
         this.tabsFn();
 
         // ProjectHelper.projectStatus();
+
+        this.props.createProject();
     }
 
     componentDidUpdate() {
@@ -145,20 +154,28 @@ class PageProject extends Component {
         let data = jQuery(_this.refs.form).serialize();    
 
         const dataJson = URI.parseQuery(data);
-        if (dataJson.id) {
-            ProjectHelper.save(data).then((response) => {
-                toastr.success(trans.pageProject_saved_successfully)
-                _this.props.fetchProject(_this.props.params.projectId);
-                _this.props.fetchProjects()
-            })
-        } else {
-            ProjectHelper.save(data).then((response) => {
-                toastr.success(trans.pageProject_saved_successfully)
-                hashHistory.push('/dashboard')
-            })
-        }
+        ProjectHelper.saveRevision(data).then((response) => {
+            toastr.success(trans.pageProject_saved_successfully)
+            hashHistory.push('/projects/'+response.data.id)
+            // _this.props.fetchProject(_this.props.params.projectId);
+            // _this.props.fetchProjects()
+        })
+    }
 
+    rightBlock_handleSumbitAdmin = () => {
+        var valid = jQuery(this.refs.form).valid();
+        if (!valid) {return false};
+        
 
+        var _this = this;
+        let data = jQuery(_this.refs.form).serialize();    
+
+        const dataJson = URI.parseQuery(data);
+        ProjectHelper.save(data).then((response) => {
+            toastr.success(trans.pageProject_saved_successfully)
+            _this.props.fetchProject(_this.props.params.projectId);
+            // _this.props.fetchProjects()
+        })
     }
 
 
@@ -187,28 +204,7 @@ class PageProject extends Component {
         })
     }
 
-    onAttachmentDeleted = () => {
-        
-        if(this.props.params.projectId) {
-            this.props.fetchProject(this.props.params.projectId);
-        }
-    }
-
-    onZalenRemoved = () => {
-        this.props.fetchProject(this.props.params.projectId);
-    }
-
-    onVideoDeleted = () => {
-        this.props.fetchProject(this.props.params.projectId);   
-    }
-
-    onIframeDeleted = () => {
-        this.props.fetchProject(this.props.params.projectId);   
-    }
-
-    onAttachmentTitleUpdated = () => {
-        this.props.fetchProject(this.props.params.projectId);   
-    }
+  
 
     onOfferlistDateItemChange = (item) => {
         if(this.props.params.projectId) {
@@ -221,6 +217,12 @@ class PageProject extends Component {
             jQuery(this).css("display", "")
         });
     }
+
+    rightBlock_handleLoadActualData = () => {
+        this.props.fetchProject(this.props.params.projectId);
+        this.isReset = true;
+    }
+
 
     onMeerBtnClick (){
         jQuery(this.refs.block_right).slideDown('slow');
@@ -272,18 +274,19 @@ class PageProject extends Component {
 
   
     render() {
-        console.log(this.props);
+        // console.log(this.props);
         const hiddenClass = this.props.params.projectId ? '' : 'hidden';
         if(this.props.params.projectId && jQuery.isEmptyObject(this.props.project) || jQuery.isEmptyObject(this.props.project_formdata)) {
             return false
         }
         
+     
         const project = this.props.project
      
-        const title = this.props.project.project_title ? this.props.project.project_title : trans.pageProject_addnew_title
+        const title = project.project_title ? project.project_title : trans.pageProject_addnew_title
         let status = PROJECT_STATUSES[project.project_status_id]
 
-        console.log("this.props.project_videos", this.props.project)
+        // console.log("this.props.project_videos", this.props.project)
 
         return (
             <div className="projectPageContent">
@@ -309,6 +312,16 @@ class PageProject extends Component {
                                         <a href="#locatie" aria-controls="locatie" role="tab" data-toggle="tab">{trans.pageProject_tab_locatie} <i className="iconc-chevron"></i></a>
                                     </li>
 
+                                     {
+                                        this.props.project_formdata.gelegenhendens.map((item, index) => {
+                                            return (
+                                                <li role="presentation" key={index}>
+                                                    <a href={`#cat_${item.value}`} role="tab" data-toggle="tab">{item.title} <i className="iconc-chevron"></i></a>
+                                                </li>
+                                            )
+                                        })
+
+                                    }
                                   
                                     <li role="presentation" className={`${hiddenClass}`}>
                                         <a href="#aanvragen" aria-controls="aanvragen" role="tab" data-toggle="tab">{trans.pageProject_tab_aanvragen} <i className="iconc-chevron"></i></a>
@@ -320,7 +333,7 @@ class PageProject extends Component {
                             </div>
                             <div className="page-panel__inner__content">
                                 <form className="form-default" ref="form">
-                                    <input type="hidden" name="id" defaultValue={this.props.project.id} />
+                                    <InputBox type="text" name="id" value={project.id} />
                                     <div className="tab-content">
                                         <h3 className="d_active tab_drawer_heading">
                                             <a href="#general" aria-controls="general" role="tab" data-toggle="tab">{trans.pageProject_algemene_label} <i className="iconc-chevron-down"></i></a>
@@ -328,24 +341,104 @@ class PageProject extends Component {
                                         <div role="tabpanel" className="tab-pane active" id="general">
                                            
                                                 <ProjectTabGeneralForm  
-                                                    project_id={this.props.project.id}
+                                                    reset={this.isReset}
+                                                    project_id={project.id}
                                                     project_formdata= {this.props.project_formdata}
-                                                    attachment_mappings = {this.props.project.attachment_mappings}
-                                                    project_title = {this.props.project.project_title}
-                                                    description= {this.props.project.description}
+                                                    attachmentsList = {project.attachments}
+                                                    project_title = {project.project_title}
+                                                    description= {project.description}
                                                     onAttachmentDeleted= {this.onAttachmentDeleted}
                                                     onAttachmentTitleUpdated= {this.onAttachmentTitleUpdated}
-                                                    project_videos= {this.props.project.project_videos}
+                                                    project_videos= {project.project_videos}
                                                     onVideoDeleted= {this.onVideoDeleted}
-                                                    project_iframes= {this.props.project.project_iframes}
+                                                    project_iframes= {project.project_iframes}
                                                     onIframeDeleted= {this.onIframeDeleted}
-                                                    discount_filter_value_id = {this.props.project.discount_filter_value_id}
-                                                    discount_short_title = {this.props.project.discount_short_title}
-                                                    discount_long_title = {this.props.project.discount_long_title} />
+                                                    discount_filter_value_id = {project.discount_filter_value_id}
+                                                    discount_short_title = {project.discount_short_title}
+                                                    discount_long_title = {project.discount_long_title} />
                                            
                                         </div>
 
-                                    
+                                        <h3 className="tab_drawer_heading">
+                                            <a href="#details" aria-controls="details" role="tab" data-toggle="tab">{trans.pageProject_tab_details} <i className="iconc-chevron-down"></i></a>
+                                        </h3>
+                                        <div role="tabpanel" className="tab-pane " id="details">
+                                            <ProjectTabDetailForm  
+                                                    reset={this.isReset}
+                                                    project_id={project.id}
+                                                    person_min= {project.person_min}
+                                                    person_max = {project.person_max}
+                                                    eigen_catering = {project.eigen_catering}
+                                                    gebouwenList= {this.props.project_formdata.gebouwens}
+                                                    liggingList= {this.props.project_formdata.liggings}
+                                                    eigenschappenList= {this.props.project_formdata.eigenschappens}
+                                                    gebouws_mapping_ids= {project.gebouw_ids}
+                                                    liggings_mapping_ids= {project.ligging_ids}
+                                                    eigenschappens_mapping_ids= {project.eigenschappen_ids} />
+                                        </div>
+
+
+                                        <h3 className="tab_drawer_heading">
+                                            <a href="#zalen" aria-controls="zalen" role="tab" data-toggle="tab">{trans.pageProject_tab_zalen} <i className="iconc-chevron-down"></i></a>
+                                        </h3>
+                                        <div role="tabpanel" className="tab-pane " id="zalen">
+                                            <Zalen project_title={project.project_title} items={project.project_rooms} onZalenRemoved={this.onZalenRemoved} />
+                                        </div>
+
+                                        <h3 className="tab_drawer_heading">
+                                            <a href="#contact" aria-controls="contact" role="tab" data-toggle="tab">{trans.pageProject_tab_contact} <i className="iconc-chevron-down"></i></a>
+                                        </h3>
+                                        <div role="tabpanel" className="tab-pane " id="contact">
+                                             <ProjectTabContactForm  
+                                                    reset={this.isReset}
+                                                    contact_id={project.contact_id}
+                                                    phone= {project.contact_phone}
+                                                    email = {project.contact_email}
+                                                    website = {project.website}
+                                                    contactsList= {this.props.project_formdata.contacts} 
+                                                    onContactDropdownAddNewClick={this.onContactDropdownAddNewClick} />
+                                        </div>
+
+
+                                        <h3 className="tab_drawer_heading">
+                                            <a href="#locatie" aria-controls="locatie" role="tab" data-toggle="tab">{trans.pageProject_tab_locatie} <i className="iconc-chevron-down"></i></a>
+                                        </h3>
+                                        <div role="tabpanel" className="tab-pane " id="locatie">
+                                            <ProjectTabLocatieForm 
+                                                reset={this.isReset}
+                                                address={project.address}
+                                                address_lat={project.lat}
+                                                address_lng={project.lon}
+                                                parkingItems={project.project_parkings}
+                                                itemsProvice={this.props.project_formdata.provinces}
+                                                itemsPlaats={this.props.project_formdata.plaats}
+                                                itemsGebied={this.props.project_formdata.gebieds}
+                                                selectedProvinceId={project.province_id | ''}
+                                                selectedPlaatId={project.plaat_id | ''}
+                                                selectedGebiedId={project.gebied_id | ''}
+                                            />
+                                        </div>
+
+
+                                        {
+                                            this.props.project_formdata.gelegenhendens.map((item, index) => {
+                                                return [
+                                                    <h3 className="tab_drawer_heading">
+                                                        <a href={`#cat_${item.value}`} aria-controls="general" role="tab" data-toggle="tab">{item.title} <i className="iconc-chevron-down"></i></a>
+                                                    </h3>,
+
+                                                    <div role="tabpanel" className="tab-pane" id={`cat_${item.value}`} key={index}>
+                                                        <ProjectTabCatForm
+                                                            project_id={project.id}
+                                                            project_formdata= {this.props.project_formdata}
+                                                            item={item}
+                                                            geleghendens={project.geleghendens}
+                                                            onAttachmentDeleted= {this.onAttachmentDeleted}
+                                                            onAttachmentTitleUpdated= {this.onAttachmentTitleUpdated} />
+                                                    </div>
+                                                ]
+                                            })
+                                        }
 
 
                                     </div>
@@ -358,15 +451,17 @@ class PageProject extends Component {
                             </div>
                             <div className="page-panel__inner__right">
                                 <RightBlock 
-                                    project_id={this.props.project.id}
-                                    project_status_id={this.props.project.project_status_id}
-                                    updated_date={this.props.project.formatted_updated_at}
-                                    created_date={this.props.project.formatted_updated_at}
-                                    url={this.props.project.url}
-                                    url_concept={this.props.project.url_concept}
+                                    project_id={project.id}
+                                    project_status_id={project.project_status_id}
+                                    updated_date={project.formatted_updated_at}
+                                    created_date={project.formatted_updated_at}
+                                    url={project.url}
+                                    url_concept={project.url_concept}
                                     status={status}
                                     handleUpdateStatus={this.handleUpdateStatus}
                                     handleSumbit={this.handleSumbit}
+                                    handleSumbitAdmin={this.rightBlock_handleSumbitAdmin}
+                                    handleLoadActualData={this.rightBlock_handleLoadActualData}
                                     handleCancel={this.handleCancel}
                                     handleTerugClick={this.onRightBlockTerugClick} />
                             </div>

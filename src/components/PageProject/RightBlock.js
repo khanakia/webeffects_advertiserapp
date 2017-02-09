@@ -19,6 +19,8 @@ class RightBlock extends React.Component {
 
         handleUpdateStatus: function(project_id, status_id){},
         handleSumbit: function(){},
+        handleSumbitAdmin: function(){},
+        handleLoadActualData: function(){},
         handleCancel: function(){},
         handleTerugClick: function() {}
     }
@@ -41,6 +43,10 @@ class RightBlock extends React.Component {
                     <div className="d-table w100 mt20">
                         <div className="d-table-cell v-align-middle">
                             <button ref="submit" type="button" className="btn btn-green btn--round" onClick={()=>{this.props.handleSumbit()}}>{trans.pageProject_rightBlock_opslaan}</button>
+
+                            <button ref="submit" type="button" className="btn btn-green btn--round mt20" onClick={()=>{this.props.handleLoadActualData()}}>{trans.pageProject_rightBlock_btn_loadactualdata}</button>
+
+                            <button ref="submit" type="button" className="btn btn-green btn--round mt20" onClick={()=>{this.props.handleSumbitAdmin()}}>{trans.pageProject_rightBlock_opslaan_admin}</button>
                         </div>
                         <div className="d-table-cell v-align-middle">
                             <button ref="annuleren" type="button" className="btn btn-plain" onClick={()=>{this.props.handleCancel()}}>{trans.pageProject_rightBlock_annuleren}</button>

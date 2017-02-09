@@ -2,10 +2,14 @@ import React, { Component } from 'react';
 import ReactDom from 'react-dom';
 
 
-import RadioList from 'components/RadioList'
-import FileInput from 'components/FileInput'
+// import RadioList from 'components/RadioList'
+
+import RadioButtonGroup from './RadioButtonGroup'
+import FileInput from './FileInput'
 import VideoInput from './VideoInput'
-import IframeInput from 'components/IframeInput'
+import IframeInput from './IframeInput'
+import InputBox from './InputBox'
+
 
 class ProjectTabGeneralForm extends Component {
     constructor(props) {
@@ -13,15 +17,15 @@ class ProjectTabGeneralForm extends Component {
 
         this.state = {
             project_title : this.props.project_title,
-
+            discount_filter_value_id: this.props.discount_filter_value_id
         }
     
     }
 
     static defaultProps = {
-
+        reset: false,
         project_formdata: [],
-        attachment_mappings : [],
+        attachmentsList : [],
         project_title : '',
         description: '',
         onAttachmentDeleted: function(){},
@@ -30,7 +34,7 @@ class ProjectTabGeneralForm extends Component {
         onVideoDeleted: function(){},
         project_iframes: [],
         onIframeDeleted: function(){},
-        discount_filter_value_id : '',
+        discount_filter_value_id : null,
         discount_short_title : '',
         discount_long_title : '',  
     }
@@ -43,19 +47,34 @@ class ProjectTabGeneralForm extends Component {
         
     }
 
+    componentWillReceiveProps(nextProps) {
+        if(nextProps.reset) {
+            this.setState({
+                discount_filter_value_id: nextProps.discount_filter_value_id
+            })
+        }
+    }
+
 
     componentDidUpdate() {
         $(this.refs.description).trumbowyg('html', this.props.description);
     }
 
+    handleChange = (value) => {
+        this.setState({
+          discount_filter_value_id: value
+        });
+        console.log(value)
+      }
+
     render() {
         // console.log(this.props.project)
-        let images = _.filter(this.props.attachment_mappings, { 'filter_value_id': null});
+        // let images = _.filter(this.props.attachment_mappings, { 'filter_value_id': null});
 
         let toevoegenList = [];
         toevoegenList.push({
             "title": trans.pageProject_geen_actie,
-            "value": '',
+            "value": 0,
         })
 
         this.props.project_formdata.gelegenhendens.map((item, index) => {
@@ -63,14 +82,14 @@ class ProjectTabGeneralForm extends Component {
                 "title": trans.pageProject_actie_voor+' '+item.title,
                 "value": item.value,
             })
-        })
+        }) 
         
 
         return (
             <div>
                 <div className="form-group">
                     <label>{trans.pageProject_naam_locatie_label}</label>
-                    <input type="text" className="form-control required" name="project_title" defaultValue={this.props.project_title} />
+                    <InputBox type="text" className="form-control required" name="project_title" value={this.props.project_title} />
                 </div>
                 <div className="form-group">
                     <label>{trans.pageProject_algemene_label}</label>
@@ -78,12 +97,17 @@ class ProjectTabGeneralForm extends Component {
                 </div>
                 <div className="form-group">
                     <label>{trans.pageProject_representatieve_label}</label>
-                    <FileInput name="foto" onAttachmentDeleted={this.props.onAttachmentDeleted} selectedItems={images} onTitleUpdated={this.props.onAttachmentTitleUpdated} maxItems={1} />
+                    <FileInput
+                        reset={this.props.reset} 
+                        onAttachmentDeleted={this.props.onAttachmentDeleted} 
+                        items={this.props.attachmentsList} 
+                        onTitleUpdated={this.props.onAttachmentTitleUpdated} 
+                        maxItems={100} />
                 </div>
 
                 <div className="form-group">
                     <label>{trans.pageProject_video_link_label}</label>
-                    <VideoInput items={this.props.project_videos} onVideoDeleted={this.props.onVideoDeleted} />
+                    <VideoInput items={this.props.project_videos} onVideoDeleted={this.props.onVideoDeleted} reset={this.props.reset} />
                 </div>
                 <div className="form-group">
                     <label>{trans.pageProject_garden_tour_label}</label>
@@ -92,7 +116,9 @@ class ProjectTabGeneralForm extends Component {
 
                 <div className="form-group">
                     <label>{trans.pageProject_actie_label}</label>
-                    <RadioList name="discount_filter_value_id" items={toevoegenList} selectedValue={this.props.discount_filter_value_id} />
+                    {/*<RadioList name="discount_filter_value_id" items={toevoegenList} selectedValue={this.props.discount_filter_value_id} />*/}
+
+                    <RadioButtonGroup name="discount_filter_value_id" choices={toevoegenList} checkedValue={this.state.discount_filter_value_id} onChange={this.handleChange} />
                     
                 </div>
 
@@ -100,7 +126,7 @@ class ProjectTabGeneralForm extends Component {
                     <label className="question-mark-icon">{trans.pageProject_Aanbieding_label} <br /> {trans.pageProject_aanbieding_korte_label}
                         <a href="#" className="popoverData" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_aanbieding_korte_data_content}></a>
                     </label>
-                    <input type="text" className="form-control" name="discount_short_title" defaultValue={this.props.discount_short_title} placeholder={trans.pageProject_aanbieding_korte_placeholder} />
+                    <InputBox type="text" className="form-control" name="discount_short_title" value={this.props.discount_short_title} placeholder={trans.pageProject_aanbieding_korte_placeholder} />
                     
                 </div>
 
@@ -108,7 +134,7 @@ class ProjectTabGeneralForm extends Component {
                     <label className="question-mark-icon">{trans.pageProject_Aanbieding_label} <br /> {trans.pageProject_aanbieding_lange_label}
                         <a href="#" className="popoverData" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_aanbieding_lange_data_content}></a>
                     </label>
-                    <input type="text" className="form-control" name="discount_long_title" defaultValue={this.props.discount_long_title} placeholder={trans.pageProject_aanbieding_lange_placeholder} />
+                    <InputBox type="text" className="form-control" name="discount_long_title" value={this.props.discount_long_title} placeholder={trans.pageProject_aanbieding_lange_placeholder} />
                 </div>
             </div>
         )
