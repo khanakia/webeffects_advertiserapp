@@ -240,7 +240,7 @@ header.mobile {
       position: relative;
       padding-left: 50px; }
       .mobile-overlay-menu ul.submenu a:hover:before, .mobile-overlay-menu ul.submenu a:focus:before {
-        content: "•";
+        content: "ΓÇó";
         position: absolute;
         top: 10px;
         left: 20px;
@@ -575,7 +575,7 @@ label {
       .comp-sidebar li a.active {
         /*font-weight: 600;*/ }
         .comp-sidebar li a.active:before {
-          content: "•";
+          content: "ΓÇó";
           position: absolute;
           top: 0;
           left: -12px;
@@ -1883,5 +1883,38 @@ label input[type="radio"]:checked + span {
 @media (min-width: 1550px) {
   .offerrequesttab .col-md-6 {
     width: 25%; } }
+.drag_drop_field {
+  border: none !important; }
+  .drag_drop_field .drag_drop_file {
+    max-width: 150px;
+    max-height: 150px; }
+    .drag_drop_field .drag_drop_file .ezdz-dropzone {
+      border: 1px solid #cdd4d7;
+      border-radius: 0;
+      max-width: 150px;
+      max-height: 150px;
+      padding-top: 30px; }
+      .drag_drop_field .drag_drop_file .ezdz-dropzone div {
+        line-height: 2; }
+      .drag_drop_field .drag_drop_file .ezdz-dropzone.ezdz-enter {
+        border: 1px solid #08B995 !important; }
+        .drag_drop_field .drag_drop_file .ezdz-dropzone.ezdz-enter .icon-placeholder i {
+          color: #08b995; }
+        .drag_drop_field .drag_drop_file .ezdz-dropzone.ezdz-enter .placeholder {
+          color: #08b995; }
+      .drag_drop_field .drag_drop_file .ezdz-dropzone:hover {
+        border: 1px solid #08B995 !important; }
+    .drag_drop_field .drag_drop_file .icon-placeholder i {
+      color: #7c8589;
+      font-size: 50px; }
+    .drag_drop_field .drag_drop_file .placeholder {
+      color: #7c8589;
+      font-size: 14px;
+      font-weight: normal;
+      text-align: center; }
+    .drag_drop_field .drag_drop_file:hover .icon-placeholder i {
+      color: #08b995; }
+    .drag_drop_field .drag_drop_file:hover .placeholder {
+      color: #08b995; }
 
 /*# sourceMappingURL=app.css.map */

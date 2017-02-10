@@ -1702,3 +1702,59 @@ label input[type="radio"]:checked + span {
 		}
 	}
 }
+.drag_drop_field {
+	border: none !important;
+
+	.drag_drop_file {
+	    max-width: 150px;
+	    max-height: 150px;
+
+	    .ezdz-dropzone {    	
+		    border: 1px solid #cdd4d7;
+		    border-radius: 0;
+		    max-width: 150px;
+		    max-height: 150px;
+			padding-top: 30px;
+		
+			div {
+				line-height: 2;
+			}
+
+			&.ezdz-enter {
+				border: 1px solid #08B995 !important;
+
+				.icon-placeholder i {
+					color: #08b995;		
+				}
+				.placeholder {
+					color: #08b995;		
+				}
+
+			}	    	
+			&:hover{
+				border: 1px solid #08B995 !important;
+			}
+	    }
+		.icon-placeholder {
+			i {
+				color: #7c8589;
+			    font-size: 50px;
+			}
+		}
+		.placeholder {
+			color: #7c8589;
+		    font-size: 14px;
+		    font-weight: normal;
+		    text-align: center;
+		}
+		&:hover{
+
+			.icon-placeholder i {
+				color: #08b995;		
+			}
+			.placeholder {
+				color: #08b995;		
+			}
+		}
+	}
+}	
