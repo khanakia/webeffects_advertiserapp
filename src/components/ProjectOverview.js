@@ -132,7 +132,7 @@ class ProjectOverview extends Component {
                                             
                                         </span>
                                     </td>
-                                    <td className="color-7C8589">{item.formatted_updated_at}</td>
+                                    <td className="color-7C8589">{moment(item.updated_at).format(Env.dateformat_default)}</td>
                                     <td className="text-center link-icon">
                                         <a target="_blank" href={item.url_concept}><i className="iconc iconc-link fs22 i-rotate25"></i></a>
                                     </td>

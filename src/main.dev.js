@@ -19,6 +19,8 @@ window.Env = Env;
 window.Auth = Auth;
 window.trans = language[Env.site_id];
 
+
+moment.locale(Env.locale);
 // console.log(window.Env)
 
 import {

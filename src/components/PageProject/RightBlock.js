@@ -2,11 +2,16 @@ import React, { PropTypes } from 'react'
 
 import {AuthHelper, ProjectHelper} from 'helpers'
 
+import {PROJECT_STATUSES} from '../../config'
+import DropdownList from '../DropdownList'
+
 class RightBlock extends React.Component {
     static defaultProps = {        
         className: '',
 
         project_id: '',
+        projectStatusList: [],
+        onProjectStatusChange: function(item) {},
         project_status_id: '',
         updated_date: '',
         created_date: '',
@@ -32,13 +37,13 @@ class RightBlock extends React.Component {
 
     render() {
         
-        // let status = PROJECT_STATUSES[this.props.project_status_id]
+        let status = PROJECT_STATUSES[this.props.project_status_id]
 
         return (
             <div className="block-right" ref="block_right">
                 <div className="block-info">
                     <label>{trans.pageProject_rightBlock_bewerkingen}</label>
-                    <div className="last_updated mt5" key="date1">{this.props.updated_date}</div>
+                    <div className="last_updated mt5" key="date1">Zojuist om {moment(this.props.updated_date).format("HH:mm")}</div>
 
                     <div className="d-table w100 mt20">
                         <div className="d-table-cell v-align-middle">
@@ -71,8 +76,10 @@ class RightBlock extends React.Component {
                                     : ''
                                 }
 
+                                <DropdownList items={this.props.projectStatusList} selectedValue={this.props.project_status_id} onItemChange={this.props.onProjectStatusChange} />
+
                                 {
-                                    AuthHelper.is_admin() ?
+                                    /*AuthHelper.is_admin() ?
                                     <div className="pull-right">
                                         <a className="pull-right dropdown-toggle px5 i-rotate25" id="gepubliceerd" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i className="iconc-edit"></i></a>
 
@@ -97,13 +104,13 @@ class RightBlock extends React.Component {
                                         </ul>
                                     </div> 
 
-                                    : ''                               
+                                    : ''              */                 
                                 }
                             </div> 
                         </div>
                         <div className="block-info">
                             <label>{trans.pageProject_rightBlock_datum}</label>
-                            <div className="last_updated">{this.props.created_date}</div>
+                            <div className="last_updated">{moment(this.props.created_date).format(Env.dateformat_default)}</div>
                         </div>
                         <div className="block-info">
                             <button className="btn btn-plainBlack" onClick={()=>{this.handleDelete(this.props.project_id)}}><i className="iconc-trash before_text"></i>{trans.pageProject_rightBlock_zet_deze}</button>

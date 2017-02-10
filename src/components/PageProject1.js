@@ -272,6 +272,13 @@ class PageProject extends Component {
         
     }
 
+    onProjectStatusChange = (item) => {
+        ProjectHelper.updateStatus(this.props.project.id, item.value).then((response) => {
+            this.props.fetchProject(this.props.params.projectId); 
+        })
+        
+    }
+
   
     render() {
         // console.log(this.props);
@@ -452,9 +459,11 @@ class PageProject extends Component {
                             <div className="page-panel__inner__right">
                                 <RightBlock 
                                     project_id={project.id}
+                                    projectStatusList={this.props.project_formdata.project_status_list}
+                                    onProjectStatusChange = {this.onProjectStatusChange}
                                     project_status_id={project.project_status_id}
-                                    updated_date={project.formatted_updated_at}
-                                    created_date={project.formatted_updated_at}
+                                    updated_date={project.updated_at}
+                                    created_date={project.created_at}
                                     url={project.url}
                                     url_concept={project.url_concept}
                                     status={status}
