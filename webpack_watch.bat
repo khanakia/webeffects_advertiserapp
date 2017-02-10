@@ -1,2 +1,2 @@
-webpack --watch
+webpack --watch --progress
 pause

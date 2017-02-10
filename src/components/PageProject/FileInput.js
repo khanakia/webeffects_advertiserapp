@@ -53,6 +53,14 @@ class FileInput extends React.Component {
             }
           
         });
+        var drag_txt = trans.fileInput_placeholder_voeg;
+        var drag_msg = "<div class='icon-placeholder'><i class='iconc-uploaded'></i></div><div class='placeholder'>"+drag_txt+"</div>";
+        var drag_drop_file = jQuery('.drag_drop_file [type="file"]');
+        drag_drop_file.ezdz({
+            text: drag_msg,
+            reject: function(file, errors) {
+            }
+        });
     }
 
     componentDidUpdate() {
@@ -192,12 +200,10 @@ class FileInput extends React.Component {
                         itemsCount<this.props.maxItems ?
 
                             <div className="item selector">
-                                <div className="inner">
-                                    <label>
-                                        <div className="icon-placeholder"><i className="iconc-uploaded"></i></div>
-                                        <div className="placeholder">{trans.fileInput_placeholder_voeg}</div>
-                                        <input type="file" multiple ref="input" />
-                                    </label>
+                                <div className="inner drag_drop_field">
+                                    <div className="drag_drop_file text-center" ref="drag_drop_file">
+                                        <input type="file" name="input_file2" className="input_file" accept="image/x-png, image/gif, image/jpeg" ref="input" />
+                                    </div>  
                                 </div>
                             </div>
 
@@ -227,10 +233,9 @@ class FileInput extends React.Component {
                                 <InputBox type="hidden" className="form-control" name={`${this.props.name}[${index}][filename_thumb]`} value={item.filename_thumb} />
                                 <InputBox type="hidden" className="form-control" name={`${this.props.name}[${index}][mime_type]`} value={item.mime_type} />
                                 <InputBox type="hidden" className="form-control" name={`${this.props.name}[${index}][is_new]`} value={item.is_new} />
-                                <InputBox type="text" className="form-control" name={`${this.props.name}[${index}][is_deleted]`} value={item.is_deleted || 0} />
-
-                                <InputBox type="text" className="form-control" name={`${this.props.name}[${index}][attachment_title]`} value={item.attachment_title || ''} />
-                                <InputBox type="text" className="sort_order" name={`${this.props.name}[${index}][sort_order]`} value={item.sort_order || 0} />
+                                <InputBox type="hidden" className="form-control" name={`${this.props.name}[${index}][is_deleted]`} value={item.is_deleted || 0} />
+                                <InputBox type="hidden" className="form-control" name={`${this.props.name}[${index}][attachment_title]`} value={item.attachment_title || ''} />
+                                <InputBox type="hidden" className="sort_order" name={`${this.props.name}[${index}][sort_order]`} value={item.sort_order || 0} />
 
 
                                 <div className="inner" style={{backgroundImage : 'url("' + item.url + '")'}}>
