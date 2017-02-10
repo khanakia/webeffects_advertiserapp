@@ -42,7 +42,6 @@ class InputBox extends React.Component {
     }
 
     render() {
-              
         return (
             <input type={this.props.type} name={this.props.name} className={this.props.className}  onChange={this.handleChange} value={this.state.value} />
         );

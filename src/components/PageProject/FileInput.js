@@ -56,7 +56,7 @@ class FileInput extends React.Component {
         var drag_txt = trans.fileInput_placeholder_voeg;
         var drag_msg = "<div class='icon-placeholder'><i class='iconc-uploaded'></i></div><div class='placeholder'>"+drag_txt+"</div>";
         var drag_drop_file = jQuery('.drag_drop_file [type="file"]');
-        drag_drop_file.ezdz({
+        jQuery(this.refs.input).ezdz({
             text: drag_msg,
             reject: function(file, errors) {
             }

@@ -43,7 +43,7 @@ class RightBlock extends React.Component {
             <div className="block-right" ref="block_right">
                 <div className="block-info">
                     <label>{trans.pageProject_rightBlock_bewerkingen}</label>
-                    <div className="last_updated mt5" key="date1">Zojuist om {moment(this.props.updated_date).format("HH:mm")}</div>
+                    <div className="last_updated mt5" key="date1">{moment(this.props.updated_date).format("LLL")}</div>
 
                     <div className="d-table w100 mt20">
                         <div className="d-table-cell v-align-middle">

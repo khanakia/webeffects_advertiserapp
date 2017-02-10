@@ -3,6 +3,7 @@ const language = {
 		"months": [ "januari", "februari", "maart", "april", "mei", "juni",
         "juli", "augustus", "september", "oktober", "november", "december" ],
 		"select_empty_placeholder": 'Select',
+		"select_maand_placeholder": 'Selecteer maand',
 		"login_title": "Adverteerder inlog",
 		"login_email_label": "E-mailadres",
 		"login_email_placeholder": "bv.jan@jan.nl",
@@ -184,7 +185,7 @@ const language = {
 		"offerte_geplande_datum_label": "Geplande datum",
 		"offerte_aantal_personen_label": "Aantal personen",
 		"offerte_gelegenheden_label": "Gelegenheden",
-		"offerte_algemene": "Algemene opmerking",
+		"offerte_algemene": "Opmerking",
 		"offerte_locatie_label": "Locatie specifieke vraag",
 
 		"projectContactInput_naam_label": "Naam",

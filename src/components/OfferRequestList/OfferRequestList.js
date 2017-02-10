@@ -104,7 +104,7 @@ class OfferRequestList extends React.Component {
         }
         
         return this.props.items.map((item, index) => {
-            console.log(item);
+            // console.log(item);
             return (
                 <div className="offerrequesttab" key={index}>    
                     <div className={'comp-offerrequestlist ' + item.offer_request_id} ref="offerrequestlist">
@@ -112,7 +112,7 @@ class OfferRequestList extends React.Component {
                             <div className="accordion-group">
                                 <div  className="accordion-heading">
                                     <a className="accordion-toggle panel_title" data-toggle="collapse" data-parent={'collapse' + item.id} href={'#collapse' + item.offer_request_id}>
-                                        {item.formatted_updated_at}<span>{item.offer_request.company ? item.offer_request.company : item.offer_request.name}</span>
+                                        {moment(item.created_at).format(Env.dateformat_default)}<span>{item.offer_request.company ? item.offer_request.company : item.offer_request.name}</span>
                                     </a>
                                 </div>
                                 <div id={'collapse' + item.offer_request_id} className="accordion-body collapse offerrequesttable">
@@ -225,7 +225,7 @@ class OfferRequestList extends React.Component {
                 <div className="section_offerrequest_dropdown form-group">
                     <label>{trans.offerte_title}</label>
                     <div className="short-dropdown">
-                        <DropdownList items={this.dateItemArray()} onItemChange={this.onItemChange} emptyPlaceholder={trans.select_empty_placeholder} />
+                        <DropdownList items={this.dateItemArray()} onItemChange={this.onItemChange} emptyPlaceholder={trans.select_maand_placeholder} />
                     </div>
                 </div>
                 {this._renderItems()}

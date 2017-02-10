@@ -94,7 +94,7 @@ class VideoInput extends React.Component {
                     }
 
                     const cssClassHidden = (item.is_deleted==true) ? 'hidden' : '';
-                    console.log("cssClassHidden", cssClassHidden, item.is_deleted)
+                    // console.log("cssClassHidden", cssClassHidden, item.is_deleted)
 
                     return (
                         

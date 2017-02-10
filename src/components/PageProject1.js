@@ -13,6 +13,9 @@ import ProjectTabCatForm from './PageProject/ProjectTabCatForm'
 import RightBlock from './PageProject/RightBlock'
 import Zalen from './PageProject/Zalen'
 
+import OfferRequestList from './OfferRequestList'
+import SnoobiPage from './SnoobiPage'
+
 import InputBox from './PageProject/InputBox'
 import PopupHelper from 'helpers/helper_popup'
 
@@ -95,6 +98,7 @@ class PageProject extends Component {
 
 
     tabsFn() {
+        var _this = this;
         // $(".tab-pane").hide();
         // $(".tab-pane:first").show();
         $(".tab_drawer_heading.d_active").find("i").removeClass("iconc-chevron-down").addClass("iconc-chevron-up");
@@ -106,6 +110,11 @@ class PageProject extends Component {
 
             $('.tab-pane').hide();
             $('.tab-pane'+href).show();
+
+            // console.log(href);
+            if(href="#locatie") {
+                _this.refs.locatieForm.handleRefresh();
+            }
         })
 
         $('.tab_drawer_heading a').click(function (e) {     
@@ -345,7 +354,7 @@ class PageProject extends Component {
                                         <h3 className="d_active tab_drawer_heading">
                                             <a href="#general" aria-controls="general" role="tab" data-toggle="tab">{trans.pageProject_algemene_label} <i className="iconc-chevron-down"></i></a>
                                         </h3>
-                                        <div role="tabpanel" className="tab-pane active" id="general">
+                                        <div role="tabpanel" className="tab-pane " id="general">
                                            
                                                 <ProjectTabGeneralForm  
                                                     reset={this.isReset}
@@ -410,8 +419,9 @@ class PageProject extends Component {
                                         <h3 className="tab_drawer_heading">
                                             <a href="#locatie" aria-controls="locatie" role="tab" data-toggle="tab">{trans.pageProject_tab_locatie} <i className="iconc-chevron-down"></i></a>
                                         </h3>
-                                        <div role="tabpanel" className="tab-pane " id="locatie">
+                                        <div role="tabpanel" className="tab-pane active" id="locatie">
                                             <ProjectTabLocatieForm 
+                                                ref="locatieForm"
                                                 reset={this.isReset}
                                                 address={project.address}
                                                 address_lat={project.lat}
@@ -447,6 +457,22 @@ class PageProject extends Component {
                                             })
                                         }
 
+                                        <h3 className={`tab_drawer_heading ${hiddenClass}`}>
+                                            <a href="#aanvragen" aria-controls="aanvragen" role="tab" data-toggle="tab">{trans.pageProject_tab_aanvragen} <i className="iconc-chevron-down"></i></a>
+                                        </h3>
+                                        <div role="tabpanel" className={`tab-pane ${hiddenClass}`} id="aanvragen">
+                                            <OfferRequestList 
+                                                categories={this.props.project_formdata.gelegenhendens}
+                                                onDateItemChange={this.onOfferlistDateItemChange} 
+                                                items={this.props.project_offer_request_details_list} />
+                                        </div>
+
+                                        <h3 className={`tab_drawer_heading ${hiddenClass}`}>
+                                            <a href="#statistieken" aria-controls="statistieken" role="tab" data-toggle="tab">{trans.pageProject_tab_statistieken} <i className="iconc-chevron-down"></i></a>
+                                        </h3>
+                                        <div role="tabpanel" className={`tab-pane ${hiddenClass}`} id="statistieken">
+                                            <SnoobiPage />
+                                        </div>
 
                                     </div>
                                     <div className="visible-xs visible-sm twoBtnStyle bottom-buttons-pageproject">
