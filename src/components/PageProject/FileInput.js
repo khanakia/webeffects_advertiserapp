@@ -227,6 +227,7 @@ class FileInput extends React.Component {
                                 <div className="inner drag_drop_field">
                                     <div className="drag_drop_file text-center" ref="drag_drop_file">
                                         <input type="file" name="input_file2" className="input_file" multiple="true" accept="image/x-png, image/gif, image/jpeg" ref="input" />
+
                                     </div>  
                                 </div>
                             </div>
