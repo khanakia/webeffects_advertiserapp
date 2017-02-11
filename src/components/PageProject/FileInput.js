@@ -64,7 +64,27 @@ class FileInput extends React.Component {
     }
 
     componentDidUpdate() {
-         this.onFileChange();
+        this.onFileChange();
+
+        if(this.state.isEditing) {
+        
+            setTimeout(() => {
+                jQuery(this.refs.title_input).focus();
+            }, 500);
+
+            $(this.refs.title_input).on('keypress', (e) => {
+                if(e.which === 13){
+                    this.saveTitle()
+                }
+            });
+
+            $(this.refs.title_input).on('keydown', (e) => {
+                // Tab Key Pressed
+                if(e.which === 9){
+                    this.saveTitle(true)
+                }
+           });
+        }
     }
 
     componentWillReceiveProps(nextProps) {
@@ -161,7 +181,7 @@ class FileInput extends React.Component {
         this.setState({isEditing: true, editingItemIndex: item_id})
     }
 
-    saveTitle() {
+    saveTitle(isTab=false) {
     
         // AttachmentHelper.updateTitle(this.state.editingItemIndex, this.refs.title_input.value).then((response) => {
         //     this.setState({isEditing: false, editingItemIndex: ''})
@@ -175,7 +195,11 @@ class FileInput extends React.Component {
                 item.attachment_title = this.refs.title_input.value;
             }
         })
-        this.setState({ items: items, isEditing: false});
+        this.setState({ items: items, isEditing: false}, function() {
+            if(isTab) {
+                this.editTitle(this.state.editingItemIndex+1)
+            }
+        });
         
     }
 
@@ -202,7 +226,7 @@ class FileInput extends React.Component {
                             <div className="item selector">
                                 <div className="inner drag_drop_field">
                                     <div className="drag_drop_file text-center" ref="drag_drop_file">
-                                        <input type="file" name="input_file2" className="input_file" accept="image/x-png, image/gif, image/jpeg" ref="input" />
+                                        <input type="file" name="input_file2" className="input_file" multiple="true" accept="image/x-png, image/gif, image/jpeg" ref="input" />
                                     </div>  
                                 </div>
                             </div>
@@ -239,7 +263,7 @@ class FileInput extends React.Component {
 
 
                                 <div className="inner" style={{backgroundImage : 'url("' + item.url + '")'}}>
-                                    <div className="title">{item.attachment_title}</div>
+                                    <div className="title" onClick={()=>{this.editTitle(index)}}>{item.attachment_title}</div>
                                     <button type="button" className="btn btn-plain editBtn" onClick={()=>{this.editTitle(index)}}><i className="iconc-edit"></i></button>
                                     <button type="button" className="btn btn-plain deleteBtn" onClick={() => {this.handleRemoveItem(index)}}><i className="iconc-cross"></i></button>
                                 </div>
@@ -247,7 +271,7 @@ class FileInput extends React.Component {
                                 {
                                     (this.state.isEditing && this.state.editingItemIndex==index) ?
                                         <div className="image-popup">
-                                            <textarea ref="title_input"></textarea>
+                                            <input type="text" ref="title_input" />
                                             <div className="button-wrapper">
                                                 <button type="button" className="btn btn-plain ml10 mr5 green-color" onClick={()=>{this.saveTitle()}}><i className="iconc-check"></i></button>
                                                 <button type="button" className="btn btn-plain red-color" onClick={()=>{this.cancelEditing()}}><i className="iconc-cross"></i></button>

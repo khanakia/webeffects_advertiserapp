@@ -106,12 +106,12 @@ class VideoInput extends React.Component {
                                 </button>
                                 <i className={`hover-hide ${iconClass}`}></i>
                             </span>
-                            <InputBox type="text" className="form-control" name={`${this.props.name}[${index}][id]`} value={item.id} />
+                            <InputBox type="hidden" className="form-control" name={`${this.props.name}[${index}][id]`} value={item.id} />
                             <InputBox type="hidden" className="form-control" name={`${this.props.name}[${index}][project_id]`} value={this.props.project_id} />
                             <InputBox type="text" className="form-control" name={`${this.props.name}[${index}][url]`} value={item.url} />
                             <InputBox type="hidden" className="form-control" name={`${this.props.name}[${index}][type]`} value={item.type} />
                             <InputBox type="hidden" className="form-control" name={`${this.props.name}[${index}][thumb_url]`} value={item.thumb_url} />
-                            <InputBox type="text" className="form-control" name={`${this.props.name}[${index}][is_new]`} value={item.is_new} />
+                            <InputBox type="hidden" className="form-control" name={`${this.props.name}[${index}][is_new]`} value={item.is_new} />
                             <InputBox type="hidden" className="form-control" name={`${this.props.name}[${index}][is_deleted]`} value={item.is_deleted} />
                         </div>
                     )

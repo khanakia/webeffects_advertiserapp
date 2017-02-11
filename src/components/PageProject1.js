@@ -165,7 +165,9 @@ class PageProject extends Component {
         const dataJson = URI.parseQuery(data);
         ProjectHelper.saveRevision(data).then((response) => {
             toastr.success(trans.pageProject_saved_successfully)
-            hashHistory.push('/projects/'+response.data.id)
+            if(!this.props.params.projectId) {
+                hashHistory.push('/projects/'+response.data.id)                
+            }
             // _this.props.fetchProject(_this.props.params.projectId);
             // _this.props.fetchProjects()
         })
@@ -349,12 +351,12 @@ class PageProject extends Component {
                             </div>
                             <div className="page-panel__inner__content">
                                 <form className="form-default" ref="form">
-                                    <InputBox type="text" name="id" value={project.id} />
+                                    <InputBox type="hidden" name="id" value={project.id} />
                                     <div className="tab-content">
                                         <h3 className="d_active tab_drawer_heading">
                                             <a href="#general" aria-controls="general" role="tab" data-toggle="tab">{trans.pageProject_algemene_label} <i className="iconc-chevron-down"></i></a>
                                         </h3>
-                                        <div role="tabpanel" className="tab-pane " id="general">
+                                        <div role="tabpanel" className="tab-pane active" id="general">
                                            
                                                 <ProjectTabGeneralForm  
                                                     reset={this.isReset}
@@ -419,7 +421,7 @@ class PageProject extends Component {
                                         <h3 className="tab_drawer_heading">
                                             <a href="#locatie" aria-controls="locatie" role="tab" data-toggle="tab">{trans.pageProject_tab_locatie} <i className="iconc-chevron-down"></i></a>
                                         </h3>
-                                        <div role="tabpanel" className="tab-pane active" id="locatie">
+                                        <div role="tabpanel" className="tab-pane " id="locatie">
                                             <ProjectTabLocatieForm 
                                                 ref="locatieForm"
                                                 reset={this.isReset}

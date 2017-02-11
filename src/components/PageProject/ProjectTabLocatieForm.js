@@ -22,6 +22,11 @@ class ProjectTabLocatieForm extends React.Component {
             markers: [],
         }
 
+        this.mapDefault = {
+            lat: 52.3745291,
+            lng: 4.7585319
+        }
+
         this.tableObject = {
             id: null,
             project_id: null,
@@ -119,6 +124,8 @@ class ProjectTabLocatieForm extends React.Component {
         this.state.parkingItems.map((item, index) => {
             if(!item.is_deleted) {
                 var icontype = item.is_paid ? "parking-paid" : "parking";
+
+                // console.log(icontype);
                 var marker = new google.maps.Marker({
                     map: this.map,
                     icon: ROOT_URL+'/images/'+icontype+'-marker.png',
@@ -134,13 +141,13 @@ class ProjectTabLocatieForm extends React.Component {
             bounds.extend(markers[i].getPosition());
         }
 
-        console.log("markers", markers)
+        // console.log("markers", markers)
         if(markers.length>1) {
-        }
             this.map.fitBounds(bounds);            
-        // if(markers.length==1) {
-        //     this.map.setZoom(7)
-        // }
+        }
+        if(markers.length==1) {
+            this.map.setZoom(7)
+        }
         this.map_autocomplete_init()
 
         this.villa_autocomplete_init();
@@ -303,8 +310,8 @@ class ProjectTabLocatieForm extends React.Component {
         this.setState({
             parkingItems: state.parkingItems
         })
-        console.log(state.parkingItems)
-        console.log(e.target.checked)
+        // console.log(state.parkingItems)
+        // console.log(e.target.checked)
     }
 
     onAddressChange = (address, latitude, longitude, itemId) => {
@@ -312,19 +319,18 @@ class ProjectTabLocatieForm extends React.Component {
     }
 
     onRadiusChange = (item) => {
-        console.log(item)
-        // var url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius='+500+'&type=restaurant&keyword=cruise&key='+Env.googlemap_apikey;
-        // $.getJSON( url, function( data ) {
-        //     console.log(data)
-        // })
+        // console.log(item)
 
-        var pyrmont = new google.maps.LatLng(-33.8665433,151.1956316);
+        if(this.state.address_lat) {
+            var pyrmont = new google.maps.LatLng(this.state.address_lat, this.state.address_lng);
 
-
+        } else {
+            var pyrmont = new google.maps.LatLng(this.mapDefault.lat,this.mapDefault.lng);
+        }
 
         var request = {
             location: pyrmont,
-            radius: '500',
+            radius: item.value,
             types: ['parking']
         };
 
@@ -343,7 +349,8 @@ class ProjectTabLocatieForm extends React.Component {
 
     googleParkingPlaceServiceCallback = (results, status) => {
         let items = Object.assign([], this.state.parkingItems); 
-        // var newKey = (_.last(this.state.parkingItems)||0)
+        
+        var newKey = (_.last(this.state.parkingItems)||0)
         var uniq_id = (new Date()).getTime();
 
         if (status == google.maps.places.PlacesServiceStatus.OK) {
@@ -357,9 +364,9 @@ class ProjectTabLocatieForm extends React.Component {
                     tableObj.address = place.name;
                     items.push(tableObj);
             }
-
-            this.setState({ parkingItems: items});
         }
+
+        this.setState({ parkingItems: items});
     }
     
 
@@ -389,7 +396,7 @@ class ProjectTabLocatieForm extends React.Component {
                         <DropdownList items={countitems} selectedValue={3} name="" onItemChange={this.onRadiusChange} emptyPlaceholder={trans.select_empty_placeholder} />
                     </span>
                     <span>
-                        <button type="button" className="btn--whitebg">{trans.locatieInput_voeg}</button>
+                        {/*<button type="button" className="btn--whitebg">{trans.locatieInput_voeg}</button>*/}
                     </span>
                 </div>
                 <div className="section-data">
@@ -412,8 +419,8 @@ class ProjectTabLocatieForm extends React.Component {
                         <div className="input-group-addon"><i className="iconc-location-pointer"></i></div>
                         <input type="text" id="autocomplete-field" className="form-control" defaultValue={this.state.address} />
                         <input type="hidden" className="form-control" name="address" ref="address" value={this.state.address || ''} onChange={()=>{this.onInputChange()}} />
-                        <input type="hidden" className="form-control" name="address_lat" ref="address_lat" value={this.state.address_lat || ''} onChange={()=>{this.onInputChange()}} />
-                        <input type="hidden" className="form-control" name="address_lng" ref="address_lng" value={this.state.address_lng || ''} onChange={()=>{this.onInputChange()}} />
+                        <input type="hidden" className="form-control" name="lat" ref="address_lat" value={this.state.address_lat || ''} onChange={()=>{this.onInputChange()}} />
+                        <input type="hidden" className="form-control" name="lon" ref="address_lng" value={this.state.address_lng || ''} onChange={()=>{this.onInputChange()}} />
                     </div>
 
                     {this.state.parkingItems.map(function(item, index) {
@@ -444,14 +451,14 @@ class ProjectTabLocatieForm extends React.Component {
                                         <span>per uur</span>
                                     </div>
 
-                                    <InputBox type="text" name={`project_parkings[${index}][id]`} value={item.id} />
+                                    <InputBox type="hidden" name={`project_parkings[${index}][id]`} value={item.id} />
                                     <InputBox type="hidden" className="form-control" name={`project_parkings[${index}][address]`} value={item.address} data-id={item.id} onChange={()=>{this.onInputChange()}} />
 
-                                    <InputBox type="text" className="form-control" name={`project_parkings[${index}][lat]`} value={item.lat || ''} onChange={()=>{this.onInputChange()}} />
-                                    <InputBox type="text" className="form-control" name={`project_parkings[${index}][lon]`} value={item.lon || ''} onChange={()=>{this.onInputChange()}} />
+                                    <InputBox type="hidden" className="form-control" name={`project_parkings[${index}][lat]`} value={item.lat || ''} onChange={()=>{this.onInputChange()}} />
+                                    <InputBox type="hidden" className="form-control" name={`project_parkings[${index}][lon]`} value={item.lon || ''} onChange={()=>{this.onInputChange()}} />
 
                                     <InputBox type="hidden" className="form-control" name={`project_parkings[${index}][is_new]`} value={item.is_new} />
-                                    <InputBox type="text" className="form-control" name={`project_parkings[${index}][is_deleted]`} value={item.is_deleted} />
+                                    <InputBox type="hidden" className="form-control" name={`project_parkings[${index}][is_deleted]`} value={item.is_deleted} />
                                 </div>
                             </div>
                         )
