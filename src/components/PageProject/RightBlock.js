@@ -72,7 +72,7 @@ class RightBlock extends React.Component {
                             <div className="dropdown dropdown--status">
                                 {
                                     undefined!==status ?
-                                        <span><i className={status.icon_class + ' before_text'}></i> <span>{status.title}</span></span>
+                                        <span className="status"><i className={status.icon_class + ' before_text'}></i> <span>{status.title}</span></span>
                                     : ''
                                 }
 

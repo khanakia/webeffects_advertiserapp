@@ -165,6 +165,10 @@ label.error {
 		    color: #FF713E;
 		}
 	}
+	.status {
+		display: inline-block;
+		margin: 10px 0 15px;
+	}
 	.dropdown-menu--status {
 		margin: 0;
 		padding: 0;
@@ -384,6 +388,9 @@ label input[type="radio"]:checked + span {
 
 	&:hover {
 		color: #08B995;
+		i {
+			color: #08B995;
+		}
 	}
 }
 
@@ -444,6 +451,8 @@ label input[type="radio"]:checked + span {
 }
 
 .btn--nopad {
+	width: 40px;
+    height: 38px;
 	padding: 0;
 }
 

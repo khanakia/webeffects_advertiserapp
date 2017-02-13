@@ -25,6 +25,7 @@
       background: #fff;
       border-left: 1px solid #CDD4D7; }
       .page-panel__inner__right label {
+        margin-bottom: 5px;
         font-weight: 600; }
     .page-panel__inner__content {
       display: table-cell;
@@ -240,7 +241,7 @@ header.mobile {
       position: relative;
       padding-left: 50px; }
       .mobile-overlay-menu ul.submenu a:hover:before, .mobile-overlay-menu ul.submenu a:focus:before {
-        content: "ΓÇó";
+        content: "•";
         position: absolute;
         top: 10px;
         left: 20px;
@@ -575,7 +576,7 @@ label {
       .comp-sidebar li a.active {
         /*font-weight: 600;*/ }
         .comp-sidebar li a.active:before {
-          content: "ΓÇó";
+          content: "•";
           position: absolute;
           top: 0;
           left: -12px;
@@ -787,6 +788,9 @@ label.error {
       vertical-align: middle; }
     .block-info i.color-red {
       color: #FF713E; }
+  .block-info .status {
+    display: inline-block;
+    margin: 10px 0 15px; }
   .block-info .dropdown-menu--status {
     margin: 0;
     padding: 0;
@@ -963,6 +967,8 @@ label input[type="radio"]:checked + span {
     margin-right: 15px; }
   .btn-plainBlack:hover {
     color: #08B995; }
+    .btn-plainBlack:hover i {
+      color: #08B995; }
 
 .btn-dropdown {
   width: 100%;
@@ -1012,6 +1018,8 @@ label input[type="radio"]:checked + span {
   box-shadow: none; }
 
 .btn--nopad {
+  width: 40px;
+  height: 38px;
   padding: 0; }
 
 /* Used in header desktop */
