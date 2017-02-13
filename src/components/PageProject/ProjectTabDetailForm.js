@@ -152,9 +152,9 @@ class ProjectTabDetailForm extends Component {
                 </div>
 
                 <div className="form-group">
+                    <label>{trans.pageProject_details_catering}</label>
                     <div className="row">
                         <div className="col-md-8">
-                            <label>{trans.pageProject_details_catering}</label>
                             {/*<RadioList name="eigen_catering" isIcon items={radioEigenCaterign} selectedValue={this.props.eigen_catering} />*/}
                             <RadioButtonGroup name="eigen_catering" choices={radioEigenCaterign} checkedValue={this.state.eigen_catering} onChange={this.handleChange} />
                         </div>

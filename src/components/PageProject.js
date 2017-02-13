@@ -402,9 +402,9 @@ class PageProject extends Component {
                 </div>
 
                 <div className="form-group">
+                    <label>{trans.pageProject_details_catering}</label>
                     <div className="row">
                         <div className="col-md-8">
-                            <label>{trans.pageProject_details_catering}</label>
                             <RadioList name="eigen_catering" isIcon items={radioEigenCaterign} selectedValue={this.props.project.eigen_catering} />
                         </div>
                     </div>
