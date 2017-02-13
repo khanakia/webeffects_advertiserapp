@@ -90,7 +90,7 @@ class IframeInput extends React.Component {
                                 <button type="button" className="btn btn-plain btn--nopad hover-show" onClick={(e) => this.deleteProjectIframe(item.id)}>
                                     <i className="iconc-trash"></i>
                                 </button>
-                                <i className="fa fa-link hover-hide"></i>
+                                <i className="iconc-link i-rotate25 hover-hide"></i>
                             </span>
                             
                             <input type="text" className="form-control" name={`${this.props.name}[${index}][tag]`} defaultValue={item.tag} />
@@ -113,9 +113,10 @@ class IframeInput extends React.Component {
                     return (
                         <div className="input-group" key={index}>
                             <span className="input-group-addon">
-                                <button type="button" className="btn btn-plain btn--nopad" onClick={() => this.handleRemoveRow(index)}>
-                                    <i className="iconc-link"></i>
+                                <button type="button" className="btn btn-plain btn--nopad hover-show" onClick={() => this.handleRemoveRow(index)}>
+                                    <i className="iconc-trash"></i>
                                 </button>
+                                <i className="iconc-link i-rotate25 hover-hide"></i>
                             </span>
                             <input type="hidden" className="form-control" name={`${this.props.name}[${indexInput}][id]`} defaultValue={uniq_id} />
                             <input type="text" className="form-control" name={`${this.props.name}[${indexInput}][tag]`} />
