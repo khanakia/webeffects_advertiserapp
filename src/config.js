@@ -34,6 +34,8 @@ export const API_URL_RESET_PWD = API_URL+'/resetpassword';
 export const API_URL_UPDATE_USER = API_URL+'/user/update';
 
 export const API_URL_USER = API_URL+'/user';
+export const API_URL_USER_DISABLE_REMINDER = API_URL_USER + '/disable_email_reminder';
+export const API_URL_USER_ENABLE_REMINDER = API_URL_USER + '/enable_email_reminder';
 export const API_URL_CONTACTS = API_URL+'/contacts';
 
 export const API_URL_PROJECT = API_URL+'/projects';

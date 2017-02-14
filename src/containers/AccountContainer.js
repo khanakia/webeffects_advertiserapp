@@ -2,6 +2,7 @@ import { connect } from 'react-redux'
 import {Account} from '../components'
 
 import { fetchContacts } from '../actions/action_contact';
+import { fetchCurrentUser } from '../actions/action_appdata';
 
 const mapStateToProps = (state) => {
     return {
@@ -18,6 +19,11 @@ const mapDispatchToProps = (dispatch) => {
         fetchContacts: () => {
             dispatch(fetchContacts()); 
         },
+
+        fetchCurrentUser: () => {
+            dispatch(fetchCurrentUser());
+        },
+
     }
 }
 

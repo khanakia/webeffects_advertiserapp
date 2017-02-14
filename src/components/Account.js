@@ -141,7 +141,19 @@ class Account extends Component {
     onContactItemUpdate = () => {
         this.props.fetchContacts();   
     }
-  
+    
+
+    disableEmailReminder = () => {
+        UserHelper.disableEmailReminder().then((response) => {
+            this.props.fetchCurrentUser()
+        })
+    }
+
+    enableEmailReminder = () => {
+        UserHelper.enableEmailReminder().then((response) => {
+            this.props.fetchCurrentUser()
+        })
+    }
 
     _render_tabGegevens() {
         return (
@@ -192,6 +204,14 @@ class Account extends Component {
                             <button ref="annuleren" type="button" className="btn btn-plain" onClick={()=>{this.handleCancel()}}>{trans.account_link_annuleren}</button>
                         </div>
                     </div>
+                </div>
+
+                <div className="block-info">
+                    { (this.props.current_user.email_reminder_status) ?
+                        <button className="btn btn-plainBlack" onClick={()=>{this.disableEmailReminder()}}><i className="fa fa-bell before_text"></i>{trans.disable_reminder_email_btn}</button>
+                        :
+                        <button className="btn btn-plainBlack" onClick={()=>{this.enableEmailReminder()}}><i className="fa fa-bell before_text"></i>{trans.enable_reminder_email_btn}</button>
+                    }
                 </div>
             </div>
         )

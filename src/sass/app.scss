@@ -1287,6 +1287,25 @@ label input[type="radio"]:checked + span {
     }
 }
 
+.jconfirm.jconfirm-white .jconfirm-box .jconfirm-buttons button.btn-green,
+.jconfirm.jconfirm-light .jconfirm-box .jconfirm-buttons button.btn-green {
+    padding: 8px 20px;
+	color: #fff;
+    background-color: #08B995;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    outline: none;
+    border: 1px solid transparent;
+    border-color: #08B995;
+    border-radius: 40px;
+    text-transform: capitalize;
+    &:hover {
+		color: #08B995;
+	    border-color: #08B995;
+    	background-color: #fff;
+    }
+}
+
 
 /* editor styling ------------------------- */
 .trumbowyg-button-pane {

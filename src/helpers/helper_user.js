@@ -4,6 +4,8 @@ import {
         API_URL_CHANGE_PWD,
         API_URL_CHANGE_PWD_FIRSTLOGIN,
         API_URL_UPDATE_USER,
+        API_URL_USER_DISABLE_REMINDER,
+        API_URL_USER_ENABLE_REMINDER
     } from '../config.js'
 
 
@@ -47,6 +49,24 @@ export default class UserHelper {
             url: API_URL_UPDATE_USER ,
             headers: Auth.header(),
             data : param,
+        });
+    }
+
+    static disableEmailReminder() {
+        return axios({
+            method: 'post',
+            url: API_URL_USER_DISABLE_REMINDER ,
+            headers: Auth.header(),
+            // data : param,
+        });
+    }
+
+    static enableEmailReminder() {
+        return axios({
+            method: 'post',
+            url: API_URL_USER_ENABLE_REMINDER ,
+            headers: Auth.header(),
+            // data : param,
         });
     }
    

@@ -163,14 +163,35 @@ class PageProject extends Component {
         let data = jQuery(_this.refs.form).serialize();    
 
         const dataJson = URI.parseQuery(data);
-        ProjectHelper.saveRevision(data).then((response) => {
-            toastr.success(trans.pageProject_saved_successfully)
-            if(!this.props.params.projectId) {
-                hashHistory.push('/projects/'+response.data.id)                
+
+
+        jQuery.confirm({
+            title: trans.pageProject_save_title,
+            content: trans.pageProject_save_content,
+            closeIcon: true,
+            columnClass: 'col-md-6 col-md-offset-3',
+            buttons: {
+                okAction: {
+                    text: trans.pageProject_save_button,
+                    btnClass: 'btn btn-green btn--round',
+                    action: function () {
+                        jQuery(".jconfirm").hide()
+                       
+                        ProjectHelper.saveRevision(data).then((response) => {
+                            toastr.success(trans.pageProject_saved_successfully)
+                            if(!this.props.params.projectId) {
+                                hashHistory.push('/projects/'+response.data.id)                
+                            }
+                            // _this.props.fetchProject(_this.props.params.projectId);
+                            // _this.props.fetchProjects()
+                        })
+                    }.bind(this)
+                },
+               
             }
-            // _this.props.fetchProject(_this.props.params.projectId);
-            // _this.props.fetchProjects()
         })
+
+
     }
 
     rightBlock_handleSumbitAdmin = () => {

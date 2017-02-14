@@ -62,6 +62,10 @@ const language = {
 		"pageProject_confirm_cancel": "Annuleren",
 		"pageProject_confirm_delete": "Verlaten en niet opslaan",
 
+		"pageProject_save_title": "Data succesvol opgeslagen",
+		"pageProject_save_content": "De wijzigingen zijn succesvol opgeslagen. Een van onze medewerkers gaat de wijzigingen bekijken en zal ze online zetten",
+		"pageProject_save_button": "Begrepen",
+
 		"project_deletepoup_title": "Verzoek tot verwijderen",
 		"project_deletepoup_content": "Met deze actie geeft u aan uw locatie te willen depubliceren op onze website. Deze aanvraag zal binnenkomen bij ons team en worden afgehandeld. U zult op de hoogte gesteld worden als uw verzoek verwerkt is.",
 		"project_deletepoup_cancel": "Annuleren",
@@ -261,7 +265,10 @@ const language = {
 		"contact_assigned_to_project_cannot_delete": "Contact is assigned to some project.",
 		"contact_deleted_successfully": "Contact Removed Successfully",
 		"contact_cannot_update": "Contact Cannot Update",
-		"contact_updated_successfully": "Contact Update Successfully."
+		"contact_updated_successfully": "Contact Update Successfully.",
+
+		"disable_reminder_email_btn": "Schakel offerte-meldingen uit",
+		"enable_reminder_email_btn": "Schakel offerte-meldingen on",
 
 		
 

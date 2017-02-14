@@ -16,10 +16,12 @@ class Sidebar extends Component {
     }
  
     render() {
-
+        const logoStyle = {
+            backgroundImage: 'url(' + Env.logo_path + ')',
+        };
         return (
             <div className="comp-sidebar">
-                <div className="logo">
+                <div className="logo" style={ logoStyle}>
                 </div>
                 <div className="projects-list-wrapper">
                     <ProjectsLinkList project_list={this.props.project_list} />
