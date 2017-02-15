@@ -15,29 +15,29 @@
 		"waiting_for_unpublish" : 4
 	},
 	"local": {
-		"root_host": "webeffects.advapp",
-		"root_url": "http://webeffects.advapp",
+		"root_host": "webeffects.advappuk",
+		"root_url": "http://webeffects.advappuk",
 		"api_host": "http://webeffects.dnls",
 		"api_url": "http://webeffects.dnls/api"
 	},
 
 	"dev": {
-		"root_host": "dnls-app.webeff-dev.nl",
-		"root_url": "http://dnls-app.webeff-dev.nl",
-		"api_host": "http://dnls.webeff-dev.nl",
+		"root_host": "dnlsuk-app.webeff-dev.nl",
+		"root_url": "http://dnlsuk-app.webeff-dev.nl",
+		"api_host": "http://dnls.webeff-dev.nl/",
 		"api_url": "http://dnls.webeff-dev.nl/api"
 	},
 
 	"staging": {
-		"root_host": "dnls-app.webeff-staging.nl",
-		"root_url": "http://dnls-app.webeff-staging.nl",
+		"root_host": "dnlsuk-app.webeff-staging.nl",
+		"root_url": "http://dnlsuk-app.webeff-staging.nl",
 		"api_host": "http://dnls.webeff-staging.nl",
 		"api_url": "http://dnls.webeff-staging.nl/api"
 	},
 
 	"prod": {
-		"root_host": "dashboard.dnls.nl",
-		"root_url": "http://dashboard.dnls.nl",
+		"root_host": "dashboard.topvenues-london.co.uk",
+		"root_url": "http://dashboard.topvenues-london.co.uk",
 		"api_host": "http://dnls.nl",
 		"api_url": "http://dnls.nl/api"
 	}
