@@ -29,6 +29,14 @@ class OfferRequestList extends React.Component {
         .on('hide.bs.collapse', function(e) {
         jQuery(e.target).prev('.accordion-heading').removeClass('active');
         });
+
+        jQuery('#offerrequest_paginations_list').twbsPagination({
+          totalPages: 35,
+          visiblePages: 7,
+          onPageClick: function (event, page) {
+            jQuery('#page-content').text('Page ' + page);
+          }
+        });
     }
 
 
@@ -229,6 +237,7 @@ class OfferRequestList extends React.Component {
                     </div>
                 </div>
                 {this._renderItems()}
+                <ul id="offerrequest_paginations_list"></ul>
             </div>
         ) 
     }
