@@ -17,6 +17,8 @@ class ProjectTabLocatieForm extends React.Component {
             address: this.props.address,
             address_lat: this.props.address_lat,
             address_lng: this.props.address_lng,
+            ligging: this.props.ligging,
+            parkeren: this.props.parkeren,
             parkingItems: this.props.parkingItems,
             parkingItemsNew: [],
             markers: [],
@@ -58,6 +60,8 @@ class ProjectTabLocatieForm extends React.Component {
         address: '',
         address_lat: '',
         address_lng: '',
+        ligging: '',
+        parkeren: '',
         parkingItems: [],
         onRowDeleted: function(){},
 
@@ -411,10 +415,28 @@ class ProjectTabLocatieForm extends React.Component {
                     </span>
                 </div>
 
-                <div className="form-group">
-
+          
+                <div className="form-group input-group-vmerge mt20">
+                    <label>{trans.locatieInput_ligging}</label>
+                    <div className="row">
+                        <div className="col-md-4">
+                            <InputBox type="text" className="form-control" name={`ligging`} value={this.state.ligging} />
+                        </div>
+                    </div>
                 </div>
-                <div className="form-group">
+
+
+                <div className="form-group input-group-vmerge">
+                    <label>{trans.locatieInput_parkeren}</label>
+                    <div className="row">
+                        <div className="col-md-4">
+                            <InputBox type="text" className="form-control" name={`parkeren`} value={this.state.parkeren} />
+                        </div>
+                    </div>
+                </div>
+
+
+                <div className="form-group clonable-wrapper">
                     <div className="input-group-custom">
                         <div className="input-group-addon"><i className="iconc-location-pointer"></i></div>
                         <input type="text" id="autocomplete-field" className="form-control" defaultValue={this.state.address} />

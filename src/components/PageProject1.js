@@ -430,9 +430,11 @@ class PageProject extends Component {
                                         <div role="tabpanel" className="tab-pane " id="contact">
                                              <ProjectTabContactForm  
                                                     reset={this.isReset}
-                                                    contact_id={project.contact_id}
-                                                    phone= {project.contact_phone}
-                                                    email = {project.contact_email}
+                                                    // contact_id={project.contact_id}
+                                                    contact_name= {project.contact_name}
+                                                    contact_phone= {project.contact_phone}
+                                                    contact_email = {project.contact_email}
+                                                    contact_emails = {project.contact_emails}
                                                     website = {project.website}
                                                     contactsList= {this.props.project_formdata.contacts} 
                                                     onContactDropdownAddNewClick={this.onContactDropdownAddNewClick} />

@@ -49,7 +49,7 @@ class ProjectTabCatForm extends Component {
 
         return (
             <div>
-                <input type="text" name={`geleghendens[${item.value}][filter_value_id]`} defaultValue={item.value} />
+                <input type="hidden" name={`geleghendens[${item.value}][filter_value_id]`} defaultValue={item.value} />
                 <div className="form-group">
                     <label>{trans.pageProject_catform_title+item.title}</label>
                     <textarea className="editor" ref="description" name={`geleghendens[${item.value}][description]`} defaultValue={fvm.description}></textarea>

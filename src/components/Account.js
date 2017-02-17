@@ -8,8 +8,8 @@ import {Auth, Localstore, UserHelper, ContactHelper, ProjectHelper} from '../hel
 
 import ChangePasswordForm from 'components/Forms/ChangePasswordForm'
 
-import ContactPersonInput from './ContactPersonInput'
-import ProjectContactInput from './ProjectContactInput' 
+// import ContactPersonInput from './ContactPersonInput'
+// import ProjectContactInput from './ProjectContactInput' 
 
 class Account extends Component {
     constructor(props, context) {
@@ -17,7 +17,7 @@ class Account extends Component {
     }
 
     componentDidMount() {
-        this.props.fetchContacts()
+        // this.props.fetchContacts()
         this.tabsFn()
     }
 
@@ -39,11 +39,11 @@ class Account extends Component {
             $('.tab-pane').hide();
             $('.tab-pane'+href).show();
 
-            if(href=="#changepassword") {
-                jQuery(_this.refs.block_right).hide();
-            } else {
-                jQuery(_this.refs.block_right).show();
-            }
+            // if(href=="#changepassword") {
+            //     jQuery(_this.refs.block_right).hide();
+            // } else {
+            //     jQuery(_this.refs.block_right).show();
+            // }
         })
 
         $('.tab_drawer_heading a').click(function (e) {     
@@ -63,97 +63,76 @@ class Account extends Component {
             $(".tab_drawer_heading").find("i").addClass("iconc-chevron-down").removeClass("iconc-chevron-up");
             $(".tab_drawer_heading.d_active").find("i").removeClass("iconc-chevron-down").addClass("iconc-chevron-up");
 
-            if(href=="#changepassword") {
-                jQuery(_this.refs.block_right).hide();
-            } else {
-                jQuery(_this.refs.block_right).show();
-            }
+            // if(href=="#changepassword") {
+            //     jQuery(_this.refs.block_right).hide();
+            // } else {
+            //     jQuery(_this.refs.block_right).show();
+            // }
         })
 
     }
 
-    // handleSubmitChangePassword = (e) => {
-    //     e.preventDefault();
-    //     var valid = jQuery(this.refs.form).valid();
-    //     if (!valid) { return false };
+  
 
-    //     let param = jQuery(this.refs.form).serialize();
+    // handleSumbit() {
+    //     var _this = this;
+    //     let data = jQuery(_this.refs.form_contactperson).serialize();    
 
-    //     // let data1 = jQuery(this.refs.password1.value);
-    //     // let confirm = jQuery(this.refs.confirm1.value);
-    //     // console.log(data);
-    //     // if (data!=confirm) {
-    //     //     toastr.error('Please insert confirm password same as password.');
-    //     //     return false
-    //     // };
-    //     UserHelper.changePassword(param).then(function(response){
-    //         if (response.data.STATUS=="FAILED") {
-    //             toastr.error(response.data.error_message.password);
-    //         } else {
-    //             toastr.success('Password changed successfully.')
-    //         }
-    //     }.bind(this));
+    //     ContactHelper.saveAll(data).then((response) => {
+    //         _this.props.fetchContacts();
+    //     })
+
     // }
 
-    handleSumbit() {
-        var _this = this;
-        let data = jQuery(_this.refs.form_contactperson).serialize();    
+    // handleCancel() {
+    //     jQuery.confirm({
+    //         title: trans.account_confirm_title,
+    //         content: trans.account_confirm_content,
+    //         closeIcon: true,
+    //         columnClass: 'col-md-6 col-md-offset-3',
+    //         buttons: {
+    //             cancelAction: {
+    //                 text: trans.account_confirm_cancel,
+    //                 action: function () {
+    //                     jQuery(".jconfirm").hide()
+    //                 }
+    //             },
+    //             deleteAction: {
+    //                 text: trans.account_confirm_delete,
+    //                 action: function () {
+    //                     window.location.reload()
+    //                     jQuery(".jconfirm").hide()
+    //                 }
+    //             }
+    //         }
+    //     })
+    // }
 
-        ContactHelper.saveAll(data).then((response) => {
-            _this.props.fetchContacts();
-        })
+    // onContactItemChange = (item, project_id) => {
+    //     console.log(item)
+    //     ProjectHelper.updateContact(project_id, item.id)
+    // }
 
-    }
+    // onContactItemRemoved = () => {
+    //     this.props.fetchContacts();
+    // }
 
-    handleCancel() {
-        jQuery.confirm({
-            title: trans.account_confirm_title,
-            content: trans.account_confirm_content,
-            closeIcon: true,
-            columnClass: 'col-md-6 col-md-offset-3',
-            buttons: {
-                cancelAction: {
-                    text: trans.account_confirm_cancel,
-                    action: function () {
-                        jQuery(".jconfirm").hide()
-                    }
-                },
-                deleteAction: {
-                    text: trans.account_confirm_delete,
-                    action: function () {
-                        window.location.reload()
-                        jQuery(".jconfirm").hide()
-                    }
-                }
-            }
-        })
-    }
-
-    onContactItemChange = (item, project_id) => {
-        console.log(item)
-        ProjectHelper.updateContact(project_id, item.id)
-    }
-
-    onContactItemRemoved = () => {
-        this.props.fetchContacts();
-    }
-
-    onContactItemUpdate = () => {
-        this.props.fetchContacts();   
-    }
+    // onContactItemUpdate = () => {
+    //     this.props.fetchContacts();   
+    // }
     
 
-    disableEmailReminder = () => {
-        UserHelper.disableEmailReminder().then((response) => {
-            this.props.fetchCurrentUser()
-        })
-    }
+    // disableEmailReminder = () => {
+    //     UserHelper.disableEmailReminder().then((response) => {
+    //         this.props.fetchCurrentUser()
+    //     })
+    // }
 
-    enableEmailReminder = () => {
-        UserHelper.enableEmailReminder().then((response) => {
-            this.props.fetchCurrentUser()
-        })
-    }
+    // enableEmailReminder = () => {
+    //     UserHelper.enableEmailReminder().then((response) => {
+    //         this.props.fetchCurrentUser()
+    //     })
+    // }
 
     _render_tabGegevens() {
         return (
@@ -206,13 +185,13 @@ class Account extends Component {
                     </div>
                 </div>
 
-                <div className="block-info">
-                    { (this.props.current_user.email_reminder_status) ?
-                        <button className="btn btn-plainBlack" onClick={()=>{this.disableEmailReminder()}}><i className="fa fa-bell before_text"></i>{trans.disable_reminder_email_btn}</button>
-                        :
-                        <button className="btn btn-plainBlack" onClick={()=>{this.enableEmailReminder()}}><i className="fa fa-bell before_text"></i>{trans.enable_reminder_email_btn}</button>
-                    }
-                </div>
+                {/*<div className="block-info">
+                                    { (this.props.current_user.email_reminder_status) ?
+                                        <button className="btn btn-plainBlack" onClick={()=>{this.disableEmailReminder()}}><i className="fa fa-bell before_text"></i>{trans.disable_reminder_email_btn}</button>
+                                        :
+                                        <button className="btn btn-plainBlack" onClick={()=>{this.enableEmailReminder()}}><i className="fa fa-bell before_text"></i>{trans.enable_reminder_email_btn}</button>
+                                    }
+                                </div>*/}
             </div>
         )
     }
@@ -228,38 +207,38 @@ class Account extends Component {
                         <div className="page-panel__inner">
                             <div className="page-panel__inner__left">
                                   <ul className="nav nav-tabs nav-tabs--vertical" role="tablist">
-                                    <li role="presentation" className="active">
+                                    {/*<li role="presentation" className="active">
                                         <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">{trans.account_link_gegevens} <i className="iconc-chevron"></i></a>
-                                    </li>
-                                    <li role="presentation">
+                                    </li>*/}
+                                    <li role="presentation" className="active">
                                         <a href="#changepassword" aria-controls="changepassword" role="tab" data-toggle="tab">{trans.account_link_wachtwoord_wijzigen} <i className="iconc-chevron"></i></a>
                                     </li>
                                   </ul>
                             </div>
                             <div className="page-panel__inner__content">                                 
                                 <div className="tab-content">
-                                    <h3 className="d_active tab_drawer_heading">
-                                        <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">{trans.account_link_gegevens} <i className="iconc-chevron-down"></i></a>
-                                    </h3>
-                                    <div role="tabpanel" className="tab-pane active" id="profile">
-                                        {this._render_tabGegevens()}
-                                        <div className="visible-xs visible-sm twoBtnStyle">
-                                            <button ref="annuleren" type="button" className="btn btn-plain" onClick={()=>{this.handleCancel()}}>{trans.account_link_annuleren}</button>
-                                            <button ref="submit" type="button" className="btn btn-plain" onClick={()=>{this.handleSumbit()}}>{trans.account_link_opslaan}</button>
-                                        </div>
-                                    </div>
+                                    {/*<h3 className="d_active tab_drawer_heading">
+                                                                            <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">{trans.account_link_gegevens} <i className="iconc-chevron-down"></i></a>
+                                                                        </h3>
+                                                                        <div role="tabpanel" className="tab-pane active" id="profile">
+                                                                            {this._render_tabGegevens()}
+                                                                            <div className="visible-xs visible-sm twoBtnStyle">
+                                                                                <button ref="annuleren" type="button" className="btn btn-plain" onClick={()=>{this.handleCancel()}}>{trans.account_link_annuleren}</button>
+                                                                                <button ref="submit" type="button" className="btn btn-plain" onClick={()=>{this.handleSumbit()}}>{trans.account_link_opslaan}</button>
+                                                                            </div>
+                                                                        </div>*/}
 
-                                    <h3 className="tab_drawer_heading">
+                                    <h3 className="tab_drawer_heading d_active">
                                         <a href="#changepassword" aria-controls="changepassword" role="tab" data-toggle="tab">{trans.account_link_wachtwoord_wijzigen} <i className="iconc-chevron-down"></i></a>
                                     </h3>
-                                    <div role="tabpanel" className="tab-pane " id="changepassword">
+                                    <div role="tabpanel" className="tab-pane active" id="changepassword">
                                         {/*this._render_tabPassword()*/}
                                         <ChangePasswordForm layout="layout2" />
                                     </div>                                    
                                 </div>
                             </div>
                             <div className="page-panel__inner__right">
-                                {this._render_rightBlock()}
+                                {/*this._render_rightBlock()*/}
                             </div>
                         </div>
                     </div>

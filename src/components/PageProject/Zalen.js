@@ -1,6 +1,8 @@
 import React, { PropTypes } from 'react'
 
 import {ProjectRoomHelper} from '../../helpers'
+import InputBox from './InputBox'
+
 class Zalen extends React.Component {
 
     constructor(props) {
@@ -9,7 +11,8 @@ class Zalen extends React.Component {
         this.state = {
             items: this.props.items,
             itemsNew: [],
-            isDesktop: true
+            isDesktop: true,
+            zalen: this.props.zalen,
         }
         
     }
@@ -19,7 +22,8 @@ class Zalen extends React.Component {
         name: 'project_rooms',
         items: [],
         onZalenRemoved: function(){},
-        reset: false
+        reset: false,
+        zalen: '',
     }
 
     componentDidMount() {
@@ -148,7 +152,13 @@ class Zalen extends React.Component {
             <div>
                 <div className="form-group">
                     <label>{trans.zalen_page_title}</label>
+                    <div className="row">
+                        <div className="col-md-4">
+                            <InputBox type="text" className="form-control" name={`zalen`} value={this.state.zalen} />
+                        </div>
+                    </div>
                 </div>
+
                 <table className="table table-bordered table--horizontal">
                     <thead>
                         <tr>

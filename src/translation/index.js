@@ -174,6 +174,8 @@ const language = {
 		"locatieInput_zoek": "Zoek parkeerplaatsen in een straal van",
 		"locatieInput_voeg": "Voeg automatisch parkeerplaatsen toe",
 		"locatieInput_zaal": "Parkeerplaats toevoegen",
+		"locatieInput_ligging": "Ligging",
+		"locatieInput_parkeren": "Parkeren",
 
 		"offerte_title": "Offerte aanvragen",
 		"offerte_aanvraag_label": "Offerte Aanvraag",
@@ -239,7 +241,6 @@ const language = {
 		"zalen_tab_feest": "Feest",
 		"zalen_vondelkerk": "Vondelkerk",
 		"zalen_zaal": "Zaal toevoegen",
-
 
 		"invalid_password" : "Password is invalid.",
 		"invalid_user" : "User not found.",

@@ -1744,7 +1744,7 @@ label input[type="radio"]:checked + span {
 #locatie .input-group-addon {
   position: relative;
   border-bottom: none; }
-#locatie .form-control {
+#locatie .clonable-wrapper .form-control {
   border: none; }
 #locatie .input-group--style-label .input-group-addon {
   padding: 0;
