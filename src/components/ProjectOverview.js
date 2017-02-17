@@ -106,8 +106,8 @@ class ProjectOverview extends Component {
                     <tbody>
                         { this.props.project_list.map((item, index) => {
                             let status = PROJECT_STATUSES[item.project_status_id]
-                            const province_name = undefined!==item.province[0] ? item.province[0]['name'] : '';
-                            const plaat_name = undefined!==item.plaat[0] ? item.plaat[0]['name'] : '';
+                            const province_name = item.province ? item.province['name'] : '';
+                            const plaat_name = item.plaat ? item.plaat['name'] : '';
                             return (
                                 <tr key={index}>
                                     <td className="nowrap"><i className={status.icon_class}></i> <span>{status.title}</span></td>
