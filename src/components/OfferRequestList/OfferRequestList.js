@@ -12,8 +12,11 @@ class OfferRequestList extends React.Component {
 
     static defaultProps = {
         onDateItemChange: function(item) {},
+        onPaginate: function(page) {},
         categories: [],
-        items: []
+        items: [],
+
+        offer_request_list: []
     }
 
 
@@ -21,30 +24,48 @@ class OfferRequestList extends React.Component {
     }
 
     componentDidMount() {
-        this.props.items;
+        var _this = this;
         jQuery('.accordion')
         .on('show.bs.collapse', function(e) {
-        jQuery(e.target).prev('.accordion-heading').addClass('active');
+            jQuery(e.target).prev('.accordion-heading').addClass('active');
         })
         .on('hide.bs.collapse', function(e) {
-        jQuery(e.target).prev('.accordion-heading').removeClass('active');
+            jQuery(e.target).prev('.accordion-heading').removeClass('active');
         });
 
-        jQuery('#offerrequest_paginations_list').twbsPagination({
-          totalPages: 35,
-          visiblePages: 7,
-          onPageClick: function (event, page) {
-            jQuery('#page-content').text('Page ' + page);
-          }
-        });
+        this.paginationInit()
+    }
+
+    componentDidUpdate() {
+        var _this = this;
+
+        this.paginationInit()
     }
 
 
-    static defaultProps = {        
-        className: '',
-        theme: '',
-        items: []
-        
+    paginationInit() {
+        var _this = this;
+
+        var $elem = jQuery('#offerrequest_paginations_list');
+
+        if($elem.data("twbs-pagination")){
+            $elem.twbsPagination('destroy');
+        }
+        $elem.twbsPagination({
+            initiateStartPageClick: false,
+            totalPages: _this.props.offer_request_list.last_page,
+            visiblePages: 5,
+            startPage: _this.props.offer_request_list.current_page,
+            // first: '<span aria-hidden="true">&laquo;</span>',
+            // last: '<span aria-hidden="true">&raquo;</span>',
+            firstClass: 'hidden',
+            lastClass: 'hidden',
+            prev: '<span aria-hidden="true">&laquo;</span>',
+            next: '<span aria-hidden="true">&raquo;</span>',
+            onPageClick: function (event, page) {            
+                _this.props.onPaginate(page);
+            }
+        });
     }
 
 
@@ -76,6 +97,7 @@ class OfferRequestList extends React.Component {
     }
 
     _renderDatumJson(datum) {
+        if(!datum) return null;
         let json = JSON.parse(datum);
         // console.log("json jsonjsonjson", json)
         return json.map(function(item, index){
@@ -102,8 +124,9 @@ class OfferRequestList extends React.Component {
     }
 
     _renderItems() {
+        const { data } = this.props.offer_request_list;
         // console.log("this.props.itemsthis.props.offererquesss  ", this.props.items)
-        if(undefined==this.props.items || jQuery.isEmptyObject(this.props.items)) {
+        if(undefined==data || jQuery.isEmptyObject(data)) {
             return (
                 <div>
                     <h5>{trans.no_data_found}</h5>
@@ -111,7 +134,7 @@ class OfferRequestList extends React.Component {
             )
         }
         
-        return this.props.items.map((item, index) => {
+        return data.map((item, index) => {
             // console.log(item);
             return (
                 <div className="offerrequesttab" key={index}>    
@@ -232,9 +255,9 @@ class OfferRequestList extends React.Component {
             <div>
                 <div className="section_offerrequest_dropdown form-group">
                     <label>{trans.offerte_title}</label>
-                    <div className="short-dropdown">
+                    {/*<div className="short-dropdown">
                         <DropdownList items={this.dateItemArray()} onItemChange={this.onItemChange} emptyPlaceholder={trans.select_maand_placeholder} />
-                    </div>
+                    </div>*/}
                 </div>
                 {this._renderItems()}
                 <ul id="offerrequest_paginations_list"></ul>

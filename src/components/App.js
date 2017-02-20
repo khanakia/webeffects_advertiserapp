@@ -45,7 +45,6 @@ export default class AppContainer extends Component {
 
         if(this.props.current_user.has_changed_pwd==false) {
             if(undefined==window.ChangePasswordForm_popupid) {
-
                 PopupHelper.showChangePasswordForm({layout: 'layout1', onDataUpdate: this.onDataUpdate})
             }
         }

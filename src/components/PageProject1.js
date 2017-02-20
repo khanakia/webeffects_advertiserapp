@@ -244,6 +244,12 @@ class PageProject extends Component {
         }
     }
 
+    onOfferlistPaginate = (page) => {
+        if(this.props.params.projectId) {
+            this.props.fetchOfferRequestDetailsList(this.props.params.projectId, page);
+        }
+    }
+
     onRightBlockTerugClick (){
         jQuery(this.refs.block_right).slideUp('slow', function(){
             jQuery(this).css("display", "")
@@ -377,7 +383,7 @@ class PageProject extends Component {
                                         <h3 className="d_active tab_drawer_heading">
                                             <a href="#general" aria-controls="general" role="tab" data-toggle="tab">{trans.pageProject_algemene_label} <i className="iconc-chevron-down"></i></a>
                                         </h3>
-                                        <div role="tabpanel" className="tab-pane active" id="general">
+                                        <div role="tabpanel" className="tab-pane " id="general">
                                            
                                                 <ProjectTabGeneralForm  
                                                     reset={this.isReset}
@@ -485,11 +491,12 @@ class PageProject extends Component {
                                         <h3 className={`tab_drawer_heading ${hiddenClass}`}>
                                             <a href="#aanvragen" aria-controls="aanvragen" role="tab" data-toggle="tab">{trans.pageProject_tab_aanvragen} <i className="iconc-chevron-down"></i></a>
                                         </h3>
-                                        <div role="tabpanel" className={`tab-pane ${hiddenClass}`} id="aanvragen">
+                                        <div role="tabpanel" className={`tab-pane active ${hiddenClass}`} id="aanvragen">
                                             <OfferRequestList 
                                                 categories={this.props.project_formdata.gelegenhendens}
                                                 onDateItemChange={this.onOfferlistDateItemChange} 
-                                                items={this.props.project_offer_request_details_list} />
+                                                onPaginate={this.onOfferlistPaginate} 
+                                                offer_request_list={this.props.project_offer_request_details_list} />
                                         </div>
 
                                         <h3 className={`tab_drawer_heading ${hiddenClass}`}>

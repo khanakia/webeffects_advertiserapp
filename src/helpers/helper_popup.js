@@ -67,8 +67,10 @@ export default class PopupHelper {
     }
 
     static showChangePasswordForm(args = {}) {
+        if(window.is_visible_change_password_popup) return false;
+        window.is_visible_change_password_popup = true;
+        // console.log(window.is_visible_change_password_popup);
         PopupHelper.openPopupNoCloseButton(args,function(uniq,pid){
-            window.ChangePasswordForm_popupid = pid;
             ReactDom.render(<ChangePasswordForm popup_id={pid} {...args} />, document.getElementById(uniq));
         })
     }

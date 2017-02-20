@@ -51,8 +51,8 @@ export function fetchProjectFormdata() {
 
 
 
-export function fetchOfferRequestDetailsList(project_id, date) {
-    const request = ProjectHelper.getOfferRequestDetails(project_id, date);
+export function fetchOfferRequestDetailsList(project_id, page) {
+    const request = ProjectHelper.getOfferRequestDetails(project_id, page);
     return {
         type: FETCH_PROJECT_OFFER_REQUEST_DETAILS_LIST,
         payload: request

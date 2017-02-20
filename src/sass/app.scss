@@ -1786,3 +1786,19 @@ label input[type="radio"]:checked + span {
 		}
 	}
 }	
+
+
+.pagination {
+	display: table;
+	margin: 20px auto;
+}
+
+.pagination > .active > a, .pagination > .active > a:hover, .pagination > .active > a:focus, .pagination > .active > span, .pagination > .active > span:hover, .pagination > .active > span:focus {
+	background-color: #08B995;
+    border-color: #08B995;
+}
+
+.pagination > li > a, .pagination > li > span,
+.pagination > li > a:hover, .pagination > li > a:focus, .pagination > li > span:hover, .pagination > li > span:focus {
+	color: #08B995;
+}

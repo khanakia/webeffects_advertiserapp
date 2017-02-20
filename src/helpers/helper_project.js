@@ -85,12 +85,23 @@ export default class ProjectHelper {
     }
 
 
-    static getOfferRequestDetails(project_id, date=null) {
+    // static getOfferRequestDetails(project_id, date=null) {
+    //     return axios({
+    //         method: 'post',
+    //         url: API_URL_PROJECT + '/' + project_id + '/offer_request_details',
+    //         data: {
+    //             date: date
+    //         },
+    //         headers: Auth.header(),
+    //     });
+    // }
+
+    static getOfferRequestDetails(project_id, page=1) {
         return axios({
             method: 'post',
             url: API_URL_PROJECT + '/' + project_id + '/offer_request_details',
             data: {
-                date: date
+                page: page
             },
             headers: Auth.header(),
         });

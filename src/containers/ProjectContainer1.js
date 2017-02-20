@@ -33,8 +33,8 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(fetchProjectFormdata())
         },
 
-        fetchOfferRequestDetailsList: (project_id, date=null) => {
-            dispatch(fetchOfferRequestDetailsList(project_id, date))
+        fetchOfferRequestDetailsList: (project_id, page=1) => {
+            dispatch(fetchOfferRequestDetailsList(project_id, page))
         },
 
         fetchProjects: () => {

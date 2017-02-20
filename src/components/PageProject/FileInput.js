@@ -127,6 +127,7 @@ class FileInput extends React.Component {
         
             var data = new FormData();
             // var names = [];
+            data.append('site_id', Env.site_id);
             for (var i = 0; i < $(this).get(0).files.length; ++i) {
                 // names.push($(this).get(0).files[i].name);
                 data.append('file1['+i+']', $(this).get(0).files[i]); // we can put more than 1 image file
