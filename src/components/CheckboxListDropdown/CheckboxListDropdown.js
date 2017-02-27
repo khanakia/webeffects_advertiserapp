@@ -19,6 +19,28 @@ class CheckboxListDropdown extends React.Component {
 		onItemChange: function(item){},
 	}
 
+	componentDidMount() {
+	
+	}
+
+	componentDidUpdate() {
+		var _this = this;
+
+		$(document).click(function(e) {
+			var parent_length = ($(e.target).parents(".dropdown").length);
+      		const $dropdown = $(_this.refs.dropdown);
+			if(parent_length==0) {
+				$dropdown.removeClass("open");
+			}
+  			
+		})
+
+		$(this.refs.dropdown).on('hide.bs.dropdown', function (e) {
+		    return false;
+		});
+		
+	}
+
 	componentWillReceiveProps(nextProps) {
         // If nextProp item are greater than current prop items it means user clicked the Save button so clear all the Newitems in state input because they already saved and will show as NextProp items
         if(nextProps.selectedItems !== this.props.selectedItems) {
@@ -31,6 +53,7 @@ class CheckboxListDropdown extends React.Component {
 	handleItemChange = (e, item) => {
 
 		var itemValue = e.target.value;
+		console.log(itemValue);
 
 		const status = (jQuery(e.target).is(":checked"))
 
@@ -40,12 +63,13 @@ class CheckboxListDropdown extends React.Component {
 			var index = selectedItems.indexOf(itemValue);
 			if(index===-1) {
 				// If not exists then push new object
-				selectedItems.push(e.target.value);
+				selectedItems.push(parseInt(e.target.value));
 			}
 		} else {
-			console.log("remove")
+			// console.log("remove")
 			selectedItems = _.filter(selectedItems, function(o) { 
-				return o!==itemValue; 
+				console.log(o, itemValue);
+				return parseInt(o)!==parseInt(itemValue); 
 			});
 			
 		}
@@ -55,7 +79,7 @@ class CheckboxListDropdown extends React.Component {
 		this.setState({
 			selectedItems: selectedItems
 		})
-		this.props.onItemChange(item)
+		this.props.onItemChange(selectedItems)
 	}
 
 	removeFilter = (value) => {
@@ -90,13 +114,13 @@ class CheckboxListDropdown extends React.Component {
 				  		)
 				  	}, this)}
 				</div>
-				<div className="dropdown dropdown--style1">
+				<div className="dropdown dropdown--style1 keep-open" ref="dropdown">
 				  <button className="btn btn-dropdown dropdown-toggle" type="button" id={dropdownId} data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 				    {this.props.emptyPlaceholder}
 				    <i className="iconc-chevron-down"></i>
 				  </button>
 
-				  <ul className="dropdown-menu11" aria-labelledby={dropdownId}>
+				  <ul className="dropdown-menu" ref="dropdown-menu" aria-labelledby={dropdownId}>
 				  	{this.props.items.map(function(item, index){
 				  		let checked = this.state.selectedItems.indexOf(item.value)!==-1 ? true : false;
 				  		// console.log(this.state.selectedItems)

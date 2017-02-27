@@ -2,7 +2,16 @@ import { connect } from 'react-redux'
 
 import {PageProject1} from '../components'
 
-import { fetchProjects, createProject, fetchProject, fetchProjectRevision,  fetchProjectFormdata, fetchOfferRequestDetailsList } from '../actions/action_project';
+import { 
+    fetchProjects, 
+    createProject, 
+    fetchProject,
+    fetchProjectRevision,
+    fetchProjectFormdata,
+    fetchOfferRequestDetailsList,
+    fetchSnoobiList,
+    fetchSnoobiGraph,
+    fetchSnoobiMostRequestedProjects } from '../actions/action_project';
 const mapStateToProps = (state) => {
     return {
         state : state,
@@ -34,11 +43,25 @@ const mapDispatchToProps = (dispatch) => {
         },
 
         fetchOfferRequestDetailsList: (project_id, page=1) => {
+
             dispatch(fetchOfferRequestDetailsList(project_id, page))
         },
 
         fetchProjects: () => {
             dispatch(fetchProjects()); 
+        },
+
+        fetchSnoobiList: (project_id, page=1, args) => {
+            console.log(args)
+            dispatch(fetchSnoobiList(project_id, page, args));
+        },
+
+        fetchSnoobiGraph: (project_id) => {
+            dispatch(fetchSnoobiGraph(project_id)); 
+        },
+
+        fetchSnoobiMostRequestedProjects: (project_id) => {
+            dispatch(fetchSnoobiMostRequestedProjects(project_id)); 
         },
 
     }

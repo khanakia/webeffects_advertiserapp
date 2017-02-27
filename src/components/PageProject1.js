@@ -26,9 +26,10 @@ class PageProject extends Component {
         super(props, context);
         this.isReset = false;
 
-        // this.state = {
-        //     project: this.props.project 
-        // }
+        this.state = {
+            // project: this.props.project 
+            snoobi_args: {}
+        }
     }
 
     static defaultProps = {        
@@ -43,6 +44,10 @@ class PageProject extends Component {
         if(this.props.params.projectId) {
             this.props.fetchProjectRevision(this.props.params.projectId);
             this.props.fetchOfferRequestDetailsList(this.props.params.projectId);
+
+            this.props.fetchSnoobiList(this.props.params.projectId);
+            this.props.fetchSnoobiGraph(this.props.params.projectId);
+            this.props.fetchSnoobiMostRequestedProjects(this.props.params.projectId);
         }
     }
 
@@ -317,6 +322,37 @@ class PageProject extends Component {
         
     }
 
+    onSnoobiSortItemChange = (item) => {
+        let snoobi_args = Object.assign({}, this.state.snoobi_args); 
+        snoobi_args.sort = item.value;
+        console.log(snoobi_args);
+
+        this.props.fetchSnoobiList(this.props.params.projectId, 1, snoobi_args);
+        this.setState({
+            snoobi_args: snoobi_args
+        })
+        // alert(item.value)
+    }
+
+    onSnoobiMonthItemChange = (item) => {
+        let snoobi_args = Object.assign({}, this.state.snoobi_args); 
+        snoobi_args.filter_date = item.value;
+
+        this.props.fetchSnoobiList(this.props.params.projectId, 1, snoobi_args);
+        this.setState({
+            snoobi_args: snoobi_args
+        })
+    }
+
+    onSnoobiFilterChange = (filters) => {
+        let snoobi_args = Object.assign({}, this.state.snoobi_args); 
+        snoobi_args.filter_useractions = filters;
+
+        this.props.fetchSnoobiList(this.props.params.projectId, 1, snoobi_args);
+        this.setState({
+            snoobi_args: snoobi_args
+        })
+    }
   
     render() {
         // console.log(this.props);
@@ -491,7 +527,7 @@ class PageProject extends Component {
                                         <h3 className={`tab_drawer_heading ${hiddenClass}`}>
                                             <a href="#aanvragen" aria-controls="aanvragen" role="tab" data-toggle="tab">{trans.pageProject_tab_aanvragen} <i className="iconc-chevron-down"></i></a>
                                         </h3>
-                                        <div role="tabpanel" className={`tab-pane active ${hiddenClass}`} id="aanvragen">
+                                        <div role="tabpanel" className={`tab-pane  ${hiddenClass}`} id="aanvragen">
                                             <OfferRequestList 
                                                 categories={this.props.project_formdata.gelegenhendens}
                                                 onDateItemChange={this.onOfferlistDateItemChange} 
@@ -502,8 +538,13 @@ class PageProject extends Component {
                                         <h3 className={`tab_drawer_heading ${hiddenClass}`}>
                                             <a href="#statistieken" aria-controls="statistieken" role="tab" data-toggle="tab">{trans.pageProject_tab_statistieken} <i className="iconc-chevron-down"></i></a>
                                         </h3>
-                                        <div role="tabpanel" className={`tab-pane ${hiddenClass}`} id="statistieken">
-                                            <SnoobiPage />
+                                        <div role="tabpanel" className={`tab-pane active ${hiddenClass}`} id="statistieken">
+                                            <SnoobiPage 
+                                                user_actions_list={this.props.project_formdata.user_actions}
+                                                onFilterChange={this.onSnoobiFilterChange}
+                                                onSortItemChange={this.onSnoobiSortItemChange}
+                                                onMonthItemChange={this.onSnoobiMonthItemChange}
+                                            />
                                         </div>
 
                                     </div>

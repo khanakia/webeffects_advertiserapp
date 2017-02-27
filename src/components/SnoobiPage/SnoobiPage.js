@@ -1,11 +1,22 @@
 import React, { PropTypes } from 'react'
 
 import DropdownList from '../DropdownList'
+import CheckboxListDropdown from '../CheckboxListDropdown'
 
 class SnoobiPage extends React.Component {
 
     constructor(props) {
         super(props);
+    }
+
+    static defaultProps = {
+        user_actions_list: [],
+        list: [],
+        graph: [],
+        snoobi_most_requested_projects: [],
+        onSortItemChange: function(item){},
+        onMonthItemChange: function(item){},
+        onFilterChange: function(filters){},
     }
 
 
@@ -60,15 +71,27 @@ class SnoobiPage extends React.Component {
   
 
     render() {
-        const countSortMonth = [
-            {"value": "feb", "title": 'februari 2016'},
-            {"value": "maar", "title": 'maart 2016'},
-            {"value": "april", "title": 'april 2016'},
-            {"value": "mei", "title": 'mei 2016'}
-        ]
+        var a = moment('2016-10-01');
+        var b = moment();
+
+        const countSortMonth = [];
+        for (var m = moment(a); m.isBefore(b); m.add('months', 1)) {
+            // console.log(m.format('YYYY-MM-DD'));
+            countSortMonth.push({
+                "value": m.format('YYYY-MM-DD'), 
+                "title": m.format('MMMM YYYY'), 
+            })
+        }
+
+        // const countSortMonth = [
+        //     {"value": "feb", "title": 'februari 2016'},
+        //     {"value": "maar", "title": 'maart 2016'},
+        //     {"value": "april", "title": 'april 2016'},
+        //     {"value": "mei", "title": 'mei 2016'}
+        // ]
         const countSortRecent = [
-            {"value": "recent", "title": trans.snoobiPage_sort_recente},
-            {"value": "alfabet", "title": trans.snoobiPage_sort_alfabet}
+            {"value": "date", "title": trans.snoobiPage_sort_recente},
+            {"value": "name", "title": trans.snoobiPage_sort_alfabet}
         ]
         return (
             <div className="statistieken-wrapper">
@@ -80,27 +103,17 @@ class SnoobiPage extends React.Component {
                     </div>
                     <div className="row">
                         <div className="col-md-6 col-lg-3 mb20">
-                            <div className="dropdown dropdown--style1 xs-w100 wp120 dropdown-inline">
-                                <button className="btn btn-dropdown dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{trans.snoobiPage_filter_text}<i className="iconc-chevron-down"></i></button>
-                                <ul className="dropdown-menu list-group" aria-labelledby="dropdownMenu1">
-                                    <li className="list-group-item"><label><input type="checkbox" name="algemeen" value="algemeen" /><span>{trans.snoobiPage_filter_option_algemeen}</span></label></li>
-                                    <li className="list-group-item"><label><input type="checkbox" name="telefoonnummer" value="telefoonnummer" /><span>{trans.snoobiPage_filter_option_telefoonnummer}</span></label></li>
-                                    <li className="list-group-item"><label><input type="checkbox" name="trouwen" value="trouwen" /><span>{trans.snoobiPage_filter_option_trouwen}</span></label></li>
-                                    <li className="list-group-item"><label><input type="checkbox" name="zalen" value="zalen" /><span>{trans.snoobiPage_filter_option_zalen}</span></label></li>
-                                    <li className="list-group-item"><label><input type="checkbox" name="vergaderen" value="vergaderen" /><span>{trans.snoobiPage_filter_option_vergaderen}</span></label></li>
-                                    <li className="list-group-item"><label><input type="checkbox" name="vermelding" value="vermelding" /><span>{trans.snoobiPage_filter_option_vermelding}</span></label></li>
-                                </ul>
-                            </div>
+                            <CheckboxListDropdown items={this.props.user_actions_list}  onItemChange={this.props.onFilterChange} />
                         </div>
                         <div className="col-md-6 col-lg-9 mb20 snoobiSorten-wrapper">
                             <div className="sorteren-inner visible-lg">
                                 <span className="mr15 sorten-text">{trans.snoobiPage_sorten_text}</span>
                                 
                                 <span className="wp140 mr10 dropdown-inline">
-                                    <DropdownList items={countSortMonth} selectedValue={"feb"} />
+                                    <DropdownList items={countSortMonth} selectedValue={""} onItemChange={this.props.onMonthItemChange} />
                                 </span>
                                 <span className="wp170 dropdown-inline">
-                                    <DropdownList items={countSortRecent} selectedValue={"recent"} />
+                                    <DropdownList items={countSortRecent} selectedValue={"date"} onItemChange={this.props.onSortItemChange} />
                                 </span>
                                 
                             </div>

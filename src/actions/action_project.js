@@ -6,6 +6,11 @@ export const FETCH_PROJECT_CURRENT = 'FETCH_PROJECT_CURRENT';
 export const FETCH_PROJECT_FORMDATA = 'FETCH_PROJECT_FORMDATA';
 export const FETCH_PROJECT_OFFER_REQUEST_DETAILS_LIST='FETCH_PROJECT_OFFER_REQUEST_DETAILS_LIST'
 
+export const FETCH_PROJECT_SNOOBI_LIST='FETCH_PROJECT_SNOOBI_LIST'
+export const FETCH_PROJECT_SNOOBI_GRAPH='FETCH_PROJECT_SNOOBI_GRAPH'
+export const FETCH_PROJECT_SNOOBI_MOST_REQUESTED_PROJECTS='FETCH_PROJECT_SNOOBI_MOST_REQUESTED_PROJECTS'
+
+
 import {AuthHelper, ProjectHelper} from '../helpers'
 
 export function fetchProjects() {
@@ -55,6 +60,31 @@ export function fetchOfferRequestDetailsList(project_id, page) {
     const request = ProjectHelper.getOfferRequestDetails(project_id, page);
     return {
         type: FETCH_PROJECT_OFFER_REQUEST_DETAILS_LIST,
+        payload: request
+    }
+}
+
+
+export function fetchSnoobiList(project_id, page, args={}) {
+    const request = ProjectHelper.getSnoobiList(project_id, page, args);
+    return {
+        type: FETCH_PROJECT_SNOOBI_LIST,
+        payload: request
+    }
+}
+
+export function fetchSnoobiGraph(project_id) {
+    const request = ProjectHelper.getSnoobiGraph(project_id);
+    return {
+        type: FETCH_PROJECT_SNOOBI_GRAPH,
+        payload: request
+    }
+}
+
+export function fetchSnoobiMostRequestedProjects(project_id) {
+    const request = ProjectHelper.getSnoobiMostRequestedProjects(project_id);
+    return {
+        type: FETCH_PROJECT_SNOOBI_MOST_REQUESTED_PROJECTS,
         payload: request
     }
 }

@@ -51,6 +51,8 @@ class OfferRequestList extends React.Component {
         if($elem.data("twbs-pagination")){
             $elem.twbsPagination('destroy');
         }
+
+        if(_this.props.offer_request_list.total==0) return false;
         $elem.twbsPagination({
             initiateStartPageClick: false,
             totalPages: _this.props.offer_request_list.last_page,
@@ -98,7 +100,8 @@ class OfferRequestList extends React.Component {
 
     _renderDatumJson(datum) {
         if(!datum) return null;
-        let json = JSON.parse(datum);
+        // let json = JSON.parse(datum);
+        let json = datum;
         // console.log("json jsonjsonjson", json)
         return json.map(function(item, index){
             // console.log("item.startdateitem.startdateitem.startdate",item.startdate)
@@ -111,7 +114,8 @@ class OfferRequestList extends React.Component {
     }
 
     _renderCategories(catids) {
-        return JSON.parse(catids).map((id, index) => {
+        if(!catids) return null;
+        return catids.map((id, index) => {
             var item = _.find(this.props.categories, {value: Number(id)});
             // console.info("ABCCCCCCCC", item)
             if(undefined==item) return null;
@@ -125,7 +129,7 @@ class OfferRequestList extends React.Component {
 
     _renderItems() {
         const { data } = this.props.offer_request_list;
-        // console.log("this.props.itemsthis.props.offererquesss  ", this.props.items)
+        console.log("this.props.itemsthis.props.offererquesss  ", this.props.offer_request_list.data)
         if(undefined==data || jQuery.isEmptyObject(data)) {
             return (
                 <div>
@@ -138,39 +142,39 @@ class OfferRequestList extends React.Component {
             // console.log(item);
             return (
                 <div className="offerrequesttab" key={index}>    
-                    <div className={'comp-offerrequestlist ' + item.offer_request_id} ref="offerrequestlist">
-                        <div className="accordion" id={'collapse' + item.id}>
+                    <div className={'comp-offerrequestlist ' + item.id} ref="offerrequestlist">
+                        <div className="accordion" >
                             <div className="accordion-group">
                                 <div  className="accordion-heading">
-                                    <a className="accordion-toggle panel_title" data-toggle="collapse" data-parent={'collapse' + item.id} href={'#collapse' + item.offer_request_id}>
-                                        {moment(item.created_at).format(Env.dateformat_default)}<span>{item.offer_request.company ? item.offer_request.company : item.offer_request.name}</span>
+                                    <a className="accordion-toggle panel_title" data-toggle="collapse" data-parent={'collapse' + item.id} href={'#collapse' + item.id}>
+                                        {moment(item.created_at).format(Env.dateformat_default)}<span>{item.company ? item.company : item.name}</span>
                                     </a>
                                 </div>
-                                <div id={'collapse' + item.offer_request_id} className="accordion-body collapse offerrequesttable">
+                                <div id={'collapse' + item.id} className="accordion-body collapse offerrequesttable">
                                     <div className="accordion-inner">                                                  
                                         <div className="row">
                                             <div className="col-md-6 col-sm-12">
                                                 <div>
                                                     <h5>{trans.offerte_aanhef_label}</h5>
-                                                    <p>{item.offer_request.aanhef}</p>
+                                                    <p>{item.aanhef}</p>
                                                 </div>                                                                
                                             </div>
                                             <div className="col-md-6 col-sm-12">
                                                 <div>
                                                     <h5>{trans.offerte_naam_label}</h5>
-                                                    <p>{item.offer_request.name}</p>
+                                                    <p>{item.name}</p>
                                                 </div>                                                                
                                             </div>
                                             <div className="col-md-6 col-sm-12">
                                                 <div>
                                                     <h5>{trans.offerte_bedrijfsnaam_label}</h5>
-                                                    <p>{item.offer_request.company}</p>
+                                                    <p>{item.company}</p>
                                                 </div>                                                                
                                             </div>
                                             <div className="col-md-6 col-sm-12">
                                                 <div>
                                                     <h5>{trans.offerte_telefoonnummer}</h5>
-                                                    <p>{item.offer_request.phone}</p>
+                                                    <p>{item.phone}</p>
                                                 </div>                                                                                                                            
                                             </div>
                                         </div>
@@ -178,25 +182,25 @@ class OfferRequestList extends React.Component {
                                             <div className="col-md-6 col-sm-12">
                                                 <div>
                                                     <h5>{trans.offerte_emailadres_label}</h5>
-                                                    <p>{item.offer_request.email}</p>
+                                                    <p>{item.email}</p>
                                                 </div>                                                                
                                             </div>
                                             <div className="col-md-6 col-sm-12">
                                                 <div>
                                                     <h5>{trans.offerte_straatnaam_label}</h5>
-                                                    <p>{item.offer_request.straat}</p>
+                                                    <p>{item.straat}</p>
                                                 </div>                                                                
                                             </div>
                                             <div className="col-md-6 col-sm-12">
                                                 <div>
                                                     <h5>{trans.offerte_huisnummer_label}</h5>
-                                                    <p>{item.offer_request.house_no}</p>
+                                                    <p>{item.house_no}</p>
                                                 </div>                                                                
                                             </div>
                                             <div className="col-md-6 col-sm-12">
                                                 <div>
                                                     <h5>{trans.offerte_postcode_label}</h5>
-                                                    <p>{item.offer_request.postcode}</p>
+                                                    <p>{item.postcode}</p>
                                                 </div>                                                                
                                             </div>
                                         </div>
@@ -204,19 +208,19 @@ class OfferRequestList extends React.Component {
                                             <div className="col-md-6 col-sm-12">
                                                 <div>
                                                     <h5>{trans.offerte_plaats_label}</h5>
-                                                    <p>{item.offer_request.plaat}</p>
+                                                    <p>{item.plaat}</p>
                                                 </div>                                                                
                                             </div>
                                             <div className="col-md-6 col-sm-12">
                                                 <div>
                                                     <h5>{trans.offerte_geplande_datum_label}</h5>
-                                                    {this._renderDatumJson(item.offer_request.datum_json)}
+                                                    {this._renderDatumJson(item.datum_json)}
                                                 </div>                                                                
                                             </div>
                                             <div className="col-md-6 col-sm-12">
                                                 <div>
                                                     <h5>{trans.offerte_aantal_personen_label}</h5>
-                                                    <p>{item.offer_request.no_of_person}</p>
+                                                    <p>{item.no_of_person}</p>
                                                 </div>                                                                
                                             </div>
                                             <div className="col-md-6 col-sm-12">
@@ -230,7 +234,7 @@ class OfferRequestList extends React.Component {
                                             <div className="col-md-6 col-sm-12">
                                                 <div>
                                                     <h5>{trans.offerte_algemene}</h5>
-                                                    <p>{item.offer_request.description}</p>
+                                                    <p>{item.description}</p>
                                                 </div>
                                             </div>
                                             <div className="col-md-6 col-sm-12">
