@@ -544,6 +544,9 @@ class PageProject extends Component {
                                                 onFilterChange={this.onSnoobiFilterChange}
                                                 onSortItemChange={this.onSnoobiSortItemChange}
                                                 onMonthItemChange={this.onSnoobiMonthItemChange}
+                                                graph={this.props.snoobi_graph}
+                                                list={this.props.snoobi_list}
+                                                snoobi_most_requested_projects={this.props.snoobi_most_requested_projects}
                                             />
                                         </div>
 

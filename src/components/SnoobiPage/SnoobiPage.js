@@ -59,7 +59,13 @@ class SnoobiPage extends React.Component {
     }
 
     componentDidUpdate() {
-        
+        var data = this.props.graph
+        var ctx = jQuery("#myChart")
+        var myBarChart = new Chart(ctx, {
+            type: 'bar',
+            data: data
+            // options: options
+        });
     }
 
     static defaultProps = {
@@ -68,7 +74,65 @@ class SnoobiPage extends React.Component {
         items: []
         
     }
-  
+
+
+    _renderListitem() {
+        const list_item = this.props.snoobi_most_requested_projects;
+
+        return list_item.map((item, index) => {
+            return (
+                <div className="accordion-group" key={index}>
+                    <div className="accordion-heading" role="tab" id={'heading'+index}>
+                        <a className="accordion-toggle panel_title" data-toggle="collapse" data-parent="#accordion" href={'#collapse'+index} aria-expanded="true" aria-controls={'collapse'+index}>
+                          {item.org_name}
+                        </a>
+                    </div>
+
+                    <div id={'collapse'+index} className="accordion-body collapse" role="tabpanel" aria-labelledby={'heading'+index}>
+                      <div className="accordion-inner">
+                        {item.details}
+                      </div>
+                    </div>
+                </div>
+            )}
+        )
+    }
+
+    _renderProjects() {
+        const requested_projects = this.props.snoobi_most_requested_projects;
+
+        return requested_projects.map((item, index) => {
+            const imgUrl = {
+                backgroundImage: 'url(' + item.featured_image_url + ')',
+            };
+            return (
+                <div className={'item '} key={index}>
+                    <div className="block-klanten">
+                        <div className="img-wrapper" style={ imgUrl}></div>
+                        <div className="text-wrapper">
+                            <div className="title">
+                                <label>{item.project_title}</label>
+                                <span>Bennekom</span>
+                            </div>
+                            <p>{item.excerpt}</p>
+                            <div className="info-wrapper mt15">
+                                <i className={item.eigen_icon_class}></i>
+                                <span>{item.eigen_text}</span>
+                            </div>
+                            <div className="info-wrapper">
+                                <i className="iconc-person"></i>
+                                <span>{item.person_min} tot {item.person_max} personen</span>
+                            </div>
+                            <div className="info-wrapper">
+                                <i className="iconc-room"></i>
+                                <span>{item.zalen_count} zalen</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
+        )
+    }
 
     render() {
         var a = moment('2016-10-01');
@@ -136,129 +200,7 @@ class SnoobiPage extends React.Component {
                         <div className="col-md-12">
                             <div className="offerrequesttab">
                                 <div id="accordion" className="accordion" role="tablist" aria-multiselectable="true">
-                                  <div className="accordion-group">
-                                    <div className="accordion-heading" role="tab" id="headingOne">
-                                        <a className="accordion-toggle panel_title" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                          Yandex enterprise network
-                                        </a>
-                                    </div>
-
-                                    <div id="collapseOne" className="accordion-body collapse" role="tabpanel" aria-labelledby="headingOne">
-                                      <div className="accordion-inner">
-                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div className="accordion-group">
-                                    <div className="accordion-heading" role="tab" id="headingtwo">
-                                        <a className="accordion-toggle panel_title" data-toggle="collapse" data-parent="#accordion" href="#collapsetwo" aria-expanded="true" aria-controls="collapsetwo">
-                                          Simadan Holding B.V.
-                                        </a>
-                                    </div>
-
-                                    <div id="collapsetwo" className="accordion-body collapse" role="tabpanel" aria-labelledby="headingtwo">
-                                      <div className="accordion-inner">
-                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div className="accordion-group">
-                                    <div className="accordion-heading" role="tab" id="headingthree">
-                                        <a className="accordion-toggle panel_title" data-toggle="collapse" data-parent="#accordion" href="#collapsethree" aria-expanded="true" aria-controls="collapsethree">
-                                          Tulip B.V.
-                                        </a>
-                                    </div>
-
-                                    <div id="collapsethree" className="accordion-body collapse" role="tabpanel" aria-labelledby="headingthree">
-                                      <div className="accordion-inner">
-                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div className="accordion-group">
-                                    <div className="accordion-heading" role="tab" id="headingfour">
-                                        <a className="accordion-toggle panel_title" data-toggle="collapse" data-parent="#accordion" href="#collapsefour" aria-expanded="true" aria-controls="collapsefour">
-                                          SBS Broadcasting B.V.
-                                        </a>
-                                    </div>
-
-                                    <div id="collapsefour" className="accordion-body collapse" role="tabpanel" aria-labelledby="headingfour">
-                                      <div className="accordion-inner">
-                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div className="accordion-group">
-                                    <div className="accordion-heading" role="tab" id="headingfive">
-                                        <a className="accordion-toggle panel_title" data-toggle="collapse" data-parent="#accordion" href="#collapsefive" aria-expanded="true" aria-controls="collapsefive">
-                                          Transport Research Laboratory
-                                        </a>
-                                    </div>
-
-                                    <div id="collapsefive" className="accordion-body collapse" role="tabpanel" aria-labelledby="headingfive">
-                                      <div className="accordion-inner">
-                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div className="accordion-group">
-                                    <div className="accordion-heading" role="tab" id="headingsix">
-                                        <a className="accordion-toggle panel_title" data-toggle="collapse" data-parent="#accordion" href="#collapsesix" aria-expanded="true" aria-controls="collapsesix">
-                                          Shoeby-Shop BV
-                                        </a>
-                                    </div>
-
-                                    <div id="collapsesix" className="accordion-body collapse" role="tabpanel" aria-labelledby="headingsix">
-                                      <div className="accordion-inner">
-                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div className="accordion-group">
-                                    <div className="accordion-heading" role="tab" id="headingseven">
-                                        <a className="accordion-toggle panel_title" data-toggle="collapse" data-parent="#accordion" href="#collapseseven" aria-expanded="true" aria-controls="collapseseven">
-                                          Vemedia
-                                        </a>
-                                    </div>
-
-                                    <div id="collapseseven" className="accordion-body collapse" role="tabpanel" aria-labelledby="headingseven">
-                                      <div className="accordion-inner">
-                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div className="accordion-group">
-                                    <div className="accordion-heading" role="tab" id="headingeight">
-                                        <a className="accordion-toggle panel_title" data-toggle="collapse" data-parent="#accordion" href="#collapseeight" aria-expanded="false" aria-controls="collapseeight">
-                                          Ministerie van Veiligheid en Jus…
-                                        </a>
-                                    </div>
-                                    <div id="collapseeight" className="accordion-body collapse" role="tabpanel" aria-labelledby="headingeight">
-                                      <div className="accordion-inner">
-                                        <label>Bedrijf</label>
-                                        <p>Ministerie van Veiligheid en Justitie</p>
-                                        <label>Locatie</label>
-                                        <p>Den Haag</p>
-                                        <label>Datum en wat bekeken</label>
-                                        <table className="table">
-                                            <tbody>
-                                                <tr>
-                                                    <td>14 mei 2015</td>
-                                                    <td>Algemeen</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>14 mei 2015</td>
-                                                    <td>Algemeen</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>14 mei 2015</td>
-                                                    <td>Algemeen</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                      </div>
-                                    </div>
-                                  </div>
+                                    {this._renderListitem()}
                                 </div>
                             </div>
                         </div>
@@ -268,78 +210,7 @@ class SnoobiPage extends React.Component {
                             <label className="mt20 mb15">{trans.snoobiPage_uw_belangrijkste_title}</label>
                             <div className="belangrijkste-wrapper">
                                 <div className="owl-carousel owl-theme" id="belangrijkste_carousel">
-                                    <div className="item active">
-                                        <div className="block-klanten">
-                                            <div className="img-wrapper"></div>
-                                            <div className="text-wrapper">
-                                                <div className="title">
-                                                    <label>Kasteel Hoekelum</label>
-                                                    <span>Bennekom</span>
-                                                </div>
-                                                <p>Conferentieoord Kasteel Hoekelum is door de… Meer lezen over deze vergaderlocatie</p>
-                                                <div className="info-wrapper mt15">
-                                                    <i className="iconc-check"></i>
-                                                    <span>Eigen catering mogelijk</span>
-                                                </div>
-                                                <div className="info-wrapper">
-                                                    <i className="iconc-person"></i>
-                                                    <span>200 tot 1000 personen</span>
-                                                </div>
-                                                <div className="info-wrapper">
-                                                    <i className="iconc-room"></i>
-                                                    <span>2 zalen</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="item">
-                                        <div className="block-klanten">
-                                            <div className="img-wrapper"></div>
-                                            <div className="text-wrapper">
-                                                <div className="title">
-                                                    <label>Rode Hoed</label>
-                                                    <span>Amsterdam</span>
-                                                </div>
-                                                <p>Rode Hoed is zeer geschikt als congreslo…Meer lezen over deze vergaderlocatie</p>
-                                                <div className="info-wrapper mt15">
-                                                    <i className="iconc-cross"></i>
-                                                    <span>Geen eigen catering</span>
-                                                </div>
-                                                <div className="info-wrapper">
-                                                    <i className="iconc-person"></i>
-                                                    <span>2 tot 450 personen</span>
-                                                </div>
-                                                <div className="info-wrapper">
-                                                    <i className="iconc-room"></i>
-                                                    <span>7 zalen</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="item">
-                                        <div className="block-klanten">
-                                            <div className="img-wrapper"></div>
-                                            <div className="text-wrapper">
-                                                <div className="title">
-                                                    <label>Hulstkamp Gebouw</label>
-                                                    <span>Rotterdam</span>
-                                                </div>
-                                                <p>Het Hulstkamp Gebouw besichikt over vijf zal… Meer lezen over deze vergaderlocatie</p>
-                                                <div className="info-wrapper mt15">
-                                                    <i className="iconc-cross"></i>
-                                                    <span>Geen eigen catering</span>
-                                                </div>
-                                                <div className="info-wrapper">
-                                                    <i className="iconc-person"></i>
-                                                    <span>50 tot 500 personen</span>
-                                                </div>
-                                                <div className="info-wrapper">
-                                                    <i className="iconc-room"></i>
-                                                    <span>5 zalen</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    {this._renderProjects()}
                                 </div>
                             </div>
                         </div>
@@ -352,6 +223,11 @@ class SnoobiPage extends React.Component {
                                 <div className="img-wrapper"></div>
                                 <p>{trans.snoobiPage_snoobi_img_desc}</p>
                             </div>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-md-12">
+                            <canvas id="myChart"></canvas>
                         </div>
                     </div>
                 </div>

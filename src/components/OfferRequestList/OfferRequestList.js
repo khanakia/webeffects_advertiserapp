@@ -90,7 +90,7 @@ class OfferRequestList extends React.Component {
             startDate = startDate.add(1, "month");
         };
 
-        return items;        
+        return items;
     }
 
     onItemChange = (item) => {
@@ -151,31 +151,31 @@ class OfferRequestList extends React.Component {
                                     </a>
                                 </div>
                                 <div id={'collapse' + item.id} className="accordion-body collapse offerrequesttable">
-                                    <div className="accordion-inner">                                                  
+                                    <div className="accordion-inner">
                                         <div className="row">
                                             <div className="col-md-6 col-sm-12">
                                                 <div>
                                                     <h5>{trans.offerte_aanhef_label}</h5>
                                                     <p>{item.aanhef}</p>
-                                                </div>                                                                
+                                                </div>
                                             </div>
                                             <div className="col-md-6 col-sm-12">
                                                 <div>
                                                     <h5>{trans.offerte_naam_label}</h5>
                                                     <p>{item.name}</p>
-                                                </div>                                                                
+                                                </div>
                                             </div>
                                             <div className="col-md-6 col-sm-12">
                                                 <div>
                                                     <h5>{trans.offerte_bedrijfsnaam_label}</h5>
                                                     <p>{item.company}</p>
-                                                </div>                                                                
+                                                </div>
                                             </div>
                                             <div className="col-md-6 col-sm-12">
                                                 <div>
                                                     <h5>{trans.offerte_telefoonnummer}</h5>
                                                     <p>{item.phone}</p>
-                                                </div>                                                                                                                            
+                                                </div>
                                             </div>
                                         </div>
                                         <div className="row">    
@@ -183,25 +183,25 @@ class OfferRequestList extends React.Component {
                                                 <div>
                                                     <h5>{trans.offerte_emailadres_label}</h5>
                                                     <p>{item.email}</p>
-                                                </div>                                                                
+                                                </div>
                                             </div>
                                             <div className="col-md-6 col-sm-12">
                                                 <div>
                                                     <h5>{trans.offerte_straatnaam_label}</h5>
                                                     <p>{item.straat}</p>
-                                                </div>                                                                
+                                                </div>
                                             </div>
                                             <div className="col-md-6 col-sm-12">
                                                 <div>
                                                     <h5>{trans.offerte_huisnummer_label}</h5>
                                                     <p>{item.house_no}</p>
-                                                </div>                                                                
+                                                </div>
                                             </div>
                                             <div className="col-md-6 col-sm-12">
                                                 <div>
                                                     <h5>{trans.offerte_postcode_label}</h5>
                                                     <p>{item.postcode}</p>
-                                                </div>                                                                
+                                                </div>
                                             </div>
                                         </div>
                                         <div className="row">
@@ -209,19 +209,19 @@ class OfferRequestList extends React.Component {
                                                 <div>
                                                     <h5>{trans.offerte_plaats_label}</h5>
                                                     <p>{item.plaat}</p>
-                                                </div>                                                                
+                                                </div>
                                             </div>
                                             <div className="col-md-6 col-sm-12">
                                                 <div>
                                                     <h5>{trans.offerte_geplande_datum_label}</h5>
                                                     {this._renderDatumJson(item.datum_json)}
-                                                </div>                                                                
+                                                </div>
                                             </div>
                                             <div className="col-md-6 col-sm-12">
                                                 <div>
                                                     <h5>{trans.offerte_aantal_personen_label}</h5>
                                                     <p>{item.no_of_person}</p>
-                                                </div>                                                                
+                                                </div>
                                             </div>
                                             <div className="col-md-6 col-sm-12">
                                                 <div>
@@ -241,7 +241,7 @@ class OfferRequestList extends React.Component {
                                                 <div>
                                                     <h5>{trans.offerte_locatie_label}</h5>
                                                     <p>{item.description}</p>
-                                                </div>                                                                                                                            
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

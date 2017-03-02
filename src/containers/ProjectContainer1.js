@@ -16,6 +16,9 @@ const mapStateToProps = (state) => {
     return {
         state : state,
         project: state.project.current,
+        snoobi_graph: state.project.snoobi_graph,
+        snoobi_list: state.project.snoobi_list,
+        snoobi_most_requested_projects: state.project.snoobi_most_requested_projects,
         // project_province: state.project.current.province,
         // project_plaat: state.project.current.plaat,
         // project_gebied: state.project.current.gebied,
