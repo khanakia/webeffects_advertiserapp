@@ -75,10 +75,21 @@ class SnoobiPage extends React.Component {
         
     }
 
-
+    renderStatsDetailList(list) {
+        if(undefined==list) return null;
+        return list.map((item, index) => {
+            return (
+                <tr key={index}>
+                    <td>{item.date}</td>
+                    <td>{item.action_text}</td>
+                </tr>
+            )}
+        )
+    }
     _renderListitem() {
-        const list_item = this.props.snoobi_most_requested_projects;
-
+        const list_item = this.props.list;
+        if(undefined==list_item) return null;
+        console.log("this.props.list", this.props.list)
         return list_item.map((item, index) => {
             return (
                 <div className="accordion-group" key={index}>
@@ -90,7 +101,14 @@ class SnoobiPage extends React.Component {
 
                     <div id={'collapse'+index} className="accordion-body collapse" role="tabpanel" aria-labelledby={'heading'+index}>
                       <div className="accordion-inner">
-                        {item.details}
+                        <table>
+                            <tr>
+                                <td>Datum</td>
+                                <td>Wat bekeken</td>
+                            </tr>
+                            {this.renderStatsDetailList(item.details)}
+                        </table>
+                        
                       </div>
                     </div>
                 </div>
@@ -111,7 +129,7 @@ class SnoobiPage extends React.Component {
                         <div className="img-wrapper" style={ imgUrl}></div>
                         <div className="text-wrapper">
                             <div className="title">
-                                <label>{item.project_title}</label>
+                                <label><a href="{{item.url_live}}" target="_blank">{item.project_title}</a></label>
                                 <span>Bennekom</span>
                             </div>
                             <p>{item.excerpt}</p>
@@ -167,14 +185,14 @@ class SnoobiPage extends React.Component {
                     </div>
                     <div className="row">
                         <div className="col-md-6 col-lg-3 mb20">
-                            <CheckboxListDropdown items={this.props.user_actions_list}  onItemChange={this.props.onFilterChange} />
+                            <CheckboxListDropdown items={this.props.user_actions_list}  onItemChange={this.props.onFilterChange} emptyPlaceholder="Select" />
                         </div>
                         <div className="col-md-6 col-lg-9 mb20 snoobiSorten-wrapper">
                             <div className="sorteren-inner visible-lg">
                                 <span className="mr15 sorten-text">{trans.snoobiPage_sorten_text}</span>
                                 
                                 <span className="wp140 mr10 dropdown-inline">
-                                    <DropdownList items={countSortMonth} selectedValue={""} onItemChange={this.props.onMonthItemChange} />
+                                    <DropdownList items={countSortMonth} selectedValue={""} onItemChange={this.props.onMonthItemChange} emptyPlaceholder="Select"/>
                                 </span>
                                 <span className="wp170 dropdown-inline">
                                     <DropdownList items={countSortRecent} selectedValue={"date"} onItemChange={this.props.onSortItemChange} />

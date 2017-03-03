@@ -129,7 +129,7 @@ class OfferRequestList extends React.Component {
 
     _renderItems() {
         const { data } = this.props.offer_request_list;
-        console.log("this.props.itemsthis.props.offererquesss  ", this.props.offer_request_list.data)
+        // console.log("this.props.itemsthis.props.offererquesss  ", this.props.offer_request_list.data)
         if(undefined==data || jQuery.isEmptyObject(data)) {
             return (
                 <div>
