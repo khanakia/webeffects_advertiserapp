@@ -10,37 +10,45 @@
 	.owl-carousel {
 		display: block;
 	}
+
 	.item {
-		max-width: 320px;
-		width: 100%;
+		width: 300px;
 		display: inline-block;
-		margin-right: 20px;
-		margin-bottom: 20px;
+		margin: 0 20px 20px 0;
+		float: left;
+
 		.img-wrapper {	
 			width: 100%;
 			height: 194px;
 			background-repeat: no-repeat;
 			background-position: center;
 			background-size: cover;
-			/*background: url("../images/img1.png") no-repeat center/ cover;*/
 		}
 
 		.text-wrapper {
 			padding: 20px 15px;
 			border: 1px solid #CDD4D7;
 			border-top: none;
+
 			.title {
+
 				label {
 					max-width: 215px;
 					height: 44px;
 					font-size: 16px;
 					color: #101010;
+
+					a {
+						color: #101010;
+					}
 				}
+
 				span {
 					color: #969696;
 					float: right;
 				}
 			}
+
 			p {
 				min-height: 116px;
 				margin-bottom: 0px;
@@ -59,28 +67,36 @@
 				padding: 6px 0;
 			}
 		}
+
 		&:last-child {
 			margin-right: 0;
 		}
 
 	}
+
 	@media screen and (min-width: 768px) and (max-width: 1650px) {
 		.item {
+
 			max-width: 280px;
+
 			.text-wrapper {
+
 				p {
 					min-height: 78px;
 				}
 			}
 		}
 	}
+
 	@media screen and (max-width: 767px) {
-		/*max-width: 600px;*/
+
 		.item {
-			max-width: auto;
+
 			width: 100%;
 			margin: 0;
+
 			.text-wrapper {
+
 				p {
 					min-height: 78px;
 				}

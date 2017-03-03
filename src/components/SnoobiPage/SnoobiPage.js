@@ -95,7 +95,7 @@ class SnoobiPage extends React.Component {
                 <div className="accordion-group" key={index}>
                     <div className="accordion-heading" role="tab" id={'heading'+index}>
                         <a className="accordion-toggle panel_title" data-toggle="collapse" data-parent="#accordion" href={'#collapse'+index} aria-expanded="true" aria-controls={'collapse'+index}>
-                          {item.org_name}
+                          {item.org_name} <span className="count-bekeken"><span className="count-bekeken-value">2</span><span className="count-bekeken-text">x bekeken</span></span>
                         </a>
                     </div>
 
@@ -184,10 +184,10 @@ class SnoobiPage extends React.Component {
                         </div>
                     </div>
                     <div className="row">
-                        <div className="col-md-6 col-lg-3 mb20">
+                        <div className="left-col mb20">
                             <CheckboxListDropdown items={this.props.user_actions_list}  onItemChange={this.props.onFilterChange} emptyPlaceholder="Select" />
                         </div>
-                        <div className="col-md-6 col-lg-9 mb20 snoobiSorten-wrapper">
+                        <div className="right-col mb20 snoobiSorten-wrapper">
                             <div className="sorteren-inner visible-lg">
                                 <span className="mr15 sorten-text">{trans.snoobiPage_sorten_text}</span>
                                 

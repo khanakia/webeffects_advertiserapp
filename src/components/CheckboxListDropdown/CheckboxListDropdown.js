@@ -99,21 +99,7 @@ class CheckboxListDropdown extends React.Component {
 		var checked = this.state.isChecked;
 		var filterTitle;
 		return (
-			<div>
-				<div className="filters_list">
-					{this.state.selectedItems.map(function(value, index){
-						{this.props.items.map(function(item){
-							if (value == item.value) {
-								filterTitle = item.title;
-							}
-						}, this)}
-				  		return (
-					        <label key={index}>
-                    			<span className="filterSelectedValue">{filterTitle} <button className="btn btn-plain" onClick={()=>{this.removeFilter(value)}}><i className="iconc-cross"></i></button></span>
-					        </label>
-				  		)
-				  	}, this)}
-				</div>
+			<div className="dropdown-wrapper">
 				<div className="dropdown dropdown--style1 keep-open" ref="dropdown">
 				  <button className="btn btn-dropdown dropdown-toggle" type="button" id={dropdownId} data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 				    {this.props.emptyPlaceholder}
@@ -137,6 +123,20 @@ class CheckboxListDropdown extends React.Component {
 				  	}, this)}
 
 				  </ul>
+				</div>
+				<div className="filters_list">
+					{this.state.selectedItems.map(function(value, index){
+						{this.props.items.map(function(item){
+							if (value == item.value) {
+								filterTitle = item.title;
+							}
+						}, this)}
+				  		return (
+					        <label key={index}>
+                    			<span className="filterSelectedValue">{filterTitle} <button className="btn btn-plain" onClick={()=>{this.removeFilter(value)}}><i className="iconc-cross"></i></button></span>
+					        </label>
+				  		)
+				  	}, this)}
 				</div>
 			</div>
 		)

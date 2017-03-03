@@ -1375,6 +1375,20 @@ label input[type="radio"]:checked + span {
 			}
 
 		}
+
+		.count-bekeken {
+			float: right;
+			margin: 0 25px 0 0;
+		}
+
+		.count-bekeken-value {
+			padding: 0;
+		}
+
+		.count-bekeken-text {
+			padding: 0;
+		}
+
 		&.active {
 			a {
 				color: #08B995;			
@@ -1433,6 +1447,15 @@ label input[type="radio"]:checked + span {
 		.accordion-inner {
 			border-top: none;
 			border-bottom: 1px solid #CDD4D7;
+		}
+	}
+
+	@media screen and (max-width: 1200px) {
+		.accordion-heading {
+
+			.count-bekeken-text {
+				display: none;
+			}
 		}
 	}
 }
@@ -1682,6 +1705,7 @@ label input[type="radio"]:checked + span {
 }
 
 .filterSelectedValue {
+	display: inline-block;
 	margin-right: 5px;
 	padding: 6px 10px;
 	border: 1px solid #CDD4D7;
@@ -1801,4 +1825,111 @@ label input[type="radio"]:checked + span {
 .pagination > li > a, .pagination > li > span,
 .pagination > li > a:hover, .pagination > li > a:focus, .pagination > li > span:hover, .pagination > li > span:focus {
 	color: #08B995;
+}
+
+/* Checkbox selected CSS on snoobi page --------- */
+.statistieken-wrapper {
+	.left-col {
+		width: 50%;
+		float: left;
+	}
+
+	.right-col {
+		width: 50%;
+		float: left;
+	}
+
+	@media screen and (max-width: 1700px) {
+		.left-col {
+			width: 35%;
+		}
+
+		.right-col {
+			width: 65%;
+		}
+	}
+
+	@media screen and (max-width: 1500px) {
+		.left-col {
+			width: 100%;
+			float: none;
+		}
+
+		.right-col {
+			width: 100%;
+			float: none;
+
+			.sorteren-inner {
+				float: none;
+			}
+		}
+	}
+
+	@media screen and (max-width: 1200px) {
+		.left-col {
+			width: 50%;
+			float: left
+		}
+
+		.right-col {
+			width: 50%;
+			float: left
+		}
+	}
+
+	@media screen and (max-width: 600px) {
+		.left-col {
+			width: 100%;
+			float: none;
+		}
+
+		.right-col {
+			width: 100%;
+			float: none;
+		}
+	}
+}
+
+.dropdown-wrapper {
+	display: table;
+	width: 100%;
+
+	.dropdown {
+		display: table-cell;
+		width: 250px;
+		vertical-align: top;
+
+		.dropdown-menu {
+			top: 40px;
+		}
+	}
+
+	.filters_list {
+		padding: 0 0 0 10px;
+		display: table-cell;
+		vertical-align: middle;
+
+		.filterSelectedValue {
+			margin-bottom: 5px;
+		}
+	}
+
+	@media screen and (max-width: 1700px) {
+		display: block;
+
+		.dropdown {
+			display: block;
+		}
+
+		.filters_list {
+			display: none;
+		}
+	}
+
+	@media screen and (max-width: 1200px) {
+
+		.dropdown {
+			width: auto;
+		}
+	}
 }

@@ -624,18 +624,16 @@ label {
   .belangrijkste-wrapper .owl-carousel {
     display: block; }
   .belangrijkste-wrapper .item {
-    max-width: 320px;
-    width: 100%;
+    width: 300px;
     display: inline-block;
-    margin-right: 20px;
-    margin-bottom: 20px; }
+    margin: 0 20px 20px 0;
+    float: left; }
     .belangrijkste-wrapper .item .img-wrapper {
       width: 100%;
       height: 194px;
       background-repeat: no-repeat;
       background-position: center;
-      background-size: cover;
-      /*background: url("../images/img1.png") no-repeat center/ cover;*/ }
+      background-size: cover; }
     .belangrijkste-wrapper .item .text-wrapper {
       padding: 20px 15px;
       border: 1px solid #CDD4D7;
@@ -645,6 +643,8 @@ label {
         height: 44px;
         font-size: 16px;
         color: #101010; }
+        .belangrijkste-wrapper .item .text-wrapper .title label a {
+          color: #101010; }
       .belangrijkste-wrapper .item .text-wrapper .title span {
         color: #969696;
         float: right; }
@@ -668,14 +668,11 @@ label {
       .belangrijkste-wrapper .item .text-wrapper p {
         min-height: 78px; } }
   @media screen and (max-width: 767px) {
-    .belangrijkste-wrapper {
-      /*max-width: 600px;*/ }
-      .belangrijkste-wrapper .item {
-        max-width: auto;
-        width: 100%;
-        margin: 0; }
-        .belangrijkste-wrapper .item .text-wrapper p {
-          min-height: 78px; } }
+    .belangrijkste-wrapper .item {
+      width: 100%;
+      margin: 0; }
+      .belangrijkste-wrapper .item .text-wrapper p {
+        min-height: 78px; } }
 
 .popover {
   z-index: 999999;
@@ -1684,6 +1681,13 @@ label input[type="radio"]:checked + span {
     .offerrequesttab .accordion-heading a span {
       padding-left: 25px;
       font-weight: normal; }
+  .offerrequesttab .accordion-heading .count-bekeken {
+    float: right;
+    margin: 0 25px 0 0; }
+  .offerrequesttab .accordion-heading .count-bekeken-value {
+    padding: 0; }
+  .offerrequesttab .accordion-heading .count-bekeken-text {
+    padding: 0; }
   .offerrequesttab .accordion-heading.active a {
     color: #08B995; }
   .offerrequesttab .accordion-heading:last-of-type {
@@ -1724,6 +1728,9 @@ label input[type="radio"]:checked + span {
 .offerrequesttab .accordion-group:last-child .accordion-inner {
   border-top: none;
   border-bottom: 1px solid #CDD4D7; }
+@media screen and (max-width: 1200px) {
+  .offerrequesttab .accordion-heading .count-bekeken-text {
+    display: none; } }
 
 /* Locatie parking CSS ------------- */
 #locatie .section-heading h3 {
@@ -1885,6 +1892,7 @@ label input[type="radio"]:checked + span {
     background-position: center; }
 
 .filterSelectedValue {
+  display: inline-block;
   margin-right: 5px;
   padding: 6px 10px;
   border: 1px solid #CDD4D7;
@@ -1961,5 +1969,67 @@ label input[type="radio"]:checked + span {
 .pagination > li > a, .pagination > li > span,
 .pagination > li > a:hover, .pagination > li > a:focus, .pagination > li > span:hover, .pagination > li > span:focus {
   color: #08B995; }
+
+/* Checkbox selected CSS on snoobi page --------- */
+.statistieken-wrapper .left-col {
+  width: 50%;
+  float: left; }
+.statistieken-wrapper .right-col {
+  width: 50%;
+  float: left; }
+@media screen and (max-width: 1700px) {
+  .statistieken-wrapper .left-col {
+    width: 35%; }
+  .statistieken-wrapper .right-col {
+    width: 65%; } }
+@media screen and (max-width: 1500px) {
+  .statistieken-wrapper .left-col {
+    width: 100%;
+    float: none; }
+  .statistieken-wrapper .right-col {
+    width: 100%;
+    float: none; }
+    .statistieken-wrapper .right-col .sorteren-inner {
+      float: none; } }
+@media screen and (max-width: 1200px) {
+  .statistieken-wrapper .left-col {
+    width: 50%;
+    float: left; }
+  .statistieken-wrapper .right-col {
+    width: 50%;
+    float: left; } }
+@media screen and (max-width: 600px) {
+  .statistieken-wrapper .left-col {
+    width: 100%;
+    float: none; }
+  .statistieken-wrapper .right-col {
+    width: 100%;
+    float: none; } }
+
+.dropdown-wrapper {
+  display: table;
+  width: 100%; }
+  .dropdown-wrapper .dropdown {
+    display: table-cell;
+    width: 250px;
+    vertical-align: top; }
+    .dropdown-wrapper .dropdown .dropdown-menu {
+      top: 40px; }
+  .dropdown-wrapper .filters_list {
+    padding: 0 0 0 10px;
+    display: table-cell;
+    vertical-align: middle; }
+    .dropdown-wrapper .filters_list .filterSelectedValue {
+      margin-bottom: 5px; }
+  @media screen and (max-width: 1700px) {
+    .dropdown-wrapper {
+      display: block; }
+      .dropdown-wrapper .dropdown {
+        display: block; }
+      .dropdown-wrapper .filters_list {
+        display: none; } }
+  @media screen and (max-width: 1200px) {
+    .dropdown-wrapper .dropdown {
+      width: auto; } }
 
 /*# sourceMappingURL=app.css.map */
