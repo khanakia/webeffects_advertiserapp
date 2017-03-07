@@ -130,6 +130,8 @@ const language = {
 		"pageProject_rightBlock_terug": "Terug",
 		"pageProject_saved_successfully": "Item succesvol opgeslagen",
 
+		"pageProject_plaat_required": "Plaatnaam required.",
+
 		"changePwd_title": "Eigen wachtwoord aanmaken",
 		"changePwd_old": "Old Password",
 		"changePwd_new": "New Password",

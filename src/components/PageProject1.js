@@ -169,6 +169,10 @@ class PageProject extends Component {
 
         const dataJson = URI.parseQuery(data);
 
+        if(dataJson.plaat_id==false) {
+            toastr.error(trans.pageProject_plaat_required);
+            return false;
+        }
 
         jQuery.confirm({
             title: trans.pageProject_save_title,
@@ -205,9 +209,15 @@ class PageProject extends Component {
         
 
         var _this = this;
-        let data = jQuery(_this.refs.form).serialize();    
+        let data = jQuery(_this.refs.form).serialize();   
 
         const dataJson = URI.parseQuery(data);
+
+        if(dataJson.plaat_id==false) {
+            toastr.error(trans.pageProject_plaat_required);
+            return false;
+        } 
+
         ProjectHelper.save(data).then((response) => {
             toastr.success(trans.pageProject_saved_successfully)
             _this.props.fetchProject(_this.props.params.projectId);
