@@ -42,7 +42,7 @@ const mapDispatchToProps = (dispatch) => {
         },
 
         fetchProjectFormdata: () => {
-            dispatch(fetchProjectFormdata())
+            dispatch(fetchProjectFormdata(window.Env.site_id))
         },
 
         fetchOfferRequestDetailsList: (project_id, page=1) => {

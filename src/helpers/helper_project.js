@@ -118,9 +118,12 @@ export default class ProjectHelper {
         });
     }
 
-    static formdata() {
+    static formdata(site_id) {
         return axios({
-            method: 'get',
+            method: 'post',
+            data: {
+                site_id: site_id
+            },
             url: API_URL_PROJECT_FORMDATA,
             headers: Auth.header(),
         });
@@ -156,6 +159,9 @@ export default class ProjectHelper {
     static getSnoobiGraph(project_id) {
         return axios({
             method: 'post',
+            data: {
+                site_id: Env.site_id
+            },
             url: API_URL_PROJECT + '/' + project_id + '/snoobi/graph',
             headers: Auth.header(),
         });

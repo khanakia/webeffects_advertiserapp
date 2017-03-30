@@ -46,8 +46,8 @@ export function fetchProjectRevision(project_id) {
     };
 }
 
-export function fetchProjectFormdata() {
-    const request = ProjectHelper.formdata();
+export function fetchProjectFormdata(site_id) {
+    const request = ProjectHelper.formdata(site_id);
     return {
         type: FETCH_PROJECT_FORMDATA,
         payload: request
