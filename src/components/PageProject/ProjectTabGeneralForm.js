@@ -88,15 +88,21 @@ class ProjectTabGeneralForm extends Component {
         return (
             <div>
                 <div className="form-group">
-                    <label>{trans.pageProject_naam_locatie_label}</label>
+                    <label>{trans.pageProject_naam_locatie_label}
+                        <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_tooltip_naam_locatie}></a>
+                    </label>
                     <InputBox type="text" className="form-control required" name="project_title" value={this.props.project_title} />
                 </div>
                 <div className="form-group">
-                    <label>{trans.pageProject_algemene_label}</label>
+                    <label>{trans.pageProject_algemene_label}
+                        <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_tooltip_algemene_beschrijving}></a>
+                    </label>
                     <textarea className="editor" name="description" ref="description" defaultValue={this.props.description}></textarea>
                 </div>
                 <div className="form-group">
-                    <label>{trans.pageProject_representatieve_label}</label>
+                    <label>{trans.pageProject_representatieve_label}
+                        <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_tooltip_representatieve_buitenafbeelding}></a>
+                    </label>
                     <FileInput
                         reset={this.props.reset} 
                         onAttachmentDeleted={this.props.onAttachmentDeleted} 
@@ -106,16 +112,22 @@ class ProjectTabGeneralForm extends Component {
                 </div>
 
                 <div className="form-group">
-                    <label>{trans.pageProject_video_link_label}</label>
+                    <label>{trans.pageProject_video_link_label}
+                        <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_tooltip_video_links}></a>
+                    </label>
                     <VideoInput items={this.props.project_videos} onVideoDeleted={this.props.onVideoDeleted} reset={this.props.reset} />
                 </div>
                 <div className="form-group">
-                    <label>{trans.pageProject_garden_tour_label}</label>
+                    <label>{trans.pageProject_garden_tour_label}
+                        <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_tooltip_360_graden_tour_iframe}></a>
+                    </label>
                     <IframeInput items={this.props.project_iframes} onIframeDeleted={this.props.onIframeDeleted} />
                 </div>
 
                 <div className="form-group">
-                    <label>{trans.pageProject_actie_label}</label>
+                    <label>{trans.pageProject_actie_label}
+                        <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_tooltip_actie_toevoegen}></a>
+                    </label>
                     {/*<RadioList name="discount_filter_value_id" items={toevoegenList} selectedValue={this.props.discount_filter_value_id} />*/}
 
                     <RadioButtonGroup name="discount_filter_value_id" choices={toevoegenList} checkedValue={this.state.discount_filter_value_id} onChange={this.handleChange} />
@@ -123,18 +135,18 @@ class ProjectTabGeneralForm extends Component {
                 </div>
 
                 <div className="form-group">
-                    <label className="question-mark-icon">{trans.pageProject_Aanbieding_label} <br /> {trans.pageProject_aanbieding_korte_label}
-                        <a href="#" className="popoverData" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_aanbieding_korte_data_content}></a>
+                    <label>{trans.pageProject_Aanbieding_label} <br /> {trans.pageProject_aanbieding_korte_label}
+                        <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_tooltip_aanbieding_korte}></a>
                     </label>
-                    <InputBox type="text" className="form-control" name="discount_short_title" value={this.props.discount_short_title} placeholder={trans.pageProject_aanbieding_korte_placeholder} />
+                    <InputBox type="text" className="form-control" name="discount_short_title" value={this.props.discount_short_title} placeholder={trans.pageProject_tooltip_aanbieding_korte} />
                     
                 </div>
 
                 <div className="form-group">
-                    <label className="question-mark-icon">{trans.pageProject_Aanbieding_label} <br /> {trans.pageProject_aanbieding_lange_label}
-                        <a href="#" className="popoverData" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_aanbieding_lange_data_content}></a>
+                    <label>{trans.pageProject_Aanbieding_label} <br /> {trans.pageProject_aanbieding_lange_label}
+                        <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_tooltip_aanbieding_lange}></a>
                     </label>
-                    <InputBox type="text" className="form-control" name="discount_long_title" value={this.props.discount_long_title} placeholder={trans.pageProject_aanbieding_lange_placeholder} />
+                    <InputBox type="text" className="form-control" name="discount_long_title" value={this.props.discount_long_title} placeholder={trans.pageProject_tooltip_aanbieding_lange} />
                 </div>
             </div>
         )

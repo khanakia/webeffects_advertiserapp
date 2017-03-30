@@ -130,7 +130,9 @@ class ProjectTabDetailForm extends Component {
         return (
             <div>
                 <div className="form-group aantal-personen">
-                    <label>{trans.pageProject_details_aantal_personen}</label>
+                    <label>{trans.pageProject_details_aantal_personen}
+                        <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_tooltip_aantal_personen}></a>
+                    </label>
                     <div className="row">
                         <div className="col-lg-4">
                             <div className="input-group">
@@ -152,7 +154,9 @@ class ProjectTabDetailForm extends Component {
                 </div>
 
                 <div className="form-group">
-                    <label>{trans.pageProject_details_catering}</label>
+                    <label>{trans.pageProject_details_catering}
+                        <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_tooltip_catering}></a>
+                    </label>
                     <div className="row">
                         <div className="col-md-8">
                             {/*<RadioList name="eigen_catering" isIcon items={radioEigenCaterign} selectedValue={this.props.eigen_catering} />*/}
@@ -164,21 +168,27 @@ class ProjectTabDetailForm extends Component {
                 <div className="row page_project_details_checkbox">
                     <div className="col-lg-6">
                         <div className="form-group">
-                            <label>{trans.pageProject_details_gebouwen}</label>
+                            <label>{trans.pageProject_details_gebouwen}
+                                <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_tooltip_gebouwen}></a>
+                            </label>
                             {/*<CheckboxList name='gebouws[]' items={this.props.gebouwenList} selectedItems={this.props.gebouws_mapping_ids} />*/}
                             <ChecboxButtonGroup name='gebouw_ids[]' choices={this.props.gebouwenList} checkedValues={this.state.gebouws_mapping_ids} onChange={this.handleChange_gebouws} />
                         </div>
                     </div>
                     <div className="col-lg-6">
                         <div className="form-group">
-                            <label>{trans.pageProject_details_ligging}</label>
+                            <label>{trans.pageProject_details_ligging}
+                                <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_tooltip_ligging}></a>
+                            </label>
                             {/*<CheckboxList name='liggings[]' items={this.props.liggingList} selectedItems={this.props.liggings_mapping_ids} />*/}
                             <ChecboxButtonGroup name='ligging_ids[]' choices={this.props.liggingList} checkedValues={this.state.liggings_mapping_ids} onChange={this.handleChange_liggings} />
                         </div>
                     </div>
                     <div className="col-lg-6 clear-both">
                         <div className="form-group">
-                            <label>{trans.pageProject_details_eigenschappen}</label>
+                            <label>{trans.pageProject_details_eigenschappen}
+                                <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_tooltip_eigenschappen}></a>
+                            </label>
                             {/*<CheckboxList name='eigenschappens[]' items={this.props.eigenschappenList} selectedItems={this.props.eigenschappens_mapping_ids} />*/}
                             <ChecboxButtonGroup name='eigenschappen_ids[]' choices={this.props.eigenschappenList} checkedValues={this.state.eigenschappens_mapping_ids} onChange={this.handleChange_eigenschappens} />
                         </div>

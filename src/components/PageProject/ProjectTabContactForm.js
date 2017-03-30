@@ -40,7 +40,9 @@ class ProjectTabContactForm extends Component {
         return (
             <div>
                 <div className="form-group">
-                    <label>{trans.pageProject_details_contactpersonen}</label>
+                    <label>{trans.pageProject_details_contactpersonen}
+                        <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_tooltip_contactpersoon}></a>
+                    </label>
 
                     <div className="row">
                         <div className="col-md-4">
@@ -76,7 +78,9 @@ class ProjectTabContactForm extends Component {
                 </div>
 
                  <div className="form-group input-group-vmerge">
-                    <label>Emails</label>
+                    <label>{trans.pageProject_email_label}
+                        <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_tooltip_emails}></a>
+                    </label>
                     <div className="row">
                         <div className="col-md-8">
                             <EmailInput items={this.props.contact_emails} reset={this.props.reset} />
@@ -85,7 +89,9 @@ class ProjectTabContactForm extends Component {
                 </div>
 
                 <div className="form-group input-group-vmerge">
-                    <label>{trans.pageProject_website_label}</label>
+                    <label>{trans.pageProject_website_label}
+                        <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_tooltip_website}></a>
+                    </label>
                     <div className="row">
                         <div className="col-md-8">
                             <div className="input-group">

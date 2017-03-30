@@ -151,7 +151,9 @@ class Zalen extends React.Component {
         return (
             <div>
                 <div className="form-group">
-                    <label>{trans.zalen_page_title}</label>
+                    <label>{trans.zalen_page_title}
+                        <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_tooltip_zalen}></a>
+                    </label>
                     <div className="row">
                         <div className="col-md-4">
                             <InputBox type="text" className="form-control" name={`zalen`} value={this.state.zalen} />

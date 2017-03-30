@@ -82,10 +82,8 @@ const language = {
 		"pageProject_Aanbieding_label": "Aanbieding",
 		"pageProject_aanbieding_korte_label": "(korte versie - max 40 karakters)",
 		"pageProject_aanbieding_korte_placeholder": "Nu 20% korting bij 200 personen!",
-		"pageProject_aanbieding_korte_data_content": "De korte versie van de actie zal in het locatie overzicht en bovenin de detailpagina komen te staan.",
 		"pageProject_aanbieding_lange_label": "(lange versie - max 80 karakters)",
 		"pageProject_aanbieding_lange_placeholder": "U krijgt nu 20% korting bij een offerte van meer dan 200 personen!",
-		"pageProject_aanbieding_lange_data_content": "De lange versie van de actie zal naast het formulier dat de gebruiker in moet vullen komen te staan.",
 
 		"pageProject_radio_geen_eigen": "Geen eigen catering mogelijk",
 		"pageProject_radio_eigen": "Eigen catering mogelijk",
@@ -101,6 +99,7 @@ const language = {
 		"pageProject_geen_actie": "Geen actie",
 		"pageProject_actie_voor": "Actie voor",
 
+		"pageProject_email_label": "Emails",
 		"pageProject_website_label": "Website",
 
 		"pageProject_tab_details": "Details",
@@ -131,6 +130,31 @@ const language = {
 		"pageProject_saved_successfully": "Item succesvol opgeslagen",
 
 		"pageProject_plaat_required": "Plaatnaam required.",
+
+
+		"pageProject_tooltip_naam_locatie": 'Naam Locatie',
+		"pageProject_tooltip_algemene_beschrijving": 'Algemene beschrijving',
+		"pageProject_tooltip_representatieve_buitenafbeelding": 'Representatieve buitenafbeelding',
+		"pageProject_tooltip_video_links": 'Video links',
+		"pageProject_tooltip_360_graden_tour_iframe": '360 graden tour iframe',
+		"pageProject_tooltip_actie_toevoegen": 'Actie toevoegen',
+		"pageProject_tooltip_aanbieding_korte": "De korte versie van de actie zal in het locatie overzicht en bovenin de detailpagina komen te staan.",
+		"pageProject_tooltip_aanbieding_lange": "De lange versie van de actie zal naast het formulier dat de gebruiker in moet vullen komen te staan.",
+		"pageProject_tooltip_aantal_personen": 'Aantal personen',
+		"pageProject_tooltip_catering": 'Catering',
+		"pageProject_tooltip_gebouwen": 'Gebouwen',
+		"pageProject_tooltip_ligging": 'Ligging',
+		"pageProject_tooltip_eigenschappen": 'Eigenschappen',
+		"pageProject_tooltip_zalen": 'Zalen',
+		"pageProject_tooltip_contactpersoon": 'Contactpersoon',
+		"pageProject_tooltip_emails": 'Emails',
+		"pageProject_tooltip_website": 'Website',
+		"pageProject_tooltip_address": 'Address',
+		"pageProject_tooltip_location": 'location',
+		"pageProject_tooltip_parking": 'Parking',
+		"pageProject_tooltip_offerte_aanvragen": 'Offerte aanvragen',
+		"pageProject_tooltip_uw_advertentie": 'Uw advertentie is bezocht door',
+
 
 		"changePwd_title": "Eigen wachtwoord aanmaken",
 		"changePwd_old": "Old Password",

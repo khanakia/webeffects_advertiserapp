@@ -180,7 +180,9 @@ class SnoobiPage extends React.Component {
                 <div className="form-group">
                     <div className="row">
                         <div className="form-group col-md-12">
-                            <label>{trans.snoobiPage_uw_advertentie}</label>
+                            <label>{trans.snoobiPage_uw_advertentie}
+                                <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_tooltip_uw_advertentie}></a>
+                            </label>
                         </div>
                     </div>
                     <div className="row">

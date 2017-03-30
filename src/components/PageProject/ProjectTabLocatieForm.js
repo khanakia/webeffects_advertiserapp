@@ -392,7 +392,9 @@ class ProjectTabLocatieForm extends React.Component {
             <div className={'comp-locatieinput ' + this.props.className} ref="locatieinput">
                 {/*<button type="button" onClick={this.handleRefresh}>REFRESH</button>*/}
                 <div className="form-group">
-                    <label>{trans.locatieInput_adres}</label>
+                    <label>{trans.locatieInput_adres}
+                        <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_tooltip_address}></a>
+                    </label>
                 </div>
                 <div className="section-zoek">
                     <span className="zoek_text">{trans.locatieInput_zoek}</span>
@@ -417,7 +419,9 @@ class ProjectTabLocatieForm extends React.Component {
 
           
                 <div className="form-group input-group-vmerge mt20">
-                    <label>{trans.locatieInput_ligging}</label>
+                    <label>{trans.locatieInput_ligging}
+                        <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_tooltip_location}></a>
+                    </label>
                     <div className="row">
                         <div className="col-md-4">
                             <InputBox type="text" className="form-control" name={`ligging`} value={this.state.ligging} />
@@ -427,7 +431,9 @@ class ProjectTabLocatieForm extends React.Component {
 
 
                 <div className="form-group input-group-vmerge">
-                    <label>{trans.locatieInput_parkeren}</label>
+                    <label>{trans.locatieInput_parkeren}
+                        <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_tooltip_parking}></a>
+                    </label>
                     <div className="row">
                         <div className="col-md-4">
                             <InputBox type="text" className="form-control" name={`parkeren`} value={this.state.parkeren} />

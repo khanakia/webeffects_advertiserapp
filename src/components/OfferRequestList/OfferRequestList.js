@@ -258,7 +258,9 @@ class OfferRequestList extends React.Component {
         return (
             <div>
                 <div className="section_offerrequest_dropdown form-group">
-                    <label>{trans.offerte_title}</label>
+                    <label>{trans.offerte_title}
+                        <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_tooltip_offerte_aanvragen}></a>
+                    </label>
                     {/*<div className="short-dropdown">
                         <DropdownList items={this.dateItemArray()} onItemChange={this.onItemChange} emptyPlaceholder={trans.select_maand_placeholder} />
                     </div>*/}
