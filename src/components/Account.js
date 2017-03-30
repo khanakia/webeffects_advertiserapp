@@ -8,8 +8,6 @@ import {Auth, Localstore, UserHelper, ContactHelper, ProjectHelper} from '../hel
 
 import ChangePasswordForm from 'components/Forms/ChangePasswordForm'
 
-// import ContactPersonInput from './ContactPersonInput'
-// import ProjectContactInput from './ProjectContactInput' 
 
 class Account extends Component {
     constructor(props, context) {
@@ -74,102 +72,7 @@ class Account extends Component {
 
   
 
-    // handleSumbit() {
-    //     var _this = this;
-    //     let data = jQuery(_this.refs.form_contactperson).serialize();    
-
-    //     ContactHelper.saveAll(data).then((response) => {
-    //         _this.props.fetchContacts();
-    //     })
-
-    // }
-
-    // handleCancel() {
-    //     jQuery.confirm({
-    //         title: trans.account_confirm_title,
-    //         content: trans.account_confirm_content,
-    //         closeIcon: true,
-    //         columnClass: 'col-md-6 col-md-offset-3',
-    //         buttons: {
-    //             cancelAction: {
-    //                 text: trans.account_confirm_cancel,
-    //                 action: function () {
-    //                     jQuery(".jconfirm").hide()
-    //                 }
-    //             },
-    //             deleteAction: {
-    //                 text: trans.account_confirm_delete,
-    //                 action: function () {
-    //                     window.location.reload()
-    //                     jQuery(".jconfirm").hide()
-    //                 }
-    //             }
-    //         }
-    //     })
-    // }
-
-    // onContactItemChange = (item, project_id) => {
-    //     console.log(item)
-    //     ProjectHelper.updateContact(project_id, item.id)
-    // }
-
-    // onContactItemRemoved = () => {
-    //     this.props.fetchContacts();
-    // }
-
-    // onContactItemUpdate = () => {
-    //     this.props.fetchContacts();   
-    // }
     
-
-    // disableEmailReminder = () => {
-    //     UserHelper.disableEmailReminder().then((response) => {
-    //         this.props.fetchCurrentUser()
-    //     })
-    // }
-
-    // enableEmailReminder = () => {
-    //     UserHelper.enableEmailReminder().then((response) => {
-    //         this.props.fetchCurrentUser()
-    //     })
-    // }
-
-    _render_tabGegevens() {
-        return (
-            <div>
-                <form ref="form_contactperson">
-                    <div className="form-group">
-                        <label className="mb15">{trans.account_bedrijfsnaam_label}</label>
-                        <div className="row">
-                            <div className="col-md-4">
-                                <div className="input-group">
-                                    <span className="input-group-addon">
-                                        <i className="iconc-buildings"></i>
-                                    </span>
-                                    <input type="text" className="form-control" name="company_name" defaultValue={this.props.current_user.company_name}  />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="form-group">
-                        <label>{trans.account_contactpersonen}</label>
-                        
-                            <ContactPersonInput 
-                                items={this.props.contact_list} 
-                                onUpdate={this.onContactItemUpdate}
-                                onRemoved={this.onContactItemRemoved} />
-                    </div>
-                </form>
-
-                <div className="form-group">
-                    <label>{trans.account_locatie_contactpersonen}</label>
-                    <ProjectContactInput onItemChange={this.onContactItemChange} items={this.props.project_list}  contact_list={this.props.contact_list}/>
-                </div>
-            </div>
-        )
-    }
-
     _render_rightBlock() {
         return (
             <div className="block-right" ref="block_right">
@@ -184,14 +87,6 @@ class Account extends Component {
                         </div>
                     </div>
                 </div>
-
-                {/*<div className="block-info">
-                                    { (this.props.current_user.email_reminder_status) ?
-                                        <button className="btn btn-plainBlack" onClick={()=>{this.disableEmailReminder()}}><i className="fa fa-bell before_text"></i>{trans.disable_reminder_email_btn}</button>
-                                        :
-                                        <button className="btn btn-plainBlack" onClick={()=>{this.enableEmailReminder()}}><i className="fa fa-bell before_text"></i>{trans.enable_reminder_email_btn}</button>
-                                    }
-                                </div>*/}
             </div>
         )
     }

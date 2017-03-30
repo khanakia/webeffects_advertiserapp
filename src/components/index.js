@@ -3,7 +3,6 @@ export Login from './Login';
 export ResetPassword from './ResetPassword';
 export ForgetPassword from './ForgetPassword';
 export ProjectOverview from './ProjectOverview';
-export PageProject from './PageProject';
 export PageProject1 from './PageProject1';
 
 export Account from './Account';

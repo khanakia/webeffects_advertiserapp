@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import {PageProject} from '../components'
+import {PageProject1} from '../components'
 
 import { fetchProject, fetchProjectFormdata, fetchOfferRequestDetailsList } from '../actions/action_project';
 const mapStateToProps = (state) => {
@@ -27,6 +27,6 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 
-const ProjectNewContainer = connect(mapStateToProps, mapDispatchToProps)(PageProject)
+const ProjectNewContainer = connect(mapStateToProps, mapDispatchToProps)(PageProject1)
 
 export default ProjectNewContainer
