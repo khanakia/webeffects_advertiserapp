@@ -9,16 +9,19 @@ import {
     fetchProjectRevision,
     fetchProjectFormdata,
     fetchOfferRequestDetailsList,
-    fetchSnoobiList,
-    fetchSnoobiGraph,
-    fetchSnoobiMostRequestedProjects } from '../actions/action_project';
+    fetchSnoobiData,
+    // fetchSnoobiList,
+    // fetchSnoobiGraph,
+    // fetchSnoobiMostRequestedProjects
+} from '../actions/action_project';
 const mapStateToProps = (state) => {
     return {
         state : state,
         project: state.project.current,
-        snoobi_graph: state.project.snoobi_graph,
-        snoobi_list: state.project.snoobi_list,
-        snoobi_most_requested_projects: state.project.snoobi_most_requested_projects,
+        snoobi_data: state.project.snoobi_data,
+        // snoobi_graph: state.project.snoobi_graph,
+        // snoobi_list: state.project.snoobi_list,
+        // snoobi_most_requested_projects: state.project.snoobi_most_requested_projects,
         // project_province: state.project.current.province,
         // project_plaat: state.project.current.plaat,
         // project_gebied: state.project.current.gebied,
@@ -54,18 +57,25 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(fetchProjects()); 
         },
 
-        fetchSnoobiList: (project_id, page=1, args) => {
+
+        fetchSnoobiData: (project_id, page=1, args) => {
             console.log(args)
-            dispatch(fetchSnoobiList(project_id, page, args));
+            dispatch(fetchSnoobiData(project_id, page, args));
         },
 
-        fetchSnoobiGraph: (project_id) => {
-            dispatch(fetchSnoobiGraph(project_id)); 
-        },
 
-        fetchSnoobiMostRequestedProjects: (project_id) => {
-            dispatch(fetchSnoobiMostRequestedProjects(project_id)); 
-        },
+        // fetchSnoobiList: (project_id, page=1, args) => {
+        //     console.log(args)
+        //     dispatch(fetchSnoobiList(project_id, page, args));
+        // },
+
+        // fetchSnoobiGraph: (project_id) => {
+        //     dispatch(fetchSnoobiGraph(project_id)); 
+        // },
+
+        // fetchSnoobiMostRequestedProjects: (project_id) => {
+        //     dispatch(fetchSnoobiMostRequestedProjects(project_id)); 
+        // },
 
     }
 }

@@ -296,10 +296,6 @@ const language = {
 
 		"disable_reminder_email_btn": "Schakel offerte-meldingen uit",
 		"enable_reminder_email_btn": "Schakel offerte-meldingen on",
-
-		
-
-		
 	}
 }
 

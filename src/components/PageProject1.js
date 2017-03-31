@@ -45,9 +45,11 @@ class PageProject extends Component {
             this.props.fetchProjectRevision(this.props.params.projectId);
             this.props.fetchOfferRequestDetailsList(this.props.params.projectId);
 
-            this.props.fetchSnoobiList(this.props.params.projectId);
-            this.props.fetchSnoobiGraph(this.props.params.projectId);
-            this.props.fetchSnoobiMostRequestedProjects(this.props.params.projectId);
+            this.props.fetchSnoobiData(this.props.params.projectId);
+
+            // this.props.fetchSnoobiList(this.props.params.projectId);
+            // this.props.fetchSnoobiGraph(this.props.params.projectId);
+            // this.props.fetchSnoobiMostRequestedProjects(this.props.params.projectId);
         }
     }
 
@@ -554,9 +556,10 @@ class PageProject extends Component {
                                                 onFilterChange={this.onSnoobiFilterChange}
                                                 onSortItemChange={this.onSnoobiSortItemChange}
                                                 onMonthItemChange={this.onSnoobiMonthItemChange}
-                                                graph={this.props.snoobi_graph}
-                                                list={this.props.snoobi_list}
-                                                snoobi_most_requested_projects={this.props.snoobi_most_requested_projects}
+                                                data={this.props.snoobi_data}
+                                                // graph={this.props.snoobi_graph}
+                                                // list={this.props.snoobi_list}
+                                                // snoobi_most_requested_projects={this.props.snoobi_most_requested_projects}
                                             />
                                         </div>
 

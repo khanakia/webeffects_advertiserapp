@@ -3,6 +3,10 @@ import React, { PropTypes } from 'react'
 import DropdownList from '../DropdownList'
 import CheckboxListDropdown from '../CheckboxListDropdown'
 
+import ProjectItems from './ProjectItems'
+import SnoobiGraph from './SnoobiGraph'
+import StatisticTabList from './StatisticTabList'
+
 class SnoobiPage extends React.Component {
 
     constructor(props) {
@@ -11,148 +15,32 @@ class SnoobiPage extends React.Component {
 
     static defaultProps = {
         user_actions_list: [],
-        list: [],
-        graph: [],
-        snoobi_most_requested_projects: [],
+        data : {},
+        // list: [],
+        // graph: [],
+        // snoobi_most_requested_projects: [],
         onSortItemChange: function(item){},
         onMonthItemChange: function(item){},
         onFilterChange: function(filters){},
     }
 
-
     componentWillMount() {
+
     }
 
     componentDidMount() {
-        jQuery('.accordion')
-        .on('show.bs.collapse', function(e) {
-        jQuery(e.target).prev('.accordion-heading').addClass('active');
-        })
-        .on('hide.bs.collapse', function(e) {
-        jQuery(e.target).prev('.accordion-heading').removeClass('active');
-        });
+     
 
-        if (Modernizr.mq('only all and (max-width: 767px)')) {
-            var winWidth = $(window).width() - 90;
-            $(".belangrijkste-wrapper").width(winWidth);
-            jQuery('#belangrijkste_carousel').owlCarousel({
-                loop: false,
-                dots: false,
-                margin:15,
-                nav:false,
-                navText: [
-                  "<i class='fa fa-angle-left' ></i>",
-                  "<i class='fa fa-angle-right'></i>"
-                ],
-                responsive:{
-                    0:{
-                        items:1,
-                        stagePadding: 0,
-                    },
-                    600:{
-                        items:1,
-                        stagePadding: 50,
-                    },
-                }
-            });
-        }
     }
 
     componentDidUpdate() {
-        var data = this.props.graph
-        var ctx = jQuery("#myChart")
-        var myBarChart = new Chart(ctx, {
-            type: 'bar',
-            data: data
-            // options: options
-        });
+    
     }
 
-    static defaultProps = {
-        className: '',
-        theme: '',
-        items: []
-        
-    }
-
-    renderStatsDetailList(list) {
-        if(undefined==list) return null;
-        return list.map((item, index) => {
-            return (
-                <tr key={index}>
-                    <td>{item.date}</td>
-                    <td>{item.action_text}</td>
-                </tr>
-            )}
-        )
-    }
-    _renderListitem() {
-        const list_item = this.props.list;
-        if(undefined==list_item) return null;
-        console.log("this.props.list", this.props.list)
-        return list_item.map((item, index) => {
-            return (
-                <div className="accordion-group" key={index}>
-                    <div className="accordion-heading" role="tab" id={'heading'+index}>
-                        <a className="accordion-toggle panel_title" data-toggle="collapse" data-parent="#accordion" href={'#collapse'+index} aria-expanded="true" aria-controls={'collapse'+index}>
-                          {item.org_name} <span className="count-bekeken"><span className="count-bekeken-value">{item.details_count}</span><span className="count-bekeken-text">x bekeken</span></span>
-                        </a>
-                    </div>
-
-                    <div id={'collapse'+index} className="accordion-body collapse" role="tabpanel" aria-labelledby={'heading'+index}>
-                      <div className="accordion-inner">
-                        <table>
-                            <tr>
-                                <td>Datum</td>
-                                <td>Wat bekeken</td>
-                            </tr>
-                            {this.renderStatsDetailList(item.details)}
-                        </table>
-                        
-                      </div>
-                    </div>
-                </div>
-            )}
-        )
-    }
-
-    _renderProjects() {
-        const requested_projects = this.props.snoobi_most_requested_projects;
-
-        return requested_projects.map((item, index) => {
-            const imgUrl = {
-                backgroundImage: 'url(' + item.featured_image_url + ')',
-            };
-            return (
-                <div className={'item '} key={index}>
-                    <div className="block-klanten">
-                        <div className="img-wrapper" style={ imgUrl}></div>
-                        <div className="text-wrapper">
-                            <div className="title">
-                                <label><a href="{{item.url_live}}" target="_blank">{item.project_title}</a></label>
-                                <span>Bennekom</span>
-                            </div>
-                            <p>{item.excerpt}</p>
-                            <div className="info-wrapper mt15">
-                                <i className={item.eigen_icon_class}></i>
-                                <span>{item.eigen_text}</span>
-                            </div>
-                            <div className="info-wrapper">
-                                <i className="iconc-person"></i>
-                                <span>{item.person_min} tot {item.person_max} personen</span>
-                            </div>
-                            <div className="info-wrapper">
-                                <i className="iconc-room"></i>
-                                <span>{item.zalen_count} zalen</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            )}
-        )
-    }
 
     render() {
+
+        // console.log('this.props.data SNOOOBBBB', this.props.data);
         var a = moment('2016-10-01');
         var b = moment();
 
@@ -190,7 +78,7 @@ class SnoobiPage extends React.Component {
                             <CheckboxListDropdown items={this.props.user_actions_list}  onItemChange={this.props.onFilterChange} emptyPlaceholder="Select" />
                         </div>
                         <div className="right-col mb20 snoobiSorten-wrapper">
-                            <div className="sorteren-inner visible-lg">
+                            <div className="sorteren-inner ">
                                 <span className="mr15 sorten-text">{trans.snoobiPage_sorten_text}</span>
                                 
                                 <span className="wp140 mr10 dropdown-inline">
@@ -201,38 +89,17 @@ class SnoobiPage extends React.Component {
                                 </span>
                                 
                             </div>
-                            <div className="dropdown dropdown--style1 hidden-lg">
-                                <button className="btn btn-dropdown dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sorteren op<i className="iconc-chevron-down"></i></button>
-                                <ul className="dropdown-menu list-group" aria-labelledby="dropdownMenu1">
-                                    <li className="list-group-item"><label><input type="radio" name="staus" value="recent" /><span>{trans.snoobiPage_sort_recente}</span></label></li>
-                                    <li className="list-group-item"><label><input type="radio" name="status" value="alfabet" /><span>{trans.snoobiPage_sort_alfabet}</span></label></li>
-
-                                    <li className="list-group-item"><label><span>Datum</span></label></li>
-                                    <li className="list-group-item"><label><input type="radio" name="datum" value="trouwen" /><span>februari 2016</span></label></li>
-                                    <li className="list-group-item"><label><input type="radio" name="datum" value="zalen" /><span>maart 2016</span></label></li>
-                                    <li className="list-group-item"><label><input type="radio" name="datum" value="vergaderen" /><span>april 2016 & congres</span></label></li>
-                                    <li className="list-group-item"><label><input type="radio" name="datum" value="vermelding" /><span>mei 2016</span></label></li>
-                                </ul>
-                            </div>
+                            
                         </div>
                     </div>
                     <div className="row">
                         <div className="col-md-12">
-                            <div className="offerrequesttab">
-                                <div id="accordion" className="accordion" role="tablist" aria-multiselectable="true">
-                                    {this._renderListitem()}
-                                </div>
-                            </div>
+                            <StatisticTabList items={this.props.data.list} />
                         </div>
                     </div>
                     <div className="row">
                         <div className="col-md-12">
-                            <label className="mt20 mb15">{trans.snoobiPage_uw_belangrijkste_title}</label>
-                            <div className="belangrijkste-wrapper">
-                                <div className="owl-carousel owl-theme" id="belangrijkste_carousel">
-                                    {this._renderProjects()}
-                                </div>
-                            </div>
+                            <ProjectItems items={this.props.data.list_mostrequested_project} />
                         </div>
                     </div>
                     <div className="row">
@@ -247,7 +114,7 @@ class SnoobiPage extends React.Component {
                     </div>
                     <div className="row">
                         <div className="col-md-12">
-                            <canvas id="myChart"></canvas>
+                            <SnoobiGraph data={this.props.data.list_graph} />
                         </div>
                     </div>
                 </div>

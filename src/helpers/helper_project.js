@@ -142,7 +142,7 @@ export default class ProjectHelper {
 
 
 
-    static getSnoobiList(project_id, page=1, args={}) {
+    static getSnoobiData(project_id, page=1, args={}) {
         console.log(args)
         return axios({
             method: 'post',
@@ -150,28 +150,43 @@ export default class ProjectHelper {
             data: {
                 page: page,
                 args: args,
-            },
-            headers: Auth.header(),
-        });
-    }
-
-
-    static getSnoobiGraph(project_id) {
-        return axios({
-            method: 'post',
-            data: {
                 site_id: Env.site_id
             },
-            url: API_URL_PROJECT + '/' + project_id + '/snoobi/graph',
             headers: Auth.header(),
         });
     }
 
-    static getSnoobiMostRequestedProjects(project_id) {
-        return axios({
-            method: 'post',
-            url: API_URL_PROJECT + '/' + project_id + '/snoobi/get_most_offer_requested_projects',
-            headers: Auth.header(),
-        });
-    }
+
+    // static getSnoobiList(project_id, page=1, args={}) {
+    //     console.log(args)
+    //     return axios({
+    //         method: 'post',
+    //         url: API_URL_PROJECT + '/' + project_id + '/snoobi',
+    //         data: {
+    //             page: page,
+    //             args: args,
+    //         },
+    //         headers: Auth.header(),
+    //     });
+    // }
+
+
+    // static getSnoobiGraph(project_id) {
+    //     return axios({
+    //         method: 'post',
+    //         data: {
+    //             site_id: Env.site_id
+    //         },
+    //         url: API_URL_PROJECT + '/' + project_id + '/snoobi/graph',
+    //         headers: Auth.header(),
+    //     });
+    // }
+
+    // static getSnoobiMostRequestedProjects(project_id) {
+    //     return axios({
+    //         method: 'post',
+    //         url: API_URL_PROJECT + '/' + project_id + '/snoobi/get_most_offer_requested_projects',
+    //         headers: Auth.header(),
+    //     });
+    // }
 }
