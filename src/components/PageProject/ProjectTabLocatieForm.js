@@ -409,7 +409,7 @@ class ProjectTabLocatieForm extends React.Component {
                     <span className="wp130">
                         <DropdownList items={itemsprovice} selectedValue={this.props.selectedProvinceId} name="province_id" emptyPlaceholder={trans.select_empty_placeholder}/>
                     </span>
-                    <span>
+                    <span className="wp150">
                         <DropdownList items={itemsplaats} selectedValue={this.props.selectedPlaatId} name="plaat_id" emptyPlaceholder={trans.select_empty_placeholder}/>
                     </span>
                     <span>

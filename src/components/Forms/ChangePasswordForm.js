@@ -39,7 +39,7 @@ class ChangePasswordForm extends Component {
             rules: {
                 password: {
                     required: true,
-                    minlength: 6,
+                    minlength: 8,
                     ContainsAtLeastOneCapitalLetter: true,
                     ContainsAtLeastOneDigit: true,
                 },
