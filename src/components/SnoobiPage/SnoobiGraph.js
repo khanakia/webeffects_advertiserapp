@@ -33,8 +33,10 @@ class SnoobiGraph extends React.Component {
 
     render() {
         return (
-            <div className={'comp-snoobi-graph'}>
-               <canvas id="myChart"></canvas>
+            <div className="graph-wrapper">
+                <div className={'comp-snoobi-graph'}>
+                   <canvas id="myChart"></canvas>
+                </div>
             </div>
         ) 
     }

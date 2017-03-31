@@ -74,22 +74,24 @@ class SnoobiPage extends React.Component {
                         </div>
                     </div>
                     <div className="row">
-                        <div className="left-col mb20">
-                            <CheckboxListDropdown items={this.props.user_actions_list}  onItemChange={this.props.onFilterChange} emptyPlaceholder="Select" />
-                        </div>
-                        <div className="right-col mb20 snoobiSorten-wrapper">
-                            <div className="sorteren-inner ">
-                                <span className="mr15 sorten-text">{trans.snoobiPage_sorten_text}</span>
-                                
-                                <span className="wp140 mr10 dropdown-inline">
-                                    <DropdownList items={countSortMonth} selectedValue={""} onItemChange={this.props.onMonthItemChange} emptyPlaceholder="Select"/>
-                                </span>
-                                <span className="wp170 dropdown-inline">
-                                    <DropdownList items={countSortRecent} selectedValue={"date"} onItemChange={this.props.onSortItemChange} />
-                                </span>
+                        <div className="col-md-12">
+                            <div className="left-col mb20">
+                                <CheckboxListDropdown items={this.props.user_actions_list}  onItemChange={this.props.onFilterChange} emptyPlaceholder={trans.snoobiPage_placeholder_select} />
+                            </div>
+                            <div className="right-col mb20 snoobiSorten-wrapper">
+                                <div className="sorteren-inner ">
+                                    <span className="mr15 sorten-text">{trans.snoobiPage_sorten_text}</span>
+                                    
+                                    <span className="wp140 mr10 mb20 dropdown-inline">
+                                        <DropdownList items={countSortMonth} selectedValue={""} onItemChange={this.props.onMonthItemChange} emptyPlaceholder={trans.snoobiPage_placeholder_select}/>
+                                    </span>
+                                    <span className="wp170 dropdown-inline">
+                                        <DropdownList items={countSortRecent} selectedValue={"date"} onItemChange={this.props.onSortItemChange} />
+                                    </span>
+                                    
+                                </div>
                                 
                             </div>
-                            
                         </div>
                     </div>
                     <div className="row">

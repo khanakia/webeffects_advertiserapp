@@ -44,11 +44,11 @@ class ProjectItem extends React.Component {
                         </div>
                         <div className="info-wrapper">
                             <i className="iconc-person"></i>
-                            <span>{item.person_min} tot {item.person_max} personen</span>
+                            <span>{item.person_min} tot {item.person_max} {trans.block_project_item_personen}</span>
                         </div>
                         <div className="info-wrapper">
                             <i className="iconc-room"></i>
-                            <span>{item.zalen_count} zalen</span>
+                            <span>{item.zalen_count} {trans.block_project_item_zalen}</span>
                         </div>
                     </div>
                 </div>

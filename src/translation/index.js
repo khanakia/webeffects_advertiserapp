@@ -50,7 +50,7 @@ const language = {
 		"pageOverview_status": "Status",
 		"pageOverview_titel": "Titel",
 		"pageOverview_laatste": "Laatste bewerking",
-		"pageOverview_link": "Draft",
+		"pageOverview_link": "Concept",
 		"pageOverview_link_live": "Live",
 		"pageOverview_verwijder": "Verwijder",
 		"pageOverview_bewerk": "Bewerk",
@@ -296,6 +296,14 @@ const language = {
 
 		"disable_reminder_email_btn": "Schakel offerte-meldingen uit",
 		"enable_reminder_email_btn": "Schakel offerte-meldingen on",
+
+
+		"block_project_item_personen" : "personen",
+		"block_project_item_zalen" : "zalen",
+		"snoobiPage_placeholder_select": "Select",
+		"accordion_group_x_bekeken" : "x bekeken",
+		"accordion_group_datum" : "Datum",
+		"accordion_group_wat_bekeken" : "Wat bekeken",
 	}
 }
 

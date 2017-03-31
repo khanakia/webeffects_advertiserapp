@@ -32,7 +32,7 @@ class PageProject extends Component {
         }
     }
 
-    static defaultProps = {        
+    static defaultProps = {
         project: {}  
 
     }

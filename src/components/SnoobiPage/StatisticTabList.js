@@ -50,7 +50,7 @@ class StatisticTabList extends React.Component {
                 <div className="accordion-group" key={index}>
                     <div className="accordion-heading" role="tab" id={'heading'+index}>
                         <a className="accordion-toggle panel_title" data-toggle="collapse" data-parent="#accordion" href={'#collapse'+index} aria-expanded="true" aria-controls={'collapse'+index}>
-                          {item.org_name} <span className="count-bekeken"><span className="count-bekeken-value">{item.details_count}</span><span className="count-bekeken-text">x bekeken</span></span>
+                          {item.org_name} <span className="count-bekeken"><span className="count-bekeken-value">{item.details_count}</span><span className="count-bekeken-text">{trans.accordion_group_x_bekeken}</span></span>
                         </a>
                     </div>
 
@@ -58,8 +58,8 @@ class StatisticTabList extends React.Component {
                       <div className="accordion-inner">
                         <table>
                             <tr>
-                                <td>Datum</td>
-                                <td>Wat bekeken</td>
+                                <td>{trans.accordion_group_datum}</td>
+                                <td>{trans.accordion_group_wat_bekeken}</td>
                             </tr>
                             {this.renderStatsDetailList(item.details)}
                         </table>

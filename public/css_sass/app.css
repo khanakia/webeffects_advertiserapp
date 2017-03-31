@@ -1975,12 +1975,17 @@ label input[type="radio"]:checked + span {
 .statistieken-wrapper .right-col {
   width: 50%;
   float: left; }
+.statistieken-wrapper .graph-wrapper {
+  width: 100%;
+  overflow: scroll; }
+.statistieken-wrapper canvas {
+  width: 100% !important; }
 @media screen and (max-width: 1700px) {
   .statistieken-wrapper .left-col {
     width: 35%; }
   .statistieken-wrapper .right-col {
     width: 65%; } }
-@media screen and (max-width: 1500px) {
+@media screen and (max-width: 1550px) {
   .statistieken-wrapper .left-col {
     width: 100%;
     float: none; }
@@ -1989,20 +1994,22 @@ label input[type="radio"]:checked + span {
     float: none; }
     .statistieken-wrapper .right-col .sorteren-inner {
       float: none; } }
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 991px) {
   .statistieken-wrapper .left-col {
-    width: 50%;
+    width: 35%;
     float: left; }
   .statistieken-wrapper .right-col {
-    width: 50%;
-    float: left; } }
-@media screen and (max-width: 600px) {
+    width: 65%;
+    float: right;
+    text-align: right; } }
+@media screen and (max-width: 700px) {
   .statistieken-wrapper .left-col {
     width: 100%;
     float: none; }
   .statistieken-wrapper .right-col {
     width: 100%;
-    float: none; } }
+    float: none;
+    text-align: left; } }
 
 .dropdown-wrapper {
   display: table;
