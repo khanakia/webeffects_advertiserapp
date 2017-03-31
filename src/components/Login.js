@@ -29,7 +29,7 @@ class Login extends Component {
             }    
         } else {
             if(Auth.check()) {
-                hashHistory.push('/dashboard')
+                hashHistory.push('/project/add')
                 return false;
             }
 
@@ -57,7 +57,7 @@ class Login extends Component {
         } else {
             Auth.attempt({email: this.refs.email.value, password: this.refs.password.value}).then((response) => {
                 if (response.data.token != null) {
-                    hashHistory.push('/dashboard')
+                    hashHistory.push('/project/add')
                 } else {                
                     toastr.error(response.data.message);       
                 }

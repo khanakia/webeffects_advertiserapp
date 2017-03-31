@@ -10,6 +10,8 @@ class RightBlock extends React.Component {
         className: '',
 
         project_id: '',
+        is_live_data: 0,
+        has_revision_data: 0,
         projectStatusList: [],
         onProjectStatusChange: function(item) {},
         project_status_id: '',
@@ -26,6 +28,7 @@ class RightBlock extends React.Component {
         handleSumbit: function(){},
         handleSumbitAdmin: function(){},
         handleLoadActualData: function(){},
+        handleLoadRevisionClick: function(){},
         handleCancel: function(){},
         handleTerugClick: function() {}
     }
@@ -36,6 +39,7 @@ class RightBlock extends React.Component {
 
 
     render() {
+        console.log("this.props.is_live_datathis.props.is_live_datathis.props.is_live_data", this.props.is_live_data)
         
         let status = PROJECT_STATUSES[this.props.project_status_id]
 
@@ -49,9 +53,37 @@ class RightBlock extends React.Component {
                         <div className="d-table-cell v-align-middle">
                             <button ref="submit" type="button" className="btn btn-green btn--round" onClick={()=>{this.props.handleSumbit()}}>{trans.pageProject_rightBlock_opslaan}</button>
 
-                            <button ref="submit" type="button" className="btn btn-green btn--round mt20" onClick={()=>{this.props.handleLoadActualData()}}>{trans.pageProject_rightBlock_btn_loadactualdata}</button>
+                            {
+                                this.props.is_live_data && this.props.has_revision_data ?
+                                    <button ref="submit" type="button" className="btn btn-green btn--round mt20" onClick={()=>{this.props.handleLoadRevisionClick()}}>{trans.pageProject_rightBlock_btn_loadrevisionbtn}</button>
+                                :
+                                    ''
 
-                            <button ref="submit" type="button" className="btn btn-green btn--round mt20" onClick={()=>{this.props.handleSumbitAdmin()}}>{trans.pageProject_rightBlock_opslaan_admin}</button>
+                            }
+
+
+                            {
+                                !this.props.is_live_data ?
+                                    <button ref="submit" type="button" className="btn btn-green btn--round mt20" onClick={()=>{this.props.handleLoadActualData()}}>{trans.pageProject_rightBlock_btn_loadactualdata}</button>
+                                : ''
+
+                            }
+
+
+                            {
+                                AuthHelper.is_admin() ? 
+                                    <button ref="submit" type="button" className="btn btn-green btn--round mt20" onClick={()=>{this.props.handleSumbitAdmin()}}>{trans.pageProject_rightBlock_opslaan_admin}</button>
+                                : ''    
+                            }
+
+                            {
+                                (AuthHelper.is_admin() && this.props.project_status_id!==5 && this.props.is_live_data) ?
+                                <button ref="submit" type="button" className="btn btn-green btn--round mt20" onClick={() => this.props.handleUpdateStatus(this.props.project_id, 5)}>{trans.pageProject_rightBlock_offline_btn}</button>
+                                : ''
+
+                            }
+
+
                         </div>
                         <div className="d-table-cell v-align-middle">
                             <button ref="annuleren" type="button" className="btn btn-plain" onClick={()=>{this.props.handleCancel()}}>{trans.pageProject_rightBlock_annuleren}</button>
@@ -76,7 +108,7 @@ class RightBlock extends React.Component {
                                     : ''
                                 }
 
-                                <DropdownList items={this.props.projectStatusList} selectedValue={this.props.project_status_id} onItemChange={this.props.onProjectStatusChange} />
+                                {/*<DropdownList items={this.props.projectStatusList} selectedValue={this.props.project_status_id} onItemChange={this.props.onProjectStatusChange} />*/}
 
                                 {
                                     /*AuthHelper.is_admin() ?
@@ -112,9 +144,10 @@ class RightBlock extends React.Component {
                             <label>{trans.pageProject_rightBlock_datum}</label>
                             <div className="last_updated">{moment(this.props.created_date).format(Env.dateformat_default)}</div>
                         </div>
-                        <div className="block-info">
-                            <button className="btn btn-plainBlack" onClick={()=>{this.handleDelete(this.props.project_id)}}><i className="iconc-trash before_text"></i>{trans.pageProject_rightBlock_zet_deze}</button>
-                        </div>
+
+                        {/*<div className="block-info">
+                                                    <button className="btn btn-plainBlack" onClick={()=>{this.handleDelete(this.props.project_id)}}><i className="iconc-trash before_text"></i>{trans.pageProject_rightBlock_zet_deze}</button>
+                                                </div>*/}
                     </div>
 
                     : ''

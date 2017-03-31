@@ -2,7 +2,7 @@ const language = {
 	"1" : {
 		"months": [ "januari", "februari", "maart", "april", "mei", "juni",
         "juli", "augustus", "september", "oktober", "november", "december" ],
-		"select_empty_placeholder": 'Select',
+		"select_empty_placeholder": 'Selecteer',
 		"select_maand_placeholder": 'Selecteer maand',
 		"login_title": "Adverteerder inlog",
 		"login_email_label": "E-mailadres",
@@ -114,9 +114,11 @@ const language = {
 
 		"pageProject_rightBlock_bewerkingen": "Bewerkingen",
 		"pageProject_rightBlock_updated": "Zojuist om 11:38",
-		"pageProject_rightBlock_opslaan": "Opslaan",
-		"pageProject_rightBlock_opslaan_admin": "Finalize",
-		"pageProject_rightBlock_btn_loadactualdata": "Load Actual Data",
+		"pageProject_rightBlock_opslaan": "Save Concept",
+		"pageProject_rightBlock_opslaan_admin": "Publish",
+		"pageProject_rightBlock_btn_loadactualdata": "Load Live",
+		"pageProject_rightBlock_btn_loadrevisionbtn" : "Load Concept",
+		"pageProject_rightBlock_offline_btn" : "Offline",
 		"pageProject_rightBlock_annuleren": "Annuleren",
 		"pageProject_rightBlock_locatie": "Locatie bekijken",
 		"pageProject_rightBlock_link_live": "Live",
@@ -197,7 +199,7 @@ const language = {
 		"contactForm_email_label": "Email",
 
 		"locatieInput_adres": "Adres",
-		"locatieInput_zoek": "Zoek parkeerplaatsen in een straal van",
+		"locatieInput_zoek": "Zoek parkeerplaatsen in een straal van 500 meter in de buurt van uw locatie",
 		"locatieInput_voeg": "Voeg automatisch parkeerplaatsen toe",
 		"locatieInput_zaal": "Parkeerplaats toevoegen",
 		"locatieInput_ligging": "Ligging",

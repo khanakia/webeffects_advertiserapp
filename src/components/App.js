@@ -29,11 +29,14 @@ export default class AppContainer extends Component {
     }
 
     onDataUpdate = (response) => {  
-        if(response.status=="ok") {
-            toastr.success(trans.resetpwd_reset_successfully)
-            window.location.reload()
+        if(response.success=="ok") {
+            // toastr.success(trans.resetpwd_reset_successfully)
+            
+            setTimeout(function() {
+                window.location.reload()
+            }, 1000); 
         } else {
-            toastr.error(trans[response.message])
+            // toastr.error(trans[response.message])
         }
     }
 

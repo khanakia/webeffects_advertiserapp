@@ -193,7 +193,7 @@ class PageProject extends Component {
                             if(!this.props.params.projectId) {
                                 hashHistory.push('/projects/'+response.data.id)                
                             }
-                            // _this.props.fetchProject(_this.props.params.projectId);
+                            _this.props.fetchProject(_this.props.params.projectId);
                             // _this.props.fetchProjects()
                         })
                     }.bind(this)
@@ -275,6 +275,11 @@ class PageProject extends Component {
 
     rightBlock_handleLoadActualData = () => {
         this.props.fetchProject(this.props.params.projectId);
+        this.isReset = true;
+    }
+
+    rightBlock_handleLoadRevisionClick = () => {
+        this.props.fetchProjectRevision(this.props.params.projectId);
         this.isReset = true;
     }
 
@@ -431,7 +436,7 @@ class PageProject extends Component {
                                         <h3 className="d_active tab_drawer_heading">
                                             <a href="#general" aria-controls="general" role="tab" data-toggle="tab">{trans.pageProject_algemene_label} <i className="iconc-chevron-down"></i></a>
                                         </h3>
-                                        <div role="tabpanel" className="tab-pane " id="general">
+                                        <div role="tabpanel" className="tab-pane active" id="general">
                                            
                                                 <ProjectTabGeneralForm  
                                                     reset={this.isReset}
@@ -550,7 +555,7 @@ class PageProject extends Component {
                                         <h3 className={`tab_drawer_heading ${hiddenClass}`}>
                                             <a href="#statistieken" aria-controls="statistieken" role="tab" data-toggle="tab">{trans.pageProject_tab_statistieken} <i className="iconc-chevron-down"></i></a>
                                         </h3>
-                                        <div role="tabpanel" className={`tab-pane active ${hiddenClass}`} id="statistieken">
+                                        <div role="tabpanel" className={`tab-pane  ${hiddenClass}`} id="statistieken">
                                             <SnoobiPage 
                                                 user_actions_list={this.props.project_formdata.user_actions}
                                                 onFilterChange={this.onSnoobiFilterChange}
@@ -574,18 +579,21 @@ class PageProject extends Component {
                             <div className="page-panel__inner__right">
                                 <RightBlock 
                                     project_id={project.id}
+                                    is_live_data={project.is_live_data}
+                                    has_revision_data={project.has_revision_data}
                                     projectStatusList={this.props.project_formdata.project_status_list}
                                     onProjectStatusChange = {this.onProjectStatusChange}
                                     project_status_id={project.project_status_id}
                                     updated_date={project.updated_at}
                                     created_date={project.created_at}
-                                    url={project.url}
+                                    url={project.url_live}
                                     url_concept={project.url_concept}
                                     status={status}
                                     handleUpdateStatus={this.handleUpdateStatus}
                                     handleSumbit={this.handleSumbit}
                                     handleSumbitAdmin={this.rightBlock_handleSumbitAdmin}
                                     handleLoadActualData={this.rightBlock_handleLoadActualData}
+                                    handleLoadRevisionClick={this.rightBlock_handleLoadRevisionClick}
                                     handleCancel={this.handleCancel}
                                     handleTerugClick={this.onRightBlockTerugClick} />
                             </div>

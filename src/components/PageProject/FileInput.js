@@ -264,10 +264,12 @@ class FileInput extends React.Component {
                                 <InputBox type="hidden" className="sort_order" name={`${this.props.name}[${index}][sort_order]`} value={item.sort_order || 0} />
 
 
-                                <div className="inner" style={{backgroundImage : 'url("' + item.url + '")'}}>
+                                <div className="inner" style={{backgroundImage : 'url("' + item.url_thumb + '")'}}>
                                     <div className="title" onClick={()=>{this.editTitle(index)}}>{item.attachment_title}</div>
-                                    <button type="button" className="btn btn-plain editBtn" onClick={()=>{this.editTitle(index)}}><i className="iconc-edit"></i></button>
-                                    <button type="button" className="btn btn-plain deleteBtn" onClick={() => {this.handleRemoveItem(index)}}><i className="iconc-cross"></i></button>
+                                    <div className="control-bar">
+                                        <button type="button" className="btn btn-plain editBtn" onClick={()=>{this.editTitle(index)}}><i className="iconc-edit"></i></button>
+                                        <button type="button" className="btn btn-plain deleteBtn" onClick={() => {this.handleRemoveItem(index)}}><i className="iconc-cross"></i></button>
+                                    </div>
                                 </div>
 
                                 {

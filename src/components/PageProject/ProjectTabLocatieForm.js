@@ -322,9 +322,36 @@ class ProjectTabLocatieForm extends React.Component {
         this.updateLatLng(itemId, address, latitude, longitude)
     }
 
-    onRadiusChange = (item) => {
-        // console.log(item)
+    // onRadiusChange = (item) => {
+    //     // console.log(item)
 
+    //     if(this.state.address_lat) {
+    //         var pyrmont = new google.maps.LatLng(this.state.address_lat, this.state.address_lng);
+
+    //     } else {
+    //         var pyrmont = new google.maps.LatLng(this.mapDefault.lat,this.mapDefault.lng);
+    //     }
+
+    //     var request = {
+    //         location: pyrmont,
+    //         radius: item.value,
+    //         types: ['parking']
+    //     };
+
+    //     var service = new google.maps.places.PlacesService(this.map);
+    //     service.nearbySearch(request, this.googleParkingPlaceServiceCallback);
+
+    //     // function callback(results, status) {
+    //     //   if (status == google.maps.places.PlacesServiceStatus.OK) {
+    //     //     for (var i = 0; i < results.length; i++) {
+    //     //       var place = results[i];
+    //     //       console.log(place)
+    //     //     }
+    //     //   }
+    //     // }
+    // }
+
+    findParkingsinRadius = () => {
         if(this.state.address_lat) {
             var pyrmont = new google.maps.LatLng(this.state.address_lat, this.state.address_lng);
 
@@ -334,21 +361,12 @@ class ProjectTabLocatieForm extends React.Component {
 
         var request = {
             location: pyrmont,
-            radius: item.value,
+            radius: 500,
             types: ['parking']
         };
 
         var service = new google.maps.places.PlacesService(this.map);
         service.nearbySearch(request, this.googleParkingPlaceServiceCallback);
-
-        // function callback(results, status) {
-        //   if (status == google.maps.places.PlacesServiceStatus.OK) {
-        //     for (var i = 0; i < results.length; i++) {
-        //       var place = results[i];
-        //       console.log(place)
-        //     }
-        //   }
-        // }
     }
 
     googleParkingPlaceServiceCallback = (results, status) => {
@@ -397,13 +415,12 @@ class ProjectTabLocatieForm extends React.Component {
                     </label>
                 </div>
                 <div className="section-zoek">
-                    <span className="zoek_text">{trans.locatieInput_zoek}</span>
-                    <span className="short-dropdown">
-                        <DropdownList items={countitems} selectedValue={3} name="" onItemChange={this.onRadiusChange} emptyPlaceholder={trans.select_empty_placeholder} />
-                    </span>
-                    <span>
-                        {/*<button type="button" className="btn--whitebg">{trans.locatieInput_voeg}</button>*/}
-                    </span>
+                    <button ref="submit" type="button" className="btn btn-green btn--round mt20" onClick={()=>{this.findParkingsinRadius()}}>{trans.locatieInput_zoek}</button>
+                    {/*<span className="zoek_text">{trans.locatieInput_zoek}</span>
+                                        <span className="short-dropdown">
+                                            <DropdownList items={countitems} selectedValue={3} name="" onItemChange={this.onRadiusChange} emptyPlaceholder={trans.select_empty_placeholder} />
+                                        </span>*/}
+                    
                 </div>
                 <div className="section-data">
                     <span className="wp130">
