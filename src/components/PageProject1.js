@@ -442,7 +442,7 @@ class PageProject extends Component {
                                         <h3 className="d_active tab_drawer_heading">
                                             <a href="#general" aria-controls="general" role="tab" data-toggle="tab">{trans.pageProject_algemene_label} <i className="iconc-chevron-down"></i></a>
                                         </h3>
-                                        <div role="tabpanel" className="tab-pane " id="general">
+                                        <div role="tabpanel" className="tab-pane active" id="general">
                                            
                                                 <ProjectTabGeneralForm  
                                                     reset={this.isReset}
@@ -561,7 +561,7 @@ class PageProject extends Component {
                                         <h3 className={`tab_drawer_heading ${hiddenClass}`}>
                                             <a href="#statistieken" aria-controls="statistieken" role="tab" data-toggle="tab">{trans.pageProject_tab_statistieken} <i className="iconc-chevron-down"></i></a>
                                         </h3>
-                                        <div role="tabpanel" className={`tab-pane active ${hiddenClass}`} id="statistieken">
+                                        <div role="tabpanel" className={`tab-pane  ${hiddenClass}`} id="statistieken">
                                             <SnoobiPage 
                                                 user_actions_list={this.props.project_formdata.user_actions}
                                                 onFilterChange={this.onSnoobiFilterChange}
