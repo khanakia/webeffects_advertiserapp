@@ -248,7 +248,7 @@ const language = {
 		"snoobiPage_filter_option_vergaderen": "Vergaderen & congres",
 		"snoobiPage_filter_option_vermelding": "Vermelding",
 		"snoobiPage_uw_belangrijkste_title": "Uw belangrijkste concurrenten op DNLS",
-		"snoobiPage_warning_msg": "Er zijn gemiddeld 3 bezoeken nodig voordat een bezoeker een aanvraag doet",
+		"snoobiPage_warning_msg": "Er zijn gemiddeld <%= average_visit_count %> bezoeken nodig voordat een bezoeker een aanvraag doet",
 		"snoobiPage_snoobi_img_title": "Hoe komen we aan deze informatie?",
 		"snoobiPage_snoobi_img_desc": "Snoobi laat zien in welke volgorde bezoekers de pagina’s van uw website hebben bezocht. Dit betekent dat u het specifieke gedrag van een bezoeker kunt achterhalen, bijvoorbeeld welke zoekterm de bezoeker heeft gebruikt, welke producten en hoe lang de bezoeker een specifieke pagina heeft bekeken en wat zijn uiteindelijke actie is geweest! Voor meer informatie bekijk www.snoobi.nl.",
 

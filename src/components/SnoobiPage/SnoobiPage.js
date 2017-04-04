@@ -22,6 +22,7 @@ class SnoobiPage extends React.Component {
         onSortItemChange: function(item){},
         onMonthItemChange: function(item){},
         onFilterChange: function(filters){},
+        onStatisticTabListPaginate: function(page) {},
     }
 
     componentWillMount() {
@@ -62,7 +63,11 @@ class SnoobiPage extends React.Component {
         const countSortRecent = [
             {"value": "date", "title": trans.snoobiPage_sort_recente},
             {"value": "name", "title": trans.snoobiPage_sort_alfabet}
-        ]
+        ];
+
+        let warning_msg = _.template(trans.snoobiPage_warning_msg);
+        warning_msg = warning_msg({'average_visit_count' : this.props.data.average_visit_count});
+
         return (
             <div className="statistieken-wrapper">
                 <div className="form-group">
@@ -96,7 +101,7 @@ class SnoobiPage extends React.Component {
                     </div>
                     <div className="row">
                         <div className="col-md-12">
-                            <StatisticTabList items={this.props.data.list} />
+                            <StatisticTabList items={this.props.data.list} onPaginate={this.props.onStatisticTabListPaginate} />
                         </div>
                     </div>
                     <div className="row">
@@ -106,7 +111,7 @@ class SnoobiPage extends React.Component {
                     </div>
                     <div className="row">
                         <div className="col-md-12">
-                            <div className="warning-message my40">{trans.snoobiPage_warning_msg}</div>
+                            <div className="warning-message my40">{warning_msg}</div>
                             <label className="mt20">{trans.snoobiPage_snoobi_img_title}</label>
                             <div className="snoobi-wrapper">
                                 <div className="img-wrapper"></div>

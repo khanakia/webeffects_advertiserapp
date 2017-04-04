@@ -9,6 +9,7 @@ class StatisticTabList extends React.Component {
 
     static defaultProps = {
         items: [],
+        onPaginate: function(page) {},
     }
 
 
@@ -23,12 +24,42 @@ class StatisticTabList extends React.Component {
             .on('hide.bs.collapse', function(e) {
                 jQuery(e.target).prev('.accordion-heading').removeClass('active');
             });
+
+        this.paginationInit()    
       
     }
 
     componentDidUpdate() {
-       
+        this.paginationInit()
     }
+
+    paginationInit() {
+        var _this = this;
+
+        var $elem = jQuery('#snoobitable_paginations_list');
+
+        if($elem.data("twbs-pagination")){
+            $elem.twbsPagination('destroy');
+        }
+
+        if(_this.props.items.total==0) return false;
+        $elem.twbsPagination({
+            initiateStartPageClick: false,
+            totalPages: _this.props.items.last_page,
+            visiblePages: 5,
+            startPage: _this.props.items.current_page,
+            // first: '<span aria-hidden="true">&laquo;</span>',
+            // last: '<span aria-hidden="true">&raquo;</span>',
+            firstClass: 'hidden',
+            lastClass: 'hidden',
+            prev: '<span aria-hidden="true">&laquo;</span>',
+            next: '<span aria-hidden="true">&raquo;</span>',
+            onPageClick: function (event, page) {            
+                _this.props.onPaginate(page);
+            }
+        });
+    }
+
 
     renderStatsDetailList(list) {
         if(undefined==list) return null;
@@ -42,7 +73,7 @@ class StatisticTabList extends React.Component {
         )
     }
     _renderListitem() {
-        const list_item = this.props.items;
+        const list_item = this.props.items.data;
         if(undefined==list_item) return null;
         // console.log("this.props.list", this.props.items)
         return list_item.map((item, index) => {
@@ -78,18 +109,19 @@ class StatisticTabList extends React.Component {
                 <div id="accordion" className="accordion" ref="accordion" role="tablist" aria-multiselectable="true">
                     {this._renderListitem()}
                 </div>
+                <ul id="snoobitable_paginations_list"></ul>
             </div>
         ) 
     }
 }
 StatisticTabList.propTypes = {
-    items: React.PropTypes.arrayOf(
-        React.PropTypes.shape({
-            org_name: React.PropTypes.any.isRequired.isNonNull,
-            details_count: React.PropTypes.any.isRequired.isNonNull,
-            details: React.PropTypes.any.isRequired,
-        })
-    )
+    // items: React.PropTypes.arrayOf(
+    //     React.PropTypes.shape({
+    //         org_name: React.PropTypes.any.isRequired.isNonNull,
+    //         details_count: React.PropTypes.any.isRequired.isNonNull,
+    //         details: React.PropTypes.any.isRequired,
+    //     })
+    // )
 };
 
 export default StatisticTabList
