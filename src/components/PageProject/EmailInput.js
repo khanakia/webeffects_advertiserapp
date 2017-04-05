@@ -93,7 +93,7 @@ class EmailInput extends React.Component {
                             <i className="iconc-plus"></i>
                         </button>
                     </span>
-                    <input type="text" className="form-control" defaultValue="Emails" readOnly />
+                    <input type="text" className="form-control" defaultValue={trans.pageProject_email_placeholder} readOnly />
                 </div>
             
               

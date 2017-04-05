@@ -215,11 +215,17 @@ class FileInput extends React.Component {
         
         return (
             <div className={'comp-fileinput ' + this.props.className} ref="fileinput">
+                <div className="form-group">
                 {
                     itemsCount>1 ?
-                        <h3>{this.state.itemsNew.length+this.props.items.length}{trans.fileInput_foto}</h3>
-                    : ''
+                        <label>{this.state.itemsNew.length+this.props.items.length}{trans.fileInput_foto}
+                            <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_tooltip_algemene_beschrijving}></a>
+                        </label>
+                    : <label>{trans.fileInput_foto}
+                            <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_tooltip_algemene_beschrijving}></a>
+                        </label>
                 }
+                </div>
                 <div className="items-wrapper">
                     {
                         itemsCount<this.props.maxItems ?

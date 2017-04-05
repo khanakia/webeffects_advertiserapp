@@ -59,10 +59,14 @@ class ProjectItems extends React.Component {
     render() {
         return (
             <div className="comp-project-items">
-                <label className="mt20 mb15">{trans.snoobiPage_uw_belangrijkste_title}</label>
-                <div className="belangrijkste-wrapper">
-                    <div className="owl-carousel owl-theme" id="belangrijkste_carousel">
-                        {this._renderItems()}
+                <div className="form-group">
+                    <label className="mt20 mb15">{trans.snoobiPage_uw_belangrijkste_title}
+                        <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_tooltip_uw_belangrijkste}></a>
+                    </label>
+                    <div className="belangrijkste-wrapper">
+                        <div className="owl-carousel owl-theme" id="belangrijkste_carousel">
+                            {this._renderItems()}
+                        </div>
                     </div>
                 </div>
             </div>

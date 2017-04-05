@@ -409,35 +409,21 @@ class ProjectTabLocatieForm extends React.Component {
         return (
             <div className={'comp-locatieinput ' + this.props.className} ref="locatieinput">
                 {/*<button type="button" onClick={this.handleRefresh}>REFRESH</button>*/}
-                <div className="form-group">
-                    <label>{trans.locatieInput_adres}
-                        <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_tooltip_address}></a>
-                    </label>
+                <div className="form-group mt20">
+                    <div className="section-zoek">
+                        <span>{trans.locatieInput_zoek}</span>
+                        <button ref="submit" type="button" className="btn btn-green btn--round" onClick={()=>{this.findParkingsinRadius()}}>{trans.locatieInput_zoek_parkeerplaatsen}</button>
+                        {/*<span className="zoek_text">{trans.locatieInput_zoek}</span>
+                                            <span className="short-dropdown">
+                                                <DropdownList items={countitems} selectedValue={3} name="" onItemChange={this.onRadiusChange} emptyPlaceholder={trans.select_empty_placeholder} />
+                                            </span>*/}
+                        
+                    </div>
                 </div>
-                <div className="section-zoek">
-                    <button ref="submit" type="button" className="btn btn-green btn--round mt20" onClick={()=>{this.findParkingsinRadius()}}>{trans.locatieInput_zoek}</button>
-                    {/*<span className="zoek_text">{trans.locatieInput_zoek}</span>
-                                        <span className="short-dropdown">
-                                            <DropdownList items={countitems} selectedValue={3} name="" onItemChange={this.onRadiusChange} emptyPlaceholder={trans.select_empty_placeholder} />
-                                        </span>*/}
-                    
-                </div>
-                <div className="section-data">
-                    <span className="wp130">
-                        <DropdownList items={itemsprovice} selectedValue={this.props.selectedProvinceId} name="province_id" emptyPlaceholder={trans.select_empty_placeholder}/>
-                    </span>
-                    <span className="wp150">
-                        <DropdownList items={itemsplaats} selectedValue={this.props.selectedPlaatId} name="plaat_id" emptyPlaceholder={trans.select_empty_placeholder}/>
-                    </span>
-                    <span>
-                        <DropdownList items={itemsgebied} selectedValue={this.props.selectedGebiedId} name="gebied_id" emptyPlaceholder={trans.select_empty_placeholder}/>
-                    </span>
-                </div>
-
-          
+         
                 <div className="form-group input-group-vmerge mt20">
                     <label>{trans.locatieInput_ligging}
-                        <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_tooltip_location}></a>
+                        <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_tooltip_ligging}></a>
                     </label>
                     <div className="row">
                         <div className="col-md-4">
@@ -458,7 +444,23 @@ class ProjectTabLocatieForm extends React.Component {
                     </div>
                 </div>
 
+                <div className="section-data">
+                    <span className="wp140">
+                        <DropdownList items={itemsprovice} selectedValue={this.props.selectedProvinceId} name="province_id" emptyPlaceholder={trans.select_empty_placeholder_locatie}/>
+                    </span>
+                    <span className="wp140">
+                        <DropdownList items={itemsplaats} selectedValue={this.props.selectedPlaatId} name="plaat_id" emptyPlaceholder={trans.select_empty_placeholder_locatie}/>
+                    </span>
+                    <span className="wp140">
+                        <DropdownList items={itemsgebied} selectedValue={this.props.selectedGebiedId} name="gebied_id" emptyPlaceholder={trans.select_empty_placeholder_locatie}/>
+                    </span>
+                </div>
 
+                <div className="form-group">
+                    <label>{trans.locatieInput_adres}
+                        <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_tooltip_address}></a>
+                    </label>
+                </div>
                 <div className="form-group clonable-wrapper">
                     <div className="input-group-custom">
                         <div className="input-group-addon"><i className="iconc-location-pointer"></i></div>
