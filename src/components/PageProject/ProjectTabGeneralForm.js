@@ -101,6 +101,9 @@ class ProjectTabGeneralForm extends Component {
                 </div>
                 <div className="form-group">
                     <FileInput
+                        heading = {trans.pageProject_fileinput_heading}
+                        heading_empty = {trans.pageProject_fileinput_heading}
+                        tooltip_note= {trans.pageProject_fileinput_tooltip_note}
                         reset={this.props.reset} 
                         onAttachmentDeleted={this.props.onAttachmentDeleted} 
                         items={this.props.attachmentsList} 

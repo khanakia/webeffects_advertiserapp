@@ -29,7 +29,11 @@ class FileInput extends React.Component {
         filter_value_id: '', // this i required for Category Tabs
         onAttachmentDeleted: function() {},
         onTitleUpdated: function() {},
-        maxItems: 100
+        maxItems: 100,
+
+        heading_empty : '',
+        heading : '',
+        tooltip_note : '',
         
     }
 
@@ -212,19 +216,22 @@ class FileInput extends React.Component {
         var _this = this;
         // console.log( "this.state.itemsNew.length", this.state.itemsNew.length, this.props.maxItems)
         const itemsCount = this.state.itemsNew.length + this.props.items.length
+
+        var totalItemCount = this.state.itemsNew.length+this.props.items.length;
+        var heading = this.props.heading_empty;
+        if(itemsCount>1) {
+            var heading_template = _.template(this.props.heading);
+            heading = heading_template({ 'item_count': totalItemCount });
+            
+        }
         
         return (
             <div className={'comp-fileinput ' + this.props.className} ref="fileinput">
                 <div className="form-group">
-                {
-                    itemsCount>1 ?
-                        <label>{this.state.itemsNew.length+this.props.items.length}{trans.fileInput_foto}
-                            <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_tooltip_algemene_beschrijving}></a>
-                        </label>
-                    : <label>{trans.fileInput_foto}
-                            <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_tooltip_algemene_beschrijving}></a>
-                        </label>
-                }
+                    <label>{heading}
+                        <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={this.props.tooltip_note}></a>
+                    </label>
+                   
                 </div>
                 <div className="items-wrapper">
                     {

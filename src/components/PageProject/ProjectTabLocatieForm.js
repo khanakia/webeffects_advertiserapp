@@ -435,7 +435,7 @@ class ProjectTabLocatieForm extends React.Component {
 
                 <div className="form-group input-group-vmerge">
                     <label>{trans.locatieInput_parkeren}
-                        <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_tooltip_parking}></a>
+                        <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_tooltip_parkeren}></a>
                     </label>
                     <div className="row">
                         <div className="col-md-4">

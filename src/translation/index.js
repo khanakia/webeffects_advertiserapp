@@ -73,12 +73,19 @@ const language = {
 		"project_deletepoup_delete": "Begrepen. Verzend verzoek.",
 
 		"pageProject_catform_title": "Beschrijving ",
+		"pageProject_catform_fileinput_heading_empty": "x foto's",
+		"pageProject_catform_fileinput_heading": "<%= item_count %> foto's ",
+		"pageProject_catform_fileinput_tooltip_note": " Voeg foto's toe die betrekking hebben op <%= cat_title %>.",
+
+
 		"pageProject_naam_locatie_label": "Naam locatie",
 		"pageProject_algemene_label": "Algemene beschrijving",
 		"pageProject_representatieve_label": "Representatieve buitenafbeelding",
 		"pageProject_video_link_label": "Video links",
 		"pageProject_garden_tour_label": "360 graden tour iframe",
 		"pageProject_actie_label": "Actie toevoegen",
+		"pageProject_fileinput_heading": "Representatieve buitenafbeelding",
+		"pageProject_fileinput_tooltip_note": "Dit wordt de eerste afbeelding die zichtbaar is voor de gebruiker. Gebruik daarom een grote en goede afbeelding (1920 pixels).",
 		
 		"pageProject_Aanbieding_label": "Aanbieding",
 		"pageProject_aanbieding_korte_label": "(korte versie - max 40 karakters)",
@@ -137,7 +144,7 @@ const language = {
 
 
 		"pageProject_tooltip_naam_locatie": 'De titel van uw locatie.',
-		"pageProject_tooltip_algemene_beschrijving": 'De algemene beschrijving is prominent aanwezig op de locatie pagina. Daarnaast zijn ongeveer de eerste twee zinnen ook zichtbaar in het locatieoverzicht.',
+		"pageProject_tooltip_algemene_beschrijving": 'Vul hier de beschrijving in die zichtbaar wordt in de <%= cat_title %> tab.',
 		"pageProject_tooltip_representatieve_buitenafbeelding": 'Dit wordt de eerste afbeelding die zichtbaar is voor de gebruiker. Gebruik daarom een grote en goede afbeelding (1920 pixels).',
 		"pageProject_tooltip_video_links": 'U kunt een video toevoegen van uw locatie, die wordt zichtbaar als de gebruiker de afbeeldingen bekijkt.',
 		"pageProject_tooltip_360_graden_tour_iframe": 'Voeg een 360 graden tour iframe toe. Deze wordt zichtbaar naast de afbeeldingen.',
@@ -147,7 +154,7 @@ const language = {
 		"pageProject_tooltip_aantal_personen": 'Geef hier het minimale en het maximale aantal personen aan dat tegelijk op uw locatie kan zijn.',
 		"pageProject_tooltip_catering": 'Geef aan of eigen catering mogelijk is.',
 		"pageProject_tooltip_gebouwen": 'Geef de gebouweigenschappen van uw locatie aan. Dit komt terug als de gebruiker gaat filteren.',
-		"pageProject_tooltip_ligging": 'Geef de ligging van uw locatie aan. Dit komt terug als de gebruiker gaat filteren.',
+		// "pageProject_tooltip_ligging": 'Geef de ligging van uw locatie aan. Dit komt terug als de gebruiker gaat filteren.',
 		"pageProject_tooltip_eigenschappen": 'Geef de eigenschappen van uw locatie aan. Dit komt  terug als de gebruiker gaat filteren.',
 		"pageProject_tooltip_beschrijving": 'U kunt een beschrijving toevoegen die boven de zalen komt te staan.',
 		"pageProject_tooltip_zalen": 'Voeg hier uw zalen toe.',
@@ -207,8 +214,8 @@ const language = {
 		"locatieInput_zoek_parkeerplaatsen": "Zoek parkeerplaatsen",
 		"locatieInput_voeg": "Voeg automatisch parkeerplaatsen toe",
 		"locatieInput_zaal": "Parkeerplaats toevoegen",
-		"locatieInput_ligging": "Ligging",
-		"locatieInput_parkeren": "Parkeren",
+		"locatieInput_ligging": "Ligging beschrijving",
+		"locatieInput_parkeren": "Parkeren beschrijving",
 
 		"offerte_title": "Offerte aanvragen",
 		"offerte_aanvraag_label": "Offerte Aanvraag",
