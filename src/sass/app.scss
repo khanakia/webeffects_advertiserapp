@@ -405,7 +405,12 @@ label input[type="radio"]:checked + span {
 	outline: none;
     box-shadow: none;
     text-align: left;
-  
+  	span {
+  		display: block;
+	    overflow: hidden;
+	    text-overflow: ellipsis;
+	    width: 90%;
+  	}
     i {
     	position: absolute;
     	right: 15px;

@@ -992,6 +992,11 @@ label input[type="radio"]:checked + span {
   outline: none;
   box-shadow: none;
   text-align: left; }
+  .btn-dropdown span {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 90%; }
   .btn-dropdown i {
     position: absolute;
     right: 15px;

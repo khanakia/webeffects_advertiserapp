@@ -50,7 +50,7 @@ class DropdownList extends React.Component {
 				<input type="hidden" name={this.props.name} value={this.state.selectedValue} onChange={this.handleChange} />
 				<div className="dropdown dropdown--style1">
 				  <button className="btn btn-dropdown dropdown-toggle" type="button" id={dropdownId} data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-				    {selectedItem ? selectedItem.title : this.props.emptyPlaceholder}
+				    <span>{selectedItem ? selectedItem.title : this.props.emptyPlaceholder}</span>
 				    <i className="iconc-chevron-down"></i>
 				  </button>
 
