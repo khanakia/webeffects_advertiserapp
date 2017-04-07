@@ -150,16 +150,7 @@ class Zalen extends React.Component {
         // console.info("this.state.itemsthis.state.itemsthis.state.items", this.state.items)
         return (
             <div>
-                <div className="form-group">
-                    <label>{trans.pageProject_catform_title}
-                        <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_tooltip_beschrijving}></a>
-                    </label>
-                    <div className="row">
-                        <div className="col-md-4">
-                            <InputBox type="text" className="form-control" name={`zalen`} value={this.state.zalen} />
-                        </div>
-                    </div>
-                </div>
+                
 
                 <div className="form-group">
                     <label>{trans.zalen_page_title}
@@ -267,12 +258,13 @@ class Zalen extends React.Component {
     _renderMobile() {
         return (
             <div ref="mobile_container">
-                {this.props.items.map(function(item, index) {
+                {/*<div className="form-group">
+                                    <label>{trans.zalen_page_title}</label>
+                                </div>*/}
+                {this.state.items.map(function(item, index) {
+                    const cssClassHidden = (item.is_deleted==true) ? 'hidden' : '';
                     return (
                         <div key={`z-${item.id}`}>
-                            <div className="form-group">
-                                <label>{trans.zalen_page_title}</label>
-                            </div>
                             <div className="input-group input-group--style-label input-group--style-a">
                                 <span className="input-group-addon">
                                     <button type="button" className="btn btn-plain btn--nopad hover-show" onClick={(e) => this.handleRemoveZalen(item)}>
@@ -288,45 +280,47 @@ class Zalen extends React.Component {
                                         <tr>
                                             <th>{trans.zalen_tab_title}</th>
                                             <td>
-                                                <input type="hidden" name={`zalen[${index}][id]`} defaultValue={item.id} />
-                                                <input type="text" name={`zalen[${index}][room_name]`} defaultValue={item.room_name} />
+                                                <input type="hidden" className="form-control" name={`${this.props.name}[${index}][is_new]`} defaultValue={item.is_new} />
+                                                <input type="hidden" className="form-control" name={`${this.props.name}[${index}][is_deleted]`} defaultValue={item.is_deleted} />
+                                                <input type="hidden" name={`${this.props.name}[${index}][id]`} defaultValue={item.id} />
+                                                <input type="text" name={`${this.props.name}[${index}][room_name]`} defaultValue={item.room_name} />
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>{trans.zalen_tab_daglicht}</th>
-                                            <td><input type="text" name={`zalen[${index}][daglicht]`} defaultValue={item.daglicht} /></td>
+                                            <td><input type="text" name={`${this.props.name}[${index}][daglicht]`} defaultValue={item.daglicht} /></td>
                                         </tr>
                                         <tr>
                                             <th>{trans.zalen_tab_u_vorm}</th>
-                                            <td><input type="text" name={`zalen[${index}][u_vorm]`} defaultValue={item.u_vorm} /></td>
+                                            <td><input type="text" name={`${this.props.name}[${index}][u_vorm]`} defaultValue={item.u_vorm} /></td>
                                         </tr>
                                         <tr>
                                             <th>{trans.zalen_tab_carre}</th>
-                                            <td><input type="text" name={`zalen[${index}][carre]`} defaultValue={item.carre} /></td>
+                                            <td><input type="text" name={`${this.props.name}[${index}][carre]`} defaultValue={item.carre} /></td>
                                         </tr>
                                         <tr>
                                             <th>{trans.zalen_tab_school}</th>
-                                            <td><input type="text" name={`zalen[${index}][school]`} defaultValue={item.school} /></td>
+                                            <td><input type="text" name={`${this.props.name}[${index}][school]`} defaultValue={item.school} /></td>
                                         </tr>
                                         <tr>
                                             <th>{trans.zalen_tab_theater}</th>
-                                            <td><input type="text" name={`zalen[${index}][theater]`} defaultValue={item.theater} /></td>
+                                            <td><input type="text" name={`${this.props.name}[${index}][theater]`} defaultValue={item.theater} /></td>
                                         </tr>
                                         <tr>
                                             <th>{trans.zalen_tab_cabaret}</th>
-                                            <td><input type="text" name={`zalen[${index}][cabaret]`} defaultValue={item.cabaret} /></td>
+                                            <td><input type="text" name={`${this.props.name}[${index}][cabaret]`} defaultValue={item.cabaret} /></td>
                                         </tr>
                                         <tr>
                                             <th>{trans.zalen_tab_receptie}</th>
-                                            <td><input type="text" name={`zalen[${index}][receptie]`} defaultValue={item.receptie} /></td>
+                                            <td><input type="text" name={`${this.props.name}[${index}][receptie]`} defaultValue={item.receptie} /></td>
                                         </tr>
                                         <tr>
                                             <th>{trans.zalen_tab_diner}</th>
-                                            <td><input type="text" name={`zalen[${index}][diner]`} defaultValue={item.diner} /></td>
+                                            <td><input type="text" name={`${this.props.name}[${index}][diner]`} defaultValue={item.diner} /></td>
                                         </tr>
                                         <tr>
                                             <th>{trans.zalen_tab_feest}</th>
-                                            <td><input type="text" name={`zalen[${index}][feest]`} defaultValue={item.feest} /></td>
+                                            <td><input type="text" name={`${this.props.name}[${index}][feest]`} defaultValue={item.feest} /></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -337,6 +331,9 @@ class Zalen extends React.Component {
 
 
                 {this.state.itemsNew.map(function(item, index) {
+                    var uniq_id = (new Date()).getTime();
+                    // this is to prevent same input index for above already saved items
+                    const indexInput = index + 100;
                     return (
                         <div key={`z-${item}`}>
                             <div className="input-group input-group--style-label input-group--style-a">
@@ -354,44 +351,47 @@ class Zalen extends React.Component {
                                         <tr>
                                             <th>{trans.zalen_tab_title}</th>
                                             <td>
-                                                <input type="text" name={`zalen_new[${index}][room_name]`} />
+                                                <input type="hidden" className="form-control" name={`${this.props.name}[${indexInput}][is_new]`} defaultValue='1' />
+                                                <input type="hidden" className="form-control" name={`${this.props.name}[${indexInput}][is_deleted]`} defaultValue='0' />
+                                                <input type="hidden" name={`${this.props.name}[${indexInput}][id]`} defaultValue={uniq_id} />
+                                                <input type="text" name={`${this.props.name}[${indexInput}][room_name]`} />
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>{trans.zalen_tab_daglicht}</th>
-                                            <td><input type="text" name={`zalen_new[${index}][daglicht]`} /></td>
+                                            <td><input type="text" name={`${this.props.name}[${indexInput}][daglicht]`} /></td>
                                         </tr>
                                         <tr>
                                             <th>{trans.zalen_tab_u_vorm}</th>
-                                            <td><input type="text" name={`zalen_new[${index}][u_vorm]`} /></td>
+                                            <td><input type="text" name={`${this.props.name}[${indexInput}][u_vorm]`} /></td>
                                         </tr>
                                         <tr>
                                             <th>{trans.zalen_tab_carre}</th>
-                                            <td><input type="text" name={`zalen_new[${index}][carre]`} /></td>
+                                            <td><input type="text" name={`${this.props.name}[${indexInput}][carre]`} /></td>
                                         </tr>
                                         <tr>
                                             <th>{trans.zalen_tab_school}</th>
-                                            <td><input type="text" name={`zalen_new[${index}][school]`} /></td>
+                                            <td><input type="text" name={`${this.props.name}[${indexInput}][school]`} /></td>
                                         </tr>
                                         <tr>
                                             <th>{trans.zalen_tab_theater}</th>
-                                            <td><input type="text" name={`zalen_new[${index}][theater]`} /></td>
+                                            <td><input type="text" name={`${this.props.name}[${indexInput}][theater]`} /></td>
                                         </tr>
                                         <tr>
                                             <th>{trans.zalen_tab_cabaret}</th>
-                                            <td><input type="text" name={`zalen_new[${index}][cabaret]`} /></td>
+                                            <td><input type="text" name={`${this.props.name}[${indexInput}][cabaret]`} /></td>
                                         </tr>
                                         <tr>
                                             <th>{trans.zalen_tab_receptie}</th>
-                                            <td><input type="text" name={`zalen_new[${index}][receptie]`} /></td>
+                                            <td><input type="text" name={`${this.props.name}[${indexInput}][receptie]`} /></td>
                                         </tr>
                                         <tr>
                                             <th>{trans.zalen_tab_diner}</th>
-                                            <td><input type="text" name={`zalen_new[${index}][diner]`} /></td>
+                                            <td><input type="text" name={`${this.props.name}[${indexInput}][diner]`} /></td>
                                         </tr>
                                         <tr>
                                             <th>{trans.zalen_tab_feest}</th>
-                                            <td><input type="text" name={`zalen_new[${index}][feest]`} /></td>
+                                            <td><input type="text" name={`${this.props.name}[${indexInput}][feest]`} /></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -415,6 +415,16 @@ class Zalen extends React.Component {
     render() {
         return (
             <div className={'comp-zalen ' + this.props.className} ref="Zalen">
+                <div className="form-group">
+                    <label>{trans.pageProject_catform_title}
+                        <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_tooltip_beschrijving}></a>
+                    </label>
+                    <div className="row">
+                        <div className="col-md-4">
+                            <InputBox type="text" className="form-control" name={`zalen`} value={this.props.zalen} />
+                        </div>
+                    </div>
+                </div>
                 {
                     (this.state.isDesktop) ? this._renderDesktop() : this._renderMobile()
                 }    

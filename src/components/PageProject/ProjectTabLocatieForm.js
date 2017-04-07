@@ -154,7 +154,7 @@ class ProjectTabLocatieForm extends React.Component {
         }
         this.map_autocomplete_init()
 
-        this.villa_autocomplete_init();
+        // this.villa_autocomplete_init();
     }
 
     villa_autocomplete_init() {
@@ -322,6 +322,10 @@ class ProjectTabLocatieForm extends React.Component {
         this.updateLatLng(itemId, address, latitude, longitude)
     }
 
+    onProjectAddressChange = (address, latitude, longitude, itemId) => {
+       this.setState({address: address, address_lat: latitude, address_lng: longitude});
+    }
+    
     // onRadiusChange = (item) => {
     //     // console.log(item)
 
@@ -427,7 +431,7 @@ class ProjectTabLocatieForm extends React.Component {
                     </label>
                     <div className="row">
                         <div className="col-md-4">
-                            <InputBox type="text" className="form-control" name={`ligging`} value={this.state.ligging} />
+                            <InputBox type="text" className="form-control" name={`ligging`} value={this.props.ligging} />
                         </div>
                     </div>
                 </div>
@@ -439,7 +443,7 @@ class ProjectTabLocatieForm extends React.Component {
                     </label>
                     <div className="row">
                         <div className="col-md-4">
-                            <InputBox type="text" className="form-control" name={`parkeren`} value={this.state.parkeren} />
+                            <InputBox type="text" className="form-control" name={`parkeren`} value={this.props.parkeren} />
                         </div>
                     </div>
                 </div>
@@ -464,7 +468,9 @@ class ProjectTabLocatieForm extends React.Component {
                 <div className="form-group clonable-wrapper">
                     <div className="input-group-custom">
                         <div className="input-group-addon"><i className="iconc-location-pointer"></i></div>
-                        <input type="text" id="autocomplete-field" className="form-control" defaultValue={this.state.address} />
+                        {/*<input type="text" id="autocomplete-field" className="form-control" defaultValue={this.state.address} />*/}
+                         <InputBoxGoogleAutocomplete type="text" className="form-control" value={this.state.address}  onAddressChange={this.onProjectAddressChange} />
+
                         <input type="hidden" className="form-control" name="address" ref="address" value={this.state.address || ''} onChange={()=>{this.onInputChange()}} />
                         <input type="hidden" className="form-control" name="lat" ref="address_lat" value={this.state.address_lat || ''} onChange={()=>{this.onInputChange()}} />
                         <input type="hidden" className="form-control" name="lon" ref="address_lng" value={this.state.address_lng || ''} onChange={()=>{this.onInputChange()}} />

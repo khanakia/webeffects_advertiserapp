@@ -100,7 +100,8 @@ class ProjectTabContactForm extends Component {
                                         <i className="iconc-globe"></i>
                                     </button>
                                 </span>
-                                <input type="text" className="form-control" name="website" defaultValue={this.props.website} />
+                                {/*<input type="text" className="form-control" name="website" defaultValue={this.props.website} />*/}
+                                <InputBox type="text" className="form-control required" name="website" value={this.props.website} />
                             </div>
                         </div>
                     </div>

@@ -193,7 +193,7 @@ class PageProject extends Component {
                             if(!this.props.params.projectId) {
                                 hashHistory.push('/projects/'+response.data.id)                
                             }
-                            _this.props.fetchProject(_this.props.params.projectId);
+                            _this.props.fetchProjectRevision(_this.props.params.projectId);
                             // _this.props.fetchProjects()
                         })
                     }.bind(this)
@@ -442,7 +442,7 @@ class PageProject extends Component {
                                         <h3 className="d_active tab_drawer_heading">
                                             <a href="#general" aria-controls="general" role="tab" data-toggle="tab">{trans.pageProject_algemene_label} <i className="iconc-chevron-down"></i></a>
                                         </h3>
-                                        <div role="tabpanel" className="tab-pane active" id="general">
+                                        <div role="tabpanel" className="tab-pane " id="general">
                                            
                                                 <ProjectTabGeneralForm  
                                                     reset={this.isReset}
@@ -485,8 +485,13 @@ class PageProject extends Component {
                                         <h3 className="tab_drawer_heading">
                                             <a href="#zalen" aria-controls="zalen" role="tab" data-toggle="tab">{trans.pageProject_tab_zalen} <i className="iconc-chevron-down"></i></a>
                                         </h3>
-                                        <div role="tabpanel" className="tab-pane " id="zalen">
-                                            <Zalen project_title={project.project_title} items={project.project_rooms} onZalenRemoved={this.onZalenRemoved} />
+                                        <div role="tabpanel" className="tab-pane active" id="zalen">
+                                            <Zalen 
+                                                reset={this.isReset}
+                                                zalen={project.zalen} 
+                                                project_title={project.project_title} 
+                                                items={project.project_rooms} 
+                                                onZalenRemoved={this.onZalenRemoved} />
                                         </div>
 
                                         <h3 className="tab_drawer_heading">
@@ -513,6 +518,8 @@ class PageProject extends Component {
                                             <ProjectTabLocatieForm 
                                                 ref="locatieForm"
                                                 reset={this.isReset}
+                                                ligging={project.ligging}
+                                                parkeren={project.parkeren}
                                                 address={project.address}
                                                 address_lat={project.lat}
                                                 address_lng={project.lon}
@@ -536,6 +543,7 @@ class PageProject extends Component {
 
                                                     <div role="tabpanel" className="tab-pane" id={`cat_${item.value}`} key={index}>
                                                         <ProjectTabCatForm
+                                                            reset={this.isReset}
                                                             project_id={project.id}
                                                             project_formdata= {this.props.project_formdata}
                                                             item={item}

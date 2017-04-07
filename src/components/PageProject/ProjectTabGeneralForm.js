@@ -121,7 +121,7 @@ class ProjectTabGeneralForm extends Component {
                     <label>{trans.pageProject_garden_tour_label}
                         <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_tooltip_360_graden_tour_iframe}></a>
                     </label>
-                    <IframeInput items={this.props.project_iframes} onIframeDeleted={this.props.onIframeDeleted} />
+                    <IframeInput items={this.props.project_iframes} onIframeDeleted={this.props.onIframeDeleted} reset={this.props.reset} />
                 </div>
 
                 <div className="form-group">
