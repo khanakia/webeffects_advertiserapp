@@ -549,7 +549,10 @@ class PageProject extends Component {
                                                             item={item}
                                                             geleghendens={project.geleghendens}
                                                             onAttachmentDeleted= {this.onAttachmentDeleted}
-                                                            onAttachmentTitleUpdated= {this.onAttachmentTitleUpdated} />
+                                                            onAttachmentTitleUpdated= {this.onAttachmentTitleUpdated} 
+                                                            trouwenroute_description = {project.trouwenroute_description}
+                                                            trouwenroutes = {project.project_trouwenroutes}
+                                                            />
                                                     </div>
                                                 ]
                                             })

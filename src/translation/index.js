@@ -318,6 +318,14 @@ const language = {
 		"accordion_group_x_bekeken" : "x bekeken",
 		"accordion_group_datum" : "Datum",
 		"accordion_group_wat_bekeken" : "Wat bekeken",
+
+		"trouwenroute_description_heading" : "Open trouwlocatie route beschrijving",
+		"trouwenroute_description_tooltip" : "Doet u met uw locatie mee aan de open trouwlocatie route? Vul hieronder een algemene beschrijving",
+		"trouwenroute_table_heading" : "Data en tijden open trouwlocatie route",
+		"trouwenroute_table_tooltip" : "Geef hier uw data en tijden op wanneer mensen uw locatie kunnen bezoeken tijdens de open trouwlocatie route",
+		"trouwenroute_datum_heading" : "Datum",
+		"trouwenroute_tijd_heading" : "Tijd",
+		"trouwenroute_addnewrow" : "Datum en tijd toevoegen",
 	}
 }
 

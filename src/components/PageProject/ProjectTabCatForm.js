@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactDom from 'react-dom';
 
 import FileInput from './FileInput'
+import TrouwenRouteInput from './TrouwenRouteInput'
 
 
 class ProjectTabCatForm extends Component {
@@ -19,6 +20,9 @@ class ProjectTabCatForm extends Component {
         attachment_mappings: [],
         onAttachmentDeleted: function(){},
         onAttachmentTitleUpdated: function(){},
+
+        trouwenroute_description: null,
+        trouwenroutes: []
         
     }
 
@@ -39,7 +43,7 @@ class ProjectTabCatForm extends Component {
         const item = this.props.item;
         let fvm = _.find(this.props.geleghendens, { 'filter_value_id': item.value });
         fvm = undefined==fvm ? [] : fvm;
-
+        console.log("this.props.geleghendensthis.props.geleghendensthis.props.geleghendens", this.props.geleghendens)
        
         if(undefined==fvm.description) {
             $(this.refs.description).trumbowyg('html', "");    
@@ -74,6 +78,17 @@ class ProjectTabCatForm extends Component {
                         onAttachmentDeleted={this.props.onAttachmentDeleted} 
                         onTitleUpdated={this.props.onAttachmentTitleUpdated} 
                         items={fvm.attachments} />
+                </div>
+
+                <div className="form-group">
+                    {
+                        fvm.is_trouwen ?
+                            <TrouwenRouteInput 
+                                trouwenroute_description= {this.props.trouwenroute_description}
+                                items= {this.props.trouwenroutes}
+                                />
+                        : ''
+                    }
                 </div>
             </div>
         )
