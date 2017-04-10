@@ -156,7 +156,7 @@ class VideoInput extends React.Component {
                             <i className="iconc-plus"></i>
                         </button>
                     </span>
-                    <input type="text" className="form-control" defaultValue="Vimeo of YouTube link toevoegen" readOnly />
+                    <input type="text" className="form-control" defaultValue={trans.pageProject_video_link_placeholder} readOnly />
                 </div>
             
               

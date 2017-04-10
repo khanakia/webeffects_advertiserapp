@@ -133,7 +133,7 @@ class IframeInput extends React.Component {
                             <i className="iconc-plus"></i>
                         </button>
                     </span>
-                    <input type="text" className="form-control" defaultValue="360 graden tour iframe toevoegen" readOnly />
+                    <input type="text" className="form-control" defaultValue={trans.pageProject_garden_tour_placeholder} readOnly />
                 </div>
             
               
