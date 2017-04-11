@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
 import ReactDom from 'react-dom';
 
-
+import {AuthHelper} from 'helpers'
 import ContactPersonSingleBlock from '../ContactPersonSingleBlock'
 import InputBox from './InputBox'
 import EmailInput from './EmailInput'
+import RadioButtonGroup from './RadioButtonGroup'
 class ProjectTabContactForm extends Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            disable_website_field: this.props.disable_website_field,
+        }
 
     }
 
@@ -20,6 +25,7 @@ class ProjectTabContactForm extends Component {
         contact_emails : [],
         contactsList: [],
         website: null,
+        disable_website_field: null,
         
         onContactDropdownAddNewClick: function(){},
     }
@@ -36,7 +42,30 @@ class ProjectTabContactForm extends Component {
         
     }
 
+    handleChange = (value) => {
+        this.setState({
+          disable_website_field: value
+        });
+        console.log(value)
+    }
+
     render() {
+        let cssClass = !AuthHelper.is_admin() ? 'hidden' : '';
+
+        const radioDisableWebsiteField = [
+            {
+                "title": trans.ja,
+                "value": 1,
+                "icon_class": "iconc iconc-no-food"
+            },
+
+            {
+                "title": trans.nee,
+                "value": 0,
+                "icon_class": "iconc iconc-food"
+            }
+        ]
+
         return (
             <div>
                 <div className="form-group">
@@ -103,6 +132,17 @@ class ProjectTabContactForm extends Component {
                                 {/*<input type="text" className="form-control" name="website" defaultValue={this.props.website} />*/}
                                 <InputBox type="text" className="form-control required" name="website" value={this.props.website} />
                             </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div className={"form-group " + cssClass}>
+                    <label>{trans.pageProject_contact_disable_website_title}
+                        <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_contact_disable_website_tooltip}></a>
+                    </label>
+                    <div className="row">
+                        <div className="col-md-2">
+                            <RadioButtonGroup name="disable_website_field" choices={radioDisableWebsiteField} checkedValue={this.state.disable_website_field} onChange={this.handleChange} />
                         </div>
                     </div>
                 </div>

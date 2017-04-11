@@ -326,6 +326,13 @@ const language = {
 		"trouwenroute_datum_heading" : "Datum",
 		"trouwenroute_tijd_heading" : "Tijd",
 		"trouwenroute_addnewrow" : "Datum en tijd toevoegen",
+
+		"pageProject_details_meeting_review": "Meetingreview ID",
+		"pageProject_tooltip_meeting_review": 'Voeg hier de ID van het meetingreview project in om de reviews op de website te tonen',
+		"pageProject_contact_disable_website_title": "De-activeer website",
+		"pageProject_contact_disable_website_tooltip": 'De-activeer de weergave van het website iframe op de advertentie-pagina van de adverterteerder',
+		"ja" : "Ja",
+		"nee" : "Nee",
 	},
 
 	"2" : {
@@ -655,6 +662,9 @@ const language = {
 		"trouwenroute_datum_heading" : "Datum",
 		"trouwenroute_tijd_heading" : "Tijd",
 		"trouwenroute_addnewrow" : "Datum en tijd toevoegen",
+
+		"pageProject_details_meeting_review": "Meetingreview ID",
+		"pageProject_tooltip_meeting_review": 'Voeg hier de ID van het meetingreview project in om de reviews op de website te tonen',
 	},
 
 	"3" : {
@@ -984,6 +994,9 @@ const language = {
 		"trouwenroute_datum_heading" : "Datum",
 		"trouwenroute_tijd_heading" : "Tijd",
 		"trouwenroute_addnewrow" : "Datum en tijd toevoegen",
+
+		"pageProject_details_meeting_review": "Meetingreview ID",
+		"pageProject_tooltip_meeting_review": 'Voeg hier de ID van het meetingreview project in om de reviews op de website te tonen',
 	},
 
 	"4" : {
@@ -1313,6 +1326,9 @@ const language = {
 		"trouwenroute_datum_heading" : "Datum",
 		"trouwenroute_tijd_heading" : "Tijd",
 		"trouwenroute_addnewrow" : "Datum en tijd toevoegen",
+
+		"pageProject_details_meeting_review": "Meetingreview ID",
+		"pageProject_tooltip_meeting_review": 'Voeg hier de ID van het meetingreview project in om de reviews op de website te tonen',
 	},
 
 	"5" : {
@@ -1642,6 +1658,9 @@ const language = {
 		"trouwenroute_datum_heading" : "Datum",
 		"trouwenroute_tijd_heading" : "Tijd",
 		"trouwenroute_addnewrow" : "Datum en tijd toevoegen",
+
+		"pageProject_details_meeting_review": "Meetingreview ID",
+		"pageProject_tooltip_meeting_review": 'Voeg hier de ID van het meetingreview project in om de reviews op de website te tonen',
 	}
 }
 

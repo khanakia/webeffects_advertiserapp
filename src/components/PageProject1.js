@@ -473,6 +473,7 @@ class PageProject extends Component {
                                                     person_min= {project.person_min}
                                                     person_max = {project.person_max}
                                                     eigen_catering = {project.eigen_catering}
+                                                    feedback_company_id = {project.feedback_company_id}
                                                     gebouwenList= {this.props.project_formdata.gebouwens}
                                                     liggingList= {this.props.project_formdata.liggings}
                                                     eigenschappenList= {this.props.project_formdata.eigenschappens}
@@ -506,6 +507,7 @@ class PageProject extends Component {
                                                     contact_email = {project.contact_email}
                                                     contact_emails = {project.contact_emails}
                                                     website = {project.website}
+                                                    disable_website_field = {project.disable_website_field}
                                                     contactsList= {this.props.project_formdata.contacts} 
                                                     onContactDropdownAddNewClick={this.onContactDropdownAddNewClick} />
                                         </div>

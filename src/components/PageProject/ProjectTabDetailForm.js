@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDom from 'react-dom';
 
+import {AuthHelper} from 'helpers'
 
 // import RadioList from 'components/RadioList'
 // import CheckboxList from 'components/CheckboxList'
@@ -26,6 +27,7 @@ class ProjectTabDetailForm extends Component {
         person_min : '',
         person_max : '',
         eigen_catering : 0,
+        feedback_company_id: null,
 
 
         gebouwenList: [],
@@ -127,8 +129,21 @@ class ProjectTabDetailForm extends Component {
                 "icon_class": "iconc iconc-food"
             }
         ]
+
+
+        let cssClass = !AuthHelper.is_admin() ? 'hidden' : '';
         return (
             <div>
+                <div className={"form-group " + cssClass}>
+                    <label>{trans.pageProject_details_meeting_review}
+                        <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_tooltip_meeting_review}></a>
+                    </label>
+                    <div className="row">
+                        <div className="col-lg-4">
+                            <InputBox type="text" className="form-control required" name="feedback_company_id" value={this.props.feedback_company_id} />
+                        </div>
+                    </div>    
+                </div>
                 <div className="form-group aantal-personen">
                     <label>{trans.pageProject_details_aantal_personen}
                         <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_tooltip_aantal_personen}></a>
