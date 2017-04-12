@@ -115,7 +115,7 @@ class SnoobiPage extends React.Component {
                             <label className="mt20">{trans.snoobiPage_snoobi_img_title}</label>
                             <div className="snoobi-wrapper">
                                 <div className="img-wrapper"></div>
-                                <p>{trans.snoobiPage_snoobi_img_desc}</p>
+                                <p dangerouslySetInnerHTML={{__html:trans.snoobiPage_snoobi_img_desc}}></p>
                             </div>
                         </div>
                     </div>
