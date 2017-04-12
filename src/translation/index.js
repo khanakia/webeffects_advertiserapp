@@ -87,9 +87,9 @@ const language = {
 		"project_deletepoup_delete": "Begrepen. Verzend verzoek.",
 
 		"pageProject_catform_title": "Beschrijving ",
-		"pageProject_catform_fileinput_heading_empty": "x foto's",
+		"pageProject_catform_fileinput_heading_empty": "0 foto's",
 		"pageProject_catform_fileinput_heading": "<%= item_count %> foto's ",
-		"pageProject_catform_fileinput_tooltip_note": " Voeg foto's toe die betrekking hebben op <%= cat_title %>.",
+		"pageProject_catform_fileinput_tooltip_note": " Voeg een beschrijving toe die betrekking hebben op <%= cat_title %>.",
 
 
 		"pageProject_naam_locatie_label": "Naam locatie",
@@ -428,9 +428,9 @@ const language = {
 		"project_deletepoup_delete": "Begrepen. Verzend verzoek.",
 
 		"pageProject_catform_title": "Beschrijving ",
-		"pageProject_catform_fileinput_heading_empty": "x foto's",
+		"pageProject_catform_fileinput_heading_empty": "0 foto's",
 		"pageProject_catform_fileinput_heading": "<%= item_count %> foto's ",
-		"pageProject_catform_fileinput_tooltip_note": " Voeg foto's toe die betrekking hebben op <%= cat_title %>.",
+		"pageProject_catform_fileinput_tooltip_note": " Voeg een beschrijving toe die betrekking hebben op <%= cat_title %>.",
 
 
 		"pageProject_naam_locatie_label": "Naam locatie",
@@ -769,9 +769,9 @@ const language = {
 		"project_deletepoup_delete": "Begrepen. Verzend verzoek.",
 
 		"pageProject_catform_title": "Description",
-		"pageProject_catform_fileinput_heading_empty": "x foto's",
+		"pageProject_catform_fileinput_heading_empty": "0 foto's",
 		"pageProject_catform_fileinput_heading": "<%= item_count %> foto's ",
-		"pageProject_catform_fileinput_tooltip_note": " Voeg foto's toe die betrekking hebben op <%= cat_title %>.",
+		"pageProject_catform_fileinput_tooltip_note": " Voeg een beschrijving toe die betrekking hebben op <%= cat_title %>.",
 
 
 		"pageProject_naam_locatie_label": "Nom de l'endroit",
@@ -1015,11 +1015,11 @@ const language = {
 		"pageProject_contact_disable_website_tooltip": 'De-activeer de weergave van het website iframe op de advertentie-pagina van de adverterteerder',
 		"ja" : "Ja",
 		"nee" : "Nee",
-		"project_status_gepubliceerd" : "Gepubliceerd",
-		"project_status_nieuw" : "Nieuw",
-		"project_status_ter_goedkeuring" : "Ter goedkeuring",
+		"project_status_gepubliceerd" : "Publié",
+		"project_status_nieuw" : "Nouveau",
+		"project_status_ter_goedkeuring" : "Pour approbation",
 		"project_status_wachten_op_depubliceren" : "Wachten op depubliceren",
-		"project_status_uitgeschakeld" : "Uitgeschakeld",
+		"project_status_uitgeschakeld" : "Désactivé",
 	},
 
 	"4" : {
@@ -1110,9 +1110,9 @@ const language = {
 		"project_deletepoup_delete": "Begrepen. Verzend verzoek.",
 
 		"pageProject_catform_title": "Description",
-		"pageProject_catform_fileinput_heading_empty": "x foto's",
+		"pageProject_catform_fileinput_heading_empty": "0 foto's",
 		"pageProject_catform_fileinput_heading": "<%= item_count %> foto's ",
-		"pageProject_catform_fileinput_tooltip_note": " Voeg foto's toe die betrekking hebben op <%= cat_title %>.",
+		"pageProject_catform_fileinput_tooltip_note": " Voeg een beschrijving toe die betrekking hebben op <%= cat_title %>.",
 
 
 		"pageProject_naam_locatie_label": "Name der Location",
@@ -1356,11 +1356,11 @@ const language = {
 		"pageProject_contact_disable_website_tooltip": 'De-activeer de weergave van het website iframe op de advertentie-pagina van de adverterteerder',
 		"ja" : "Ja",
 		"nee" : "Nee",
-		"project_status_gepubliceerd" : "Gepubliceerd",
-		"project_status_nieuw" : "Nieuw",
-		"project_status_ter_goedkeuring" : "Ter goedkeuring",
+		"project_status_gepubliceerd" : "Veröffentlicht",
+		"project_status_nieuw" : "Neu",
+		"project_status_ter_goedkeuring" : "Nach Vereinbarung",
 		"project_status_wachten_op_depubliceren" : "Wachten op depubliceren",
-		"project_status_uitgeschakeld" : "Uitgeschakeld",
+		"project_status_uitgeschakeld" : "Ausgeschaltet",
 	},
 
 	"5" : {
@@ -1451,9 +1451,9 @@ const language = {
 		"project_deletepoup_delete": "Begrepen. Verzend verzoek.",
 
 		"pageProject_catform_title": "Description",
-		"pageProject_catform_fileinput_heading_empty": "x foto's",
+		"pageProject_catform_fileinput_heading_empty": "0 foto's",
 		"pageProject_catform_fileinput_heading": "<%= item_count %> foto's ",
-		"pageProject_catform_fileinput_tooltip_note": " Voeg foto's toe die betrekking hebben op <%= cat_title %>.",
+		"pageProject_catform_fileinput_tooltip_note": " Voeg een beschrijving toe die betrekking hebben op <%= cat_title %>.",
 
 
 		"pageProject_naam_locatie_label": "Name of location",
@@ -1697,11 +1697,11 @@ const language = {
 		"pageProject_contact_disable_website_tooltip": 'De-activeer de weergave van het website iframe op de advertentie-pagina van de adverterteerder',
 		"ja" : "Ja",
 		"nee" : "Nee",
-		"project_status_gepubliceerd" : "Gepubliceerd",
-		"project_status_nieuw" : "Nieuw",
-		"project_status_ter_goedkeuring" : "Ter goedkeuring",
+		"project_status_gepubliceerd" : "Published",
+		"project_status_nieuw" : "New",
+		"project_status_ter_goedkeuring" : "For approval",
 		"project_status_wachten_op_depubliceren" : "Wachten op depubliceren",
-		"project_status_uitgeschakeld" : "Uitgeschakeld",
+		"project_status_uitgeschakeld" : "Deactivated",
 	}
 }
 
