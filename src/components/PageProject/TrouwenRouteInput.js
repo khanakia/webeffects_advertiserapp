@@ -36,6 +36,11 @@ class TrouwenRouteInput extends React.Component {
         this.accordionInit()
     }
 
+    componentDidUpdate() {
+        jQuery.datepicker.regional[ Env.locale ];
+        jQuery('.datepicker').datepicker({ dateFormat: Env.dateformat_datepicker });
+    }
+
     _checkDesktopMobile() {
         var w = window.innerWidth;
         if(w<1200 && this.state.isDesktop) {
@@ -174,7 +179,7 @@ class TrouwenRouteInput extends React.Component {
                                         <input type="hidden" className="form-control" name={`${this.props.name}[${index}][is_new]`} defaultValue={item.is_new} />
                                         <input type="hidden" className="form-control" name={`${this.props.name}[${index}][is_deleted]`} defaultValue={item.is_deleted} />
                                         <input type="hidden" name={`${this.props.name}[${index}][id]`} defaultValue={item.id} />
-                                        <input type="text" name={`${this.props.name}[${index}][datum]`} defaultValue={item.datum} />
+                                        <input type="text" className="datepicker" name={`${this.props.name}[${index}][datum]`} defaultValue={item.datum} />
                                     </td>
                                     <td><input type="text" name={`${this.props.name}[${index}][tijd]`} defaultValue={item.tijd} /></td>
                                 </tr>
@@ -196,7 +201,7 @@ class TrouwenRouteInput extends React.Component {
                                         <input type="hidden" className="form-control" name={`${this.props.name}[${indexInput}][is_new]`} defaultValue='1' />
                                         <input type="hidden" className="form-control" name={`${this.props.name}[${indexInput}][is_deleted]`} defaultValue='0' />
                                         <input type="hidden" name={`${this.props.name}[${indexInput}][id]`} defaultValue={uniq_id} />
-                                        <input type="text" name={`${this.props.name}[${indexInput}][datum]`} />
+                                        <input type="text" className="datepicker" name={`${this.props.name}[${indexInput}][datum]`} />
                                     </td>
                                     <td><input type="text" name={`${this.props.name}[${indexInput}][tijd]`} /></td>
                                 </tr>
@@ -246,7 +251,7 @@ class TrouwenRouteInput extends React.Component {
                                                 <input type="hidden" className="form-control" name={`${this.props.name}[${index}][is_new]`} defaultValue={item.is_new} />
                                                 <input type="hidden" className="form-control" name={`${this.props.name}[${index}][is_deleted]`} defaultValue={item.is_deleted} />
                                                 <input type="hidden" name={`${this.props.name}[${index}][id]`} defaultValue={item.id} />
-                                                <input type="text" name={`${this.props.name}[${index}][datum]`} defaultValue={item.datum} />
+                                                <input type="text" className="datepicker" name={`${this.props.name}[${index}][datum]`} defaultValue={item.datum} />
                                             </td>
                                         </tr>
                                         <tr>
@@ -285,7 +290,7 @@ class TrouwenRouteInput extends React.Component {
                                                 <input type="hidden" className="form-control" name={`${this.props.name}[${indexInput}][is_new]`} defaultValue='1' />
                                                 <input type="hidden" className="form-control" name={`${this.props.name}[${indexInput}][is_deleted]`} defaultValue='0' />
                                                 <input type="hidden" name={`${this.props.name}[${indexInput}][id]`} defaultValue={uniq_id} />
-                                                <input type="text" name={`${this.props.name}[${indexInput}][datum]`} />
+                                                <input type="text" className="datepicker" name={`${this.props.name}[${indexInput}][datum]`} />
                                             </td>
                                         </tr>
                                         <tr>

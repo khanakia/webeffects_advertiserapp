@@ -333,6 +333,11 @@ const language = {
 		"pageProject_contact_disable_website_tooltip": 'De-activeer de weergave van het website iframe op de advertentie-pagina van de adverterteerder',
 		"ja" : "Ja",
 		"nee" : "Nee",
+		"project_status_gepubliceerd" : "Gepubliceerd",
+		"project_status_nieuw" : "Nieuw",
+		"project_status_ter_goedkeuring" : "Ter goedkeuring",
+		"project_status_wachten_op_depubliceren" : "Wachten op depubliceren",
+		"project_status_uitgeschakeld" : "Uitgeschakeld",
 	},
 
 	"2" : {
@@ -665,6 +670,15 @@ const language = {
 
 		"pageProject_details_meeting_review": "Meetingreview ID",
 		"pageProject_tooltip_meeting_review": 'Voeg hier de ID van het meetingreview project in om de reviews op de website te tonen',
+		"pageProject_contact_disable_website_title": "De-activeer website",
+		"pageProject_contact_disable_website_tooltip": 'De-activeer de weergave van het website iframe op de advertentie-pagina van de adverterteerder',
+		"ja" : "Ja",
+		"nee" : "Nee",
+		"project_status_gepubliceerd" : "Gepubliceerd",
+		"project_status_nieuw" : "Nieuw",
+		"project_status_ter_goedkeuring" : "Ter goedkeuring",
+		"project_status_wachten_op_depubliceren" : "Wachten op depubliceren",
+		"project_status_uitgeschakeld" : "Uitgeschakeld",
 	},
 
 	"3" : {
@@ -997,6 +1011,15 @@ const language = {
 
 		"pageProject_details_meeting_review": "Meetingreview ID",
 		"pageProject_tooltip_meeting_review": 'Voeg hier de ID van het meetingreview project in om de reviews op de website te tonen',
+		"pageProject_contact_disable_website_title": "De-activeer website",
+		"pageProject_contact_disable_website_tooltip": 'De-activeer de weergave van het website iframe op de advertentie-pagina van de adverterteerder',
+		"ja" : "Ja",
+		"nee" : "Nee",
+		"project_status_gepubliceerd" : "Gepubliceerd",
+		"project_status_nieuw" : "Nieuw",
+		"project_status_ter_goedkeuring" : "Ter goedkeuring",
+		"project_status_wachten_op_depubliceren" : "Wachten op depubliceren",
+		"project_status_uitgeschakeld" : "Uitgeschakeld",
 	},
 
 	"4" : {
@@ -1329,6 +1352,15 @@ const language = {
 
 		"pageProject_details_meeting_review": "Meetingreview ID",
 		"pageProject_tooltip_meeting_review": 'Voeg hier de ID van het meetingreview project in om de reviews op de website te tonen',
+		"pageProject_contact_disable_website_title": "De-activeer website",
+		"pageProject_contact_disable_website_tooltip": 'De-activeer de weergave van het website iframe op de advertentie-pagina van de adverterteerder',
+		"ja" : "Ja",
+		"nee" : "Nee",
+		"project_status_gepubliceerd" : "Gepubliceerd",
+		"project_status_nieuw" : "Nieuw",
+		"project_status_ter_goedkeuring" : "Ter goedkeuring",
+		"project_status_wachten_op_depubliceren" : "Wachten op depubliceren",
+		"project_status_uitgeschakeld" : "Uitgeschakeld",
 	},
 
 	"5" : {
@@ -1661,6 +1693,15 @@ const language = {
 
 		"pageProject_details_meeting_review": "Meetingreview ID",
 		"pageProject_tooltip_meeting_review": 'Voeg hier de ID van het meetingreview project in om de reviews op de website te tonen',
+		"pageProject_contact_disable_website_title": "De-activeer website",
+		"pageProject_contact_disable_website_tooltip": 'De-activeer de weergave van het website iframe op de advertentie-pagina van de adverterteerder',
+		"ja" : "Ja",
+		"nee" : "Nee",
+		"project_status_gepubliceerd" : "Gepubliceerd",
+		"project_status_nieuw" : "Nieuw",
+		"project_status_ter_goedkeuring" : "Ter goedkeuring",
+		"project_status_wachten_op_depubliceren" : "Wachten op depubliceren",
+		"project_status_uitgeschakeld" : "Uitgeschakeld",
 	}
 }
 

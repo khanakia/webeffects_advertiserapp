@@ -1,6 +1,9 @@
 import Env from './env.json'
+import language from './translation';
 
 const env_current = Env[Env.current]
+const trans = language[Env.site_id];
+
 export const ROOT_HOST = env_current.root_host;
 export const ROOT_URL = env_current.root_url;
 export const API_HOST = env_current.api_host;
@@ -55,7 +58,7 @@ export const API_URL_PROJECT_PARKINGS = API_URL_PROJECT +'/project_parkings';
 
 export const PROJECT_STATUSES = {
 	"1" : {
-		'title' : 'Gepubliceerd',
+		'title' : trans.project_status_gepubliceerd,
 		'icon_class' : 'iconc iconc-published color-green',
 	},
 
