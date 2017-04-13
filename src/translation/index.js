@@ -1049,7 +1049,7 @@ const language = {
 
 		"changePwd_title": "Ein neues Passwort erstellen",
 		"changePwd_old": "Ihr altes Passwort",
-		"changePwd_new": "Ihr neues Passwort",
+		"changePwd_new": "Ihr neue Passwort",
 		"changePwd_new_confirm": "Hier erneut Ihr neues Passwort.",
 		"changePwd_submit_btn": "Update Password",
 		"changePwd_error_min8_char": "Mindestens 8 Zeichen",
@@ -1412,7 +1412,7 @@ const language = {
 		"account_confirm_content": "You haven't saved your changes. Are you sure you want to leave the page?",
 		"account_confirm_cancel": "Cancel",
 		"account_confirm_delete": "Leave without saving",
-		"account_uw_oude_wachtwoord": "Ihr altes Passwort",
+		"account_uw_oude_wachtwoord": "Your old password",
 		"account_uw_nieuwe_wachtwoord": "New password",
 		"account_noogmaals": "Retype your new password",
 		"account_bevestig_btn": "Bevestig",
