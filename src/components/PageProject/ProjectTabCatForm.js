@@ -62,7 +62,7 @@ class ProjectTabCatForm extends Component {
             <div>
                 <input type="hidden" name={`geleghendens[${item.value}][filter_value_id]`} defaultValue={item.value} />
                 <div className="form-group">
-                    <label>{trans.pageProject_catform_title}
+                    <label>{trans.pageProject_catform_title} {item.title}
                         <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={cat_tooltip}></a>
                     </label>
                     <textarea className="editor" ref="description" name={`geleghendens[${item.value}][description]`} defaultValue={fvm.description}></textarea>

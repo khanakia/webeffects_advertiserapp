@@ -140,8 +140,9 @@ class OfferRequestList extends React.Component {
         
         return data.map((item, index) => {
             // console.log(item);
+            if(!item) return null;
             return (
-                <div className="offerrequesttab" key={index}>    
+                   <div className="offerrequesttab" key={index}>    
                     <div className={'comp-offerrequestlist ' + item.id} ref="offerrequestlist">
                         <div className="accordion" >
                             <div className="accordion-group">

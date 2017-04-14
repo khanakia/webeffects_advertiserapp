@@ -1109,7 +1109,7 @@ const language = {
 		"project_deletepoup_cancel": "Abbrechen",
 		"project_deletepoup_delete": "Begrepen. Verzend verzoek.",
 
-		"pageProject_catform_title": "Description",
+		"pageProject_catform_title": "Beschreibung Thema",
 		"pageProject_catform_fileinput_heading_empty": "0 foto's",
 		"pageProject_catform_fileinput_heading": "<%= item_count %> foto's ",
 		"pageProject_catform_fileinput_tooltip_note": " Voeg een beschrijving toe die betrekking hebben op <%= cat_title %>.",
@@ -1450,7 +1450,8 @@ const language = {
 		"project_deletepoup_cancel": "Cancel",
 		"project_deletepoup_delete": "Begrepen. Verzend verzoek.",
 
-		"pageProject_catform_title": "Description",
+		"pageProject_catform_title": "Description of ",
+		"pageProject_catform_fileinput_tooltip_note": "Description",
 		"pageProject_catform_fileinput_heading_empty": "0 foto's",
 		"pageProject_catform_fileinput_heading": "<%= item_count %> foto's ",
 		"pageProject_catform_fileinput_tooltip_note": " Voeg een beschrijving toe die betrekking hebben op <%= cat_title %>.",
