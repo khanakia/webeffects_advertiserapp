@@ -17,7 +17,7 @@ class ProjectTabGeneralForm extends Component {
 
         this.state = {
             project_title : this.props.project_title,
-            discount_filter_value_id: this.props.discount_filter_value_id
+            // discount_filter_value_id: this.props.discount_filter_value_id
         }
     
     }
@@ -34,7 +34,7 @@ class ProjectTabGeneralForm extends Component {
         onVideoDeleted: function(){},
         project_iframes: [],
         onIframeDeleted: function(){},
-        discount_filter_value_id : null,
+        // discount_filter_value_id : null,
         discount_short_title : '',
         discount_long_title : '',  
     }
@@ -48,11 +48,11 @@ class ProjectTabGeneralForm extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        if(nextProps.reset) {
-            this.setState({
-                discount_filter_value_id: nextProps.discount_filter_value_id
-            })
-        }
+        // if(nextProps.reset) {
+        //     this.setState({
+        //         discount_filter_value_id: nextProps.discount_filter_value_id
+        //     })
+        // }
     }
 
 
@@ -60,12 +60,12 @@ class ProjectTabGeneralForm extends Component {
         $(this.refs.description).trumbowyg('html', this.props.description);
     }
 
-    handleChange = (value) => {
-        this.setState({
-          discount_filter_value_id: value
-        });
-        console.log(value)
-      }
+    // handleChange = (value) => {
+    //     this.setState({
+    //       discount_filter_value_id: value
+    //     });
+    //     console.log(value)
+    // }
 
     render() {
         // console.log(this.props.project)
@@ -124,15 +124,15 @@ class ProjectTabGeneralForm extends Component {
                     <IframeInput items={this.props.project_iframes} onIframeDeleted={this.props.onIframeDeleted} reset={this.props.reset} />
                 </div>
 
-                <div className="form-group">
-                    <label>{trans.pageProject_actie_label}
-                        <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_tooltip_actie_toevoegen}></a>
-                    </label>
-                    {/*<RadioList name="discount_filter_value_id" items={toevoegenList} selectedValue={this.props.discount_filter_value_id} />*/}
-
-                    <RadioButtonGroup name="discount_filter_value_id" choices={toevoegenList} checkedValue={this.state.discount_filter_value_id} onChange={this.handleChange} />
-                    
-                </div>
+                {/*<div className="form-group">
+                                    <label>{trans.pageProject_actie_label}
+                                        <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_tooltip_actie_toevoegen}></a>
+                                    </label>
+                                    
+                
+                                    <RadioButtonGroup name="discount_filter_value_id" choices={toevoegenList} checkedValue={this.state.discount_filter_value_id} onChange={this.handleChange} />
+                                    
+                                </div>*/}
 
                 <div className="form-group">
                     <label>{trans.pageProject_Aanbieding_label} <br /> {trans.pageProject_aanbieding_korte_label}

@@ -457,7 +457,7 @@ class PageProject extends Component {
                                                     onVideoDeleted= {this.onVideoDeleted}
                                                     project_iframes= {project.project_iframes}
                                                     onIframeDeleted= {this.onIframeDeleted}
-                                                    discount_filter_value_id = {project.discount_filter_value_id}
+                                                    // discount_filter_value_id = {project.discount_filter_value_id}
                                                     discount_short_title = {project.discount_short_title}
                                                     discount_long_title = {project.discount_long_title} />
                                            
