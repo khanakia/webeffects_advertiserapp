@@ -114,7 +114,7 @@ class OfferRequestList extends React.Component {
     }
 
     _renderCategories(catids) {
-        if(!catids) return null;
+        if(undefined==catids || !catids) return null;
         return catids.map((id, index) => {
             var item = _.find(this.props.categories, {value: Number(id)});
             // console.info("ABCCCCCCCC", item)
