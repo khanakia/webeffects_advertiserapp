@@ -12,7 +12,7 @@ class RightBlock extends React.Component {
         project_id: '',
         is_live_data: 0,
         has_revision_data: 0,
-        projectStatusList: [],
+        // projectStatusList: [],
         onProjectStatusChange: function(item) {},
         project_status_id: '',
         updated_date: '',

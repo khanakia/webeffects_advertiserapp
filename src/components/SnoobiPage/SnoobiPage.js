@@ -109,21 +109,24 @@ class SnoobiPage extends React.Component {
                             <ProjectItems items={this.props.data.list_mostrequested_project} />
                         </div>
                     </div>
+
                     <div className="row">
                         <div className="col-md-12">
-                            <div className="warning-message my40">{warning_msg}</div>
-                            <label className="mt20">{trans.snoobiPage_snoobi_img_title}</label>
+                            <SnoobiGraph data={this.props.data.list_graph} />
+                        </div>
+                    </div>
+
+                    <div className="row">
+                        <div className="col-md-12">
+                            <div className="warning-message my30">{warning_msg}</div>
+                            <label className="mt10">{trans.snoobiPage_snoobi_img_title}</label>
                             <div className="snoobi-wrapper">
                                 <div className="img-wrapper"></div>
                                 <p dangerouslySetInnerHTML={{__html:trans.snoobiPage_snoobi_img_desc}}></p>
                             </div>
                         </div>
                     </div>
-                    <div className="row">
-                        <div className="col-md-12">
-                            <SnoobiGraph data={this.props.data.list_graph} />
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
         ) 

@@ -1366,6 +1366,12 @@ label input[type="radio"]:checked + span {
 		background-color: #fff;			
 		border: 1px solid #CDD4D7;
 		border-bottom: none;
+
+		.date_title {
+			min-width: 150px;
+			display: inline-block;
+		}
+
 		a {
 			position: relative;
 			display: block;
@@ -1375,7 +1381,7 @@ label input[type="radio"]:checked + span {
 		    text-decoration: none;
 	
 			span {
-				padding-left: 25px;
+				/*padding-left: 25px;*/
 			    font-weight: normal;
 			}
 
@@ -1407,6 +1413,7 @@ label input[type="radio"]:checked + span {
 	h5 {
 		font-size: 14px;
 		font-weight: bold;
+		color: #101010;
 	}
 	.accordion-group {
 		background-color: #fff;
@@ -1847,6 +1854,31 @@ label input[type="radio"]:checked + span {
 	.graph-wrapper {
 		width: 100%;
 		overflow: scroll;
+
+		.heading-main {
+			display: block;
+		    margin-bottom: 15px;
+		    font-size: 16px;
+		    font-family: 'Rubik', sans-serif;
+		    font-weight: normal;
+		}
+	}
+
+	.block-graph {
+		background: #fff;
+		border: 1px solid #CDD4D7;
+		padding: 20px;
+
+		.chart-wrapper {
+			max-width: 900px;
+			margin: 0 auto;
+		}
+
+		.headings {
+			h4 {
+				font-weight: bold;
+			}
+		}
 	}
 
 	canvas {

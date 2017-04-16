@@ -28,6 +28,7 @@ class OfferRequestList extends React.Component {
         jQuery('.accordion')
         .on('show.bs.collapse', function(e) {
             jQuery(e.target).prev('.accordion-heading').addClass('active');
+            jQuery('.accordion').find(".collapse.in").collapse("hide");
         })
         .on('hide.bs.collapse', function(e) {
             jQuery(e.target).prev('.accordion-heading').removeClass('active');
@@ -148,7 +149,8 @@ class OfferRequestList extends React.Component {
                             <div className="accordion-group">
                                 <div  className="accordion-heading">
                                     <a className="accordion-toggle panel_title" data-toggle="collapse" data-parent={'collapse' + item.id} href={'#collapse' + item.id}>
-                                        {moment(item.created_at).format(Env.dateformat_default)}<span>{item.company ? item.company : item.name}</span>
+                                        <span className="date_title">{moment(item.created_at).format(Env.dateformat_default)}</span>
+                                        <span className="company_title">{item.company ? item.company : item.name}</span>
                                     </a>
                                 </div>
                                 <div id={'collapse' + item.id} className="accordion-body collapse offerrequesttable">
