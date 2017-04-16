@@ -624,7 +624,7 @@ a.question-mark-icon {
   position: relative;
   width: 100%;
   display: inline-block;
-  padding: 15px;
+  /*padding: 15px 0;*/
   font-size: 14px;
   color: #3C3C3C;
   overflow: hidden; }
@@ -636,15 +636,18 @@ a.question-mark-icon {
     margin: 0 20px 20px 0;
     float: left; }
     .belangrijkste-wrapper .item .img-wrapper {
+      display: block;
       width: 100%;
       height: 194px;
       background-repeat: no-repeat;
       background-position: center;
-      background-size: cover; }
+      background-size: cover;
+      background-color: #999; }
     .belangrijkste-wrapper .item .text-wrapper {
       padding: 20px 15px;
       border: 1px solid #CDD4D7;
-      border-top: none; }
+      /*border-top: none;*/
+      background: #fff; }
       .belangrijkste-wrapper .item .text-wrapper .title label {
         max-width: 215px;
         height: 44px;
@@ -688,6 +691,9 @@ a.question-mark-icon {
 body {
   background-color: #ECF5F8;
   font-family: 'Open Sans', sans-serif; }
+
+a, a:link {
+  color: #FF713E; }
 
 i {
   color: #7C8589; }
@@ -1066,7 +1072,10 @@ label input[type="radio"]:checked + span {
   margin: 0;
   padding: 0;
   min-width: 185px;
-  width: 100%; }
+  /*width: 100%;*/
+  max-height: 345px;
+  overflow: scroll;
+  white-space: nowrap; }
   .dropdown--style1 .dropdown-menu > li {
     border-bottom: 1px solid #CDD4D7; }
     .dropdown--style1 .dropdown-menu > li > a {
@@ -1076,6 +1085,9 @@ label input[type="radio"]:checked + span {
       color: #7C8589; }
 .dropdown--style1.open .iconc-chevron-down:before {
   content: "\e92d"; }
+@media screen and (max-width: 1200px) {
+  .dropdown--style1 .dropdown-menu {
+    white-space: initial; } }
 
 /* Used in header desktop */
 .dropdown-menu--user {
@@ -1697,8 +1709,9 @@ label input[type="radio"]:checked + span {
       /*padding-left: 25px;*/
       font-weight: normal; }
   .offerrequesttab .accordion-heading .count-bekeken {
+    margin: 0 25px 0 0;
     float: right;
-    margin: 0 25px 0 0; }
+    color: #7C8589; }
   .offerrequesttab .accordion-heading .count-bekeken-value {
     padding: 0; }
   .offerrequesttab .accordion-heading .count-bekeken-text {
@@ -1727,7 +1740,7 @@ label input[type="radio"]:checked + span {
   content: "\f106";
   color: #08B995; }
 .offerrequesttab .accordion-inner {
-  padding: 20px 15px;
+  padding: 0 15px;
   color: #7C8589;
   font-size: 15px;
   border: 1px solid #CDD4D7;
@@ -1739,6 +1752,21 @@ label input[type="radio"]:checked + span {
   .offerrequesttab .accordion-inner .table > tbody > tr > td {
     padding: 8px 0px;
     border-top: none; }
+  .offerrequesttab .accordion-inner table th {
+    color: #A0A8AC;
+    font-weight: normal;
+    padding: 20px 0 0; }
+    .offerrequesttab .accordion-inner table th:first-child {
+      border-right: 1px solid #CDD4D7; }
+    .offerrequesttab .accordion-inner table th:nth-child(2) {
+      padding-left: 15px; }
+  .offerrequesttab .accordion-inner table td {
+    color: #7C8589;
+    padding: 15px 15px 15px 0; }
+    .offerrequesttab .accordion-inner table td:first-child {
+      border-right: 1px solid #CDD4D7; }
+    .offerrequesttab .accordion-inner table td:nth-child(2) {
+      padding-left: 15px; }
 .offerrequesttab .accordion-group:last-child .accordion-heading {
   border-bottom: 1px solid #CDD4D7; }
 .offerrequesttab .accordion-group:last-child .accordion-inner {

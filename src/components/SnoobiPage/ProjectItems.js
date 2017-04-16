@@ -57,6 +57,7 @@ class ProjectItems extends React.Component {
     }
 
     render() {
+        if(this.props.items.length==0) return null;
         return (
             <div className="comp-project-items">
                 <div className="form-group">

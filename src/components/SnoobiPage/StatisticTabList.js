@@ -76,6 +76,13 @@ class StatisticTabList extends React.Component {
         const list_item = this.props.items.data;
         if(undefined==list_item) return null;
         // console.log("this.props.list", this.props.items)
+        if(this.props.items.total==0) {
+            return (
+                <div>
+                    <h3>{trans.no_data_found}</h3>
+                </div>
+            )
+        }
         return list_item.map((item, index) => {
             return (
                 <div className="accordion-group" key={index}>
@@ -89,8 +96,8 @@ class StatisticTabList extends React.Component {
                       <div className="accordion-inner">
                         <table>
                             <tr>
-                                <td>{trans.accordion_group_datum}</td>
-                                <td>{trans.accordion_group_wat_bekeken}</td>
+                                <th>{trans.accordion_group_datum}</th>
+                                <th>{trans.accordion_group_wat_bekeken}</th>
                             </tr>
                             {this.renderStatsDetailList(item.details)}
                         </table>

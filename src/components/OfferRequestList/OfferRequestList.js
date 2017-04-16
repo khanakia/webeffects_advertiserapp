@@ -100,7 +100,7 @@ class OfferRequestList extends React.Component {
     }
 
     _renderDatumJson(datum) {
-        if(!datum) return null;
+        if(!datum) return "-";
         // let json = JSON.parse(datum);
         let json = datum;
         // console.log("json jsonjsonjson", json)
@@ -115,7 +115,7 @@ class OfferRequestList extends React.Component {
     }
 
     _renderCategories(catids) {
-        if(undefined==catids || !catids) return null;
+        if(undefined==catids || !catids || catids.length==0) return "-";
         return catids.map((id, index) => {
             var item = _.find(this.props.categories, {value: Number(id)});
             // console.info("ABCCCCCCCC", item)
@@ -159,25 +159,25 @@ class OfferRequestList extends React.Component {
                                             <div className="col-md-6 col-sm-12">
                                                 <div>
                                                     <h5>{trans.offerte_aanhef_label}</h5>
-                                                    <p>{item.aanhef}</p>
+                                                    <p>{item.aanhef || "-"}</p>
                                                 </div>
                                             </div>
                                             <div className="col-md-6 col-sm-12">
                                                 <div>
                                                     <h5>{trans.offerte_naam_label}</h5>
-                                                    <p>{item.name}</p>
+                                                    <p>{item.name || "-"}</p>
                                                 </div>
                                             </div>
                                             <div className="col-md-6 col-sm-12">
                                                 <div>
                                                     <h5>{trans.offerte_bedrijfsnaam_label}</h5>
-                                                    <p>{item.company}</p>
+                                                    <p>{item.company || "-"}</p>
                                                 </div>
                                             </div>
                                             <div className="col-md-6 col-sm-12">
                                                 <div>
                                                     <h5>{trans.offerte_telefoonnummer}</h5>
-                                                    <p>{item.phone}</p>
+                                                    <p>{item.phone || "-"}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -185,25 +185,25 @@ class OfferRequestList extends React.Component {
                                             <div className="col-md-6 col-sm-12">
                                                 <div>
                                                     <h5>{trans.offerte_emailadres_label}</h5>
-                                                    <p>{item.email}</p>
+                                                    <p>{item.email || "-"}</p>
                                                 </div>
                                             </div>
                                             <div className="col-md-6 col-sm-12">
                                                 <div>
                                                     <h5>{trans.offerte_straatnaam_label}</h5>
-                                                    <p>{item.straat}</p>
+                                                    <p>{item.straat || "-"}</p>
                                                 </div>
                                             </div>
                                             <div className="col-md-6 col-sm-12">
                                                 <div>
                                                     <h5>{trans.offerte_huisnummer_label}</h5>
-                                                    <p>{item.house_no}</p>
+                                                    <p>{item.house_no || "-"}</p>
                                                 </div>
                                             </div>
                                             <div className="col-md-6 col-sm-12">
                                                 <div>
                                                     <h5>{trans.offerte_postcode_label}</h5>
-                                                    <p>{item.postcode}</p>
+                                                    <p>{item.postcode || "-"}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -211,7 +211,7 @@ class OfferRequestList extends React.Component {
                                             <div className="col-md-6 col-sm-12">
                                                 <div>
                                                     <h5>{trans.offerte_plaats_label}</h5>
-                                                    <p>{item.plaat}</p>
+                                                    <p>{item.plaat || "-"}</p>
                                                 </div>
                                             </div>
                                             <div className="col-md-6 col-sm-12">
@@ -223,7 +223,7 @@ class OfferRequestList extends React.Component {
                                             <div className="col-md-6 col-sm-12">
                                                 <div>
                                                     <h5>{trans.offerte_aantal_personen_label}</h5>
-                                                    <p>{item.no_of_person}</p>
+                                                    <p>{item.no_of_person || "-"}</p>
                                                 </div>
                                             </div>
                                             <div className="col-md-6 col-sm-12">
@@ -237,13 +237,13 @@ class OfferRequestList extends React.Component {
                                             <div className="col-md-6 col-sm-12">
                                                 <div>
                                                     <h5>{trans.offerte_algemene}</h5>
-                                                    <p>{item.description}</p>
+                                                    <p>{item.description || "-"}</p>
                                                 </div>
                                             </div>
                                             <div className="col-md-6 col-sm-12">
                                                 <div>
                                                     <h5>{trans.offerte_locatie_label}</h5>
-                                                    <p>{item.description}</p>
+                                                    <p>{item.description || "-"}</p>
                                                 </div>
                                             </div>
                                         </div>

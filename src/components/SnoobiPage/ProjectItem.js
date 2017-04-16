@@ -24,23 +24,29 @@ class ProjectItem extends React.Component {
     render() {
         const item = this.props.item;
 
+        const plaat_name = item.plaat ? item.plaat['filter_value_name'] : '';
+
         const imgUrl = {
             backgroundImage: 'url(' + item.featured_image_url + ')',
         };
 
+        const eigen_catering_text = item.eigen_catering ? trans.pageProject_radio_eigen : trans.pageProject_radio_geen_eigen;
+        const eigen_catering_icon_class = item.eigen_catering ? "iconc iconc-food" : "iconc iconc-no-food";
+
         return (
             <div className={'block-project-item item'}>
                 <div className="block-klanten">
-                    <div className="img-wrapper" style={ imgUrl}></div>
+                    {/*<div className="img-wrapper" style={ imgUrl}></div>*/}
+                    <a target="_blank" href={item.url_live} className="img-wrapper" style={ imgUrl}></a>
                     <div className="text-wrapper">
                         <div className="title">
-                            <label><a href="{{item.url_live}}" target="_blank">{item.project_title}</a></label>
-                            <span>Bennekom</span>
+                            <label><a target="_blank" href={item.url_live} target="_blank">{item.project_title}</a></label>
+                            <span>{plaat_name}</span>
                         </div>
                         <p dangerouslySetInnerHTML={{__html:item.excerpt_nolink}}></p>
                         <div className="info-wrapper mt15">
-                            <i className={item.eigen_icon_class}></i>
-                            <span>{item.eigen_text}</span>
+                            <i className={eigen_catering_icon_class}></i>
+                            <span>{eigen_catering_text}</span>
                         </div>
                         <div className="info-wrapper">
                             <i className="iconc-person"></i>

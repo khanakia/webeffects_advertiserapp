@@ -43,7 +43,7 @@ class ProjectTabCatForm extends Component {
         const item = this.props.item;
         let fvm = _.find(this.props.geleghendens, { 'filter_value_id': item.value });
         fvm = undefined==fvm ? [] : fvm;
-        console.log("this.props.geleghendensthis.props.geleghendensthis.props.geleghendens", this.props.geleghendens)
+        // console.log("this.props.geleghendensthis.props.geleghendensthis.props.geleghendens", this.props.geleghendens)
        
         if(undefined==fvm.description) {
             $(this.refs.description).trumbowyg('html', "");    

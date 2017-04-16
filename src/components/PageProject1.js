@@ -350,7 +350,7 @@ class PageProject extends Component {
         snoobi_args.sort = item.value;
         console.log(snoobi_args);
 
-        this.props.fetchSnoobiList(this.props.params.projectId, 1, snoobi_args);
+        this.props.fetchSnoobiData(this.props.params.projectId, 1, snoobi_args);
         this.setState({
             snoobi_args: snoobi_args
         })
@@ -361,7 +361,7 @@ class PageProject extends Component {
         let snoobi_args = Object.assign({}, this.state.snoobi_args); 
         snoobi_args.filter_date = item.value;
 
-        this.props.fetchSnoobiList(this.props.params.projectId, 1, snoobi_args);
+        this.props.fetchSnoobiData(this.props.params.projectId, 1, snoobi_args);
         this.setState({
             snoobi_args: snoobi_args
         })
@@ -371,7 +371,7 @@ class PageProject extends Component {
         let snoobi_args = Object.assign({}, this.state.snoobi_args); 
         snoobi_args.filter_useractions = filters;
 
-        this.props.fetchSnoobiList(this.props.params.projectId, 1, snoobi_args);
+        this.props.fetchSnoobiData(this.props.params.projectId, 1, snoobi_args);
         this.setState({
             snoobi_args: snoobi_args
         })

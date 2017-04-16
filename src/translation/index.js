@@ -338,6 +338,11 @@ const language = {
 		"project_status_ter_goedkeuring" : "Ter goedkeuring",
 		"project_status_wachten_op_depubliceren" : "Wachten op depubliceren",
 		"project_status_uitgeschakeld" : "Uitgeschakeld",
+
+		"project_snoobi_chart_mainheading" : "Uitgeschakeld",
+		"project_snoobi_chart_heading" : "Uitgeschakeld",
+		"project_snoobi_chart_subheading" : "Uitgeschakeld",
+		"project_snoobi_chart_yaxis_labelString" : "Aantal aanvragen",
 	},
 
 	"2" : {
@@ -679,6 +684,11 @@ const language = {
 		"project_status_ter_goedkeuring" : "Ter goedkeuring",
 		"project_status_wachten_op_depubliceren" : "Wachten op depubliceren",
 		"project_status_uitgeschakeld" : "Uitgeschakeld",
+
+		"project_snoobi_chart_mainheading" : "Uitgeschakeld",
+		"project_snoobi_chart_heading" : "Uitgeschakeld",
+		"project_snoobi_chart_subheading" : "Uitgeschakeld",
+		"project_snoobi_chart_yaxis_labelString" : "Aantal aanvragen",
 	},
 
 	"3" : {
@@ -1020,6 +1030,11 @@ const language = {
 		"project_status_ter_goedkeuring" : "Pour approbation",
 		"project_status_wachten_op_depubliceren" : "Wachten op depubliceren",
 		"project_status_uitgeschakeld" : "Désactivé",
+
+		"project_snoobi_chart_mainheading" : "Uitgeschakeld",
+		"project_snoobi_chart_heading" : "Uitgeschakeld",
+		"project_snoobi_chart_subheading" : "Uitgeschakeld",
+		"project_snoobi_chart_yaxis_labelString" : "Aantal aanvragen",
 	},
 
 	"4" : {
@@ -1361,6 +1376,11 @@ const language = {
 		"project_status_ter_goedkeuring" : "Nach Vereinbarung",
 		"project_status_wachten_op_depubliceren" : "Wachten op depubliceren",
 		"project_status_uitgeschakeld" : "Ausgeschaltet",
+
+		"project_snoobi_chart_mainheading" : "Uitgeschakeld",
+		"project_snoobi_chart_heading" : "Uitgeschakeld",
+		"project_snoobi_chart_subheading" : "Uitgeschakeld",
+		"project_snoobi_chart_yaxis_labelString" : "Aantal aanvragen",
 	},
 
 	"5" : {
@@ -1703,6 +1723,11 @@ const language = {
 		"project_status_ter_goedkeuring" : "For approval",
 		"project_status_wachten_op_depubliceren" : "Wachten op depubliceren",
 		"project_status_uitgeschakeld" : "Deactivated",
+
+		"project_snoobi_chart_mainheading" : "Uitgeschakeld",
+		"project_snoobi_chart_heading" : "Uitgeschakeld",
+		"project_snoobi_chart_subheading" : "Uitgeschakeld",
+		"project_snoobi_chart_yaxis_labelString" : "Aantal aanvragen",
 	}
 }
 

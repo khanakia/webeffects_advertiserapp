@@ -2,7 +2,7 @@
 	position: relative;
 	width: 100%;
     display: inline-block;
-	padding: 15px;
+	/*padding: 15px 0;*/
 	font-size: 14px;
 	color: #3C3C3C;
 	overflow: hidden;
@@ -17,18 +17,21 @@
 		margin: 0 20px 20px 0;
 		float: left;
 
-		.img-wrapper {	
+		.img-wrapper {
+			display: block;
 			width: 100%;
 			height: 194px;
 			background-repeat: no-repeat;
 			background-position: center;
 			background-size: cover;
+			background-color: #999; 
 		}
 
 		.text-wrapper {
 			padding: 20px 15px;
 			border: 1px solid #CDD4D7;
-			border-top: none;
+			/*border-top: none;*/
+			background: #fff;
 
 			.title {
 

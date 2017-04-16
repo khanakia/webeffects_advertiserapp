@@ -36,7 +36,7 @@ class SnoobiGraph extends React.Component {
                     yAxes: [{
                         scaleLabel: {
                             display: true,
-                            labelString: 'Aantal aanvragen'
+                            labelString: trans.project_snoobi_chart_yaxis_labelString
                         },
                         gridLines:{
                             color:"#BCBCBC",
@@ -57,13 +57,13 @@ class SnoobiGraph extends React.Component {
     render() {
         return (
             <div className="graph-wrapper">
-                <h3 className="heading-main">Aanvragen in een grafiek</h3>
+                <h3 className="heading-main">{trans.project_snoobi_chart_mainheading}</h3>
                 <div className="block-graph">
                     <div className="headings text-center">
                         <h4>
-                            Aanvragen
+                            {trans.project_snoobi_chart_heading}
                         </h4>
-                        <p>Aantal maandelijkse aanvragen per item</p>
+                        <p>{trans.project_snoobi_chart_subheading}</p>
                     </div>
                     <div className="chart-wrapper">
                         <canvas id="myChart" ></canvas>

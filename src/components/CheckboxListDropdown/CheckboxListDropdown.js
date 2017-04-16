@@ -63,13 +63,13 @@ class CheckboxListDropdown extends React.Component {
 			var index = selectedItems.indexOf(itemValue);
 			if(index===-1) {
 				// If not exists then push new object
-				selectedItems.push(parseInt(e.target.value));
+				selectedItems.push((e.target.value));
 			}
 		} else {
 			// console.log("remove")
 			selectedItems = _.filter(selectedItems, function(o) { 
 				console.log(o, itemValue);
-				return parseInt(o)!==parseInt(itemValue); 
+				return (o)!==(itemValue); 
 			});
 			
 		}
@@ -133,7 +133,7 @@ class CheckboxListDropdown extends React.Component {
 						}, this)}
 				  		return (
 					        <label key={index}>
-                    			<span className="filterSelectedValue">{filterTitle} <button className="btn btn-plain" onClick={()=>{this.removeFilter(value)}}><i className="iconc-cross"></i></button></span>
+                    			<span className="filterSelectedValue">{filterTitle} <button type="button" className="btn btn-plain" onClick={()=>{this.removeFilter(value)}}><i className="iconc-cross"></i></button></span>
 					        </label>
 				  		)
 				  	}, this)}

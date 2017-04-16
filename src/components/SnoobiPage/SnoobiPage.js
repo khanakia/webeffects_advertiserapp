@@ -72,7 +72,7 @@ class SnoobiPage extends React.Component {
             <div className="statistieken-wrapper">
                 <div className="form-group">
                     <div className="row">
-                        <div className="form-group col-md-12">
+                        <div className="form-group no-margin-bottom col-md-12">
                             <label>{trans.snoobiPage_uw_advertentie}
                                 <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_tooltip_uw_advertentie}></a>
                             </label>

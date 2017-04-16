@@ -17,7 +17,9 @@ body {
 	background-color: #ECF5F8;
 	font-family: 'Open Sans', sans-serif;
 }
-
+a, a:link {
+	color: #FF713E;
+}
 i {
 	color: #7C8589;
 }
@@ -501,7 +503,11 @@ label input[type="radio"]:checked + span {
 		margin: 0;
 		padding: 0;
 		min-width: 185px;
-		width: 100%;
+		/*width: 100%;*/
+
+		max-height: 345px;
+		overflow: scroll;
+		white-space: nowrap;
 
 		>li {
 			border-bottom: 1px solid #CDD4D7;
@@ -519,7 +525,12 @@ label input[type="radio"]:checked + span {
 			content: "\e92d";
 		}
 	}
-
+	
+	@media screen and (max-width: 1200px) {
+		.dropdown-menu {
+			    white-space: initial;
+		}
+	}
 }
 
 /* Used in header desktop */
@@ -1388,8 +1399,9 @@ label input[type="radio"]:checked + span {
 		}
 
 		.count-bekeken {
-			float: right;
 			margin: 0 25px 0 0;
+			float: right;
+			color: #7C8589;
 		}
 
 		.count-bekeken-value {
@@ -1435,7 +1447,7 @@ label input[type="radio"]:checked + span {
 	}
 
 	.accordion-inner {
-		padding: 20px 15px;
+		padding: 0 15px;
 		color: #7C8589;
 		font-size: 15px;
 		border: 1px solid #CDD4D7;
@@ -1449,6 +1461,32 @@ label input[type="radio"]:checked + span {
 		.table > tbody > tr > td {
 			padding: 8px 0px;
 			border-top: none
+		}
+
+		table {
+			th {
+				color: #A0A8AC;
+    			font-weight: normal;
+    			padding: 20px 0 0;
+    			&:first-child {
+					border-right: 1px solid #CDD4D7;
+				}
+				&:nth-child(2) {
+					padding-left: 15px;
+				}
+			}
+
+			td {
+				color: #7C8589;
+				padding: 15px 15px 15px 0;
+				&:first-child {
+					border-right: 1px solid #CDD4D7;
+				}
+
+				&:nth-child(2) {
+					padding-left: 15px;
+				}
+			}
 		}
 	}
 
