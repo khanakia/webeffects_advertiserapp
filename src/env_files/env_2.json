@@ -2,8 +2,8 @@
     "current": "dev",
     "site_title": "Advertiser Dashboard",
     "site_id": 2,
-    "logo_path": "../images/logos/logo-dnls-belgium-white.svg",
     "logo_path": "../images/logos/logo-dnls-belgium.svg",
+    "logo_path_white": "../images/logos/logo-dnls-belgium-white.svg",
     "show_intercom": 0,
     "show_usersnap": 0,
     "adverter_page_link": "/adverteerder-worden",
@@ -33,8 +33,8 @@
     },
 
     "staging": {
-            "root_host": "dnls-appbenl.webeff-staging.nl",
-            "root_url": "https://dnls-appbenl.webeff-staging.nl",
+            "root_host": "dnlsbenl-app.webeff-staging.nl",
+            "root_url": "https://dnlsbenl-app.webeff-staging.nl",
             "api_host": "https://dnls.webeff-staging.nl",
             "api_url": "https://dnls.webeff-staging.nl/api",
             "public_site_url": "https://dnlsbe.webeff-staging.nl/nl"

@@ -1,44 +1,50 @@
 {
-	"current": "dev",
-	"site_title": "Advertiser Dashboard",
-	"site_id": 1,
-	"logo_path": "../images/logos/logo-dnls-white.svg",
-	"show_intercom": 0,
-	"show_usersnap": 0,
-	"adverter_page_link": "/adverteerder-worden",
-	"usersnap_apikey": "ef814b06-b5f4-4f02-a3c0-35d1b9ef8805",
-	"googlemap_apikey": "AIzaSyDVPCUUAYU54oyUU-CZbaxkXuXPtBoiwa0",
-	"locale" : "nl",
-	"dateformat_default" : "LL",
-	"dateformat_full" : "LLL",
-	"project_status": {
-		"waiting_for_unpublish" : 4
-	},
-	"local": {
-		"root_host": "webeffects.advappuk",
-		"root_url": "http://webeffects.advappuk",
-		"api_host": "http://webeffects.dnls",
-		"api_url": "http://webeffects.dnls/api"
-	},
+    "current": "dev",
+    "site_title": "Advertiser Dashboard",
+    "site_id": 5,
+    "logo_path": "../images/logos/logo-top-venues-london.svg",
+    "logo_path_white": "../images/logos/logo-top-venues-london-white.svg",
+    "show_intercom": 0,
+    "show_usersnap": 0,
+    "adverter_page_link": "/adverteerder-worden",
+    "usersnap_apikey": "ef814b06-b5f4-4f02-a3c0-35d1b9ef8805",
+    "googlemap_apikey": "AIzaSyDVPCUUAYU54oyUU-CZbaxkXuXPtBoiwa0",
+    "locale" : "en",
+    "dateformat_default" : "LL",
+    "dateformat_full" : "LLL",
+    "dateformat_datepicker" : "yy-mm-dd",
+    "project_status": {
+        "waiting_for_unpublish" : 4
+    },
+    "local": {
+            "root_host": "webeffects.advapp_uk",
+            "root_url": "http://webeffects.advapp_uk",
+            "api_host": "http://webeffects.dnls",
+            "api_url": "http://webeffects.dnls/api",
+            "public_site_url": "http://webeffects.dnls_uk"
+    },
 
-	"dev": {
-		"root_host": "dnlsuk-app.webeff-dev.nl",
-		"root_url": "http://dnlsuk-app.webeff-dev.nl",
-		"api_host": "http://dnls.webeff-dev.nl/",
-		"api_url": "http://dnls.webeff-dev.nl/api"
-	},
+    "dev": {
+            "root_host": "dnlsuk-app.webeff-dev.nl",
+            "root_url": "https://dnlsuk-app.webeff-dev.nl",
+            "api_host": "https://dnls.webeff-dev.nl",
+            "api_url": "https://dnls.webeff-dev.nl/api",
+            "public_site_url": "https://dnlsuk.webeff-dev.nl"
+    },
 
-	"staging": {
-		"root_host": "dnlsuk-app.webeff-staging.nl",
-		"root_url": "http://dnlsuk-app.webeff-staging.nl",
-		"api_host": "http://dnls.webeff-staging.nl",
-		"api_url": "http://dnls.webeff-staging.nl/api"
-	},
+    "staging": {
+            "root_host": "dnlsuk-app.webeff-staging.nl",
+            "root_url": "https://dnlsuk-app.webeff-staging.nl",
+            "api_host": "https://dnls.webeff-staging.nl",
+            "api_url": "https://dnls.webeff-staging.nl/api",
+            "public_site_url": "https://dnlsuk.webeff-staging.nl"
+    },
 
-	"prod": {
-		"root_host": "dashboard.topvenues-london.co.uk",
-		"root_url": "http://dashboard.topvenues-london.co.uk",
-		"api_host": "http://dnls.nl",
-		"api_url": "http://dnls.nl/api"
-	}
+    "prod": {
+            "root_host": "dashboard.topvenues-london.co.uk",
+            "root_url": "https://dashboard.topvenues-london.co.uk",
+            "api_host": "https://dnls.nl",
+            "api_url": "https://dnls.nl/api",
+            "public_site_url": "https://topvenues-london.co.uk"
+    }
 }
