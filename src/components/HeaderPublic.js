@@ -19,12 +19,17 @@ class HeaderPublic extends Component {
            
     }
     
-    render() {
+    render() { 
+
+        var logoStyle = {
+            backgroundImage: "url(" + Env.logo_path + ")"
+        };
+
 
         return (
             <header className="headerPublic-wrapper">
             	<div className="img-wrapper">
-            		<div className="logo"></div>
+            		<div className="logo" style={logoStyle}></div>
             	</div>
             </header>
         );

@@ -1,8 +1,9 @@
 {
     "current": "dev",
     "site_title": "Advertiser Dashboard",
-    "site_id": 1,
+    "site_id": 2,
     "logo_path": "../images/logos/logo-dnls-belgium-white.svg",
+    "logo_path": "../images/logos/logo-dnls-belgium.svg",
     "show_intercom": 0,
     "show_usersnap": 0,
     "adverter_page_link": "/adverteerder-worden",

@@ -17,7 +17,7 @@ class Sidebar extends Component {
  
     render() {
         const logoStyle = {
-            backgroundImage: 'url(' + Env.logo_path + ')',
+            backgroundImage: 'url(' + Env.logo_path_white + ')',
         };
         return (
             <div className="comp-sidebar">
