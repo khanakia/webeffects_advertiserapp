@@ -1900,12 +1900,31 @@ label input[type="radio"]:checked + span {
     .warning-message {
       font-size: 15px; } }
 
-.snoobi-wrapper .img-wrapper {
-  margin-bottom: 20px;
-  width: 268px;
-  height: 94px;
-  display: inline-block;
-  background: url("../images/snoobi-logo.png") no-repeat center; }
+.snoobi-wrapper {
+  display: table;
+  width: 100%; }
+  .snoobi-wrapper .img-wrapper {
+    display: table-cell;
+    margin-bottom: 20px;
+    max-width: 268px;
+    width: 30%;
+    height: 94px;
+    background: url("../images/snoobi-logo.png") no-repeat left;
+    background-size: contain; }
+  .snoobi-wrapper p {
+    display: table-cell;
+    padding-left: 30px; }
+  @media screen and (min-width: 1800px) {
+    .snoobi-wrapper p {
+      padding-left: 0px; } }
+  @media screen and (max-width: 599px) {
+    .snoobi-wrapper .img-wrapper {
+      display: block;
+      max-width: auto;
+      width: 268px; }
+    .snoobi-wrapper p {
+      display: block;
+      padding-left: 0px; } }
 
 .popover.right {
   border-radius: 4px; }
@@ -2097,5 +2116,9 @@ label input[type="radio"]:checked + span {
   @media screen and (max-width: 1200px) {
     .dropdown-wrapper .dropdown {
       width: auto; } }
+
+@media screen and (max-width: 991px) {
+  .projectPageContent {
+    padding-bottom: 60px; } }
 
 /*# sourceMappingURL=app.css.map */

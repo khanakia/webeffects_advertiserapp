@@ -1708,13 +1708,38 @@ label input[type="radio"]:checked + span {
 		font-size: 15px;
 	}
 }
+
 .snoobi-wrapper {
+	display: table;
+	width: 100%;
 	.img-wrapper {
+		display: table-cell;
 		margin-bottom: 20px;
-		width: 268px;
+		max-width: 268px;
+		width: 30%;
 		height: 94px;
-		display: inline-block;
-		background: url("../images/snoobi-logo.png") no-repeat center;
+		background: url("../images/snoobi-logo.png") no-repeat left;
+		background-size: contain;
+	}
+	p {
+		display: table-cell;
+		padding-left: 30px;
+	}
+	@media screen and (min-width: 1800px) {
+		p {
+			padding-left: 0px;
+		}
+	}
+	@media screen and (max-width: 599px) {
+		.img-wrapper {
+			display: block;
+			max-width: auto;
+			width: 268px;
+		}
+		p {
+			display: block;
+			padding-left: 0px;
+		}
 	}
 }
 
@@ -2017,5 +2042,11 @@ label input[type="radio"]:checked + span {
 		.dropdown {
 			width: auto;
 		}
+	}
+}
+
+@media screen and (max-width: 991px) {
+	.projectPageContent {
+		padding-bottom: 60px;
 	}
 }
