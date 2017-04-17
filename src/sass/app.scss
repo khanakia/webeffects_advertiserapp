@@ -338,7 +338,7 @@ label input[type="radio"]:checked + span {
 	box-shadow: none;
 }
 
-.btn-green, .btn-green:focus {
+.btn-green, .btn-green:link, .btn-green:focus {
     color: #fff;
     background-color: #08B995;
     border: none;

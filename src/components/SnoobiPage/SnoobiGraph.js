@@ -57,7 +57,6 @@ class SnoobiGraph extends React.Component {
     render() {
         return (
             <div className="graph-wrapper">
-                <h3 className="heading-main">{trans.project_snoobi_chart_mainheading}</h3>
                 <div className="block-graph">
                     <div className="headings text-center">
                         <h4>

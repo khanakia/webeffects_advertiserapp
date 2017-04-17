@@ -339,9 +339,8 @@ const language = {
 		"project_status_wachten_op_depubliceren" : "Wachten op depubliceren",
 		"project_status_uitgeschakeld" : "Uitgeschakeld",
 
-		"project_snoobi_chart_mainheading" : "Uitgeschakeld",
-		"project_snoobi_chart_heading" : "Uitgeschakeld",
-		"project_snoobi_chart_subheading" : "Uitgeschakeld",
+		"project_snoobi_chart_heading" : "Aanvragen",
+		"project_snoobi_chart_subheading" : "Aantal maandelijkse aanvragen per item",
 		"project_snoobi_chart_yaxis_labelString" : "Aantal aanvragen",
 	},
 
@@ -685,9 +684,8 @@ const language = {
 		"project_status_wachten_op_depubliceren" : "Wachten op depubliceren",
 		"project_status_uitgeschakeld" : "Uitgeschakeld",
 
-		"project_snoobi_chart_mainheading" : "Uitgeschakeld",
-		"project_snoobi_chart_heading" : "Uitgeschakeld",
-		"project_snoobi_chart_subheading" : "Uitgeschakeld",
+		"project_snoobi_chart_heading" : "Aanvragen",
+		"project_snoobi_chart_subheading" : "Aantal maandelijkse aanvragen per item",
 		"project_snoobi_chart_yaxis_labelString" : "Aantal aanvragen",
 	},
 
@@ -1031,9 +1029,8 @@ const language = {
 		"project_status_wachten_op_depubliceren" : "Wachten op depubliceren",
 		"project_status_uitgeschakeld" : "Désactivé",
 
-		"project_snoobi_chart_mainheading" : "Uitgeschakeld",
-		"project_snoobi_chart_heading" : "Uitgeschakeld",
-		"project_snoobi_chart_subheading" : "Uitgeschakeld",
+		"project_snoobi_chart_heading" : "Aanvragen",
+		"project_snoobi_chart_subheading" : "Aantal maandelijkse aanvragen per item",
 		"project_snoobi_chart_yaxis_labelString" : "Aantal aanvragen",
 	},
 
@@ -1377,9 +1374,8 @@ const language = {
 		"project_status_wachten_op_depubliceren" : "Wachten op depubliceren",
 		"project_status_uitgeschakeld" : "Ausgeschaltet",
 
-		"project_snoobi_chart_mainheading" : "Uitgeschakeld",
-		"project_snoobi_chart_heading" : "Uitgeschakeld",
-		"project_snoobi_chart_subheading" : "Uitgeschakeld",
+		"project_snoobi_chart_heading" : "Aanvragen",
+		"project_snoobi_chart_subheading" : "Aantal maandelijkse aanvragen per item",
 		"project_snoobi_chart_yaxis_labelString" : "Aantal aanvragen",
 	},
 
@@ -1724,9 +1720,8 @@ const language = {
 		"project_status_wachten_op_depubliceren" : "Wachten op depubliceren",
 		"project_status_uitgeschakeld" : "Deactivated",
 
-		"project_snoobi_chart_mainheading" : "Uitgeschakeld",
-		"project_snoobi_chart_heading" : "Uitgeschakeld",
-		"project_snoobi_chart_subheading" : "Uitgeschakeld",
+		"project_snoobi_chart_heading" : "Aanvragen",
+		"project_snoobi_chart_subheading" : "Aantal maandelijkse aanvragen per item",
 		"project_snoobi_chart_yaxis_labelString" : "Aantal aanvragen",
 	}
 }

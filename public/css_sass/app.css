@@ -945,14 +945,14 @@ label input[type="radio"]:checked + span {
   outline: none;
   box-shadow: none; }
 
-.btn-green, .btn-green:focus {
+.btn-green, .btn-green:link, .btn-green:focus {
   color: #fff;
   background-color: #08B995;
   border: none;
   outline: none; }
-  .btn-green i, .btn-green:focus i {
+  .btn-green i, .btn-green:link i, .btn-green:focus i {
     color: #fff; }
-  .btn-green:hover, .btn-green:focus:hover {
+  .btn-green:hover, .btn-green:link:hover, .btn-green:focus:hover {
     color: #fff;
     background-color: #06a786;
     outline: none; }
