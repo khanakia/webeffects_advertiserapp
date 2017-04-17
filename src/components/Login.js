@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom'
 import Auth from '../helpers/auth.js'
 import HeaderPublic from './HeaderPublic'
 
-import {API_HOST} from '../config'
+import {PUBLIC_SITE_URL} from '../config'
 
 class Login extends Component {
     constructor(props, context) {
@@ -99,7 +99,7 @@ class Login extends Component {
                                         <button type="submit" className="btn btn-green btn--round">{trans.login_submit_btn}</button>
                                     </div>
                                     <br/>
-                                    <p className="text-center"><a target="_self" href={API_HOST+Env.adverter_page_link}>{trans.login_ik_ben}</a></p>
+                                    <p className="text-center"><a target="_self" href={PUBLIC_SITE_URL+Env.adverter_page_link}>{trans.login_ik_ben}</a></p>
                                 </form>
                             </div>
                         </div>

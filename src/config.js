@@ -8,6 +8,7 @@ export const ROOT_HOST = env_current.root_host;
 export const ROOT_URL = env_current.root_url;
 export const API_HOST = env_current.api_host;
 export const API_URL = env_current.api_url;
+export const PUBLIC_SITE_URL = env_current.public_site_url;
 
 export const OBJECT_TYPE_PROJECT = 'project';
 
