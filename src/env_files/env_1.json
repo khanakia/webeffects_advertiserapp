@@ -1,8 +1,9 @@
 {
-    "current": "local",
+    "current": "dev",
     "site_title": "Advertiser Dashboard",
     "site_id": 1,
-    "logo_path": "../images/logos/logo-dnls-white.svg",
+    "logo_path": "../images/logos/logo-dnls.svg",
+    "logo_path_white": "../images/logos/logo-dnls-white.svg",
     "show_intercom": 0,
     "show_usersnap": 0,
     "adverter_page_link": "/adverteerder-worden",
@@ -13,33 +14,37 @@
     "dateformat_full" : "LLL",
     "dateformat_datepicker" : "yy-mm-dd",
     "project_status": {
-            "waiting_for_unpublish" : 4
+        "waiting_for_unpublish" : 4
     },
     "local": {
             "root_host": "webeffects.advapp",
             "root_url": "http://webeffects.advapp",
             "api_host": "http://webeffects.dnls",
-            "api_url": "http://webeffects.dnls/api"
+            "api_url": "http://webeffects.dnls/api",
+            "public_site_url": "http://webeffects.dnls"
     },
 
     "dev": {
             "root_host": "dnls-app.webeff-dev.nl",
             "root_url": "https://dnls-app.webeff-dev.nl",
             "api_host": "https://dnls.webeff-dev.nl",
-            "api_url": "https://dnls.webeff-dev.nl/api"
+            "api_url": "https://dnls.webeff-dev.nl/api",
+            "public_site_url": "https://dnls.webeff-dev.nl"
     },
 
     "staging": {
-            "root_host": "dnlsde-app.webeff-staging.nl",
-            "root_url": "https://dnlsde-app.webeff-staging.nl",
+            "root_host": "dnls-app.webeff-staging.nl",
+            "root_url": "https://dnls-app.webeff-staging.nl",
             "api_host": "https://dnls.webeff-staging.nl",
-            "api_url": "https://dnls.webeff-staging.nl/api"
+            "api_url": "https://dnls.webeff-staging.nl/api",
+            "public_site_url": "https://dnls.webeff-staging.nl"
     },
 
     "prod": {
-            "root_host": "dashboard.topvenues-london.co.uk",
-            "root_url": "https://dashboard.topvenues-london.co.uk",
+            "root_host": "dashboard.dnls.nl",
+            "root_url": "https://dashboard.dnls.nl",
             "api_host": "https://dnls.nl",
-            "api_url": "https://dnls.nl/api"
+            "api_url": "https://dnls.nl/api",
+            "public_site_url": "https://dnls.nl"
     }
 }
