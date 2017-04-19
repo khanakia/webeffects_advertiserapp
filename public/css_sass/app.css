@@ -207,7 +207,7 @@ header.mobile {
       vertical-align: middle;
       opacity: 1; }
     header.mobile .header__menu i.iconc-cross-thin {
-      font-size: 12px; }
+      font-size: 18px; }
     header.mobile .header__menu i.close {
       display: none; }
     header.mobile .header__menu.opened i.open {
@@ -794,6 +794,9 @@ label.error {
   100% {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg); } }
+@media screen and (max-width: 992px) {
+  .tab-content {
+    padding-bottom: 70px; } }
 .block-info {
   padding: 20px;
   border-bottom: 1px solid #CDD4D7; }
@@ -1332,6 +1335,9 @@ label input[type="radio"]:checked + span {
   .list-group-item:first-child {
     border-top-right-radius: 0;
     border-top-left-radius: 0; }
+  .list-group-item:last-child {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0; }
 
 .table-bordered > thead > tr > th,
 .table-bordered > thead > tr > td,

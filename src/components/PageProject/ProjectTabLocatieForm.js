@@ -102,8 +102,12 @@ class ProjectTabLocatieForm extends React.Component {
     }
 
     gmapInit() {
+
+        var center_lat = this.state.address_lat || this.mapDefault.lat;
+        var center_lng = this.state.address_lng || this.mapDefault.lng;
+
         this.map = new google.maps.Map(document.getElementById('google-map'), {
-            center: {lat: 52.191735, lng: 3.0369282},
+            center: {lat: center_lat, lng: center_lng},
             zoom: 5,
             disableDefaultUI: true,
             streetViewControl: true,

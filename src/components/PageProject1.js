@@ -125,7 +125,7 @@ class PageProject extends Component {
             }
         })
 
-        $('.tab_drawer_heading a').click(function (e) {     
+        $('.tab_drawer_heading a').unbind("click").click(function (e) {     
             var href = $(this).attr('href');
             var self = $(this);
             if($('.tab-pane'+href).hasClass("active")) {

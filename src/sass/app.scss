@@ -144,6 +144,12 @@ label.error {
     }
 }
 
+@media screen and (max-width: 992px) {
+	.tab-content {
+		padding-bottom: 70px;
+	}
+}
+
 
 .block-info {
 	padding: 20px;
@@ -896,6 +902,10 @@ label input[type="radio"]:checked + span {
 	&:first-child {
 	    border-top-right-radius: 0;
 	    border-top-left-radius: 0;
+	}
+	&:last-child {
+	    border-bottom-right-radius: 0;
+    	border-bottom-left-radius: 0;
 	}
 }
 .table-bordered > thead > tr > th,

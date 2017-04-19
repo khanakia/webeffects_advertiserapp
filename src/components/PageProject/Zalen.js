@@ -37,6 +37,11 @@ class Zalen extends React.Component {
         this.accordionInit()
     }
 
+    componentDidUpdate() {
+        
+        this.accordionInit()
+    }
+
     _checkDesktopMobile() {
         var w = window.innerWidth;
         if(w<1200 && this.state.isDesktop) {
@@ -114,8 +119,10 @@ class Zalen extends React.Component {
 
     accordionInit() {
         var $mc = jQuery(this.refs.mobile_container)
+        console.log("ACCORDION");
+        console.log($mc);
         $mc.find(".content").hide();
-        $mc.find(".content:first").show().addClass("active");
+        // $mc.find(".content:first").show().addClass("active");
         $mc.find(".accordion-heading:first").addClass("active");
         $mc.find(".accordion-heading").click(function(){
             var href = $(this).attr('href');

@@ -64,7 +64,7 @@ class Header extends Component {
                    <a href="/" className="header__logo"></a>
                     <button type="button" className="header__menu">
                         <i className="iconc-hamburger open"></i>
-                        <i className="iconc-cross-thin close"></i>
+                        <i className="iconc-cross-thin iconc-cross close"></i>
                     </button>
                 </header>
 
