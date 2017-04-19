@@ -123,7 +123,7 @@ class Zalen extends React.Component {
         console.log($mc);
         $mc.find(".content").hide();
         // $mc.find(".content:first").show().addClass("active");
-        $mc.find(".accordion-heading:first").addClass("active");
+        // $mc.find(".accordion-heading:first").addClass("active");
         $mc.find(".accordion-heading").click(function(){
             var href = $(this).attr('href');
             $(".accordion-heading").removeClass("active");
@@ -277,14 +277,14 @@ class Zalen extends React.Component {
                     const cssClassHidden = (item.is_deleted==true) ? 'hidden' : '';
                     return (
                         <div key={`z-${item.id}`}>
-                            <div className="input-group input-group--style-label input-group--style-a">
+                            <div className="input-group input-group--style-label input-group--style-a input-group--style-zalen-mobile">
                                 <span className="input-group-addon">
                                     <button type="button" className="btn btn-plain btn--nopad hover-show" onClick={(e) => this.handleRemoveZalen(item)}>
                                         <i className="iconc-trash"></i>
                                     </button>
                                     <i className="iconc-room hover-hide"></i>
                                 </span>
-                                <a className="accordion-heading" href={`#z-${item.id}`}>{trans.zalen_vondelkerk}</a>
+                                <a className="accordion-heading" href={`#z-${item.id}`}>{item.room_name}</a>
                             </div>
                             <div className="content" id={`z-${item.id}`}>
                                 <table className="table table-bordered table--vertical" >

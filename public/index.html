@@ -24,31 +24,7 @@
     <meta content="width=device-width,initial-scale=1" name="viewport" /> 
     <meta charset="utf-8">
 
-    <script type="text/javascript">
-        function log(msg, color) {
-            color = color || "black";
-            bgc = "White";
-            switch (color) {
-                case "success":  color = "Green";      bgc = "LimeGreen";       break;
-                case "info":     color = "DodgerBlue"; bgc = "Turquoise";       break;
-                case "error":    color = "Red";        bgc = "Black";           break;
-                case "start":    color = "OliveDrab";  bgc = "PaleGreen";       break;
-                case "warning":  color = "Tomato";     bgc = "Black";           break;
-                case "end":      color = "Orchid";     bgc = "MediumVioletRed"; break;
-                case "type1":      color = "White";     bgc = "#06a786"; break;
-                default: color = color;
-            }
-
-            if (typeof msg == "object") {
-                console.log(msg);
-            } else if (typeof color == "object") {
-                console.log("%c" + msg, "color: PowderBlue;font-weight:bold; background-color: RoyalBlue;");
-                console.log(color);
-            } else {
-                console.log("%c" + msg, "color:" + color + ";font-weight:bold; background-color: " + bgc + ";");
-            }
-        }
-    </script>
+ 
   </head>
   <body>
     <div id="root">
@@ -82,7 +58,16 @@
     <script src="js/custom.js"></script>
     <script src="bundle/vendor.bundle.js" type="text/javascript" charset="utf-8"></script>
     <script src="bundle/bundle.js" type="text/javascript" charset="utf-8"></script>
-
+    
+    <script type="text/javascript">
+        (function() {
+            var link = document.querySelector("link[rel*='icon']") || document.createElement('link');
+            link.type = 'image/x-icon';
+            link.rel = 'shortcut icon';
+            link.href = 'images/favicons/'+Env.site_id+'.ico';
+            document.getElementsByTagName('head')[0].appendChild(link);
+        }());
+    </script>
     <script>
         // console.log(Env);
         document.title = Env.site_title;

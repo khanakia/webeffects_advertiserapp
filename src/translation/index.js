@@ -345,7 +345,7 @@ const language = {
 
 		"locatieInput_locations" : "Locatie filters",
 		"pageProject_tooltip_locatie_titles": 'U kunt hier selecteren aan welke filters uw locatie gelinkt kunnen worden.',
-		"snoobiPage_placeholder_select_filter_action" : "Fitlers",
+		"snoobiPage_placeholder_select_filter_action" : "Filters",
 		"snoobiPage_placeholder_select_filter_date" : "Datum"
 	},
 
@@ -695,7 +695,7 @@ const language = {
 
 		"locatieInput_locations" : "Locatie filters",
 		"pageProject_tooltip_locatie_titles": 'U kunt hier selecteren aan welke filters uw locatie gelinkt kunnen worden.',
-		"snoobiPage_placeholder_select_filter_action" : "Fitlers",
+		"snoobiPage_placeholder_select_filter_action" : "Filters",
 		"snoobiPage_placeholder_select_filter_date" : "Datum"
 	},
 
@@ -1045,7 +1045,7 @@ const language = {
 
 		"locatieInput_locations" : "Locatie filters",
 		"pageProject_tooltip_locatie_titles": 'U kunt hier selecteren aan welke filters uw locatie gelinkt kunnen worden.',
-		"snoobiPage_placeholder_select_filter_action" : "Fitlers",
+		"snoobiPage_placeholder_select_filter_action" : "Filters",
 		"snoobiPage_placeholder_select_filter_date" : "Datum"
 	},
 
@@ -1395,7 +1395,7 @@ const language = {
 
 		"locatieInput_locations" : "Locatie filters",
 		"pageProject_tooltip_locatie_titles": 'U kunt hier selecteren aan welke filters uw locatie gelinkt kunnen worden.',
-		"snoobiPage_placeholder_select_filter_action" : "Fitlers",
+		"snoobiPage_placeholder_select_filter_action" : "Filters",
 		"snoobiPage_placeholder_select_filter_date" : "Datum"
 	},
 
@@ -1746,7 +1746,7 @@ const language = {
 
 		"locatieInput_locations" : "Locatie filters",
 		"pageProject_tooltip_locatie_titles": 'U kunt hier selecteren aan welke filters uw locatie gelinkt kunnen worden.',
-		"snoobiPage_placeholder_select_filter_action" : "Fitlers",
+		"snoobiPage_placeholder_select_filter_action" : "Filters",
 		"snoobiPage_placeholder_select_filter_date" : "Datum"
 	}
 }

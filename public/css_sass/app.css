@@ -207,7 +207,7 @@ header.mobile {
       vertical-align: middle;
       opacity: 1; }
     header.mobile .header__menu i.iconc-cross-thin {
-      font-size: 18px; }
+      font-size: 14px; }
     header.mobile .header__menu i.close {
       display: none; }
     header.mobile .header__menu.opened i.open {
@@ -796,7 +796,7 @@ label.error {
     transform: rotate(360deg); } }
 @media screen and (max-width: 992px) {
   .tab-content {
-    padding-bottom: 70px; } }
+    padding-bottom: 100px; } }
 .block-info {
   padding: 20px;
   border-bottom: 1px solid #CDD4D7; }
@@ -1137,6 +1137,13 @@ label input[type="radio"]:checked + span {
   .input-group-addon:hover .hover-hide,
   .input-group-custom:hover .hover-hide {
     display: none; }
+  @media screen and (max-width: 1200px) {
+    .input-group-addon .hover-show,
+    .input-group-custom .hover-show {
+      display: inline-block; }
+    .input-group-addon .hover-hide,
+    .input-group-custom .hover-hide {
+      display: none; } }
 
 .input-group-vmerge .input-group {
   min-width: 250px;
@@ -1191,6 +1198,9 @@ label input[type="radio"]:checked + span {
     background-image: url("../images/chevron-up.svg"); }
   .input-group--style-a a:focus, .input-group--style-a a:hover {
     text-decoration: none; }
+
+.input-group--style-zalen-mobile .input-group-addon {
+  padding: 0; }
 
 .input-group--style-button .input-group-addon {
   border: 0;
@@ -1589,6 +1599,9 @@ label input[type="radio"]:checked + span {
     @media (max-width: 992px) {
       .formstyle1Ct.changepwdCt {
         margin: 0 auto; } }
+    @media (max-width: 992px) {
+      .formstyle1Ct.changepwdCt {
+        max-width: 100%; } }
 
 .loginform {
   padding: 50px 0;

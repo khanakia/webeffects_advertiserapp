@@ -40,7 +40,6 @@ class PageProject extends Component {
     componentWillMount() {
 
         this.props.fetchProjectFormdata()
-        log(this.props.params.projectId, 'type1')
         if(this.props.params.projectId) {
             this.props.fetchProjectRevision(this.props.params.projectId);
             this.props.fetchOfferRequestDetailsList(this.props.params.projectId);
@@ -277,7 +276,7 @@ class PageProject extends Component {
     }
 
     onRightBlockTerugClick (){
-        jQuery(this.refs.block_right).slideUp('slow', function(){
+        jQuery(".block-right").slideUp('slow', function(){
             jQuery(this).css("display", "")
         });
     }
@@ -294,7 +293,7 @@ class PageProject extends Component {
 
 
     onMeerBtnClick (){
-        jQuery(this.refs.block_right).slideDown('slow');
+        jQuery(".block-right").slideDown('slow');
     }
 
     onContactFormonDataUpdate = (data) => {

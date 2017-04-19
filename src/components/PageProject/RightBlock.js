@@ -58,11 +58,11 @@ class RightBlock extends React.Component {
 
                     <div className="d-table w100 mt20">
                         <div className="d-table-cell v-align-middle">
-                            <button ref="submit" type="button" className="btn btn-green btn--round" onClick={()=>{this.props.handleSumbit()}}>{trans.pageProject_rightBlock_opslaan}</button>
-
+                            <div><button ref="submit" type="button" className="btn btn-green btn--round" onClick={()=>{this.props.handleSumbit()}}>{trans.pageProject_rightBlock_opslaan}</button>
+                            </div>
                             {
                                 this.props.is_live_data && this.props.has_revision_data ?
-                                    <button ref="submit" type="button" className="btn btn-green btn--round mt20" onClick={()=>{this.props.handleLoadRevisionClick()}}>{trans.pageProject_rightBlock_btn_loadrevisionbtn}</button>
+                                    <div><button ref="submit" type="button" className="btn btn-green btn--round mt20" onClick={()=>{this.props.handleLoadRevisionClick()}}>{trans.pageProject_rightBlock_btn_loadrevisionbtn}</button></div>
                                 :
                                     ''
 
@@ -71,7 +71,7 @@ class RightBlock extends React.Component {
 
                             {
                                 !this.props.is_live_data && this.props.project_id ?
-                                    <button ref="submit" type="button" className="btn btn-green btn--round mt20" onClick={()=>{this.props.handleLoadActualData()}}>{trans.pageProject_rightBlock_btn_loadactualdata}</button>
+                                    <div><button ref="submit" type="button" className="btn btn-green btn--round mt20" onClick={()=>{this.props.handleLoadActualData()}}>{trans.pageProject_rightBlock_btn_loadactualdata}</button></div>
                                 : ''
 
                             }
@@ -79,13 +79,13 @@ class RightBlock extends React.Component {
 
                             {
                                 this.props.project_id && AuthHelper.is_admin() ? 
-                                    <button ref="submit" type="button" className="btn btn-green btn--round mt20" onClick={()=>{this.props.handleSumbitAdmin()}}>{trans.pageProject_rightBlock_opslaan_admin}</button>
+                                    <div><button ref="submit" type="button" className="btn btn-green btn--round mt20" onClick={()=>{this.props.handleSumbitAdmin()}}>{trans.pageProject_rightBlock_opslaan_admin}</button></div>
                                 : ''    
                             }
 
                             {
                                 (this.props.project_id && AuthHelper.is_admin() && this.props.project_status_id!==5 && this.props.is_live_data) ?
-                                <button ref="submit" type="button" className="btn btn-green btn--round mt20" onClick={() => this.props.handleUpdateStatus(this.props.project_id, 5)}>{trans.pageProject_rightBlock_offline_btn}</button>
+                                <div><button ref="submit" type="button" className="btn btn-green btn--round mt20" onClick={() => this.props.handleUpdateStatus(this.props.project_id, 5)}>{trans.pageProject_rightBlock_offline_btn}</button></div>
                                 : ''
 
                             }
