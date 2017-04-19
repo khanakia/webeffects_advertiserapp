@@ -7,7 +7,7 @@ const mapStateToProps = (state) => {
     return {
         state : state,
         
-        
+        is_new : 1,
         project_formdata: state.project.formdata,
         
     };

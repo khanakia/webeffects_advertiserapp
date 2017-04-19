@@ -9,3 +9,4 @@ export ProjectParkingHelper from './helper_project_parking'
 export ContactHelper from './helper_contact'
 export AttachmentHelper from './helper_attachment'
 export AttachmentMappingHelper from './helper_attachment_mapping'
+export UtilHelper from './util';

@@ -65,6 +65,18 @@ label.error {
     display: none !important;
 }
 
+.altered {
+	color: red;
+
+	.input-group-addon {
+		color: red;
+	}
+
+	.btn-dropdown {
+		color: red;
+	}
+}
+
 
 .content-wrapper {
 	padding: 35px;
@@ -881,8 +893,11 @@ label input[type="radio"]:checked + span {
 
 .list-group-item {
 	border: 1px solid #CDD4D7;
+	&:first-child {
+	    border-top-right-radius: 0;
+	    border-top-left-radius: 0;
+	}
 }
-
 .table-bordered > thead > tr > th,
 .table-bordered > thead > tr > td,
 .table-bordered > tbody > tr > th,
@@ -891,9 +906,9 @@ label input[type="radio"]:checked + span {
 .table-bordered > tfoot > tr > td {
 	border: 1px solid #CDD4D7;
 	border-left: none;
-	&:last-of-type {
+	/*&:last-of-type {
 		border-right: none;
-	}
+	}*/
 }
 
 .table-bordered > tbody > tr,
@@ -1533,8 +1548,11 @@ label input[type="radio"]:checked + span {
 	}
 
 	.section-data {
-		color: #7c8589;
 		margin: 15px 0 0;
+
+		.dropdown {
+			color: #7c8589;
+		}
 
 		> span {
 			display: inline-block;
@@ -1931,6 +1949,9 @@ label input[type="radio"]:checked + span {
 		background: #fff;
 		border: 1px solid #CDD4D7;
 		padding: 20px;
+
+		min-width: 700px;
+    	/*min-height: 500px;*/
 
 		.chart-wrapper {
 			max-width: 900px;

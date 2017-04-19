@@ -39,15 +39,22 @@ class RightBlock extends React.Component {
 
 
     render() {
-        console.log("this.props.is_live_datathis.props.is_live_datathis.props.is_live_data", this.props.is_live_data)
+        // console.log("this.props.is_live_datathis.props.is_live_datathis.props.is_live_data", this.props.is_live_data)
         
         let status = PROJECT_STATUSES[this.props.project_status_id]
 
         return (
             <div className="block-right" ref="block_right">
                 <div className="block-info">
-                    <label>{trans.pageProject_rightBlock_bewerkingen}</label>
-                    <div className="last_updated mt5" key="date1">{moment(this.props.updated_date).format("LLL")}</div>
+
+                    {
+                        this.props.project_id ?
+                        <div>
+                            <label>{trans.pageProject_rightBlock_bewerkingen}</label>
+                            <div className="last_updated mt5" key="date1">{moment(this.props.updated_date).format("LLL")}</div>
+                        </div>                            
+                        : ''
+                    }
 
                     <div className="d-table w100 mt20">
                         <div className="d-table-cell v-align-middle">
@@ -63,7 +70,7 @@ class RightBlock extends React.Component {
 
 
                             {
-                                !this.props.is_live_data ?
+                                !this.props.is_live_data && this.props.project_id ?
                                     <button ref="submit" type="button" className="btn btn-green btn--round mt20" onClick={()=>{this.props.handleLoadActualData()}}>{trans.pageProject_rightBlock_btn_loadactualdata}</button>
                                 : ''
 
@@ -71,13 +78,13 @@ class RightBlock extends React.Component {
 
 
                             {
-                                AuthHelper.is_admin() ? 
+                                this.props.project_id && AuthHelper.is_admin() ? 
                                     <button ref="submit" type="button" className="btn btn-green btn--round mt20" onClick={()=>{this.props.handleSumbitAdmin()}}>{trans.pageProject_rightBlock_opslaan_admin}</button>
                                 : ''    
                             }
 
                             {
-                                (AuthHelper.is_admin() && this.props.project_status_id!==5 && this.props.is_live_data) ?
+                                (this.props.project_id && AuthHelper.is_admin() && this.props.project_status_id!==5 && this.props.is_live_data) ?
                                 <button ref="submit" type="button" className="btn btn-green btn--round mt20" onClick={() => this.props.handleUpdateStatus(this.props.project_id, 5)}>{trans.pageProject_rightBlock_offline_btn}</button>
                                 : ''
 

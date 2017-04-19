@@ -46,6 +46,7 @@ class PageProject extends Component {
             this.props.fetchOfferRequestDetailsList(this.props.params.projectId);
 
             this.props.fetchSnoobiData(this.props.params.projectId);
+            this.props.fetchCompareJson(this.props.params.projectId);
 
             // this.props.fetchSnoobiList(this.props.params.projectId);
             // this.props.fetchSnoobiGraph(this.props.params.projectId);
@@ -194,6 +195,8 @@ class PageProject extends Component {
                                 hashHistory.push('/projects/'+response.data.id)                
                             }
                             _this.props.fetchProjectRevision(_this.props.params.projectId);
+
+                            _this.props.fetchCompareJson(_this.props.params.projectId);
                             // _this.props.fetchProjects()
                         })
                     }.bind(this)
@@ -447,6 +450,7 @@ class PageProject extends Component {
                                                 <ProjectTabGeneralForm  
                                                     reset={this.isReset}
                                                     project_id={project.id}
+                                                    compare_json= {this.props.compare_json}
                                                     project_formdata= {this.props.project_formdata}
                                                     attachmentsList = {project.attachments}
                                                     project_title = {project.project_title}
@@ -470,6 +474,7 @@ class PageProject extends Component {
                                             <ProjectTabDetailForm  
                                                     reset={this.isReset}
                                                     project_id={project.id}
+                                                    compare_json= {this.props.compare_json}
                                                     person_min= {project.person_min}
                                                     person_max = {project.person_max}
                                                     eigen_catering = {project.eigen_catering}
@@ -489,6 +494,7 @@ class PageProject extends Component {
                                         <div role="tabpanel" className="tab-pane " id="zalen">
                                             <Zalen 
                                                 reset={this.isReset}
+                                                compare_json= {this.props.compare_json}
                                                 zalen={project.zalen} 
                                                 project_title={project.project_title} 
                                                 items={project.project_rooms} 
@@ -501,6 +507,7 @@ class PageProject extends Component {
                                         <div role="tabpanel" className="tab-pane " id="contact">
                                              <ProjectTabContactForm  
                                                     reset={this.isReset}
+                                                    compare_json= {this.props.compare_json}
                                                     // contact_id={project.contact_id}
                                                     contact_name= {project.contact_name}
                                                     contact_phone= {project.contact_phone}
@@ -520,6 +527,7 @@ class PageProject extends Component {
                                             <ProjectTabLocatieForm 
                                                 ref="locatieForm"
                                                 reset={this.isReset}
+                                                compare_json= {this.props.compare_json}
                                                 ligging={project.ligging}
                                                 parkeren={project.parkeren}
                                                 address={project.address}
@@ -547,6 +555,7 @@ class PageProject extends Component {
                                                         <ProjectTabCatForm
                                                             reset={this.isReset}
                                                             project_id={project.id}
+                                                            compare_json= {this.props.compare_json}
                                                             project_formdata= {this.props.project_formdata}
                                                             item={item}
                                                             geleghendens={project.geleghendens}
@@ -565,10 +574,10 @@ class PageProject extends Component {
                                         </h3>
                                         <div role="tabpanel" className={`tab-pane  ${hiddenClass}`} id="aanvragen">
                                             <OfferRequestList 
-                                                categories={this.props.project_formdata.gelegenhendens}
-                                                onDateItemChange={this.onOfferlistDateItemChange} 
-                                                onPaginate={this.onOfferlistPaginate} 
-                                                offer_request_list={this.props.project_offer_request_details_list} />
+                                                                                            categories={this.props.project_formdata.gelegenhendens}
+                                                                                            onDateItemChange={this.onOfferlistDateItemChange} 
+                                                                                            onPaginate={this.onOfferlistPaginate} 
+                                                                                            offer_request_list={this.props.project_offer_request_details_list} />
                                         </div>
 
                                         <h3 className={`tab_drawer_heading ${hiddenClass}`}>
@@ -576,16 +585,16 @@ class PageProject extends Component {
                                         </h3>
                                         <div role="tabpanel" className={`tab-pane  ${hiddenClass}`} id="statistieken">
                                             <SnoobiPage 
-                                                user_actions_list={this.props.project_formdata.user_actions}
-                                                onFilterChange={this.onSnoobiFilterChange}
-                                                onSortItemChange={this.onSnoobiSortItemChange}
-                                                onMonthItemChange={this.onSnoobiMonthItemChange}
-                                                data={this.props.snoobi_data}
-                                                onStatisticTabListPaginate={this.onStatisticTabListPaginate} 
-                                                // graph={this.props.snoobi_graph}
-                                                // list={this.props.snoobi_list}
-                                                // snoobi_most_requested_projects={this.props.snoobi_most_requested_projects}
-                                            />
+                                                                                            user_actions_list={this.props.project_formdata.user_actions}
+                                                                                            onFilterChange={this.onSnoobiFilterChange}
+                                                                                            onSortItemChange={this.onSnoobiSortItemChange}
+                                                                                            onMonthItemChange={this.onSnoobiMonthItemChange}
+                                                                                            data={this.props.snoobi_data}
+                                                                                            onStatisticTabListPaginate={this.onStatisticTabListPaginate} 
+                                                                                            // graph={this.props.snoobi_graph}
+                                                                                            // list={this.props.snoobi_list}
+                                                                                            // snoobi_most_requested_projects={this.props.snoobi_most_requested_projects}
+                                                                                        />
                                         </div>
 
                                     </div>

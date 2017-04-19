@@ -1,11 +1,12 @@
 import React, { PropTypes } from 'react'
 
-import {ProjectParkingHelper} from '../../helpers'
+import {ProjectParkingHelper, UtilHelper} from 'helpers'
 
 import {ROOT_URL} from '../../config'
 
 import DropdownList from '../DropdownList'
 import InputBox from './InputBox'
+import TextareaBox from './TextareaBox'
 import InputBoxGoogleAutocomplete from './InputBoxGoogleAutocomplete'
 
 class ProjectTabLocatieForm extends React.Component {
@@ -65,7 +66,9 @@ class ProjectTabLocatieForm extends React.Component {
         parkingItems: [],
         onRowDeleted: function(){},
 
-        reset: false
+        reset: false,
+
+        compare_json: []
     }
 
     componentDidMount() {
@@ -410,55 +413,67 @@ class ProjectTabLocatieForm extends React.Component {
         const itemsplaats = this.props.itemsPlaats;
         const itemsgebied = this.props.itemsGebied;
 
+
+        const class_ligging = UtilHelper.compareJsonGetClass('ligging', this.props.compare_json);
+        const class_parkeren = UtilHelper.compareJsonGetClass('parkeren', this.props.compare_json);
+        const class_province_id = UtilHelper.compareJsonGetClass('province_id', this.props.compare_json);
+        const class_plaat_id = UtilHelper.compareJsonGetClass('plaat_id', this.props.compare_json);
+        const class_gebied_id = UtilHelper.compareJsonGetClass('gebied_id', this.props.compare_json);
+        const class_address = UtilHelper.compareJsonGetClass('address', this.props.compare_json);
+        const class_project_parkings = UtilHelper.compareJsonGetClass('project_parkings', this.props.compare_json);
+
         return (
             <div className={'comp-locatieinput ' + this.props.className} ref="locatieinput">
                 {/*<button type="button" onClick={this.handleRefresh}>REFRESH</button>*/}
                 
          
                 <div className="form-group input-group-vmerge mt20">
-                    <label>{trans.locatieInput_ligging}
+                    <label className={class_ligging}>{trans.locatieInput_ligging}
                         <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_tooltip_ligging}></a>
                     </label>
                     <div className="row">
                         <div className="col-md-4">
-                            <InputBox type="text" className="form-control" name={`ligging`} value={this.props.ligging} />
+                            <TextareaBox className="form-control" name={`ligging`} value={this.props.ligging} />
                         </div>
                     </div>
                 </div>
 
 
-                <div className="section-data">
-                    <span className="wp140">
+                <div className="form-group section-data">
+                    <label className={class_ligging}>{trans.locatieInput_locations}
+                        <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_tooltip_locatie_titles}></a>
+                    </label>
+                    <span className={"wp200 " + class_province_id}>
                         <DropdownList items={itemsprovice} selectedValue={this.props.selectedProvinceId} name="province_id" emptyPlaceholder={trans.select_empty_placeholder_locatie}/>
                     </span>
-                    <span className="wp140">
+                    <span className={"wp200 " + class_plaat_id}>
                         <DropdownList items={itemsplaats} selectedValue={this.props.selectedPlaatId} name="plaat_id" emptyPlaceholder={trans.select_empty_placeholder_locatie}/>
                     </span>
-                    <span className="wp140">
+                    <span className={"wp200 " + class_gebied_id}>
                         <DropdownList items={itemsgebied} selectedValue={this.props.selectedGebiedId} name="gebied_id" emptyPlaceholder={trans.select_empty_placeholder_locatie}/>
                     </span>
                 </div>
 
                 <div className="form-group input-group-vmerge">
-                    <label>{trans.locatieInput_parkeren}
+                    <label className={class_parkeren}>{trans.locatieInput_parkeren}
                         <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_tooltip_parkeren}></a>
                     </label>
                     <div className="row">
                         <div className="col-md-4">
-                            <InputBox type="text" className="form-control" name={`parkeren`} value={this.props.parkeren} />
+                            <TextareaBox className="form-control" name={`parkeren`} value={this.props.parkeren} />
                         </div>
                     </div>
                 </div>
 
                 <div className="form-group">
-                    <label>{trans.locatieInput_adres}
+                    <label className={class_address + class_project_parkings}>{trans.locatieInput_adres}
                         <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_tooltip_address}></a>
                     </label>
                 </div>
                 
                 <div className="form-group mt20">
                     <div className="section-zoek">
-                        <span>{trans.locatieInput_zoek}</span>
+                        <span>{trans.locatieInput_zoek}</span> <br/>
                         <button ref="submit" type="button" className="btn btn-green btn--round" onClick={()=>{this.findParkingsinRadius()}}>{trans.locatieInput_zoek_parkeerplaatsen}</button>
                         {/*<span className="zoek_text">{trans.locatieInput_zoek}</span>
                                             <span className="short-dropdown">

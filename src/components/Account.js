@@ -95,7 +95,7 @@ class Account extends Component {
          
         
         return (
-            <div className="p20">
+            <div className="p20 xs-p0">
                 <ContentWrapper hasSidebar={true}>
                     <div className="page-panel">
                         <div className="page-panel__heading">{trans.account_title}</div>

@@ -37,13 +37,15 @@
       .page-panel__heading {
         background: none;
         border: none; }
-      .page-panel__inner__left {
-        display: none; }
-      .page-panel__inner__right {
+      .page-panel__inner {
         display: block; }
-      .page-panel__inner__content {
-        display: block;
-        padding: 0; }
+        .page-panel__inner__left {
+          display: none; }
+        .page-panel__inner__right {
+          display: block; }
+        .page-panel__inner__content {
+          display: block;
+          padding: 0; }
       .page-panel .block-right {
         display: none;
         position: fixed;
@@ -267,6 +269,9 @@ header.mobile {
   .form-control:focus {
     border-color: #08B995;
     box-shadow: none; }
+
+textarea {
+  resize: vertical; }
 
 .input-group {
   width: 100%; }
@@ -729,6 +734,13 @@ input.error {
 
 label.error {
   display: none !important; }
+
+.altered {
+  color: red; }
+  .altered .input-group-addon {
+    color: red; }
+  .altered .btn-dropdown {
+    color: red; }
 
 .content-wrapper {
   padding: 35px; }
@@ -1317,6 +1329,9 @@ label input[type="radio"]:checked + span {
 
 .list-group-item {
   border: 1px solid #CDD4D7; }
+  .list-group-item:first-child {
+    border-top-right-radius: 0;
+    border-top-left-radius: 0; }
 
 .table-bordered > thead > tr > th,
 .table-bordered > thead > tr > td,
@@ -1325,14 +1340,10 @@ label input[type="radio"]:checked + span {
 .table-bordered > tfoot > tr > th,
 .table-bordered > tfoot > tr > td {
   border: 1px solid #CDD4D7;
-  border-left: none; }
-  .table-bordered > thead > tr > th:last-of-type,
-  .table-bordered > thead > tr > td:last-of-type,
-  .table-bordered > tbody > tr > th:last-of-type,
-  .table-bordered > tbody > tr > td:last-of-type,
-  .table-bordered > tfoot > tr > th:last-of-type,
-  .table-bordered > tfoot > tr > td:last-of-type {
-    border-right: none; }
+  border-left: none;
+  /*&:last-of-type {
+  	border-right: none;
+  }*/ }
 
 .table-bordered > tbody > tr:last-of-type > td,
 .table-bordered > tfoot > tr:last-of-type > td {
@@ -1787,8 +1798,9 @@ label input[type="radio"]:checked + span {
     margin: 0 20px 10px 0;
     min-width: 100px; }
 #locatie .section-data {
-  color: #7c8589;
   margin: 15px 0 0; }
+  #locatie .section-data .dropdown {
+    color: #7c8589; }
   #locatie .section-data > span {
     display: inline-block;
     margin: 0 10px 25px 0;
@@ -2052,7 +2064,9 @@ label input[type="radio"]:checked + span {
 .statistieken-wrapper .block-graph {
   background: #fff;
   border: 1px solid #CDD4D7;
-  padding: 20px; }
+  padding: 20px;
+  min-width: 700px;
+  /*min-height: 500px;*/ }
   .statistieken-wrapper .block-graph .chart-wrapper {
     max-width: 900px;
     margin: 0 auto; }

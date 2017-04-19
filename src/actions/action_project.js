@@ -7,6 +7,7 @@ export const FETCH_PROJECT_FORMDATA = 'FETCH_PROJECT_FORMDATA';
 export const FETCH_PROJECT_OFFER_REQUEST_DETAILS_LIST='FETCH_PROJECT_OFFER_REQUEST_DETAILS_LIST'
 
 export const FETCH_PROJECT_SNOOBI_DATA='FETCH_PROJECT_SNOOBI_DATA'
+export const FETCH_PROJECT_COMPARE_JSON='FETCH_PROJECT_COMPARE_JSON'
 // export const FETCH_PROJECT_SNOOBI_LIST='FETCH_PROJECT_SNOOBI_LIST'
 // export const FETCH_PROJECT_SNOOBI_GRAPH='FETCH_PROJECT_SNOOBI_GRAPH'
 // export const FETCH_PROJECT_SNOOBI_MOST_REQUESTED_PROJECTS='FETCH_PROJECT_SNOOBI_MOST_REQUESTED_PROJECTS'
@@ -74,6 +75,13 @@ export function fetchSnoobiData(project_id, page, args={}) {
     }
 }
 
+export function fetchCompareJson(project_id) {
+    const request = ProjectHelper.compare_json(project_id);
+    return {
+        type: FETCH_PROJECT_COMPARE_JSON,
+        payload: request
+    }
+}
 
 // export function fetchSnoobiList(project_id, page, args={}) {
 //     const request = ProjectHelper.getSnoobiList(project_id, page, args);

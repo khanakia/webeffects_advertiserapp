@@ -4,6 +4,7 @@ import {ProjectRoomHelper} from '../../helpers'
 import InputBox from './InputBox'
 import TextareaBox from './TextareaBox'
 
+import {UtilHelper} from 'helpers'
 
 class TrouwenRouteInput extends React.Component {
 
@@ -25,6 +26,8 @@ class TrouwenRouteInput extends React.Component {
         onZalenRemoved: function(){},
         reset: false,
         trouwenroute_description: '',
+
+        compare_json: []
     }
 
     componentDidMount() {
@@ -140,12 +143,14 @@ class TrouwenRouteInput extends React.Component {
 
     _renderDesktop() {
         // console.info("this.state.itemsthis.state.itemsthis.state.items", this.state.items)
+        const class_project_trouwenroutes = UtilHelper.compareJsonGetClass('project_trouwenroutes', this.props.compare_json);
+
         return (
             <div>
                 
 
                 <div className="form-group">
-                    <label>{trans.trouwenroute_table_heading}
+                    <label className={class_project_trouwenroutes}>{trans.trouwenroute_table_heading}
                         <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.trouwenroute_table_tooltip}></a>
                     </label>
                 </div>
@@ -317,10 +322,13 @@ class TrouwenRouteInput extends React.Component {
     }
 
     render() {
+        const class_trouwenroute_description = UtilHelper.compareJsonGetClass('trouwenroute_description', this.props.compare_json);
+        
+
         return (
             <div className={'comp-trouwenrouteinput ' + this.props.className} ref="TrouwenRouteInput">
                 <div className="form-group">
-                    <label>{trans.trouwenroute_description_heading}
+                    <label className={class_trouwenroute_description}>{trans.trouwenroute_description_heading}
                         <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.trouwenroute_description_tooltip}></a>
                     </label>
                     <div className="row">

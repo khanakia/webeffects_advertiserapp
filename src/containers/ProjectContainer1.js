@@ -10,6 +10,7 @@ import {
     fetchProjectFormdata,
     fetchOfferRequestDetailsList,
     fetchSnoobiData,
+    fetchCompareJson
     // fetchSnoobiList,
     // fetchSnoobiGraph,
     // fetchSnoobiMostRequestedProjects
@@ -27,8 +28,10 @@ const mapStateToProps = (state) => {
         // project_gebied: state.project.current.gebied,
         // project_contact: state.project.current.contact,
         project_formdata: state.project.formdata,
-        project_offer_request_details_list: state.project.offer_request_details_list
-    };
+        project_offer_request_details_list: state.project.offer_request_details_list,
+        compare_json: state.project.compare_json,
+        is_new : 0,
+    }
 }
 
 const mapDispatchToProps = (dispatch) => {
@@ -61,6 +64,10 @@ const mapDispatchToProps = (dispatch) => {
         fetchSnoobiData: (project_id, page=1, args) => {
             console.log(args)
             dispatch(fetchSnoobiData(project_id, page, args));
+        },
+
+        fetchCompareJson: (project_id) => {
+            dispatch(fetchCompareJson(project_id));
         },
 
 

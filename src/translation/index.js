@@ -342,6 +342,11 @@ const language = {
 		"project_snoobi_chart_heading" : "Aanvragen",
 		"project_snoobi_chart_subheading" : "Aantal maandelijkse aanvragen per item",
 		"project_snoobi_chart_yaxis_labelString" : "Aantal aanvragen",
+
+		"locatieInput_locations" : "Locatie filters",
+		"pageProject_tooltip_locatie_titles": 'U kunt hier selecteren aan welke filters uw locatie gelinkt kunnen worden.',
+		"snoobiPage_placeholder_select_filter_action" : "Fitlers",
+		"snoobiPage_placeholder_select_filter_date" : "Datum"
 	},
 
 	"2" : {
@@ -687,6 +692,11 @@ const language = {
 		"project_snoobi_chart_heading" : "Aanvragen",
 		"project_snoobi_chart_subheading" : "Aantal maandelijkse aanvragen per item",
 		"project_snoobi_chart_yaxis_labelString" : "Aantal aanvragen",
+
+		"locatieInput_locations" : "Locatie filters",
+		"pageProject_tooltip_locatie_titles": 'U kunt hier selecteren aan welke filters uw locatie gelinkt kunnen worden.',
+		"snoobiPage_placeholder_select_filter_action" : "Fitlers",
+		"snoobiPage_placeholder_select_filter_date" : "Datum"
 	},
 
 	"3" : {
@@ -1032,6 +1042,11 @@ const language = {
 		"project_snoobi_chart_heading" : "Aanvragen",
 		"project_snoobi_chart_subheading" : "Aantal maandelijkse aanvragen per item",
 		"project_snoobi_chart_yaxis_labelString" : "Aantal aanvragen",
+
+		"locatieInput_locations" : "Locatie filters",
+		"pageProject_tooltip_locatie_titles": 'U kunt hier selecteren aan welke filters uw locatie gelinkt kunnen worden.',
+		"snoobiPage_placeholder_select_filter_action" : "Fitlers",
+		"snoobiPage_placeholder_select_filter_date" : "Datum"
 	},
 
 	"4" : {
@@ -1377,6 +1392,11 @@ const language = {
 		"project_snoobi_chart_heading" : "Aanvragen",
 		"project_snoobi_chart_subheading" : "Aantal maandelijkse aanvragen per item",
 		"project_snoobi_chart_yaxis_labelString" : "Aantal aanvragen",
+
+		"locatieInput_locations" : "Locatie filters",
+		"pageProject_tooltip_locatie_titles": 'U kunt hier selecteren aan welke filters uw locatie gelinkt kunnen worden.',
+		"snoobiPage_placeholder_select_filter_action" : "Fitlers",
+		"snoobiPage_placeholder_select_filter_date" : "Datum"
 	},
 
 	"5" : {
@@ -1723,6 +1743,11 @@ const language = {
 		"project_snoobi_chart_heading" : "Aanvragen",
 		"project_snoobi_chart_subheading" : "Aantal maandelijkse aanvragen per item",
 		"project_snoobi_chart_yaxis_labelString" : "Aantal aanvragen",
+
+		"locatieInput_locations" : "Locatie filters",
+		"pageProject_tooltip_locatie_titles": 'U kunt hier selecteren aan welke filters uw locatie gelinkt kunnen worden.',
+		"snoobiPage_placeholder_select_filter_action" : "Fitlers",
+		"snoobiPage_placeholder_select_filter_date" : "Datum"
 	}
 }
 

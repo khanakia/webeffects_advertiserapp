@@ -28,6 +28,10 @@
 	}
 }
 
+textarea {
+	resize: vertical;
+}
+
 .input-group {
 	width: 100%;
 	&:last-of-type {

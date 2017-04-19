@@ -5,6 +5,7 @@ import {
     FETCH_PROJECT_FORMDATA,
     FETCH_PROJECT_OFFER_REQUEST_DETAILS_LIST,
     FETCH_PROJECT_SNOOBI_DATA,
+    FETCH_PROJECT_COMPARE_JSON,
     // FETCH_PROJECT_SNOOBI_LIST,
     // FETCH_PROJECT_SNOOBI_GRAPH,
     // FETCH_PROJECT_SNOOBI_MOST_REQUESTED_PROJECTS
@@ -18,6 +19,7 @@ const INITIAL_STATE = {
     formdata: [],
     offer_request_details_list: [],
     snoobi_data: [],
+    compare_json: [],
     // snoobi_list: [],
     // snoobi_graph: [],
     // snoobi_most_requested_projects: []
@@ -44,7 +46,9 @@ export default function(state = INITIAL_STATE, action) {
         case FETCH_PROJECT_OFFER_REQUEST_DETAILS_LIST:
             return {...state, offer_request_details_list: action.payload.data };
         case FETCH_PROJECT_SNOOBI_DATA:
-            return {...state, snoobi_data: action.payload.data };    
+            return {...state, snoobi_data: action.payload.data };
+        case FETCH_PROJECT_COMPARE_JSON:
+            return {...state, compare_json: action.payload.data };            
         // case FETCH_PROJECT_SNOOBI_LIST:
         //     return {...state, snoobi_list: action.payload.data };
         // case FETCH_PROJECT_SNOOBI_GRAPH:

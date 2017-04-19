@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDom from 'react-dom';
 
-import {AuthHelper} from 'helpers'
+import {AuthHelper, UtilHelper} from 'helpers'
 import ContactPersonSingleBlock from '../ContactPersonSingleBlock'
 import InputBox from './InputBox'
 import EmailInput from './EmailInput'
@@ -28,6 +28,7 @@ class ProjectTabContactForm extends Component {
         disable_website_field: null,
         
         onContactDropdownAddNewClick: function(){},
+        compare_json: []
     }
 
     componentWillMount() {
@@ -66,10 +67,16 @@ class ProjectTabContactForm extends Component {
             }
         ]
 
+
+        const class_contact_name = UtilHelper.compareJsonGetClass('contact_name', this.props.compare_json);
+        const class_contact_phone = UtilHelper.compareJsonGetClass('contact_phone', this.props.compare_json);
+        const class_contact_emails = UtilHelper.compareJsonGetClass('contact_emails', this.props.compare_json);
+        const class_website = UtilHelper.compareJsonGetClass('website', this.props.compare_json);
+        
         return (
             <div>
                 <div className="form-group">
-                    <label>{trans.pageProject_details_contactpersonen}
+                    <label className={class_contact_name + class_contact_phone}>{trans.pageProject_details_contactpersonen}
                         <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_tooltip_contactpersoon}></a>
                     </label>
 
@@ -107,7 +114,7 @@ class ProjectTabContactForm extends Component {
                 </div>
 
                  <div className="form-group input-group-vmerge">
-                    <label>{trans.pageProject_email_label}
+                    <label className={class_contact_emails}>{trans.pageProject_email_label}
                         <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_tooltip_emails}></a>
                     </label>
                     <div className="row">
@@ -118,7 +125,7 @@ class ProjectTabContactForm extends Component {
                 </div>
 
                 <div className="form-group input-group-vmerge">
-                    <label>{trans.pageProject_website_label}
+                    <label className={class_website}>{trans.pageProject_website_label}
                         <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_tooltip_website}></a>
                     </label>
                     <div className="row">

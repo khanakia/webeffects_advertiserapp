@@ -11,6 +11,9 @@ import IframeInput from './IframeInput'
 import InputBox from './InputBox'
 
 
+import {UtilHelper} from 'helpers'
+
+
 class ProjectTabGeneralForm extends Component {
     constructor(props) {
         super(props);
@@ -37,6 +40,8 @@ class ProjectTabGeneralForm extends Component {
         // discount_filter_value_id : null,
         discount_short_title : '',
         discount_long_title : '',  
+
+        compare_json: []
     }
 
     componentWillMount() {
@@ -83,24 +88,39 @@ class ProjectTabGeneralForm extends Component {
                 "value": item.value,
             })
         }) 
+
+
+        const class_project_title = UtilHelper.compareJsonGetClass('project_title', this.props.compare_json);
+        const class_description = UtilHelper.compareJsonGetClass('description', this.props.compare_json);
+        const class_attachments = UtilHelper.compareJsonGetClass('attachments', this.props.compare_json);
+        const class_discount_short_title = UtilHelper.compareJsonGetClass('discount_short_title', this.props.compare_json);
+        const class_discount_long_title = UtilHelper.compareJsonGetClass('discount_long_title', this.props.compare_json);
+        const class_project_videos = UtilHelper.compareJsonGetClass('project_videos', this.props.compare_json);
+        const class_project_iframes = UtilHelper.compareJsonGetClass('project_iframes', this.props.compare_json);
+
+        // console.log("field_project_title_classfield_project_title_class", class_project_title)
+
+        // const field_project_title_class = this.props.compare_json.project_title.altered ? ' altered' : "";
+        // console.log("this.props.compare_jsonthis.props.compare_json", this.props.compare_json.sdfdsfasd.dsfds)
         
 
         return (
             <div>
                 <div className="form-group">
-                    <label>{trans.pageProject_naam_locatie_label}
+                    <label className={class_project_title}>{trans.pageProject_naam_locatie_label}
                         <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_tooltip_naam_locatie}></a>
                     </label>
                     <InputBox type="text" className="form-control required" name="project_title" value={this.props.project_title} />
                 </div>
                 <div className="form-group">
-                    <label>{trans.pageProject_algemene_label}
+                    <label className={class_project_title}>{trans.pageProject_algemene_label}
                         <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_tooltip_algemene_beschrijving}></a>
                     </label>
                     <textarea className="editor" name="description" ref="description" defaultValue={this.props.description}></textarea>
                 </div>
                 <div className="form-group">
                     <FileInput
+                        className={class_attachments}
                         heading = {trans.pageProject_fileinput_heading}
                         heading_empty = {trans.pageProject_fileinput_heading}
                         tooltip_note= {trans.pageProject_fileinput_tooltip_note}
@@ -112,13 +132,13 @@ class ProjectTabGeneralForm extends Component {
                 </div>
 
                 <div className="form-group">
-                    <label>{trans.pageProject_video_link_label}
+                    <label className={class_project_videos}>{trans.pageProject_video_link_label}
                         <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_tooltip_video_links}></a>
                     </label>
                     <VideoInput items={this.props.project_videos} onVideoDeleted={this.props.onVideoDeleted} reset={this.props.reset} />
                 </div>
                 <div className="form-group">
-                    <label>{trans.pageProject_garden_tour_label}
+                    <label className={class_project_iframes}>{trans.pageProject_garden_tour_label}
                         <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_tooltip_360_graden_tour_iframe}></a>
                     </label>
                     <IframeInput items={this.props.project_iframes} onIframeDeleted={this.props.onIframeDeleted} reset={this.props.reset} />
@@ -135,7 +155,7 @@ class ProjectTabGeneralForm extends Component {
                                 </div>*/}
 
                 <div className="form-group">
-                    <label>{trans.pageProject_Aanbieding_label} <br /> {trans.pageProject_aanbieding_korte_label}
+                    <label className={class_discount_short_title}>{trans.pageProject_Aanbieding_label} <br /> {trans.pageProject_aanbieding_korte_label}
                         <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_tooltip_aanbieding_korte}></a>
                     </label>
                     <InputBox type="text" className="form-control" name="discount_short_title" value={this.props.discount_short_title} placeholder={trans.pageProject_tooltip_aanbieding_korte} />
@@ -143,7 +163,7 @@ class ProjectTabGeneralForm extends Component {
                 </div>
 
                 <div className="form-group">
-                    <label>{trans.pageProject_Aanbieding_label} <br /> {trans.pageProject_aanbieding_lange_label}
+                    <label className={class_discount_long_title}>{trans.pageProject_Aanbieding_label} <br /> {trans.pageProject_aanbieding_lange_label}
                         <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_tooltip_aanbieding_lange}></a>
                     </label>
                     <InputBox type="text" className="form-control" name="discount_long_title" value={this.props.discount_long_title} placeholder={trans.pageProject_tooltip_aanbieding_lange} />

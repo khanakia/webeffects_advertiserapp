@@ -10,6 +10,16 @@ export default class Util {
             return true
         }
         return false;
-    }   
+    }
+
+
+    static compareJsonGetClass(field_name, compare_json) {
+    	let class_css = ""
+    	if(undefined!==compare_json[field_name]) {
+    		class_css = compare_json[field_name]['altered'] ? " altered" : ""
+    	}
+
+    	return class_css
+    }
 
 }

@@ -96,6 +96,18 @@ export default class ProjectHelper {
     //     });
     // }
 
+    static compare_json(project_id) {
+        return axios({
+            method: 'post',
+            url: API_URL_PROJECT + '/' + project_id + '/compare_json',
+            // data: {
+            //     page: page
+            // },
+            headers: Auth.header(),
+        });
+    }
+
+
     static getOfferRequestDetails(project_id, page=1) {
         return axios({
             method: 'post',

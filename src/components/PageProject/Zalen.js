@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 
-import {ProjectRoomHelper} from '../../helpers'
+import {ProjectRoomHelper, UtilHelper} from '../../helpers'
 import InputBox from './InputBox'
 
 class Zalen extends React.Component {
@@ -24,6 +24,8 @@ class Zalen extends React.Component {
         onZalenRemoved: function(){},
         reset: false,
         zalen: '',
+
+        compare_json: []
     }
 
     componentDidMount() {
@@ -148,12 +150,15 @@ class Zalen extends React.Component {
 
     _renderDesktop() {
         // console.info("this.state.itemsthis.state.itemsthis.state.items", this.state.items)
+
+        const class_project_rooms = UtilHelper.compareJsonGetClass('project_rooms', this.props.compare_json);
+
         return (
             <div>
                 
 
                 <div className="form-group">
-                    <label>{trans.zalen_page_title}
+                    <label className={class_project_rooms}>{trans.zalen_page_title}
                         <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_tooltip_zalen}></a>
                     </label>
                 </div>
@@ -413,10 +418,13 @@ class Zalen extends React.Component {
     }
 
     render() {
+        const class_zalen = UtilHelper.compareJsonGetClass('zalen', this.props.compare_json);
+        
+
         return (
             <div className={'comp-zalen ' + this.props.className} ref="Zalen">
                 <div className="form-group">
-                    <label>{trans.pageProject_catform_title}
+                    <label className={class_zalen}>{trans.pageProject_catform_title}
                         <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_tooltip_beschrijving}></a>
                     </label>
                     <div className="row">

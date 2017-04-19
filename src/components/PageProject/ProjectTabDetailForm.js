@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import ReactDom from 'react-dom';
 
-import {AuthHelper} from 'helpers'
+import {AuthHelper, UtilHelper} from 'helpers'
+
 
 // import RadioList from 'components/RadioList'
 // import CheckboxList from 'components/CheckboxList'
@@ -37,6 +38,8 @@ class ProjectTabDetailForm extends Component {
         gebouws_mapping_ids : [],
         liggings_mapping_ids : [],
         eigenschappens_mapping_ids : [],
+
+        compare_json: []
     }
 
     componentWillMount() {
@@ -132,6 +135,16 @@ class ProjectTabDetailForm extends Component {
 
 
         let cssClass = !AuthHelper.is_admin() ? 'hidden' : '';
+
+
+        const class_person_min = UtilHelper.compareJsonGetClass('person_min', this.props.compare_json);
+        const class_person_max = UtilHelper.compareJsonGetClass('person_max', this.props.compare_json);
+        const class_eigen_catering = UtilHelper.compareJsonGetClass('eigen_catering', this.props.compare_json);
+        const class_gebouw_ids = UtilHelper.compareJsonGetClass('gebouw_ids', this.props.compare_json);
+        const class_ligging_ids = UtilHelper.compareJsonGetClass('ligging_ids', this.props.compare_json);
+        const class_eigenschappen_ids = UtilHelper.compareJsonGetClass('eigenschappen_ids', this.props.compare_json);
+    
+
         return (
             <div>
                 <div className={"form-group " + cssClass}>
@@ -140,7 +153,7 @@ class ProjectTabDetailForm extends Component {
                     </label>
                     <div className="row">
                         <div className="col-lg-4">
-                            <InputBox type="text" className="form-control required" name="feedback_company_id" value={this.props.feedback_company_id} />
+                            <InputBox type="text" className="form-control" name="feedback_company_id" value={this.props.feedback_company_id} />
                         </div>
                     </div>    
                 </div>
@@ -150,7 +163,7 @@ class ProjectTabDetailForm extends Component {
                     </label>
                     <div className="row">
                         <div className="col-lg-4">
-                            <div className="input-group">
+                            <div className={"input-group" + class_person_min}>
                                 <span className="input-group-addon">
                                     <i className="iconc-person"></i> {trans.pageProject_details_min}
                                 </span>
@@ -158,7 +171,7 @@ class ProjectTabDetailForm extends Component {
                             </div>
                         </div>
                         <div className="col-lg-4">
-                            <div className="input-group">
+                            <div className={"input-group" + class_person_max}>
                                 <span className="input-group-addon">
                                     <i className="iconc-person"></i> {trans.pageProject_details_max}
                                 </span>
@@ -169,7 +182,7 @@ class ProjectTabDetailForm extends Component {
                 </div>
 
                 <div className="form-group">
-                    <label>{trans.pageProject_details_catering}
+                    <label className={class_eigen_catering}>{trans.pageProject_details_catering}
                         <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_tooltip_catering}></a>
                     </label>
                     <div className="row">
@@ -183,7 +196,7 @@ class ProjectTabDetailForm extends Component {
                 <div className="row page_project_details_checkbox">
                     <div className="col-lg-6">
                         <div className="form-group">
-                            <label>{trans.pageProject_details_gebouwen}
+                            <label className={class_gebouw_ids}>{trans.pageProject_details_gebouwen}
                                 <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_tooltip_gebouwen}></a>
                             </label>
                             {/*<CheckboxList name='gebouws[]' items={this.props.gebouwenList} selectedItems={this.props.gebouws_mapping_ids} />*/}
@@ -192,7 +205,7 @@ class ProjectTabDetailForm extends Component {
                     </div>
                     <div className="col-lg-6">
                         <div className="form-group">
-                            <label>{trans.pageProject_details_ligging}
+                            <label className={class_ligging_ids}>{trans.pageProject_details_ligging}
                                 <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_tooltip_ligging}></a>
                             </label>
                             {/*<CheckboxList name='liggings[]' items={this.props.liggingList} selectedItems={this.props.liggings_mapping_ids} />*/}
@@ -201,7 +214,7 @@ class ProjectTabDetailForm extends Component {
                     </div>
                     <div className="col-lg-6 clear-both">
                         <div className="form-group">
-                            <label>{trans.pageProject_details_eigenschappen}
+                            <label className={class_eigenschappen_ids}>{trans.pageProject_details_eigenschappen}
                                 <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_tooltip_eigenschappen}></a>
                             </label>
                             {/*<CheckboxList name='eigenschappens[]' items={this.props.eigenschappenList} selectedItems={this.props.eigenschappens_mapping_ids} />*/}
