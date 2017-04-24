@@ -30,9 +30,7 @@ import {
     ResetPasswordContainer,
     ForgotPasswordContainer,
     ProjectOverviewContainer,
-    ProjectContainer,
     ProjectContainer1,
-    ProjectNewContainer,
     AccountContainer,
     DemoContainer
 } from './containers';
@@ -49,10 +47,8 @@ import {
             <Route path="/" component={RequireAuth(AppContainer)}>
                 <Route path="demo" component={DemoContainer} />
     			<Route path="dashboard" component={ProjectOverviewContainer} />
-    			<Route path="projects_old/:projectId" component={ProjectContainer} />
                 <Route path="projects/:projectId" component={ProjectContainer1} />
                 <Route path="project/add" component={ProjectContainer1} />
-    			<Route path="project_old/add" component={ProjectNewContainer} />
                 <Route path="account" component={AccountContainer} />
     		</Route>
 		  </Router>

@@ -119,8 +119,8 @@ class Zalen extends React.Component {
 
     accordionInit() {
         var $mc = jQuery(this.refs.mobile_container)
-        console.log("ACCORDION");
-        console.log($mc);
+        // console.log("ACCORDION");
+        // console.log($mc);
         $mc.find(".content").hide();
         // $mc.find(".content:first").show().addClass("active");
         // $mc.find(".accordion-heading:first").addClass("active");

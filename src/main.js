@@ -19,8 +19,9 @@ window.Env = Env;
 window.Auth = Auth;
 window.trans = language[Env.site_id];
 
-// console.log(window.Env)
 
+moment.locale(Env.locale);
+// console.log(window.Env)
 
 import {
     RequireAuth,
@@ -29,8 +30,7 @@ import {
     ResetPasswordContainer,
     ForgotPasswordContainer,
     ProjectOverviewContainer,
-    ProjectContainer,
-    ProjectNewContainer,
+    ProjectContainer1,
     AccountContainer,
     DemoContainer
 } from './containers';
@@ -38,20 +38,20 @@ import {
 
 
 
-render((
-	<Provider store={store}>
-	  <Router history={hashHistory}>
-        <Route path="/" component={LoginContainer} />
-        <Route path="/forgetpwd" component={ForgotPasswordContainer} />
-        <Route path="/resetpwd" component={ResetPasswordContainer} />
-        <Route path="/" component={RequireAuth(AppContainer)}>
-            <Route path="demo" component={DemoContainer} />
-			<Route path="dashboard" component={ProjectOverviewContainer} />
-			<Route path="projects/:projectId" component={ProjectContainer} />
-			<Route path="project/add" component={ProjectNewContainer} />
-            <Route path="account" component={AccountContainer} />
-		</Route>
-	  </Router>
-	</Provider>  
-), document.getElementById('root'))
+    render((
+        <Provider store={store}>
+          <Router history={hashHistory}>
+            <Route path="/" component={LoginContainer} />
+            <Route path="/forgetpwd" component={ForgotPasswordContainer} />
+            <Route path="/resetpwd" component={ResetPasswordContainer} />
+            <Route path="/" component={RequireAuth(AppContainer)}>
+                <Route path="demo" component={DemoContainer} />
+                <Route path="dashboard" component={ProjectOverviewContainer} />
+                <Route path="projects/:projectId" component={ProjectContainer1} />
+                <Route path="project/add" component={ProjectContainer1} />
+                <Route path="account" component={AccountContainer} />
+            </Route>
+          </Router>
+        </Provider>  
+    ), document.getElementById('root'))
 

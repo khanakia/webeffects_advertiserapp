@@ -19,7 +19,7 @@ class Login extends Component {
         var token = this.props.location.query.token;
         if (token) {
             Auth.login(token)
-            console.log(Auth.getToken())
+            // console.log(Auth.getToken())
             if(Auth.check()) {  
                 if (url) {
                     hashHistory.push(url)

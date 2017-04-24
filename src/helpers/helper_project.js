@@ -155,7 +155,7 @@ export default class ProjectHelper {
 
 
     static getSnoobiData(project_id, page=1, args={}) {
-        console.log(args)
+        // console.log(args)
         return axios({
             method: 'post',
             url: API_URL_PROJECT + '/' + project_id + '/snoobi',

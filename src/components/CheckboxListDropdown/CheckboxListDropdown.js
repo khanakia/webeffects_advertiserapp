@@ -53,7 +53,7 @@ class CheckboxListDropdown extends React.Component {
 	handleItemChange = (e, item) => {
 
 		var itemValue = e.target.value;
-		console.log(itemValue);
+		// console.log(itemValue);
 
 		const status = (jQuery(e.target).is(":checked"))
 
@@ -68,13 +68,13 @@ class CheckboxListDropdown extends React.Component {
 		} else {
 			// console.log("remove")
 			selectedItems = _.filter(selectedItems, function(o) { 
-				console.log(o, itemValue);
+				// console.log(o, itemValue);
 				return (o)!==(itemValue); 
 			});
 			
 		}
 
-		console.log(selectedItems)
+		// console.log(selectedItems)
 
 		this.setState({
 			selectedItems: selectedItems

@@ -48,7 +48,7 @@ class EmailInput extends React.Component {
     }
 
     handleRemoveRow(index) {
-        console.log(index)
+        // console.log(index)
         let items = Object.assign([], this.state.items); 
         // console.log(items);
         

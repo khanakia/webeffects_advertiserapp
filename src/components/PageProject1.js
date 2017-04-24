@@ -43,13 +43,8 @@ class PageProject extends Component {
         if(this.props.params.projectId) {
             this.props.fetchProjectRevision(this.props.params.projectId);
             this.props.fetchOfferRequestDetailsList(this.props.params.projectId);
-
             this.props.fetchSnoobiData(this.props.params.projectId);
             this.props.fetchCompareJson(this.props.params.projectId);
-
-            // this.props.fetchSnoobiList(this.props.params.projectId);
-            // this.props.fetchSnoobiGraph(this.props.params.projectId);
-            // this.props.fetchSnoobiMostRequestedProjects(this.props.params.projectId);
         }
     }
 
@@ -66,6 +61,9 @@ class PageProject extends Component {
 
                 this.props.fetchProjectRevision(nextProps.params.projectId);
                 this.props.fetchOfferRequestDetailsList(nextProps.params.projectId);
+
+                this.props.fetchSnoobiData(nextProps.params.projectId);
+                this.props.fetchCompareJson(nextProps.params.projectId);
 
                 this.isReset = true;
                 // window.location.reload()
@@ -350,7 +348,7 @@ class PageProject extends Component {
     onSnoobiSortItemChange = (item) => {
         let snoobi_args = Object.assign({}, this.state.snoobi_args); 
         snoobi_args.sort = item.value;
-        console.log(snoobi_args);
+        // console.log(snoobi_args);
 
         this.props.fetchSnoobiData(this.props.params.projectId, 1, snoobi_args);
         this.setState({
@@ -573,10 +571,10 @@ class PageProject extends Component {
                                         </h3>
                                         <div role="tabpanel" className={`tab-pane  ${hiddenClass}`} id="aanvragen">
                                             <OfferRequestList 
-                                                                                            categories={this.props.project_formdata.gelegenhendens}
-                                                                                            onDateItemChange={this.onOfferlistDateItemChange} 
-                                                                                            onPaginate={this.onOfferlistPaginate} 
-                                                                                            offer_request_list={this.props.project_offer_request_details_list} />
+                                                categories={this.props.project_formdata.gelegenhendens}
+                                                onDateItemChange={this.onOfferlistDateItemChange} 
+                                                onPaginate={this.onOfferlistPaginate} 
+                                                offer_request_list={this.props.project_offer_request_details_list} />
                                         </div>
 
                                         <h3 className={`tab_drawer_heading ${hiddenClass}`}>
@@ -584,16 +582,16 @@ class PageProject extends Component {
                                         </h3>
                                         <div role="tabpanel" className={`tab-pane  ${hiddenClass}`} id="statistieken">
                                             <SnoobiPage 
-                                                                                            user_actions_list={this.props.project_formdata.user_actions}
-                                                                                            onFilterChange={this.onSnoobiFilterChange}
-                                                                                            onSortItemChange={this.onSnoobiSortItemChange}
-                                                                                            onMonthItemChange={this.onSnoobiMonthItemChange}
-                                                                                            data={this.props.snoobi_data}
-                                                                                            onStatisticTabListPaginate={this.onStatisticTabListPaginate} 
-                                                                                            // graph={this.props.snoobi_graph}
-                                                                                            // list={this.props.snoobi_list}
-                                                                                            // snoobi_most_requested_projects={this.props.snoobi_most_requested_projects}
-                                                                                        />
+                                                    user_actions_list={this.props.project_formdata.user_actions}
+                                                    onFilterChange={this.onSnoobiFilterChange}
+                                                    onSortItemChange={this.onSnoobiSortItemChange}
+                                                    onMonthItemChange={this.onSnoobiMonthItemChange}
+                                                    data={this.props.snoobi_data}
+                                                    onStatisticTabListPaginate={this.onStatisticTabListPaginate} 
+                                                    // graph={this.props.snoobi_graph}
+                                                    // list={this.props.snoobi_list}
+                                                    // snoobi_most_requested_projects={this.props.snoobi_most_requested_projects}
+                                                />
                                         </div>
 
                                     </div>

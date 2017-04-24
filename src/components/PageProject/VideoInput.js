@@ -46,7 +46,7 @@ class VideoInput extends React.Component {
     handleAddClick() {
         var newKey = (_.last(this.state.itemsNew)||0)+1
         this.setState({ itemsNew: this.state.itemsNew.concat(newKey)});
-        console.log(this.state.itemsNew)
+        // console.log(this.state.itemsNew)
     }
 
     handleRemoveRow(index) {

@@ -69,7 +69,7 @@ class ProjectTabDetailForm extends Component {
         this.setState({
           eigen_catering: value
         });
-        console.log(value)
+        // console.log(value)
     }
 
     handleChange_liggings = (value, checked) => {

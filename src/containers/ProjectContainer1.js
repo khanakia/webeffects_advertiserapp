@@ -62,7 +62,7 @@ const mapDispatchToProps = (dispatch) => {
 
 
         fetchSnoobiData: (project_id, page=1, args) => {
-            console.log(args)
+            // console.log(args)
             dispatch(fetchSnoobiData(project_id, page, args));
         },
 

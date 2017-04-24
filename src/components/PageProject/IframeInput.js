@@ -50,7 +50,7 @@ class IframeInput extends React.Component {
     }
 
     removeField(index) {
-        console.log(index)
+        // console.log(index)
     }
 
     deleteProjectIframe(id) {
@@ -59,7 +59,7 @@ class IframeInput extends React.Component {
         // })
 
         let items = Object.assign([], this.state.items); 
-        console.log(items);
+        // console.log(items);
         items.map(function(item,index) {
             if(item.id==id) {
                 item.is_deleted = 1;

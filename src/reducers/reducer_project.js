@@ -40,7 +40,7 @@ export default function(state = INITIAL_STATE, action) {
             return {...state, current: action.payload.data };
         case CREATE_PROJECT:
             // log("CREATE_PROJECTCREATE_PROJECTCREATE_PROJECT", 'type1')
-            return {...state, current: {} };            
+            return {...state, current: [], compare_json: [] };            
         case FETCH_PROJECT_FORMDATA:
             return {...state, formdata: action.payload.data };    
         case FETCH_PROJECT_OFFER_REQUEST_DETAILS_LIST:

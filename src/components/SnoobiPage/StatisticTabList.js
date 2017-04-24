@@ -95,11 +95,15 @@ class StatisticTabList extends React.Component {
                     <div id={'collapse'+index} className="accordion-body collapse" role="tabpanel" aria-labelledby={'heading'+index}>
                       <div className="accordion-inner">
                         <table>
+                            <thead>
                             <tr>
                                 <th>{trans.accordion_group_datum}</th>
                                 <th>{trans.accordion_group_wat_bekeken}</th>
                             </tr>
-                            {this.renderStatsDetailList(item.details)}
+                            </thead>
+                            <tbody>
+                                {this.renderStatsDetailList(item.details)}
+                            </tbody>
                         </table>
                         
                       </div>

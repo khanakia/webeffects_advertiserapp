@@ -8,4 +8,3 @@ export AccountContainer from './AccountContainer'
 export RequireAuth from './RequireAuth'
 export DemoContainer from './DemoContainer'
 
-export ProjectNewContainer from './ProjectNewContainer'

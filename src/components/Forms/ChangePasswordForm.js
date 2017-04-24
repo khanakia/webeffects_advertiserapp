@@ -98,7 +98,7 @@ class ChangePasswordForm extends Component {
                     errors[rule.method] = result ;
 
                 } catch(e) {
-                    console.log(e);
+                    // console.log(e);
                 }
             }
             return errors;
