@@ -113,7 +113,7 @@ class ProjectTabGeneralForm extends Component {
                     <InputBox type="text" className="form-control required" name="project_title" value={this.props.project_title} />
                 </div>
                 <div className="form-group">
-                    <label className={class_project_title}>{trans.pageProject_algemene_label}
+                    <label className={class_description}>{trans.pageProject_algemene_label}
                         <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_tooltip_algemene_beschrijving}></a>
                     </label>
                     <textarea className="editor" name="description" ref="description" defaultValue={this.props.description}></textarea>
