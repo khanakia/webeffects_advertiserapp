@@ -442,7 +442,7 @@ class PageProject extends Component {
                                         <h3 className="d_active tab_drawer_heading">
                                             <a href="#general" aria-controls="general" role="tab" data-toggle="tab">{trans.pageProject_algemene_label} <i className="iconc-chevron-down"></i></a>
                                         </h3>
-                                        <div role="tabpanel" className="tab-pane active" id="general">
+                                        <div role="tabpanel" className="tab-pane " id="general">
                                            
                                                 <ProjectTabGeneralForm  
                                                     reset={this.isReset}
@@ -488,11 +488,12 @@ class PageProject extends Component {
                                         <h3 className="tab_drawer_heading">
                                             <a href="#zalen" aria-controls="zalen" role="tab" data-toggle="tab">{trans.pageProject_tab_zalen} <i className="iconc-chevron-down"></i></a>
                                         </h3>
-                                        <div role="tabpanel" className="tab-pane " id="zalen">
+                                        <div role="tabpanel" className="tab-pane active" id="zalen">
                                             <Zalen 
                                                 reset={this.isReset}
                                                 compare_json= {this.props.compare_json}
                                                 zalen={project.zalen} 
+                                                zalen_count={project.zalen_count} 
                                                 project_title={project.project_title} 
                                                 items={project.project_rooms} 
                                                 onZalenRemoved={this.onZalenRemoved} />

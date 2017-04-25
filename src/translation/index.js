@@ -346,7 +346,10 @@ const language = {
 		"locatieInput_locations" : "Locatie filters",
 		"pageProject_tooltip_locatie_titles": 'U kunt hier selecteren aan welke filters uw locatie gelinkt kunnen worden.',
 		"snoobiPage_placeholder_select_filter_action" : "Filters",
-		"snoobiPage_placeholder_select_filter_date" : "Datum"
+		"snoobiPage_placeholder_select_filter_date" : "Datum",
+
+		"zalen_count_field_label" : "Aantal zalen beschikbaar",
+		"zalen_count_field_tooltip" : "Wanneer u geen zalen in bovenstaande tabel heeft gespecificeerd, vul dan hier het aantal zalen in.",
 	},
 
 	"2" : {
@@ -696,7 +699,10 @@ const language = {
 		"locatieInput_locations" : "Locatie filters",
 		"pageProject_tooltip_locatie_titles": 'U kunt hier selecteren aan welke filters uw locatie gelinkt kunnen worden.',
 		"snoobiPage_placeholder_select_filter_action" : "Filters",
-		"snoobiPage_placeholder_select_filter_date" : "Datum"
+		"snoobiPage_placeholder_select_filter_date" : "Datum",
+
+		"zalen_count_field_label" : "Aantal zalen beschikbaar",
+		"zalen_count_field_tooltip" : "Wanneer u geen zalen in bovenstaande tabel heeft gespecificeerd, vul dan hier het aantal zalen in.",
 	},
 
 	"3" : {
@@ -1046,7 +1052,10 @@ const language = {
 		"locatieInput_locations" : "Locatie filters",
 		"pageProject_tooltip_locatie_titles": 'U kunt hier selecteren aan welke filters uw locatie gelinkt kunnen worden.',
 		"snoobiPage_placeholder_select_filter_action" : "Filters",
-		"snoobiPage_placeholder_select_filter_date" : "Datum"
+		"snoobiPage_placeholder_select_filter_date" : "Datum",
+
+		"zalen_count_field_label" : "Nombre de chambres disponibles",
+		"zalen_count_field_tooltip" : "Lorsque vous n'avez pas précisé les pièces dans le tableau en haut, sélectionnez le nombre de pièces dans cette zone.",
 	},
 
 	"4" : {
@@ -1396,7 +1405,10 @@ const language = {
 		"locatieInput_locations" : "Locatie filters",
 		"pageProject_tooltip_locatie_titles": 'U kunt hier selecteren aan welke filters uw locatie gelinkt kunnen worden.',
 		"snoobiPage_placeholder_select_filter_action" : "Filters",
-		"snoobiPage_placeholder_select_filter_date" : "Datum"
+		"snoobiPage_placeholder_select_filter_date" : "Datum",
+
+		"zalen_count_field_label" : "Anzahl der Zimmer verfügbar",
+		"zalen_count_field_tooltip" : "Wenn Sie nicht die Zimmer in der Tabelle oben angegeben haben, dann wählen Sie die Anzahl der Zimmer in diesem Bereich",
 	},
 
 	"5" : {
@@ -1747,7 +1759,10 @@ const language = {
 		"locatieInput_locations" : "Locatie filters",
 		"pageProject_tooltip_locatie_titles": 'U kunt hier selecteren aan welke filters uw locatie gelinkt kunnen worden.',
 		"snoobiPage_placeholder_select_filter_action" : "Filters",
-		"snoobiPage_placeholder_select_filter_date" : "Datum"
+		"snoobiPage_placeholder_select_filter_date" : "Datum",
+
+		"zalen_count_field_label" : "Number of rooms available",
+		"zalen_count_field_tooltip" : "When you've not specified the rooms in the table on top then select the amount of rooms in this area.",
 	}
 }
 

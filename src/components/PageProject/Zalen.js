@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react'
 
 import {ProjectRoomHelper, UtilHelper} from '../../helpers'
 import InputBox from './InputBox'
+import DropdownList from '../DropdownList'
 
 class Zalen extends React.Component {
 
@@ -13,6 +14,7 @@ class Zalen extends React.Component {
             itemsNew: [],
             isDesktop: true,
             zalen: this.props.zalen,
+            
         }
         
     }
@@ -24,6 +26,7 @@ class Zalen extends React.Component {
         onZalenRemoved: function(){},
         reset: false,
         zalen: '',
+        zalen_count : 1,
 
         compare_json: []
     }
@@ -426,7 +429,31 @@ class Zalen extends React.Component {
 
     render() {
         const class_zalen = UtilHelper.compareJsonGetClass('zalen', this.props.compare_json);
-        
+        console.log("this.props.zalen_count", this.state.items.length)
+          const rangelist = [
+            {"value": 1, "title": 1},
+            {"value": 2, "title": 2},
+            {"value": 3, "title": 3},
+            {"value": 4, "title": 4},
+            {"value": 5, "title": 5},
+            {"value": 6, "title": 6},
+            {"value": 7, "title": 7},
+            {"value": 8, "title": 8},
+            {"value": 9, "title": 9},
+            {"value": 10, "title": 10},
+            {"value": 11, "title": 11},
+            {"value": 12, "title": 12},
+            {"value": 13, "title": 13},
+            {"value": 14, "title": 14},
+            {"value": 15, "title": 15},
+            {"value": 16, "title": 16},
+            {"value": 17, "title": 17},
+            {"value": 18, "title": 18},
+            {"value": 19, "title": 19},
+            {"value": 20, "title": 20},
+        ];
+
+        let total_zalens = this.state.items.length + this.state.itemsNew.length;
 
         return (
             <div className={'comp-zalen ' + this.props.className} ref="Zalen">
@@ -442,7 +469,22 @@ class Zalen extends React.Component {
                 </div>
                 {
                     (this.state.isDesktop) ? this._renderDesktop() : this._renderMobile()
-                }    
+                }
+                {total_zalens==0 ?
+                    <div className="form-group">
+                        <label className={class_zalen}>{trans.zalen_count_field_label}
+                            <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.zalen_count_field_tooltip}></a>
+                        </label>
+                        <div className="row">
+                            <div className="col-md-3">
+                                
+                                <DropdownList items={rangelist} name="zalen_count" selectedValue={parseInt(this.props.zalen_count)} />
+                            </div>
+                        </div>
+                    </div>
+                    : ''
+
+                }
             </div>
         );
     }
