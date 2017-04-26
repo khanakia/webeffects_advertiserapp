@@ -43,8 +43,8 @@
     "prod": {
             "root_host": "dashboard.locationagent.de",
             "root_url": "https://dashboard.locationagent.de",
-            "api_host": "https://dnls.nl",
-            "api_url": "https://dnls.nl/api",
+            "api_host": "https://www.dnls.nl",
+            "api_url": "https://www.dnls.nl/api",
             "public_site_url": "https://locationagent.de"
     }
 }

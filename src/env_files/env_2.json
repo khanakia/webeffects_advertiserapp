@@ -43,8 +43,8 @@
     "prod": {
             "root_host": "dashboard.dnls.be",
             "root_url": "https://dashboard.dnls.be",
-            "api_host": "https://dnls.nl",
-            "api_url": "https://dnls.nl/api",
+            "api_host": "https://www.dnls.nl",
+            "api_url": "https://www.dnls.nl/api",
             "public_site_url": "https://dnls.be/nl"
     }
 }
