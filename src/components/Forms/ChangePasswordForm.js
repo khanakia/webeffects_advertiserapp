@@ -364,7 +364,7 @@ class ChangePasswordForm extends Component {
                         </div>
                     </div>
                     <div className="text-center">
-                        <button type="submit" className="btn btn-grey btn--round">{trans.resetpwd_submit_btn}</button>
+                        <button type="submit" className="btn btn-green btn--round">{trans.resetpwd_submit_btn}</button>
                     </div>
                 </form>
             </div>  
