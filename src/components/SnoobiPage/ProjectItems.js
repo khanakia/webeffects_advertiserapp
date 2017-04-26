@@ -22,12 +22,14 @@ class ProjectItems extends React.Component {
 
     componentDidUpdate() {
        if (Modernizr.mq('only all and (max-width: 767px)')) {
-            var winWidth = $(window).width() - 90;
-            $(".belangrijkste-wrapper").width(winWidth);
+            // var winWidth = $(window).width() - 90;
+            // $(".belangrijkste-wrapper").width(winWidth);
             jQuery('#belangrijkste_carousel').owlCarousel({
                 loop: false,
                 dots: false,
                 margin:15,
+                stagePadding: 50,
+
                 nav:false,
                 navText: [
                   "<i class='fa fa-angle-left' ></i>",
@@ -36,7 +38,7 @@ class ProjectItems extends React.Component {
                 responsive:{
                     0:{
                         items:1,
-                        stagePadding: 0,
+                        stagePadding: 25,
                     },
                     600:{
                         items:1,

@@ -221,16 +221,16 @@ header.mobile {
 .mobile-overlay-menu {
   display: none;
   background-color: #45545F; }
-  .mobile-overlay-menu a, .mobile-overlay-menu a:focus {
+  .mobile-overlay-menu a, .mobile-overlay-menu a:focus, .mobile-overlay-menu a:link, .mobile-overlay-menu a:visited {
     font-size: 16px;
     color: #fff;
     display: block;
     padding: 12px 20px;
     text-decoration: none;
     border-bottom: 1px solid #343F47; }
-    .mobile-overlay-menu a:hover, .mobile-overlay-menu a:focus, .mobile-overlay-menu a:focus:hover, .mobile-overlay-menu a:focus:focus {
+    .mobile-overlay-menu a:hover, .mobile-overlay-menu a:focus, .mobile-overlay-menu a:focus:hover, .mobile-overlay-menu a:focus:focus, .mobile-overlay-menu a:link:hover, .mobile-overlay-menu a:link:focus, .mobile-overlay-menu a:visited:hover, .mobile-overlay-menu a:visited:focus {
       background-color: #4B5A65; }
-    .mobile-overlay-menu a.has-childerns i, .mobile-overlay-menu a:focus.has-childerns i {
+    .mobile-overlay-menu a.has-childerns i, .mobile-overlay-menu a:focus.has-childerns i, .mobile-overlay-menu a:link.has-childerns i, .mobile-overlay-menu a:visited.has-childerns i {
       float: right;
       color: #fff;
       font-size: 20px; }

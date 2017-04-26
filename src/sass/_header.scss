@@ -84,7 +84,7 @@ header.mobile {
 	display: none;
 	background-color: #45545F;
 
-	a, a:focus {
+	a, a:focus, a:link, a:visited {
 		font-size: 16px;
 		color: #fff;
 		display: block;

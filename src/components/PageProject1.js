@@ -124,6 +124,7 @@ class PageProject extends Component {
 
         $('.tab_drawer_heading a').unbind("click").click(function (e) {     
             var href = $(this).attr('href');
+
             var self = $(this);
             if($('.tab-pane'+href).hasClass("active")) {
                 return false;
@@ -141,6 +142,10 @@ class PageProject extends Component {
             $(".tab_drawer_heading").find("i").addClass("iconc-chevron-down").removeClass("iconc-chevron-up");
             $(".tab_drawer_heading.d_active").find("i").removeClass("iconc-chevron-down").addClass("iconc-chevron-up");
             // self.find("i").removeClass("iconc-chevron-down").addClass("iconc-chevron-up");
+
+            if(href="#locatie") {
+                _this.refs.locatieForm.handleRefresh();
+            }
         })
 
     }
@@ -442,7 +447,7 @@ class PageProject extends Component {
                                         <h3 className="d_active tab_drawer_heading">
                                             <a href="#general" aria-controls="general" role="tab" data-toggle="tab">{trans.pageProject_algemene_label} <i className="iconc-chevron-down"></i></a>
                                         </h3>
-                                        <div role="tabpanel" className="tab-pane " id="general">
+                                        <div role="tabpanel" className="tab-pane active" id="general">
                                            
                                                 <ProjectTabGeneralForm  
                                                     reset={this.isReset}
@@ -488,7 +493,7 @@ class PageProject extends Component {
                                         <h3 className="tab_drawer_heading">
                                             <a href="#zalen" aria-controls="zalen" role="tab" data-toggle="tab">{trans.pageProject_tab_zalen} <i className="iconc-chevron-down"></i></a>
                                         </h3>
-                                        <div role="tabpanel" className="tab-pane active" id="zalen">
+                                        <div role="tabpanel" className="tab-pane " id="zalen">
                                             <Zalen 
                                                 reset={this.isReset}
                                                 compare_json= {this.props.compare_json}
