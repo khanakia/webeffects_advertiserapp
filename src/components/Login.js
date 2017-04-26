@@ -59,8 +59,10 @@ class Login extends Component {
                 if (response.data.token != null) {
                     hashHistory.push('/dashboard')
                 } else {                
-                    toastr.error(response.data.message);       
+                    toastr.error(trans.invalid_credentials);
                 }
+            }).catch(function (error) {
+                toastr.error(trans.invalid_credentials)
             });
         }
     }

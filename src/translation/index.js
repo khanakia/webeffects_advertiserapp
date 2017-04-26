@@ -42,7 +42,7 @@ const language = {
 		"forgotpwd_email_placeholder": "e-mailadres",
 		"forgotpwd_submit_btn": "Verstuur",
 		// "reset_email_sent": "Password Reset Email sent on your email.",
-		"reset_error": "Sorry canno reeset password",
+		"reset_error": "Sorry, cannot reset password.",
 
 		"account_confirm_title": "Pagina verlaten",
 		"account_confirm_content": "U heeft uw bewerkingen niet opgeslagen, weet u zeker dat u de pagina wilt verlaten?",
@@ -395,7 +395,7 @@ const language = {
 		"forgotpwd_email_placeholder": "e-mailadres",
 		"forgotpwd_submit_btn": "Verstuur",
 		// "reset_email_sent": "Password Reset Email sent on your email.",
-		"reset_error": "Sorry canno reeset password",
+		"reset_error": "Sorry, cannot reset password.",
 
 		"account_confirm_title": "Pagina verlaten",
 		"account_confirm_content": "U heeft uw bewerkingen niet opgeslagen, weet u zeker dat u de pagina wilt verlaten?",
@@ -748,7 +748,7 @@ const language = {
 		"forgotpwd_email_placeholder": "Adresse e-mail",
 		"forgotpwd_submit_btn": "Envoyer",
 		// "reset_email_sent": "Password Reset Email sent on your email.",
-		"reset_error": "Sorry canno reeset password",
+		"reset_error": "Sorry, cannot reset password.",
 
 		"account_confirm_title": "Quitter la page",
 		"account_confirm_content": "Vous n'avez pas sauvegardé votre changement. Êtes-vous sûr de vouloir quitter cette page ?",
@@ -1101,7 +1101,7 @@ const language = {
 		"forgotpwd_email_placeholder": "E-Mailadresse",
 		"forgotpwd_submit_btn": "Senden",
 		// "reset_email_sent": "Password Reset Email sent on your email.",
-		"reset_error": "Sorry canno reeset password",
+		"reset_error": "Sorry, cannot reset password.",
 
 		"account_confirm_title": "Seite verlassen",
 		"account_confirm_content": "Sie haben Ihre Bearbeitungen nicht gespeichert. Wollen Sie trotzdem diese Seite verlassen?",
@@ -1454,7 +1454,7 @@ const language = {
 		"forgotpwd_email_placeholder": "Email address",
 		"forgotpwd_submit_btn": "Send",
 		// "reset_email_sent": "Password Reset Email sent on your email.",
-		"reset_error": "Sorry canno reeset password",
+		"reset_error": "Sorry, cannot reset password.",
 
 		"account_confirm_title": "Leave page",
 		"account_confirm_content": "You haven't saved your changes. Are you sure you want to leave the page?",

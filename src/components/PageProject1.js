@@ -200,7 +200,9 @@ class PageProject extends Component {
 
                             _this.props.fetchCompareJson(_this.props.params.projectId);
                             // _this.props.fetchProjects()
-                        })
+                        }).catch(function (error) {
+                            toastr.error(trans.request_failed)
+                        });
                     }.bind(this)
                 },
                

@@ -27,12 +27,11 @@ class ForgotPassword extends Component {
             request_site_id: Env.site_id
         })
         .then(function (response) {
-            if(response.data.status=="ok") {
-                toastr.success(trans.reset_email_sent)
-                hashHistory.push("/")
-            } else {
-                toastr.error(trans[response.data.message])
-            }
+            toastr.success(trans.reset_email_sent)
+            hashHistory.push("/")
+           
+        }).catch(function (error) {
+            toastr.error(trans.reset_error)
         });
        
 
