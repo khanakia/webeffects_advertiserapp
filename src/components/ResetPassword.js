@@ -15,11 +15,11 @@ class ResetPassword extends Component {
 
     onDataUpdate = (response) => {
             
-            if(response.status=="ok") {
-                toastr.success(trans.resetpwd_reset_successfully)
+            if(response.status_code==200) {
+                toastr.success(trans.reset_password_successfully)
                 hashHistory.push("/")
             } else {
-                toastr.error(trans[response.message])
+                toastr.error(trans.reset_error)
             }
     }
 

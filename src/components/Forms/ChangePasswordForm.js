@@ -242,10 +242,12 @@ class ChangePasswordForm extends Component {
         let data = jQuery(this.refs.form).serialize();
 
         AccountHelper.resetPassword(data).then(function(response) {
-            toastr.success(trans.changePwd_successfully)
-            this.props.onDataUpdate(response.data)
-            this.hidePopup();
-        }.bind(this));
+            // toastr.success(trans.changePwd_successfully)
+            _this.props.onDataUpdate(response.data)
+            _this.hidePopup();
+        }).catch(function (error) {
+            _this.props.onDataUpdate(error.data)
+        });
 
         return false;
     }
