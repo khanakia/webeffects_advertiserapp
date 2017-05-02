@@ -351,6 +351,10 @@ const language = {
 
 		"zalen_count_field_label" : "Aantal zalen beschikbaar",
 		"zalen_count_field_tooltip" : "Wanneer u geen zalen in bovenstaande tabel heeft gespecificeerd, vul dan hier het aantal zalen in.",
+
+		"select_empty_placeholder_province": 'Province',
+		"select_empty_placeholder_plaats": 'Plaats',
+		"select_empty_placeholder_regio": 'Regio',
 	},
 
 	"2" : {
@@ -705,6 +709,10 @@ const language = {
 
 		"zalen_count_field_label" : "Aantal zalen beschikbaar",
 		"zalen_count_field_tooltip" : "Wanneer u geen zalen in bovenstaande tabel heeft gespecificeerd, vul dan hier het aantal zalen in.",
+
+		"select_empty_placeholder_province": 'Province',
+		"select_empty_placeholder_plaats": 'Plaats',
+		"select_empty_placeholder_regio": 'Regio',
 	},
 
 	"3" : {
@@ -1059,6 +1067,10 @@ const language = {
 
 		"zalen_count_field_label" : "Nombre de chambres disponibles",
 		"zalen_count_field_tooltip" : "Lorsque vous n'avez pas précisé les pièces dans le tableau en haut, sélectionnez le nombre de pièces dans cette zone.",
+
+		"select_empty_placeholder_province": 'Province',
+		"select_empty_placeholder_plaats": 'Plaats',
+		"select_empty_placeholder_regio": 'Regio',
 	},
 
 	"4" : {
@@ -1413,6 +1425,10 @@ const language = {
 
 		"zalen_count_field_label" : "Anzahl der Zimmer verfügbar",
 		"zalen_count_field_tooltip" : "Wenn Sie nicht die Zimmer in der Tabelle oben angegeben haben, dann wählen Sie die Anzahl der Zimmer in diesem Bereich",
+
+		"select_empty_placeholder_province": 'Province',
+		"select_empty_placeholder_plaats": 'Plaats',
+		"select_empty_placeholder_regio": 'Regio',
 	},
 
 	"5" : {
@@ -1768,6 +1784,10 @@ const language = {
 
 		"zalen_count_field_label" : "Number of rooms available",
 		"zalen_count_field_tooltip" : "When you've not specified the rooms in the table on top then select the amount of rooms in this area.",
+
+		"select_empty_placeholder_province": 'Province',
+		"select_empty_placeholder_plaats": 'Plaats',
+		"select_empty_placeholder_regio": 'Regio',
 	}
 }
 
