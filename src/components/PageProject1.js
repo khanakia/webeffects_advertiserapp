@@ -174,8 +174,13 @@ class PageProject extends Component {
 
         const dataJson = URI.parseQuery(data);
 
-        if(dataJson.plaat_id==false) {
-            toastr.error(trans.pageProject_plaat_required);
+        // if(dataJson.plaat_id==false) {
+        //     toastr.error(trans.pageProject_plaat_required);
+        //     return false;
+        // }
+
+        if(dataJson.province_id==false) {
+            toastr.error(trans.pageProject_province_required);
             return false;
         }
 

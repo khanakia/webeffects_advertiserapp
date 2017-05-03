@@ -574,7 +574,7 @@ a.question-mark-icon {
     background-position: center; }
   .comp-sidebar .projects-list-wrapper {
     padding: 20px 0;
-    max-height: 450px;
+    /*max-height: 450px;*/
     overflow-y: auto; }
   .comp-sidebar ul {
     list-style: none;

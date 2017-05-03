@@ -355,6 +355,7 @@ const language = {
 		"select_empty_placeholder_province": 'Province',
 		"select_empty_placeholder_plaats": 'Plaats',
 		"select_empty_placeholder_regio": 'Regio',
+		"pageProject_province_required": "Province required.",
 	},
 
 	"2" : {
@@ -713,6 +714,7 @@ const language = {
 		"select_empty_placeholder_province": 'Province',
 		"select_empty_placeholder_plaats": 'Plaats',
 		"select_empty_placeholder_regio": 'Regio',
+		"pageProject_province_required": "Province required.",
 	},
 
 	"3" : {
@@ -1071,6 +1073,7 @@ const language = {
 		"select_empty_placeholder_province": 'Province',
 		"select_empty_placeholder_plaats": 'Plaats',
 		"select_empty_placeholder_regio": 'Regio',
+		"pageProject_province_required": "Province required.",
 	},
 
 	"4" : {
@@ -1429,6 +1432,7 @@ const language = {
 		"select_empty_placeholder_province": 'Province',
 		"select_empty_placeholder_plaats": 'Plaats',
 		"select_empty_placeholder_regio": 'Regio',
+		"pageProject_province_required": "Province required.",
 	},
 
 	"5" : {
@@ -1788,6 +1792,7 @@ const language = {
 		"select_empty_placeholder_province": 'Province',
 		"select_empty_placeholder_plaats": 'Plaats',
 		"select_empty_placeholder_regio": 'Regio',
+		"pageProject_province_required": "Province required.",
 	}
 }
 

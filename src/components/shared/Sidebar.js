@@ -12,7 +12,8 @@ class Sidebar extends Component {
     }
 
     componentDidMount() {
-      
+        var plwH = window.innerHeight - 250;
+        jQuery(".projects-list-wrapper").height(plwH);
     }
  
     render() {
