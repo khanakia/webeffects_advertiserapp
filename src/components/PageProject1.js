@@ -153,8 +153,9 @@ class PageProject extends Component {
     initJs() {
         var _this = this;
         $('.editor').trumbowyg({
-            btns: [['bold', 'italic', 'underline'], ['unorderedList'], ['orderedList']]
-            // autogrow: true
+            btns: [['viewHTML'],['formatting'],['bold', 'italic', 'underline'], ['link'], 'btnGrp-justify','btnGrp-lists'],
+            // autogrow: true,
+            removeformatPasted: true
         });
        
 
