@@ -251,11 +251,11 @@ class ProjectOverview extends Component {
                     <div className="row dashboard_upper_info">
                         <div className="inner">
                             <div className="form-group">
-                                <label>Project search</label>
+                                <label>{trans.search_project_title}</label>
                                 <InputSearch onChange={this.onProjectTitleSearch} />
                             </div>
                             <div className="form-group">
-                            <label>Prject title</label>
+                            <label>{trans.search_project_status}</label>
                                 <DropdownList items={this.props.project_formdata.project_status_list} onItemChange={this.onProjectStatusChange} emptyPlaceholder="" />
                             </div>
                         </div>
