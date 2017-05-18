@@ -32,6 +32,7 @@ Thumbs.db
 *.idea
 *.TMP
 *.tmp
+.vscode-upload.json
 
 # ignore Editor files
 *.sublime-project

@@ -162,7 +162,7 @@ class ProjectTabDetailForm extends Component {
                         <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_tooltip_aantal_personen}></a>
                     </label>
                     <div className="row">
-                        <div className="col-lg-4">
+                        <div className="col-lg-6">
                             <div className={"input-group" + class_person_min}>
                                 <span className="input-group-addon">
                                     <i className="iconc-person"></i> {trans.pageProject_details_min}
@@ -170,7 +170,7 @@ class ProjectTabDetailForm extends Component {
                                 <InputBox type="number" className="form-control" name="person_min" value={this.props.person_min} />
                             </div>
                         </div>
-                        <div className="col-lg-4">
+                        <div className="col-lg-6">
                             <div className={"input-group" + class_person_max}>
                                 <span className="input-group-addon">
                                     <i className="iconc-person"></i> {trans.pageProject_details_max}

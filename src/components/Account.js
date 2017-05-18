@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 
 import ContentWrapper from './shared/ContentWrapper'
 
-import {ROOT_URL, API_URL_CHANGE_PWD} from '../config.js'
-
-import {Auth, Localstore, UserHelper, ContactHelper, ProjectHelper} from '../helpers'
-
 import ChangePasswordForm from 'components/Forms/ChangePasswordForm'
 
 

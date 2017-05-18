@@ -54,7 +54,7 @@ export default class AppContainer extends Component {
         
         return (
           <div id="main">
-            <Header userTitle={this.props.current_user.name ? this.props.current_user.name : this.props.current_user.email} project_list={this.props.project_list} />
+            <Header userTitle={this.props.current_user.name ? this.props.current_user.name : this.props.current_user.email} project_list={this.props.project_list.data} />
             <div id="main-inner">
                 {this.props.children}
             </div>

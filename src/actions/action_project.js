@@ -15,8 +15,8 @@ export const FETCH_PROJECT_COMPARE_JSON='FETCH_PROJECT_COMPARE_JSON'
 
 import {AuthHelper, ProjectHelper} from '../helpers'
 
-export function fetchProjects() {
-    const request = ProjectHelper.index();
+export function fetchProjects(args) {
+    const request = ProjectHelper.index(args);
     return {
         type: FETCH_PROJECTS,
         payload: request

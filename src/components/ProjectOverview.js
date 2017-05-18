@@ -4,22 +4,52 @@ import { Link, hashHistory } from 'react-router'
 import ContentWrapper from './shared/ContentWrapper'
 import {PROJECT_STATUSES} from '../config'
 import {ProjectHelper} from '../helpers'
+import DropdownList from './DropdownList'
+import InputSearch from './InputSearch'
+
 
 class ProjectOverview extends Component {
     constructor(props, context) {
         super(props, context);
 
         this.state = {
-            isDesktop: false
+            isDesktop: false,
+            project_status_id: null,
+            project_title: null
         }
     }
 
     componentDidMount() {
-        this.props.fetchProjects()
+        this.props.fetchProjectFormdata()
+        this.props.fetchProjects({
+            project_status_id : this.state.project_status_id,
+            project_title: this.state.project_title,
+        })
         this._checkDesktopMobile()
         window.addEventListener('resize', (event) => {
             this._checkDesktopMobile()
         });
+    }
+
+     componentWillUpdate = (nextProps, nextState) => {        
+        // console.log(this.state);
+        // console.log(nextState);
+        if(!_.isEqual(this.state, nextState)) {
+            console.log("NOT EQUAL")
+            this.props.fetchProjects({
+                project_status_id : nextState.project_status_id,
+                project_title: nextState.project_title,
+            })
+        }
+
+    }
+
+     componentDidUpdate() {
+        // this.props.fetchProjects({
+        //     project_status_id : this.state.project_status_id,
+        //     project_title: this.state.project_title,
+        // })
+     
     }
 
     _checkDesktopMobile() {
@@ -67,10 +97,13 @@ class ProjectOverview extends Component {
     }
 
    _renderMobile() {
+        if(jQuery.isEmptyObject(this.props.project_list.data)) {
+            return false
+        }
         return (
             <div>
                 <ul className="list-group list-group--projectoverview">
-                    {this.props.project_list.map(function(item, index){
+                    {this.props.project_list.data.map(function(item, index){
                         let status = PROJECT_STATUSES[item.project_status_id]
 
                         return (
@@ -89,6 +122,9 @@ class ProjectOverview extends Component {
 
    }
     _renderDesktop() {
+        if(jQuery.isEmptyObject(this.props.project_list.data)) {
+            return false
+        }
         return (
             <div className="table-wrapper-border">
                 <table className="table table-bordered table--default table--projectoverview">
@@ -104,7 +140,7 @@ class ProjectOverview extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        { this.props.project_list.map((item, index) => {
+                        { this.props.project_list.data.map((item, index) => {
                             let status = PROJECT_STATUSES[item.project_status_id]
                             const province_name = item.province ? item.province['filter_value_name'] : '';
                             const plaat_name = item.plaat ? item.plaat['filter_value_name'] : '';
@@ -155,15 +191,32 @@ class ProjectOverview extends Component {
         );
     }
 
+     onProjectStatusChange = (item) => {
+       this.setState({
+           project_status_id: item.value
+       })
+        
+    }
+
+    onProjectTitleSearch = (value) => {
+        this.setState({
+           project_title: value
+       })
+    }
+
 
     render() {
-        if(jQuery.isEmptyObject(this.props.project_list)) {
-            return false
-        }
+        // if(jQuery.isEmptyObject(this.props.project_list.data)) {
+        //     return false
+        // }
 
         return (
             <div>
                 <ContentWrapper hasSidebar={true}>
+                    <div>
+                        <InputSearch onChange={this.onProjectTitleSearch} />
+                        <DropdownList items={this.props.project_formdata.project_status_list} onItemChange={this.onProjectStatusChange} emptyPlaceholder="" />
+                    </div>
                     <h3 className="mb20">{trans.pageOverview_locatie_title}</h3>
                     {
                         (this.state.isDesktop) ? this._renderDesktop() : this._renderMobile()

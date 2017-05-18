@@ -1,20 +1,28 @@
 import { connect } from 'react-redux'
 
-import { fetchProjects } from '../actions/action_project';
+import { 
+    fetchProjects,
+    fetchProjectFormdata,
+ } from '../actions/action_project';
 
 import {ProjectOverview} from '../components'
 const mapStateToProps = (state) => {
     return {
         state : state,
         project_list: state.project.list,
+        project_formdata: state.project.formdata,
     };
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
         dispatch,
-        fetchProjects: () => {
-            dispatch(fetchProjects()); 
+        fetchProjects: (args) => {
+            dispatch(fetchProjects(args)); 
+        },
+
+         fetchProjectFormdata: () => {
+            dispatch(fetchProjectFormdata(window.Env.site_id))
         },
     }
 }
