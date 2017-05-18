@@ -15,7 +15,8 @@ class ProjectOverview extends Component {
         this.state = {
             isDesktop: false,
             project_status_id: null,
-            project_title: null
+            project_title: null,
+            page: 1
         }
     }
 
@@ -29,6 +30,8 @@ class ProjectOverview extends Component {
         window.addEventListener('resize', (event) => {
             this._checkDesktopMobile()
         });
+
+        this.paginationInit()
     }
 
      componentWillUpdate = (nextProps, nextState) => {        
@@ -39,6 +42,7 @@ class ProjectOverview extends Component {
             this.props.fetchProjects({
                 project_status_id : nextState.project_status_id,
                 project_title: nextState.project_title,
+                page: nextState.page
             })
         }
 
@@ -49,7 +53,38 @@ class ProjectOverview extends Component {
         //     project_status_id : this.state.project_status_id,
         //     project_title: this.state.project_title,
         // })
-     
+        this.paginationInit()
+    }
+
+    paginationInit() {
+        var _this = this;
+
+        var $elem = jQuery('#project_overview_paginations_list');
+
+        if($elem.data("twbs-pagination")){
+            $elem.twbsPagination('destroy');
+        }
+
+        if(_this.props.project_list.total==0) return false;
+        $elem.twbsPagination({
+            initiateStartPageClick: false,
+            totalPages: _this.props.project_list.last_page,
+            visiblePages: 5,
+            startPage: _this.props.project_list.current_page,
+            // first: '<span aria-hidden="true">&laquo;</span>',
+            // last: '<span aria-hidden="true">&raquo;</span>',
+            firstClass: 'hidden',
+            lastClass: 'hidden',
+            prev: '<span aria-hidden="true">&laquo;</span>',
+            next: '<span aria-hidden="true">&raquo;</span>',
+            onPageClick: function (event, page) {            
+                _this.onProjectPagination(page);
+            }
+        });
+    }
+
+    onProjectPagination = (page) => {
+        this.setState({page: page});
     }
 
     _checkDesktopMobile() {
@@ -229,6 +264,8 @@ class ProjectOverview extends Component {
                     {
                         (this.state.isDesktop) ? this._renderDesktop() : this._renderMobile()
                     }
+
+                    <ul id="project_overview_paginations_list"></ul>
                 </ContentWrapper>
             </div>
         );

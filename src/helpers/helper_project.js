@@ -10,14 +10,15 @@ export default class ProjectHelper {
 
     }
 
-    static index(args={project_status_id:null, project_title:null}) {
+    static index(args={project_status_id:null, project_title:null, page: 1}) {
         return axios({
             method: 'post',
             url: API_URL_PROJECT + '/index',
             headers: Auth.header(),
             data: {
                 "project_status_id": args.project_status_id,
-                "project_title": args.project_title
+                "project_title": args.project_title,
+                "page" : args.page
             }
         });
     }
