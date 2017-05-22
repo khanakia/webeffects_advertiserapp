@@ -357,7 +357,9 @@ const language = {
 		"select_empty_placeholder_regio": 'Regio',
 		"pageProject_province_required": "Province required.",
 		"search_project_title": "Project titel",
-		"search_project_status": "Staat",
+		"search_project_status": "Status",
+
+		"project_status_alles" : "Alles",
 	},
 
 	"2" : {
@@ -718,7 +720,9 @@ const language = {
 		"select_empty_placeholder_regio": 'Regio',
 		"pageProject_province_required": "Province required.",
 		"search_project_title": "Project titel",
-		"search_project_status": "Staat",
+		"search_project_status": "Status",
+
+		"project_status_alles" : "Alles",
 	},
 
 	"3" : {
@@ -1080,6 +1084,8 @@ const language = {
 		"pageProject_province_required": "Province required.",
 		"search_project_title": "Titre du projet",
 		"search_project_status": "Statut",
+
+		"project_status_alles" : "Alles",
 	},
 
 	"4" : {
@@ -1441,6 +1447,8 @@ const language = {
 		"pageProject_province_required": "Province required.",
 		"search_project_title": "Projekttitel",
 		"search_project_status": "Status",
+
+		"project_status_alles" : "Alles",
 	},
 
 	"5" : {
@@ -1803,6 +1811,8 @@ const language = {
 		"pageProject_province_required": "Province required.",
 		"search_project_title": "Project title",
 		"search_project_status": "Status",
+
+		"project_status_alles" : "Alles",
 	}
 }
 

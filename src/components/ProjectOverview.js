@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link, hashHistory } from 'react-router'
 
 import ContentWrapper from './shared/ContentWrapper'
-import {PROJECT_STATUSES} from '../config'
+import {PROJECT_STATUSES, PROJECT_STATUSES_DROPDOWN_LIST} from '../config'
 import {ProjectHelper} from '../helpers'
 import DropdownList from './DropdownList'
 import InputSearch from './InputSearch'
@@ -256,7 +256,7 @@ class ProjectOverview extends Component {
                             </div>
                             <div className="form-group">
                             <label>{trans.search_project_status}</label>
-                                <DropdownList items={this.props.project_formdata.project_status_list} onItemChange={this.onProjectStatusChange} emptyPlaceholder="" />
+                                <DropdownList items={PROJECT_STATUSES_DROPDOWN_LIST} onItemChange={this.onProjectStatusChange} selectedValue={0} />
                             </div>
                         </div>
                     </div>

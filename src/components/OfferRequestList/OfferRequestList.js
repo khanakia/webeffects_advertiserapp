@@ -217,7 +217,7 @@ class OfferRequestList extends React.Component {
                                             <div className="col-md-6 col-sm-12">
                                                 <div>
                                                     <h5>{trans.offerte_geplande_datum_label}</h5>
-                                                    {this._renderDatumJson(item.datum_json)}
+                                                    <p>{item.plan_date || "-"}</p>
                                                 </div>
                                             </div>
                                             <div className="col-md-6 col-sm-12">

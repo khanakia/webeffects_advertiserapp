@@ -87,6 +87,34 @@ export const PROJECT_STATUSES = {
 }
 
 
+export const PROJECT_STATUSES_DROPDOWN_LIST = [
+	{
+		'title' : trans.project_status_alles,
+		'value' : 0,
+	},
+
+	{
+		'title' : trans.project_status_gepubliceerd,
+		'value' : 1,
+	},
+
+	{
+		'title' : trans.project_status_nieuw,
+		'value' : 2,
+	},
+
+	{
+		'title' : trans.project_status_ter_goedkeuring,
+		'value' : 3,
+	},
+
+	{
+		'title' : trans.project_status_uitgeschakeld,
+		'value' : 5,
+	},
+]
+
+
 
 
 
