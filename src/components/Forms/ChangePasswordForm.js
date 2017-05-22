@@ -159,7 +159,7 @@ class ChangePasswordForm extends Component {
         var html = '';
 
         if(error_object.equalTo==true) {
-            html += '<div><i class="iconc-check"></i> '+trans.changePwd_error_confirmation+'</div>';
+            html += '<div><i class="iconc-check"></i> '+trans.changePwd_error_confirmation_success+'</div>';
         } else {
             html += '<div><i class="iconc-cross"></i> '+trans.changePwd_error_confirmation+'</div>';
         }

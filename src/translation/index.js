@@ -33,6 +33,7 @@ const language = {
 		"changePwd_error_min1_hoofdletter": "Minstens 1 hoofdletter.",
 		"changePwd_error_min1_cijfer": "Minstens 1 cijfer.",
 		"changePwd_error_confirmation": "Wachtwoorden komen niet overeen.",
+		"changePwd_error_confirmation_success": "Wachtwoorden komen overeen.",
 		"changePwd_savebtn": "Bevestigen",
 		"changePwd_successfully": "Password Updated Successfully.",
 		
@@ -396,6 +397,7 @@ const language = {
 		"changePwd_error_min1_hoofdletter": "Minstens 1 hoofdletter.",
 		"changePwd_error_min1_cijfer": "Minstens 1 cijfer.",
 		"changePwd_error_confirmation": "Wachtwoorden komen niet overeen.",
+		"changePwd_error_confirmation_success": "Wachtwoorden komen overeen.",
 		"changePwd_savebtn": "Bevestigen",
 		"changePwd_successfully": "Password Updated Successfully.",
 		
@@ -759,6 +761,7 @@ const language = {
 		"changePwd_error_min1_hoofdletter": "Au moins une majuscule.",
 		"changePwd_error_min1_cijfer": "Au moins un chiffre.",
 		"changePwd_error_confirmation": "Les mots de passe ne correspondent pas",
+		"changePwd_error_confirmation_success": "Les mots de passe correspondent",
 		"changePwd_savebtn": "Confirmer",
 		"changePwd_successfully": "Password Updated Successfully.",
 		
@@ -1122,6 +1125,7 @@ const language = {
 		"changePwd_error_min1_hoofdletter": "Mindestens 1 Hauptbuchstabe",
 		"changePwd_error_min1_cijfer": "Mindestens 1 Ziffer",
 		"changePwd_error_confirmation": "Die Passwörter stimmen nicht überein.",
+		"changePwd_error_confirmation_success": "Passwort abgestimmt.",
 		"changePwd_savebtn": "Bestätigen",
 		"changePwd_successfully": "Password Updated Successfully.",
 		
@@ -1485,6 +1489,7 @@ const language = {
 		"changePwd_error_min1_hoofdletter": "At least one uppercase letter",
 		"changePwd_error_min1_cijfer": "At least one number",
 		"changePwd_error_confirmation": "Passwords do not match.",
+		"changePwd_error_confirmation_success": "Passwords matched.",
 		"changePwd_savebtn": "Confirm",
 		"changePwd_successfully": "Password Updated Successfully.",
 		

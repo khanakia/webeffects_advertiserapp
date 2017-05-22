@@ -179,7 +179,7 @@ header.desktop {
     header.desktop .dropdown--user .btn-user i.iconc-person, header.desktop .dropdown--user .btn-user:focus i.iconc-person {
       padding-right: 20px;
       font-size: 26px; }
-  @media (max-width: 992px) {
+  @media (max-width: 1200px) {
     header.desktop {
       display: none; } }
 
@@ -214,7 +214,7 @@ header.mobile {
       display: none; }
     header.mobile .header__menu.opened i.close {
       display: inherit; }
-  @media (max-width: 992px) {
+  @media (max-width: 1200px) {
     header.mobile {
       display: block; } }
 

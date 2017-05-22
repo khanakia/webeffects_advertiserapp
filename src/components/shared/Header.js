@@ -77,6 +77,9 @@ class Header extends Component {
                             </ul>
                         </li>
                         <li>
+                            <Link to="/project/add" >{trans.sidebar_voeg_link}</Link>
+                        </li>
+                        <li>
                             <Link to={'account'}>Account instellingen</Link>
                         </li>
                         <li role="separator" className="divider"></li>
