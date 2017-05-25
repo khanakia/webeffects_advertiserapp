@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link, hashHistory } from 'react-router'
-import {AuthHelper, ProjectHelper} from '../helpers'
+import {AuthHelper, ProjectHelper, AccountHelper} from '../helpers'
 
 import ContentWrapper from './shared/ContentWrapper'
 
@@ -390,7 +390,19 @@ class PageProject extends Component {
             snoobi_args: snoobi_args
         })
     }
-  
+    
+    _renderFlagLink(project) {
+        let flag = "be";
+        if(project.site_id=3) {
+            flag = "fr";
+        }
+        console.log(project);
+        if(!project.related_project_id) return null;
+        return (
+            <i onClick={()=>{AccountHelper.switch_site(project.related_project_id)}} className={"flag-ico-btn " + flag}></i>
+        )
+    }
+
     render() {
         // console.log(this.props);
         const hiddenClass = this.props.params.projectId ? '' : 'hidden';
@@ -410,7 +422,7 @@ class PageProject extends Component {
             <div className="projectPageContent">
                 <ContentWrapper hasSidebar={true}>
                     <div className="page-panel">
-                        <div className="page-panel__heading">{title}</div>
+                        <div className="page-panel__heading"><span className="title_first">{title}</span> {this._renderFlagLink(project)}</div>
                         <div className="page-panel__inner">
                             <div className="page-panel__inner__left">
                                 <ul className="nav nav-tabs nav-tabs--vertical" role="tablist">

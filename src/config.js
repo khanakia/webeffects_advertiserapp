@@ -33,6 +33,7 @@ export const API_URL_CHANGE_PWD = API_URL + '/changepassword';
 export const API_URL_FORGOT_PWD = API_URL+'/forgotpassword';
 export const API_URL_RESET_PWD = API_URL+'/resetpassword';
 
+export const API_URL_USER_SWITCH_SITE = API_URL+'/user/switch_site';
 
 
 export const API_URL_UPDATE_USER = API_URL+'/user/update';

@@ -3,7 +3,7 @@ import { Link, hashHistory } from 'react-router'
 
 import ContentWrapper from './shared/ContentWrapper'
 import {PROJECT_STATUSES, PROJECT_STATUSES_DROPDOWN_LIST} from '../config'
-import {ProjectHelper} from '../helpers'
+import {ProjectHelper, AccountHelper} from '../helpers'
 import DropdownList from './DropdownList'
 import InputSearch from './InputSearch'
 
@@ -13,7 +13,7 @@ class ProjectOverview extends Component {
         super(props, context);
 
         this.state = {
-            isDesktop: false,
+            isDesktop: true,
             project_status_id: null,
             project_title: null,
             page: 1
@@ -131,6 +131,18 @@ class ProjectOverview extends Component {
         // alert("Delete Function")
     }
 
+    _renderFlagLink(project) {
+        let flag = "be";
+        if(project.site_id=3) {
+            flag = "fr";
+        }
+
+        if(!project.related_project_id) return null;
+        return (
+            <i onClick={()=>{AccountHelper.switch_site(project.related_project_id)}} className={"flag-ico-btn " + flag}></i>
+        )
+    }
+
    _renderMobile() {
         if(jQuery.isEmptyObject(this.props.project_list.data)) {
             return false
@@ -183,7 +195,7 @@ class ProjectOverview extends Component {
                                 <tr key={index}>
                                     <td className="nowrap"><i className={status.icon_class}></i> <span>{status.title}</span></td>
                                     <td>
-                                        <span className="title">{item.project_title}</span>
+                                        <span className="title"><span className="title_first">{item.project_title}</span> {this._renderFlagLink(item)}</span>
                                         <span className="subtitle">
                                             {
                                                 province_name ?

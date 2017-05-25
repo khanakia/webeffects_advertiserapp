@@ -414,6 +414,20 @@ label input[type="radio"]:checked + span {
 	}
 }
 
+.flag-ico-btn {
+	display: inline-block;
+	height: 20px;
+	width: 40px;
+	cursor: pointer;
+	&.fr {
+		background: rgba(0, 0, 0, 0) url("../images/icons/flag_site_3.svg") no-repeat scroll right 15px center / 15px 12px;
+	}
+
+	&.nl {
+		background: rgba(0, 0, 0, 0) url("../images/icons/flag_site_2.svg") no-repeat scroll right 15px center / 15px 12px;
+	}
+}
+
 .btn-dropdown {
     width: 100%;
 	padding: 10px 15px;

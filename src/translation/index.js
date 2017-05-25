@@ -1088,7 +1088,7 @@ const language = {
 		"search_project_title": "Titre du projet",
 		"search_project_status": "Statut",
 
-		"project_status_alles" : "Alles",
+		"project_status_alles" : "Tout",
 	},
 
 	"4" : {
@@ -1817,7 +1817,7 @@ const language = {
 		"search_project_title": "Project title",
 		"search_project_status": "Status",
 
-		"project_status_alles" : "Alles",
+		"project_status_alles" : "Everything",
 	}
 }
 
