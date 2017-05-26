@@ -414,18 +414,29 @@ label input[type="radio"]:checked + span {
 	}
 }
 
-.flag-ico-btn {
-	display: inline-block;
-	height: 20px;
-	width: 40px;
-	cursor: pointer;
-	&.fr {
-		background: rgba(0, 0, 0, 0) url("../images/icons/flag_site_3.svg") no-repeat scroll right 15px center / 15px 12px;
+
+.switch_flag_wrapper {
+	display: table;
+	float: right;
+	button {
+		display: table-cell;
+		vertical-align: middle;
+	}
+	.flag-ico-btn {
+		display: table-cell;
+		vertical-align: middle;
+		height: 20px;
+		width: 20px;
+		cursor: pointer;
+		&.fr {
+			background: rgba(0, 0, 0, 0) url("../images/icons/flag_site_3.svg") no-repeat scroll right center / 15px 12px;
+		}
+
+		&.nl {
+			background: rgba(0, 0, 0, 0) url("../images/icons/flag_site_2.svg") no-repeat scroll right center / 15px 12px;
+		}
 	}
 
-	&.nl {
-		background: rgba(0, 0, 0, 0) url("../images/icons/flag_site_2.svg") no-repeat scroll right 15px center / 15px 12px;
-	}
 }
 
 .btn-dropdown {

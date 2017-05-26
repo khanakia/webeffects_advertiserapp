@@ -1035,15 +1035,22 @@ label input[type="radio"]:checked + span {
     .btn-plainBlack:hover i {
       color: #08B995; }
 
-.flag-ico-btn {
-  display: inline-block;
-  height: 20px;
-  width: 40px;
-  cursor: pointer; }
-  .flag-ico-btn.fr {
-    background: transparent url("../images/icons/flag_site_3.svg") no-repeat scroll right 15px center/15px 12px; }
-  .flag-ico-btn.nl {
-    background: transparent url("../images/icons/flag_site_2.svg") no-repeat scroll right 15px center/15px 12px; }
+.switch_flag_wrapper {
+  display: table;
+  float: right; }
+  .switch_flag_wrapper button {
+    display: table-cell;
+    vertical-align: middle; }
+  .switch_flag_wrapper .flag-ico-btn {
+    display: table-cell;
+    vertical-align: middle;
+    height: 20px;
+    width: 20px;
+    cursor: pointer; }
+    .switch_flag_wrapper .flag-ico-btn.fr {
+      background: transparent url("../images/icons/flag_site_3.svg") no-repeat scroll right center/15px 12px; }
+    .switch_flag_wrapper .flag-ico-btn.nl {
+      background: transparent url("../images/icons/flag_site_2.svg") no-repeat scroll right center/15px 12px; }
 
 .btn-dropdown {
   width: 100%;

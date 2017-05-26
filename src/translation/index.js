@@ -361,6 +361,8 @@ const language = {
 		"search_project_status": "Status",
 
 		"project_status_alles" : "Alles",
+
+		"switch_flag_title" : "Naar Fr",
 	},
 
 	"2" : {
@@ -725,6 +727,8 @@ const language = {
 		"search_project_status": "Status",
 
 		"project_status_alles" : "Alles",
+
+		"switch_flag_title" : "Naar Fr",
 	},
 
 	"3" : {
@@ -1089,6 +1093,8 @@ const language = {
 		"search_project_status": "Statut",
 
 		"project_status_alles" : "Tout",
+
+		"switch_flag_title" : "À NL",
 	},
 
 	"4" : {
@@ -1453,6 +1459,8 @@ const language = {
 		"search_project_status": "Status",
 
 		"project_status_alles" : "Alles",
+
+		"switch_flag_title" : "Naar Fr",
 	},
 
 	"5" : {
@@ -1818,6 +1826,8 @@ const language = {
 		"search_project_status": "Status",
 
 		"project_status_alles" : "Everything",
+
+		"switch_flag_title" : "Naar Fr",
 	}
 }
 
