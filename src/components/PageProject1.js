@@ -401,7 +401,7 @@ class PageProject extends Component {
         return (
             <div className="switch_flag_wrapper">
                 <i onClick={()=>{AccountHelper.switch_site(project.related_project_id)}} className={"flag-ico-btn " + flag}></i>
-                <button className="btn-plain">{trans.switch_flag_title}</button>
+                <button onClick={()=>{AccountHelper.switch_site(project.related_project_id)}} className="btn-plain">{trans.switch_flag_title}</button>
             </div>
         )
     }
