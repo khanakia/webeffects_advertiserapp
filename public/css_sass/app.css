@@ -1040,17 +1040,18 @@ label input[type="radio"]:checked + span {
   float: right; }
   .switch_flag_wrapper button {
     display: table-cell;
-    vertical-align: middle; }
+    vertical-align: middle;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px; }
   .switch_flag_wrapper .flag-ico-btn {
     display: table-cell;
     vertical-align: middle;
-    height: 20px;
     width: 20px;
     cursor: pointer; }
     .switch_flag_wrapper .flag-ico-btn.fr {
-      background: transparent url("../images/icons/flag_site_3.svg") no-repeat scroll right center/15px 12px; }
+      background: transparent url("../images/icons/flag_site_3.svg") no-repeat scroll center center/contain; }
     .switch_flag_wrapper .flag-ico-btn.nl {
-      background: transparent url("../images/icons/flag_site_2.svg") no-repeat scroll right center/15px 12px; }
+      background: transparent url("../images/icons/flag_site_2.svg") no-repeat scroll center center/contain; }
 
 .btn-dropdown {
   width: 100%;
