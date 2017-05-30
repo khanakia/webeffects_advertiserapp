@@ -16,13 +16,14 @@ class Login extends Component {
        
         var token = this.props.location.query.token;
         var url = this.props.location.query.url;
+        var active_tab = this.props.location.query.active_tab;
         var token = this.props.location.query.token;
         if (token) {
             Auth.login(token)
             // console.log(Auth.getToken())
             if(Auth.check()) {  
                 if (url) {
-                    hashHistory.push(url)
+                    hashHistory.push(url+"?active_tab="+active_tab)
                 } else {
                     hashHistory.push("/dashboard")
                 }

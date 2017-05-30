@@ -23,6 +23,7 @@ export default class AccountHelper {
     }
 
     static switch_site(project_id=null) {
+        var active_tab = localStorage.getItem('active_tab') || "general";
         return axios({
             method: 'post',
             url: API_URL_USER_SWITCH_SITE ,
@@ -31,11 +32,12 @@ export default class AccountHelper {
                 token: Auth.getToken(),
                 project_id: project_id
             },
-            }).then((response) => {
-                window.location.href = response.data.url;
-            }).catch(function (error) {
-                toastr.error(trans.request_failed)
-            });
+        }).then((response) => {
+            // console.log(response.data.url + "&active_tab="+active_tab);    
+            window.location.href = response.data.url;
+        }).catch(function (error) {
+            toastr.error(trans.request_failed)
+        });
     }
 }
 

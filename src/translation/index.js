@@ -948,7 +948,7 @@ const language = {
 
 		"locatieInput_adres": "Adresse",
 		"locatieInput_zoek": "Chercher du parking dans un rayon de 500 mètres dans les alentours de votre endroit",
-		"locatieInput_zoek_parkeerplaatsen": "Zoek parkeerplaatsen",
+		"locatieInput_zoek_parkeerplaatsen": "Rechercher des places de stationnement",
 		"locatieInput_voeg": "Voeg automatisch parkeerplaatsen toe",
 		"locatieInput_zaal": "Ajouter un parking",
 		"locatieInput_ligging": "Emplacement",
@@ -1073,9 +1073,9 @@ const language = {
 		"project_status_wachten_op_depubliceren" : "Wachten op depubliceren",
 		"project_status_uitgeschakeld" : "Désactivé",
 
-		"project_snoobi_chart_heading" : "Aanvragen",
-		"project_snoobi_chart_subheading" : "Aantal maandelijkse aanvragen per item",
-		"project_snoobi_chart_yaxis_labelString" : "Aantal aanvragen",
+		"project_snoobi_chart_heading" : "Demandes",
+		"project_snoobi_chart_subheading" : "Montat des demandes mensuelles par article",
+		"project_snoobi_chart_yaxis_labelString" : "Montat des demandes ",
 
 		"locatieInput_locations" : "Locatie filters",
 		"pageProject_tooltip_locatie_titles": 'U kunt hier selecteren aan welke filters uw locatie gelinkt kunnen worden.',
@@ -1314,7 +1314,7 @@ const language = {
 
 		"locatieInput_adres": "Adresse",
 		"locatieInput_zoek": "Alle Parkmöglichkeiten innerhalb von 500 Metern Abstand von der Location suchen.",
-		"locatieInput_zoek_parkeerplaatsen": "Zoek parkeerplaatsen",
+		"locatieInput_zoek_parkeerplaatsen": "Parkplätze suchen",
 		"locatieInput_voeg": "Voeg automatisch parkeerplaatsen toe",
 		"locatieInput_zaal": "Parkplatz hinzufügen",
 		"locatieInput_ligging": "Lage",
@@ -1439,9 +1439,9 @@ const language = {
 		"project_status_wachten_op_depubliceren" : "Wachten op depubliceren",
 		"project_status_uitgeschakeld" : "Ausgeschaltet",
 
-		"project_snoobi_chart_heading" : "Aanvragen",
-		"project_snoobi_chart_subheading" : "Aantal maandelijkse aanvragen per item",
-		"project_snoobi_chart_yaxis_labelString" : "Aantal aanvragen",
+		"project_snoobi_chart_heading" : "Anfragen",
+		"project_snoobi_chart_subheading" : "Aanzahl der montatlichen Anfragen pro Artikel",
+		"project_snoobi_chart_yaxis_labelString" : "Aanzahl der Anfragen",
 
 		"locatieInput_locations" : "Locatie filters",
 		"pageProject_tooltip_locatie_titles": 'U kunt hier selecteren aan welke filters uw locatie gelinkt kunnen worden.',
@@ -1681,7 +1681,7 @@ const language = {
 
 		"locatieInput_adres": "Address",
 		"locatieInput_zoek": "Search for parking space in a radius of 500 metres from around the location.",
-		"locatieInput_zoek_parkeerplaatsen": "Zoek parkeerplaatsen",
+		"locatieInput_zoek_parkeerplaatsen": "Search parking spots",
 		"locatieInput_voeg": "Voeg automatisch parkeerplaatsen toe",
 		"locatieInput_zaal": "Add a parking space",
 		"locatieInput_ligging": "Location",
@@ -1806,9 +1806,9 @@ const language = {
 		"project_status_wachten_op_depubliceren" : "Wachten op depubliceren",
 		"project_status_uitgeschakeld" : "Deactivated",
 
-		"project_snoobi_chart_heading" : "Aanvragen",
-		"project_snoobi_chart_subheading" : "Aantal maandelijkse aanvragen per item",
-		"project_snoobi_chart_yaxis_labelString" : "Aantal aanvragen",
+		"project_snoobi_chart_heading" : "Requests",
+		"project_snoobi_chart_subheading" : "Amount of monthly requests per item",
+		"project_snoobi_chart_yaxis_labelString" : "Amount of requests",
 
 		"locatieInput_locations" : "Locatie filters",
 		"pageProject_tooltip_locatie_titles": 'U kunt hier selecteren aan welke filters uw locatie gelinkt kunnen worden.',

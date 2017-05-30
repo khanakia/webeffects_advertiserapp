@@ -108,6 +108,21 @@ class PageProject extends Component {
         // $(".tab-pane:first").show();
         $(".tab_drawer_heading.d_active").find("i").removeClass("iconc-chevron-down").addClass("iconc-chevron-up");
 
+        var active_tab = this.props.location.query.active_tab;
+        if (active_tab) {
+            var href_tab = "#"+active_tab;
+            $('.tab_drawer_heading').removeClass('d_active');
+            $('.tab_drawer_heading a[href="'+href_tab+'"]').closest('h3').addClass('d_active');
+
+            $('.tab-pane').hide();
+            $('.tab-pane'+href_tab).show();
+
+            $('#project_edit_tab a[href="'+href_tab+'"]').tab('show')
+
+            
+
+        }
+
         $('.nav-tabs li a').click(function (e) {     
             var href = $(this).attr('href');    
             $('.tab_drawer_heading').removeClass('d_active');
@@ -117,9 +132,12 @@ class PageProject extends Component {
             $('.tab-pane'+href).show();
 
             // console.log(href);
-            if(href="#locatie") {
+            if(href=="#locatie") {
                 _this.refs.locatieForm.handleRefresh();
             }
+
+            console.log(href);
+            localStorage.setItem('active_tab', href.slice(1));
         })
 
         $('.tab_drawer_heading a').unbind("click").click(function (e) {     
@@ -143,7 +161,7 @@ class PageProject extends Component {
             $(".tab_drawer_heading.d_active").find("i").removeClass("iconc-chevron-down").addClass("iconc-chevron-up");
             // self.find("i").removeClass("iconc-chevron-down").addClass("iconc-chevron-up");
 
-            if(href="#locatie") {
+            if(href=="#locatie") {
                 _this.refs.locatieForm.handleRefresh();
             }
         })
@@ -428,7 +446,7 @@ class PageProject extends Component {
                         <div className="page-panel__heading"><span className="title_first">{title}</span> {this._renderFlagLink(project)}</div>
                         <div className="page-panel__inner">
                             <div className="page-panel__inner__left">
-                                <ul className="nav nav-tabs nav-tabs--vertical" role="tablist">
+                                <ul className="nav nav-tabs nav-tabs--vertical" role="tablist" id="project_edit_tab">
                                     <li role="presentation" className="active">
                                         <a href="#general" aria-controls="general" role="tab" data-toggle="tab">{trans.pageProject_algemene_label} <i className="iconc-chevron"></i></a>
                                     </li>
