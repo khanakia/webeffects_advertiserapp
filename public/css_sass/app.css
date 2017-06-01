@@ -901,6 +901,9 @@ label.error {
       border-color: rgba(194, 225, 245, 0);
       border-bottom-color: rgba(0, 0, 0, 0.15); }
 
+.no-border {
+  border-bottom: 0; }
+
 .twoBtnStyle {
   border: 1px solid #CDD4D7; }
   .twoBtnStyle button {
@@ -1034,6 +1037,12 @@ label input[type="radio"]:checked + span {
     color: #08B995; }
     .btn-plainBlack:hover i {
       color: #08B995; }
+
+.btn-link-style1 {
+  display: inline-block;
+  text-decoration: underline;
+  color: #101010;
+  padding: 0; }
 
 .switch_flag_wrapper {
   display: table;

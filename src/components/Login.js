@@ -23,7 +23,12 @@ class Login extends Component {
             // console.log(Auth.getToken())
             if(Auth.check()) {  
                 if (url) {
-                    hashHistory.push(url+"?active_tab="+active_tab)
+
+                    if(active_tab) {
+                        hashHistory.push(url+"?active_tab="+active_tab)
+                    } else {
+                        hashHistory.push(url)
+                    }
                 } else {
                     hashHistory.push("/dashboard")
                 }

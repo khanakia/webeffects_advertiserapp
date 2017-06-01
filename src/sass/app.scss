@@ -246,6 +246,10 @@ label.error {
 	}
 }
 
+.no-border {
+	border-bottom: 0;
+}
+
 .twoBtnStyle {
 	border: 1px solid #CDD4D7;
 	button {
@@ -414,6 +418,12 @@ label input[type="radio"]:checked + span {
 	}
 }
 
+.btn-link-style1 {
+	display: inline-block;
+    text-decoration: underline;
+	color: #101010;
+	padding: 0;
+}
 
 .switch_flag_wrapper {
 	display: table;

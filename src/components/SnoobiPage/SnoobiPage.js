@@ -71,28 +71,28 @@ class SnoobiPage extends React.Component {
         return (
             <div className="statistieken-wrapper">
                 <div className="form-group">
-                    <div className="row">
+                    {<div className="row">
                         <div className="form-group no-margin-bottom col-md-12">
                             <label>{trans.snoobiPage_uw_advertentie}
                                 <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_tooltip_uw_advertentie}></a>
                             </label>
                         </div>
-                    </div>
+                    </div>}
                     <div className="row">
                         <div className="col-md-12">
-                            <div className="left-col mb20">
+                            {/*{<div className="left-col mb20">
                                 <CheckboxListDropdown items={this.props.user_actions_list}  onItemChange={this.props.onFilterChange} emptyPlaceholder={trans.snoobiPage_placeholder_select_filter_action} />
-                            </div>
-                            <div className="right-col mb20 snoobiSorten-wrapper">
+                            </div>}*/}
+                            <div className="right-col11 mb20 snoobiSorten-wrapper">
                                 <div className="sorteren-inner ">
                                     <span className="mr15 sorten-text">{trans.snoobiPage_sorten_text}</span>
                                     
-                                    <span className="wp140 mr10 mb20 dropdown-inline">
+                                    <span className="wp250 mr10 mb20 dropdown-inline">
                                         <DropdownList items={countSortMonth} selectedValue={""} onItemChange={this.props.onMonthItemChange} emptyPlaceholder={trans.snoobiPage_placeholder_select_filter_date}/>
                                     </span>
-                                    <span className="wp170 dropdown-inline">
+                                    {/*{<span className="wp170 dropdown-inline">
                                         <DropdownList items={countSortRecent} selectedValue={"date"} onItemChange={this.props.onSortItemChange} />
-                                    </span>
+                                    </span>}*/}
                                     
                                 </div>
                                 

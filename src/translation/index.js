@@ -143,8 +143,8 @@ const language = {
 		"pageProject_rightBlock_updated": "Zojuist om 11:38",
 		"pageProject_rightBlock_opslaan": "Concept opslaan",
 		"pageProject_rightBlock_opslaan_admin": "Publish",
-		"pageProject_rightBlock_btn_loadactualdata": "Load Live",
-		"pageProject_rightBlock_btn_loadrevisionbtn" : "Load Concept",
+		"pageProject_rightBlock_btn_loadactualdata": "Data van live inladen",
+		"pageProject_rightBlock_btn_loadrevisionbtn" : "Data van concept inladen",
 		"pageProject_rightBlock_offline_btn" : "Offline",
 		"pageProject_rightBlock_annuleren": "Annuleren",
 		"pageProject_rightBlock_locatie": "Locatie bekijken",
@@ -271,7 +271,7 @@ const language = {
 		"zalen_confirm_cancel_text": "Annuleren",
 		"zalen_confirm_delete_text": "Verwijder",
 		"zalen_page_title": "Zalen",
-		"zalen_tab_title": "Titel",
+		"zalen_tab_title": "Naam",
 		"zalen_tab_daglicht": "Daglicht",
 		"zalen_tab_u_vorm": "U-vorm",
 		"zalen_tab_carre": "Carre",
@@ -348,7 +348,7 @@ const language = {
 		"locatieInput_locations" : "Locatie filters",
 		"pageProject_tooltip_locatie_titles": 'U kunt hier selecteren aan welke filters uw locatie gelinkt kunnen worden.',
 		"snoobiPage_placeholder_select_filter_action" : "Filters",
-		"snoobiPage_placeholder_select_filter_date" : "Datum",
+		"snoobiPage_placeholder_select_filter_date" : "Alle datums",
 
 		"zalen_count_field_label" : "Aantal zalen beschikbaar",
 		"zalen_count_field_tooltip" : "Wanneer u geen zalen in bovenstaande tabel heeft gespecificeerd, vul dan hier het aantal zalen in.",
@@ -363,6 +363,11 @@ const language = {
 		"project_status_alles" : "Alles",
 
 		"switch_flag_title" : "Naar Fr",
+
+		"pageProject_rightBlock_loadlive_title": "Data terugzetten",
+		"pageProject_loadlive_popup_title": "Warning",
+		"pageProject_loadlive_popup_message": "Data will be overrided are you sure ?",
+		"pageProject_loadlive_popup_okbtn": "Ok",
 	},
 
 	"2" : {
@@ -509,8 +514,8 @@ const language = {
 		"pageProject_rightBlock_updated": "Zojuist om 11:38",
 		"pageProject_rightBlock_opslaan": "Concept opslaan",
 		"pageProject_rightBlock_opslaan_admin": "Publish",
-		"pageProject_rightBlock_btn_loadactualdata": "Load Live",
-		"pageProject_rightBlock_btn_loadrevisionbtn" : "Load Concept",
+		"pageProject_rightBlock_btn_loadactualdata": "Data van live inladen",
+		"pageProject_rightBlock_btn_loadrevisionbtn" : "Data van concept inladen",
 		"pageProject_rightBlock_offline_btn" : "Offline",
 		"pageProject_rightBlock_annuleren": "Annuleren",
 		"pageProject_rightBlock_locatie": "Locatie bekijken",
@@ -637,7 +642,7 @@ const language = {
 		"zalen_confirm_cancel_text": "Annuleren",
 		"zalen_confirm_delete_text": "Verwijder",
 		"zalen_page_title": "Zalen",
-		"zalen_tab_title": "Titel",
+		"zalen_tab_title": "Naam",
 		"zalen_tab_daglicht": "Daglicht",
 		"zalen_tab_u_vorm": "U-vorm",
 		"zalen_tab_carre": "Carre",
@@ -714,7 +719,7 @@ const language = {
 		"locatieInput_locations" : "Locatie filters",
 		"pageProject_tooltip_locatie_titles": 'U kunt hier selecteren aan welke filters uw locatie gelinkt kunnen worden.',
 		"snoobiPage_placeholder_select_filter_action" : "Filters",
-		"snoobiPage_placeholder_select_filter_date" : "Datum",
+		"snoobiPage_placeholder_select_filter_date" : "Alle datums",
 
 		"zalen_count_field_label" : "Aantal zalen beschikbaar",
 		"zalen_count_field_tooltip" : "Wanneer u geen zalen in bovenstaande tabel heeft gespecificeerd, vul dan hier het aantal zalen in.",
@@ -729,6 +734,11 @@ const language = {
 		"project_status_alles" : "Alles",
 
 		"switch_flag_title" : "Naar Fr",
+
+		"pageProject_rightBlock_loadlive_title": "Data terugzetten",
+		"pageProject_loadlive_popup_title": "Warning",
+		"pageProject_loadlive_popup_message": "Data will be overrided are you sure ?",
+		"pageProject_loadlive_popup_okbtn": "Ok",
 	},
 
 	"3" : {
@@ -875,8 +885,8 @@ const language = {
 		"pageProject_rightBlock_updated": "Zojuist om 11:38",
 		"pageProject_rightBlock_opslaan": "Sauver concept",
 		"pageProject_rightBlock_opslaan_admin": "Publish",
-		"pageProject_rightBlock_btn_loadactualdata": "Load Live",
-		"pageProject_rightBlock_btn_loadrevisionbtn" : "Load Concept",
+		"pageProject_rightBlock_btn_loadactualdata": "Charger les informations en direct",
+		"pageProject_rightBlock_btn_loadrevisionbtn" : "Charger les informations en concept",
 		"pageProject_rightBlock_offline_btn" : "Offline",
 		"pageProject_rightBlock_annuleren": "Annuler",
 		"pageProject_rightBlock_locatie": "Voir l'endroit",
@@ -1003,7 +1013,7 @@ const language = {
 		"zalen_confirm_cancel_text": "Annuler",
 		"zalen_confirm_delete_text": "Verwijder",
 		"zalen_page_title": "Salles",
-		"zalen_tab_title": "Titre",
+		"zalen_tab_title": "Nom",
 		"zalen_tab_daglicht": "Lumière du jour",
 		"zalen_tab_u_vorm": "En forme de U",
 		"zalen_tab_carre": "Carré",
@@ -1080,7 +1090,7 @@ const language = {
 		"locatieInput_locations" : "Locatie filters",
 		"pageProject_tooltip_locatie_titles": 'U kunt hier selecteren aan welke filters uw locatie gelinkt kunnen worden.',
 		"snoobiPage_placeholder_select_filter_action" : "Filters",
-		"snoobiPage_placeholder_select_filter_date" : "Datum",
+		"snoobiPage_placeholder_select_filter_date" : "Toutes les dates",
 
 		"zalen_count_field_label" : "Nombre de chambres disponibles",
 		"zalen_count_field_tooltip" : "Lorsque vous n'avez pas précisé les pièces dans le tableau en haut, sélectionnez le nombre de pièces dans cette zone.",
@@ -1095,6 +1105,11 @@ const language = {
 		"project_status_alles" : "Tout",
 
 		"switch_flag_title" : "À NL",
+
+		"pageProject_rightBlock_loadlive_title": "Restaurer les informations",
+		"pageProject_loadlive_popup_title": "Warning",
+		"pageProject_loadlive_popup_message": "Data will be overrided are you sure ?",
+		"pageProject_loadlive_popup_okbtn": "Ok",
 	},
 
 	"4" : {
@@ -1241,8 +1256,8 @@ const language = {
 		"pageProject_rightBlock_updated": "Zojuist om 11:38",
 		"pageProject_rightBlock_opslaan": "Konzept speichern",
 		"pageProject_rightBlock_opslaan_admin": "Publish",
-		"pageProject_rightBlock_btn_loadactualdata": "Load Live",
-		"pageProject_rightBlock_btn_loadrevisionbtn" : "Load Concept",
+		"pageProject_rightBlock_btn_loadactualdata": "Daten aus live laden",
+		"pageProject_rightBlock_btn_loadrevisionbtn" : "Daten aus concept laden",
 		"pageProject_rightBlock_offline_btn" : "Offline",
 		"pageProject_rightBlock_annuleren": "Abbrechen",
 		"pageProject_rightBlock_locatie": "Location ansehen",
@@ -1369,16 +1384,16 @@ const language = {
 		"zalen_confirm_cancel_text": "Abbrechen",
 		"zalen_confirm_delete_text": "Verwijder",
 		"zalen_page_title": "Säle",
-		"zalen_tab_title": "Titel",
+		"zalen_tab_title": "Name",
 		"zalen_tab_daglicht": "Tageslicht",
 		"zalen_tab_u_vorm": "U-Form",
 		"zalen_tab_carre": "Bankett",
-		"zalen_tab_school": "Reihen",
+		"zalen_tab_school": "Parlament",
 		"zalen_tab_theater": "Theater",
-		"zalen_tab_cabaret": "Theater",
+		"zalen_tab_cabaret": "Cabaret",
 		"zalen_tab_receptie": "Empfang",
 		"zalen_tab_diner": "Gala",
-		"zalen_tab_feest": "Stehend",
+		"zalen_tab_feest": "Event",
 		"zalen_vondelkerk": "Vondelkerk",
 		"zalen_zaal": "Saal hinzufügen",
 
@@ -1446,7 +1461,7 @@ const language = {
 		"locatieInput_locations" : "Locatie filters",
 		"pageProject_tooltip_locatie_titles": 'U kunt hier selecteren aan welke filters uw locatie gelinkt kunnen worden.',
 		"snoobiPage_placeholder_select_filter_action" : "Filters",
-		"snoobiPage_placeholder_select_filter_date" : "Datum",
+		"snoobiPage_placeholder_select_filter_date" : "Alle Termine",
 
 		"zalen_count_field_label" : "Anzahl der Zimmer verfügbar",
 		"zalen_count_field_tooltip" : "Wenn Sie nicht die Zimmer in der Tabelle oben angegeben haben, dann wählen Sie die Anzahl der Zimmer in diesem Bereich",
@@ -1461,6 +1476,11 @@ const language = {
 		"project_status_alles" : "Alles",
 
 		"switch_flag_title" : "Naar Fr",
+
+		"pageProject_rightBlock_loadlive_title": "Angaben wiederherstellen",
+		"pageProject_loadlive_popup_title": "Warning",
+		"pageProject_loadlive_popup_message": "Data will be overrided are you sure ?",
+		"pageProject_loadlive_popup_okbtn": "Ok",
 	},
 
 	"5" : {
@@ -1608,8 +1628,8 @@ const language = {
 		"pageProject_rightBlock_updated": "Zojuist om 11:38",
 		"pageProject_rightBlock_opslaan": "Save concept",
 		"pageProject_rightBlock_opslaan_admin": "Publish",
-		"pageProject_rightBlock_btn_loadactualdata": "Load Live",
-		"pageProject_rightBlock_btn_loadrevisionbtn" : "Load Concept",
+		"pageProject_rightBlock_btn_loadactualdata": "Load data from live",
+		"pageProject_rightBlock_btn_loadrevisionbtn" : "Load data from concept",
 		"pageProject_rightBlock_offline_btn" : "Offline",
 		"pageProject_rightBlock_annuleren": "Cancel",
 		"pageProject_rightBlock_locatie": "View location",
@@ -1736,7 +1756,7 @@ const language = {
 		"zalen_confirm_cancel_text": "Cancel",
 		"zalen_confirm_delete_text": "Verwijder",
 		"zalen_page_title": "Halls",
-		"zalen_tab_title": "Title",
+		"zalen_tab_title": "Name",
 		"zalen_tab_daglicht": "Daylight",
 		"zalen_tab_u_vorm": "U-shape",
 		"zalen_tab_carre": "Square",
@@ -1813,7 +1833,7 @@ const language = {
 		"locatieInput_locations" : "Locatie filters",
 		"pageProject_tooltip_locatie_titles": 'U kunt hier selecteren aan welke filters uw locatie gelinkt kunnen worden.',
 		"snoobiPage_placeholder_select_filter_action" : "Filters",
-		"snoobiPage_placeholder_select_filter_date" : "Date",
+		"snoobiPage_placeholder_select_filter_date" : "All dates",
 
 		"zalen_count_field_label" : "Number of rooms available",
 		"zalen_count_field_tooltip" : "When you've not specified the rooms in the table on top then select the amount of rooms in this area.",
@@ -1828,6 +1848,11 @@ const language = {
 		"project_status_alles" : "Everything",
 
 		"switch_flag_title" : "Naar Fr",
+
+		"pageProject_rightBlock_loadlive_title": "Restore data",
+		"pageProject_loadlive_popup_title": "Warning",
+		"pageProject_loadlive_popup_message": "Data will be overrided are you sure ?",
+		"pageProject_loadlive_popup_okbtn": "Ok",
 	}
 }
 

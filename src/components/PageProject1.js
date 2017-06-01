@@ -312,13 +312,51 @@ class PageProject extends Component {
     }
 
     rightBlock_handleLoadActualData = () => {
-        this.props.fetchProject(this.props.params.projectId);
-        this.isReset = true;
+        var _this = this;
+        jQuery.confirm({
+            title: trans.pageProject_loadlive_popup_title,
+            content: trans.pageProject_loadlive_popup_message,
+            closeIcon: true,
+            columnClass: 'col-md-6 col-md-offset-3',
+            buttons: {
+                okAction: {
+                    text: trans.pageProject_loadlive_popup_okbtn,
+                    btnClass: 'btn btn-green btn--round',
+                    action: function () {
+                        jQuery(".jconfirm").hide()
+                        _this.props.fetchProject(this.props.params.projectId);
+                        _this.isReset = true;
+                      
+                    }.bind(this)
+                },
+               
+            }
+        })
     }
 
     rightBlock_handleLoadRevisionClick = () => {
-        this.props.fetchProjectRevision(this.props.params.projectId);
-        this.isReset = true;
+        var _this = this;
+        jQuery.confirm({
+            title: trans.pageProject_loadlive_popup_title,
+            content: trans.pageProject_loadlive_popup_message,
+            closeIcon: true,
+            columnClass: 'col-md-6 col-md-offset-3',
+            buttons: {
+                okAction: {
+                    text: trans.pageProject_loadlive_popup_okbtn,
+                    btnClass: 'btn btn-green btn--round',
+                    action: function () {
+                        jQuery(".jconfirm").hide()
+                        _this.props.fetchProjectRevision(this.props.params.projectId);
+                        _this.isReset = true;
+                      
+                    }.bind(this)
+                },
+               
+            }
+        })
+
+     
     }
 
 

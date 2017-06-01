@@ -60,21 +60,7 @@ class RightBlock extends React.Component {
                         <div className="d-table-cell v-align-middle">
                             <div><button ref="submit" type="button" className="btn btn-green btn--round" onClick={()=>{this.props.handleSumbit()}}>{trans.pageProject_rightBlock_opslaan}</button>
                             </div>
-                            {
-                                this.props.is_live_data && this.props.has_revision_data ?
-                                    <div><button ref="submit" type="button" className="btn btn-green btn--round mt20" onClick={()=>{this.props.handleLoadRevisionClick()}}>{trans.pageProject_rightBlock_btn_loadrevisionbtn}</button></div>
-                                :
-                                    ''
-
-                            }
-
-
-                            {
-                                !this.props.is_live_data && this.props.project_id ?
-                                    <div><button ref="submit" type="button" className="btn btn-green btn--round mt20" onClick={()=>{this.props.handleLoadActualData()}}>{trans.pageProject_rightBlock_btn_loadactualdata}</button></div>
-                                : ''
-
-                            }
+                        
 
 
                             {
@@ -155,6 +141,30 @@ class RightBlock extends React.Component {
                         {/*<div className="block-info">
                                                     <button className="btn btn-plainBlack" onClick={()=>{this.handleDelete(this.props.project_id)}}><i className="iconc-trash before_text"></i>{trans.pageProject_rightBlock_zet_deze}</button>
                                                 </div>*/}
+
+                        <div className="block-info no-border">
+                            {
+                                this.props.has_revision_data ?
+                                    <label>{trans.pageProject_rightBlock_loadlive_title}</label>
+                                : ''
+                            }
+                            {
+                                this.props.is_live_data && this.props.has_revision_data ?
+                                    <div><button ref="submit" type="button" className="btn-link btn-link-style1" onClick={()=>{this.props.handleLoadRevisionClick()}}>{trans.pageProject_rightBlock_btn_loadrevisionbtn}</button></div>
+                                :
+                                    ''
+
+                            }
+
+
+                            {
+                                !this.props.is_live_data && this.props.project_id ?
+                                    <div><button ref="submit" type="button" className="btn-link btn-link-style1" onClick={()=>{this.props.handleLoadActualData()}}>{trans.pageProject_rightBlock_btn_loadactualdata}</button></div>
+                                : ''
+
+                            }
+                        </div>
+
                     </div>
 
                     : ''
