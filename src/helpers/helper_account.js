@@ -34,7 +34,8 @@ export default class AccountHelper {
             },
         }).then((response) => {
             // console.log(response.data.url + "&active_tab="+active_tab);    
-            window.location.href = response.data.url;
+            // window.location.href = response.data.url;
+            window.location.href = response.data.url + "&active_tab="+active_tab;
         }).catch(function (error) {
             toastr.error(trans.request_failed)
         });
