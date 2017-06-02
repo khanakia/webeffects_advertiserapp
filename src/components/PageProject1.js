@@ -505,7 +505,7 @@ class PageProject extends Component {
                                         this.props.project_formdata.gelegenhendens.map((item, index) => {
                                             return (
                                                 <li role="presentation" key={index}>
-                                                    <a href={`#cat_${item.value}`} role="tab" data-toggle="tab">{item.title} <i className="iconc-chevron"></i></a>
+                                                    <a href={`#cat_${index}`} role="tab" data-toggle="tab">{item.title} <i className="iconc-chevron"></i></a>
                                                 </li>
                                             )
                                         })
@@ -634,7 +634,7 @@ class PageProject extends Component {
                                                         <a href={`#cat_${item.value}`} aria-controls="general" role="tab" data-toggle="tab">{item.title} <i className="iconc-chevron-down"></i></a>
                                                     </h3>,
 
-                                                    <div role="tabpanel" className="tab-pane" id={`cat_${item.value}`} key={index}>
+                                                    <div role="tabpanel" className="tab-pane" id={`cat_${index}`} key={index}>
                                                         <ProjectTabCatForm
                                                             reset={this.isReset}
                                                             project_id={project.id}

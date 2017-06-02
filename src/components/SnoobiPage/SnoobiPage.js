@@ -46,6 +46,10 @@ class SnoobiPage extends React.Component {
         var b = moment();
 
         const countSortMonth = [];
+        countSortMonth.push({
+            "value": 0, 
+            "title": trans.snoobiPage_placeholder_select_filter_date, 
+        })
         for (var m = moment(a); m.isBefore(b); m.add('months', 1)) {
             // console.log(m.format('YYYY-MM-DD'));
             countSortMonth.push({

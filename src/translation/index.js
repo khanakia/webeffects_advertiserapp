@@ -365,9 +365,14 @@ const language = {
 		"switch_flag_title" : "Naar Fr",
 
 		"pageProject_rightBlock_loadlive_title": "Data terugzetten",
-		"pageProject_loadlive_popup_title": "Warning",
-		"pageProject_loadlive_popup_message": "Data will be overrided are you sure ?",
-		"pageProject_loadlive_popup_okbtn": "Ok",
+		"pageProject_loadlive_popup_title": "Data terugzetten van live",
+		"pageProject_loadlive_popup_message": "Weet u zeker dat u de data van live wilt terugzetten. U overschrijft dan de concept data.",
+		"pageProject_loadlive_popup_okbtn": "Inladen",
+
+		"import_photots_title": "Importeer foto's van de Franstalige locatie",
+		"import_photots_popup_title": "Importeer foto's van de Franstalige locatie",
+		"import_photots_popup_message": "Weet u zeker dat u de foto's vanuit de Franstalige locatie wilt importeren?",
+		"import_photots_popup_okbtn": "Importeer",
 	},
 
 	"2" : {
@@ -736,9 +741,9 @@ const language = {
 		"switch_flag_title" : "Naar Fr",
 
 		"pageProject_rightBlock_loadlive_title": "Data terugzetten",
-		"pageProject_loadlive_popup_title": "Warning",
-		"pageProject_loadlive_popup_message": "Data will be overrided are you sure ?",
-		"pageProject_loadlive_popup_okbtn": "Ok",
+		"pageProject_loadlive_popup_title": "Data terugzetten van live",
+		"pageProject_loadlive_popup_message": "Weet u zeker dat u de data van live wilt terugzetten. U overschrijft dan de concept data.",
+		"pageProject_loadlive_popup_okbtn": "Inladen",
 	},
 
 	"3" : {
@@ -1107,9 +1112,9 @@ const language = {
 		"switch_flag_title" : "À NL",
 
 		"pageProject_rightBlock_loadlive_title": "Restaurer les informations",
-		"pageProject_loadlive_popup_title": "Warning",
-		"pageProject_loadlive_popup_message": "Data will be overrided are you sure ?",
-		"pageProject_loadlive_popup_okbtn": "Ok",
+		"pageProject_loadlive_popup_title": "Restaurer les informations",
+		"pageProject_loadlive_popup_message": "Êtes-vous sûr de vouloir remplacer ces données par les informations en direct?",
+		"pageProject_loadlive_popup_okbtn": "Charge",
 	},
 
 	"4" : {
@@ -1478,9 +1483,9 @@ const language = {
 		"switch_flag_title" : "Naar Fr",
 
 		"pageProject_rightBlock_loadlive_title": "Angaben wiederherstellen",
-		"pageProject_loadlive_popup_title": "Warning",
-		"pageProject_loadlive_popup_message": "Data will be overrided are you sure ?",
-		"pageProject_loadlive_popup_okbtn": "Ok",
+		"pageProject_loadlive_popup_title": "Angaben aus live wiederherstellen",
+		"pageProject_loadlive_popup_message": "Sind Sie sicher, dass Sie diese Angaben mit den Angaben von live überschreiben möchten?",
+		"pageProject_loadlive_popup_okbtn": "Einlegen",
 	},
 
 	"5" : {
@@ -1850,9 +1855,9 @@ const language = {
 		"switch_flag_title" : "Naar Fr",
 
 		"pageProject_rightBlock_loadlive_title": "Restore data",
-		"pageProject_loadlive_popup_title": "Warning",
-		"pageProject_loadlive_popup_message": "Data will be overrided are you sure ?",
-		"pageProject_loadlive_popup_okbtn": "Ok",
+		"pageProject_loadlive_popup_title": "Load data from live",
+		"pageProject_loadlive_popup_message": "Are you sure you want to override this data with the data from live?",
+		"pageProject_loadlive_popup_okbtn": "Load data",
 	}
 }
 
