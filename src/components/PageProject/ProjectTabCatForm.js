@@ -14,6 +14,7 @@ class ProjectTabCatForm extends Component {
 
     static defaultProps = {
         reset: false,
+        project_id : null,
         project_formdata: [],
         geleghendens: [],
         item : [],
@@ -75,6 +76,7 @@ class ProjectTabCatForm extends Component {
                 <div className="form-group">
                     <FileInput 
                         reset={this.props.reset} 
+                        project_id={this.props.project_id}
                         className={class_attachments}
                         heading = {trans.pageProject_catform_fileinput_heading}
                         heading_empty = {trans.pageProject_catform_fileinput_heading_empty}

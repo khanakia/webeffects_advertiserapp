@@ -64,6 +64,7 @@
     "twbs-pagination": "^1.4.1",
     "chart.js": "^2.5.0",
     "es6-shim": "^0.35.3",
-    "babel-polyfill": "^0.0.1"
+    "babel-polyfill": "^0.0.1",
+    "spinthatshit": "SpinThatShit#^1.0.3"
   }
 }

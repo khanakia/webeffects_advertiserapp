@@ -122,8 +122,8 @@ class SnoobiPage extends React.Component {
 
                     <div className="row">
                         <div className="col-md-12">
-                            <div className="warning-message my30">{warning_msg}</div>
-                            <div className="form-group">
+                            {/*<div className="warning-message my30">{warning_msg}</div>*/}
+                            <div className="form-group mt30">
                                 <label className="mt10">{trans.snoobiPage_snoobi_img_title}</label>
                             </div>
                             <div className="snoobi-wrapper">

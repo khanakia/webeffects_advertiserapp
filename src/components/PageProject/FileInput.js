@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-import {API_URL_ATTACHMENTS_UPLOAD, API_URL_ATTACHMENT_MAPPINGS} from '../../config'
+import {API_URL_ATTACHMENTS_UPLOAD, API_URL_ATTACHMENT_MAPPINGS, API_URL_ATTACHMENTS_IMP} from '../../config'
 
 import {AttachmentHelper, AttachmentMappingHelper} from '../../helpers'
 
@@ -26,6 +26,7 @@ class FileInput extends React.Component {
         name: 'attachments',
         theme: '',
         items: [],
+        project_id: null,
         filter_value_id: '', // this i required for Category Tabs
         onAttachmentDeleted: function() {},
         onTitleUpdated: function() {},
@@ -58,7 +59,7 @@ class FileInput extends React.Component {
           
         });
         var drag_txt = trans.fileInput_placeholder_voeg;
-        var drag_msg = "<div class='icon-placeholder'><i class='iconc-uploaded'></i></div><div class='placeholder'>"+drag_txt+"</div>";
+        var drag_msg = "<div class='upload-loader upload-indicator' style='display:none;'><div class='loader01'></div></div><div class='upload-indicator icon-upload-wrapper'><div class='icon-placeholder'><i class='iconc-uploaded'></i></div><div class='placeholder'>"+drag_txt+"</div></div>";
         var drag_drop_file = jQuery('.drag_drop_file [type="file"]');
         jQuery(this.refs.input).ezdz({
             text: drag_msg,
@@ -137,6 +138,9 @@ class FileInput extends React.Component {
                 data.append('file1['+i+']', $(this).get(0).files[i]); // we can put more than 1 image file
             }
 
+
+            jQuery(".upload-indicator").toggle();
+
             jQuery.ajax({
                 type: "POST",
                 url : API_URL_ATTACHMENTS_UPLOAD,
@@ -152,6 +156,8 @@ class FileInput extends React.Component {
                         items: _this.state.items.concat(response),
                         itemsCount: response.length
                     })
+
+                    jQuery(".upload-indicator").toggle();
                     
                 }.bind(this)
             });
@@ -212,6 +218,42 @@ class FileInput extends React.Component {
         this.setState({isEditing: false, editingItemIndex: ''})
     }
 
+
+    imp() {
+        jQuery.ajax({
+            type: "POST",
+            url : API_URL_ATTACHMENTS_IMP,
+            dataType : "JSON",
+            // processData: false,
+            // contentType: false,
+            data: {
+                project_id: this.props.project_id,
+                cat_id: this.props.filter_value_id
+            },
+            headers: Auth.header(),
+
+            success: function(response){
+                console.log(response);
+                this.setState({
+                    items: response,
+                    itemsCount: response.length
+                })
+                
+            }.bind(this)
+        });
+    }
+
+    _renderImportButton() {
+        /*if(Env.site_id==2 || Env.site_id==3) {
+            return (
+               <div className="form-group">
+                    <button type="button" className="btn-link btn-link-style1" onClick={()=>{this.imp()}}>{trans.import_photots_title}</button>
+                </div>
+            )
+        }*/
+        return null;
+    }
+
     render() {
         var _this = this;
         // console.log( "this.state.itemsNew.length", this.state.itemsNew.length, this.props.maxItems)
@@ -227,12 +269,14 @@ class FileInput extends React.Component {
         
         return (
             <div className={'comp-fileinput ' + this.props.className} ref="fileinput">
+                
                 <div className="form-group">
                     <label>{heading}
                         <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={this.props.tooltip_note}></a>
                     </label>
-                   
                 </div>
+
+                {this._renderImportButton()}
                 <div className="items-wrapper">
                     {
                         itemsCount<this.props.maxItems ?
@@ -281,6 +325,7 @@ class FileInput extends React.Component {
                                     <div className="title" onClick={()=>{this.editTitle(index)}}>{item.attachment_title}</div>
                                     <div className="control-bar">
                                         <button type="button" className="btn btn-plain editBtn" onClick={()=>{this.editTitle(index)}}><i className="iconc-edit"></i></button>
+                                        <span className="dimensions">{item.width + ' x ' + item.height}</span>
                                         <button type="button" className="btn btn-plain deleteBtn" onClick={() => {this.handleRemoveItem(index)}}><i className="iconc-cross"></i></button>
                                     </div>
                                 </div>

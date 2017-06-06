@@ -449,7 +449,7 @@ class PageProject extends Component {
     
     _renderFlagLink(project) {
         let flag = "be";
-        if(project.site_id=3) {
+        if(project.site_id==3) {
             flag = "fr";
         }
         console.log(project);

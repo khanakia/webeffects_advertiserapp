@@ -744,6 +744,11 @@ const language = {
 		"pageProject_loadlive_popup_title": "Data terugzetten van live",
 		"pageProject_loadlive_popup_message": "Weet u zeker dat u de data van live wilt terugzetten. U overschrijft dan de concept data.",
 		"pageProject_loadlive_popup_okbtn": "Inladen",
+
+		"import_photots_title": "Importeer foto's van de Franstalige locatie",
+		"import_photots_popup_title": "Importeer foto's van de Franstalige locatie",
+		"import_photots_popup_message": "Weet u zeker dat u de foto's vanuit de Franstalige locatie wilt importeren?",
+		"import_photots_popup_okbtn": "Importeer",
 	},
 
 	"3" : {
@@ -1115,6 +1120,11 @@ const language = {
 		"pageProject_loadlive_popup_title": "Restaurer les informations",
 		"pageProject_loadlive_popup_message": "Êtes-vous sûr de vouloir remplacer ces données par les informations en direct?",
 		"pageProject_loadlive_popup_okbtn": "Charge",
+
+		"import_photots_title": "Importez les photos de l'emplacement néerlandais",
+		"import_photots_popup_title": "Importez les photos de l'emplacement néerlandais",
+		"import_photots_popup_message": "Etes-vous sûr que vous voulez importer les photos de l'emplacement hollandais?",
+		"import_photots_popup_okbtn": "Importer",
 	},
 
 	"4" : {
@@ -1486,6 +1496,11 @@ const language = {
 		"pageProject_loadlive_popup_title": "Angaben aus live wiederherstellen",
 		"pageProject_loadlive_popup_message": "Sind Sie sicher, dass Sie diese Angaben mit den Angaben von live überschreiben möchten?",
 		"pageProject_loadlive_popup_okbtn": "Einlegen",
+
+		"import_photots_title": "Importeer foto's van de Franstalige locatie",
+		"import_photots_popup_title": "Importeer foto's van de Franstalige locatie",
+		"import_photots_popup_message": "Weet u zeker dat u de foto's vanuit de Franstalige locatie wilt importeren?",
+		"import_photots_popup_okbtn": "Importeer",
 	},
 
 	"5" : {
@@ -1858,6 +1873,11 @@ const language = {
 		"pageProject_loadlive_popup_title": "Load data from live",
 		"pageProject_loadlive_popup_message": "Are you sure you want to override this data with the data from live?",
 		"pageProject_loadlive_popup_okbtn": "Load data",
+
+		"import_photots_title": "Importeer foto's van de Franstalige locatie",
+		"import_photots_popup_title": "Importeer foto's van de Franstalige locatie",
+		"import_photots_popup_message": "Weet u zeker dat u de foto's vanuit de Franstalige locatie wilt importeren?",
+		"import_photots_popup_okbtn": "Importeer",
 	}
 }
 

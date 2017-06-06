@@ -29,6 +29,7 @@ class ProjectTabGeneralForm extends Component {
         reset: false,
         project_formdata: [],
         attachmentsList : [],
+        project_id : null,
         project_title : '',
         description: '',
         onAttachmentDeleted: function(){},
@@ -120,6 +121,7 @@ class ProjectTabGeneralForm extends Component {
                 </div>
                 <div className="form-group">
                     <FileInput
+                        project_id={this.props.project_id}
                         className={class_attachments}
                         heading = {trans.pageProject_fileinput_heading}
                         heading_empty = {trans.pageProject_fileinput_heading}
