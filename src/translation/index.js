@@ -825,7 +825,7 @@ const language = {
 		"pageOverview_link": "Concept",
 		"pageOverview_link_live": "Live",
 
-		"pageProject_addnew_title": "Voeg een locatie toe",
+		"pageProject_addnew_title": "Ajouter un endroit",
 		"pageProject_confirm_title": "Pagina verlaten",
 		"pageProject_confirm_content": "Vous n'avez pas sauvegardé votre changement. Êtes-vous sûr de vouloir quitter cette page ?",
 		"pageProject_confirm_cancel": "Annuler",
@@ -1201,7 +1201,7 @@ const language = {
 		"pageOverview_link": "Concept",
 		"pageOverview_link_live": "Live",
 
-		"pageProject_addnew_title": "Voeg een locatie toe",
+		"pageProject_addnew_title": "Eine Location hinzufügen",
 		"pageProject_confirm_title": "Pagina verlaten",
 		"pageProject_confirm_content": "Vous n'avez pas sauvegardé votre changement. Êtes-vous sûr de vouloir quitter cette page ?",
 		"pageProject_confirm_cancel": "Abbrechen",
@@ -1577,7 +1577,7 @@ const language = {
 		"pageOverview_link": "Concept",
 		"pageOverview_link_live": "Live",
 
-		"pageProject_addnew_title": "Voeg een locatie toe",
+		"pageProject_addnew_title": "Add a location",
 		"pageProject_confirm_title": "Pagina verlaten",
 		"pageProject_confirm_content": "Vous n'avez pas sauvegardé votre changement. Êtes-vous sûr de vouloir quitter cette page ?",
 		"pageProject_confirm_cancel": "Cancel",
