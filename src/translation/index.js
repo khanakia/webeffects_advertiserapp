@@ -1094,7 +1094,7 @@ const language = {
 		"project_status_uitgeschakeld" : "Désactivé",
 
 		"project_snoobi_chart_heading" : "Demandes",
-		"project_snoobi_chart_subheading" : "Montat des demandes mensuelles par article",
+		"project_snoobi_chart_subheading" : "Montant des demandes mensuelles par article",
 		"project_snoobi_chart_yaxis_labelString" : "Montat des demandes ",
 
 		"locatieInput_locations" : "Locatie filters",
@@ -1203,7 +1203,7 @@ const language = {
 
 		"pageProject_addnew_title": "Eine Location hinzufügen",
 		"pageProject_confirm_title": "Pagina verlaten",
-		"pageProject_confirm_content": "Vous n'avez pas sauvegardé votre changement. Êtes-vous sûr de vouloir quitter cette page ?",
+		"pageProject_confirm_content": "Sie haben Ihre Bearbeitungen nicht gespeichert. Wollen Sie trotzdem diese Seite verlassen?",
 		"pageProject_confirm_cancel": "Abbrechen",
 		"pageProject_confirm_delete": "Quitter sans sauvegarder",
 
@@ -1470,7 +1470,7 @@ const language = {
 		"project_status_uitgeschakeld" : "Ausgeschaltet",
 
 		"project_snoobi_chart_heading" : "Anfragen",
-		"project_snoobi_chart_subheading" : "Aanzahl der montatlichen Anfragen pro Artikel",
+		"project_snoobi_chart_subheading" : "Anzahl der monatlichen Anfragen pro Artikel",
 		"project_snoobi_chart_yaxis_labelString" : "Aanzahl der Anfragen",
 
 		"locatieInput_locations" : "Locatie filters",
