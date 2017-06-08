@@ -271,7 +271,7 @@ class PageProject extends Component {
                     text: trans.pageProject_confirm_cancel,
                     action: function () {
                         jQuery(".jconfirm").hide()
-                        hashHistory.push('/dashboard')
+                        // hashHistory.push('/dashboard')
                     }
                 },
                 deleteAction: {
