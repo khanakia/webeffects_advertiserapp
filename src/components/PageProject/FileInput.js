@@ -244,13 +244,13 @@ class FileInput extends React.Component {
     }
 
     _renderImportButton() {
-        /*if(Env.site_id==2 || Env.site_id==3) {
+        if(Env.site_id==2 || Env.site_id==3) {
             return (
                <div className="form-group">
                     <button type="button" className="btn-link btn-link-style1" onClick={()=>{this.imp()}}>{trans.import_photots_title}</button>
                 </div>
             )
-        }*/
+        }
         return null;
     }
 
