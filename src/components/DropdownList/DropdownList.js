@@ -16,6 +16,7 @@ class DropdownList extends React.Component {
 		selectedValue: '',
 		emptyPlaceholder: '',
 		onItemChange: function(item){},
+		isDefaultEmpty: false
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -41,8 +42,16 @@ class DropdownList extends React.Component {
 
 
 	render() {
+		
+		let emptyObj = [{
+			"title" : this.props.emptyPlaceholder,
+			"value" : 0
+		}]
 
-		const selectedItem = _.find(this.props.items, {"value": this.state.selectedValue})
+		const items = this.props.isDefaultEmpty ? [...emptyObj, ...this.props.items] : this.props.items
+		// console.log("sdfsdfasdfdsafa", items)
+
+		const selectedItem = _.find(items, {"value": this.state.selectedValue})
 		const dropdownId = this.props.name+'_dropdownMenu1'
 	
 		return (
@@ -55,7 +64,7 @@ class DropdownList extends React.Component {
 				  </button>
 
 				  <ul className="dropdown-menu" aria-labelledby={dropdownId}>
-				  	{this.props.items.map(function(item, index){
+				  	{items.map(function(item, index){
 				  		return (
 						    <li key={index}>
 						        <a onClick={(e)=>{this.handleItemChange(e, item)}}>{item.title}</a>

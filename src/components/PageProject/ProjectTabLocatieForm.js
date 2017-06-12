@@ -448,13 +448,13 @@ class ProjectTabLocatieForm extends React.Component {
                         <a href="#" className="popoverData question-mark-icon" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true" data-content={trans.pageProject_tooltip_locatie_titles}></a>
                     </label>
                     <span className={"wp200 " + class_province_id}>
-                        <DropdownList items={itemsprovice} selectedValue={this.props.selectedProvinceId} name="province_id" emptyPlaceholder={trans.select_empty_placeholder_province}/>
+                        <DropdownList items={itemsprovice} selectedValue={this.props.selectedProvinceId} name="province_id" emptyPlaceholder={trans.select_empty_placeholder_province} />
                     </span>
                     <span className={"wp200 " + class_gebied_id}>
-                        <DropdownList items={itemsgebied} selectedValue={this.props.selectedGebiedId} name="gebied_id" emptyPlaceholder={trans.select_empty_placeholder_regio}/>
+                        <DropdownList items={itemsgebied} selectedValue={this.props.selectedGebiedId} name="gebied_id" emptyPlaceholder={trans.select_empty_placeholder_regio} isDefaultEmpty={true} />
                     </span>
                     <span className={"wp200 " + class_plaat_id}>
-                        <DropdownList items={itemsplaats} selectedValue={this.props.selectedPlaatId} name="plaat_id" emptyPlaceholder={trans.select_empty_placeholder_plaats}/>
+                        <DropdownList items={itemsplaats} selectedValue={this.props.selectedPlaatId} name="plaat_id" emptyPlaceholder={trans.select_empty_placeholder_plaats} />
                     </span>
                 </div>
 
