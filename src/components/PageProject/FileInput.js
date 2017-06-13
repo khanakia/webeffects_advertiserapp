@@ -99,6 +99,8 @@ class FileInput extends React.Component {
         // }
 
         if(nextProps.reset) {
+            // console.log("FILEINPUT RESET")
+            // console.log(nextProps.items);
             this.setState({items: nextProps.items})
         }
 
@@ -220,6 +222,26 @@ class FileInput extends React.Component {
 
 
     imp() {
+        var _this = this;
+        jQuery.confirm({
+            title: trans.import_photots_popup_title,
+            content: trans.import_photots_popup_message,
+            closeIcon: true,
+            columnClass: 'col-md-6 col-md-offset-3',
+            buttons: {
+                okAction: {
+                    text: trans.import_photots_popup_okbtn,
+                    btnClass: 'btn btn-green btn--round',
+                    action: function () {
+                        jQuery(".jconfirm").hide()
+                        _this.impAjax();
+                    }
+                }
+            }
+        })
+    }
+
+    impAjax() {
         jQuery.ajax({
             type: "POST",
             url : API_URL_ATTACHMENTS_IMP,
@@ -266,6 +288,8 @@ class FileInput extends React.Component {
             heading = heading_template({ 'item_count': totalItemCount });
             
         }
+
+        // console.log("STATE", this.state.items);
         
         return (
             <div className={'comp-fileinput ' + this.props.className} ref="fileinput">
@@ -299,9 +323,10 @@ class FileInput extends React.Component {
                         const cssClassHidden = (item.is_deleted==true) ? 'hidden' : '';
                         // this is to prevent same input index for above already saved items
                         // const indexInput = index + 100;
-
+                        {/*console.log(item.id);*/}
+                        var uid = index+ parseInt(item.attachment_id)
                         return (
-                            <div className={"item " + cssClassHidden} key={index}>
+                            <div className={"item " + cssClassHidden} key={item.attachment_id} data-index={uid}>
 
                                 <InputBox type="hidden" className="form-control" name={`${this.props.name}[${index}][id]`} value={item.id} />
                                 <InputBox type="hidden" className="form-control" name={`${this.props.name}[${index}][attachment_id]`} value={item.attachment_id} />
@@ -318,7 +343,7 @@ class FileInput extends React.Component {
                                 <InputBox type="hidden" className="form-control" name={`${this.props.name}[${index}][is_new]`} value={item.is_new} />
                                 <InputBox type="hidden" className="form-control" name={`${this.props.name}[${index}][is_deleted]`} value={item.is_deleted || 0} />
                                 <InputBox type="hidden" className="form-control" name={`${this.props.name}[${index}][attachment_title]`} value={item.attachment_title || ''} />
-                                <InputBox type="hidden" className="sort_order" name={`${this.props.name}[${index}][sort_order]`} value={item.sort_order || 0} />
+                                <InputBox type="text" className="sort_order" name={`${this.props.name}[${index}][sort_order]`} value={item.sort_order || 0} />
 
 
                                 <div className="inner" style={{backgroundImage : 'url("' + item.url_thumb + '")'}}>

@@ -132,8 +132,8 @@ class ProjectOverview extends Component {
     }
 
     _renderFlagLink(project) {
-        let flag = "be";
-        if(project.site_id==3) {
+        let flag = "nl";
+        if(project.site_id==2) {
             flag = "fr";
         }
         console.log(project);

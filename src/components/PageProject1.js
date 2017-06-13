@@ -448,8 +448,8 @@ class PageProject extends Component {
     }
     
     _renderFlagLink(project) {
-        let flag = "be";
-        if(project.site_id==3) {
+        let flag = "nl";
+        if(project.site_id==2) {
             flag = "fr";
         }
         console.log(project);
@@ -523,6 +523,7 @@ class PageProject extends Component {
                             <div className="page-panel__inner__content">
                                 <form className="form-default" ref="form">
                                     <InputBox type="hidden" name="id" value={project.id} />
+                                    <InputBox type="hidden" name="related_project_id" value={project.related_project_id} />
                                     <div className="tab-content">
                                         <h3 className="d_active tab_drawer_heading">
                                             <a href="#general" aria-controls="general" role="tab" data-toggle="tab">{trans.pageProject_algemene_label} <i className="iconc-chevron-down"></i></a>
