@@ -118,7 +118,7 @@ class PageProject extends Component {
             $('.tab-pane'+href_tab).show();
 
             $('#project_edit_tab a[href="'+href_tab+'"]').tab('show')
-
+            localStorage.setItem('active_tab', active_tab);
             
 
         }
@@ -449,7 +449,7 @@ class PageProject extends Component {
     
     _renderFlagLink(project) {
         let flag = "nl";
-        if(project.site_id==2) {
+        if(Env.site_id==2) {
             flag = "fr";
         }
         console.log(project);

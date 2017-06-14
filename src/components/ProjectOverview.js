@@ -133,7 +133,7 @@ class ProjectOverview extends Component {
 
     _renderFlagLink(project) {
         let flag = "nl";
-        if(project.site_id==2) {
+        if(Env.site_id==2) {
             flag = "fr";
         }
         console.log(project);
