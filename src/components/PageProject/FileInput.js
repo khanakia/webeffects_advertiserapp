@@ -343,7 +343,7 @@ class FileInput extends React.Component {
                                 <InputBox type="hidden" className="form-control" name={`${this.props.name}[${index}][is_new]`} value={item.is_new} />
                                 <InputBox type="hidden" className="form-control" name={`${this.props.name}[${index}][is_deleted]`} value={item.is_deleted || 0} />
                                 <InputBox type="hidden" className="form-control" name={`${this.props.name}[${index}][attachment_title]`} value={item.attachment_title || ''} />
-                                <InputBox type="text" className="sort_order" name={`${this.props.name}[${index}][sort_order]`} value={item.sort_order || 0} />
+                                <InputBox type="hidden" className="sort_order" name={`${this.props.name}[${index}][sort_order]`} value={item.sort_order || 0} />
 
 
                                 <div className="inner" style={{backgroundImage : 'url("' + item.url_thumb + '")'}}>
