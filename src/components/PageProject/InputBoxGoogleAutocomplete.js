@@ -63,7 +63,7 @@ class InputBoxGoogleAutocomplete extends React.Component {
     render() {
               
         return (
-            <input ref="inputelem" type={this.props.type} name={this.props.name} className={this.props.className}  onChange={this.handleChange} value={this.state.value} />
+            <input ref="inputelem" type={this.props.type} name={this.props.name} className={this.props.className}  onChange={this.handleChange} value={this.state.value} placeholder={trans.locatieInput_enteralocation} />
         );
     }
 }

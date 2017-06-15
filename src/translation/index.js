@@ -373,6 +373,8 @@ const language = {
 		"import_photots_popup_title": "Importeer foto's van de Franstalige locatie",
 		"import_photots_popup_message": "Weet u zeker dat u de foto's vanuit de Franstalige locatie wilt importeren?",
 		"import_photots_popup_okbtn": "Importeer",
+
+		"locatieInput_enteralocation": "Voer een locatie in"
 	},
 
 	"2" : {
@@ -749,6 +751,8 @@ const language = {
 		"import_photots_popup_title": "Importeer foto's van de Franstalige locatie",
 		"import_photots_popup_message": "Weet u zeker dat u de foto's vanuit de Franstalige locatie wilt importeren?",
 		"import_photots_popup_okbtn": "Importeer",
+
+		"locatieInput_enteralocation": "Voer een locatie in"
 	},
 
 	"3" : {
@@ -1125,6 +1129,8 @@ const language = {
 		"import_photots_popup_title": "Importez les photos de l'emplacement néerlandais",
 		"import_photots_popup_message": "Etes-vous sûr que vous voulez importer les photos de l'emplacement hollandais?",
 		"import_photots_popup_okbtn": "Importer",
+
+		"locatieInput_enteralocation": "Entrez un lieu"
 	},
 
 	"4" : {
@@ -1501,6 +1507,7 @@ const language = {
 		"import_photots_popup_title": "Importeer foto's van de Franstalige locatie",
 		"import_photots_popup_message": "Weet u zeker dat u de foto's vanuit de Franstalige locatie wilt importeren?",
 		"import_photots_popup_okbtn": "Importeer",
+		"locatieInput_enteralocation": "Geben Sie einen Standort ein"
 	},
 
 	"5" : {
@@ -1878,6 +1885,8 @@ const language = {
 		"import_photots_popup_title": "Importeer foto's van de Franstalige locatie",
 		"import_photots_popup_message": "Weet u zeker dat u de foto's vanuit de Franstalige locatie wilt importeren?",
 		"import_photots_popup_okbtn": "Importeer",
+
+		"locatieInput_enteralocation": "Enter a location"
 	}
 }
 

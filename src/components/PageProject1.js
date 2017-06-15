@@ -277,7 +277,8 @@ class PageProject extends Component {
                 deleteAction: {
                     text: trans.pageProject_confirm_delete,
                     action: function () {
-                        window.location.reload()
+                        // window.location.reload()
+                        hashHistory.push('/dashboard')
                         jQuery(".jconfirm").hide()
                     }
                 }

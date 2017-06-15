@@ -65,22 +65,22 @@ export const PROJECT_STATUSES = {
 	},
 
 	"2" : {
-		'title' : 'Nieuw',
+		'title' : trans.project_status_nieuw,
 		'icon_class' : 'iconc iconc-concept',
 	},
 
 	"3" : {
-		'title' : 'Ter goedkeuring',
+		'title' : trans.project_status_ter_goedkeuring,
 		'icon_class' : 'iconc iconc-uploaded color-red',
 	},
 
 	"4" : {
-		'title' : 'Wachten op depubliceren',
+		'title' : trans.project_status_wachten_op_depubliceren,
 		'icon_class' : 'iconc iconc-uploaded color-red',
 	},
 
 	"5" : {
-		'title' : 'Uitgeschakeld',
+		'title' : trans.project_status_uitgeschakeld,
 		'icon_class' : 'iconc iconc-uploaded color-red',
 	},
 
