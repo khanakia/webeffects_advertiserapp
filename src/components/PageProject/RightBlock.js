@@ -30,13 +30,24 @@ class RightBlock extends React.Component {
         handleLoadActualData: function(){},
         handleLoadRevisionClick: function(){},
         handleCancel: function(){},
-        handleTerugClick: function() {}
+        handleTerugClick: function() {},
+        handleImportClick: function() {}
     }
 
     componentDidMount() {
     
     }
 
+    _renderImportButton() {
+        if(Env.site_id==2 || Env.site_id==3) {
+            return (
+               <div className="form-group">
+                    <button type="button" className="btn-link btn-link-style1" onClick={()=>{this.props.handleImportClick()}}>{trans.import_photots_title}</button>
+                </div>
+            )
+        }
+        return null;
+    }
 
     render() {
         // console.log("this.props.is_live_datathis.props.is_live_datathis.props.is_live_data", this.props.is_live_data)
@@ -136,6 +147,10 @@ class RightBlock extends React.Component {
                         <div className="block-info">
                             <label>{trans.pageProject_rightBlock_datum}</label>
                             <div className="last_updated">{moment(this.props.created_date).format(Env.dateformat_default)}</div>
+                        </div>
+
+                        <div className="block-info">
+                            {this._renderImportButton()}
                         </div>
 
                         {/*<div className="block-info">

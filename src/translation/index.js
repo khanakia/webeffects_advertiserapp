@@ -1101,7 +1101,7 @@ const language = {
 		"project_snoobi_chart_subheading" : "Montant des demandes mensuelles par article",
 		"project_snoobi_chart_yaxis_labelString" : "Montant des demandes ",
 
-		"locatieInput_locations" : "Locatie filters",
+		"locatieInput_locations" : "Filtres de localisation",
 		"pageProject_tooltip_locatie_titles": 'Vous pouvez sélectionner ici ce qui filtre votre emplacement sera lié.',
 		"snoobiPage_placeholder_select_filter_action" : "Filtres",
 		"snoobiPage_placeholder_select_filter_date" : "Toutes les dates",

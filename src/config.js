@@ -50,6 +50,7 @@ export const API_URL_PROJECT = API_URL+'/projects';
 export const API_URL_ATTACHMENTS = API_URL+'/attachments';
 export const API_URL_ATTACHMENTS_UPLOAD = API_URL_ATTACHMENTS+'/upload';
 export const API_URL_ATTACHMENTS_IMP = API_URL_ATTACHMENTS+'/imp';
+export const API_URL_ATTACHMENTS_IMP_ALL = API_URL_ATTACHMENTS+'/imp_all';
 export const API_URL_ATTACHMENT_MAPPINGS = API_URL+'/attachment_mappings';
 
 export const  API_URL_PROJECT_ROOMS = API_URL+'/project_rooms';

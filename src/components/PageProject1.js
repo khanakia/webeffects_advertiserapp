@@ -19,7 +19,7 @@ import SnoobiPage from './SnoobiPage'
 import InputBox from './PageProject/InputBox'
 import PopupHelper from 'helpers/helper_popup'
 
-import {PROJECT_STATUSES} from '../config'
+import {PROJECT_STATUSES, API_URL_ATTACHMENTS_IMP_ALL} from '../config'
 
 class PageProject extends Component {
     constructor(props, context) {
@@ -358,6 +358,47 @@ class PageProject extends Component {
         })
 
      
+    }
+
+    impAjax() {
+        var _this = this;
+        jQuery.ajax({
+            type: "POST",
+            url : API_URL_ATTACHMENTS_IMP_ALL,
+            dataType : "JSON",
+            // processData: false,
+            // contentType: false,
+            data: {
+                project_id: this.props.project.id,
+            },
+            headers: Auth.header(),
+
+            success: function(response){
+                console.log(response);
+                _this.props.fetchProject(_this.props.params.projectId);
+                
+            }.bind(this)
+        });
+    }
+
+    onRightBlockImportClick = () => {
+        var _this = this;
+        jQuery.confirm({
+            title: trans.import_photots_popup_title,
+            content: trans.import_photots_popup_message,
+            closeIcon: true,
+            columnClass: 'col-md-6 col-md-offset-3',
+            buttons: {
+                okAction: {
+                    text: trans.import_photots_popup_okbtn,
+                    btnClass: 'btn btn-green btn--round',
+                    action: function () {
+                        jQuery(".jconfirm").hide()
+                        _this.impAjax();
+                    }
+                }
+            }
+        })
     }
 
 
@@ -709,7 +750,8 @@ class PageProject extends Component {
                                     handleLoadActualData={this.rightBlock_handleLoadActualData}
                                     handleLoadRevisionClick={this.rightBlock_handleLoadRevisionClick}
                                     handleCancel={this.handleCancel}
-                                    handleTerugClick={this.onRightBlockTerugClick} />
+                                    handleTerugClick={this.onRightBlockTerugClick}
+                                    handleImportClick={this.onRightBlockImportClick} />
                             </div>
                         </div>
                     </div>
