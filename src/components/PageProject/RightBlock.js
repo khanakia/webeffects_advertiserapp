@@ -149,8 +149,8 @@ class RightBlock extends React.Component {
                             <div className="last_updated">{moment(this.props.created_date).format(Env.dateformat_default)}</div>
                         </div>
 
-                        <div className="block-info">
-                            {this._renderImportButton()}
+                        <div className="block-info11">
+                            {/*{this._renderImportButton()}*/}
                         </div>
 
                         {/*<div className="block-info">
